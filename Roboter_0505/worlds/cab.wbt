@@ -1,0 +1,479 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.1303836661178129 0.941021549061744 0.3122155406303705 2.373133594509959
+  position -3.637711500753906 9.22717547956076 3.0366207974072497
+  follow "robot:inf_right"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Robot {
+  translation -11.09273913658642 0.03952757808326926 14.805168054294755
+  rotation 0.0018680552589844 0.9999963882139613 0.0019323375952818218 -1.5721038512920498
+  children [
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2768.9508427964515
+        anchor 0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.06 0 0.05
+        rotation 0.6355319259111509 -0.6355342603545209 -0.4384009295876268 3.9679227150160195
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+        linearVelocity -0.12117505133254775 3.707223082281347e-05 -0.00017872847545415168
+        angularVelocity -0.004427287518852824 -0.00044223301963481547 3.0300236417311086
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2323.5518724354147
+        anchor 0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint DEF WHEEL3 Solid {
+        translation 0.06 0 -0.05
+        rotation -0.4988647108827373 0.4988665433184811 0.7087073953285326 1.90850415968206
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+        linearVelocity -0.12137511184445514 0.0030475809488100317 -0.00017872041607242987
+        angularVelocity -0.004427360796195302 -0.00044236650181183967 3.030026389589793
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2402.11526781694
+        anchor -0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint DEF WHEEL4 Solid {
+        translation -0.06 0 -0.05
+        rotation 0.63613177015237 -0.6361341067990993 0.43665749640848295 2.318189203124823
+        children [
+          USE WHEEL
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+        linearVelocity -0.12138393218729426 0.002988949970654879 -0.00017581465382855623
+        angularVelocity -0.004437125726018207 -0.0002989512804469054 3.0300263872468594
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1956.0244093876533
+        anchor -0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF WHEEL2 Solid {
+        translation -0.06 0 0.05
+        rotation -0.6381028774613378 0.6381052213483656 -0.43086708421915243 3.9552491966657177
+        children [
+          USE WHEEL
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+        linearVelocity -0.12118352190164021 -1.938115631210798e-05 -0.0001758911044357828
+        angularVelocity -0.004437057329063174 -0.0002988130832647881 3.030023655198527
+      }
+    }
+    DistanceSensor {
+      translation 0.025 0 0.1
+      rotation 0 1 0 -1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+    }
+    DistanceSensor {
+      translation -0.025 0 0.1
+      rotation 0 1 0 -2
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+    }
+    DistanceSensor {
+      translation -0.015 -0.02 0.1
+      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_right"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 -0.02 0.1
+      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_cent"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.015 -0.02 0.1
+      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_left"
+      type "infra-red"
+    }
+    LightSensor {
+      translation 0 0 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 1 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "light"
+    }
+    Camera {
+      translation 0 0.02 0.1
+      rotation 0 1 0 3.14159
+      children [
+        Transform {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 0.9
+      width 256
+      height 128
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 1 1 0.498039
+      }
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "my_controller"
+  linearVelocity -0.12127943327260352 0.0015135803545763857 -0.00017729225533552603
+  angularVelocity -0.0005184465503013293 4.099934358498368e-05 0.030027592580322816
+}
+StraightRoadSegment {
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  startingRoadBorderWidth 0.1
+  endingRoadBorderWidth 0.1
+  bottom TRUE
+  length 7
+  appearance Asphalt {
+    textureTransform TextureTransform {
+    }
+  }
+  pavementAppearance StonePavement {
+    textureTransform TextureTransform {
+    }
+  }
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+CurvedRoadSegment {
+  translation -3 0 7
+  name "road(1)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth [
+    0.1
+  ]
+  bottom TRUE
+  curvatureRadius 3
+  appearance Asphalt {
+    textureTransform TextureTransform {
+    }
+  }
+  pavementAppearance StonePavement {
+    textureTransform TextureTransform {
+    }
+  }
+  roadBoundingObject TRUE
+}
+CurvedRoadSegment {
+  translation -3 0 0
+  rotation 0 1 0 1.5707996938995747
+  name "road(3)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth [
+    0.1
+  ]
+  bottom TRUE
+  curvatureRadius 3
+  appearance Asphalt {
+    textureTransform TextureTransform {
+    }
+  }
+  pavementAppearance StonePavement {
+    textureTransform TextureTransform {
+    }
+  }
+  roadBoundingObject TRUE
+}
+AddLanesRoadSegment {
+  translation -3 0 10
+  rotation 0 1 0 -1.5708003061004252
+  name "road(2)"
+  width 1
+  length 4
+  numberOfLanes 0
+  numberOfNewLanes 1
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth 0.1
+  startLine [
+    ""
+  ]
+  endLine [
+    ""
+  ]
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation -7 0 10
+  rotation 0 1 0 -1.5708003061004252
+  name "road(5)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  startingRoadBorderWidth 0.1
+  endingRoadBorderWidth 0.1
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+StraightRoadSegment {
+  translation -11 0 14.8
+  rotation 0 1 0 -1.5708003061004252
+  name "road(7)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  startingRoadBorderWidth 1
+  endingRoadBorderWidth 1
+  length 3
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+CurvedRoadSegment {
+  translation -7 0 12.8
+  rotation 0 1 0 -3.141592653589793
+  name "road(4)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth [
+    0.1
+  ]
+  curvatureRadius 2
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+CurvedRoadSegment {
+  translation -17.95 0 13.4
+  rotation 0 1 0 1.7016996938995748
+  name "road(9)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth [
+    0.1
+  ]
+  curvatureRadius 2
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+CurvedRoadSegment {
+  translation -11 0 12.8
+  name "road(6)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth [
+    0.1
+  ]
+  curvatureRadius 2
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+CurvedRoadSegment {
+  translation -14 0 12.8
+  rotation 0 1 0 -1.4398996938995747
+  name "road(8)"
+  width 0.7
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.015
+    }
+  ]
+  roadBorderHeight 0
+  roadBorderWidth [
+    0.1
+  ]
+  curvatureRadius 2
+  roadBoundingObject TRUE
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
