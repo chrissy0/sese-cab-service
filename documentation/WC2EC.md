@@ -30,12 +30,11 @@ The range for the command is split in half, first 0-127 is reserved for the Webo
 |132 | reserved | Resered for future use |
 
 ### Sensor Types
-Currently only the sensors needed for our project are implemented. Those who feel themself called, feel free to extend this protocol!
 |  Number    |      Name              | Description|
 |----------------|----------|-----------------------|
 | 0 | LightSensor | returns the most recent value measured by the specified light sensor. The returned value is the result of interpolating the irradiance| 
 
-
+Currently only the sensors needed for our project are implemented. Those who feel themself called, feel free to extend this protocol!
 
 ### Sensor Details 
 #### Light Sensor
