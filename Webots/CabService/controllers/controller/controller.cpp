@@ -3,77 +3,81 @@
 #include <webots/Motor.hpp>
 #include <webots/Robot.hpp>
 #include <webots/camera.hpp>
+#include <iostream>
 
 #define TIME_STEP 64
+
 using namespace webots;
 using namespace std;
-DistanceSensor *ds[5];
-LightSensor *ls;
-Camera  *cam[1];
-Motor *wheels[4];
-  
-  char lsName[1][10] = {"light"};
-  char dsNames[5][10] = {"ds_right", "ds_left", "inf_right","inf_cent","inf_left"};
-  char camName[1][10] = {"camera"};
-  char wheels_names[4][8] = {"wheel1", "wheel2", "wheel3", "wheel4"};
 
-void Init(Robot *robot);
-void Line_Algo(double leftSpeed,double rightSpeed);
+DistanceSensor *inf_l;
+DistanceSensor *inf_c;
+DistanceSensor *inf_r;
+Camera *cam;
+Motor *wheel_fl;
+Motor *wheel_fr;
+Motor *wheel_bl;
+Motor *wheel_br;
 
+void init(Robot *robot);
+void followLine(double speed);
 
-int main(int argc, char **argv) {
-  Robot *robot = new Robot();
-  Init(robot);
- 
-   while (robot->step(TIME_STEP) != -1) {
-         double leftSpeed = 3.0;
-         double rightSpeed = 3.0;
-          
-         Line_Algo(leftSpeed,rightSpeed);
-         const CameraRecognitionObject *objects =cam[0]->getRecognitionObjects();
-         int number_of_objects = cam[0]->getRecognitionNumberOfObjects();
-   }
+int main(int argc, char ** argv) {
+  Robot * robot = new Robot();
+
+  init(robot);
+
+  while (robot->step(TIME_STEP) != -1) {
+    // std::cout << inf_l->getValue() << " inf_l" << std::endl;
+    // std::cout << inf_c->getValue() << " inf_c" << std::endl;
+    // std::cout << inf_r->getValue() << " inf_r" << std::endl;
+
+    followLine(3.0);
+  }
+
   delete robot;
-  return 0;  // EXIT_SUCCESS
+  return 0;
 }
 
-void Init(Robot *robot)// Initialization
-{
-  ls = robot->getLightSensor(lsName[0]);
-  ls->enable(TIME_STEP);
-  cam[0] = robot->getCamera(camName[0]);
-  cam[0]->enable(TIME_STEP);
-  cam[0]->recognitionEnable(TIME_STEP);
-  for (int i = 0; i < 5; i++) {
-    ds[i] = robot->getDistanceSensor(dsNames[i]);
-    ds[i]->enable(TIME_STEP);
-  }
-  
-  for (int i = 0; i < 4; i++) {
-    wheels[i] = robot->getMotor(wheels_names[i]);
-    wheels[i]->setPosition(INFINITY);
-    wheels[i]->setVelocity(0.0);
-  }
+void init(Robot * robot) {
+
+  inf_l = robot->getDistanceSensor("inf_left");
+  inf_l->enable(TIME_STEP);
+  inf_c = robot->getDistanceSensor("inf_cent");
+  inf_c->enable(TIME_STEP);
+  inf_r = robot->getDistanceSensor("inf_right");
+  inf_r->enable(TIME_STEP);
+  cam = robot->getCamera("camera");
+  cam->enable(TIME_STEP);
+
+  wheel_fl = robot->getMotor("wheel1");
+  wheel_fl->setPosition(INFINITY);
+  wheel_fl->setVelocity(0.0);
+  wheel_fr = robot->getMotor("wheel2");
+  wheel_fr->setPosition(INFINITY);
+  wheel_fr->setVelocity(0.0);
+  wheel_bl = robot->getMotor("wheel3");
+  wheel_bl->setPosition(INFINITY);
+  wheel_bl->setVelocity(0.0);
+  wheel_br = robot->getMotor("wheel4");
+  wheel_br->setPosition(INFINITY);
+  wheel_br->setVelocity(0.0);
 }
 
-void Line_Algo(double leftSpeed,double rightSpeed)// weß Linie Folgen
-{
-  if(ds[2]->getValue()<350 && ds[3]->getValue()>350 && ds[4]->getValue()>350){////// right_line
-     rightSpeed= rightSpeed*0.5;
-  } 
-  else if(ds[2]->getValue()>350 && ds[3]->getValue()<350 && ds[4]->getValue()>350){////// center_line
-  
-  
+void followLine(double speed) {
+  double leftSpeed = speed;
+  double rightSpeed = speed;
+
+  if (inf_r->getValue() < 250 && inf_l->getValue() > 250) {
+    // std::cout << "right" << std::endl;
+    rightSpeed = 0;
+  } else if (inf_l->getValue() < 250 && inf_r->getValue() > 250) {
+    // std::cout << "left" << std::endl;
+    leftSpeed = 0 * leftSpeed;
   }
-  else if(ds[2]->getValue()>350 && ds[3]->getValue()>350 && ds[4]->getValue()<350){////// left_line
-  
-    leftSpeed= leftSpeed*0.5;
-  }
-  else{
-   
-  }
-    wheels[0]->setVelocity(leftSpeed);
-    wheels[1]->setVelocity(rightSpeed);
-    wheels[2]->setVelocity(leftSpeed);
-    wheels[3]->setVelocity(rightSpeed);
+
+  wheel_fl->setVelocity(leftSpeed);
+  wheel_fr->setVelocity(rightSpeed);
+  wheel_bl->setVelocity(leftSpeed);
+  wheel_br->setVelocity(rightSpeed);
 }

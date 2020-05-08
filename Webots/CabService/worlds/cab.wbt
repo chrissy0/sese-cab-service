@@ -2,18 +2,62 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.052330350923618436 0.9723794133919152 0.22746386698507928 2.674570879399217
-  position 1.2969243036770122 1.4030722948542365 -2.327904463106398
-  follow "robot:inf_right"
+  orientation 0.5633470481966442 0.5693323050806764 0.5987493880411501 4.114997258572609
+  position -0.4054009480325943 1.350767531033346 0.6195304674724398
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 Robot {
-  translation -0.0539127 0.0485212 0.229573
+  translation -0.0539257 0.0485206 0.239573
   rotation 0.0018680552589844 0.9999963882139613 0.0019323375952818218 -1.5721038512920498
   children [
+    DistanceSensor {
+      translation -0.015 -0.02 0.11
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_right"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 -0.02 0.11
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_cent"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.015 -0.02 0.11
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_left"
+      type "infra-red"
+    }
     DEF BODY Shape {
       appearance PBRAppearance {
         baseColor 1 0 0
@@ -118,102 +162,9 @@ Robot {
         physics USE WHEEL_PH
       }
     }
-    DistanceSensor {
-      translation 0.025 0 0.1
-      rotation 0 1 0 -1
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0 0 1
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_left"
-    }
-    DistanceSensor {
-      translation -0.025 0 0.1
-      rotation 0 1 0 -2
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0 0 1
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_right"
-    }
-    DistanceSensor {
-      translation -0.015 -0.02 0.1
-      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "inf_right"
-      type "infra-red"
-    }
-    DistanceSensor {
-      translation 0 -0.02 0.1
-      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "inf_cent"
-      type "infra-red"
-    }
-    DistanceSensor {
-      translation 0.015 -0.02 0.1
-      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "inf_left"
-      type "infra-red"
-    }
-    LightSensor {
-      translation 0 0 0.1
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 1 1 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "light"
-    }
     Camera {
-      translation 0 0.02 0.1
-      rotation 0 1 0 3.14159
+      translation 0 0.01 0.1
+      rotation 3.4339994638889944e-07 -0.9659258492010602 -0.2588189595935602 -3.1415853071795863
       children [
         Transform {
           children [
@@ -260,4 +211,190 @@ DEF floor Solid {
   boundingObject Box {
     size 10 0.01 10
   }
+}
+DEF line Solid {
+  translation -0.2 0.0005 0.24
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line"
+}
+DEF line Solid {
+  translation -0.377941 0.0005 0.285
+  rotation 0 1 0 0.523599
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(1)"
+}
+DEF line Solid {
+  translation -0.453817 0.0001 0.424203
+  rotation 0 -1 0 -1.5708053071795867
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(2)"
+}
+DEF line Solid {
+  translation -0.402837 0.0001 0.602502
+  rotation 0 1 0 2.0944
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(3)"
+}
+DEF line Solid {
+  translation -0.273478 0.0001 0.699277
+  rotation 0 1 0 2.8798
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(4)"
+}
+DEF line Solid {
+  translation -0.183478 0.0001 0.819277
+  rotation 0 -1 0 -1.5708053071795867
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(5)"
+}
+DEF line Solid {
+  translation -0.279154 0.0001 0.933278
+  rotation 0 1 0 0.261813
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(6)"
+}
+DEF line Solid {
+  translation -0.413641 0.0001 0.866498
+  rotation 0 1 0 -1.0471853071795865
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(7)"
+}
+DEF line Solid {
+  translation -0.541583 0.0001 0.739537
+  rotation 0 1 0 -0.5235853071795864
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(8)"
+}
+DEF line Solid {
+  translation -0.624523 0.0001 0.599278
+  rotation 0 -1 0 1.57079
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(9)"
+}
+DEF line Solid {
+  translation -0.624523 0.0001 0.409278
+  rotation 0 -1 0 1.57079
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(10)"
 }
