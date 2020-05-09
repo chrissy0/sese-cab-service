@@ -13,6 +13,9 @@ using namespace std;
 DistanceSensor *inf_l;
 DistanceSensor *inf_c;
 DistanceSensor *inf_r;
+DistanceSensor *dist_l;
+DistanceSensor *dist_c;
+DistanceSensor *dist_r;
 Camera *cam;
 Motor *wheel_fl;
 Motor *wheel_fr;
@@ -31,6 +34,9 @@ int main(int argc, char ** argv) {
     // std::cout << inf_l->getValue() << " inf_l" << std::endl;
     // std::cout << inf_c->getValue() << " inf_c" << std::endl;
     // std::cout << inf_r->getValue() << " inf_r" << std::endl;
+    std::cout << dist_l->getValue() << " dist_l" << std::endl;
+    std::cout << dist_c->getValue() << " dist_c" << std::endl;
+    std::cout << dist_r->getValue() << " dist_r" << std::endl;
 
     followLine(6.0);
   }
@@ -47,6 +53,12 @@ void init(Robot * robot) {
   inf_c->enable(TIME_STEP);
   inf_r = robot->getDistanceSensor("inf_right");
   inf_r->enable(TIME_STEP);
+  dist_l = robot->getDistanceSensor("dist_l");
+  dist_l->enable(TIME_STEP);
+  dist_c = robot->getDistanceSensor("dist_c");
+  dist_c->enable(TIME_STEP);
+  dist_r = robot->getDistanceSensor("dist_r");
+  dist_r->enable(TIME_STEP);
   cam = robot->getCamera("camera");
   cam->enable(TIME_STEP);
 
@@ -68,12 +80,17 @@ void followLine(double speed) {
   double leftSpeed = speed;
   double rightSpeed = speed;
 
-  if (inf_r->getValue() < 250 && inf_l->getValue() > 250) {
-    // std::cout << "right" << std::endl;
+  if (dist_l->getValue() > 900 && dist_c->getValue() > 900 && dist_r->getValue() > 900) {
+    if (inf_r->getValue() < 250 && inf_l->getValue() > 250) {
+      // std::cout << "right" << std::endl;
+      rightSpeed = 0;
+    } else if (inf_l->getValue() < 250 && inf_r->getValue() > 250) {
+      // std::cout << "left" << std::endl;
+      leftSpeed = 0 * leftSpeed;
+    }
+  } else {
+    leftSpeed = 0;
     rightSpeed = 0;
-  } else if (inf_l->getValue() < 250 && inf_r->getValue() > 250) {
-    // std::cout << "left" << std::endl;
-    leftSpeed = 0 * leftSpeed;
   }
 
   wheel_fl->setVelocity(leftSpeed);

@@ -2,15 +2,15 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.6112005865808304 0.5202320836809348 0.5964833795440084 4.070530688390201
-  position 1.3403051673785153 5.648549319084267 2.106377012318119
+  orientation -0.30066224835056304 0.9236259114638733 0.23773385978718703 1.385054430396213
+  position 3.3482328946549345 1.4480809147636322 1.1007333635668228
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 Robot {
-  translation -0.0544073 0.0484983 0.609573
+  translation 0.615963 0.0459681 0.320444
   rotation 0.001934860732894369 0.9999963787826702 -0.001870490708512031 1.5695
   children [
     DistanceSensor {
@@ -44,6 +44,48 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
+      translation 7.15325e-07 -0.01 0.105001
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_c"
+    }
+    DistanceSensor {
+      translation -0.0399993 -0.00999716 0.105001
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_r"
+    }
+    DistanceSensor {
+      translation 0.0400007 -0.0100028 0.105001
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_l"
+    }
+    DistanceSensor {
       translation 0.015 -0.02 0.105
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
@@ -195,8 +237,8 @@ Robot {
   controller "controller"
 }
 Robot {
-  translation 1.54262 0.0426526 2.9915
-  rotation -0.01600429770351556 0.32341795359219677 0.9461208642394758 -0.004015307179586536
+  translation 1.1757 0.0442071 0.621041
+  rotation 0.0018680607251794097 0.9999963881976538 0.0019323407501328548 -1.5721053071795863
   children [
     DistanceSensor {
       translation -0.015 -0.02 0.105
@@ -227,6 +269,20 @@ Robot {
       ]
       name "inf_cent"
       type "infra-red"
+    }
+    DistanceSensor {
+      translation 7.15325e-07 -0.01 0.105001
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_c"
     }
     DistanceSensor {
       translation 0.015 -0.02 0.105
@@ -265,7 +321,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319259111518 -0.6355342603545204 -0.4384009295876265 3.9679227150160203
+        rotation 0.6355319259111515 -0.6355342603545207 -0.4384009295876265 3.9679227150160217
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -296,7 +352,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.49886471088273715 0.49886654331848135 0.7087073953285324 1.9085041596820589
+        rotation -0.49886471088273804 0.49886654331848107 0.7087073953285322 1.9085041596820569
         children [
           USE WHEEL
         ]
@@ -317,7 +373,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6361317701523701 -0.6361341067990992 0.4366574964084829 2.3181892031248217
+        rotation 0.6361317701523705 -0.6361341067990988 0.4366574964084829 2.3181892031248217
         children [
           USE WHEEL
         ]
@@ -338,7 +394,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6381028774613375 0.6381052213483658 -0.43086708421915254 3.9552491966657177
+        rotation -0.6381028774613378 0.6381052213483658 -0.43086708421915254 3.9552491966657186
         children [
           USE WHEEL
         ]
@@ -374,11 +430,11 @@ Robot {
       }
     }
   ]
-  name "robot(1)"
+  name "robot(2)"
   boundingObject USE BODY
   physics Physics {
   }
-  controller "controller"
+  controller ""
 }
 DEF floor Solid {
   translation -0.37 0 0.25
@@ -601,6 +657,74 @@ DEF line Solid {
     }
   ]
   name "line(20)"
+}
+DEF line Solid {
+  translation 1.60652 0.0001 1.77928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(22)"
+}
+DEF line Solid {
+  translation -0.81348 0.0001 1.77928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(127)"
+}
+DEF line Solid {
+  translation -0.83348 0.0001 1.77928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(128)"
+}
+DEF line Solid {
+  translation 1.62652 0.0001 1.77928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(23)"
 }
 DEF line Solid {
   translation 1.56652 0.0001 1.97928
@@ -1196,6 +1320,74 @@ DEF line Solid {
     }
   ]
   name "line(6)"
+}
+DEF line Solid {
+  translation 0.406522 0.0001 0.569283
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(12)"
+}
+DEF line Solid {
+  translation 0.406532 0.0001 2.98928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(14)"
+}
+DEF line Solid {
+  translation 0.406532 0.0001 3.00928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(15)"
+}
+DEF line Solid {
+  translation 0.406522 0.0001 0.549283
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(13)"
 }
 DEF line Solid {
   translation 0.406522 0.0001 0.609283
@@ -1861,6 +2053,40 @@ DEF line Solid {
   name "line(49)"
 }
 DEF line Solid {
+  translation 1.46448 0.0001 0.841727
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(129)"
+}
+DEF line Solid {
+  translation 1.45034 0.0001 0.855869
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(130)"
+}
+DEF line Solid {
   translation 1.63417 0.0001 0.954863
   rotation 0 1 0 2.3562
   children [
@@ -2133,6 +2359,40 @@ DEF line Solid {
   name "line(39)"
 }
 DEF line Solid {
+  translation -0.649692 0.0001 2.74374
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(133)"
+}
+DEF line Solid {
+  translation -0.63555 0.0001 2.7296
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(134)"
+}
+DEF line Solid {
   translation -0.84768 0.0001 2.60234
   rotation 0 1 0 2.3562
   children [
@@ -2235,6 +2495,40 @@ DEF line Solid {
   name "line(2)"
 }
 DEF line Solid {
+  translation -0.557774 0.0001 0.728566
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(135)"
+}
+DEF line Solid {
+  translation -0.543632 0.0001 0.742708
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(136)"
+}
+DEF line Solid {
   translation -0.416354 0.0001 0.530578
   rotation 0 -1 0 -0.7854053071795866
   children [
@@ -2335,6 +2629,40 @@ DEF line Solid {
     }
   ]
   name "line(28)"
+}
+DEF line Solid {
+  translation 1.35847 0.0001 2.82851
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(131)"
+}
+DEF line Solid {
+  translation 1.34433 0.0001 2.81437
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(132)"
 }
 DEF line Solid {
   translation 1.21705 0.0001 3.02649
