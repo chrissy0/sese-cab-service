@@ -32,7 +32,7 @@ int main(int argc, char ** argv) {
     // std::cout << inf_c->getValue() << " inf_c" << std::endl;
     // std::cout << inf_r->getValue() << " inf_r" << std::endl;
 
-    followLine(3.0);
+    followLine(6.0);
   }
 
   delete robot;

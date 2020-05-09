@@ -2,19 +2,19 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.5633470481966442 0.5693323050806764 0.5987493880411501 4.114997258572609
-  position -0.4054009480325943 1.350767531033346 0.6195304674724398
+  orientation 0.6112005865808304 0.5202320836809348 0.5964833795440084 4.070530688390201
+  position 1.3403051673785153 5.648549319084267 2.106377012318119
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 Robot {
-  translation -0.0539257 0.0485206 0.239573
-  rotation 0.0018680552589844 0.9999963882139613 0.0019323375952818218 -1.5721038512920498
+  translation -0.0544073 0.0484983 0.609573
+  rotation 0.001934860732894369 0.9999963787826702 -0.001870490708512031 1.5695
   children [
     DistanceSensor {
-      translation -0.015 -0.02 0.11
+      translation -0.015 -0.02 0.105
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -29,7 +29,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0 -0.02 0.11
+      translation 0 -0.02 0.105
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -44,7 +44,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.015 -0.02 0.11
+      translation 0.015 -0.02 0.105
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -194,6 +194,192 @@ Robot {
   }
   controller "controller"
 }
+Robot {
+  translation 1.54262 0.0426526 2.9915
+  rotation -0.01600429770351556 0.32341795359219677 0.9461208642394758 -0.004015307179586536
+  children [
+    DistanceSensor {
+      translation -0.015 -0.02 0.105
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_right"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 -0.02 0.105
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_cent"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.015 -0.02 0.105
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_left"
+      type "infra-red"
+    }
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2768.9508427964515
+        anchor 0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.06 0 0.05
+        rotation 0.6355319259111518 -0.6355342603545204 -0.4384009295876265 3.9679227150160203
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2323.5518724354147
+        anchor 0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint DEF WHEEL3 Solid {
+        translation 0.06 0 -0.05
+        rotation -0.49886471088273715 0.49886654331848135 0.7087073953285324 1.9085041596820589
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2402.11526781694
+        anchor -0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint DEF WHEEL4 Solid {
+        translation -0.06 0 -0.05
+        rotation 0.6361317701523701 -0.6361341067990992 0.4366574964084829 2.3181892031248217
+        children [
+          USE WHEEL
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1956.0244093876533
+        anchor -0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF WHEEL2 Solid {
+        translation -0.06 0 0.05
+        rotation -0.6381028774613375 0.6381052213483658 -0.43086708421915254 3.9552491966657177
+        children [
+          USE WHEEL
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    Camera {
+      translation 0 0.01 0.1
+      rotation 3.4339994638889944e-07 -0.9659258492010602 -0.2588189595935602 -3.1415853071795863
+      children [
+        Transform {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 0.9
+      width 256
+      height 128
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 1 1 0.498039
+      }
+    }
+  ]
+  name "robot(1)"
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "controller"
+}
 DEF floor Solid {
   translation -0.37 0 0.25
   children [
@@ -213,7 +399,8 @@ DEF floor Solid {
   }
 }
 DEF line Solid {
-  translation -0.2 0.0005 0.24
+  translation 1.56652 0.0001 0.97928
+  rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
@@ -226,11 +413,11 @@ DEF line Solid {
       castShadows FALSE
     }
   ]
-  name "line"
+  name "line(16)"
 }
 DEF line Solid {
-  translation -0.377941 0.0005 0.285
-  rotation 0 1 0 0.523599
+  translation 1.56652 0.0001 1.17928
+  rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
@@ -243,11 +430,11 @@ DEF line Solid {
       castShadows FALSE
     }
   ]
-  name "line(1)"
+  name "line(17)"
 }
 DEF line Solid {
-  translation -0.453817 0.0001 0.424203
-  rotation 0 -1 0 -1.5708053071795867
+  translation 1.83652 0.0001 1.25928
+  rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
@@ -260,11 +447,572 @@ DEF line Solid {
       castShadows FALSE
     }
   ]
-  name "line(2)"
+  name "line(90)"
 }
 DEF line Solid {
-  translation -0.402837 0.0001 0.602502
-  rotation 0 1 0 2.0944
+  translation 1.83652 0.0001 1.45928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(91)"
+}
+DEF line Solid {
+  translation 1.83652 0.0001 1.65928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(92)"
+}
+DEF line Solid {
+  translation 1.83652 0.0001 1.85928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(93)"
+}
+DEF line Solid {
+  translation 1.83652 0.0001 2.04928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(94)"
+}
+DEF line Solid {
+  translation 1.83652 0.0001 2.24928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(95)"
+}
+DEF line Solid {
+  translation 1.83652 0.0001 2.30928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(96)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 1.37928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(18)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 1.57928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(19)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 1.77928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(20)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 1.97928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(21)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 2.17928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(24)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 2.37928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(25)"
+}
+DEF line Solid {
+  translation 1.56652 0.0001 2.57928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(26)"
+}
+DEF line Solid {
+  translation 1.53652 0.0001 3.06928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(97)"
+}
+DEF line Solid {
+  translation 1.53652 0.0001 3.23928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(98)"
+}
+DEF line Solid {
+  translation 1.53652 0.0001 3.43928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(99)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 2.57928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(40)"
+}
+DEF line Solid {
+  translation -1.25347 0.0001 3.46928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(119)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 2.37928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(41)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 2.17928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(42)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 1.97928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(43)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 1.77928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(44)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 1.57928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(45)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 1.37928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(46)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 1.17928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(47)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 1.25928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(76)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 1.45928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(77)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 1.65928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(78)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 1.85928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(79)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 2.05928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(80)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 2.25928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(81)"
+}
+DEF line Solid {
+  translation -1.04348 0.0001 2.30928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(82)"
+}
+DEF line Solid {
+  translation -0.773476 0.0001 0.97928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(48)"
+}
+DEF line Solid {
+  translation -0.393478 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -280,8 +1028,8 @@ DEF line Solid {
   name "line(3)"
 }
 DEF line Solid {
-  translation -0.273478 0.0001 0.699277
-  rotation 0 1 0 2.8798
+  translation -0.193478 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -297,8 +1045,127 @@ DEF line Solid {
   name "line(4)"
 }
 DEF line Solid {
-  translation -0.183478 0.0001 0.819277
-  rotation 0 -1 0 -1.5708053071795867
+  translation -0.113479 0.0001 0.319283
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(55)"
+}
+DEF line Solid {
+  translation 0.086521 0.0001 0.319282
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(56)"
+}
+DEF line Solid {
+  translation 0.286521 0.0001 0.319281
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(59)"
+}
+DEF line Solid {
+  translation 0.486521 0.0001 0.319281
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(60)"
+}
+DEF line Solid {
+  translation 0.686521 0.0001 0.319281
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(61)"
+}
+DEF line Solid {
+  translation 0.876521 0.0001 0.319281
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(62)"
+}
+DEF line Solid {
+  translation 0.906521 0.0001 0.319281
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(63)"
+}
+DEF line Solid {
+  translation 0.006522 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -314,8 +1181,8 @@ DEF line Solid {
   name "line(5)"
 }
 DEF line Solid {
-  translation -0.279154 0.0001 0.933278
-  rotation 0 1 0 0.261813
+  translation 0.206522 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -331,8 +1198,8 @@ DEF line Solid {
   name "line(6)"
 }
 DEF line Solid {
-  translation -0.413641 0.0001 0.866498
-  rotation 0 1 0 -1.0471853071795865
+  translation 0.406522 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -348,8 +1215,8 @@ DEF line Solid {
   name "line(7)"
 }
 DEF line Solid {
-  translation -0.541583 0.0001 0.739537
-  rotation 0 1 0 -0.5235853071795864
+  translation 0.606522 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -365,8 +1232,8 @@ DEF line Solid {
   name "line(8)"
 }
 DEF line Solid {
-  translation -0.624523 0.0001 0.599278
-  rotation 0 -1 0 1.57079
+  translation 0.806522 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -382,8 +1249,8 @@ DEF line Solid {
   name "line(9)"
 }
 DEF line Solid {
-  translation -0.624523 0.0001 0.409278
-  rotation 0 -1 0 1.57079
+  translation 1.00652 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
@@ -397,4 +1264,1173 @@ DEF line Solid {
     }
   ]
   name "line(10)"
+}
+DEF line Solid {
+  translation 1.00652 0.0001 0.609283
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(51)"
+}
+DEF line Solid {
+  translation 1.18652 0.0001 0.609282
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(52)"
+}
+DEF line Solid {
+  translation 1.19653 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(29)"
+}
+DEF line Solid {
+  translation 0.99653 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(30)"
+}
+DEF line Solid {
+  translation 0.79653 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(31)"
+}
+DEF line Solid {
+  translation 0.59653 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(32)"
+}
+DEF line Solid {
+  translation 0.39653 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(33)"
+}
+DEF line Solid {
+  translation 0.19653 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(34)"
+}
+DEF line Solid {
+  translation -0.00347 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(35)"
+}
+DEF line Solid {
+  translation -0.20347 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(36)"
+}
+DEF line Solid {
+  translation -0.12347 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(83)"
+}
+DEF line Solid {
+  translation -1.02347 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(117)"
+}
+DEF line Solid {
+  translation 0.07653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(84)"
+}
+DEF line Solid {
+  translation 0.27653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(85)"
+}
+DEF line Solid {
+  translation 0.47653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(86)"
+}
+DEF line Solid {
+  translation 0.67653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(87)"
+}
+DEF line Solid {
+  translation 0.87653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(88)"
+}
+DEF line Solid {
+  translation 0.926531 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(108)"
+}
+DEF line Solid {
+  translation 1.02653 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(102)"
+}
+DEF line Solid {
+  translation 1.17653 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(101)"
+}
+DEF line Solid {
+  translation 0.726531 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(109)"
+}
+DEF line Solid {
+  translation 0.526531 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(110)"
+}
+DEF line Solid {
+  translation 0.326531 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(111)"
+}
+DEF line Solid {
+  translation 0.126531 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(112)"
+}
+DEF line Solid {
+  translation -0.073469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(103)"
+}
+DEF line Solid {
+  translation -0.273469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(104)"
+}
+DEF line Solid {
+  translation -0.473469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(122)"
+}
+DEF line Solid {
+  translation -0.673469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(123)"
+}
+DEF line Solid {
+  translation -0.873469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(124)"
+}
+DEF line Solid {
+  translation -0.923469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(126)"
+}
+DEF line Solid {
+  translation -0.903469 0.0001 3.79928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(125)"
+}
+DEF line Solid {
+  translation 0.87653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(106)"
+}
+DEF line Solid {
+  translation 0.91653 0.0001 3.23928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(89)"
+}
+DEF line Solid {
+  translation -0.40347 0.0001 2.94928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(37)"
+}
+DEF line Solid {
+  translation 1.49276 0.0001 0.813443
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(49)"
+}
+DEF line Solid {
+  translation 1.63417 0.0001 0.954863
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(74)"
+}
+DEF line Solid {
+  translation 1.76851 0.0001 1.0892
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(75)"
+}
+DEF line Solid {
+  translation 1.35136 0.0001 0.672023
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(50)"
+}
+DEF line Solid {
+  translation 1.20995 0.0001 0.530603
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(57)"
+}
+DEF line Solid {
+  translation 1.06855 0.0001 0.389183
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(58)"
+}
+DEF line Solid {
+  translation -0.56484 0.0001 2.88514
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(38)"
+}
+DEF line Solid {
+  translation -0.423418 0.0001 3.02656
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(68)"
+}
+DEF line Solid {
+  translation -0.281998 0.0001 3.16796
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(69)"
+}
+DEF line Solid {
+  translation -0.437559 0.0001 3.73358
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(113)"
+}
+DEF line Solid {
+  translation -0.578979 0.0001 3.59218
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(114)"
+}
+DEF line Solid {
+  translation -0.720399 0.0001 3.45078
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(115)"
+}
+DEF line Solid {
+  translation -0.861819 0.0001 3.30938
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(116)"
+}
+DEF line Solid {
+  translation -1.18708 0.0001 3.63464
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(120)"
+}
+DEF line Solid {
+  translation -1.08808 0.0001 3.73364
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(121)"
+}
+DEF line Solid {
+  translation 1.46448 0.0001 2.90632
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(100)"
+}
+DEF line Solid {
+  translation -0.70626 0.0001 2.74374
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(39)"
+}
+DEF line Solid {
+  translation -0.84768 0.0001 2.60234
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(66)"
+}
+DEF line Solid {
+  translation -0.974958 0.0001 2.47508
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(67)"
+}
+DEF line Solid {
+  translation -0.699194 0.0001 0.813418
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(1)"
+}
+DEF line Solid {
+  translation -0.840614 0.0001 0.954838
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(64)"
+}
+DEF line Solid {
+  translation -0.982034 0.0001 1.09625
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(65)"
+}
+DEF line Solid {
+  translation -0.557774 0.0001 0.671998
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(2)"
+}
+DEF line Solid {
+  translation -0.416354 0.0001 0.530578
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(53)"
+}
+DEF line Solid {
+  translation -0.274934 0.0001 0.389158
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(54)"
+}
+DEF line Solid {
+  translation 1.49987 0.0001 2.74367
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(27)"
+}
+DEF line Solid {
+  translation 1.64128 0.0001 2.60226
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(72)"
+}
+DEF line Solid {
+  translation 1.76854 0.0001 2.475
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(73)"
+}
+DEF line Solid {
+  translation 1.35847 0.0001 2.88507
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(28)"
+}
+DEF line Solid {
+  translation 1.21705 0.0001 3.02649
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(70)"
+}
+DEF line Solid {
+  translation 1.07564 0.0001 3.1679
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(71)"
+}
+DEF line Solid {
+  translation 1.47156 0.0001 3.60624
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(105)"
+}
+DEF line Solid {
+  translation 1.34428 0.0001 3.73352
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(107)"
+}
+DEF line Solid {
+  translation -1.18712 0.0001 3.30929
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(118)"
+}
+DEF line Solid {
+  translation -0.2 0.0001 0.07
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(11)"
 }
