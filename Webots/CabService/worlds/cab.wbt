@@ -204,32 +204,6 @@ Robot {
         physics USE WHEEL_PH
       }
     }
-    Camera {
-      translation 0 0.01 0.1
-      rotation 1.3898698438474234e-07 0.9914448886106678 0.13052598533533985 3.14159
-      children [
-        Transform {
-          children [
-            Shape {
-              appearance PBRAppearance {
-                roughness 1
-                metalness 0
-              }
-              geometry Box {
-                size 0.01 0.01 0.01
-              }
-            }
-          ]
-        }
-      ]
-      fieldOfView 0.9
-      width 256
-      height 128
-      antiAliasing TRUE
-      recognition Recognition {
-        frameColor 1 1 0.498039
-      }
-    }
   ]
   boundingObject USE BODY
   physics Physics {
@@ -429,32 +403,6 @@ Robot {
         name "solid(3)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-      }
-    }
-    Camera {
-      translation 0 0.01 0.1
-      rotation 3.4339994638889944e-07 -0.9659258492010602 -0.2588189595935602 -3.1415853071795863
-      children [
-        Transform {
-          children [
-            Shape {
-              appearance PBRAppearance {
-                roughness 1
-                metalness 0
-              }
-              geometry Box {
-                size 0.01 0.01 0.01
-              }
-            }
-          ]
-        }
-      ]
-      fieldOfView 0.9
-      width 256
-      height 128
-      antiAliasing TRUE
-      recognition Recognition {
-        frameColor 1 1 0.498039
       }
     }
   ]

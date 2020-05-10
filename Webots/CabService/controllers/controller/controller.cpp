@@ -16,7 +16,6 @@ DistanceSensor *inf_r;
 DistanceSensor *dist_l;
 DistanceSensor *dist_c;
 DistanceSensor *dist_r;
-Camera *cam;
 Motor *wheel_fl;
 Motor *wheel_fr;
 Motor *wheel_bl;
@@ -59,9 +58,6 @@ void init(Robot * robot) {
   dist_c->enable(TIME_STEP);
   dist_r = robot->getDistanceSensor("dist_r");
   dist_r->enable(TIME_STEP);
-  cam = robot->getCamera("camera");
-  cam->enable(TIME_STEP);
-
   wheel_fl = robot->getMotor("wheel1");
   wheel_fl->setPosition(INFINITY);
   wheel_fl->setVelocity(0.0);
