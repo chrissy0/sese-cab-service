@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.30066224835056304 0.9236259114638733 0.23773385978718703 1.385054430396213
-  position 3.3482328946549345 1.4480809147636322 1.1007333635668228
+  orientation -0.6021221027582211 -0.5063621636292027 -0.6172895047016196 2.1908827467217202
+  position 1.513604240534538 6.561272810434633 2.3352521252106966
 }
 TexturedBackground {
 }
@@ -11,6 +11,233 @@ TexturedBackgroundLight {
 }
 Robot {
   translation 0.615963 0.0459681 0.320444
+  rotation 0.001934860732894369 0.9999963787826702 -0.001870490708512031 1.5695
+  children [
+    DistanceSensor {
+      translation -0.015 -0.02 0.105
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_right"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 -0.02 0.105
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_cent"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 7.15325e-07 -0.01 0.105001
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_c"
+    }
+    DistanceSensor {
+      translation -0.0399993 -0.00999716 0.105001
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_r"
+    }
+    DistanceSensor {
+      translation 0.0400007 -0.0100028 0.105001
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_l"
+    }
+    DistanceSensor {
+      translation 0.015 -0.02 0.105
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_left"
+      type "infra-red"
+    }
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.7 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.05 0.2
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2768.9508427964515
+        anchor 0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.06 0 0.05
+        rotation 0.6355319259111518 -0.6355342603545204 -0.4384009295876265 3.9679227150160203
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2323.5518724354147
+        anchor 0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint DEF WHEEL3 Solid {
+        translation 0.06 0 -0.05
+        rotation -0.49886471088273715 0.49886654331848135 0.7087073953285324 1.9085041596820589
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2402.11526781694
+        anchor -0.06 0 -0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint DEF WHEEL4 Solid {
+        translation -0.06 0 -0.05
+        rotation 0.6361317701523701 -0.6361341067990992 0.4366574964084829 2.3181892031248217
+        children [
+          USE WHEEL
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1956.0244093876533
+        anchor -0.06 0 0.05
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF WHEEL2 Solid {
+        translation -0.06 0 0.05
+        rotation -0.6381028774613375 0.6381052213483658 -0.43086708421915254 3.9552491966657177
+        children [
+          USE WHEEL
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    Camera {
+      translation 0 0.01 0.1
+      rotation 1.3898698438474234e-07 0.9914448886106678 0.13052598533533985 3.14159
+      children [
+        Transform {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.01 0.01 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 0.9
+      width 256
+      height 128
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 1 1 0.498039
+      }
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "controller"
+}
+Robot {
+  translation 0.505716 0.0467546 0.610171
   rotation 0.001934860732894369 0.9999963787826702 -0.001870490708512031 1.5695
   children [
     DistanceSensor {
@@ -231,74 +458,16 @@ Robot {
       }
     }
   ]
+  name "robot(1)"
   boundingObject USE BODY
   physics Physics {
   }
   controller "controller"
 }
-Robot {
-  translation 1.1757 0.0442071 0.621041
-  rotation 0.0018680607251794097 0.9999963881976538 0.0019323407501328548 -1.5721053071795863
+DEF dummy Robot {
+  translation 1.17493 0.04417 1.22104
+  rotation 0.0018821692298109285 0.9999975907981048 0.0011295295377932587 -2.0957053071795864
   children [
-    DistanceSensor {
-      translation -0.015 -0.02 0.105
-      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "inf_right"
-      type "infra-red"
-    }
-    DistanceSensor {
-      translation 0 -0.02 0.105
-      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "inf_cent"
-      type "infra-red"
-    }
-    DistanceSensor {
-      translation 7.15325e-07 -0.01 0.105001
-      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "dist_c"
-    }
-    DistanceSensor {
-      translation 0.015 -0.02 0.105
-      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "inf_left"
-      type "infra-red"
-    }
     DEF BODY Shape {
       appearance PBRAppearance {
         baseColor 1 0 0
@@ -321,7 +490,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319259111515 -0.6355342603545207 -0.4384009295876265 3.9679227150160217
+        rotation 0.6355319259111513 -0.6355342603545208 -0.4384009295876268 3.967922715016023
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -352,7 +521,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.49886471088273804 0.49886654331848107 0.7087073953285322 1.9085041596820569
+        rotation -0.49886471088273826 0.49886654331848057 0.7087073953285323 1.908504159682057
         children [
           USE WHEEL
         ]
@@ -373,7 +542,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6361317701523705 -0.6361341067990988 0.4366574964084829 2.3181892031248217
+        rotation 0.6361317701523701 -0.636134106799099 0.4366574964084834 2.3181892031248212
         children [
           USE WHEEL
         ]
@@ -403,34 +572,8 @@ Robot {
         physics USE WHEEL_PH
       }
     }
-    Camera {
-      translation 0 0.01 0.1
-      rotation 3.4339994638889944e-07 -0.9659258492010602 -0.2588189595935602 -3.1415853071795863
-      children [
-        Transform {
-          children [
-            Shape {
-              appearance PBRAppearance {
-                roughness 1
-                metalness 0
-              }
-              geometry Box {
-                size 0.01 0.01 0.01
-              }
-            }
-          ]
-        }
-      ]
-      fieldOfView 0.9
-      width 256
-      height 128
-      antiAliasing TRUE
-      recognition Recognition {
-        frameColor 1 1 0.498039
-      }
-    }
   ]
-  name "robot(2)"
+  name "robot dummy"
   boundingObject USE BODY
   physics Physics {
   }
