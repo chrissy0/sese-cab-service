@@ -76,7 +76,7 @@ void followLine(double speed) {
   double leftSpeed = speed;
   double rightSpeed = speed;
 
-  if (dist_l->getValue() > 900 && dist_c->getValue() > 900 && dist_r->getValue() > 900) {
+  if (dist_l->getValue() > 350 && dist_c->getValue() > 700 && dist_r->getValue() > 350) {
     if (inf_r->getValue() < 250 && inf_l->getValue() > 250) {
       // std::cout << "right" << std::endl;
       rightSpeed = 0;
