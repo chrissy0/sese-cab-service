@@ -45,7 +45,7 @@ Zusätzlich wird eine statische Code-Analyse für den externen Controller sowie 
 
 ## Formal Verification, Analysis, Optimization
 
-:x: TODO: Hier muss Chanki sich als Masterstudent um Planung und Umsetzung kümmern :x:
+:x: TODO :x:
 
 ## Git
 
@@ -56,3 +56,5 @@ Es wird der Git Feature Branch Workflow umgesetzt.
 - Jede Änderung wird auf einem Feature-Branch entwickelt
 - Für alle Änderungen, die im master landen sollen, muss eine Merge Request erstellt werden
 - Ein Teammitglied, welches nicht an dem Feature gearbeitet hat, muss die Änderungen prüfen, Anmerkungen machen, und ggf. mergen
+
+Commit Messages sollen erklären, was sich mit dem Commit geändert hat. `added file`, `fix` oder `hasglkjsadhwe` sind keine guten Commit Messages.
