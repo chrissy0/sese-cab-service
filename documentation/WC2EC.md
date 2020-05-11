@@ -110,7 +110,7 @@ The range for the command is split in half, first 0-127 is reserved for the Webo
 |129| disableSensor|  Disables the sensor specified in 'Sensor Type' and 'Sensor Number' |
 |130| changeSensor | Changes a single configuration value the sensor specified in 'Sensor Type' and 'Sensor Number' The first byte of the payload indicates which sensor value will be changed |
 |131| setSensor | Sets all configuration values for the sensor specified in 'Sensor Type' and 'Sensor Number' |
-|132 | reserved | Resered for future use |
+|132 - 255 | reserved | Resered for future use |
 
 ## Sensor Types
 |  Number    |      Name              | Description|
