@@ -101,7 +101,8 @@ The range for the command is split in half, first 0-127 is reserved for the Webo
 |  Number             |      Name                    | Description|
 |----------------|----------|-----------------------|
 |0| sensorData| Used by the Webotscontroller to send data to the The Package contains data measure by the sensors specified in 'Sensor Type' and 'Sensor Number'|
-| 1- 127 | reserved | Reserved for future use
+| 1 - 126 | reserved | Reserved for future use |
+| 127 | Error | The sensor specified in 'Sensor Type' and 'Sensor Number' encountered an error |
 # External Controller -> Webots Controller
 |  Number             |      Name                    | Description|
 |----------------|----------|-----------------------|
