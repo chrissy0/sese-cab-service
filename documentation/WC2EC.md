@@ -11,37 +11,6 @@ The information provided here are still subject to change.
 		<td colspan="8">2</td>
 	</tr>
 	<tr>
-		<td><b>Bit</b></td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-	</tr>
-	<tr>
-		<td colspan="1"></td>
-		<td colspan="24"><b><center>HEADER</center></b></td>
-	</tr>
-	<tr>
 		<td><b>Name</b></td>
 		<td colspan="8"><i>Command</i></td>
 		<td colspan="8"><i>Sensor Type</i></td>
@@ -56,9 +25,9 @@ The information provided here are still subject to change.
 </table>
 
 We refrained from adding a Checksum or Package length to the header, since:
-The protocol is build ONTOP if TCP, which already provides: 
+The protocol is build ONTOP of TCP, which already provides: 
 order, checksum, retransmission and robustness
-A packagelength field is also not necessary in the current implementation, since it is given implicit by the combination of Command and Sensor Type.
+A package length field is also not necessary in the current implementation, since it is given implicit by the combination of Command and Sensor Type.
 
 ## Commands
 The range for the command is split in half, first 0-127 is reserved for the Webots Controller, 128 - 255 is reserved for the External Controller. At reception of a package a range check SHOULD be performed. 
@@ -71,42 +40,6 @@ The range for the command is split in half, first 0-127 is reserved for the Webo
 		<td colspan="8">1</td>
 		<td colspan="8">2</td>
 		<td colspan="8">3</td>
-		<td colspan="1">...</td>
-	</tr>
-	<tr>
-		<td><b>Bit</b></td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-		<td>0</td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
 		<td colspan="1">...</td>
 	</tr>
 	<tr>
