@@ -13,9 +13,17 @@ using namespace std;
 DistanceSensor *inf_l;
 DistanceSensor *inf_c;
 DistanceSensor *inf_r;
+DistanceSensor *inf_marker_left;
+DistanceSensor *inf_marker_right;
 DistanceSensor *dist_l;
 DistanceSensor *dist_c;
 DistanceSensor *dist_r;
+DistanceSensor *curb_rb; // curb distance sensor right back
+DistanceSensor *curb_rc; // curb distance sensor right center
+DistanceSensor *curb_rf; // curb distance sensor right front
+DistanceSensor *curb_lf; // curb distance sensor left front
+DistanceSensor *curb_lc; // curb distance sensor left center
+DistanceSensor *curb_lb; // curb distance sensor left back
 Motor *wheel_fl;
 Motor *wheel_fr;
 Motor *wheel_bl;
@@ -33,9 +41,17 @@ int main(int argc, char ** argv) {
     // std::cout << inf_l->getValue() << " inf_l" << std::endl;
     // std::cout << inf_c->getValue() << " inf_c" << std::endl;
     // std::cout << inf_r->getValue() << " inf_r" << std::endl;
-    std::cout << dist_l->getValue() << " dist_l" << std::endl;
-    std::cout << dist_c->getValue() << " dist_c" << std::endl;
-    std::cout << dist_r->getValue() << " dist_r" << std::endl;
+    //std::cout << dist_l->getValue() << " dist_l" << std::endl;
+    //std::cout << dist_c->getValue() << " dist_c" << std::endl;
+    //std::cout << dist_r->getValue() << " dist_r" << std::endl;
+    //std::cout << curb_rb->getValue() << " curb_rb" << std::endl;
+    //std::cout << curb_rc->getValue() << " curb_rc" << std::endl;
+    //std::cout << curb_rf->getValue() << " curb_rf" << std::endl;
+    //std::cout << curb_lf->getValue() << " curb_lf" << std::endl;
+    //std::cout << curb_lc->getValue() << " curb_lc" << std::endl;
+    //std::cout << curb_lb->getValue() << " curb_lb" << std::endl;
+    std::cout << inf_marker_left->getValue() << " inf_marker_left" << std::endl;
+    std::cout << inf_marker_right->getValue() << " inf_marker_right" << std::endl;
 
     followLine(6.0);
   }
@@ -52,12 +68,28 @@ void init(Robot * robot) {
   inf_c->enable(TIME_STEP);
   inf_r = robot->getDistanceSensor("inf_right");
   inf_r->enable(TIME_STEP);
+  inf_marker_left = robot->getDistanceSensor("inf_marker_left");
+  inf_marker_left->enable(TIME_STEP);
+  inf_marker_right = robot->getDistanceSensor("inf_marker_right");
+  inf_marker_right->enable(TIME_STEP);
   dist_l = robot->getDistanceSensor("dist_l");
   dist_l->enable(TIME_STEP);
   dist_c = robot->getDistanceSensor("dist_c");
   dist_c->enable(TIME_STEP);
   dist_r = robot->getDistanceSensor("dist_r");
   dist_r->enable(TIME_STEP);
+  curb_rb = robot->getDistanceSensor("curb_rb");
+  curb_rb->enable(TIME_STEP);
+  curb_rc = robot->getDistanceSensor("curb_rc");
+  curb_rc->enable(TIME_STEP);
+  curb_rf = robot->getDistanceSensor("curb_rf");
+  curb_rf->enable(TIME_STEP);
+  curb_lf = robot->getDistanceSensor("curb_lf");
+  curb_lf->enable(TIME_STEP);
+  curb_lc = robot->getDistanceSensor("curb_lc");
+  curb_lc->enable(TIME_STEP);
+  curb_lb = robot->getDistanceSensor("curb_lb");
+  curb_lb->enable(TIME_STEP);
   wheel_fl = robot->getMotor("wheel1");
   wheel_fl->setPosition(INFINITY);
   wheel_fl->setVelocity(0.0);
