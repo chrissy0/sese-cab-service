@@ -13,8 +13,14 @@ using namespace std;
 DistanceSensor *inf_l;
 DistanceSensor *inf_c;
 DistanceSensor *inf_r;
-DistanceSensor *inf_marker_left;
-DistanceSensor *inf_marker_right;
+DistanceSensor *inf_rm_fr;
+DistanceSensor *inf_rm_fl;
+DistanceSensor *inf_rm_br;
+DistanceSensor *inf_rm_bl;
+DistanceSensor *inf_rm_fr_act;
+DistanceSensor *inf_rm_fl_act;
+DistanceSensor *inf_rm_br_act;
+DistanceSensor *inf_rm_bl_act;
 DistanceSensor *dist_l;
 DistanceSensor *dist_c;
 DistanceSensor *dist_r;
@@ -31,6 +37,13 @@ Motor *wheel_br;
 
 void init(Robot *robot);
 void followLine(double speed);
+bool isActive(DistanceSensor *inf);
+bool onRoadMarker();
+bool rmFirstBit();
+bool rmSecondBit();
+bool rmThirdBit();
+bool rmFourthBit();
+int getRoadMarkerId();
 
 int main(int argc, char ** argv) {
   Robot * robot = new Robot();
@@ -50,9 +63,14 @@ int main(int argc, char ** argv) {
     //std::cout << curb_lf->getValue() << " curb_lf" << std::endl;
     //std::cout << curb_lc->getValue() << " curb_lc" << std::endl;
     //std::cout << curb_lb->getValue() << " curb_lb" << std::endl;
-    std::cout << inf_marker_left->getValue() << " inf_marker_left" << std::endl;
-    std::cout << inf_marker_right->getValue() << " inf_marker_right" << std::endl;
-
+    
+    if (onRoadMarker()) {
+      std::cout << getRoadMarkerId() << std::endl;
+    }
+    
+    
+    
+    
     followLine(6.0);
   }
 
@@ -60,7 +78,7 @@ int main(int argc, char ** argv) {
   return 0;
 }
 
-void init(Robot * robot) {
+void init(Robot *robot) {
 
   inf_l = robot->getDistanceSensor("inf_left");
   inf_l->enable(TIME_STEP);
@@ -68,10 +86,22 @@ void init(Robot * robot) {
   inf_c->enable(TIME_STEP);
   inf_r = robot->getDistanceSensor("inf_right");
   inf_r->enable(TIME_STEP);
-  inf_marker_left = robot->getDistanceSensor("inf_marker_left");
-  inf_marker_left->enable(TIME_STEP);
-  inf_marker_right = robot->getDistanceSensor("inf_marker_right");
-  inf_marker_right->enable(TIME_STEP);
+  inf_rm_fr = robot->getDistanceSensor("inf_rm_fr");
+  inf_rm_fr->enable(TIME_STEP);
+  inf_rm_fl = robot->getDistanceSensor("inf_rm_fl");
+  inf_rm_fl->enable(TIME_STEP);
+  inf_rm_br = robot->getDistanceSensor("inf_rm_br");
+  inf_rm_br->enable(TIME_STEP);
+  inf_rm_bl = robot->getDistanceSensor("inf_rm_bl");
+  inf_rm_bl->enable(TIME_STEP);
+  inf_rm_fr_act = robot->getDistanceSensor("inf_rm_fr_act");
+  inf_rm_fr_act->enable(TIME_STEP);
+  inf_rm_fl_act = robot->getDistanceSensor("inf_rm_fl_act");
+  inf_rm_fl_act->enable(TIME_STEP);
+  inf_rm_br_act = robot->getDistanceSensor("inf_rm_br_act");
+  inf_rm_br_act->enable(TIME_STEP);
+  inf_rm_bl_act = robot->getDistanceSensor("inf_rm_bl_act");
+  inf_rm_bl_act->enable(TIME_STEP);  
   dist_l = robot->getDistanceSensor("dist_l");
   dist_l->enable(TIME_STEP);
   dist_c = robot->getDistanceSensor("dist_c");
@@ -125,4 +155,35 @@ void followLine(double speed) {
   wheel_fr->setVelocity(rightSpeed);
   wheel_bl->setVelocity(leftSpeed);
   wheel_br->setVelocity(rightSpeed);
+}
+
+bool isActive(DistanceSensor *inf) {
+  return inf->getValue() < 250;
+}
+
+bool onRoadMarker() {
+  return isActive(inf_rm_fr_act) && 
+    isActive(inf_rm_fl_act) && 
+    isActive(inf_rm_br_act) && 
+    isActive(inf_rm_bl_act);
+}
+
+bool rmFirstBit() {
+  return isActive(inf_rm_fl);
+}
+
+bool rmSecondBit() {
+  return isActive(inf_rm_fr);
+}
+
+bool rmThirdBit() {
+  return isActive(inf_rm_bl);
+}
+
+bool rmFourthBit() {
+  return isActive(inf_rm_br);
+}
+
+int getRoadMarkerId() {
+  return rmFirstBit() + 2 * rmSecondBit() + 4 * rmThirdBit() + 8 * rmFourthBit();
 }
