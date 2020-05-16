@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class ExternalController {
+public class CabLocationController {
 
     private final CabLocationService service;
 
