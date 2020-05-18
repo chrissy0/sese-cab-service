@@ -13,7 +13,7 @@ public class CabLocationController {
     private final CabLocationService service;
 
     @GetMapping("/cab-locations")
-    public List<CabLocationEntity> getCabLocation() {
+    public List<CabLocationEntity> getCabLocations() {
         return service.getAllCabLocations();
     }
 
