@@ -10,8 +10,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static java.util.Arrays.asList;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -57,7 +57,7 @@ public class CabLocationControllerIT {
                 .andExpect(jsonPath("$[1].section").value(8));
 
         verify(service).getAllCabLocations();
-        verify(service, never()).saveCabLocation(any());
+        verifyNoMoreInteractions(service);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class CabLocationControllerIT {
                 .andExpect(status().isOk());
 
         verify(service).saveCabLocation(entityCaptor.capture());
-        verify(service, never()).getAllCabLocations();
+        verifyNoMoreInteractions(service);
 
         assertThat(entityCaptor.getValue().getCabId()).isEqualTo(3);
         assertThat(entityCaptor.getValue().getCabName()).isEqualTo("cab-name");
@@ -82,8 +82,7 @@ public class CabLocationControllerIT {
                 .content("{\"cabId\": \"malformed-cab-id\", \"cabName\": \"cab-name\", \"section\": 7}"))
                 .andExpect(status().is4xxClientError());
 
-        verify(service, never()).getAllCabLocations();
-        verify(service, never()).saveCabLocation(any());
+        verifyNoMoreInteractions(service);
     }
 }
 
