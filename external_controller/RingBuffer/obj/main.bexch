@@ -1,0 +1,26 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+/home/julian/Documents/Project_ees-service-cab-1/external_controller/RingBuffer/test.gpr
+20200518140000
+[BOUND OBJECT FILES]
+/home/julian/Documents/Project_ees-service-cab-1/external_controller/RingBuffer/obj/rb.o
+/home/julian/Documents/Project_ees-service-cab-1/external_controller/RingBuffer/obj/main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-L/home/julian/Documents/Project_ees-service-cab-1/external_controller/RingBuffer/obj/
+-L/home/julian/Documents/Project_ees-service-cab-1/external_controller/RingBuffer/obj/
+-L/usr/lib/gcc/x86_64-linux-gnu/8/adalib/
+-shared
+-shared-libgcc
+-lgnarl-8
+-lgnat-8
+-lpthread
+-lrt
+-ldl
+[RUN PATH OPTION]
+/usr/lib/gcc/x86_64-linux-gnu/8/adalib/
+/usr/lib
