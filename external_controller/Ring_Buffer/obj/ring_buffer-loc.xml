@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 1" line=" 12" >
+      <vfs_project />
+      <vfs_file>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\ring_buffer.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 36" line=" 19" >
+      <vfs_project>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\ring_buffer.gpr</vfs_project>
+      <vfs_file>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\src\ring_buffer.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\ring_buffer.gpr</vfs_project>
+      <vfs_file>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\src\test.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\ring_buffer.gpr</vfs_project>
+      <vfs_file>D:\Uni\Projekt\Project_ees-service-cab-1\external_controller\Ring_Buffer\src\test.ads</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
