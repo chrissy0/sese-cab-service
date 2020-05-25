@@ -11,8 +11,7 @@ package body Ring_Buffer_Suite is
    function Suite return Access_Test_Suite is
       Ret : constant Access_Test_Suite := new Test_Suite;
    begin
-      Ret.Add_Test
-        (Caller.Create ("Test push", Test_Push'Access));
+      Ret.Add_Test (Caller.Create ("Test Ring Buffer", Test_Push_Get'Access));
       return Ret;
    end Suite;
 
