@@ -1,7 +1,7 @@
 --
 --  Copyright (C) 2008, AdaCore
 --
-with Ring_Buffer_Test;         use Ring_Buffer_Test;
+with Ring_Buffer_Test; use Ring_Buffer_Test;
 with AUnit.Test_Caller;
 
 package body Ring_Buffer_Suite is
