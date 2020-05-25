@@ -48,19 +48,21 @@ package body Ring_Buffer is
 
       procedure removeLast is
       begin
-         tail := tail + 1;
-         full := False;
+         if not isEmpty then
+            tail := tail + 1;
+            full := False;
+         end if;
+
       end removeLast;
 
       ----------
       -- peek --
       ----------
 
-      entry peek (elem : out Element)
-        when not isEmpty is
+      entry peek_blocking (elem : out Element) when not isEmpty is
       begin
          elem := buffer (tail);
-      end peek;
+      end peek_blocking;
 
       -------------
       -- getHead --
@@ -97,6 +99,57 @@ package body Ring_Buffer is
       begin
          return full;
       end isFull;
+
+      -----------------------
+      -- peek_non_blocking --
+      -----------------------
+
+      function peek_non_blocking (value_on_empty : in Element) return Element
+      is
+      begin
+         if isEmpty then
+            return value_on_empty;
+         else
+            return buffer (tail);
+         end if;
+      end peek_non_blocking;
+
+      ------------------
+      -- get_elements --
+      ------------------
+
+      function get_elements return Element_Vector.Vector is
+         vec              : Element_Vector.Vector;
+         head_tail_offset : Index;
+      begin
+         head_tail_offset := head - tail;
+         if isFull then
+
+            for I in Index loop
+               vec.Append (New_Item => get (I + tail));
+            end loop;
+
+         elsif not isEmpty then
+
+            -- check
+            if head <= tail then
+               for I in tail .. Index'Last loop
+                  vec.Append (New_Item => get (I));
+               end loop;
+
+               for I in 0 .. (head - 1) loop
+                  vec.Append (New_Item => get (I));
+               end loop;
+            else
+               for I in tail .. (head - 1) loop
+                  vec.Append (New_Item => get (I));
+               end loop;
+            end if;
+
+         end if;
+
+         return vec;
+      end get_elements;
 
       -----------
       -- print --
