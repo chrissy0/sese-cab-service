@@ -21,9 +21,9 @@ package body Ring_Buffer_Test is
       value        : Integer           := 0;
       value_nested : Integer           := 0;
       value_tmp    : Integer           := 0;
+      vec          : Ring.Element_Vector.Vector;
    begin
       r.reset;
-      
 
       Assert (r.isEmpty, "After reset: Ring is not empty, expected empty");
       Assert (not r.isFull, "After reset: Ring is full, expected not full");
@@ -186,5 +186,59 @@ package body Ring_Buffer_Test is
 
       --Assert (False, "This should fail!");
    end Test_Push_Get;
+
+   type Element_Array is array (Natural) of Integer;
+   procedure Test_Get_Elements (T : in out Test) is
+      pragma Unreferenced (T);
+      r          : RingBuffer_Access := new Ring.RingBuffer;
+      vec_output : Ring.Element_Vector.Vector;
+      tmp        : Integer;
+   begin
+      r.reset;
+      for I in 0 .. 100 loop
+         r.push (I);
+         vec_output := r.get_elements;
+
+         tmp := I;
+
+         for J in reverse vec_output.First_Index .. vec_output.Last_Index loop
+            Assert
+              (vec_output.Element (Index => J) = tmp,
+               "Push " & I'Image & ": vector returned by get_elements at " &
+               J'Image & ": got " & vec_output.Element (Index => J)'Image &
+               ", expected " & tmp'Image);
+            tmp := tmp - 1;
+         end loop;
+      end loop;
+
+      for I in 0 .. 15 loop
+         r.removeLast;
+         tmp        := 100;
+         vec_output := r.get_elements;
+--           for J in vec_output.First_Index .. vec_output.Last_Index loop
+--              Put("(" & J'Image & ": " & vec_output.Element(J)'Image & ") ");
+--           end loop;
+--           New_Line;
+
+         Assert
+           ((vec_output.Last_Index + 1) = 15 - I,
+            "removeLast " & I'Image &
+            ": vector returned by get_elements: size is (" &
+            vec_output.Last_Index'Image & " - 1), expected (15 - " & I'Image &
+            ")");
+
+         for J in reverse vec_output.First_Index .. vec_output.Last_Index loop
+            Assert
+              (vec_output.Element (Index => J) = tmp,
+               "removeLast " & I'Image &
+               ": vector returned by get_elements at " & J'Image & ": got " &
+               vec_output.Element (Index => J)'Image & ", expected " &
+               tmp'Image);
+
+            tmp := tmp - 1;
+         end loop;
+      end loop;
+
+   end Test_Get_Elements;
 
 end Ring_Buffer_Test;
