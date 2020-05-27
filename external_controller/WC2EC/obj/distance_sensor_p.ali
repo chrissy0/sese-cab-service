@@ -1,0 +1,59 @@
+V "GNAT Lib v2019"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U distance_sensor_p%b	distance_sensor_p.adb	bc1efb7f NE OO PK IL
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system.img_real%s	s-imgrea.adb		s-imgrea.ali
+
+U distance_sensor_p%s	distance_sensor_p.ads	a5f9ef28 EE NE OO PK IL
+
+D ada.ads		20190518041256 76789da1 ada%s
+D a-except.ads		20190518041256 291912d5 ada.exceptions%s
+D a-ioexce.ads		20190518041256 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041256 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041258 491b781d ada.tags%s
+D a-textio.ads		20190518041258 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041256 0e9b276f ada.unchecked_conversion%s
+D distance_sensor_p.ads	20200526181144 a5f9ef28 distance_sensor_p%s
+D distance_sensor_p.adb	20200526181204 b713c13a distance_sensor_p%b
+D interfac.ads		20190518041256 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041256 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041258 32a08138 system%s
+D s-crtl.ads		20190518041256 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041256 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041258 078245e4 system.file_control_block%s
+D s-imgrea.ads		20190518041256 c7a851e2 system.img_real%s
+D s-parame.ads		20190518041258 48ec542b system.parameters%s
+D s-secsta.ads		20190518041258 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041256 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041258 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041258 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041258 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041256 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041256 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041256 1b7d22d2 system.wch_con%s
+G a e
+G c Z s b [print_distance_sensor distance_sensor_p 5 11 none]
+G c Z s s [distance_sensor_tIP distance_sensor_p 2 7 none]
+X 1 ada.ads
+16K9*Ada 20e8 9|1r6 1r23 6r6
+X 6 a-textio.ads
+57K13*Text_IO 727e16 9|1w10 1r27 6r10
+508U14*Put_Line 9|6s18
+X 8 distance_sensor_p.ads
+1K9*distance_sensor_p 7l5 7e22 9|2b14 10l5 10t22
+2R7*distance_sensor_t 4e12 5r38 9|4r38
+3f4*distance{long_float} 9|6r48
+5U11*print_Distance_Sensor 5>33 9|4b11 7l6 7t27
+5r33 ds{2R7} 9|4b33 6r45
+

@@ -1,0 +1,32 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+C:\Users\mweis\Documents\git\cab_service\external_controller\WC2EC\wc2ec.gpr
+20200527123636
+C:\gnat\2019\share\gpr\aunit.gpr
+20190518140612
+C:\Users\mweis\Documents\git\cab_service\external_controller\Ring_Buffer\ring_buffer.gpr
+20200525180302
+[BOUND OBJECT FILES]
+C:\Users\mweis\Documents\git\cab_service\external_controller\WC2EC\obj\distance_sensor_p.o
+C:\Users\mweis\Documents\git\cab_service\external_controller\Ring_Buffer\obj\ring_buffer.o
+C:\Users\mweis\Documents\git\cab_service\external_controller\WC2EC\obj\wc2ec.o
+C:\Users\mweis\Documents\git\cab_service\external_controller\WC2EC\obj\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LC:\Users\mweis\Documents\git\cab_service\external_controller\WC2EC\obj\
+-LC:\Users\mweis\Documents\git\cab_service\external_controller\WC2EC\obj\
+-LC:\Users\mweis\Documents\git\cab_service\external_controller\Ring_Buffer\obj\
+-LC:\gnat\2019\lib\aunit\
+-LC:/gnat/2019/lib/gcc/x86_64-pc-mingw32/8.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2019/lib/gcc/x86_64-pc-mingw32/8.3.1/adalib/libgnarl.a
+C:/gnat/2019/lib/gcc/x86_64-pc-mingw32/8.3.1/adalib/libgnat.a
+-lws2_32
+-Xlinker
+--stack=0x200000,0x1000
+-mthreads

@@ -1,0 +1,627 @@
+V "GNAT Lib v2019"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_ANONYMOUS_ALLOCATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_LOCAL_PROTECTED_OBJECTS
+RV NO_NESTED_FINALIZATION
+RV NO_PROTECTED_TYPE_ALLOCATORS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_STREAMS
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLICIT_LOOPS
+RV NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+RV MAX_ENTRY_QUEUE_LENGTH=1+
+
+U wc2ec%b		wc2ec.adb		7f3aa7a5 OO PF PK IU
+Z ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z ring_buffer%s		ring_buffer.adb		ring_buffer.ali  ED
+Z system%s		system.ads		system.ali
+Z system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+Z system.img_real%s	s-imgrea.adb		s-imgrea.ali
+Z system.img_uns%s	s-imguns.adb		s-imguns.ali
+Z system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+Z system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+Z system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+Z system.unsigned_types%s  s-unstyp.ads		s-unstyp.ali
+W wc2ec%s		wc2ec.adb		wc2ec.ali
+
+U wc2ec%s		wc2ec.ads		4fd61dc4 EE OO PF PK IU
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+Z ada.containers.generic_array_sort%s
+Z ada.containers.hash_tables%s  a-cohata.ads	a-cohata.ali
+Z ada.containers.hash_tables.generic_keys%s
+Z ada.containers.hash_tables.generic_operations%s
+Z ada.containers.helpers%s  a-conhel.adb	a-conhel.ali
+W ada.containers.indefinite_hashed_maps%s
+Z ada.containers.prime_numbers%s  a-coprnu.adb	a-coprnu.ali
+Z ada.containers.vectors%s
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.finalization%s	a-finali.ads		a-finali.ali
+Z ada.iterator_interfaces%s
+Z ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.strings.hash%s	a-strhas.adb		a-strhas.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_deallocation%s
+W distance_sensor_p%s	distance_sensor_p.adb	distance_sensor_p.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.sockets%s	g-socket.adb		g-socket.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+W ring_buffer%s		ring_buffer.adb		ring_buffer.ali
+Z system%s		system.ads		system.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+Z system.img_uns%s	s-imguns.adb		s-imguns.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+Z system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+Z system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+Z system.strings.stream_ops%s  s-ststop.adb	s-ststop.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+Z system.tasking.protected_objects.entries%s  s-tpoben.adb  s-tpoben.ali
+Z system.tasking.protected_objects.operations%s  s-tpobop.adb  s-tpobop.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+Z system.unsigned_types%s  s-unstyp.ads		s-unstyp.ali
+
+D ada.ads		20190518041256 76789da1 ada%s
+D a-charac.ads		20190518041256 2d3ec45b ada.characters%s
+D a-chlat1.ads		20190518041256 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20190518041256 61e5e089 ada.containers%s
+D a-cgarso.ads		20190518041256 9129bfa8 ada.containers.generic_array_sort%s
+D a-cohata.ads		20190518041258 80a8c839 ada.containers.hash_tables%s
+D a-chtgke.ads		20190518041258 20177f7b ada.containers.hash_tables.generic_keys%s
+D a-chtgke.adb		20190518041256 7d66b1e3 ada.containers.hash_tables.generic_keys%b
+D a-chtgop.ads		20190518041256 11c5978a ada.containers.hash_tables.generic_operations%s
+D a-chtgop.adb		20190518041256 c3ccdc4f ada.containers.hash_tables.generic_operations%b
+D a-conhel.ads		20190518041256 20298884 ada.containers.helpers%s
+D a-conhel.adb		20190518041258 9cc5095b ada.containers.helpers%b
+D a-cihama.ads		20190518041256 bece8dbf ada.containers.indefinite_hashed_maps%s
+D a-cihama.adb		20190518041256 94909b4a ada.containers.indefinite_hashed_maps%b
+D a-coprnu.ads		20190518041256 0cdf1864 ada.containers.prime_numbers%s
+D a-convec.ads		20190518041258 7e2b0fdf ada.containers.vectors%s
+D a-convec.adb		20190518041256 32f4e1a7 ada.containers.vectors%b
+D a-except.ads		20190518041256 291912d5 ada.exceptions%s
+D a-finali.ads		20190518041256 bf4f806b ada.finalization%s
+D a-ioexce.ads		20190518041256 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20190518041256 7c7305e9 ada.iterator_interfaces%s
+D a-reatim.ads		20190518041258 0240fc73 ada.real_time%s
+D a-stream.ads		20190518041256 119b8fb3 ada.streams%s
+D a-string.ads		20190518041256 90ac6797 ada.strings%s
+D a-strfix.ads		20190518041258 86d6bc21 ada.strings.fixed%s
+D a-strhas.ads		20190518041258 c71c2a52 ada.strings.hash%s
+D a-strmap.ads		20190518041256 e8bb714a ada.strings.maps%s
+D a-tags.ads		20190518041258 491b781d ada.tags%s
+D a-textio.ads		20190518041258 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041256 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20190518041256 eff36322 ada.unchecked_deallocation%s
+D distance_sensor_p.ads	20200526181144 a5f9ef28 distance_sensor_p%s
+D gnat.ads		20190518041258 b5988c27 gnat%s
+D g-socket.ads		20190518041258 605fb491 gnat.sockets%s
+D interfac.ads		20190518041256 5ab55268 interfaces%s
+D i-c.ads		20190518041256 5421119b interfaces.c%s
+D i-cstrin.ads		20190518041256 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20190518041256 e53d8b8e interfaces.c_streams%s
+D ring_buffer.ads	20200525180302 88ca42a9 ring_buffer%s
+D ring_buffer.adb	20200525180302 3a0250cc ring_buffer%b
+D system.ads		20190518041258 32a08138 system%s
+D s-atacco.ads		20190518041258 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20190518041258 b45c2d8d system.atomic_counters%s
+D s-atocou.adb		20190518041256 b65612c0 system.atomic_counters%b
+D s-conca2.ads		20190518041256 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20190518041256 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041256 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041258 078245e4 system.file_control_block%s
+D s-finmas.ads		20190518041256 7811a767 system.finalization_masters%s
+D s-finroo.ads		20190518041258 4ff27390 system.finalization_root%s
+D s-imgrea.ads		20190518041256 c7a851e2 system.img_real%s
+D s-imguns.ads		20190518041256 9ff43cf7 system.img_uns%s
+D s-memory.ads		20190518041256 597d6634 system.memory%s
+D s-multip.ads		20190518041256 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20190518135108 3e023549 system.os_constants%s
+D s-osinte.ads		20190518041258 97504df8 system.os_interface%s
+D s-parame.ads		20190518041258 48ec542b system.parameters%s
+D s-pooglo.ads		20190518041256 ede33ef8 system.pool_global%s
+D s-secsta.ads		20190518041258 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041256 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041258 a37c21ec system.stack_checking%s
+D s-stausa.ads		20190518041256 017a0a05 system.stack_usage%s
+D s-stalib.ads		20190518041258 09bd3940 system.standard_library%s
+D s-stalib.adb		20190518041256 f2fe2716 system.standard_library%b
+D s-stoele.ads		20190518041258 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20190518041256 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20190518041256 b16154c2 system.storage_pools%s
+D s-stposu.ads		20190518041256 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20190518041256 aedef97e system.stream_attributes%s
+D s-string.ads		20190518041256 8fe54fb7 system.strings%s
+D s-ststop.ads		20190518041256 5fbf1b38 system.strings.stream_ops%s
+D s-tasinf.ads		20190518041258 601f6b72 system.task_info%s
+D s-taspri.ads		20190518041258 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20190518041258 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20190518041258 b9d612e2 system.tasking%s
+D s-taprob.ads		20190518041258 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20190518041258 60ad3dae system.tasking.protected_objects.entries%s
+D s-tpobop.ads		20190518041258 5f548bb3 system.tasking.protected_objects.operations%s
+D s-tassta.ads		20190518041258 cca55c94 system.tasking.stages%s
+D s-traent.ads		20190518041256 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041256 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041256 1b7d22d2 system.wch_con%s
+D s-win32.ads		20190518041256 90ecf4e6 system.win32%s
+D wc2ec.ads		20200526181258 16f0545d wc2ec%s
+D wc2ec.adb		20200526181232 7f3aa7a5 wc2ec%b
+G a e
+G c s s s [s wc2ec 15 1 none]
+G c Z s s [has_element wc2ec__distance_sensor_ring__element_vector 107 13 12_4_17_4]
+G c Z s s [Oeq wc2ec__distance_sensor_ring__element_vector 117 24 12_4_17_4]
+G c Z s s [to_vector wc2ec__distance_sensor_ring__element_vector 126 13 12_4_17_4]
+G c Z s s [to_vector wc2ec__distance_sensor_ring__element_vector 129 13 12_4_17_4]
+G c Z s s [Oconcat wc2ec__distance_sensor_ring__element_vector 135 13 12_4_17_4]
+G c Z s s [Oconcat wc2ec__distance_sensor_ring__element_vector 139 13 12_4_17_4]
+G c Z s s [Oconcat wc2ec__distance_sensor_ring__element_vector 143 13 12_4_17_4]
+G c Z s s [Oconcat wc2ec__distance_sensor_ring__element_vector 147 13 12_4_17_4]
+G c Z s s [capacity wc2ec__distance_sensor_ring__element_vector 151 13 12_4_17_4]
+G c Z s s [reserve_capacity wc2ec__distance_sensor_ring__element_vector 154 14 12_4_17_4]
+G c Z s s [length wc2ec__distance_sensor_ring__element_vector 165 13 12_4_17_4]
+G c Z s s [set_length wc2ec__distance_sensor_ring__element_vector 168 14 12_4_17_4]
+G c Z s s [is_empty wc2ec__distance_sensor_ring__element_vector 177 13 12_4_17_4]
+G c Z s s [clear wc2ec__distance_sensor_ring__element_vector 180 14 12_4_17_4]
+G c Z s s [to_cursor wc2ec__distance_sensor_ring__element_vector 184 13 12_4_17_4]
+G c Z s s [to_index wc2ec__distance_sensor_ring__element_vector 191 13 12_4_17_4]
+G c Z s s [element wc2ec__distance_sensor_ring__element_vector 196 13 12_4_17_4]
+G c Z s s [element wc2ec__distance_sensor_ring__element_vector 203 13 12_4_17_4]
+G c Z s s [replace_element wc2ec__distance_sensor_ring__element_vector 207 14 12_4_17_4]
+G c Z s s [replace_element wc2ec__distance_sensor_ring__element_vector 218 14 12_4_17_4]
+G c Z s s [query_element wc2ec__distance_sensor_ring__element_vector 229 14 12_4_17_4]
+G c Z s s [query_element wc2ec__distance_sensor_ring__element_vector 240 14 12_4_17_4]
+G c Z s s [update_element wc2ec__distance_sensor_ring__element_vector 249 14 12_4_17_4]
+G c Z s s [update_element wc2ec__distance_sensor_ring__element_vector 266 14 12_4_17_4]
+G c Z s s [constant_reference wc2ec__distance_sensor_ring__element_vector 293 13 12_4_17_4]
+G c Z s s [reference wc2ec__distance_sensor_ring__element_vector 298 13 12_4_17_4]
+G c Z s s [constant_reference wc2ec__distance_sensor_ring__element_vector 303 13 12_4_17_4]
+G c Z s s [reference wc2ec__distance_sensor_ring__element_vector 308 13 12_4_17_4]
+G c Z s s [assign wc2ec__distance_sensor_ring__element_vector 313 14 12_4_17_4]
+G c Z s s [copy wc2ec__distance_sensor_ring__element_vector 315 13 12_4_17_4]
+G c Z s s [move wc2ec__distance_sensor_ring__element_vector 317 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 323 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 341 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 352 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 363 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 370 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 377 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 386 14 12_4_17_4]
+G c Z s s [insert wc2ec__distance_sensor_ring__element_vector 403 14 12_4_17_4]
+G c Z s s [prepend wc2ec__distance_sensor_ring__element_vector 414 14 12_4_17_4]
+G c Z s s [prepend wc2ec__distance_sensor_ring__element_vector 419 14 12_4_17_4]
+G c Z s s [append wc2ec__distance_sensor_ring__element_vector 426 14 12_4_17_4]
+G c Z s s [append wc2ec__distance_sensor_ring__element_vector 431 14 12_4_17_4]
+G c Z s s [insert_space wc2ec__distance_sensor_ring__element_vector 438 14 12_4_17_4]
+G c Z s s [insert_space wc2ec__distance_sensor_ring__element_vector 455 14 12_4_17_4]
+G c Z s s [delete wc2ec__distance_sensor_ring__element_vector 466 14 12_4_17_4]
+G c Z s s [delete wc2ec__distance_sensor_ring__element_vector 476 14 12_4_17_4]
+G c Z s s [delete_first wc2ec__distance_sensor_ring__element_vector 485 14 12_4_17_4]
+G c Z s s [delete_last wc2ec__distance_sensor_ring__element_vector 490 14 12_4_17_4]
+G c Z s s [reverse_elements wc2ec__distance_sensor_ring__element_vector 498 14 12_4_17_4]
+G c Z s s [swap wc2ec__distance_sensor_ring__element_vector 501 14 12_4_17_4]
+G c Z s s [swap wc2ec__distance_sensor_ring__element_vector 506 14 12_4_17_4]
+G c Z s s [first_index wc2ec__distance_sensor_ring__element_vector 512 13 12_4_17_4]
+G c Z s s [first wc2ec__distance_sensor_ring__element_vector 515 13 12_4_17_4]
+G c Z s s [first_element wc2ec__distance_sensor_ring__element_vector 519 13 12_4_17_4]
+G c Z s s [last_index wc2ec__distance_sensor_ring__element_vector 522 13 12_4_17_4]
+G c Z s s [last wc2ec__distance_sensor_ring__element_vector 526 13 12_4_17_4]
+G c Z s s [last_element wc2ec__distance_sensor_ring__element_vector 530 13 12_4_17_4]
+G c Z s s [next wc2ec__distance_sensor_ring__element_vector 533 13 12_4_17_4]
+G c Z s s [next wc2ec__distance_sensor_ring__element_vector 539 14 12_4_17_4]
+G c Z s s [previous wc2ec__distance_sensor_ring__element_vector 542 13 12_4_17_4]
+G c Z s s [previous wc2ec__distance_sensor_ring__element_vector 548 14 12_4_17_4]
+G c Z s s [find_index wc2ec__distance_sensor_ring__element_vector 551 13 12_4_17_4]
+G c Z s s [find wc2ec__distance_sensor_ring__element_vector 561 13 12_4_17_4]
+G c Z s s [reverse_find_index wc2ec__distance_sensor_ring__element_vector 575 13 12_4_17_4]
+G c Z s s [reverse_find wc2ec__distance_sensor_ring__element_vector 587 13 12_4_17_4]
+G c Z s s [contains wc2ec__distance_sensor_ring__element_vector 601 13 12_4_17_4]
+G c Z s s [iterate wc2ec__distance_sensor_ring__element_vector 606 14 12_4_17_4]
+G c Z s s [reverse_iterate wc2ec__distance_sensor_ring__element_vector 614 14 12_4_17_4]
+G c Z s s [iterate wc2ec__distance_sensor_ring__element_vector 621 13 12_4_17_4]
+G c Z s s [iterate wc2ec__distance_sensor_ring__element_vector 624 13 12_4_17_4]
+G c Z s s [adjust wc2ec__distance_sensor_ring__element_vector__implementation 90 28 678_4_12_4_17_4]
+G c Z s s [finalize wc2ec__distance_sensor_ring__element_vector__implementation 93 28 678_4_12_4_17_4]
+G c Z s s [zero_counts wc2ec__distance_sensor_ring__element_vector__implementation 96 17 678_4_12_4_17_4]
+G c Z s s [busy wc2ec__distance_sensor_ring__element_vector__implementation 100 17 678_4_12_4_17_4]
+G c Z s s [unbusy wc2ec__distance_sensor_ring__element_vector__implementation 104 17 678_4_12_4_17_4]
+G c Z s s [lock wc2ec__distance_sensor_ring__element_vector__implementation 108 17 678_4_12_4_17_4]
+G c Z s s [unlock wc2ec__distance_sensor_ring__element_vector__implementation 112 17 678_4_12_4_17_4]
+G c Z s s [tc_check wc2ec__distance_sensor_ring__element_vector__implementation 116 17 678_4_12_4_17_4]
+G c Z s s [te_check wc2ec__distance_sensor_ring__element_vector__implementation 120 17 678_4_12_4_17_4]
+G c Z s s [initialize wc2ec__distance_sensor_ring__element_vector__implementation 139 28 678_4_12_4_17_4]
+G c Z s s [finalize wc2ec__distance_sensor_ring__element_vector__implementation 140 28 678_4_12_4_17_4]
+G c Z s s [initialize wc2ec__distance_sensor_ring__element_vector__implementation 145 28 678_4_12_4_17_4]
+G c Z s s [finalize wc2ec__distance_sensor_ring__element_vector__implementation 146 28 678_4_12_4_17_4]
+G c Z s s [reference_control_typeDA wc2ec__distance_sensor_ring__element_vector__implementation 84 12 678_4_12_4_17_4]
+G c Z s s [reference_control_typeDF wc2ec__distance_sensor_ring__element_vector__implementation 84 12 678_4_12_4_17_4]
+G c Z s s [reference_control_typeIP wc2ec__distance_sensor_ring__element_vector__implementation 84 12 678_4_12_4_17_4]
+G c Z s s [with_busyDF wc2ec__distance_sensor_ring__element_vector__implementation 136 12 678_4_12_4_17_4]
+G c Z s s [with_busyIP wc2ec__distance_sensor_ring__element_vector__implementation 136 12 678_4_12_4_17_4]
+G c Z s s [with_lockDF wc2ec__distance_sensor_ring__element_vector__implementation 142 12 678_4_12_4_17_4]
+G c Z s s [with_lockIP wc2ec__distance_sensor_ring__element_vector__implementation 142 12 678_4_12_4_17_4]
+G c Z s s [adjust wc2ec__distance_sensor_ring__element_vector 699 25 12_4_17_4]
+G c Z s s [finalize wc2ec__distance_sensor_ring__element_vector 700 25 12_4_17_4]
+G c Z s s [write wc2ec__distance_sensor_ring__element_vector 702 14 12_4_17_4]
+G c Z s s [read wc2ec__distance_sensor_ring__element_vector 708 14 12_4_17_4]
+G c Z s s [read wc2ec__distance_sensor_ring__element_vector 722 14 12_4_17_4]
+G c Z s s [write wc2ec__distance_sensor_ring__element_vector 728 14 12_4_17_4]
+G c Z s s [write wc2ec__distance_sensor_ring__element_vector 747 14 12_4_17_4]
+G c Z s s [read wc2ec__distance_sensor_ring__element_vector 753 14 12_4_17_4]
+G c Z s s [write wc2ec__distance_sensor_ring__element_vector 769 14 12_4_17_4]
+G c Z s s [read wc2ec__distance_sensor_ring__element_vector 775 14 12_4_17_4]
+G c Z s s [pseudo_reference wc2ec__distance_sensor_ring__element_vector 786 13 12_4_17_4]
+G c Z s s [get_element_access wc2ec__distance_sensor_ring__element_vector 795 13 12_4_17_4]
+G c Z s s [cursorIP wc2ec__distance_sensor_ring__element_vector 717 9 12_4_17_4]
+G c Z s s [vectorDA wc2ec__distance_sensor_ring__element_vector 693 9 12_4_17_4]
+G c Z s s [vectorDF wc2ec__distance_sensor_ring__element_vector 693 9 12_4_17_4]
+G c Z s s [vectorIP wc2ec__distance_sensor_ring__element_vector 693 9 12_4_17_4]
+G c Z s s [constant_reference_typeDI wc2ec__distance_sensor_ring__element_vector 737 9 12_4_17_4]
+G c Z s s [constant_reference_typeDA wc2ec__distance_sensor_ring__element_vector 737 9 12_4_17_4]
+G c Z s s [constant_reference_typeDF wc2ec__distance_sensor_ring__element_vector 737 9 12_4_17_4]
+G c Z s s [constant_reference_typeIP wc2ec__distance_sensor_ring__element_vector 737 9 12_4_17_4]
+G c Z s s [reference_typeDI wc2ec__distance_sensor_ring__element_vector 759 9 12_4_17_4]
+G c Z s s [reference_typeDA wc2ec__distance_sensor_ring__element_vector 759 9 12_4_17_4]
+G c Z s s [reference_typeDF wc2ec__distance_sensor_ring__element_vector 759 9 12_4_17_4]
+G c Z s s [reference_typeIP wc2ec__distance_sensor_ring__element_vector 759 9 12_4_17_4]
+G c Z s s [finalize wc2ec__distance_sensor_ring__element_vector 811 25 12_4_17_4]
+G c Z s s [first wc2ec__distance_sensor_ring__element_vector 813 24 12_4_17_4]
+G c Z s s [last wc2ec__distance_sensor_ring__element_vector 814 24 12_4_17_4]
+G c Z s s [next wc2ec__distance_sensor_ring__element_vector 816 24 12_4_17_4]
+G c Z s s [previous wc2ec__distance_sensor_ring__element_vector 820 24 12_4_17_4]
+G c Z s s [elements_arrayIP wc2ec__distance_sensor_ring__element_vector 681 9 12_4_17_4]
+G c Z s s [elements_typeIP wc2ec__distance_sensor_ring__element_vector 684 9 12_4_17_4]
+G c Z s s [iteratorDF wc2ec__distance_sensor_ring__element_vector 803 9 12_4_17_4]
+G c Z s s [iteratorIP wc2ec__distance_sensor_ring__element_vector 803 9 12_4_17_4]
+G c Z s s [free wc2ec__distance_sensor_ring__element_vector 41 14 12_4_17_4]
+G c Z s s [append_slow_path wc2ec__distance_sensor_ring__element_vector 44 14 12_4_17_4]
+G c Z s s [push wc2ec__distance_sensor_ring__ringbuffer 19 17 17_4]
+G c Z s s [get wc2ec__distance_sensor_ring__ringbuffer 23 16 17_4]
+G c Z s s [reset wc2ec__distance_sensor_ring__ringbuffer 26 17 17_4]
+G c Z s s [removelast wc2ec__distance_sensor_ring__ringbuffer 29 17 17_4]
+G c Z s s [peek_blocking wc2ec__distance_sensor_ring__ringbuffer 33 13 17_4]
+G c Z s s [peek_non_blocking wc2ec__distance_sensor_ring__ringbuffer 37 16 17_4]
+G c Z s s [gethead wc2ec__distance_sensor_ring__ringbuffer 39 16 17_4]
+G c Z s s [gettail wc2ec__distance_sensor_ring__ringbuffer 41 16 17_4]
+G c Z s s [isempty wc2ec__distance_sensor_ring__ringbuffer 43 16 17_4]
+G c Z s s [isfull wc2ec__distance_sensor_ring__ringbuffer 45 16 17_4]
+G c Z s s [get_elements wc2ec__distance_sensor_ring__ringbuffer 50 16 17_4]
+G c Z s s [print wc2ec__distance_sensor_ring__ringbuffer 52 17 17_4]
+G c Z s s [ringbuffer__pushN wc2ec__distance_sensor_ring 19 7 17_4]
+G c Z s s [ringbuffer__pushP wc2ec__distance_sensor_ring 19 7 17_4]
+G c Z s s [ringbuffer__getN wc2ec__distance_sensor_ring 23 7 17_4]
+G c Z s s [ringbuffer__getP wc2ec__distance_sensor_ring 23 7 17_4]
+G c Z s s [ringbuffer__resetN wc2ec__distance_sensor_ring 26 7 17_4]
+G c Z s s [ringbuffer__resetP wc2ec__distance_sensor_ring 26 7 17_4]
+G c Z s s [ringbuffer__removelastN wc2ec__distance_sensor_ring 29 7 17_4]
+G c Z s s [ringbuffer__removelastP wc2ec__distance_sensor_ring 29 7 17_4]
+G c Z s s [ringbuffer__peek_non_blockingN wc2ec__distance_sensor_ring 37 7 17_4]
+G c Z s s [ringbuffer__peek_non_blockingP wc2ec__distance_sensor_ring 37 7 17_4]
+G c Z s s [ringbuffer__getheadN wc2ec__distance_sensor_ring 39 7 17_4]
+G c Z s s [ringbuffer__getheadP wc2ec__distance_sensor_ring 39 7 17_4]
+G c Z s s [ringbuffer__gettailN wc2ec__distance_sensor_ring 41 7 17_4]
+G c Z s s [ringbuffer__gettailP wc2ec__distance_sensor_ring 41 7 17_4]
+G c Z s s [ringbuffer__isemptyN wc2ec__distance_sensor_ring 43 7 17_4]
+G c Z s s [ringbuffer__isemptyP wc2ec__distance_sensor_ring 43 7 17_4]
+G c Z s s [ringbuffer__isfullN wc2ec__distance_sensor_ring 45 7 17_4]
+G c Z s s [ringbuffer__isfullP wc2ec__distance_sensor_ring 45 7 17_4]
+G c Z s s [ringbuffer__get_elementsN wc2ec__distance_sensor_ring 50 7 17_4]
+G c Z s s [ringbuffer__get_elementsP wc2ec__distance_sensor_ring 50 7 17_4]
+G c Z s s [ringbuffer__printN wc2ec__distance_sensor_ring 52 7 17_4]
+G c Z s s [ringbuffer__printP wc2ec__distance_sensor_ring 52 7 17_4]
+G c Z s s [TmemoryBIP wc2ec__distance_sensor_ring 10 4 17_4]
+G c Z s s [ringbufferVDI wc2ec__distance_sensor_ring 15 4 17_4]
+G c Z s s [ringbufferVDF wc2ec__distance_sensor_ring 15 4 17_4]
+G c Z s s [ringbufferVIP wc2ec__distance_sensor_ring 15 4 17_4]
+G c Z s s [P659sIP wc2ec__distance_sensor_ring 33 7 17_4]
+G c Z s s [has_element wc2ec__sensor_map_p 72 13 20_4]
+G c Z s s [Oeq wc2ec__sensor_map_p 78 24 20_4]
+G c Z s s [capacity wc2ec__sensor_map_p 89 13 20_4]
+G c Z s s [reserve_capacity wc2ec__sensor_map_p 93 14 20_4]
+G c Z s s [length wc2ec__sensor_map_p 103 13 20_4]
+G c Z s s [is_empty wc2ec__sensor_map_p 106 13 20_4]
+G c Z s s [clear wc2ec__sensor_map_p 109 14 20_4]
+G c Z s s [key wc2ec__sensor_map_p 112 13 20_4]
+G c Z s s [element wc2ec__sensor_map_p 115 13 20_4]
+G c Z s s [replace_element wc2ec__sensor_map_p 118 14 20_4]
+G c Z s s [query_element wc2ec__sensor_map_p 124 14 20_4]
+G c Z s s [update_element wc2ec__sensor_map_p 131 14 20_4]
+G c Z s s [constant_reference wc2ec__sensor_map_p 148 13 20_4]
+G c Z s s [reference wc2ec__sensor_map_p 153 13 20_4]
+G c Z s s [constant_reference wc2ec__sensor_map_p 158 13 20_4]
+G c Z s s [reference wc2ec__sensor_map_p 163 13 20_4]
+G c Z s s [assign wc2ec__sensor_map_p 168 14 20_4]
+G c Z s s [copy wc2ec__sensor_map_p 170 13 20_4]
+G c Z s s [move wc2ec__sensor_map_p 172 14 20_4]
+G c Z s s [insert wc2ec__sensor_map_p 176 14 20_4]
+G c Z s s [insert wc2ec__sensor_map_p 194 14 20_4]
+G c Z s s [include wc2ec__sensor_map_p 205 14 20_4]
+G c Z s s [replace wc2ec__sensor_map_p 216 14 20_4]
+G c Z s s [exclude wc2ec__sensor_map_p 227 14 20_4]
+G c Z s s [delete wc2ec__sensor_map_p 236 14 20_4]
+G c Z s s [delete wc2ec__sensor_map_p 244 14 20_4]
+G c Z s s [first wc2ec__sensor_map_p 250 13 20_4]
+G c Z s s [next wc2ec__sensor_map_p 254 13 20_4]
+G c Z s s [next wc2ec__sensor_map_p 262 14 20_4]
+G c Z s s [find wc2ec__sensor_map_p 265 13 20_4]
+G c Z s s [contains wc2ec__sensor_map_p 271 13 20_4]
+G c Z s s [element wc2ec__sensor_map_p 274 13 20_4]
+G c Z s s [equivalent_keys wc2ec__sensor_map_p 277 13 20_4]
+G c Z s s [equivalent_keys wc2ec__sensor_map_p 281 13 20_4]
+G c Z s s [equivalent_keys wc2ec__sensor_map_p 285 13 20_4]
+G c Z s s [iterate wc2ec__sensor_map_p 289 14 20_4]
+G c Z s s [iterate wc2ec__sensor_map_p 294 13 20_4]
+G c Z s s [node_typeIP wc2ec__sensor_map_p 318 9 20_4]
+G c Z s s [adjust wc2ec__sensor_map_p__ht_types__implementation 90 28 58_7_324_4_20_4]
+G c Z s s [finalize wc2ec__sensor_map_p__ht_types__implementation 93 28 58_7_324_4_20_4]
+G c Z s s [zero_counts wc2ec__sensor_map_p__ht_types__implementation 96 17 58_7_324_4_20_4]
+G c Z s s [busy wc2ec__sensor_map_p__ht_types__implementation 100 17 58_7_324_4_20_4]
+G c Z s s [unbusy wc2ec__sensor_map_p__ht_types__implementation 104 17 58_7_324_4_20_4]
+G c Z s s [lock wc2ec__sensor_map_p__ht_types__implementation 108 17 58_7_324_4_20_4]
+G c Z s s [unlock wc2ec__sensor_map_p__ht_types__implementation 112 17 58_7_324_4_20_4]
+G c Z s s [tc_check wc2ec__sensor_map_p__ht_types__implementation 116 17 58_7_324_4_20_4]
+G c Z s s [te_check wc2ec__sensor_map_p__ht_types__implementation 120 17 58_7_324_4_20_4]
+G c Z s s [initialize wc2ec__sensor_map_p__ht_types__implementation 139 28 58_7_324_4_20_4]
+G c Z s s [finalize wc2ec__sensor_map_p__ht_types__implementation 140 28 58_7_324_4_20_4]
+G c Z s s [initialize wc2ec__sensor_map_p__ht_types__implementation 145 28 58_7_324_4_20_4]
+G c Z s s [finalize wc2ec__sensor_map_p__ht_types__implementation 146 28 58_7_324_4_20_4]
+G c Z s s [reference_control_typeDA wc2ec__sensor_map_p__ht_types__implementation 84 12 58_7_324_4_20_4]
+G c Z s s [reference_control_typeDF wc2ec__sensor_map_p__ht_types__implementation 84 12 58_7_324_4_20_4]
+G c Z s s [reference_control_typeIP wc2ec__sensor_map_p__ht_types__implementation 84 12 58_7_324_4_20_4]
+G c Z s s [with_busyDF wc2ec__sensor_map_p__ht_types__implementation 136 12 58_7_324_4_20_4]
+G c Z s s [with_busyIP wc2ec__sensor_map_p__ht_types__implementation 136 12 58_7_324_4_20_4]
+G c Z s s [with_lockDF wc2ec__sensor_map_p__ht_types__implementation 142 12 58_7_324_4_20_4]
+G c Z s s [with_lockIP wc2ec__sensor_map_p__ht_types__implementation 142 12 58_7_324_4_20_4]
+G c Z s s [buckets_typeIP wc2ec__sensor_map_p__ht_types 46 12 324_4_20_4]
+G c Z s s [hash_table_typeDA wc2ec__sensor_map_p__ht_types 52 12 324_4_20_4]
+G c Z s s [hash_table_typeDF wc2ec__sensor_map_p__ht_types 52 12 324_4_20_4]
+G c Z s s [hash_table_typeIP wc2ec__sensor_map_p__ht_types 52 12 324_4_20_4]
+G c Z s s [adjust wc2ec__sensor_map_p 331 25 20_4]
+G c Z s s [finalize wc2ec__sensor_map_p 333 25 20_4]
+G c Z s s [write wc2ec__sensor_map_p 339 14 20_4]
+G c Z s s [read wc2ec__sensor_map_p 345 14 20_4]
+G c Z s s [write wc2ec__sensor_map_p 360 14 20_4]
+G c Z s s [read wc2ec__sensor_map_p 366 14 20_4]
+G c Z s s [write wc2ec__sensor_map_p 385 14 20_4]
+G c Z s s [read wc2ec__sensor_map_p 391 14 20_4]
+G c Z s s [write wc2ec__sensor_map_p 407 14 20_4]
+G c Z s s [read wc2ec__sensor_map_p 413 14 20_4]
+G c Z s s [pseudo_reference wc2ec__sensor_map_p 424 13 20_4]
+G c Z s s [get_element_access wc2ec__sensor_map_p 431 13 20_4]
+G c Z s s [mapDA wc2ec__sensor_map_p 327 9 20_4]
+G c Z s s [mapDF wc2ec__sensor_map_p 327 9 20_4]
+G c Z s s [mapIP wc2ec__sensor_map_p 327 9 20_4]
+G c Z s s [cursorIP wc2ec__sensor_map_p 354 9 20_4]
+G c Z s s [constant_reference_typeDI wc2ec__sensor_map_p 375 9 20_4]
+G c Z s s [constant_reference_typeDA wc2ec__sensor_map_p 375 9 20_4]
+G c Z s s [constant_reference_typeDF wc2ec__sensor_map_p 375 9 20_4]
+G c Z s s [constant_reference_typeIP wc2ec__sensor_map_p 375 9 20_4]
+G c Z s s [reference_typeDI wc2ec__sensor_map_p 397 9 20_4]
+G c Z s s [reference_typeDA wc2ec__sensor_map_p 397 9 20_4]
+G c Z s s [reference_typeDF wc2ec__sensor_map_p 397 9 20_4]
+G c Z s s [reference_typeIP wc2ec__sensor_map_p 397 9 20_4]
+G c Z s s [finalize wc2ec__sensor_map_p 447 25 20_4]
+G c Z s s [first wc2ec__sensor_map_p 449 24 20_4]
+G c Z s s [next wc2ec__sensor_map_p 451 24 20_4]
+G c Z s s [iteratorDF wc2ec__sensor_map_p 440 9 20_4]
+G c Z s s [iteratorIP wc2ec__sensor_map_p 440 9 20_4]
+G c Z s s [free_key wc2ec__sensor_map_p 48 14 20_4]
+G c Z s s [free_element wc2ec__sensor_map_p 51 14 20_4]
+G c Z s s [copy_node wc2ec__sensor_map_p 58 13 20_4]
+G c Z s s [equivalent_key_node wc2ec__sensor_map_p 61 13 20_4]
+G c Z s s [find_equal_key wc2ec__sensor_map_p 66 13 20_4]
+G c Z s s [free wc2ec__sensor_map_p 70 14 20_4]
+G c Z s s [hash_node wc2ec__sensor_map_p 73 13 20_4]
+G c Z s s [next wc2ec__sensor_map_p 76 13 20_4]
+G c Z s s [read_node wc2ec__sensor_map_p 79 13 20_4]
+G c Z s s [set_next wc2ec__sensor_map_p 82 14 20_4]
+G c Z s s [vet wc2ec__sensor_map_p 85 13 20_4]
+G c Z s s [write_node wc2ec__sensor_map_p 87 14 20_4]
+G c Z s s [free_hash_table wc2ec__sensor_map_p__ht_ops 57 14 95_4_20_4]
+G c Z s s [index wc2ec__sensor_map_p__ht_ops 61 13 95_4_20_4]
+G c Z s s [index wc2ec__sensor_map_p__ht_ops 67 13 95_4_20_4]
+G c Z s s [checked_index wc2ec__sensor_map_p__ht_ops 74 13 95_4_20_4]
+G c Z s s [checked_index wc2ec__sensor_map_p__ht_ops 81 13 95_4_20_4]
+G c Z s s [adjust wc2ec__sensor_map_p__ht_ops 86 14 95_4_20_4]
+G c Z s s [finalize wc2ec__sensor_map_p__ht_ops 92 14 95_4_20_4]
+G c Z s s [clear wc2ec__sensor_map_p__ht_ops 108 14 95_4_20_4]
+G c Z s s [move wc2ec__sensor_map_p__ht_ops 113 14 95_4_20_4]
+G c Z s s [capacity wc2ec__sensor_map_p__ht_ops 119 13 95_4_20_4]
+G c Z s s [reserve_capacity wc2ec__sensor_map_p__ht_ops 122 14 95_4_20_4]
+G c Z s s [delete_node_at_index wc2ec__sensor_map_p__ht_ops 131 14 95_4_20_4]
+G c Z s s [delete_node_sans_free wc2ec__sensor_map_p__ht_ops 140 14 95_4_20_4]
+G c Z s s [first wc2ec__sensor_map_p__ht_ops 145 13 95_4_20_4]
+G c Z s s [first wc2ec__sensor_map_p__ht_ops 147 13 95_4_20_4]
+G c Z s s [next wc2ec__sensor_map_p__ht_ops 154 13 95_4_20_4]
+G c Z s s [next wc2ec__sensor_map_p__ht_ops 157 13 95_4_20_4]
+G c Z s s [new_buckets wc2ec__sensor_map_p__ht_ops 204 13 95_4_20_4]
+G c Z s s [free_buckets wc2ec__sensor_map_p__ht_ops 208 14 95_4_20_4]
+G c Z s s [index wc2ec__sensor_map_p__key_ops 56 13 103_4_20_4]
+G c Z s s [checked_index wc2ec__sensor_map_p__key_ops 62 13 103_4_20_4]
+G c Z s s [checked_equivalent_keys wc2ec__sensor_map_p__key_ops 69 13 103_4_20_4]
+G c Z s s [delete_key_sans_free wc2ec__sensor_map_p__key_ops 76 14 103_4_20_4]
+G c Z s s [find wc2ec__sensor_map_p__key_ops 84 13 103_4_20_4]
+G c Z s s [is_equalR wc2ec__sensor_map_p__is_equalGP4669 115 13 20_4]
+G c Z s s [is_equal wc2ec__sensor_map_p 115 13 20_4]
+G c Z s s [read_nodesR wc2ec__sensor_map_p__read_nodesGP25869 957 14 20_4]
+G c Z s s [read_nodes wc2ec__sensor_map_p 957 14 20_4]
+G c Z s s [write_nodesR wc2ec__sensor_map_p__write_nodesGP34912 1317 14 20_4]
+G c Z s s [write_nodes wc2ec__sensor_map_p 1317 14 20_4]
+G c Z s b [wc2ec_thread_t wc2ec 44 14 none]
+G c Z s s [Tsensor_ring_access_tBIP wc2ec 18 4 none]
+G c Z s b [get_distance_sensor_data wc2ec 54 13 none]
+G c Z s b [set_motor_sensor_data wc2ec 56 14 none]
+G c Z s s [wc2ec_header_tIP wc2ec 26 9 none]
+G c Z s s [wc2ec_thread_tVIP wc2ec 44 4 none]
+G c Z b b [get_ring_index wc2ec 4 13 none]
+G c Z b b [register_sensor wc2ec 38 14 none]
+G c Z b b [sensor_data wc2ec 55 14 none]
+G c Z b b [print_wc2ec_header wc2ec 64 14 none]
+G c Z b b [get_stream wc2ec 74 13 none]
+G r i none [s wc2ec 15 1 none] [ring_buffer standard 7 9 none]
+G r c none [print wc2ec__distance_sensor_ring__ringbuffer 52 17 17_4] [print_distance_sensor distance_sensor_p 5 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 84|4r6 4r23 5r6 5r23 9r6 10r6 11r5 12r6 22r56 85|45r10 48r13
+. 51r29 60r7 66r7 67r7 68r7 69r7 70r7 71r7
+X 4 a-contai.ads
+16K13*Containers 24e19 84|9r10 11r9
+19M9*Hash_Type
+X 13 a-cihama.ads
+41+9 Key_Type 84|20r56
+42+9 Element_Type 84|21r48
+44V18 Hash{4|19M9} 84|22r48
+45V18 Equivalent_Keys{boolean} 84|23r63
+48k24*Indefinite_Hashed_Maps 455e42 84|9w21 20r32
+53R9*Map<19|43R9> 84|48r31[20]
+194U14*Insert 85|51s21[84|20]
+274V13*Element{35|63M9} 85|8s49[84|20] 29s37[84|20]
+X 21 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[16|111]>
+X 23 a-stream.ads
+36K13*Streams 87e16 84|5w10 5r27
+X 24 a-string.ads
+16K13*Strings 35e16 84|10r10 12r10 22r60 85|51r33
+X 25 a-strfix.ads
+43K21*Fixed 596e22 84|12w18 85|51r41
+519V13*Head{string} 85|51s47
+X 26 a-strhas.ads
+20V22*Hash{4|19M9} 84|10w18 22r68
+X 29 a-textio.ads
+57K13*Text_IO 727e16 84|4w10 4r27 85|45r14 48r17 60r11 66r11 67r11 68r11
+. 69r11 70r11 71r11
+392U14*Put 85|48s25
+465U14*Put 85|66s19 68s19 70s19
+508U14*Put_Line 85|45s22 50s10 60s19 67s19 69s19 71s19
+X 32 distance_sensor_p.ads
+1K9*distance_sensor_p 7e22 84|14w6 14r29 17r82
+2R7*distance_sensor_t 4e12 84|17r52 54r67 85|12r67 56r12 59r7
+3f4*distance{long_float} 85|60r50
+5U11*print_Distance_Sensor 84|17r100
+X 33 gnat.ads
+34K9*GNAT 57e9 84|3r6 3r24 85|78r7
+X 34 g-socket.ads
+55K14*Sockets 1555e17 84|3w11 3r29 85|78r12
+379U14*Initialize 85|78s20
+412I9*Socket_Type<integer> 85|75r17
+493I9*Port_Type<integer> 85|74r44 95r11
+598R9*Sock_Addr_Type 601e14 85|76r17
+599r7*Addr{518R9} 85|82m15
+600i7*Port{493I9} 85|83m15
+624V13*Inet_Addr{518R9} 85|82s23
+1091U14*Create_Socket 85|79s7
+1132U14*Connect_Socket 85|85s7
+1296P9*Stream_Access(23|39R9) 84|50r14 85|38r40 55r36 74r62
+1299V13*Stream{1296P9} 85|87s14
+X 35 interfac.ads
+38K9*Interfaces 184e15 84|1w6 1r22 6r6 6r24 7w6 7r22 21r64 27r17 28r21 29r19
+. 85|39r13 44r10 45r31 67r28 69r28 71r28
+63M9*Unsigned_8 84|21r75 27r28 28r32 29r30 85|39r24 44r21 45r42 67r39 69r39
+. 71r39
+X 36 i-c.ads
+18K20*C 230e17 84|6w17 6r35
+X 39 ring_buffer.ads
+7k9*Ring_Buffer 62e16 84|13w6 17r40
+15W19*RingBuffer 84|18r79[17] 85|52r80[84|17]
+19U17 push 85|61s52[84|17]
+23V16 get{32|2R7} 85|19s38[84|17]
+39V16 getHead{84|16M9} 85|18s62[84|17]
+X 41 system.ads
+67M9*Address
+X 53 s-memory.ads
+53V13*Alloc{41|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{41|67M9} 105i<c,__gnat_realloc>22
+X 62 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 64 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+X 84 wc2ec.ads
+15K9*WC2EC 58l5 58e10 85|1w6 2b14 120l5 120t10
+16M9*RingIndex 17r71
+17K12*distance_sensor_Ring[39|7] 18r58 85|52r59
+18A9*sensor_ring_access_t(39|15W19[17])<integer> 49r18
+20K12*sensor_map_p[13|48] 24r8 48r18
+26R9*wc2ec_header_t 30e14 85|23r13 31r7 38r61 55r57 64r39 96r10 104r7
+27m7*command{35|63M9} 85|27m11 67r60 108r16 112r16
+28m7*sensor_type{35|63M9} 85|28m11 69r60
+29m7*sensor_id{35|63M9} 85|29m11 51r87 52r40 61r40 71r60
+33N4*CMD_REGISTER_SENSOR 85|108r26
+34N4*CMD_SENSOR_DATA 85|112r26
+36N4*CMD_CHANGE_SENSOR 85|27r27
+38N4*SENSOR_TYPE_MOTOR 85|28r26
+44T14*wc2ec_thread_t 45r41 85|90b11 119l8 119t22
+45P9*wc2ec_thread_access_t(44T14)
+48r4*sensor_map{13|53R9[20]} 85|8r38 29r26 51m10 51r10
+49a4*sensor_ring{18A9} 85|18r38 19r14 52m7 61r7
+50p4*Channel{34|1296P9} 85|31r28 32r24 101m4 104r28 109r29 113r25
+54V13*get_distance_sensor_data{32|2R7} 54>38 85|12b13 20t7
+54a38 sensor_name{string} 85|12b38 17r36
+56U14*set_motor_sensor_data 56>36 56>58 85|22b14 33t7
+56a36 sensor_name{string} 85|22b36 29r45
+56f58 velocity{long_float} 85|22b58 32r33
+X 85 wc2ec.adb
+4V13 get_ring_index{integer} 4b13 4>28 10t7 17s21
+4a28 sensor_name{string} 8r57
+5i7 ring_index{integer} 8m7 9r14
+13i7 ring_index{integer} 17m7 18r50 19r26
+14i7 head_index{integer} 18m7
+23r7 hdr{84|26R9} 27m7 28m7 29m7 31r37
+38U14 register_sensor 38b14 38>30 38>55 53t7 109s13
+38p30 Channel{34|1296P9} 44r37 47r28
+38r55 hdr{84|26R9} 51r83 52r36
+39m7 num{35|63M9} 44m46 44r46 45r59 46r24 51r76
+40a7 Buffer{string} 47m37 47r37 48r29 51r52
+46m14 I{35|63M9} 47r61 48r53
+55U14 sensor_data 55b14 55>26 55>51 62t7 113s13
+55p26 Channel{34|1296P9} 59r31
+55r51 hdr{84|26R9} 61r36
+56r7 ds{32|2R7} 59m40 59r40 60r47 61r57
+64U14 print_WC2EC_header 64b14 64>33 72t7 106s8
+64r33 hdr{84|26R9} 67r56 69r56 71r56
+74V13 get_Stream{34|1296P9} 74b13 74>24 74>37 88t7 101s15
+74a24 ip{string} 82r33
+74i37 port{34|493I9} 83r23
+75i7 Client{34|412I9} 79m21 85r22 87r22
+76r7 Address{34|598R9} 82m7 83m7 85r30
+94a4 ip{string} 101r26
+95i4 port{34|493I9} 101r30
+96r4 hdr{84|26R9} 104m37 104r37 106r27 108r12 109r38 112r12 113r34
+

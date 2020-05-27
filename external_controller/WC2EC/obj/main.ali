@@ -1,0 +1,173 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_RELATIVE_DELAY
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_TASK_ALLOCATORS
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+RV MAX_TASKS=1+
+
+U main%b		main.adb		2cd66142 NE OO SU
+W ada%s			ada.ads			ada.ali
+Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+W ada.containers.indefinite_hashed_maps%s
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.strings.hash%s	a-strhas.adb		a-strhas.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W distance_sensor_p%s	distance_sensor_p.adb	distance_sensor_p.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.sockets%s	g-socket.adb		g-socket.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_real%s	s-imgrea.adb		s-imgrea.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W wc2ec%s		wc2ec.adb		wc2ec.ali
+
+D ada.ads		20190518041256 76789da1 ada%s
+D a-calend.ads		20190518041256 474d9720 ada.calendar%s
+D a-caldel.ads		20190518041256 9f20b83d ada.calendar.delays%s
+D a-charac.ads		20190518041256 2d3ec45b ada.characters%s
+D a-chlat1.ads		20190518041256 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20190518041256 61e5e089 ada.containers%s
+D a-cohata.ads		20190518041258 80a8c839 ada.containers.hash_tables%s
+D a-chtgke.ads		20190518041258 20177f7b ada.containers.hash_tables.generic_keys%s
+D a-chtgop.ads		20190518041256 11c5978a ada.containers.hash_tables.generic_operations%s
+D a-conhel.ads		20190518041256 20298884 ada.containers.helpers%s
+D a-cihama.ads		20190518041256 bece8dbf ada.containers.indefinite_hashed_maps%s
+D a-cihama.adb		20190518041256 94909b4a ada.containers.indefinite_hashed_maps%b
+D a-convec.ads		20190518041258 7e2b0fdf ada.containers.vectors%s
+D a-except.ads		20190518041256 291912d5 ada.exceptions%s
+D a-finali.ads		20190518041256 bf4f806b ada.finalization%s
+D a-ioexce.ads		20190518041256 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20190518041256 7c7305e9 ada.iterator_interfaces%s
+D a-reatim.ads		20190518041258 0240fc73 ada.real_time%s
+D a-stream.ads		20190518041256 119b8fb3 ada.streams%s
+D a-string.ads		20190518041256 90ac6797 ada.strings%s
+D a-strfix.ads		20190518041258 86d6bc21 ada.strings.fixed%s
+D a-strhas.ads		20190518041258 c71c2a52 ada.strings.hash%s
+D a-strmap.ads		20190518041256 e8bb714a ada.strings.maps%s
+D a-tags.ads		20190518041258 491b781d ada.tags%s
+D a-textio.ads		20190518041258 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041256 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20190518041256 eff36322 ada.unchecked_deallocation%s
+D distance_sensor_p.ads	20200526181144 a5f9ef28 distance_sensor_p%s
+D gnat.ads		20190518041258 b5988c27 gnat%s
+D g-socket.ads		20190518041258 605fb491 gnat.sockets%s
+D interfac.ads		20190518041256 5ab55268 interfaces%s
+D i-c.ads		20190518041256 5421119b interfaces.c%s
+D i-cstrin.ads		20190518041256 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20190518041256 e53d8b8e interfaces.c_streams%s
+D main.adb		20200527123850 b17f6c47 main%b
+D ring_buffer.ads	20200525180302 88ca42a9 ring_buffer%s
+D system.ads		20190518041258 32a08138 system%s
+D s-atacco.ads		20190518041258 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20190518041258 b45c2d8d system.atomic_counters%s
+D s-conca2.ads		20190518041256 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20190518041256 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041256 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041258 078245e4 system.file_control_block%s
+D s-finmas.ads		20190518041256 7811a767 system.finalization_masters%s
+D s-finroo.ads		20190518041258 4ff27390 system.finalization_root%s
+D s-imgrea.ads		20190518041256 c7a851e2 system.img_real%s
+D s-multip.ads		20190518041256 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20190518135108 3e023549 system.os_constants%s
+D s-osinte.ads		20190518041258 97504df8 system.os_interface%s
+D s-parame.ads		20190518041258 48ec542b system.parameters%s
+D s-pooglo.ads		20190518041256 ede33ef8 system.pool_global%s
+D s-secsta.ads		20190518041258 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041256 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041258 a37c21ec system.stack_checking%s
+D s-stausa.ads		20190518041256 017a0a05 system.stack_usage%s
+D s-stalib.ads		20190518041258 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041258 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20190518041256 b16154c2 system.storage_pools%s
+D s-stposu.ads		20190518041256 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20190518041256 aedef97e system.stream_attributes%s
+D s-tasinf.ads		20190518041258 601f6b72 system.task_info%s
+D s-taspri.ads		20190518041258 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20190518041258 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20190518041258 b9d612e2 system.tasking%s
+D s-taprob.ads		20190518041258 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20190518041258 60ad3dae system.tasking.protected_objects.entries%s
+D s-tassta.ads		20190518041258 cca55c94 system.tasking.stages%s
+D s-traent.ads		20190518041256 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041256 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041256 1b7d22d2 system.wch_con%s
+D s-win32.ads		20190518041256 90ecf4e6 system.win32%s
+D wc2ec.ads		20200526181258 16f0545d wc2ec%s
+G a e
+G c Z b b [main standard 16 11 none]
+G r s wc2ec_thread_t [main standard 16 11 none] [wc2ec_thread_tVIP wc2ec 44 4 none]
+G r c none [main standard 16 11 none] [set_motor_sensor_data wc2ec 56 14 none]
+G r c none [main standard 16 11 none] [get_distance_sensor_data wc2ec 54 13 none]
+X 1 ada.ads
+16K9*Ada 20e8 35|3r6 3r23 4r6 4r23 8r6 9r6 10r5 11r6
+X 6 a-contai.ads
+16K13*Containers 24e19 35|8r10 10r9
+19M9*Hash_Type
+X 11 a-cihama.ads
+48k24*Indefinite_Hashed_Maps 455e42 35|8w21
+X 17 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[13|111]>
+X 19 a-stream.ads
+36K13*Streams 87e16 35|4w10 4r27
+X 20 a-string.ads
+16K13*Strings 35e16 35|9r10 11r10
+X 21 a-strfix.ads
+43K21*Fixed 596e22 35|11w18
+X 22 a-strhas.ads
+20V22*Hash{6|19M9} 35|9w18
+X 25 a-textio.ads
+57K13*Text_IO 727e16 35|3w10 3r27
+508U14*Put_Line 35|24s3 26s4 39s4
+X 28 distance_sensor_p.ads
+1K9*distance_sensor_p 7e22 35|14w6 14r29 21r9
+2R7*distance_sensor_t 4e12 35|21r27
+3f4*distance{long_float} 35|39r45
+X 29 gnat.ads
+34K9*GNAT 57e9 35|2r6 2r24
+X 30 g-socket.ads
+55K14*Sockets 1555e17 35|2w11 2r29
+X 31 interfac.ads
+38K9*Interfaces 184e15 35|5r6 5r24 6w6 6r22
+X 32 i-c.ads
+18K20*C 230e17 35|5w17 5r35
+X 35 main.adb
+16U11*Main 16b11 41l8 41t12
+20p4 r{72|45P9} 25m4
+21r4 ds{28|2R7} 38m4 39r42
+27i9 I{integer}
+35i9 I{integer}
+X 55 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 72 wc2ec.ads
+15K9*WC2EC 35|7w6 7r17 13r5 31r4 32r4 33r4 34r4 38r10 72|58e10
+20K12*sensor_map_p[11|48] 35|13r11
+44T14*wc2ec_thread_t 35|25r13
+45P9*wc2ec_thread_access_t(44T14) 35|20r8
+54V13*get_distance_sensor_data{28|2R7} 35|38s16
+56U14*set_motor_sensor_data 35|31s10 32s10 33s10 34s10
+
