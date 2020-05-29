@@ -6,9 +6,7 @@ pipeline {
         dir(path: 'backend') {
           sh './mvnw -f pom.xml clean test'
         }
-
       }
     }
-
   }
 }
