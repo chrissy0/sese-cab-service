@@ -1,6 +1,6 @@
 package Webots_Function is
 
-   function follow_Line (Speed : Integer; dist_l_Value : Integer; dist_c_Value : Integer; dist_r_Value : Integer; inf_l_Value : Integer; inf_r_Value : Integer) return Integer ;
+   function follow_Line (Speed : Long_Float; leftSpeed :   out Long_Float; rightSpeed : out Long_Float) return Integer ;
    function is_Active (inf_Value : Integer) return Boolean;
 
    function rm_First_Bit (inf_rm_fl : Integer) return Boolean;

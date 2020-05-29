@@ -1,11 +1,10 @@
-limited with "..\Webots_Function\webots_function.gpr";
 limited with "..\WC2EC\wc2ec.gpr";
 
-project External_Controller is
+project Webots_Function is
 
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
    for Main use ("main.adb");
 
-end External_Controller;
+end Webots_Function;
 

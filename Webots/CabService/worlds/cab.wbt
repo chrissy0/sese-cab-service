@@ -708,7 +708,7 @@ Robot {
   boundingObject USE BODY
   physics Physics {
   }
-  controller "controller"
+  controller "WC2EC_Controller"
 }
 DEF dummy Robot {
   translation 1.17493 0.04417 1.22104

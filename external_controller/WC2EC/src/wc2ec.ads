@@ -14,9 +14,14 @@ with Ring_Buffer;
 with distance_sensor_p; use distance_sensor_p;
 package WC2EC is
    type RingIndex is mod 2**4;
-   package distance_sensor_Ring is new Ring_Buffer(distance_sensor_t, RingIndex, distance_sensor_p.print_Distance_Sensor);
-   type sensor_ring_access_t is array (0..255) of access distance_sensor_Ring.RingBuffer;
+   --package distance_sensor_Ring is new Ring_Buffer(distance_sensor_t, RingIndex, distance_sensor_p.print_Distance_Sensor);
 
+   --type sensor_ring_access_t is array (0..255) of access distance_sensor_Ring.RingBuffer;
+
+
+
+
+   type sensor_ring_access_t is array (0..255) of distance_sensor_t;
    package sensor_map_p is new Indefinite_Hashed_Maps (Key_Type => String,
                                                Element_Type => Interfaces.Unsigned_8,
                                                Hash => Ada.Strings.Hash,
@@ -51,7 +56,7 @@ package WC2EC is
    -- TODO Create init function, set this bool, check in the external functions initialized : Boolean;
 
    -- functions
-   function get_distance_sensor_data(sensor_name : String) return distance_sensor_t;
+   function get_distance_sensor_data(sensor_name : String) return Long_Float;
 
    procedure set_motor_sensor_data(sensor_name : String; velocity : Long_Float);
 
