@@ -1,4 +1,6 @@
 with WC2EC;
+with Ada.Text_IO; use Ada.Text_IO;
+
 package body WC2EC is
 
    function get_ring_index(sensor_name : String) return Standard.Integer is
@@ -9,14 +11,20 @@ package body WC2EC is
       return ring_index;
    end;
 
-   function get_distance_sensor_data(sensor_name : String) return distance_sensor_t is
+   function get_distance_sensor_data(sensor_name : String) return Long_Float is
       ring_index : Standard.Integer;
-      head_index : Standard.Integer;
-
+      --head_index : RingIndex;
+      --vec_output : distance_sensor_Ring.Element_Vector.Vector;
+      ds : distance_sensor_t;
    begin
+      --Put_Line("GET distance_sensor_data");
       ring_index := get_ring_index(sensor_name);
-      head_index := Standard.Integer(sensor_ring(ring_index).getHead);
-      return sensor_ring(ring_index).get(0);
+      --Put_Line("GET ring_index " & Standard.Integer'Image(ring_index));
+
+      --vec_output := sensor_ring(ring_index).get_elements;
+
+      --return vec_output.Element(Index => vec_output.First_Index);
+      return sensor_ring(ring_index).distance;
    end;
 
    procedure set_motor_sensor_data(sensor_name : String; velocity : Long_Float) is
@@ -49,7 +57,9 @@ package body WC2EC is
          end loop;
          Put_Line("!");
          sensor_map.Insert (Ada.Strings.Fixed.Head(Buffer,Standard.Integer(num)), hdr.sensor_id);
-      sensor_ring(Standard.Integer(hdr.sensor_id)) := new distance_sensor_Ring.RingBuffer;
+      --sensor_ring(Standard.Integer(hdr.sensor_id)) := new distance_sensor_Ring.RingBuffer;
+         --sensor_ring(Standard.Integer(hdr.sensor_id)) := new distance_sensor_t;
+      Put_Line("created map entry and sensor ring for " & Standard.Integer'Image(Standard.Integer(hdr.sensor_id)));
    end;
 
    procedure sensor_data(Channel : Stream_Access; hdr : wc2ec_header_t) is
@@ -57,8 +67,13 @@ package body WC2EC is
 
    begin
       distance_sensor_t'Read (Channel, ds);
-      Ada.Text_IO.Put_Line (Long_Float'Image (ds.distance));
-      sensor_ring(Standard.Integer(hdr.sensor_id)).push(ds);
+      --Ada.Text_IO.Put_Line (Long_Float'Image (ds.distance));
+      --Put_Line("PRE");
+      --sensor_ring(Standard.Integer(hdr.sensor_id)).print;
+      --sensor_ring(Standard.Integer(hdr.sensor_id)).push(ds);
+      sensor_ring(Standard.Integer(hdr.sensor_id)).distance := ds.distance;
+      --Put_Line("Post");
+      --sensor_ring(Standard.Integer(hdr.sensor_id)).print;
    end;
 
    procedure print_WC2EC_header(hdr : wc2ec_header_t) is
@@ -103,7 +118,7 @@ Task body wc2ec_thread_t is
    while TRUE loop
       wc2ec_header_t'Read (Channel, hdr);
 
-       print_WC2EC_header(hdr);
+
        -- Todo replace with a switch
        if (hdr.command = CMD_REGISTER_SENSOR) then
             register_sensor(Channel, hdr);
