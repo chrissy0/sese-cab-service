@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.005600617361441347 0.9910022191537285 0.13372821212278274 3.1310439471209515
-  position 0.6536810577769783 0.12251857160635701 2.56963398296034
+  orientation -0.22403293509452474 0.9501555696187227 0.2168262841895624 1.6329901886879143
+  position 1.059559240465283 0.22800307037614786 2.9520452554282874
   follow "robot"
 }
 TexturedBackground {
@@ -670,6 +670,62 @@ Robot {
         }
       ]
       name "dist_c"
+    }
+    DistanceSensor {
+      translation -0.0499975 0.0100112 -0.00499715
+      rotation 3.537569995542025e-05 0.99999999873982 3.562189995511e-05 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_right"
+    }
+    DistanceSensor {
+      translation 0.0500025 0.010004 -0.00499677
+      rotation -0.7089590152377839 0.040980800880807744 0.7040580151324458 -0.0001053071795862337
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_left"
+    }
+    DistanceSensor {
+      translation 0.0500025 0.0100033 0.00500323
+      rotation -0.7089590152377839 0.040980800880807744 0.7040580151324458 -0.0001053071795862337
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_left2"
+    }
+    DistanceSensor {
+      translation -0.0499975 0.0100105 0.0050028
+      rotation 3.537569995542025e-05 0.99999999873982 3.562189995511e-05 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_right2"
     }
     DistanceSensor {
       translation 1.42284e-06 5.04072e-11 0.105002
@@ -1748,159 +1804,6 @@ DEF line Solid {
     }
   ]
   name "line(59)"
-}
-DEF line Solid {
-  translation 0.286521 0.0001 0.019281
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(138)"
-}
-DEF line Solid {
-  translation 0.286521 0.0001 -0.180719
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(139)"
-}
-DEF line Solid {
-  translation 0.286521 0.0001 -0.380719
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(140)"
-}
-DEF road_marker Solid {
-  translation 0.326522 0.0001 -0.150717
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker"
-}
-DEF road_marker Solid {
-  translation 0.246522 0.0001 -0.150717
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(4)"
-}
-DEF road_marker Solid {
-  translation 0.326522 0.0001 -0.110717
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(1)"
-}
-DEF road_marker Solid {
-  translation 0.246522 0.0001 -0.040716
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(2)"
-}
-DEF road_marker Solid {
-  translation 0.326522 0.0001 -0.000716748
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(3)"
-}
-DEF road_marker Solid {
-  translation 0.246522 0.0001 -0.000716
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(5)"
 }
 DEF road_marker Solid {
   translation 0.316522 0.0001 0.649284
@@ -3535,74 +3438,6 @@ DEF road_marker Solid {
   name "road marker(45)"
 }
 DEF line Solid {
-  translation 0.286521 0.0001 -0.580719
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(141)"
-}
-DEF line Solid {
-  translation 0.286521 0.0001 -0.780719
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(142)"
-}
-DEF line Solid {
-  translation 0.286521 0.0001 -0.980719
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(143)"
-}
-DEF line Solid {
-  translation 0.286521 0.0001 -1.18072
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(144)"
-}
-DEF line Solid {
   translation 0.486521 0.0001 0.319281
   rotation 0 1 0 -3.1415853071795863
   children [
@@ -4510,7 +4345,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.903117 -0.0299 3.06881
+  translation 0.903117 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -4530,7 +4365,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.703117 -0.0299 3.06881
+  translation 0.703117 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -4550,7 +4385,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.503117 -0.0299 3.06881
+  translation 0.503117 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -4570,7 +4405,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.303117 -0.0299 3.06881
+  translation 0.303117 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -4590,7 +4425,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.103117 -0.0299 3.06881
+  translation 0.103117 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -4610,7 +4445,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.096883 -0.0299 3.06881
+  translation -0.096883 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -4890,7 +4725,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.68668 -0.0299 1.291
+  translation 1.68668 0.0201 1.291
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -4910,7 +4745,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.68668 -0.0299 1.491
+  translation 1.68668 0.0201 1.491
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -4930,7 +4765,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.68668 -0.0299 1.691
+  translation 1.68668 0.0201 1.691
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -4950,7 +4785,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.68668 -0.0299 1.891
+  translation 1.68668 0.0201 1.891
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -4970,7 +4805,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.68668 -0.0299 2.091
+  translation 1.68668 0.0201 2.091
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -4990,7 +4825,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.68668 -0.0299 2.291
+  translation 1.68668 0.0201 2.291
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -5070,7 +4905,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.9249 -0.0299 1.341
+  translation -0.9249 0.0201 1.341
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -5090,7 +4925,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.9249 -0.0299 1.541
+  translation -0.9249 0.0201 1.541
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -5110,7 +4945,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.9249 -0.0299 1.741
+  translation -0.9249 0.0201 1.741
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -5130,7 +4965,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.9249 -0.0299 1.941
+  translation -0.9249 0.0201 1.941
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -5150,7 +4985,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.9249 -0.0299 2.141
+  translation -0.9249 0.0201 2.141
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -5170,7 +5005,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.9249 -0.0299 2.261
+  translation -0.9249 0.0201 2.261
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -5890,7 +5725,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.856957 -0.0299 3.11917
+  translation 0.856957 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -5910,7 +5745,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.656957 -0.0299 3.11917
+  translation 0.656957 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -5930,7 +5765,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.456957 -0.0299 3.11917
+  translation 0.456957 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -5950,7 +5785,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.256957 -0.0299 3.11917
+  translation 0.256957 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -5970,7 +5805,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.056957 -0.0299 3.11917
+  translation 0.056957 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -5990,7 +5825,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.073043 -0.0299 3.11917
+  translation -0.073043 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -6810,7 +6645,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.72583 -0.0299 1.31918
+  translation 1.72583 0.0201 1.31918
   rotation 0 1 0 1.57081
   children [
     Shape {
@@ -6830,7 +6665,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.72583 -0.0299 1.51918
+  translation 1.72583 0.0201 1.51918
   rotation 0 1 0 1.57081
   children [
     Shape {
@@ -6850,7 +6685,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.72583 -0.0299 1.71918
+  translation 1.72583 0.0201 1.71918
   rotation 0 1 0 1.57081
   children [
     Shape {
@@ -6870,7 +6705,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.72583 -0.0299 1.91918
+  translation 1.72583 0.0201 1.91918
   rotation 0 1 0 1.57081
   children [
     Shape {
@@ -6890,7 +6725,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.72583 -0.0299 2.11918
+  translation 1.72583 0.0201 2.11918
   rotation 0 1 0 1.57081
   children [
     Shape {
@@ -6910,7 +6745,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.72583 -0.0299 2.25918
+  translation 1.72583 0.0201 2.25918
   rotation 0 1 0 1.57081
   children [
     Shape {
@@ -7250,7 +7085,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.89267 -0.0299 1.30998
+  translation -0.89267 0.0201 1.30998
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -7270,7 +7105,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.89267 -0.0299 1.50998
+  translation -0.89267 0.0201 1.50998
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -7290,7 +7125,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.89267 -0.0299 1.70998
+  translation -0.89267 0.0201 1.70998
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -7310,7 +7145,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.89267 -0.0299 1.90998
+  translation -0.89267 0.0201 1.90998
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -7330,7 +7165,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.89267 -0.0299 2.10998
+  translation -0.89267 0.0201 2.10998
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -7350,7 +7185,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.89267 -0.0299 2.28998
+  translation -0.89267 0.0201 2.28998
   rotation 0 -1 0 1.57079
   children [
     Shape {
@@ -7410,7 +7245,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.88652 -0.0299 0.489283
+  translation 0.88652 0.0201 0.489283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7430,7 +7265,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.68652 -0.0299 0.489283
+  translation 0.68652 0.0201 0.489283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7450,7 +7285,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.48652 -0.0299 0.489283
+  translation 0.48652 0.0201 0.489283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7470,7 +7305,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.28652 -0.0299 0.489283
+  translation 0.28652 0.0201 0.489283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7490,7 +7325,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.0865199 -0.0299 0.489283
+  translation 0.0865199 0.0201 0.489283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7510,7 +7345,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.07348 -0.0299 0.489283
+  translation -0.07348 0.0201 0.489283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7530,7 +7365,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.84652 -0.0299 0.439283
+  translation 0.84652 0.0201 0.439283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7550,7 +7385,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.64652 -0.0299 0.439284
+  translation 0.64652 0.0201 0.439284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7570,7 +7405,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.44652 -0.0299 0.439285
+  translation 0.44652 0.0201 0.439285
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7590,7 +7425,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.24652 -0.0299 0.439285
+  translation 0.24652 0.0201 0.439285
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7610,7 +7445,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.0465197 -0.0299 0.439285
+  translation 0.0465197 0.0201 0.439285
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7630,7 +7465,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.0334802 -0.0299 0.439285
+  translation -0.0334802 0.0201 0.439285
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -7650,7 +7485,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.968365 -0.0299 0.460792
+  translation 0.968365 0.0201 0.460792
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -7670,7 +7505,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.71079 -0.0299 1.20322
+  translation 1.71079 0.0201 1.20322
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -7690,7 +7525,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.70516 -0.0299 2.36836
+  translation 1.70516 0.0201 2.36836
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -7710,7 +7545,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.976916 -0.0299 3.0966
+  translation 0.976916 0.0201 3.0966
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -7730,7 +7565,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.150718 -0.0299 0.467864
+  translation -0.150718 0.0201 0.467864
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -7750,7 +7585,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.907316 -0.0299 1.22446
+  translation -0.907316 0.0201 1.22446
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -7770,7 +7605,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.908901 -0.0299 2.37196
+  translation -0.908901 0.0201 2.37196
   rotation 0 -1 0 -2.3562053071795863
   children [
     Shape {
@@ -7790,7 +7625,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.180582 -0.0299 3.10021
+  translation -0.180582 0.0201 3.10021
   rotation 0 -1 0 -2.3562053071795863
   children [
     Shape {
