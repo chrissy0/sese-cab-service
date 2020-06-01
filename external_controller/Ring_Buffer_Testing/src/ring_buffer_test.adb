@@ -238,6 +238,7 @@ package body Ring_Buffer_Test is
             tmp := tmp - 1;
          end loop;
       end loop;
+     -- Assert (False, "False here!");
 
    end Test_Get_Elements;
 

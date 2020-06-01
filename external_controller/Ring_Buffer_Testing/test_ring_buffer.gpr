@@ -1,5 +1,5 @@
 with "aunit.gpr";
-with "..\Ring_Buffer\ring_buffer.gpr";
+with "../Ring_Buffer/ring_buffer.gpr";
 
 project Test_Ring_Buffer is
 
@@ -9,5 +9,8 @@ project Test_Ring_Buffer is
    for Exec_Dir use ".";
    for Object_Dir use "obj";
 
+   package Check is
+      for Default_Switches ("ada") use ("-rules", "-from=coding_standard");
+   end Check;
 end Test_Ring_Buffer;
 
