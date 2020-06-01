@@ -4,6 +4,8 @@ with Ring_Buffer;
 
 package body Ring_Buffer_Test is
 
+   procedure printInt (a : Integer);
+
    procedure printInt (a : Integer) is
    begin
       Put (a'Image);
@@ -16,7 +18,7 @@ package body Ring_Buffer_Test is
 
    procedure Test_Push_Get (T : in out Test) is
       pragma Unreferenced (T);
-      r            : RingBuffer_Access := new Ring.RingBuffer;
+      r            : constant RingBuffer_Access := new Ring.RingBuffer;
       index        : RingIndex         := 0;
       value        : Integer           := 0;
       value_nested : Integer           := 0;
@@ -34,7 +36,7 @@ package body Ring_Buffer_Test is
         (r.getTail = 0,
          "After reset: Tail points to " & r.getTail'Image & ", expected 0");
 
-      -- fill up ring buffer
+      --  fill up ring buffer
       for I in RingIndex loop
          r.push (value);
          r.peek_blocking (value_nested);
@@ -82,7 +84,7 @@ package body Ring_Buffer_Test is
          index := index + 1;
       end loop;
 
-      -- override values in ring buffer
+      --  override values in ring buffer
       for I in RingIndex loop
          r.push (value);
          r.peek_blocking (value_nested);
@@ -109,7 +111,7 @@ package body Ring_Buffer_Test is
             "Second Round Pushes: Push " & I'Image & ": Tail points to " &
             r.getTail'Image & ", expected " & index'Image & " + 1");
 
-         -- set up value nested to max:
+         --  set up value nested to max:
          value_tmp    := 0;
          value_nested := 16;
          for J in RingIndex loop
@@ -133,7 +135,7 @@ package body Ring_Buffer_Test is
          index := index + 1;
       end loop;
 
-      -- empty ring buffer
+      --  empty ring buffer
       value := 15;
       for I in RingIndex loop
          r.removeLast;
@@ -167,7 +169,7 @@ package body Ring_Buffer_Test is
             "Third Round: removeLast " & I'Image & ": Tail points to " &
             r.getTail'Image & ", expected " & index'Image & " + 1");
 
-         -- set up value nested to max:
+         --  set up value nested to max:
          value_tmp    := 0;
          value_nested := value;
          if (value /= 0) then
@@ -184,7 +186,7 @@ package body Ring_Buffer_Test is
          index := index + 1;
       end loop;
 
-      --Assert (False, "This should fail!");
+      --  Assert (False, "This should fail!");
    end Test_Push_Get;
 
    type Element_Array is array (Natural) of Integer;
@@ -238,7 +240,7 @@ package body Ring_Buffer_Test is
             tmp := tmp - 1;
          end loop;
       end loop;
-     -- Assert (False, "False here!");
+      --  Assert (False, "False here!");
 
    end Test_Get_Elements;
 

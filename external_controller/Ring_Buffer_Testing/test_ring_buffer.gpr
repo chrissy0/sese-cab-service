@@ -12,5 +12,9 @@ project Test_Ring_Buffer is
    package Check is
       for Default_Switches ("ada") use ("-rules", "-from=coding_standard");
    end Check;
+   package Compiler is
+   for Default_Switches ("ada") use
+     ("-g", "-gnatQ", "-O1", "-gnatf", "-gnato", "-gnaty", "-gnat12");
+   end Compiler;
 end Test_Ring_Buffer;
 
