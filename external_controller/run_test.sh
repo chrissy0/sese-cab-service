@@ -1,6 +1,6 @@
 #!/bin/sh
 echo $PATH
-gprbuild --version
+/usr/bin/gprbuild --version
 
 
 if [ -z "$1" ]; then
