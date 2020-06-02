@@ -11,6 +11,7 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
+  controllerArgs "27015"
   translation 0.712842 0.0380127 2.94435
   rotation 0.0018679107251753212 0.9999963882266387 0.0019324707502393333 -1.5721053071795863
   children [
@@ -708,7 +709,7 @@ Robot {
   boundingObject USE BODY
   physics Physics {
   }
-  controller "controller"
+  controller "WC2EC_Controller"
 }
 DEF dummy Robot {
   translation 1.17493 0.04417 1.22104
