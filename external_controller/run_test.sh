@@ -1,6 +1,6 @@
 #!/bin/sh
-gprbuild --version
 echo $PATH
+gprbuild --version
 
 if [ -z "$1" ]; then
 	echo "Usage: $0 GPR_FILE_WITHOUT_ENDING"
