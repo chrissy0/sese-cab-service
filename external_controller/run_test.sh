@@ -1,6 +1,8 @@
 #!/bin/bash
 echo $PATH
 /usr/bin/gprbuild --version
+touch test
+cat test
 
 
 if [ -z "$1" ]; then
