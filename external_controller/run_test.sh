@@ -1,7 +1,7 @@
 #!/bin/bash
 echo $PATH
 /usr/bin/gprbuild --version
-touch test
+echo "test" > test
 cat test
 
 
