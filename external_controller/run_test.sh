@@ -1,10 +1,4 @@
-#!/bin/bash
-echo $PATH
-/usr/bin/gprbuild --version
-echo "test" > test
-cat test
-
-
+#!/bin/sh
 if [ -z "$1" ]; then
 	echo "Usage: $0 GPR_FILE_WITHOUT_ENDING"
 	echo "Example: $0 Ring_Buffer_Testing/test_ring_buffer"
