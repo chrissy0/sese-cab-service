@@ -1,0 +1,13 @@
+version: '3'
+services:
+  jenkins:
+    restart: unless-stopped
+    build: '.'
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    environment:
+      - JAVA_OPTS=-Xmx820m
+    volumes:
+      - /home/jenkins:/var/jenkins_home
+    container_name: jenkins-with-packages
