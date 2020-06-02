@@ -28,7 +28,7 @@ begin
       delay 1.0;
    end loop;
 
-   for I in 0..200000 loop
+   while true loop
       rc := Webots_Function.follow_Line(6.0, leftSpeed, rightSpeed);
       if (leftSpeed_old /= leftSpeed) then
          WC2EC.set_motor_sensor_data("wheel1", leftSpeed);
