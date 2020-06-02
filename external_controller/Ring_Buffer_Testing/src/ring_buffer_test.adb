@@ -27,7 +27,7 @@ package body Ring_Buffer_Test is
    begin
       r.reset;
 
-      Assert (not r.isEmpty, "After reset: Ring is not empty, expected empty");
+      Assert (r.isEmpty, "After reset: Ring is not empty, expected empty");
       Assert (not r.isFull, "After reset: Ring is full, expected not full");
       Assert
         (r.getHead = 0,
