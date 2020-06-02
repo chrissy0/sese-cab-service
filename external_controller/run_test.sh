@@ -1,5 +1,5 @@
 #!/bin/sh
-ls /usr/bin | grep gpr
+ll /usr/bin
 echo $PATH
 /usr/bin/gprbuild --version
 
