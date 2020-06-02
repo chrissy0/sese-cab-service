@@ -53,6 +53,7 @@ package WC2EC is
    sensor_map :  sensor_map_p.Map;
    sensor_ring : sensor_ring_access_t;
    Channel : Stream_Access; -- socket I/O interface
+   ready : Boolean := false;
    -- TODO Create init function, set this bool, check in the external functions initialized : Boolean;
 
    -- functions

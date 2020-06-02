@@ -15,12 +15,9 @@ package body WC2EC is
       ring_index : Standard.Integer;
       --head_index : RingIndex;
       --vec_output : distance_sensor_Ring.Element_Vector.Vector;
-      ds : distance_sensor_t;
    begin
-      --Put_Line("GET distance_sensor_data");
-      ring_index := get_ring_index(sensor_name);
-      --Put_Line("GET ring_index " & Standard.Integer'Image(ring_index));
 
+      ring_index := get_ring_index(sensor_name);
       --vec_output := sensor_ring(ring_index).get_elements;
 
       --return vec_output.Element(Index => vec_output.First_Index);
@@ -57,7 +54,7 @@ package body WC2EC is
          end loop;
          Put_Line("!");
          sensor_map.Insert (Ada.Strings.Fixed.Head(Buffer,Standard.Integer(num)), hdr.sensor_id);
-      --sensor_ring(Standard.Integer(hdr.sensor_id)) := new distance_sensor_Ring.RingBuffer;
+         --sensor_ring(Standard.Integer(hdr.sensor_id)) := new distance_sensor_Ring.RingBuffer;
          --sensor_ring(Standard.Integer(hdr.sensor_id)) := new distance_sensor_t;
       Put_Line("created map entry and sensor ring for " & Standard.Integer'Image(Standard.Integer(hdr.sensor_id)));
    end;
@@ -125,6 +122,7 @@ Task body wc2ec_thread_t is
        end if;
 
        if (hdr.command = CMD_SENSOR_DATA) then
+            ready := true;
             sensor_data(Channel, hdr);
        end if;
 
