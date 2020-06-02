@@ -31,10 +31,10 @@ package body Ring_Buffer_Test is
       Assert (not r.isFull, "After reset: Ring is full, expected not full");
       Assert
         (r.getHead = 0,
-         "After reset: Head points to " & r.getHead'Image & ", expected 0");
+         "After reset: Head points to " & RingIndex'Image(r.getHead) & ", expected 0");
       Assert
         (r.getTail = 0,
-         "After reset: Tail points to " & r.getTail'Image & ", expected 0");
+         "After reset: Tail points to " & RingIndex'Image(r.getTail) & ", expected 0");
 
       --  fill up ring buffer
       for I in RingIndex loop
@@ -65,11 +65,11 @@ package body Ring_Buffer_Test is
          Assert
            (r.getHead = I + 1,
             "First Round Pushes: Push " & I'Image & ": Head points to " &
-            r.getHead'Image & ", expected " & I'Image & " + 1");
+            RingIndex'Image(r.getHead) & ", expected " & I'Image & " + 1");
          Assert
            (r.getTail = 0,
             "First Round Pushes: Push " & I'Image & ": Tail points to " &
-            r.getTail'Image & ", expected 0");
+            RingIndex'Image(r.getTail) & ", expected 0");
          value_nested := 0;
          for J in 0 .. I loop
 
@@ -105,11 +105,11 @@ package body Ring_Buffer_Test is
          Assert
            (r.getHead = index + 1,
             "Second Round Pushes: Push " & I'Image & ": Head points to " &
-            r.getHead'Image & ", expected " & index'Image & " + 1");
+            RingIndex'Image(r.getHead) & ", expected " & index'Image & " + 1");
          Assert
            (r.getTail = index + 1,
             "Second Round Pushes: Push " & I'Image & ": Tail points to " &
-            r.getTail'Image & ", expected " & index'Image & " + 1");
+            RingIndex'Image(r.getTail) & ", expected " & index'Image & " + 1");
 
          --  set up value nested to max:
          value_tmp    := 0;
@@ -163,11 +163,11 @@ package body Ring_Buffer_Test is
          Assert
            (r.getHead = 0,
             "Third Round: removeLast " & I'Image & ": Head points to " &
-            r.getHead'Image & ", expected 0");
+            RingIndex'Image(r.getHead) & ", expected 0");
          Assert
            (r.getTail = index + 1,
             "Third Round: removeLast " & I'Image & ": Tail points to " &
-            r.getTail'Image & ", expected " & index'Image & " + 1");
+            RingIndex'Image(r.getTail) & ", expected " & index'Image & " + 1");
 
          --  set up value nested to max:
          value_tmp    := 0;
