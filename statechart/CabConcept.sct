@@ -157,13 +157,13 @@
         </regions>
         <regions xmi:id="_WTYkyKc0Eequr_d844pchg" name="roadmarker">
           <vertices xsi:type="sgraph:State" xmi:id="_WTq5Iac0Eequr_d844pchg" specification="" name="wait for marker" incomingTransitions="_WTq4-Kc0Eequr_d844pchg _WTq4zac0Eequr_d844pchg">
-            <outgoingTransitions xmi:id="_WTujvac0Eequr_d844pchg" specification="[ir_marker.out_fl == 0 &amp;&amp; ir_marker.out_fr == 0 || ir_marker.out_fl == 0 &amp;&amp; ir_marker.out_bl == 0 || ir_marker.out_fl == 0 &amp;&amp; ir_marker.out_br == 0 ||&#xD;&#xA;&#x9;ir_marker.out_fr == 0 &amp;&amp;&#x9;ir_marker.out_bl == 0 || ir_marker.out_fr == 0 &amp;&amp; ir_marker.out_br == 0 ||&#xD;&#xA;&#x9;ir_marker.out_bl == 0 &amp;&amp; ir_marker.out_br == 0]" target="_WTYk1ac0Eequr_d844pchg"/>
-            <outgoingTransitions xmi:id="_WTq5Lac0Eequr_d844pchg" specification="[ir_marker.out_fr &lt; marker_tresh &amp;&amp;&#x9;ir_marker.out_bl &lt; marker_tresh &amp;&amp; ir_marker.out_br &lt; marker_tresh ||&#xD;&#xA;&#x9;ir_marker.out_fl &lt; marker_tresh &amp;&amp; ir_marker.out_bl &lt; marker_tresh &amp;&amp;&#x9;ir_marker.out_br &lt; marker_tresh ||&#xD;&#xA;&#x9;ir_marker.out_fl &lt; marker_tresh &amp;&amp; ir_marker.out_fr &lt; marker_tresh &amp;&amp;&#x9;ir_marker.out_br &lt; marker_tresh ||&#xD;&#xA;&#x9;ir_marker.out_fl &lt; marker_tresh &amp;&amp; ir_marker.out_fr &lt; marker_tresh &amp;&amp;&#x9;ir_marker.out_bl &lt; marker_tresh]" target="_WTerc6c0Eequr_d844pchg"/>
+            <outgoingTransitions xmi:id="_YR9C6ac3Eequr_d844pchg" specification="[ir_marker.out_fl &lt; marker_tresh &amp;&amp;&#xD;&#xA;&#x9;ir_marker.out_fr &lt; marker_tresh &amp;&amp;&#xD;&#xA;&#x9;ir_marker.out_bl &lt; marker_tresh &amp;&amp;&#xD;&#xA;&#x9;ir_marker.out_br &lt; marker_tresh]" target="_WTerc6c0Eequr_d844pchg"/>
+            <outgoingTransitions xmi:id="_WTujvac0Eequr_d844pchg" specification="[ir_marker.out_fl == 0 || ir_marker.out_fr == 0 ||&#xD;&#xA;&#x9;ir_marker.out_bl == 0 || ir_marker.out_br == 0]" target="_WTYk1ac0Eequr_d844pchg"/>
           </vertices>
           <vertices xsi:type="sgraph:Entry" xmi:id="_WTq4zKc0Eequr_d844pchg">
             <outgoingTransitions xmi:id="_WTq4-Kc0Eequr_d844pchg" specification=" / marker_tresh = 10" target="_WTq5Iac0Eequr_d844pchg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_WTerc6c0Eequr_d844pchg" specification="entry / current_marker = ir_marker.bin_nr" name="reading marker" incomingTransitions="_WTq5Lac0Eequr_d844pchg">
+          <vertices xsi:type="sgraph:State" xmi:id="_WTerc6c0Eequr_d844pchg" specification="entry / current_marker = ir_marker.bin_nr" name="reading marker" incomingTransitions="_YR9C6ac3Eequr_d844pchg">
             <outgoingTransitions xmi:id="_WTq4zac0Eequr_d844pchg" specification="[ir_marker.out_fl > marker_tresh ||&#xD;&#xA;&#x9;ir_marker.out_fr > marker_tresh ||&#xD;&#xA;&#x9;ir_marker.out_bl > marker_tresh ||&#xD;&#xA;&#x9;ir_marker.out_br > marker_tresh]" target="_WTq5Iac0Eequr_d844pchg"/>
             <regions xmi:id="_WTerjqc0Eequr_d844pchg" name="desicion">
               <vertices xsi:type="sgraph:State" xmi:id="_WTkyqKc0Eequr_d844pchg" name="read" incomingTransitions="_WTkykqc0Eequr_d844pchg">
@@ -1703,6 +1703,17 @@
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_4jdDUKGwEeqGad6sf22zyQ" id="(0.42028985507246375,0.0)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_4jdDUaGwEeqGad6sf22zyQ" id="(0.9844961240310077,0.5283018867924528)"/>
     </edges>
+    <edges xmi:id="_YR9C4Kc3Eequr_d844pchg" type="Transition" element="_YR9C6ac3Eequr_d844pchg" source="_WTq5A6c0Eequr_d844pchg" target="_WTerZ6c0Eequr_d844pchg">
+      <children xsi:type="notation:DecorationNode" xmi:id="_YR9C5qc3Eequr_d844pchg" type="TransitionExpression">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_YR9C6Kc3Eequr_d844pchg"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_YR9C56c3Eequr_d844pchg" x="179" y="65"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_YR9C5ac3Eequr_d844pchg" routing="Rectilinear" lineColor="4210752"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_YR9C5Kc3Eequr_d844pchg" fontName="Verdana"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_YR9C46c3Eequr_d844pchg" points="[39, -13, -552, -133]$[252, -13, -339, -133]$[252, 105, -339, -15]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_YR9C4qc3Eequr_d844pchg" id="(0.6721311475409836,1.0)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_YR9C4ac3Eequr_d844pchg" id="(0.7163728874765362,0.02822929155459385)"/>
+    </edges>
     <edges xmi:id="_WTq5GKc0Eequr_d844pchg" type="Transition" element="_WTq4zac0Eequr_d844pchg" source="_WTerZ6c0Eequr_d844pchg" target="_WTq5A6c0Eequr_d844pchg">
       <children xsi:type="notation:DecorationNode" xmi:id="_WTq5Gac0Eequr_d844pchg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_WTq5H6c0Eequr_d844pchg"/>
@@ -1805,7 +1816,7 @@
     <edges xmi:id="_WTujtKc0Eequr_d844pchg" type="Transition" element="_WTujvac0Eequr_d844pchg" source="_WTq5A6c0Eequr_d844pchg" target="_WTYkyac0Eequr_d844pchg">
       <children xsi:type="notation:DecorationNode" xmi:id="_WTujuqc0Eequr_d844pchg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_WTujvKc0Eequr_d844pchg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_WTuju6c0Eequr_d844pchg" x="336" y="-484"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_WTuju6c0Eequr_d844pchg" x="344" y="-167"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_WTujuac0Eequr_d844pchg" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_WTujuKc0Eequr_d844pchg" fontName="Verdana"/>
@@ -2228,17 +2239,6 @@
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_WTkyrqc0Eequr_d844pchg" points="[0, -27, 303, -189]$[-295, -27, 8, -189]$[-295, 156, 8, -6]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_WTkyrac0Eequr_d844pchg" id="(0.0,0.8113207547169812)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_WTkyrKc0Eequr_d844pchg" id="(0.08333333333333333,0.09090909090909091)"/>
-    </edges>
-    <edges xmi:id="_WTq5JKc0Eequr_d844pchg" type="Transition" element="_WTq5Lac0Eequr_d844pchg" source="_WTq5A6c0Eequr_d844pchg" target="_WTerZ6c0Eequr_d844pchg">
-      <children xsi:type="notation:DecorationNode" xmi:id="_WTq5Kqc0Eequr_d844pchg" type="TransitionExpression">
-        <styles xsi:type="notation:ShapeStyle" xmi:id="_WTq5LKc0Eequr_d844pchg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_WTq5K6c0Eequr_d844pchg" x="381" y="100"/>
-      </children>
-      <styles xsi:type="notation:ConnectorStyle" xmi:id="_WTq5Kac0Eequr_d844pchg" routing="Rectilinear" lineColor="4210752"/>
-      <styles xsi:type="notation:FontStyle" xmi:id="_WTq5KKc0Eequr_d844pchg" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_WTq5J6c0Eequr_d844pchg" points="[0, -26, -278, -146]$[172, -26, -106, -146]$[172, 112, -106, -8]"/>
-      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_WTq5Jqc0Eequr_d844pchg" id="(1.0,0.8679245283018868)"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_WTq5Jac0Eequr_d844pchg" id="(0.4080717488789238,0.01607142857142857)"/>
     </edges>
     <edges xmi:id="_lbA9IacyEequr_d844pchg" type="Transition" element="_lbA9IKcyEequr_d844pchg" source="_kbNtAKcyEequr_d844pchg" target="_ioNeU6cyEequr_d844pchg">
       <children xsi:type="notation:DecorationNode" xmi:id="_lbA9JacyEequr_d844pchg" type="TransitionExpression">
