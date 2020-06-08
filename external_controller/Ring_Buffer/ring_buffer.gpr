@@ -1,0 +1,12 @@
+project Ring_Buffer is
+
+   for Source_Dirs use ("src");
+   for Languages use ("Ada");
+   for Object_Dir use "obj";
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-g", "-O1", "-gnata");
+   end Compiler;
+
+end Ring_Buffer;
+
