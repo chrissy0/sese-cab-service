@@ -4,7 +4,7 @@ package body Motor_Controller is
 
    procedure front_clear_state is
    begin
-      Put_Line("Entering front_clear");
+      Put_Line ("Entering front_clear");
       while True loop
          null;
       end loop;
@@ -13,62 +13,71 @@ package body Motor_Controller is
 
    procedure front_blocked_state is
    begin
-      Put_Line("Entering front_blocked");
+      Put_Line ("Entering front_blocked");
    end front_blocked_state;
-
 
    ---------------------------
    -- Motor_Controller_Task --
    ---------------------------
 
    task body Motor_Controller_Task is
-      is_System_Error_Access : System_Error_Access := new System_Error.Synchronized_Data_T;
-      is_System_Error_New_Value : Boolean;
-      is_Front_Blocked_Access : Front_Blocked_Access := new Front_Blocked.Synchronized_Data_T;
-      is_Front_Blocked_New_Value : Boolean;
-
-
-      procedure no_system_error_state is
-      begin
-         loop
-            select
-               is_Front_Blocked_Access.wait_Change(is_Front_Blocked_New_Value);
-               Put_Line("Got new value in motor thread for is_front_blocked");
-            then abort
-               Put_Line("Entering new front state...");
-               case is_Front_Blocked_Access.peek is
-                  when False => Put_Line("Entering front_clear");
-                  when True => Put_Line("Entering front_blocked");
-               end case;
-               Put_Line("is_System_Error_Access.is_change_value: " & Boolean'Image(is_System_Error_Access.get_is_changed_value));
-               Put_Line("is_System_Error_value: " &  Boolean'Image(is_System_Error_Access.peek));
-               Put_Line("is_Front_Blocked_Access.is_change_value: " & Boolean'Image(is_Front_Blocked_Access.get_is_changed_value));
-               Put_Line("is_Fron_Blocked_value: " &  Boolean'Image(is_Front_Blocked_Access.peek));
-               loop
-                  delay 10.0;
-               end loop;
-            end select;
-      end loop;
-      end no_system_error_state;
-
+      Front_Clear   : Boolean := False;
+      System_Error  : Boolean := False;
+      no_new_signal : Boolean := False;
    begin
-      is_System_Error_Access.init(False);
-      is_Front_Blocked_Access.init(False);
-      accept Construct (is_System_Error_Access_Copy : out System_Error_Access;
-                     is_Front_Blocked_Access_Copy : out Front_Blocked_Access) do
-         is_System_Error_Access_Copy := is_System_Error_Access;
-         is_Front_Blocked_Access_Copy := is_Front_Blocked_Access;
-      end Construct;
 
-      select
-         is_System_Error_Access.wait_Change(is_System_Error_New_Value);
-         Put_Line("Got new value in motor thread for system_error");
-         Put_Line("Entering system_error");
-      then abort
-         Put_Line("Entering no_system_error");
-         no_system_error_state;
-      end select;
-      Put_Line("Entering system_error");
+      accept Construct;
+      while True loop
+         -- Output Signals depending on State
+         case System_Error is
+            when True =>
+               loop
+                  null;
+
+               end loop;
+
+            when False =>
+               case Front_Clear is
+
+                  when True =>
+                     Put_Line ("front_blocked_State");
+                  when False =>
+                     Put_Line ("front_clear State");
+               end case;
+
+         end case;
+         -- Look for Signals to change Transition Priorities realized by order
+         -- of selects
+
+         -- look for all signals -> order not set Break when every task raised
+         -- one signal or raised fin
+         select
+            accept System_Error_State_R do
+               System_Error := True;
+               Put_Line ("Switch to System_Error");
+            end System_Error_State_R;
+         or
+            accept Change_Front_State_R do
+               Front_Clear := not Front_Clear;
+               Put_Line ("Switch to front_clear = " & Front_Clear'Image);
+            end Change_Front_State_R;
+         or
+            accept main_done do
+               Put_Line ("no new signal from main");
+               null;
+            end main_done;
+         end select;
+
+         Put_Line ("Signaling main to start next iteration");
+         -- Signal all tasks to unless it is system_error
+         if not System_Error then
+            accept main_next do
+               null;
+            end main_next;
+         end if;
+
+      end loop;
+
    end Motor_Controller_Task;
 
 end Motor_Controller;
