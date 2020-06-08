@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Current rides ..</h1>
-    <table class="table">
+    <table *ngIf="jobsActive()" class="table">
         <thead>
         <tr>
             <th>
@@ -12,14 +12,21 @@
             <th>
                 End Station
             </th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let job of jobs">
+        <tr *ngFor="let job of jobs; let i = index">
             <td>{{job.id}}</td>
             <td>{{job.start}}</td>
             <td>{{job.end}}</td>
+            <td>
+                <fa-icon (click)="deleteJob(i)" [icon]="trashIcon"></fa-icon>
+            </td>
         </tr>
         </tbody>
     </table>
+    <div *ngIf="!jobsActive()" class="alert alert-info">
+        Currently, <strong>no jobs</strong> are active.
+    </div>
 </div>
