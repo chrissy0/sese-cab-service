@@ -43,12 +43,12 @@ public class CabLocationServiceTest {
 
         List<CabLocationEntity> locations = service.getAllCabLocations();
 
+        verify(repo).findAll();
+        verifyNoMoreInteractions(repo);
+
         assertThat(locations)
                 .usingRecursiveFieldByFieldElementComparator()
                 .containsExactly(entity1, entity2);
-
-        verify(repo).findAll();
-        verifyNoMoreInteractions(repo);
     }
 
     @Test
