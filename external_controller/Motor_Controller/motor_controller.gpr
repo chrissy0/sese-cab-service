@@ -1,0 +1,10 @@
+with "..\Synchronized_Data\synchronized_data.gpr";
+
+project Motor_Controller is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Main use ("main.adb");
+
+end Motor_Controller;
+

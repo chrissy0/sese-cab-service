@@ -1,6 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-procedure Tets_Asynchronous is
+procedure Test_Asynchronous is
    task type T_T is
       entry ReadUserInput; -- Signal
    end T_T;
@@ -33,4 +33,4 @@ begin
    Put_Line("aborted");
 
    null;
-end Tets_Asynchronous;
+end Test_Asynchronous;
