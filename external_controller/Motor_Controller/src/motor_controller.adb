@@ -46,8 +46,6 @@ package body Motor_Controller is
                end case;
 
          end case;
-         -- Look for Signals to change Transition Priorities realized by order
-         -- of selects
 
          -- look for all signals -> order not set Break when every task raised
          -- one signal or raised fin
