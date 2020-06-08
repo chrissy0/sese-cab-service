@@ -14,6 +14,14 @@ export class BackendService {
         return this.http.post('http://localhost:8080/bookr/job', job).toPromise();
     }
 
+    deleteJob(id: number) {
+        return this.http.delete('http://localhost:8080/bookr/job', {
+            params: {
+                id: id.toString()
+            }
+        }).toPromise();
+    }
+
     getJobs() {
         return this.http.get('http://localhost:8080/bookr/jobs').toPromise() as Promise<Job[]>;
     }
