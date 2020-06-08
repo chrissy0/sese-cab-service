@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Book a ride ..</h1>
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="start-station">From ..</label>
+          <select class="form-control"
+                  id="start-station"
+                  required
+                  [(ngModel)]="model.start" name="start-station">
+            <option *ngFor="let start of getStartStations()" [value]="start">Station {{start}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="end-station">To ..</label>
+          <select class="form-control"
+                  id="end-station"
+                  required
+                  [(ngModel)]="model.end" name="end-station">
+            <option *ngFor="let end of getEndStations()" [value]="end">Station {{end}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" style="float: right">Submit</button>
+
+  </form>
+</div>
