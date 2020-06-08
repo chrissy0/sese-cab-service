@@ -14,8 +14,7 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -49,10 +48,10 @@ public class BookrControllerIT {
         mockMvc.perform(get("/bookr/jobs")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].jobId").value(1L))
+                .andExpect(jsonPath("$[0].id").value(1L))
                 .andExpect(jsonPath("$[0].start").value(10))
                 .andExpect(jsonPath("$[0].end").value(11))
-                .andExpect(jsonPath("$[1].jobId").value(2L))
+                .andExpect(jsonPath("$[1].id").value(2L))
                 .andExpect(jsonPath("$[1].start").value(12))
                 .andExpect(jsonPath("$[1].end").value(13));
 
@@ -81,6 +80,16 @@ public class BookrControllerIT {
                 .content("{\"start\": \"malformed-start-station\",\"end\": 12}"))
                 .andExpect(status().is4xxClientError());
 
+        verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    public void shouldDeleteJob() throws Exception {
+        mockMvc.perform(delete("/bookr/job")
+                .param("id", "1"))
+                .andExpect(status().isOk());
+
+        verify(service).deleteJob(1L);
         verifyNoMoreInteractions(service);
     }
 }
