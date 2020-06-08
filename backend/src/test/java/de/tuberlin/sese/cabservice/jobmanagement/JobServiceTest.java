@@ -1,6 +1,5 @@
 package de.tuberlin.sese.cabservice.jobmanagement;
 
-import de.tuberlin.sese.cabservice.cablocation.CabLocationEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -73,5 +72,13 @@ public class JobServiceTest {
         assertThat(entityCaptor.getValue().getStart()).isEqualTo(10);
         assertThat(entityCaptor.getValue().getEnd()).isEqualTo(11);
         assertThat(jobId).isEqualTo(0);
+    }
+
+    @Test
+    public void shouldDeleteJob() {
+        service.deleteJob(1L);
+
+        verify(repo).deleteById(1L);
+        verifyNoMoreInteractions(repo);
     }
 }

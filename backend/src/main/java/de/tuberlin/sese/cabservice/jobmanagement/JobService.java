@@ -21,4 +21,8 @@ public class JobService {
     public long saveJob(JobEntity entity) {
         return repo.save(entity).getId();
     }
+
+    public void deleteJob(Long id) {
+        repo.deleteById(id);
+    }
 }

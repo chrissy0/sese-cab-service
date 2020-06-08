@@ -22,4 +22,9 @@ public class BookrController {
         service.saveJob(entity);
     }
 
+    @DeleteMapping("/job")
+    public void deleteJob(@RequestParam Long id) {
+        service.deleteJob(id);
+    }
+
 }
