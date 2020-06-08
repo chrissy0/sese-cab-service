@@ -34,6 +34,18 @@ Motor *wheel_fl;
 Motor *wheel_fr;
 Motor *wheel_bl;
 Motor *wheel_br;
+Motor *slider_curb_lf;
+Motor *slider_curb_lf2;
+Motor *slider_curb_lc;
+Motor *slider_curb_lc2;
+Motor *slider_curb_lb;
+Motor *slider_curb_lb2;
+Motor *slider_curb_rf;
+Motor *slider_curb_rf2;
+Motor *slider_curb_rc;
+Motor *slider_curb_rc2;
+Motor *slider_curb_rb;
+Motor *slider_curb_rb2;
 
 void init(Robot *robot);
 void followLine(double speed);
@@ -49,6 +61,18 @@ int main(int argc, char ** argv) {
   Robot * robot = new Robot();
 
   init(robot);
+  slider_curb_lf->setPosition(-0.01);
+  slider_curb_lf2->setPosition(-0.01);
+  slider_curb_lc->setPosition(-0.01);
+  slider_curb_lc2->setPosition(-0.01);
+  slider_curb_lb->setPosition(-0.01);
+  slider_curb_lb2->setPosition(-0.01);
+  slider_curb_rf->setPosition(-0.01);
+  slider_curb_rf2->setPosition(-0.01);
+  slider_curb_rc->setPosition(-0.01);
+  slider_curb_rc2->setPosition(-0.01);
+  slider_curb_rb->setPosition(-0.01);
+  slider_curb_rb2->setPosition(-0.01);
 
   while (robot->step(TIME_STEP) != -1) {
     // std::cout << inf_l->getValue() << " inf_l" << std::endl;
@@ -57,18 +81,16 @@ int main(int argc, char ** argv) {
     //std::cout << dist_l->getValue() << " dist_l" << std::endl;
     //std::cout << dist_c->getValue() << " dist_c" << std::endl;
     //std::cout << dist_r->getValue() << " dist_r" << std::endl;
-    //std::cout << curb_rb->getValue() << " curb_rb" << std::endl;
-    //std::cout << curb_rc->getValue() << " curb_rc" << std::endl;
-    //std::cout << curb_rf->getValue() << " curb_rf" << std::endl;
-    //std::cout << curb_lf->getValue() << " curb_lf" << std::endl;
-    //std::cout << curb_lc->getValue() << " curb_lc" << std::endl;
-    //std::cout << curb_lb->getValue() << " curb_lb" << std::endl;
+    std::cout << curb_rb->getValue() << " curb_rb" << std::endl;
+    std::cout << curb_rc->getValue() << " curb_rc" << std::endl;
+    std::cout << curb_rf->getValue() << " curb_rf" << std::endl;
+    std::cout << curb_lf->getValue() << " curb_lf" << std::endl;
+    std::cout << curb_lc->getValue() << " curb_lc" << std::endl;
+    std::cout << curb_lb->getValue() << " curb_lb" << std::endl;
     
     if (onRoadMarker()) {
       std::cout << getRoadMarkerId() << std::endl;
     }
-    
-    
     
     
     followLine(6.0);
@@ -132,6 +154,18 @@ void init(Robot *robot) {
   wheel_br = robot->getMotor("wheel4");
   wheel_br->setPosition(INFINITY);
   wheel_br->setVelocity(0.0);
+  slider_curb_lf = robot->getMotor("slider_curb_lf");
+  slider_curb_lf2 = robot->getMotor("slider_curb_lf2");
+  slider_curb_lc = robot->getMotor("slider_curb_lc");
+  slider_curb_lc2 = robot->getMotor("slider_curb_lc2");
+  slider_curb_lb = robot->getMotor("slider_curb_lb");
+  slider_curb_lb2 = robot->getMotor("slider_curb_lb2");
+  slider_curb_rf = robot->getMotor("slider_curb_rf");
+  slider_curb_rf2 = robot->getMotor("slider_curb_rf2");
+  slider_curb_rc = robot->getMotor("slider_curb_rc");
+  slider_curb_rc2 = robot->getMotor("slider_curb_rc2");
+  slider_curb_rb = robot->getMotor("slider_curb_rb");
+  slider_curb_rb2 = robot->getMotor("slider_curb_rb2");
 }
 
 void followLine(double speed) {
