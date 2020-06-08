@@ -21,8 +21,7 @@ export class BookingFormComponent {
   }
 
   onSubmit() {
-    this.backendService.saveJob(this.model);
-    this.model = new Job();
+    this.backendService.saveJob(this.model).then(() => this.model = new Job());
   }
 
   getStartStations() {

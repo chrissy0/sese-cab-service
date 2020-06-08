@@ -36,12 +36,12 @@ public class BookrControllerIT {
     public void shouldReturnJobs() throws Exception {
         when(service.getAllJobs()).thenReturn(asList(
                 JobEntity.builder()
-                        .jobId(1L)
+                        .id(1L)
                         .start(10)
                         .end(11)
                         .build(),
                 JobEntity.builder()
-                        .jobId(2L)
+                        .id(2L)
                         .start(12)
                         .end(13)
                         .build()));

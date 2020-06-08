@@ -17,7 +17,7 @@ public class JobEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long jobId;
+    private Long id;
     private int start;
     private int end;
 }
