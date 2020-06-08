@@ -11,6 +11,10 @@ export class BackendService {
     }
 
     saveJob(job: Job) {
-        this.http.post('http://localhost:8080/bookr/job', job).toPromise().then(response => console.log(response));
+        return this.http.post('http://localhost:8080/bookr/job', job).toPromise();
+    }
+
+    getJobs() {
+        return this.http.get('http://localhost:8080/bookr/jobs').toPromise() as Promise<Job[]>;
     }
 }

@@ -61,7 +61,7 @@ public class JobServiceTest {
                 .build();
 
         when(repo.save(entity)).thenReturn(JobEntity.builder()
-                .jobId(0L)
+                .id(0L)
                 .build());
 
         long jobId = service.saveJob(entity);
@@ -69,7 +69,7 @@ public class JobServiceTest {
         verify(repo).save(entityCaptor.capture());
         verifyNoMoreInteractions(repo);
 
-        assertThat(entityCaptor.getValue().getJobId()).isNull();
+        assertThat(entityCaptor.getValue().getId()).isNull();
         assertThat(entityCaptor.getValue().getStart()).isEqualTo(10);
         assertThat(entityCaptor.getValue().getEnd()).isEqualTo(11);
         assertThat(jobId).isEqualTo(0);

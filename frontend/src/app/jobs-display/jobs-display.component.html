@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Current rides ..</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Job ID
+            </th>
+            <th>
+                Start Station
+            </th>
+            <th>
+                End Station
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let job of jobs">
+            <td>{{job.id}}</td>
+            <td>{{job.start}}</td>
+            <td>{{job.end}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

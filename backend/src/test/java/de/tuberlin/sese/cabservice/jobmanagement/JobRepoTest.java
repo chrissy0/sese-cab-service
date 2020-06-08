@@ -29,12 +29,12 @@ public class JobRepoTest {
                 .build());
 
         assertThat(savedEntity).isNotNull();
-        assertThat(savedEntity.getJobId()).isEqualTo(1);
+        assertThat(savedEntity.getId()).isEqualTo(1);
         assertThat(savedEntity.getStart()).isEqualTo(10);
         assertThat(savedEntity.getEnd()).isEqualTo(11);
 
         assertThat(savedEntity2).isNotNull();
-        assertThat(savedEntity2.getJobId()).isEqualTo(2);
+        assertThat(savedEntity2.getId()).isEqualTo(2);
         assertThat(savedEntity2.getStart()).isEqualTo(12);
         assertThat(savedEntity2.getEnd()).isEqualTo(13);
     }

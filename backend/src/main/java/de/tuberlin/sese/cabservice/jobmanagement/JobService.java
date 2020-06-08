@@ -19,6 +19,6 @@ public class JobService {
     }
 
     public long saveJob(JobEntity entity) {
-        return repo.save(entity).getJobId();
+        return repo.save(entity).getId();
     }
 }
