@@ -18,6 +18,6 @@ public class JobEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long jobId;
-    private int startStation;
-    private int endStation;
+    private int start;
+    private int end;
 }

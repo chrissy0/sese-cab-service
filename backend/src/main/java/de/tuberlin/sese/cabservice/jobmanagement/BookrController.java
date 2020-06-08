@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bookr")
+@CrossOrigin
 @RequiredArgsConstructor
 public class BookrController {
 

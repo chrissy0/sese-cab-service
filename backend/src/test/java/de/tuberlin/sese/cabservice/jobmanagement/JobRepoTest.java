@@ -19,23 +19,23 @@ public class JobRepoTest {
     @Test
     public void shouldAddJobIdToJobEntity() {
         JobEntity savedEntity = repo.save(JobEntity.builder()
-                .startStation(10)
-                .endStation(11)
+                .start(10)
+                .end(11)
                 .build());
 
         JobEntity savedEntity2 = repo.save(JobEntity.builder()
-                .startStation(12)
-                .endStation(13)
+                .start(12)
+                .end(13)
                 .build());
 
         assertThat(savedEntity).isNotNull();
         assertThat(savedEntity.getJobId()).isEqualTo(1);
-        assertThat(savedEntity.getStartStation()).isEqualTo(10);
-        assertThat(savedEntity.getEndStation()).isEqualTo(11);
+        assertThat(savedEntity.getStart()).isEqualTo(10);
+        assertThat(savedEntity.getEnd()).isEqualTo(11);
 
         assertThat(savedEntity2).isNotNull();
         assertThat(savedEntity2.getJobId()).isEqualTo(2);
-        assertThat(savedEntity2.getStartStation()).isEqualTo(12);
-        assertThat(savedEntity2.getEndStation()).isEqualTo(13);
+        assertThat(savedEntity2.getStart()).isEqualTo(12);
+        assertThat(savedEntity2.getEnd()).isEqualTo(13);
     }
 }
