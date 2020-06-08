@@ -37,24 +37,24 @@ public class BookrControllerIT {
         when(service.getAllJobs()).thenReturn(asList(
                 JobEntity.builder()
                         .jobId(1L)
-                        .startStation(10)
-                        .endStation(11)
+                        .start(10)
+                        .end(11)
                         .build(),
                 JobEntity.builder()
                         .jobId(2L)
-                        .startStation(12)
-                        .endStation(13)
+                        .start(12)
+                        .end(13)
                         .build()));
 
         mockMvc.perform(get("/bookr/jobs")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].jobId").value(1L))
-                .andExpect(jsonPath("$[0].startStation").value(10))
-                .andExpect(jsonPath("$[0].endStation").value(11))
+                .andExpect(jsonPath("$[0].start").value(10))
+                .andExpect(jsonPath("$[0].end").value(11))
                 .andExpect(jsonPath("$[1].jobId").value(2L))
-                .andExpect(jsonPath("$[1].startStation").value(12))
-                .andExpect(jsonPath("$[1].endStation").value(13));
+                .andExpect(jsonPath("$[1].start").value(12))
+                .andExpect(jsonPath("$[1].end").value(13));
 
         verify(service).getAllJobs();
         verifyNoMoreInteractions(service);
@@ -64,21 +64,21 @@ public class BookrControllerIT {
     public void shouldSaveJob() throws Exception {
         mockMvc.perform(post("/bookr/job")
                 .contentType(APPLICATION_JSON)
-                .content("{\"startStation\": 11,\"endStation\": 12}"))
+                .content("{\"start\": 11,\"end\": 12}"))
                 .andExpect(status().isOk());
 
         verify(service).saveJob(entityCaptor.capture());
         verifyNoMoreInteractions(service);
 
-        assertThat(entityCaptor.getValue().getStartStation()).isEqualTo(11);
-        assertThat(entityCaptor.getValue().getEndStation()).isEqualTo(12);
+        assertThat(entityCaptor.getValue().getStart()).isEqualTo(11);
+        assertThat(entityCaptor.getValue().getEnd()).isEqualTo(12);
     }
 
     @Test
     public void shouldNotSaveMalformedJob() throws Exception {
         mockMvc.perform(post("/bookr/job")
                 .contentType(APPLICATION_JSON)
-                .content("{\"startStation\": \"malformed-start-station\",\"endStation\": 12}"))
+                .content("{\"start\": \"malformed-start-station\",\"end\": 12}"))
                 .andExpect(status().is4xxClientError());
 
         verifyNoMoreInteractions(service);

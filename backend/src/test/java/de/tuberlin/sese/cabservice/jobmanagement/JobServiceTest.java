@@ -32,13 +32,13 @@ public class JobServiceTest {
     @Test
     public void shouldGetAllJobs() {
         JobEntity entity1 = JobEntity.builder()
-                .startStation(10)
-                .endStation(11)
+                .start(10)
+                .end(11)
                 .build();
 
         JobEntity entity2 = JobEntity.builder()
-                .startStation(12)
-                .endStation(13)
+                .start(12)
+                .end(13)
                 .build();
 
         when(repo.findAll()).thenReturn(asList(entity1, entity2));
@@ -56,8 +56,8 @@ public class JobServiceTest {
     @Test
     public void shouldSaveJob() {
         JobEntity entity = JobEntity.builder()
-                .startStation(10)
-                .endStation(11)
+                .start(10)
+                .end(11)
                 .build();
 
         when(repo.save(entity)).thenReturn(JobEntity.builder()
@@ -70,8 +70,8 @@ public class JobServiceTest {
         verifyNoMoreInteractions(repo);
 
         assertThat(entityCaptor.getValue().getJobId()).isNull();
-        assertThat(entityCaptor.getValue().getStartStation()).isEqualTo(10);
-        assertThat(entityCaptor.getValue().getEndStation()).isEqualTo(11);
+        assertThat(entityCaptor.getValue().getStart()).isEqualTo(10);
+        assertThat(entityCaptor.getValue().getEnd()).isEqualTo(11);
         assertThat(jobId).isEqualTo(0);
     }
 }
