@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.9999467997246867 0.010293948321545492 -0.0006575319842886177 1.4484217238501655
-  position 0.7527619104629834 5.9240809796890055 2.7647199174556634
+  orientation -0.5293262558273208 0.7595145998540604 0.3780889941539641 1.5347254684264715
+  position 4.096179598602898 5.505482608124745 4.098130162791214
   follow "robot"
 }
 TexturedBackground {
@@ -11,9 +11,27 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  translation 0.667827 0.0381831 2.95564
+  translation 0.667827 0.0381835 2.95564
   rotation -0.0018679107251753212 -0.9999963882266387 -0.0019324707502393333 1.57211
   children [
+    Solid {
+      translation 0 0.025 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.7 0
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.03 0.2
+          }
+        }
+      ]
+      name "solid(4)"
+      boundingObject Box {
+        size 0.1 0.03 0.2
+      }
+    }
     DEF curb-sensor-slider-joint-lf SliderJoint {
       jointParameters JointParameters {
         axis 0 1 0
@@ -362,6 +380,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -377,6 +396,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -392,6 +412,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -407,6 +428,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -422,6 +444,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -437,6 +460,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -452,6 +476,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -467,6 +492,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -482,6 +508,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -497,6 +524,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -512,6 +540,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -527,6 +556,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -542,6 +572,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -557,6 +588,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -572,6 +604,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -587,6 +620,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -602,6 +636,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -617,6 +652,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -632,6 +668,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -647,6 +684,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -669,6 +707,38 @@ Robot {
         }
       ]
       name "dist_c"
+    }
+    DistanceSensor {
+      translation 2.83786e-06 0.02 0.105004
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_c"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 3.54537e-06 0.03 0.105005
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_c2"
+      type "infra-red"
     }
     DistanceSensor {
       translation -0.0499975 0.0100112 -0.00499715
@@ -755,6 +825,53 @@ Robot {
       name "dist_r"
     }
     DistanceSensor {
+      translation -0.0399972 0.0200028 0.105004
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_r"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399965 0.0300028 0.105005
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_r2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399972 0.0200028 0.105004
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_if_r(1)"
+      type "infra-red"
+    }
+    DistanceSensor {
       translation -0.0399986 2.80005e-06 0.105002
       rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
       children [
@@ -783,6 +900,38 @@ Robot {
       name "dist_l"
     }
     DistanceSensor {
+      translation 0.0400028 0.0199972 0.105004
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_l"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0400035 0.0299972 0.105005
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_l2"
+      type "infra-red"
+    }
+    DistanceSensor {
       translation 0.0400014 -2.79995e-06 0.105002
       rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
       children [
@@ -802,6 +951,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -817,6 +967,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
