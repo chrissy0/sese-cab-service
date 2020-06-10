@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.jobmanagement;
+package de.tuberlin.sese.cabservice.job;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = BookrController.class)
-public class BookrControllerIT {
+public class BookrControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

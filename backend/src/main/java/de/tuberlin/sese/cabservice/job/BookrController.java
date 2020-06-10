@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.jobmanagement;
+package de.tuberlin.sese.cabservice.job;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
