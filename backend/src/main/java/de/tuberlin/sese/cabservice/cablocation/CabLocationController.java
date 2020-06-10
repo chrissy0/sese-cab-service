@@ -17,8 +17,9 @@ public class CabLocationController {
         return service.getAllCabLocations();
     }
 
-    @PostMapping("/cab-location")
-    public void setCabLocation(@RequestBody CabLocationEntity entity) {
+    @PostMapping("/ec/cab-location")
+    public void setCabLocation(@RequestParam Long cabId, @RequestBody CabLocationEntity entity) {
+        entity.setCabId(cabId);
         service.saveCabLocation(entity);
     }
 }

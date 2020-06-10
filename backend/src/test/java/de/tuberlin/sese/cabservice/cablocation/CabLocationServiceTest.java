@@ -32,12 +32,10 @@ public class CabLocationServiceTest {
     public void shouldGetAllCabLocations() {
         CabLocationEntity entity1 = CabLocationEntity.builder()
                 .cabId(1L)
-                .cabName("cab-name")
                 .section(12)
                 .build();
         CabLocationEntity entity2 = CabLocationEntity.builder()
                 .cabId(5L)
-                .cabName("other-cab-name")
                 .section(2)
                 .build();
 
@@ -57,7 +55,6 @@ public class CabLocationServiceTest {
     public void shouldSaveCabLocation() {
         CabLocationEntity entity = CabLocationEntity.builder()
                 .cabId(4L)
-                .cabName("name")
                 .section(15)
                 .build();
 
@@ -68,7 +65,6 @@ public class CabLocationServiceTest {
         verifyNoMoreInteractions(repo);
 
         assertThat(entityCaptor.getValue().getCabId()).isEqualTo(4);
-        assertThat(entityCaptor.getValue().getCabName()).isEqualTo("name");
         assertThat(entityCaptor.getValue().getSection()).isEqualTo(15);
     }
 }

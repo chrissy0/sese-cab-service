@@ -37,12 +37,10 @@ public class CabLocationControllerIT {
         when(service.getAllCabLocations()).thenReturn(asList(
                 CabLocationEntity.builder()
                         .cabId(0L)
-                        .cabName("some-cab-name")
                         .section(11)
                         .build(),
                 CabLocationEntity.builder()
                         .cabId(1L)
-                        .cabName("some-other-cab-name")
                         .section(8)
                         .build()));
 
@@ -50,10 +48,8 @@ public class CabLocationControllerIT {
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].cabId").value(0L))
-                .andExpect(jsonPath("$[0].cabName").value("some-cab-name"))
                 .andExpect(jsonPath("$[0].section").value(11))
                 .andExpect(jsonPath("$[1].cabId").value(1L))
-                .andExpect(jsonPath("$[1].cabName").value("some-other-cab-name"))
                 .andExpect(jsonPath("$[1].section").value(8));
 
         verify(service).getAllCabLocations();
@@ -62,16 +58,16 @@ public class CabLocationControllerIT {
 
     @Test
     public void shouldSaveCabLocation() throws Exception {
-        mockMvc.perform(post("/api/cab-location")
+        mockMvc.perform(post("/api/ec/cab-location")
+                .param("cabId", "3")
                 .contentType(APPLICATION_JSON)
-                .content("{\"cabId\": 3, \"cabName\": \"cab-name\", \"section\": 7}"))
+                .content("{\"section\": 7}"))
                 .andExpect(status().isOk());
 
         verify(service).saveCabLocation(entityCaptor.capture());
         verifyNoMoreInteractions(service);
 
         assertThat(entityCaptor.getValue().getCabId()).isEqualTo(3);
-        assertThat(entityCaptor.getValue().getCabName()).isEqualTo("cab-name");
         assertThat(entityCaptor.getValue().getSection()).isEqualTo(7);
     }
 
@@ -79,7 +75,7 @@ public class CabLocationControllerIT {
     public void shouldNotSaveMalformedCabLocation() throws Exception {
         mockMvc.perform(post("/api/cab-location")
                 .contentType(APPLICATION_JSON)
-                .content("{\"cabId\": \"malformed-cab-id\", \"cabName\": \"cab-name\", \"section\": 7}"))
+                .content("{\"cabId\": \"malformed-cab-id\", \"section\": 7}"))
                 .andExpect(status().is4xxClientError());
 
         verifyNoMoreInteractions(service);
