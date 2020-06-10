@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.22403293509452474 0.9501555696187227 0.2168262841895624 1.6329901886879143
-  position 1.059559240465283 0.22800307037614786 2.9520452554282874
+  orientation -0.5293262558273208 0.7595145998540604 0.3780889941539641 1.5347254684264715
+  position 4.096179598602898 5.505482608124745 4.098130162791214
   follow "robot"
 }
 TexturedBackground {
@@ -11,10 +11,27 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  controllerArgs "27015"
-  translation 0.667827 0.0381831 2.95564
+  translation 0.667827 0.0381835 2.95564
   rotation -0.0018679107251753212 -0.9999963882266387 -0.0019324707502393333 1.57211
   children [
+    Solid {
+      translation 0 0.025 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.7 0
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.03 0.2
+          }
+        }
+      ]
+      name "solid(4)"
+      boundingObject Box {
+        size 0.1 0.03 0.2
+      }
+    }
     DEF curb-sensor-slider-joint-lf SliderJoint {
       jointParameters JointParameters {
         axis 0 1 0
@@ -363,6 +380,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -378,6 +396,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -393,6 +412,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -408,6 +428,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -423,6 +444,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -438,6 +460,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -453,6 +476,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -468,6 +492,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -483,6 +508,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -498,6 +524,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -513,6 +540,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -528,6 +556,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -543,6 +572,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -558,6 +588,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -573,6 +604,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -588,6 +620,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -603,6 +636,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -618,6 +652,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -633,6 +668,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -648,6 +684,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -670,6 +707,38 @@ Robot {
         }
       ]
       name "dist_c"
+    }
+    DistanceSensor {
+      translation 2.83786e-06 0.02 0.105004
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_c"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 3.54537e-06 0.03 0.105005
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_c2"
+      type "infra-red"
     }
     DistanceSensor {
       translation -0.0499975 0.0100112 -0.00499715
@@ -756,6 +825,53 @@ Robot {
       name "dist_r"
     }
     DistanceSensor {
+      translation -0.0399972 0.0200028 0.105004
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_r"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399965 0.0300028 0.105005
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_r2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399972 0.0200028 0.105004
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_if_r(1)"
+      type "infra-red"
+    }
+    DistanceSensor {
       translation -0.0399986 2.80005e-06 0.105002
       rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
       children [
@@ -784,6 +900,38 @@ Robot {
       name "dist_l"
     }
     DistanceSensor {
+      translation 0.0400028 0.0199972 0.105004
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_l"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0400035 0.0299972 0.105005
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_l2"
+      type "infra-red"
+    }
+    DistanceSensor {
       translation 0.0400014 -2.79995e-06 0.105002
       rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
       children [
@@ -803,6 +951,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -818,6 +967,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            baseColor 1 0 0
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -940,6 +1090,7 @@ Robot {
   physics Physics {
   }
   controller "WC2EC_Controller"
+  controllerArgs "27015"
 }
 DEF dummy Robot {
   translation 1.17493 0.04417 1.22104
@@ -1381,6 +1532,329 @@ DEF line Solid {
   name "line(98)"
 }
 DEF line Solid {
+  translation -0.21348 0.0001 3.32928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(12)"
+}
+DEF line Solid {
+  translation -0.21348 0.0001 3.52928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(15)"
+}
+DEF line Solid {
+  translation -0.21348 0.0001 3.72928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(22)"
+}
+DEF line Solid {
+  translation -0.21348 0.0001 3.92928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(23)"
+}
+DEF line Solid {
+  translation -0.21348 0.0001 4.12928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(97)"
+}
+DEF line Solid {
+  translation -0.21348 0.0001 4.32928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(100)"
+}
+DEF line Solid {
+  translation -0.21348 0.0001 4.50928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(101)"
+}
+DEF line Solid {
+  translation -0.31348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(103)"
+}
+DEF line Solid {
+  translation -0.51348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(104)"
+}
+DEF line Solid {
+  translation -0.71348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(108)"
+}
+DEF line Solid {
+  translation -0.91348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(109)"
+}
+DEF line Solid {
+  translation -1.11348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(110)"
+}
+DEF line Solid {
+  translation -1.31348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(111)"
+}
+DEF line Solid {
+  translation -1.51348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(112)"
+}
+DEF line Solid {
+  translation -1.71348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(113)"
+}
+DEF line Solid {
+  translation -1.91348 0.0001 4.59928
+  rotation 0 1 0 -3.1415853071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(114)"
+}
+DEF line Solid {
+  translation -0.142769 0.0001 4.66999
+  rotation 0 -1 0 -2.3561953071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(133)"
+}
+DEF line Solid {
+  translation -0.00134754 0.0001 4.8114
+  rotation 0 -1 0 -2.3561953071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(134)"
+}
+DEF line Solid {
+  translation 0.00572353 0.0001 4.81847
+  rotation 0 -1 0 -2.3561953071795863
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(132)"
+}
+DEF line Solid {
   translation 1.00652 0.0001 3.43928
   rotation 0 1 0 1.5708
   children [
@@ -1432,6 +1906,176 @@ DEF line Solid {
   name "line(14)"
 }
 DEF line Solid {
+  translation 1.00652 0.0001 3.90928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(102)"
+}
+DEF line Solid {
+  translation 1.00652 0.0001 4.10928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(105)"
+}
+DEF line Solid {
+  translation 1.00652 0.0001 4.30928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(107)"
+}
+DEF line Solid {
+  translation 1.00652 0.0001 4.50928
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(127)"
+}
+DEF line Solid {
+  translation 0.941211 0.0001 4.67285
+  rotation 0 1 0 0.785405
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(128)"
+}
+DEF line Solid {
+  translation 0.799791 0.0001 4.81427
+  rotation 0 1 0 0.785405
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(129)"
+}
+DEF line Solid {
+  translation 0.63874 0.0001 4.88238
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(130)"
+}
+DEF line Solid {
+  translation 0.43874 0.0001 4.88238
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(131)"
+}
+DEF line Solid {
+  translation 0.16874 0.0001 4.88238
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(135)"
+}
+DEF line Solid {
+  translation 0.25874 0.0001 4.88238
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(136)"
+}
+DEF line Solid {
   translation -0.773476 0.0001 2.57928
   rotation 0 1 0 1.5708
   children [
@@ -1447,23 +2091,6 @@ DEF line Solid {
     }
   ]
   name "line(40)"
-}
-DEF line Solid {
-  translation -1.25347 0.0001 3.46928
-  rotation 0 1 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(119)"
 }
 DEF line Solid {
   translation -0.773476 0.0001 2.37928
@@ -1823,7 +2450,7 @@ DEF road_marker Solid {
   name "road marker(6)"
 }
 DEF road_marker Solid {
-  translation 0.356522 0.0001 0.649284
+  translation 0.356522 0.0001 0.569284
   rotation 0 -1 0 3.1415853071795863
   children [
     Shape {
@@ -1840,7 +2467,7 @@ DEF road_marker Solid {
   name "road marker(10)"
 }
 DEF road_marker Solid {
-  translation 0.356522 0.0001 0.569284
+  translation 0.426522 0.0001 0.569284
   rotation 0 -1 0 3.1415853071795863
   children [
     Shape {
@@ -1976,7 +2603,7 @@ DEF road_marker Solid {
   name "road marker(28)"
 }
 DEF road_marker Solid {
-  translation -0.312058 0.0001 0.371296
+  translation -0.25549 0.0001 0.427864
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2214,23 +2841,6 @@ DEF road_marker Solid {
   name "road marker(104)"
 }
 DEF road_marker Solid {
-  translation -0.676451 0.0001 2.71856
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(106)"
-}
-DEF road_marker Solid {
   translation -0.761301 0.0001 2.74687
   rotation 0 1 0 -0.785395307179586
   children [
@@ -2248,6 +2858,23 @@ DEF road_marker Solid {
   name "road marker(103)"
 }
 DEF road_marker Solid {
+  translation -0.733017 0.0001 2.77515
+  rotation 0 1 0 -0.785395307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(15)"
+}
+DEF road_marker Solid {
   translation -0.655236 0.0001 2.85292
   rotation 0 1 0 -0.785395307179586
   children [
@@ -2263,142 +2890,6 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(107)"
-}
-DEF road_marker Solid {
-  translation -0.471391 0.0001 3.64486
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(150)"
-}
-DEF road_marker Solid {
-  translation -0.577457 0.0001 3.5388
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(151)"
-}
-DEF road_marker Solid {
-  translation -0.634025 0.0001 3.59537
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(152)"
-}
-DEF road_marker Solid {
-  translation -0.52796 0.0001 3.70143
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(153)"
-}
-DEF road_marker Solid {
-  translation -0.556244 0.0001 3.67315
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(154)"
-}
-DEF road_marker Solid {
-  translation -0.605741 0.0001 3.62366
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(155)"
-}
-DEF road_marker Solid {
-  translation -0.549173 0.0001 3.5671
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(156)"
-}
-DEF road_marker Solid {
-  translation -0.499676 0.0001 3.61659
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(157)"
 }
 DEF road_marker Solid {
   translation -0.931005 0.0001 2.57719
@@ -2433,23 +2924,6 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(115)"
-}
-DEF road_marker Solid {
-  translation -1.00879 0.0001 2.49942
-  rotation 0 1 0 -0.785395307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(116)"
 }
 DEF road_marker Solid {
   translation -0.874437 0.0001 2.52063
@@ -2503,23 +2977,6 @@ DEF road_marker Solid {
   name "road marker(127)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.80995
-  rotation 0 -1 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(132)"
-}
-DEF road_marker Solid {
   translation -0.732854 0.0001 1.73995
   rotation 0 -1 0 1.5708
   children [
@@ -2571,23 +3028,6 @@ DEF road_marker Solid {
   name "road marker(129)"
 }
 DEF road_marker Solid {
-  translation -0.812854 0.0001 1.73995
-  rotation 0 -1 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(130)"
-}
-DEF road_marker Solid {
   translation -0.980502 0.0001 2.41458
   rotation 0 1 0 -0.785395307179586
   children [
@@ -2620,6 +3060,23 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(113)"
+}
+DEF road_marker Solid {
+  translation -1.00879 0.0001 2.49942
+  rotation 0 1 0 -0.785395307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(16)"
 }
 DEF road_marker Solid {
   translation 0.3279 0.0001 2.98948
@@ -2705,6 +3162,23 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(99)"
+}
+DEF road_marker Solid {
+  translation 0.3679 0.0001 2.98948
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(19)"
 }
 DEF road_marker Solid {
   translation 1.41465 0.0001 2.77273
@@ -2843,7 +3317,7 @@ DEF road_marker Solid {
   name "road marker(163)"
 }
 DEF road_marker Solid {
-  translation 1.10356 0.0001 3.19696
+  translation 1.15305 0.0001 3.14747
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -2875,6 +3349,23 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(76)"
+}
+DEF road_marker Solid {
+  translation 1.33688 0.0001 2.8505
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(18)"
 }
 DEF road_marker Solid {
   translation 0.778012 0.0001 3.19936
@@ -2928,125 +3419,6 @@ DEF road_marker Solid {
   name "road marker(80)"
 }
 DEF road_marker Solid {
-  translation -0.571987 0.0001 3.83936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(142)"
-}
-DEF road_marker Solid {
-  translation -0.571987 0.0001 3.75936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(143)"
-}
-DEF road_marker Solid {
-  translation -0.611987 0.0001 3.75936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(146)"
-}
-DEF road_marker Solid {
-  translation -0.681987 0.0001 3.75936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(147)"
-}
-DEF road_marker Solid {
-  translation -0.611987 0.0001 3.83936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(149)"
-}
-DEF road_marker Solid {
-  translation -0.721987 0.0001 3.75936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(144)"
-}
-DEF road_marker Solid {
-  translation -0.721987 0.0001 3.83936
-  rotation 0 -1 0 -5.307179586466759e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(145)"
-}
-DEF road_marker Solid {
   translation 0.778012 0.0001 3.27936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
@@ -3064,8 +3436,8 @@ DEF road_marker Solid {
   name "road marker(81)"
 }
 DEF road_marker Solid {
-  translation 1.04801 0.0001 3.45936
-  rotation 0 1 0 -1.5707953071795862
+  translation -0.254578 0.0001 3.6097
+  rotation 0 -1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
@@ -3078,11 +3450,11 @@ DEF road_marker Solid {
       castShadows FALSE
     }
   ]
-  name "road marker(134)"
+  name "road marker(1)"
 }
 DEF road_marker Solid {
-  translation 0.96801 0.0001 3.45936
-  rotation 0 1 0 -1.5707953071795862
+  translation -0.174578 0.0001 3.6097
+  rotation 0 -1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
@@ -3095,11 +3467,11 @@ DEF road_marker Solid {
       castShadows FALSE
     }
   ]
-  name "road marker(135)"
+  name "road marker(3)"
 }
 DEF road_marker Solid {
-  translation 0.96801 0.0001 3.60936
-  rotation 0 1 0 -1.5707953071795862
+  translation -0.139223 0.0001 4.61849
+  rotation 0 -1 0 0.785402
   children [
     Shape {
       appearance PBRAppearance {
@@ -3112,11 +3484,11 @@ DEF road_marker Solid {
       castShadows FALSE
     }
   ]
-  name "road marker(136)"
+  name "road marker(5)"
 }
 DEF road_marker Solid {
-  translation 1.04801 0.0001 3.60936
-  rotation 0 1 0 -1.5707953071795862
+  translation -0.110939 0.0001 4.64677
+  rotation 0 -1 0 0.785402
   children [
     Shape {
       appearance PBRAppearance {
@@ -3129,7 +3501,262 @@ DEF road_marker Solid {
       castShadows FALSE
     }
   ]
-  name "road marker(137)"
+  name "road marker(34)"
+}
+DEF road_marker Solid {
+  translation -0.195791 0.0001 4.67505
+  rotation 0 -1 0 0.785402
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(11)"
+}
+DEF road_marker Solid {
+  translation -1.98323 0.0001 4.63987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(36)"
+}
+DEF road_marker Solid {
+  translation -1.98323 0.0001 4.55987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(37)"
+}
+DEF road_marker Solid {
+  translation -1.83323 0.0001 4.55987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(42)"
+}
+DEF road_marker Solid {
+  translation -1.87323 0.0001 4.55987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(44)"
+}
+DEF road_marker Solid {
+  translation -1.87323 0.0001 4.63987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(52)"
+}
+DEF road_marker Solid {
+  translation -1.83323 0.0001 4.63987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(53)"
+}
+DEF road_marker Solid {
+  translation -1.94323 0.0001 4.63987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(54)"
+}
+DEF road_marker Solid {
+  translation -1.94323 0.0001 4.55987
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(55)"
+}
+DEF road_marker Solid {
+  translation -0.089726 0.0001 4.7811
+  rotation 0 -1 0 0.785402
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(12)"
+}
+DEF road_marker Solid {
+  translation -0.11801 0.0001 4.75282
+  rotation 0 -1 0 0.785402
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(27)"
+}
+DEF road_marker Solid {
+  translation -0.0331572 0.0001 4.72454
+  rotation 0 -1 0 0.785402
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(14)"
+}
+DEF road_marker Solid {
+  translation -0.0614412 0.0001 4.69626
+  rotation 0 -1 0 0.785402
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(26)"
+}
+DEF road_marker Solid {
+  translation -0.174578 0.0001 3.4597
+  rotation 0 -1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(4)"
+}
+DEF road_marker Solid {
+  translation -0.254578 0.0001 3.4597
+  rotation 0 -1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(2)"
 }
 DEF road_marker Solid {
   translation 0.668012 0.0001 3.27936
@@ -3147,6 +3774,40 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(83)"
+}
+DEF road_marker Solid {
+  translation 0.738012 0.0001 3.27936
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(20)"
+}
+DEF road_marker Solid {
+  translation 0.738012 0.0001 3.19936
+  rotation 0 -1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(21)"
 }
 DEF road_marker Solid {
   translation 1.52571 0.0001 1.71457
@@ -3198,40 +3859,6 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(65)"
-}
-DEF road_marker Solid {
-  translation 1.60571 0.0001 1.82457
-  rotation 0 -1 0 -1.5708053071795867
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(66)"
-}
-DEF road_marker Solid {
-  translation 1.60571 0.0001 1.75457
-  rotation 0 -1 0 -1.5708053071795867
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(67)"
 }
 DEF road_marker Solid {
   translation 1.52571 0.0001 1.75457
@@ -3302,7 +3929,7 @@ DEF road_marker Solid {
   name "road marker(49)"
 }
 DEF road_marker Solid {
-  translation 1.74246 0.0001 1.00821
+  translation 1.6859 0.0001 1.06477
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3334,23 +3961,6 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(51)"
-}
-DEF road_marker Solid {
-  translation 1.73539 0.0001 1.11426
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.03 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "road marker(52)"
 }
 DEF road_marker Solid {
   translation 1.39603 0.0001 0.774863
@@ -3436,6 +4046,23 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(45)"
+}
+DEF road_marker Solid {
+  translation 1.53037 0.0001 0.796076
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(17)"
 }
 DEF line Solid {
   translation 0.486521 0.0001 0.319281
@@ -5145,86 +5772,6 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -1.3749 -0.0299 3.52688
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(195)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.3749 -0.0299 3.41688
-  rotation 0 -1 0 1.57079
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(202)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.30806 -0.0299 3.26012
-  rotation 0 -1 0 2.35619
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(203)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.23736 -0.0299 3.18942
-  rotation 0 -1 0 2.35619
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(205)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
   translation -1.1649 -0.0299 2.361
   rotation 0 -1 0 1.57079
   children [
@@ -5365,7 +5912,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.389363 -0.0299 3.22981
+  translation -0.396434 -0.0299 3.22274
   rotation 0 -1 0 0.785396
   children [
     Shape {
@@ -5380,246 +5927,6 @@ DEF curb Solid {
     }
   ]
   name "curb(78)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.13887 -0.0299 3.85199
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(199)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.389341 -0.0299 3.61159
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(207)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.530761 -0.0299 3.47018
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(209)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.672181 -0.0299 3.32878
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(210)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.813601 -0.0299 3.18738
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(211)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.728749 -0.0299 3.61158
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(208)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.870169 -0.0299 3.47018
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(214)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.912595 -0.0299 3.42776
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(216)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.28027 -0.0299 3.71059
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(200)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.30148 -0.0299 3.68938
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(201)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.325724 -0.0299 3.29344
-  rotation 0 -1 0 0.785396
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(79)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.163043 -0.0299 3.35917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(80)"
   boundingObject Box {
     size 0.2 0.1 0.02
   }
@@ -5640,6 +5947,26 @@ DEF curb Solid {
     }
   ]
   name "curb(81)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.003043 -0.0299 3.35917
+  rotation 0 1 0 4.38702e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(80)"
   boundingObject Box {
     size 0.2 0.1 0.02
   }
@@ -5845,447 +6172,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.73696 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(178)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.79696 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(86)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.53696 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(179)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.33696 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(180)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.13696 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(181)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.06304 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(182)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.23304 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(194)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.87304 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(198)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.75304 -0.0299 3.67917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(213)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.07304 -0.0299 3.11917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(204)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.97304 -0.0299 3.11917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(212)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 1.02696 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(183)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.82696 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(184)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.62696 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(185)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.42696 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(186)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.22696 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(187)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 0.02696 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(188)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.17304 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(189)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.37304 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(190)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.57304 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(191)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.77304 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(192)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -0.97304 -0.0299 3.91917
-  rotation 0 1 0 4.38702e-06
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(193)"
-  boundingObject Box {
-    size 0.2 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation 1.11936 -0.0299 3.82265
+  translation 1.11936 -0.0299 3.99265
   rotation 0 -1 0 -1.5707953071795862
   children [
     Shape {
@@ -6305,7 +6192,67 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.11936 -0.0299 3.62265
+  translation 1.11936 -0.0299 4.19265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(176)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 1.11936 -0.0299 4.39265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(177)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 1.11936 -0.0299 4.57265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(178)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 1.11936 -0.0299 3.79265
   rotation 0 -1 0 -1.5707953071795862
   children [
     Shape {
@@ -6325,7 +6272,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.11936 -0.0299 3.44265
+  translation 1.11936 -0.0299 3.59265
   rotation 0 -1 0 -1.5707953071795862
   children [
     Shape {
@@ -6385,7 +6332,667 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.88936 -0.0299 3.58265
+  translation -0.09064 -0.0299 3.45265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(163)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.0906401 -0.0299 3.65265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(165)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.0906401 -0.0299 3.85265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(166)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.0906403 -0.0299 4.05265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(168)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.0906403 -0.0299 4.25265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(169)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.0906403 -0.0299 4.45265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(181)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.33064 -0.0299 3.38265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(79)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.33064 -0.0299 3.58265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(170)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.33064 -0.0299 3.78265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(171)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.33064 -0.0299 3.98265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(172)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.33064 -0.0299 4.18265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(174)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.33064 -0.0299 4.38265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(175)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.419958 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(200)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.619958 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(182)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.819958 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(202)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.01996 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(203)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.21996 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(204)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.41996 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(205)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.61996 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(207)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.81996 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(208)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -2.01996 -0.0299 4.47783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(209)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -2.10996 -0.0299 4.58783
+  rotation 0 1 0 1.57079
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(219)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -2.10996 -0.0299 4.60783
+  rotation 0 1 0 1.57079
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(220)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.359958 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(201)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.559958 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(210)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.759958 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(211)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.959958 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(212)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.15996 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(213)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.35996 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(214)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.55996 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(215)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.75996 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(216)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -1.95996 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(217)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -2.01996 -0.0299 4.71783
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(218)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.88936 -0.0299 3.65265
   rotation 0 -1 0 -1.5707953071795862
   children [
     Shape {
@@ -6400,6 +7007,426 @@ DEF curb Solid {
     }
   ]
   name "curb(164)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.88936 -0.0299 3.85265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(86)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.88936 -0.0299 4.05265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(87)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.88936 -0.0299 4.25265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(179)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.88936 -0.0299 4.45265
+  rotation 0 -1 0 -1.5707953071795862
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(180)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.824416 -0.0299 4.61815
+  rotation 0 1 0 0.785395
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(183)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.746635 -0.0299 4.69592
+  rotation 0 1 0 0.785395
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(185)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.582996 -0.0299 4.75955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(188)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.382996 -0.0299 4.75955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(190)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.212996 -0.0299 4.75955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(191)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.682996 -0.0299 4.99955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(189)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.482996 -0.0299 4.99955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(192)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.282996 -0.0299 4.99955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(193)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.112996 -0.0299 4.99955
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(194)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.0287188 -0.0299 4.61567
+  rotation 0 -1 0 0.785406
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(198)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.0490623 -0.0299 4.69344
+  rotation 0 -1 0 0.785406
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(199)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.198423 -0.0299 4.78535
+  rotation 0 -1 0 0.785406
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(196)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.049932 -0.0299 4.93382
+  rotation 0 -1 0 0.785406
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(197)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation -0.057003 -0.0299 4.92675
+  rotation 0 -1 0 0.785406
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(195)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 1.05068 -0.0299 4.73127
+  rotation 0 1 0 0.785395
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(184)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.909267 -0.0299 4.87267
+  rotation 0 1 0 0.785395
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(186)"
+  boundingObject Box {
+    size 0.2 0.1 0.02
+  }
+}
+DEF curb Solid {
+  translation 0.845628 -0.0299 4.9363
+  rotation 0 1 0 0.785395
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.3 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "curb(187)"
   boundingObject Box {
     size 0.2 0.1 0.02
   }
@@ -7644,206 +8671,6 @@ DEF curb Solid {
     size 0.06 0.1 0.02
   }
 }
-DEF curb Solid {
-  translation -0.986678 -0.0299 3.66585
-  rotation 0 -1 0 -2.3562053071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(197)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.0291 -0.0299 3.62343
-  rotation 0 -1 0 -2.3562053071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(220)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.07152 -0.0299 3.58101
-  rotation 0 -1 0 -2.3562053071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(221)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.11394 -0.0299 3.53859
-  rotation 0 -1 0 -2.3562053071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(222)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.08273 -0.0299 3.3728
-  rotation 0 1 0 -2.356185307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(224)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.11808 -0.0299 3.40815
-  rotation 0 1 0 -2.356185307179586
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(218)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.00135 -0.0299 3.35835
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(215)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.04135 -0.0299 3.35835
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(217)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.13394 -0.0299 3.44801
-  rotation 0 1 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(196)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
-DEF curb Solid {
-  translation -1.13394 -0.0299 3.49801
-  rotation 0 1 0 1.5708
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0.3 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.06 0.1 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "curb(223)"
-  boundingObject Box {
-    size 0.06 0.1 0.02
-  }
-}
 DEF line Solid {
   translation 1.18652 0.0001 0.609282
   rotation 0 1 0 -3.1415853071795863
@@ -8015,23 +8842,6 @@ DEF line Solid {
   name "line(83)"
 }
 DEF line Solid {
-  translation -1.02347 0.0001 3.23928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(117)"
-}
-DEF line Solid {
   translation 0.07653 0.0001 3.23928
   rotation 0 1 0 -3.1415853071795863
   children [
@@ -8115,210 +8925,6 @@ DEF line Solid {
     }
   ]
   name "line(88)"
-}
-DEF line Solid {
-  translation 0.906531 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(108)"
-}
-DEF line Solid {
-  translation 0.726531 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(109)"
-}
-DEF line Solid {
-  translation 0.526531 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(110)"
-}
-DEF line Solid {
-  translation 0.326531 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(111)"
-}
-DEF line Solid {
-  translation 0.126531 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(112)"
-}
-DEF line Solid {
-  translation -0.073469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(103)"
-}
-DEF line Solid {
-  translation -0.273469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(104)"
-}
-DEF line Solid {
-  translation -0.473469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(122)"
-}
-DEF line Solid {
-  translation -0.673469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(123)"
-}
-DEF line Solid {
-  translation -0.873469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(124)"
-}
-DEF line Solid {
-  translation -0.923469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(126)"
-}
-DEF line Solid {
-  translation -0.903469 0.0001 3.79928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(125)"
 }
 DEF line Solid {
   translation 0.87653 0.0001 3.23928
@@ -8523,108 +9129,6 @@ DEF line Solid {
     }
   ]
   name "line(69)"
-}
-DEF line Solid {
-  translation -0.437559 0.0001 3.73358
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(113)"
-}
-DEF line Solid {
-  translation -0.578979 0.0001 3.59218
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(114)"
-}
-DEF line Solid {
-  translation -0.720399 0.0001 3.45078
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(115)"
-}
-DEF line Solid {
-  translation -0.861819 0.0001 3.30938
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(116)"
-}
-DEF line Solid {
-  translation -1.18708 0.0001 3.63464
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(120)"
-}
-DEF line Solid {
-  translation -1.08808 0.0001 3.73364
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(121)"
 }
 DEF line Solid {
   translation -0.70626 0.0001 2.74374
@@ -8880,23 +9384,6 @@ DEF line Solid {
     }
   ]
   name "line(71)"
-}
-DEF line Solid {
-  translation -1.18712 0.0001 3.30929
-  rotation 0 -1 0 -0.7854053071795866
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(118)"
 }
 DEF line Solid {
   translation -0.2 0.0001 0.07
