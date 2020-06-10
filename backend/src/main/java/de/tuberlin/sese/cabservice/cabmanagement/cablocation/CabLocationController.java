@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.cablocation;
+package de.tuberlin.sese.cabservice.cabmanagement.cablocation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

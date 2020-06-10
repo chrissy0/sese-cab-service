@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.cablocation;
+package de.tuberlin.sese.cabservice.cabmanagement.cablocation;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
