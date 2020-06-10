@@ -23,9 +23,9 @@ begin
          motor_task.lane_detection_done(Motor_Controller.GO_LEFT_S);
       end if;
       Put_Line("Waiting for main_next");
+      delay 10.0;
       motor_task.lane_detection_next; -- wait for all signals to be processed
       Put_Line("Main_next recieved!");
       Put_Line("");
    end loop;
-   delay 1.0;
 end test_lane_detection;
