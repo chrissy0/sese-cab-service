@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.cabmanagement.cablocation;
+package de.tuberlin.sese.cabservice.cab.location;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class CabLocationController {
         return service.getAllCabLocations();
     }
 
-    @PostMapping("/ec/cab-location")
+    @PostMapping("/ec/cabLocation")
     public void setCabLocation(@RequestParam Long cabId, @RequestBody CabLocationEntity entity) {
         entity.setCabId(cabId);
         service.saveCabLocation(entity);

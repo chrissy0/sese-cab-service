@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.cabmanagement.cablocation;
+package de.tuberlin.sese.cabservice.cab.location;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,7 +58,7 @@ public class CabLocationControllerIT {
 
     @Test
     public void shouldSaveCabLocation() throws Exception {
-        mockMvc.perform(post("/api/ec/cab-location")
+        mockMvc.perform(post("/api/ec/cabLocation")
                 .param("cabId", "3")
                 .contentType(APPLICATION_JSON)
                 .content("{\"section\": 7}"))
