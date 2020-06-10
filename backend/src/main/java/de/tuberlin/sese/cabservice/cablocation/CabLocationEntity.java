@@ -8,12 +8,12 @@ import javax.persistence.Id;
 @Entity
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CabLocationEntity {
 
     @Id
     private Long cabId;
-    private String cabName;
     private int section;
 }
