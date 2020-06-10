@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.jobmanagement;
+package de.tuberlin.sese.cabservice.job;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

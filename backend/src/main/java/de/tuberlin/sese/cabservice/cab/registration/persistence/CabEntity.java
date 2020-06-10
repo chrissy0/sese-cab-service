@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.jobmanagement;
+package de.tuberlin.sese.cabservice.cab.registration.persistence;
 
 import lombok.*;
 
@@ -13,11 +13,10 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JobEntity {
+public class CabEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int start;
-    private int end;
+    private String name;
 }
