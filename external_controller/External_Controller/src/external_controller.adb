@@ -20,7 +20,7 @@ begin
       Turn_Speed     => 1.0);
    Put_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
-     (IR_Threshhold => 300.0, US_Threshhold => 870.0, US_Max_Value => 1_000.0,
+     (IR_Threshhold => 250.0, US_Threshhold => 870.0, US_Max_Value => 1_000.0,
       Motor_Task_A  => Motor_Controller_Task, WC2EC_Driver_A => WC2EC_Driver);
    delay (10_000.0);
 
