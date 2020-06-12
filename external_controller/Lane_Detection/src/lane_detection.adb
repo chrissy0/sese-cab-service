@@ -64,49 +64,24 @@ package body Lane_Detection is
          Put_Line (" ------");
 
          Output := EMPTY_S;
-         if
-           (IR_Lane_Right_Value < IR_Lane_Threshhold and
-            IR_Lane_Left_Value > IR_Lane_Threshhold)
+       if
+           (IR_Lane_Right_Value < IR_Threshhold and
+            IR_Lane_Left_Value > IR_Threshhold)
          then
             Put_Line ("Sending Go Right_Infrared");
             Output := GO_RIGHT_S;
          elsif
-           (IR_Lane_Left_Value < IR_Lane_Threshhold and
-            IR_Lane_Right_Value > IR_Lane_Threshhold)
+           (IR_Lane_Left_Value < IR_Threshhold and
+            IR_Lane_Right_Value > IR_Threshhold)
          then
             Put_Line ("Sending Go Left_Infrared");
+
             Output := GO_LEFT_S;
-         elsif
-           (IR_Lane_Mid_Value < IR_Lane_Threshhold and
-            IR_Lane_Right_Value > IR_Lane_Threshhold and
-            IR_Lane_Left_Value > IR_Lane_Threshhold)
-         then
-            Put_Line ("Sending Go Straight_Infrared");
-            Output := GO_STRAIGHT_S;
          else
-            Put_Line ("Infrared Error");
-            if
-              (US_Curb_Left_Value > US_Curb_Threshhold and
-               US_Curb_Left_Value < US_Curb_Max_Value)
-            then
-               Put_Line ("Sending Go Right_Curb");
-               Output := GO_RIGHT_S;
+            Put_Line ("Sending Go Straight_Infrared");
 
-            elsif
-              (US_Curb_Right_Value > US_Curb_Threshhold and
-               US_Curb_Right_Value < US_Curb_Max_Value)
-            then
-               Put_Line ("Sending Go Left_Curb");
-               Output := GO_LEFT_S;
-            elsif (US_Curb_Left_Value = US_Curb_Max_Value) then
-               Put_Line ("Curb Error");
-               Put_Line ("System Error");
-               Output := SYSTEM_ERROR_S;
+            Output := GO_STRAIGHT_S;
 
-            else
-               Put_Line ("Sending Go Straight_Curb");
-               Output := GO_STRAIGHT_S;
-            end if;
 
          end if;
 
