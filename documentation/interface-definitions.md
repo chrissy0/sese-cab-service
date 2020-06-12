@@ -189,6 +189,12 @@ GET /api/ec/requestRoute?id=0&version=0
 }
 ```
 
+###### Unknown ID
+
+```http
+409 CONFLICT
+```
+
 ###### EC version < current route version
 
 ```http
