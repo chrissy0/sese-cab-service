@@ -42,16 +42,16 @@ package body Motor_Controller is
                   WC2EC.set_motor_sensor_data ("wheel4", Motor_Straight_Speed);
                when LEFT =>
                   Put_Line ("driving left");
-                  WC2EC.set_motor_sensor_data ("wheel1", -Motor_Turn_Speed);
-                  WC2EC.set_motor_sensor_data ("wheel3", -Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel1", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel3", 0.0);
                   WC2EC.set_motor_sensor_data ("wheel2", Motor_Turn_Speed);
                   WC2EC.set_motor_sensor_data ("wheel4", Motor_Turn_Speed);
                when RIGHT =>
                   Put_Line ("driving right");
                   WC2EC.set_motor_sensor_data ("wheel1", Motor_Turn_Speed);
                   WC2EC.set_motor_sensor_data ("wheel3", Motor_Turn_Speed);
-                  WC2EC.set_motor_sensor_data ("wheel2", -Motor_Turn_Speed);
-                  WC2EC.set_motor_sensor_data ("wheel4", -Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel2", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel4", 0.0);
                when INIT =>
                   Put_Line ("driving Init");
                   WC2EC.set_motor_sensor_data ("wheel1", 0.0);
