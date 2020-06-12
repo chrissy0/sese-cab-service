@@ -2,7 +2,6 @@ pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
 package body Motor_Controller is
 
-
    procedure print_motor_value (f : Float) is
    begin
       Put (f'Image);
@@ -22,6 +21,7 @@ package body Motor_Controller is
       Motor_Turn_Speed       : Long_Float;
       Last_Drive_State       : Drive_State_T            := INIT;
       set_motor_value        : set_motor_value_procedure_t;
+      running                : Boolean                  := True;
 
       procedure drive_state_output is
       begin
@@ -98,13 +98,11 @@ package body Motor_Controller is
          case Lane_Detection_Signal_Value is
             when SYSTEM_ERROR_S =>
                Motor_Controller_State := SYSTEM_ERROR;
+               -- TODO: Handle System_Error
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
                set_motor_value (MOTOR_BACK_RIGHT, 0.0);
-               loop
-                  delay (100.0);
-               end loop;
 
             when GO_STRAIGHT_S =>
                Drive_State := STRAIGHT;
@@ -119,36 +117,52 @@ package body Motor_Controller is
 
    begin
       -- accept constructor call
-      accept Construct
-        (MC_State : in Motor_Controller_State_T;
-         ND_State : in Normal_Driving_State_T;
-         FC_State : in Front_Clear_State_T; D_State : in Drive_State_T;
-         SE_State : in System_Error_State_T; MS_Speed : in Long_Float;
-         MT_Speed : in Long_Float;
-         LD_State : in Drive_State_T;
-         set_motor_value_access : in set_motor_value_procedure_t)
-      do
-         Motor_Controller_State := MC_State;
-         Normal_Driving_State   := ND_State;
-         Front_Clear_State      := FC_State;
-         Drive_State            := D_State;
-         System_Error_State     := SE_State;
-         Motor_Straight_Speed   := MS_Speed;
-         Motor_Turn_Speed       := MT_Speed;
-         Last_Drive_State       := LD_State;
-         set_motor_value        := set_motor_value_access;
-      end Construct;
-      while True loop
+      -- on timeout, close motor controller
+      -- this is needed so that test cases termintate if an assert fails
+      select
+         delay 2.0;
+         Put_Line ("Constructor Timed out, exiting motor_controller");
+         running := False;
+      or
+         accept Construct
+           (MC_State               : in Motor_Controller_State_T;
+            ND_State               : in Normal_Driving_State_T;
+            FC_State : in Front_Clear_State_T; D_State : in Drive_State_T;
+            SE_State : in System_Error_State_T; MS_Speed : in Long_Float;
+            MT_Speed : in Long_Float; LD_State : in Drive_State_T;
+            set_motor_value_access : in set_motor_value_procedure_t)
+         do
+            Motor_Controller_State := MC_State;
+            Normal_Driving_State   := ND_State;
+            Front_Clear_State      := FC_State;
+            Drive_State            := D_State;
+            System_Error_State     := SE_State;
+            Motor_Straight_Speed   := MS_Speed;
+            Motor_Turn_Speed       := MT_Speed;
+            Last_Drive_State       := LD_State;
+            set_motor_value        := set_motor_value_access;
+         end Construct;
+      end select;
+
+      -- main loop
+      while running loop
 
          -- look for all signals -> order not set Break when every task raised
          -- each task will send one Signal
 
-         -- Signal from Main
-         accept lane_detection_done
-           (Lane_Detection_Signal_Value : in Lane_Detection_Done_T)
-         do
-            handle_lane_detection_signal (Lane_Detection_Signal_Value);
-         end lane_detection_done;
+         -- When timeout, we the controller
+         select
+            accept lane_detection_done
+              (Lane_Detection_Signal_Value : in Lane_Detection_Done_T)
+            do
+               handle_lane_detection_signal (Lane_Detection_Signal_Value);
+            end lane_detection_done;
+         or
+            delay 1.0;
+            Put_Line ("Lane_Detection_Frozen, killing External_Controller");
+            running := False;
+            goto Continue;
+         end select;
 
          -- all tasks wait before the motor_controller does its transistion
          -- Signal all tasks to unless it is system_error
@@ -159,7 +173,10 @@ package body Motor_Controller is
          -- Output stuff depending on State
          motor_controller_state_output;
 
+         <<Continue>>
       end loop;
+      Put_Line
+        ("Motor Controller shutting down. So long, and thanks for all the gasoline");
 
    end Motor_Controller_Task_T;
 
