@@ -15,5 +15,5 @@ public class CabLocationEntity {
 
     @Id
     private Long cabId;
-    private int section;
+    private Integer section;
 }

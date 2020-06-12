@@ -80,4 +80,11 @@ public class CabRegistrationControllerTest {
                 .content("{\"cabName\": \"Some Cab Name\", \"section\": 3}"))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    public void shouldReturn400BadRequestOnMissingContent() throws Exception {
+        mockMvc.perform(post("/api/ec/registerCab")
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
 }

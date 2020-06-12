@@ -3,6 +3,7 @@ package de.tuberlin.sese.cabservice.cab.registration;
 import de.tuberlin.sese.cabservice.cab.location.CabLocationEntity;
 import de.tuberlin.sese.cabservice.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.cab.registration.persistence.CabEntity;
+import de.tuberlin.sese.cabservice.util.exceptions.NameAlreadyInUseException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownSectionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,7 +68,7 @@ public class CabRegistrationServiceTest {
     @Test
     public void shouldThrowIllegalArgumentExceptionOnMissingCabEntity() {
         assertThatThrownBy(() -> registrationService.registerCab(null, 5))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("CabEntity was null");
     }
 
@@ -76,7 +77,7 @@ public class CabRegistrationServiceTest {
         assertThatThrownBy(() -> registrationService.registerCab(CabEntity.builder()
                 .name("Some Cab Name")
                 .build(), null))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Section was null");
     }
 
@@ -86,7 +87,7 @@ public class CabRegistrationServiceTest {
                 .id(3L)
                 .name("Some Cab Name")
                 .build(), 4))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Id of CabEntity was not null");
     }
 
@@ -94,7 +95,7 @@ public class CabRegistrationServiceTest {
     public void shouldThrowIllegalArgumentExceptionOnMissingName() {
         assertThatThrownBy(() -> registrationService.registerCab(CabEntity.builder()
                 .build(), 4))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Name of CabEntity was null or empty");
     }
 
@@ -103,7 +104,7 @@ public class CabRegistrationServiceTest {
         assertThatThrownBy(() -> registrationService.registerCab(CabEntity.builder()
                 .name("")
                 .build(), 4))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Name of CabEntity was null or empty");
     }
 
@@ -117,7 +118,7 @@ public class CabRegistrationServiceTest {
         assertThatThrownBy(() -> registrationService.registerCab(CabEntity.builder()
                 .name("Some Name")
                 .build(), 4))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(NameAlreadyInUseException.class)
                 .hasMessage("CabName \"Some Name\" is already in use");
     }
 

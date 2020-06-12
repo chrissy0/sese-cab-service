@@ -1,5 +1,9 @@
 package de.tuberlin.sese.cabservice.cab.location;
 
+import com.google.common.base.Preconditions;
+import de.tuberlin.sese.cabservice.cab.registration.CabRepo;
+import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
+import de.tuberlin.sese.cabservice.util.exceptions.UnknownSectionException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,16 +14,35 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CabLocationService {
 
-    private final CabLocationRepo repo;
+    private final CabLocationRepo locationRepo;
+
+    private final CabRepo cabRepo;
 
     public List<CabLocationEntity> getAllCabLocations() {
         List<CabLocationEntity> entities = new LinkedList<>();
-        repo.findAll().forEach(entities::add);
+        locationRepo.findAll().forEach(entities::add);
         return entities;
     }
 
     public void saveCabLocation(CabLocationEntity newEntity) {
-        repo.findById(newEntity.getCabId());
-        repo.save(newEntity);
+        validateEntity(newEntity);
+
+        locationRepo.findById(newEntity.getCabId());
+        locationRepo.save(newEntity);
+    }
+
+    private void validateEntity(CabLocationEntity entity) {
+        Preconditions.checkArgument(entity != null, "CabLocationEntity was null");
+        Preconditions.checkArgument(entity.getCabId() != null, "CabLocationEntity ID was null");
+        Preconditions.checkArgument(entity.getSection() != null, "CabLocationEntity Section was null");
+
+        if (!cabRepo.findById(entity.getCabId()).isPresent()) {
+            throw new UnknownCabIdException("No cab with ID " + entity.getCabId() + "is known");
+        }
+
+        Integer section = entity.getSection();
+        if (section < 0 || section > 15) {
+            throw new UnknownSectionException("Section \"" + section + "\" is unknown");
+        }
     }
 }

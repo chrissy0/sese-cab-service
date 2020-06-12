@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.cab.registration;
+package de.tuberlin.sese.cabservice.cab.location;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +13,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -20,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
-public class CabRegistrationControllerIT {
+public class CabLocationControllerIT {
 
     @Autowired
     private WebApplicationContext wac;
@@ -33,24 +34,31 @@ public class CabRegistrationControllerIT {
     }
 
     @Test
-    public void shouldRegisterCab() throws Exception {
+    public void shouldSaveLocation() throws Exception {
         mockMvc.perform(post("/api/ec/registerCab")
                 .contentType(APPLICATION_JSON)
                 .content("{\"cabName\": \"Some Cab Name\", \"section\": 3}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .contentType(APPLICATION_JSON)
+                .param("cabId", "1")
+                .content("{\"section\": 3}"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/api/cab-locations"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].cabId").value(1))
+                .andExpect(jsonPath("$[0].section").value(3));
     }
 
     @Test
-    public void shouldReturn409ConflictIfNameAlreadyInUse() throws Exception {
-        mockMvc.perform(post("/api/ec/registerCab")
+    public void shouldReturn409ConflictIfCabIdIsUnknown() throws Exception {
+        mockMvc.perform(post("/api/ec/cabLocation")
                 .contentType(APPLICATION_JSON)
-                .content("{\"cabName\": \"Some Cab Name\", \"section\": 3}"))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(post("/api/ec/registerCab")
-                .contentType(APPLICATION_JSON)
-                .content("{\"cabName\": \"Some Cab Name\", \"section\": 1}"))
+                .param("cabId", "1")
+                .content("{\"section\": 3}"))
                 .andExpect(status().isConflict());
     }
 
@@ -58,15 +66,28 @@ public class CabRegistrationControllerIT {
     public void shouldReturn409ConflictIfSectionIsUnknown() throws Exception {
         mockMvc.perform(post("/api/ec/registerCab")
                 .contentType(APPLICATION_JSON)
-                .content("{\"cabName\": \"Some Cab Name\", \"section\": 16}"))
+                .content("{\"cabName\": \"Some Cab Name\", \"section\": 3}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .contentType(APPLICATION_JSON)
+                .param("cabId", "1")
+                .content("{\"section\": 43}"))
                 .andExpect(status().isConflict());
     }
 
     @Test
-    public void shouldReturn409ConflictIfRequestIsMalformed() throws Exception {
+    public void shouldReturn400BadRequestIfContentIsMissing() throws Exception {
         mockMvc.perform(post("/api/ec/registerCab")
                 .contentType(APPLICATION_JSON)
-                .content("{\"cabNAm\": \"Some Cab Name\", \"section\": 16}"))
+                .content("{\"cabName\": \"Some Cab Name\", \"section\": 3}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .contentType(APPLICATION_JSON)
+                .param("cabId", "1"))
                 .andExpect(status().isBadRequest());
     }
 }

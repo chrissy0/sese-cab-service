@@ -1,5 +1,7 @@
 package de.tuberlin.sese.cabservice.cab.location;
 
+import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
+import de.tuberlin.sese.cabservice.util.exceptions.UnknownSectionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -57,7 +59,7 @@ public class CabLocationControllerTest {
     }
 
     @Test
-    public void shouldSaveCabLocation() throws Exception {
+    public void shouldUpdateCabLocation() throws Exception {
         mockMvc.perform(post("/api/ec/cabLocation")
                 .param("cabId", "3")
                 .contentType(APPLICATION_JSON)
@@ -73,10 +75,77 @@ public class CabLocationControllerTest {
 
     @Test
     public void shouldNotSaveMalformedCabLocation() throws Exception {
-        mockMvc.perform(post("/api/cab-location")
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .param("cabId", "3")
                 .contentType(APPLICATION_JSON)
-                .content("{\"cabId\": \"malformed-cab-id\", \"section\": 7}"))
-                .andExpect(status().is4xxClientError());
+                .content("{\"section\": \"hello world\"}"))
+                .andExpect(status().isBadRequest());
+
+        verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    public void shouldReturn409ConflictOnUnknownCabIdException() throws Exception {
+        doThrow(new UnknownCabIdException()).when(service).saveCabLocation(any(CabLocationEntity.class));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .param("cabId", "12")
+                .contentType(APPLICATION_JSON)
+                .content("{\"section\": 7}"))
+                .andExpect(status().isConflict());
+
+        verify(service).saveCabLocation(any());
+        verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    public void shouldReturn409ConflictOnUnknownSectionException() throws Exception {
+        doThrow(new UnknownSectionException()).when(service).saveCabLocation(any(CabLocationEntity.class));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .param("cabId", "1")
+                .contentType(APPLICATION_JSON)
+                .content("{\"section\": 36}"))
+                .andExpect(status().isConflict());
+
+        verify(service).saveCabLocation(any());
+        verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    public void shouldReturn400BadRequestOnIllegalArgumentException() throws Exception {
+        doThrow(new IllegalArgumentException()).when(service).saveCabLocation(any(CabLocationEntity.class));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .param("cabId", "1")
+                .contentType(APPLICATION_JSON)
+                .content("{\"section\": 2}"))
+                .andExpect(status().isBadRequest());
+
+        verify(service).saveCabLocation(any());
+        verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    public void shouldReturn400BadRequestOnMissingCabId() throws Exception {
+        doThrow(new IllegalArgumentException()).when(service).saveCabLocation(any(CabLocationEntity.class));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .contentType(APPLICATION_JSON)
+                .content("{\"section\": 2}"))
+                .andExpect(status().isBadRequest());
+
+        verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    public void shouldReturn400BadRequestOnMissingEntity() throws Exception {
+        doThrow(new IllegalArgumentException()).when(service).saveCabLocation(any(CabLocationEntity.class));
+
+        mockMvc.perform(post("/api/ec/cabLocation")
+                .param("cabId", "1")
+                .contentType(APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
 
         verifyNoMoreInteractions(service);
     }
