@@ -1,11 +1,17 @@
 pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
+with WC2EC;       use WC2EC;
 package body Motor_Controller is
+
+   procedure print_motor_value (f : Float) is
+   begin
+      Put (f'Image);
+   end print_motor_value;
 
    type Motor_Controller_State_T is (SYSTEM_ERROR, NORMAL_DRIVING);
    type Normal_Driving_State_T is (FRONT_CLEAR, FRONT_BLOCKED);
    type Front_Clear_State_T is (DRIVE, STOP);
-   type Drive_State_T is (STRAIGHT, LEFT, RIGHT);
+   type Drive_State_T is (STRAIGHT, LEFT, RIGHT, INIT);
    type System_Error_State_T is
      (STOP, LEFT, RIGHT, DRIVE_OVER_CURB, STAND_ON_TRACK, STAND_OFF_TRACK);
 
@@ -13,23 +19,50 @@ package body Motor_Controller is
    -- Motor_Controller_Task --
    ---------------------------
 
-   task body Motor_Controller_Task is
+   task body Motor_Controller_Task_T is
       Motor_Controller_State : Motor_Controller_State_T := NORMAL_DRIVING;
       Normal_Driving_State   : Normal_Driving_State_T   := FRONT_CLEAR;
       Front_Clear_State      : Front_Clear_State_T      := DRIVE;
       Drive_State            : Drive_State_T            := STRAIGHT;
       System_Error_State     : System_Error_State_T     := STOP;
+      Motor_Straight_Speed   : Long_Float;
+      Motor_Turn_Speed       : Long_Float;
+      WC2EC_Driver           : wc2ec_thread_access_t;
+      Last_Drive_State       : Drive_State_T            := INIT;
 
       procedure drive_state_output is
       begin
-         case Drive_State is
-            when STRAIGHT =>
-               Put_Line ("driving straight");
-            when LEFT =>
-               Put_Line ("driving left");
-            when RIGHT =>
-               Put_Line ("driving right");
-         end case;
+         if Drive_State /= Last_Drive_State then
+            case Drive_State is
+               when STRAIGHT =>
+                  Put_Line ("driving straight");
+                  WC2EC.set_motor_sensor_data ("wheel1", Motor_Straight_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel3", Motor_Straight_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel2", Motor_Straight_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel4", Motor_Straight_Speed);
+               when LEFT =>
+                  Put_Line ("driving left");
+                  WC2EC.set_motor_sensor_data ("wheel1", -Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel3", -Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel2", Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel4", Motor_Turn_Speed);
+               when RIGHT =>
+                  Put_Line ("driving right");
+                  WC2EC.set_motor_sensor_data ("wheel1", Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel3", Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel2", -Motor_Turn_Speed);
+                  WC2EC.set_motor_sensor_data ("wheel4", -Motor_Turn_Speed);
+               when INIT =>
+                  Put_Line ("driving Init");
+                  WC2EC.set_motor_sensor_data ("wheel1", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel3", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel2", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel4", 0.0);
+
+            end case;
+         end if;
+         Last_Drive_State := Drive_State;
+
       end drive_state_output;
 
       procedure front_clear_state_output is
@@ -66,13 +99,16 @@ package body Motor_Controller is
       end motor_controller_state_output;
 
    begin
-
-      accept Construct; -- accept constructor call
-
+      -- accept constructor call
+      accept Construct
+        (WC2EC_Driver_A : in wc2ec_thread_access_t;
+         Straight_Speed : in Long_Float; Turn_Speed : in Long_Float)
+      do
+         WC2EC_Driver         := WC2EC_Driver_A;
+         Motor_Straight_Speed := Straight_Speed;
+         Motor_Turn_Speed     := Turn_Speed;
+      end Construct;
       while True loop
-
-         -- Output stuff depending on State
-         motor_controller_state_output;
 
          -- look for all signals -> order not set Break when every task raised
          -- each task will send one Signal
@@ -84,6 +120,14 @@ package body Motor_Controller is
             case Lane_Detection_Signal_Value is
                when SYSTEM_ERROR_S =>
                   Motor_Controller_State := SYSTEM_ERROR;
+                  WC2EC.set_motor_sensor_data ("wheel1", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel3", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel2", 0.0);
+                  WC2EC.set_motor_sensor_data ("wheel4", 0.0);
+                  loop
+                     delay (100.0);
+                  end loop;
+
                when GO_STRAIGHT_S =>
                   Drive_State := STRAIGHT;
                when GO_LEFT_S =>
@@ -101,8 +145,11 @@ package body Motor_Controller is
             null;
          end lane_detection_next;
 
+         -- Output stuff depending on State
+         motor_controller_state_output;
+
       end loop;
 
-   end Motor_Controller_Task;
+   end Motor_Controller_Task_T;
 
 end Motor_Controller;

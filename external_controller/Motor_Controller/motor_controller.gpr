@@ -1,4 +1,4 @@
-with "..\Synchronized_Data\synchronized_data.gpr";
+with "..\WC2EC\wc2ec.gpr";
 
 project Motor_Controller is
 
