@@ -65,14 +65,14 @@ package body Lane_Detection is
 
          Output := EMPTY_S;
        if
-           (IR_Lane_Right_Value < IR_Threshhold and
-            IR_Lane_Left_Value > IR_Threshhold)
+           (IR_Lane_Right_Value < IR_Lane_Threshhold and
+            IR_Lane_Left_Value > IR_Lane_Threshhold)
          then
             Put_Line ("Sending Go Right_Infrared");
             Output := GO_RIGHT_S;
          elsif
-           (IR_Lane_Left_Value < IR_Threshhold and
-            IR_Lane_Right_Value > IR_Threshhold)
+           (IR_Lane_Left_Value < IR_Lane_Threshhold and
+            IR_Lane_Right_Value > IR_Lane_Threshhold)
          then
             Put_Line ("Sending Go Left_Infrared");
 
