@@ -16,7 +16,7 @@ public class CabLocationController {
 
     private final CabLocationService service;
 
-    @GetMapping("/cab-locations")
+    @GetMapping("/bookr/cabLocations")
     public List<CabLocationEntity> getCabLocations() {
         return service.getAllCabLocations();
     }

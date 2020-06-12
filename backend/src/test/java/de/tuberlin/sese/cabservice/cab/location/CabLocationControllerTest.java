@@ -46,7 +46,7 @@ public class CabLocationControllerTest {
                         .section(8)
                         .build()));
 
-        mockMvc.perform(get("/api/cab-locations")
+        mockMvc.perform(get("/api/bookr/cabLocations")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].cabId").value(0L))

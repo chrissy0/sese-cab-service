@@ -19,8 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = BookrController.class)
-public class BookrControllerTest {
+@WebMvcTest(controllers = JobController.class)
+public class JobControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -45,7 +45,7 @@ public class BookrControllerTest {
                         .end(13)
                         .build()));
 
-        mockMvc.perform(get("/bookr/jobs")
+        mockMvc.perform(get("/api/bookr/jobs")
                 .contentType(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
@@ -61,7 +61,7 @@ public class BookrControllerTest {
 
     @Test
     public void shouldSaveJob() throws Exception {
-        mockMvc.perform(post("/bookr/job")
+        mockMvc.perform(post("/api/bookr/job")
                 .contentType(APPLICATION_JSON)
                 .content("{\"start\": 11,\"end\": 12}"))
                 .andExpect(status().isOk());
@@ -85,7 +85,7 @@ public class BookrControllerTest {
 
     @Test
     public void shouldDeleteJob() throws Exception {
-        mockMvc.perform(delete("/bookr/job")
+        mockMvc.perform(delete("/api/bookr/job")
                 .param("id", "1"))
                 .andExpect(status().isOk());
 

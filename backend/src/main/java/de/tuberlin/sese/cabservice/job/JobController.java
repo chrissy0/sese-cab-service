@@ -6,23 +6,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookr")
+@RequestMapping("/api")
 @RequiredArgsConstructor
-public class BookrController {
+public class JobController {
 
     private final JobService service;
 
-    @GetMapping("/jobs")
+    @GetMapping("/bookr/jobs")
     public List<JobEntity> getJobs() {
         return service.getAllJobs();
     }
 
-    @PostMapping("/job")
+    @PostMapping("/bookr/job")
     public void addJob(@RequestBody JobEntity entity) {
         service.saveJob(entity);
     }
 
-    @DeleteMapping("/job")
+    @DeleteMapping("/bookr/job")
     public void deleteJob(@RequestParam Long id) {
         service.deleteJob(id);
     }

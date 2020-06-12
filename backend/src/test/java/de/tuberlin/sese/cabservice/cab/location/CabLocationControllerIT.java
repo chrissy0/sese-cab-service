@@ -47,7 +47,7 @@ public class CabLocationControllerIT {
                 .content("{\"section\": 3}"))
                 .andExpect(status().isOk());
 
-        mockMvc.perform(get("/api/cab-locations"))
+        mockMvc.perform(get("/api/bookr/cabLocations"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].cabId").value(1))
                 .andExpect(jsonPath("$[0].section").value(3));
