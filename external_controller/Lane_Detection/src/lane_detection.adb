@@ -64,7 +64,7 @@ package body Lane_Detection is
          Put_Line (" ------");
 
          Output := EMPTY_S;
-       if
+         if
            (IR_Lane_Right_Value < IR_Lane_Threshhold and
             IR_Lane_Left_Value > IR_Lane_Threshhold)
          then

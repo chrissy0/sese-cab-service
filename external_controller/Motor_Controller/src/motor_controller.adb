@@ -77,6 +77,10 @@ package body Motor_Controller is
                front_clear_state_output;
             when FRONT_BLOCKED =>
                Put_Line ("Front Blocked State");
+               set_motor_value (MOTOR_FRONT_LEFT, 0.0);
+               set_motor_value (MOTOR_BACK_LEFT, 0.0);
+               set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
+               set_motor_value (MOTOR_BACK_RIGHT, 0.0);
          end case;
       end normal_driving_state_output;
 
@@ -103,6 +107,7 @@ package body Motor_Controller is
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
                set_motor_value (MOTOR_BACK_RIGHT, 0.0);
+               Motor_Controller_State := SYSTEM_ERROR;
 
             when GO_STRAIGHT_S =>
                Drive_State := STRAIGHT;
@@ -114,6 +119,30 @@ package body Motor_Controller is
                null;
          end case;
       end handle_lane_detection_signal;
+
+      procedure handle_front_distance_signal
+        (Front_Distance_Signal_Value : in Front_Distance_Done_t)
+      is
+      begin
+         case Front_Distance_Signal_Value is
+            when SYSTEM_ERROR_S =>
+               -- TODO handle system error
+               set_motor_value (MOTOR_FRONT_LEFT, 0.0);
+               set_motor_value (MOTOR_BACK_LEFT, 0.0);
+               set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
+               set_motor_value (MOTOR_BACK_RIGHT, 0.0);
+               Motor_Controller_State := SYSTEM_ERROR;
+            when FRONT_BLOCKED_S =>
+               Normal_Driving_State := FRONT_BLOCKED;
+            when FRONT_CLEAR_S =>
+               Normal_Driving_State := FRONT_CLEAR;
+            when EMPTY_S =>
+               null;
+         end case;
+
+
+      end handle_front_distance_signal;
+
 
    begin
       -- accept constructor call
@@ -158,17 +187,49 @@ package body Motor_Controller is
                handle_lane_detection_signal (Lane_Detection_Signal_Value);
             end lane_detection_done;
          or
-            delay 1.0;
-            Put_Line ("Lane_Detection_Frozen, killing External_Controller");
+            delay 2.0;
+            Put_Line ("lane_detection_done timed out, killing External_Controller");
             running := False;
             goto Continue;
          end select;
 
+         select
+            accept front_distance_done
+              (Front_Distance_Signal_Value : in Front_Distance_Done_t)
+            do
+               handle_front_distance_signal (Front_Distance_Signal_Value);
+            end front_distance_done;
+         or
+            delay 2.0;
+            Put_Line ("front_distance_done timed out, killing External_Controller");
+            running := False;
+            goto Continue;
+         end select;
+
+
          -- all tasks wait before the motor_controller does its transistion
          -- Signal all tasks to unless it is system_error
-         accept lane_detection_next do
-            null;
-         end lane_detection_next;
+         select
+            accept lane_detection_next do
+               null;
+            end lane_detection_next;
+         or
+            delay 2.0;
+            Put_Line ("lane_detection_next timed out, killing External_Controller");
+            running := False;
+            goto Continue;
+         end select;
+
+         select
+            accept front_distance_next do
+               null;
+            end front_distance_next;
+         or
+            delay 2.0;
+            Put_Line ("front_distance_next timed out, killing External_Controller");
+            running := False;
+            goto Continue;
+         end select;
 
          -- Output stuff depending on State
          motor_controller_state_output;
@@ -176,7 +237,7 @@ package body Motor_Controller is
          <<Continue>>
       end loop;
       Put_Line
-        ("Motor Controller shutting down. So long, and thanks for all the gasoline");
+        ("Motor_Controller shutting down. So long, and thanks for all the gasoline");
 
    end Motor_Controller_Task_T;
 

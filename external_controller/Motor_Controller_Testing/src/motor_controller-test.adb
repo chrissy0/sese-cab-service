@@ -52,8 +52,9 @@ package body Motor_Controller.Test is
       pragma Unreferenced (T);
       type Motor_Controller_Task_Array_T is
         array
-          (Motor_Controller.Lane_Detection_Done_T) of Motor_Controller
-          .Motor_Controller_Task_T;
+          (Motor_Controller.Lane_Detection_Done_T)
+          of Motor_Controller.Motor_Controller_Task_T;
+
       Motor_Controller_Task_Array : Motor_Controller_Task_Array_T;
       Motor_Straight_Speed        : constant := 5.0;
       Motor_Turn_Speed            : constant := 3.0;
