@@ -34,9 +34,9 @@ package body Lane_Detection is
       loop
          -- Read sensor values
          Put_Line ("Reading Sensor data ...");
-         US_Curb_Left_Value := WC2EC.get_distance_sensor_data ("dist_l");
+         US_Curb_Left_Value := WC2EC.get_distance_sensor_data ("dist_l"); --we use the variable such "curf_fl, curf_cl",so it has to be changed 
 
-         US_Curb_Right_Value := WC2EC.get_distance_sensor_data ("dist_r");
+         US_Curb_Right_Value := WC2EC.get_distance_sensor_data ("dist_r"); --we use the variable such "curf_fr, curf_cr",so it has to be changed  
 
          IR_Lane_Right_Value := WC2EC.get_distance_sensor_data ("inf_right");
          -- IR_Lane_Right_Value := 0.0;
