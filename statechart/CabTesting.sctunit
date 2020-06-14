@@ -1,0 +1,119 @@
+testclass CabTesting for statechart SafetyConcept {
+	
+	@Test
+	
+	/** Drive left */
+	operation drive_left() {
+		enter
+		
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+		
+		ir_lane.mid = true
+		
+		backend.pickup1 = 4
+		raise backend.new_job1
+	
+		ir_lane.left = true
+		ir_lane.mid = false
+		
+		assert motor.fr == 3 &&  motor.fl == 0 && motor.br == 3 && motor.bl == 0
+		
+		exit
+	}
+	
+	@Test
+	
+	/** Drive right */
+	operation drive_right() {
+		enter
+		
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+		
+		ir_lane.mid = true
+		
+		backend.pickup1 = 4
+		raise backend.new_job1
+	
+		ir_lane.right = true
+		ir_lane.mid = false
+		assert motor.fr == 3 &&  motor.fl == 0 && motor.br == 3 && motor.bl == 0
+		
+		exit
+	}
+	
+	@Test
+	
+	/** system error stop */
+	operation system_error_stop() {
+		enter
+		
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+		
+		ir_lane.mid = true
+		
+		backend.pickup1 = 4
+		raise backend.new_job1
+	
+		ir_lane.mid = false
+		us_curb.left = 0
+		
+		assert motor.fl == 0 && motor.fr == 0 && motor.bl == 0 && motor.br == 0
+		
+		exit
+	}
+	@Test
+	
+	/** final state left*/
+	operation final_state_left() {
+		enter
+		
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+		
+		ir_lane.mid = true
+		
+		backend.pickup1 = 4
+		raise backend.new_job1
+	
+		ir_marker.out_fl = 9
+		ir_marker.out_fr = 9
+		ir_marker.out_bl = 9
+		ir_marker.out_br = 9
+		ir_marker.bin_nr = 3
+		
+		ir_marker.out_fl = 11
+		ir_marker.out_fr = 11
+		ir_marker.out_bl = 11
+		ir_marker.out_br = 11
+		
+		ir_lane.mid = false
+		us_curb.left = 0
+		
+		us_side_wall.left = 2
+		
+		proceed 1s
+		
+		assert motor.fl == 3 && motor.fr == -3 && motor.bl == 3 && motor.br == -3
+		
+		exit
+	}
+}

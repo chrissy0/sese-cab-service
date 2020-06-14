@@ -1,0 +1,28 @@
+<testsuite name="CabTesting" time="">
+  <testcase name="drive_left" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.drive_left" time="">
+    <failure>Assertion failed: "assert motor.fr == 3 &amp;&amp; motor.fl == 0 &amp;&amp; motor.br == 3 &amp;&amp; motor.bl == 0" (Line 24)
+    	name: motor.fr, value: 0
+    	name: motor.fl, value: 0
+    	name: motor.br, value: 0
+    	name: motor.bl, value: 0
+    </failure>
+  </testcase>
+  <testcase name="drive_right" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.drive_right" time="">
+    <failure>Assertion failed: "assert motor.fr == 3 &amp;&amp; motor.fl == 0 &amp;&amp; motor.br == 3 &amp;&amp; motor.bl == 0" (Line 49)
+    	name: motor.fr, value: 0
+    	name: motor.fl, value: 0
+    	name: motor.br, value: 0
+    	name: motor.bl, value: 0
+    </failure>
+  </testcase>
+  <testcase name="system_error_stop" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.system_error_stop" time="">
+  </testcase>
+  <testcase name="final_state_left" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.final_state_left" time="">
+    <failure>Assertion failed: "assert motor.fl == 3 &amp;&amp; motor.fr == -3 &amp;&amp; motor.bl == 3 &amp;&amp; motor.br == -3" (Line 115)
+    	name: motor.fl, value: 0
+    	name: motor.fr, value: 0
+    	name: motor.bl, value: 0
+    	name: motor.br, value: 0
+    </failure>
+  </testcase>
+</testsuite>
