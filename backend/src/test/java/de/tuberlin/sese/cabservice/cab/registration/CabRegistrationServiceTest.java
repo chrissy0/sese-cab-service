@@ -18,8 +18,7 @@ import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,8 +50,11 @@ public class CabRegistrationServiceTest {
                 .name("Some Cab Name")
                 .build(), 5);
 
+        verify(repo).findAll();
         verify(repo).save(cabEntityCaptor.capture());
         verify(locationService).saveCabLocation(locationEntityCaptor.capture());
+        verifyNoMoreInteractions(repo);
+        verifyNoMoreInteractions(locationService);
 
         assertThat(cabId).isEqualTo(3);
 
@@ -118,7 +120,7 @@ public class CabRegistrationServiceTest {
         assertThatThrownBy(() -> registrationService.registerCab(CabEntity.builder()
                 .name("Some Name")
                 .build(), 4))
-                .isInstanceOf(NameAlreadyInUseException.class)
+                .isExactlyInstanceOf(NameAlreadyInUseException.class)
                 .hasMessage("CabName \"Some Name\" is already in use");
     }
 
@@ -127,7 +129,7 @@ public class CabRegistrationServiceTest {
         assertThatThrownBy(() -> registrationService.registerCab(CabEntity.builder()
                 .name("Some Name")
                 .build(), 16))
-                .isInstanceOf(UnknownSectionException.class)
+                .isExactlyInstanceOf(UnknownSectionException.class)
                 .hasMessage("Section \"16\" is unknown");
     }
 }

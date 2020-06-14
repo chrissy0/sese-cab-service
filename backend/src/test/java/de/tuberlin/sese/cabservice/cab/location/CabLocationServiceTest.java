@@ -90,7 +90,7 @@ public class CabLocationServiceTest {
                 .build();
 
         assertThatThrownBy(() -> service.saveCabLocation(entity))
-                .isInstanceOf(UnknownCabIdException.class);
+                .isExactlyInstanceOf(UnknownCabIdException.class);
 
         verifyNoMoreInteractions(locationRepo);
     }
@@ -108,7 +108,7 @@ public class CabLocationServiceTest {
                 .build();
 
         assertThatThrownBy(() -> service.saveCabLocation(entity))
-                .isInstanceOf(UnknownSectionException.class);
+                .isExactlyInstanceOf(UnknownSectionException.class);
 
         verifyNoMoreInteractions(locationRepo);
     }
