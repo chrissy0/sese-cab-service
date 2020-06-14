@@ -3,6 +3,7 @@ package de.tuberlin.sese.cabservice.persistence.job;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +20,12 @@ public class JobService {
     }
 
     public long saveJob(JobEntity entity) {
-        return repo.save(entity).getId();
+        entity.setTimestamp(LocalDateTime.now());
+        Long id = repo.save(entity).getId();
+        entity.setId(id);
+        entity.setCustomerId(id);
+        repo.save(entity);
+        return id;
     }
 
     public void deleteJob(Long id) {

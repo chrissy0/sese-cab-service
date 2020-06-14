@@ -60,18 +60,22 @@ public class JobServiceTest {
                 .build();
 
         when(repo.save(entity)).thenReturn(JobEntity.builder()
-                .id(0L)
+                .id(1L)
                 .build());
 
         long jobId = service.saveJob(entity);
 
-        verify(repo).save(entityCaptor.capture());
-        verifyNoMoreInteractions(repo);
+        assertThat(jobId).isEqualTo(1);
 
-        assertThat(entityCaptor.getValue().getId()).isNull();
-        assertThat(entityCaptor.getValue().getStart()).isEqualTo(10);
-        assertThat(entityCaptor.getValue().getEnd()).isEqualTo(11);
-        assertThat(jobId).isEqualTo(0);
+        verify(repo, times(2)).save(entityCaptor.capture());
+
+        List<JobEntity> capturedEntities = entityCaptor.getAllValues();
+        assertThat(capturedEntities.get(1).getId()).isEqualTo(1L);
+        assertThat(capturedEntities.get(1).getCustomerId()).isEqualTo(1L);
+        assertThat(capturedEntities.get(1).getStart()).isEqualTo(10);
+        assertThat(capturedEntities.get(1).getEnd()).isEqualTo(11);
+
+        verifyNoMoreInteractions(repo);
     }
 
     @Test
