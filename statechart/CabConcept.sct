@@ -139,8 +139,8 @@
                 <outgoingTransitions xmi:id="_I_Vr8KPrEeqtcu-1Jwu1qQ" specification="/us_wall_thresh = 3" target="_HUJ8gKPrEeqtcu-1Jwu1qQ"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_HUJ8gKPrEeqtcu-1Jwu1qQ" specification="entry / motor.fl = 0;&#xD;&#xA;motor.fr = 0;&#xD;&#xA;motor.bl = 0;&#xD;&#xA;motor.br = 0" name="stop" incomingTransitions="_I_Vr8KPrEeqtcu-1Jwu1qQ">
-                <outgoingTransitions xmi:id="_lOCWUKPrEeqtcu-1Jwu1qQ" specification="after 1s&#xD;&#xA;[current_marker ==1 ||&#xD;&#xA;&#x9;current_marker == 2 ||&#xD;&#xA;&#x9;current_marker == 3 ||&#xD;&#xA;&#x9;current_marker == 4 &amp;&amp;&#xD;&#xA;&#x9;us_side_wall.left &lt; us_wall_thresh]" target="_UaxNcKPrEeqtcu-1Jwu1qQ"/>
-                <outgoingTransitions xmi:id="_M9K-AKPsEeqtcu-1Jwu1qQ" specification="after 1s&#xD;&#xA;[current_marker !=1 &amp;&amp;&#xD;&#xA;&#x9;current_marker != 2 &amp;&amp;&#xD;&#xA;&#x9;current_marker != 3 &amp;&amp;&#xD;&#xA;&#x9;current_marker != 4 &amp;&amp;&#xD;&#xA;&#x9;us_side_wall.right &lt; us_wall_thresh]" target="_a7yqcKPrEeqtcu-1Jwu1qQ"/>
+                <outgoingTransitions xmi:id="_lOCWUKPrEeqtcu-1Jwu1qQ" specification="after 1s&#xD;&#xA;[us_side_wall.left &lt; us_wall_thresh]" target="_UaxNcKPrEeqtcu-1Jwu1qQ"/>
+                <outgoingTransitions xmi:id="_M9K-AKPsEeqtcu-1Jwu1qQ" specification="after 1s&#xD;&#xA;[us_side_wall.right &lt; us_wall_thresh]" target="_a7yqcKPrEeqtcu-1Jwu1qQ"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_UaxNcKPrEeqtcu-1Jwu1qQ" specification="entry / motor.fl = speed_turn;&#xD;&#xA;motor.fr = - speed_turn;&#xD;&#xA;motor.bl = speed_turn;&#xD;&#xA;motor.br = - speed_turn;&#xD;&#xA;raise us_side_motor.lift_up" name="turning left" incomingTransitions="_lOCWUKPrEeqtcu-1Jwu1qQ">
                 <outgoingTransitions xmi:id="_eW6UMKPwEeqtcu-1Jwu1qQ" specification="after 1s" target="_YnCnUKPwEeqtcu-1Jwu1qQ"/>
