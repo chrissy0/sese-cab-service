@@ -17,6 +17,8 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		backend.pickup1 = 4
 		raise backend.new_job1
+		
+		proceed 1s
 	
 		ir_lane.left = true
 		ir_lane.mid = false
@@ -43,6 +45,8 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		backend.pickup1 = 4
 		raise backend.new_job1
+		
+		proceed 1s
 	
 		ir_lane.right = true
 		ir_lane.mid = false
