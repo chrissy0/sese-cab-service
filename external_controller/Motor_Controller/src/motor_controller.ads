@@ -28,7 +28,6 @@ package Motor_Controller is
          SE_State               : in System_Error_State_T;
          MS_Speed               : in Long_Float;
          MT_Speed               : in Long_Float;
-         LD_State               : in Drive_State_T;
          set_motor_value_access : in set_motor_value_procedure_t);
 
       entry lane_detection_done

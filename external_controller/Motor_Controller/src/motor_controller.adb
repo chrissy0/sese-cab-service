@@ -19,42 +19,42 @@ package body Motor_Controller is
       System_Error_State     : System_Error_State_T     := STOP;
       Motor_Straight_Speed   : Long_Float;
       Motor_Turn_Speed       : Long_Float;
-      Last_Drive_State       : Drive_State_T            := INIT;
       set_motor_value        : set_motor_value_procedure_t;
       running                : Boolean                  := True;
 
+      procedure Log_Line(message : String) is
+      begin
+         Put_Line("[motor_controller] " & message);
+      end Log_Line;
+
       procedure drive_state_output is
       begin
-         if Drive_State /= Last_Drive_State then
             case Drive_State is
                when STRAIGHT =>
-                  Put_Line ("driving straight");
+                  Log_Line ("driving straight");
                   set_motor_value (MOTOR_FRONT_LEFT, Motor_Straight_Speed);
                   set_motor_value (MOTOR_BACK_LEFT, Motor_Straight_Speed);
                   set_motor_value (MOTOR_FRONT_RIGHT, Motor_Straight_Speed);
                   set_motor_value (MOTOR_BACK_RIGHT, Motor_Straight_Speed);
                when LEFT =>
-                  Put_Line ("driving left");
+                  Log_Line ("driving left");
                   set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                   set_motor_value (MOTOR_BACK_LEFT, 0.0);
                   set_motor_value (MOTOR_FRONT_RIGHT, Motor_Turn_Speed);
                   set_motor_value (MOTOR_BACK_RIGHT, Motor_Turn_Speed);
                when RIGHT =>
-                  Put_Line ("driving right");
+                  Log_Line ("driving right");
                   set_motor_value (MOTOR_FRONT_LEFT, Motor_Turn_Speed);
                   set_motor_value (MOTOR_BACK_LEFT, Motor_Turn_Speed);
                   set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
                   set_motor_value (MOTOR_BACK_RIGHT, 0.0);
                when INIT =>
-                  Put_Line ("driving Init");
+                  Log_Line ("driving Init");
                   set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                   set_motor_value (MOTOR_BACK_LEFT, 0.0);
                   set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
                   set_motor_value (MOTOR_BACK_RIGHT, 0.0);
-
             end case;
-         end if;
-         Last_Drive_State := Drive_State;
 
       end drive_state_output;
 
@@ -62,10 +62,10 @@ package body Motor_Controller is
       begin
          case Front_Clear_State is
             when DRIVE =>
-               Put_Line ("Drive state");
+               Log_Line ("Drive state");
                drive_state_output;
             when STOP =>
-               Put_Line ("Stop state");
+               Log_Line ("Stop state");
          end case;
       end front_clear_state_output;
 
@@ -73,14 +73,15 @@ package body Motor_Controller is
       begin
          case Normal_Driving_State is
             when FRONT_CLEAR =>
-               Put_Line ("Front clear state");
+               Log_Line ("Front clear state");
                front_clear_state_output;
             when FRONT_BLOCKED =>
-               Put_Line ("Front Blocked State");
+               Log_Line ("Front Blocked State");
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
                set_motor_value (MOTOR_BACK_RIGHT, 0.0);
+
          end case;
       end normal_driving_state_output;
 
@@ -88,10 +89,10 @@ package body Motor_Controller is
       begin
          case Motor_Controller_State is
             when NORMAL_DRIVING =>
-               Put_Line ("Normal Driving state");
+               Log_Line ("Normal Driving state");
                normal_driving_state_output;
             when SYSTEM_ERROR =>
-               Put_Line ("System error state");
+               Log_Line ("System error state");
          end case;
       end motor_controller_state_output;
 
@@ -108,6 +109,7 @@ package body Motor_Controller is
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
                set_motor_value (MOTOR_BACK_RIGHT, 0.0);
                Motor_Controller_State := SYSTEM_ERROR;
+
 
             when GO_STRAIGHT_S =>
                Drive_State := STRAIGHT;
@@ -150,7 +152,7 @@ package body Motor_Controller is
       -- this is needed so that test cases termintate if an assert fails
       select
          delay 2.0;
-         Put_Line ("Constructor Timed out, exiting motor_controller");
+         Log_Line ("Constructor Timed out, exiting motor_controller");
          running := False;
       or
          accept Construct
@@ -158,7 +160,7 @@ package body Motor_Controller is
             ND_State               : in Normal_Driving_State_T;
             FC_State : in Front_Clear_State_T; D_State : in Drive_State_T;
             SE_State : in System_Error_State_T; MS_Speed : in Long_Float;
-            MT_Speed : in Long_Float; LD_State : in Drive_State_T;
+            MT_Speed : in Long_Float;
             set_motor_value_access : in set_motor_value_procedure_t)
          do
             Motor_Controller_State := MC_State;
@@ -168,7 +170,6 @@ package body Motor_Controller is
             System_Error_State     := SE_State;
             Motor_Straight_Speed   := MS_Speed;
             Motor_Turn_Speed       := MT_Speed;
-            Last_Drive_State       := LD_State;
             set_motor_value        := set_motor_value_access;
          end Construct;
       end select;
@@ -188,7 +189,7 @@ package body Motor_Controller is
             end lane_detection_done;
          or
             delay 2.0;
-            Put_Line ("lane_detection_done timed out, killing External_Controller");
+            Log_Line ("lane_detection_done timed out, killing External_Controller");
             running := False;
             goto Continue;
          end select;
@@ -201,7 +202,7 @@ package body Motor_Controller is
             end front_distance_done;
          or
             delay 2.0;
-            Put_Line ("front_distance_done timed out, killing External_Controller");
+            Log_Line ("front_distance_done timed out, killing External_Controller");
             running := False;
             goto Continue;
          end select;
@@ -215,7 +216,7 @@ package body Motor_Controller is
             end lane_detection_next;
          or
             delay 2.0;
-            Put_Line ("lane_detection_next timed out, killing External_Controller");
+            Log_Line ("lane_detection_next timed out, killing External_Controller");
             running := False;
             goto Continue;
          end select;
@@ -226,7 +227,7 @@ package body Motor_Controller is
             end front_distance_next;
          or
             delay 2.0;
-            Put_Line ("front_distance_next timed out, killing External_Controller");
+            Log_Line ("front_distance_next timed out, killing External_Controller");
             running := False;
             goto Continue;
          end select;
@@ -236,7 +237,7 @@ package body Motor_Controller is
 
          <<Continue>>
       end loop;
-      Put_Line
+      Log_Line
         ("Motor_Controller shutting down. So long, and thanks for all the gasoline");
 
    end Motor_Controller_Task_T;

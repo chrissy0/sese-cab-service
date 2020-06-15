@@ -1,0 +1,1923 @@
+Front_Distance: ...  recieved!
+Normal Driving state
+Front_Distance: sending front_distance_done...
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Normal Driving state
+Front clear state
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Drive state
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Normal Driving state
+Front clear state
+Drive state
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: sending front_distance_done...
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Normal Driving state
+Front clear state
+Drive state
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: ...  recieved!
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: sending front_distance_done...
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: sending front_distance_done...
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: sending front_distance_done...
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Normal Driving state
+Front clear state
+Drive state
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Waiting for main_next
+Front_Distance: sending front_distance_done...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Normal Driving state
+Front clear state
+Drive state
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Normal Driving state
+Front clear state
+Drive state
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front_Distance: ...  recieved!
+Front clear state
+Front_Distance: sending front_distance_done...
+Drive state
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Reading Sensor data inf_mid ...
+Front_Distance: ...  recieved!
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: ...  recieved!
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front_Distance: ...  recieved!
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data ...
+Front_Distance: sending front_distance_done...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front_Distance: ...  recieved!
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+Front_Distance: sending front_distance_done...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: sending front_distance_done...
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front_Distance: ...  recieved!
+Front clear state
+Front_Distance: sending front_distance_done...
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front clear state
+Drive state
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Normal Driving state
+Front clear state
+Drive state
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Normal Driving state
+Front clear state
+Drive state
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Waiting for main_next
+Front_Distance: sending front_distance_done...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Normal Driving state
+Front clear state
+Drive state
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+Front_Distance: sending front_distance_done...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Front_Distance: sending front_distance_done...
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: ...  recieved!
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Normal Driving state
+Front clear state
+Drive state
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: ...  recieved!
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front clear state
+Front_Distance: ...  recieved!
+Drive state
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+ ... done
+Read Sensor Data:\n ------
+Front_Distance: sending front_distance_done...
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Normal Driving state
+Front clear state
+Drive state
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Waiting for main_next
+Front_Distance: sending front_distance_done...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_done...
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+Waiting for main_next
+Front_Distance: sending front_distance_done...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: ...  recieved!
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+Front_Distance: sending front_distance_done...
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Main_next recieved!
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+Normal Driving state
+Front clear state
+Drive state
+	US_Curb_Left_Value :=  1.00000000000000E+03
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value :=  3.64659592335152E+02
+	IR_Lane_Mid_Value :=  2.17795553721756E+02
+ ------
+Sending Go Straight_Infrared
+Sending lane_detection_done
+Front_Distance: ...  recieved!
+Waiting for main_next
+Front_Distance: sending front_distance_done...
+Main_next recieved!
+
+Reading Sensor data ...
+Front_Distance: ...  recieved!
+Front_Distance: sending front_distance_next...
+Reading Sensor data inf_mid ...
+ ... done
+Read Sensor Data:\n ------
+	US_Curb_Left_Value :=  1.00000000000000E+03
+Front_Distance: ...  recieved!
+Normal Driving state
+Front clear state
+Drive state
+Front_Distance: sending front_distance_done...
+	US_Curb_Right_Value :=  8.23780008337643E+02
+	IR_Lane_Right_Value :=  3.64659253421086E+02
+	IR_Lane_Left_Value
