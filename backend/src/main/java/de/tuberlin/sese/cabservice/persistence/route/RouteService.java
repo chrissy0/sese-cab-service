@@ -16,6 +16,7 @@ public class RouteService {
 
     public RouteEntity getRoute(Long cabId, Integer version) {
         // TODO Placeholder code
+        // TODO Only allow registered cabs to request a route
 
         Optional<RouteEntity> routeOptional = repo.findById(cabId);
 
