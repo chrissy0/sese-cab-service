@@ -15,8 +15,8 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		ir_lane.mid = true
 		
-		backend.pickup1 = 4
-		raise backend.new_job1
+		backend.target = 4
+		raise backend.new_job
 		
 		proceed 1s
 	
@@ -43,8 +43,8 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		ir_lane.mid = true
 		
-		backend.pickup1 = 4
-		raise backend.new_job1
+		backend.target = 4
+		raise backend.new_job
 		
 		proceed 1s
 	
@@ -70,8 +70,8 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		ir_lane.mid = true
 		
-		backend.pickup1 = 4
-		raise backend.new_job1
+		backend.target = 4
+		raise backend.new_job
 	
 		ir_lane.mid = false
 		us_curb.left = 0
@@ -95,8 +95,8 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		ir_lane.mid = true
 		
-		backend.pickup1 = 4
-		raise backend.new_job1
+		backend.target = 4
+		raise backend.new_job
 	
 		ir_marker.out_fl = 9
 		ir_marker.out_fr = 9

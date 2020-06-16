@@ -174,7 +174,7 @@
           <vertices xsi:type="sgraph:Entry" xmi:id="_WTq4zKc0Eequr_d844pchg">
             <outgoingTransitions xmi:id="_WTq4-Kc0Eequr_d844pchg" specification=" / marker_thresh = 10" target="_WTq5Iac0Eequr_d844pchg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_WTerc6c0Eequr_d844pchg" specification="entry / current_marker = ir_marker.bin_nr" name="reading marker" incomingTransitions="_YR9C6ac3Eequr_d844pchg">
+          <vertices xsi:type="sgraph:State" xmi:id="_WTerc6c0Eequr_d844pchg" specification="entry / current_marker = ir_marker.bin_nr" name="where to drive" incomingTransitions="_YR9C6ac3Eequr_d844pchg">
             <outgoingTransitions xmi:id="_WTq4zac0Eequr_d844pchg" specification="[ir_marker.out_fl > marker_thresh ||&#xD;&#xA;&#x9;ir_marker.out_fr > marker_thresh ||&#xD;&#xA;&#x9;ir_marker.out_bl > marker_thresh ||&#xD;&#xA;&#x9;ir_marker.out_br > marker_thresh]" target="_WTq5Iac0Eequr_d844pchg"/>
             <regions xmi:id="_WTerjqc0Eequr_d844pchg" name="desicion">
               <vertices xsi:type="sgraph:State" xmi:id="_WTkyqKc0Eequr_d844pchg" name="decide" incomingTransitions="_-Ws0gK4KEeqJ2NnvqFfsGg">
