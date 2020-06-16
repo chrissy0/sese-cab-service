@@ -12,7 +12,7 @@ export class BookingFormComponent {
   constructor(private backendService: BackendService) {
   }
 
-  stations = [10, 11, 12, 13];
+  stations = [2, 5, 8, 11];
 
   model = new Job();
 
