@@ -80,6 +80,9 @@ int32_t get_data_length_for_sensor_type(WbNodeType type)
     case WB_NODE_ROTATIONAL_MOTOR:
         data_length = 0;
         break;
+    case WB_NODE_LINEAR_MOTOR:
+        data_length = 0;
+        break;
     default:
         data_length = -1;
         break;
@@ -163,30 +166,43 @@ int send_sensor_data(SOCKET *client_socket)
 long unsigned int execute_command(struct package_format *pkg)
 {
     WbDeviceTag tag;
+    int32_t bytes_used = 0;
 
-    if (pkg->command == WC2EC_SET_VALUE && pkg->sensor_type == WB_NODE_ROTATIONAL_MOTOR)
-    {
-
-        /* TODO errorhandling */
-        tag = wb_robot_get_device_by_index(pkg->sensor_id);
-
+    if (pkg->command != WC2EC_SET_VALUE ) {
+        printf("Received Package with unknown command!\n");
+        return 0;
+    }  
+    /* TODO errorhandling */
+    tag = wb_robot_get_device_by_index(pkg->sensor_id);
+     
+    switch(pkg->sensor_type) {
+    case WB_NODE_ROTATIONAL_MOTOR:
         if (WC2EC_DEBUG_RECEIVE)
         {
-            printf("Received Motor command\n");
-            printf("Setting speed to: %f\n", *((double *)pkg->data));
+            printf("Received Rotational Motor command\n");
+            printf("Setting velocity to: %f\n", *((double *)pkg->data));
             printf("For %s\n", wb_device_get_name(tag));
         }
-
         wb_motor_set_velocity(tag, *((double *)pkg->data));
-        return sizeof(double) + sizeof(struct package_format);
-    }
-    else
-    {
+        bytes_used = sizeof(double);
+        break;
+    case WB_NODE_LINEAR_MOTOR:
         if (WC2EC_DEBUG_RECEIVE)
-            printf("expected: %x, %x\n", WC2EC_SET_VALUE, WB_NODE_ROTATIONAL_MOTOR);
-    }
-    return 0;
+        {
+            printf("Received linear Motor command\n");
+            printf("Setting position to: %f\n", *((double *)pkg->data));
+            printf("For %s\n", wb_device_get_name(tag));
+        }
+        wb_motor_set_position(tag, *((double*) pkg->data));
+        bytes_used = sizeof(double);
+        break;
+    default: 
+        printf("Sent SET_VALUE command for unknown motortype\n");
+        return 0; 
+    } 
+    return bytes_used + sizeof(struct package_format);
 }
+
 int receive_commands(SOCKET *client_socket, LPWSABUF *socket_buffer)
 {
     long unsigned int recvBytes, flags = 0, consumed = 0;
@@ -403,6 +419,10 @@ int init_sensors(SOCKET *client_socket)
         case WB_NODE_ROTATIONAL_MOTOR:
             wb_motor_set_position(tag, INFINITY);
             wb_motor_set_velocity(tag, 0.0);
+            break;
+        case WB_NODE_LINEAR_MOTOR:
+            wb_motor_set_position(tag, -0.01);
+
             break;
         default:
             printf("Cant enable unknown sensor of type: %d\n", type);
