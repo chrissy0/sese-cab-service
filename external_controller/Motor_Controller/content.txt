@@ -1,0 +1,210 @@
+C:\Users\jhart\Documents\Uni\SESE_Projekt\sese-cab-service_git\external_controller\External_Controller\obj\external_controller.exe
+Setting up WC2EC_Driver...
+ 9
+inf_right!
+created map entry and sensor ring for  0
+ 10
+inf_right2!
+created map entry and sensor ring for  1
+ 8
+inf_cent!
+created map entry and sensor ring for  2
+ 9
+inf_cent2!
+created map entry and sensor ring for  3
+ 9
+inf_rm_fr!
+created map entry and sensor ring for  4
+ 10
+inf_rm_fr2!
+created map entry and sensor ring for  5
+ 13
+inf_rm_fr_act!
+created map entry and sensor ring for  6
+ 14
+inf_rm_fr_act2!
+created map entry and sensor ring for  7
+ 9
+inf_rm_fl!
+created map entry and sensor ring for  8
+ 10
+inf_rm_fl2!
+created map entry and sensor ring for  9
+ 13
+inf_rm_fl_act!
+created map entry and sensor ring for  10
+ 14
+inf_rm_fl_act2!
+created map entry and sensor ring for  11
+ 9
+inf_rm_bl!
+created map entry and sensor ring for  12
+ 10
+inf_rm_bl2!
+created map entry and sensor ring for  13
+ 13
+inf_rm_bl_act!
+created map entry and sensor ring for  14
+ 14
+inf_rm_bl_act2!
+created map entry and sensor ring for  15
+ 9
+inf_rm_br!
+created map entry and sensor ring for  16
+ 10
+inf_rm_br2!
+created map entry and sensor ring for  17
+ 13
+inf_rm_br_act!
+created map entry and sensor ring for  18
+ 14
+inf_rm_br_act2!
+created map entry and sensor ring for  19
+ 6
+dist_c!
+created map entry and sensor ring for  20
+ 7
+dist_c2!
+created map entry and sensor ring for  21
+ 7
+curb_rb!
+created map entry and sensor ring for  22
+ 8
+curb_rb2!
+created map entry and sensor ring for  23
+ 7
+curb_rc!
+created map entry and sensor ring for  24
+ 8
+curb_rc2!
+created map entry and sensor ring for  25
+ 7
+curb_rf!
+created map entry and sensor ring for  26
+ 8
+curb_rf2!
+created map entry and sensor ring for  27
+ 7
+curb_lf!
+created map entry and sensor ring for  28
+ 8
+curb_lf2!
+created map entry and sensor ring for  29
+ 7
+curb_lc!
+created map entry and sensor ring for  30
+ 8
+curb_lc2!
+created map entry and sensor ring for  31
+ 7
+curb_lb!
+created map entry and sensor ring for  32
+ 8
+curb_lb2!
+created map entry and sensor ring for  33
+ 6
+dist_r!
+created map entry and sensor ring for  34
+ 7
+dist_r2!
+created map entry and sensor ring for  35
+ 6
+dist_l!
+created map entry and sensor ring for  36
+ 7
+dist_l2!
+created map entry and sensor ring for  37
+ 8
+inf_left!
+created map entry and sensor ring for  38
+ 9
+inf_left2!
+created map entry and sensor ring for  39
+ 6
+wheel1!
+created map entry and sensor ring for  40
+ 6
+wheel3!
+created map entry and sensor ring for  41
+ 6
+wheel4!
+created map entry and sensor ring for  42
+ 6
+wheel2!
+created map entry and sensor ring for  43
+Setting up Motor_Controller_Task...
+Normal Driving state
+Front clear state
+Drive state
+driving straight
+Setting up Lane_Detection_Task...
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Sending Go Right_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+Normal Driving state
+Front clear state
+Drive state
+driving right
+
+Reading Sensor data ...
+Reading Sensor data inf_mid ...
+ ... done
+Sending Go Right_Infrared
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Normal Driving state
+Reading Sensor data ...
+Front clear state
+Drive state
+driving right
+Reading Sensor data inf_mid ...
+ ... done
+Infrared Error
+Sending Go Right_Curb
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+driving right
+Reading Sensor data inf_mid ...
+ ... done
+Infrared Error
+Sending Go Right_Curb
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+driving right
+Reading Sensor data inf_mid ...
+ ... done
+Infrared Error
+Sending Go Right_Curb
+Sending lane_detection_done
+Waiting for main_next
+Main_next recieved!
+
+Reading Sensor data ...
+Normal Driving state
+Front clear state
+Drive state
+driving right
+Reading Sensor data inf_mid ...
+ ... done
+Infrared Error
+Sending Go Right_Curb
+Sending lane_detection_done
+Waiting for main_next
