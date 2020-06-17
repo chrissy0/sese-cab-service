@@ -1,65 +1,94 @@
 testclass CabTesting for statechart SafetyConcept {
 	
+	
+	var speed_turning:integer = 3
+	var speed_straight: integer = 10
+	
+	//-------------------------------Infrared Middle Line ----------------------------------------------------
+	
 	@Test
 	
-	/** Drive left */
-	operation drive_left() {
-		enter
-		
-		
+	/** Infrared drive straight */
+	operation ir_drive_straight() {
+
 		ir_obst.left = 100
 		ir_obst.right = 100
 		us_obst.left = 100
 		us_obst.mid = 100
 		us_obst.right = 100
 		
-		ir_lane.mid = true
+		us_curb.left = 100
+		us_curb.right = 100
+		
+		enter
 		
 		backend.target = 4
 		raise backend.new_job
 		
-		proceed 1s
-	
-		ir_lane.left = true
-		ir_lane.mid = false
-		
-		assert motor.fr == 3 &&  motor.fl == 0 && motor.br == 3 && motor.bl == 0
+		assert motor.fr == speed_straight &&  motor.fl == speed_straight && motor.br == speed_straight && motor.bl == speed_straight
 		
 		exit
 	}
 	
 	@Test
 	
-	/** Drive right */
-	operation drive_right() {
-		enter
-		
-		
+	/** Infrared drive left */
+	operation ir_drive_left() {
+
 		ir_obst.left = 100
 		ir_obst.right = 100
 		us_obst.left = 100
 		us_obst.mid = 100
 		us_obst.right = 100
 		
-		ir_lane.mid = true
+		us_curb.left = 100
+		us_curb.right = 100
+		
+		enter
 		
 		backend.target = 4
 		raise backend.new_job
-		
-		proceed 1s
 	
-		ir_lane.right = true
-		ir_lane.mid = false
-		assert motor.fr == 3 &&  motor.fl == 0 && motor.br == 3 && motor.bl == 0
+		raise ir_lane.left
+		
+		assert motor.fr == speed_turning &&  motor.fl == 0 && motor.br == speed_turning && motor.bl == 0
 		
 		exit
 	}
+	
+	@Test
+	
+	/** Infrared drive right */
+	operation ir_drive_right() {
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+		
+		us_curb.left = 100
+		us_curb.right = 100
+		
+		enter
+		
+		backend.target = 4
+		raise backend.new_job
+	
+		
+		raise ir_lane.right
+		
+		assert motor.fr == 0 &&  motor.fl == speed_turning && motor.br == 0 && motor.bl == speed_turning
+		
+		exit
+	}
+	
+	//--------------------------------------final safe state------------------------------------------------
 	
 	@Test
 	
 	/** system error stop */
 	operation system_error_stop() {
-		enter
+		
 		
 		
 		ir_obst.left = 100
@@ -67,56 +96,164 @@ testclass CabTesting for statechart SafetyConcept {
 		us_obst.left = 100
 		us_obst.mid = 100
 		us_obst.right = 100
-		
-		ir_lane.mid = true
+
+		enter
 		
 		backend.target = 4
 		raise backend.new_job
 	
-		ir_lane.mid = false
+		raise ir_lane.no_signal
 		us_curb.left = 0
 		
 		assert motor.fl == 0 && motor.fr == 0 && motor.bl == 0 && motor.br == 0
 		
 		exit
 	}
+	
 	@Test
 	
-	/** final state left*/
+	/** final state turning left*/
 	operation final_state_left() {
-		enter
-		
 		
 		ir_obst.left = 100
 		ir_obst.right = 100
 		us_obst.left = 100
 		us_obst.mid = 100
 		us_obst.right = 100
-		
-		ir_lane.mid = true
+
+		enter
 		
 		backend.target = 4
 		raise backend.new_job
 	
-		ir_marker.out_fl = 9
-		ir_marker.out_fr = 9
-		ir_marker.out_bl = 9
-		ir_marker.out_br = 9
-		ir_marker.bin_nr = 3
-		
-		ir_marker.out_fl = 11
-		ir_marker.out_fr = 11
-		ir_marker.out_bl = 11
-		ir_marker.out_br = 11
-		
-		ir_lane.mid = false
+		raise ir_lane.no_signal
 		us_curb.left = 0
 		
-		us_side_wall.left = 2
+		us_side_wall.left = 5
+		us_side_wall.right = 2
 		
 		proceed 1s
 		
-		assert motor.fl == 3 && motor.fr == -3 && motor.bl == 3 && motor.br == -3
+		assert motor.fl == speed_turning && motor.fr == -speed_turning && motor.bl == speed_turning && motor.br == -speed_turning
+		
+		exit
+	}
+	
+	@Test
+	
+	/** final state turning right*/
+	operation final_state_right() {
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+
+		enter
+		
+		backend.target = 4
+		raise backend.new_job
+	
+		raise ir_lane.no_signal
+		us_curb.left = 0
+		
+		us_side_wall.right = 5
+		us_side_wall.left = 2
+		
+		
+		proceed 1s
+		
+		assert motor.fl == -speed_turning && motor.fr == speed_turning && motor.bl == -speed_turning && motor.br == speed_turning
+		
+		exit
+	}
+	
+	@Test
+	
+	/** final state drive over curb*/
+	operation final_state_drive_over_curb() {
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+
+		enter
+		
+		backend.target = 4
+		raise backend.new_job
+	
+		raise ir_lane.no_signal
+		us_curb.left = 0
+		
+		us_side_wall.left = 5
+		us_side_wall.right = 2
+		
+		proceed 2s
+		
+		assert motor.fl == speed_straight && motor.fr == speed_straight && motor.bl == speed_straight && motor.br == speed_straight
+		
+		exit
+	}
+	
+	@Test
+	
+	/** final state standstill off track*/
+	operation final_state_stadnstill_off_track() {
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+
+		enter
+		
+		backend.target = 4
+		raise backend.new_job
+	
+		raise ir_lane.no_signal
+		us_curb.left = 0
+		
+		us_side_wall.left = 5
+		us_side_wall.right = 2
+		
+		proceed 5s
+		
+		assert motor.fl == 0 && motor.fr == 0 && motor.bl == 0 && motor.br == 0
+		
+		exit
+	}
+	
+	@Test
+	
+	/** final state blocked on track*/
+	operation final_state_blocked_on_track() {
+		
+		ir_obst.left = 100
+		ir_obst.right = 100
+		us_obst.left = 100
+		us_obst.mid = 100
+		us_obst.right = 100
+
+		enter
+		
+		backend.target = 4
+		raise backend.new_job
+	
+		raise ir_lane.no_signal
+		us_curb.left = 0
+		
+		us_side_wall.left = 5
+		us_side_wall.right = 2
+		
+		proceed 2s
+		
+		us_obst.mid = 2
+		
+		assert motor.fl == 0 && motor.fr == 0 && motor.bl == 0 && motor.br == 0
 		
 		exit
 	}
