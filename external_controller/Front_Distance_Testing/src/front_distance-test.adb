@@ -68,6 +68,7 @@ package body Front_Distance.Test is
       return Front_Distance_Values.get (ID);
    end dummy_FD_get;
 
+
    -------------------------
    -- test_front_distance --
    -------------------------
@@ -82,50 +83,64 @@ package body Front_Distance.Test is
       Front_Distance_Task   : Front_Distance_Task_T;
       US_THRES_V            : constant := 40.0;
       US_ERROR_V            : constant := 0.0;
-   begin
+      SPEED_STRAIGHT        : constant := 6.0;
+      SPEED_TURN            : constant := 2.0;
+      SPEED_DELTA           : constant := 0.1;
+      SENSOR_ERROR_VALUE    : constant := 0.0;
+      lane_detection_next_signal : Lane_Detection_Next_T;
+      front_distance_next_signal : Front_Distance_Next_T;
+      job_executer_next_signal : Job_Executer_Next_t;
 
+      procedure proceed is begin
+         Motor_Controller_Task.lane_detection_done(EMPTY_S);
+         Motor_Controller_Task.front_distance_done(EMPTY_S);
+         Motor_Controller_Task.job_executer_done(EMPTY_S);
+
+         Motor_Controller_Task.main_shutdown_signal(False);
+
+         Motor_Controller_Task.lane_detection_next(lane_detection_next_signal);
+         Motor_Controller_Task.front_distance_next(front_distance_next_signal);
+         Motor_Controller_Task.job_executer_next(job_executer_next_signal);
+      end proceed;
+
+   begin
+      -- set front clear
       for I in Front_Distance.Distance_Sensor_ID_T loop
          Front_Distance_Values.set(I, US_THRES_V + 1.0);
       end loop;
 
-      Motor_Controller_Task.Construct(MC_State               => NORMAL_DRIVING,
-                                      ND_State               => FRONT_CLEAR,
-                                      FC_State               => DRIVE,
-                                      D_State                => STRAIGHT,
-                                      SE_State               => STOP,
-                                      MS_Speed               => 6.0,
-                                      MT_Speed               => 1.0,
-                                      set_motor_value_access => dummy_M_set'Access);
+      Motor_Controller_Task.Constructor(MC_State               => NORMAL_DRIVING,
+                                        ND_State               => FRONT_CLEAR,
+                                        FC_State               => DRIVE,
+                                        D_State                => STRAIGHT,
+                                        LE_State               => NEXT_UNKOWN,
+                                        SE_State               => STOP,
+                                        MS_Speed               => SPEED_STRAIGHT,
+                                        MT_Speed               => SPEED_TURN,
+                                        set_motor_value_access => dummy_M_set'Access,
+                                        timeout_v => 2.0
+                                       );
 
       Front_Distance_Task.Construct(get_distance_sensor_value_access => dummy_FD_get'Access,
                                     us_thresh                        => US_THRES_V,
                                     Motor_Controller_Task_A          => Motor_Controller_Task);
-      -- test front clear
 
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
-
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
+      -- system should react in two iterations
+      proceed;
+      proceed;
 
       for I in Motor_Controller.Motor_ID_T loop
-         Assert (6.0 = Motor_Values.get(I), "Motor not driving straight even though front clear! Expected motor value 6.0, got " & Motor_Values.get(I)'Image);
+         Assert (SPEED_STRAIGHT = Motor_Values.get(I), "Motor not driving straight even though front clear! Expected motor value SPEED_STRAIGHT, got " & Motor_Values.get(I)'Image);
       end loop;
 
       -- Test front blocked
       for I in Front_Distance.Distance_Sensor_ID_T loop
-         Front_Distance_Values.set(I, US_THRES_V - 1.0);
+         Front_Distance_Values.set(I, US_THRES_V - SPEED_DELTA);
       end loop;
 
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
-
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
+      -- system should react in two iterations
+      proceed;
+      proceed;
 
       for I in Motor_Controller.Motor_ID_T loop
          Assert (0.0 = Motor_Values.get(I), "Motor driving even though front blocked! Expected motor value 0.0, got " & Motor_Values.get(I)'Image);
@@ -133,52 +148,58 @@ package body Front_Distance.Test is
 
       -- test front clear again
       for I in Front_Distance.Distance_Sensor_ID_T loop
-         Front_Distance_Values.set(I, US_THRES_V + 1.0);
+         Front_Distance_Values.set(I, US_THRES_V + SPEED_DELTA);
       end loop;
 
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
 
-      Motor_Controller_Task.lane_detection_next;
 
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
+      -- system should react in two iterations
+      proceed;
+      proceed;
 
       for I in Motor_Controller.Motor_ID_T loop
-         Assert (6.0 = Motor_Values.get(I), "Motor not driving straight even though front clear! Expected motor value 6.0, got " & Motor_Values.get(I)'Image);
+         Assert (SPEED_STRAIGHT = Motor_Values.get(I), "Motor not driving straight even though front clear! Expected motor value SPEED_STRAIGHT, got " & Motor_Values.get(I)'Image);
       end loop;
 
       -- test only one row of sensors working -> no erro, normal driving
-      Front_Distance_Values.set(CENTER_1, 0.0);
-      Front_Distance_Values.set(LEFT_0, 0.0);
-      Front_Distance_Values.set(RIGHT_1, 0.0);
+      Front_Distance_Values.set(CENTER_1, SENSOR_ERROR_VALUE);
+      Front_Distance_Values.set(LEFT_0, SENSOR_ERROR_VALUE);
+      Front_Distance_Values.set(RIGHT_1, SENSOR_ERROR_VALUE);
 
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
-
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
+      -- system should react in two iterations
+      proceed;
+      proceed;
 
       for I in Motor_Controller.Motor_ID_T loop
-         Assert (6.0 = Motor_Values.get(I), "Motor not driving straight even though front clear (one sensor row mailfunctioning)! Expected motor value 6.0, got " & Motor_Values.get(I)'Image);
+         Assert (SPEED_STRAIGHT = Motor_Values.get(I), "Motor not driving straight even though front clear (one sensor row mailfunctioning)! Expected motor value SPEED_STRAIGHT, got " & Motor_Values.get(I)'Image);
       end loop;
 
       -- one more sensor failure: system error
-      Front_Distance_Values.set(LEFT_1, 0.0);
+      Front_Distance_Values.set(LEFT_1, SENSOR_ERROR_VALUE);
 
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
 
-      Motor_Controller_Task.lane_detection_next;
-
-      Motor_Controller_Task.lane_detection_done(GO_STRAIGHT_S);
-
-      Motor_Controller_Task.lane_detection_next;
+      -- system should react in two iterations
+      proceed;
+      proceed;
 
       for I in Motor_Controller.Motor_ID_T loop
          Assert (0.0 = Motor_Values.get(I), "Motor driving straight even though system error! Expected motor value 0.0, got " & Motor_Values.get(I)'Image);
       end loop;
+
+      -- shutting down everything
+      Motor_Controller_Task.lane_detection_done(EMPTY_S);
+      Motor_Controller_Task.front_distance_done(EMPTY_S);
+      Motor_Controller_Task.job_executer_done(EMPTY_S);
+
+      Motor_Controller_Task.main_shutdown_signal(True);
+
+      Motor_Controller_Task.lane_detection_next(lane_detection_next_signal);
+      Assert (lane_detection_next_signal = SHUTDOWN_S, "lane_detection_next_signal: Expected SHUTDOWN_S, got " & lane_detection_next_signal'Image);
+      Motor_Controller_Task.front_distance_next(front_distance_next_signal);
+      Assert (front_distance_next_signal = SHUTDOWN_S, "lane_detection_next_signal: Expected SHUTDOWN_S, got " & front_distance_next_signal'Image);
+      Motor_Controller_Task.job_executer_next(job_executer_next_signal);
+      Assert (job_executer_next_signal = SHUTDOWN_S, "lane_detection_next_signal: Expected SHUTDOWN_S, got " & job_executer_next_signal'Image);
+
    end test_front_distance;
 
 end Front_Distance.Test;

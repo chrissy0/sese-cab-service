@@ -1,4 +1,4 @@
-with "..\Front_Distance\front_distance.gpr";
+with "../Front_Distance/front_distance.gpr";
 with "aunit.gpr";
 
 project Front_Distance_Testing is
@@ -6,6 +6,7 @@ project Front_Distance_Testing is
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
    for Main use ("front_distance_testing.adb");
+   for Exec_Dir use ".";
 
 end Front_Distance_Testing;
 

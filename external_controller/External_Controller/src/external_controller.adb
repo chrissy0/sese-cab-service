@@ -12,6 +12,7 @@ procedure External_Controller is
    Front_Distance_Task   : Front_Distance_Task_T;
    Motor_Controller_Task : Motor_Controller_Task_Access_T;
    WC2EC_Driver          : wc2ec_thread_access_t;
+   job_execute_next_v    : Job_Executer_Next_t;
 
    procedure Log_Line(message : String) is
    begin
@@ -28,14 +29,16 @@ begin
    Log_Line ("Setting up Motor_Controller_Task...");
    Motor_Controller_Task := new Motor_Controller_Task_T;
 
-   Motor_Controller_Task.Construct(MC_State       => NORMAL_DRIVING,
-                                   ND_State       => FRONT_CLEAR,
-                                   FC_State       => DRIVE,
-                                   D_State        => INIT,
-                                   SE_State       => STOP,
-                                   MS_Speed       => 6.0,
-                                   MT_Speed       => 1.0,
-                                   set_motor_value_access => WC2EC_Interface.set_motor_value'Access);
+   Motor_Controller_Task.Constructor(MC_State       => NORMAL_DRIVING,
+                                     ND_State       => FRONT_CLEAR,
+                                     FC_State       => DRIVE,
+                                     D_State        => INIT,
+                                     SE_State       => STOP,
+                                     LE_STATE       => NEXT_UNKOWN,
+                                     MS_Speed       => 6.0,
+                                     MT_Speed       => 1.0,
+                                     set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
+                                     timeout_v       => 1.0);
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
@@ -49,5 +52,12 @@ begin
       Motor_Controller_Task_A          => Motor_Controller_Task
      );
    Log_Line("All set up!");
+
+   loop
+      Motor_Controller_Task.job_executer_done(EMPTY_S);
+      Motor_Controller_Task.main_shutdown_signal(False);
+      Motor_Controller_Task.job_executer_next(job_execute_next_v);
+   end loop;
+
 
 end External_Controller;

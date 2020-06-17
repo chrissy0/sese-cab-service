@@ -19,6 +19,7 @@ package body Front_Distance is
       Motor_Controller_Task            : Motor_Controller_Task_Access_T;
       running                          : Boolean := True;
       Output                           : Front_Distance_Done_t;
+      Next_Signal                      : Front_Distance_Next_t;
    begin
       Log_Line("Startinh Front_Distance Thread.");
       Log_Line("Front_Distance: Waiting for Construct...");
@@ -87,7 +88,7 @@ package body Front_Distance is
             running := False;
             goto Continue;
          then abort
-           Motor_Controller_Task.front_distance_next;
+           Motor_Controller_Task.front_distance_next(Signal => Next_Signal);
          end select;
          Log_Line("Front_Distance: ...  recieved!");
 

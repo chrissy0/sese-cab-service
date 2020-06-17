@@ -15,7 +15,7 @@ fi
 DIR=$(dirname "$1")
 PROJECT_NAME=$(basename "$1")
 if cd "$DIR"; then
-	echo "Switching directory to $1"
+	echo "Switching directory to $DIR"
 else
 	echo "Error: Couldnt switch directory to $DIR!"
 	exit 4;
@@ -42,11 +42,11 @@ OUTPUT_FILE="${PROJECT_NAME}_output"
 OUTPUT_XML="${PROJECT_NAME}_output.xml"
 # remove everything until first xml tag
 # this is a hacky way to remove all Put_Line's in the tests
-awk '/<TestRun>/,0' $OUTPUT_FILE > $OUTPUT_XML
 
 echo "$OUTPUT_FILE"
 ./"$PROJECT_NAME" > "$OUTPUT_FILE"
-#xargs trims error message: Only real error, when it contains non-whitespace or linebreak character
+# trim everything up until <TestRun>
+awk '/<TestRun>/,0' $OUTPUT_FILE > $OUTPUT_XML
 ERROR=$(xmlstarlet sel -t -m '//FailedTests[1]' -v . -n <"$OUTPUT_XML")
 ERROR_TRIMMED=$(echo "$ERROR" | xargs)
 echo "--------------------"
