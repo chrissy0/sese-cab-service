@@ -1,22 +1,73 @@
 <testsuite name="CabTesting" time="">
   <testcase name="ir_drive_straight" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.ir_drive_straight" time="">
+    <failure>Assertion failed: "assert active (main_region.drivable.motor_control.Final_Safe_State)" (Line 31)
+    	Expected: Final Safe State, actual: [line mid, active ir line detection, laneDetection, drivable, curb mid, laneDetection, drivable, clear, drivable, read marker, choose direction, drivable, clear, normal driving, drivable]
+    </failure>
   </testcase>
   <testcase name="ir_drive_left" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.ir_drive_left" time="">
+    <failure>Assertion failed: "assert motor.fr == speed_turning &amp;&amp; motor.fl == 0 &amp;&amp; motor.br == speed_turning &amp;&amp; motor.bl == 0" (Line 59)
+    	name: motor.fr, value: 0
+    	name: speed_turning, value: 3
+    	name: motor.fl, value: 0
+    	name: motor.br, value: 0
+    	name: speed_turning, value: 3
+    	name: motor.bl, value: 0
+    </failure>
   </testcase>
   <testcase name="ir_drive_right" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.ir_drive_right" time="">
+    <failure>Assertion failed: "assert motor.fr == 0 &amp;&amp; motor.fl == speed_turning &amp;&amp; motor.br == 0 &amp;&amp; motor.bl == speed_turning" (Line 83)
+    	name: motor.fr, value: 0
+    	name: motor.fl, value: 0
+    	name: speed_turning, value: 3
+    	name: motor.br, value: 0
+    	name: motor.bl, value: 0
+    	name: speed_turning, value: 3
+    </failure>
   </testcase>
   <testcase name="system_error_stop" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.system_error_stop" time="">
+    <failure>Assertion failed: "assert motor.fl == 0 &amp;&amp; motor.fr == 0 &amp;&amp; motor.bl == 0 &amp;&amp; motor.br == 0" (Line 110)
+    	name: motor.fl, value: 10
+    	name: motor.fr, value: 10
+    	name: motor.bl, value: 10
+    	name: motor.br, value: 10
+    </failure>
   </testcase>
   <testcase name="final_state_left" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.final_state_left" time="">
+    <failure>Assertion failed: "assert motor.fl == speed_turning &amp;&amp; motor.fr == -speed_turning &amp;&amp; motor.bl == speed_turning &amp;&amp; motor.br == -speed_turning" (Line 138)
+    	name: motor.fl, value: 10
+    	name: speed_turning, value: 3
+    	name: motor.fr, value: 10
+    	name: speed_turning, value: 3
+    	name: motor.bl, value: 10
+    	name: speed_turning, value: 3
+    	name: motor.br, value: 10
+    	name: speed_turning, value: 3
+    </failure>
   </testcase>
   <testcase name="final_state_right" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.final_state_right" time="">
+    <failure>Assertion failed: "assert motor.fl == -speed_turning &amp;&amp; motor.fr == speed_turning &amp;&amp; motor.bl == -speed_turning &amp;&amp; motor.br == speed_turning" (Line 167)
+    	name: motor.fl, value: 10
+    	name: speed_turning, value: 3
+    	name: motor.fr, value: 10
+    	name: speed_turning, value: 3
+    	name: motor.bl, value: 10
+    	name: speed_turning, value: 3
+    	name: motor.br, value: 10
+    	name: speed_turning, value: 3
+    </failure>
   </testcase>
   <testcase name="final_state_drive_over_curb" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.final_state_drive_over_curb" time="">
   </testcase>
   <testcase name="final_state_stadnstill_off_track" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.final_state_stadnstill_off_track" time="">
+    <failure>Assertion failed: "assert motor.fl == 0 &amp;&amp; motor.fr == 0 &amp;&amp; motor.bl == 0 &amp;&amp; motor.br == 0" (Line 223)
+    	name: motor.fl, value: 10
+    	name: motor.fr, value: 10
+    	name: motor.bl, value: 10
+    	name: motor.br, value: 10
+    </failure>
   </testcase>
   <testcase name="final_state_blocked_on_track" classname="platform:/resource/Autonomous%20Cab-on-Demand%20Service/CabTesting.sctunit#CabTesting.final_state_blocked_on_track" time="">
-    <failure>Assertion failed: "assert motor.fl == 0 &amp;&amp; motor.fr == 0 &amp;&amp; motor.bl == 0 &amp;&amp; motor.br == 0" (Line 256)
+    <failure>Assertion failed: "assert motor.fl == 0 &amp;&amp; motor.fr == 0 &amp;&amp; motor.bl == 0 &amp;&amp; motor.br == 0" (Line 253)
     	name: motor.fl, value: 10
     	name: motor.fr, value: 10
     	name: motor.bl, value: 10

@@ -11,6 +11,8 @@ testclass CabTesting for statechart SafetyConcept {
 	/** Infrared drive straight */
 	operation ir_drive_straight() {
 
+		enter
+
 		ir_obst.left = 100
 		ir_obst.right = 100
 		us_obst.left = 100
@@ -20,10 +22,14 @@ testclass CabTesting for statechart SafetyConcept {
 		us_curb.left = 100
 		us_curb.right = 100
 		
-		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		
+		backend.drive_on = true
+		
+		raise ir_lane.no_left
+		
+		assert active (main_region.drivable.motor_control.Final_Safe_State)
+		
 		
 		assert motor.fr == speed_straight &&  motor.fl == speed_straight && motor.br == speed_straight && motor.bl == speed_straight
 		
@@ -46,8 +52,7 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.left
 		
@@ -71,9 +76,7 @@ testclass CabTesting for statechart SafetyConcept {
 		
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
-	
+		backend.drive_on = true
 		
 		raise ir_lane.right
 		
@@ -99,8 +102,7 @@ testclass CabTesting for statechart SafetyConcept {
 
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.no_signal
 		us_curb.left = 0
@@ -123,8 +125,7 @@ testclass CabTesting for statechart SafetyConcept {
 
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.no_signal
 		us_curb.left = 0
@@ -152,8 +153,7 @@ testclass CabTesting for statechart SafetyConcept {
 
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.no_signal
 		us_curb.left = 0
@@ -182,8 +182,7 @@ testclass CabTesting for statechart SafetyConcept {
 
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.no_signal
 		us_curb.left = 0
@@ -211,8 +210,7 @@ testclass CabTesting for statechart SafetyConcept {
 
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.no_signal
 		us_curb.left = 0
@@ -240,8 +238,7 @@ testclass CabTesting for statechart SafetyConcept {
 
 		enter
 		
-		backend.target = 4
-		raise backend.new_job
+		backend.drive_on = true
 	
 		raise ir_lane.no_signal
 		us_curb.left = 0
