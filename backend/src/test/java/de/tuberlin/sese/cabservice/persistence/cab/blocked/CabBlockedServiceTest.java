@@ -1,5 +1,7 @@
 package de.tuberlin.sese.cabservice.persistence.cab.blocked;
 
+import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationEntity;
+import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.persistence.CabEntity;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
@@ -14,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
@@ -30,6 +33,9 @@ public class CabBlockedServiceTest {
 
     @MockBean
     private CabRepo cabRepo;
+
+    @MockBean
+    private CabLocationService locationService;
 
     @Captor
     private ArgumentCaptor<CabBlockedEntity> entityCaptor;
@@ -111,5 +117,45 @@ public class CabBlockedServiceTest {
 
         assertThatThrownBy(() -> service.setBlocked(3L, null))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void shouldGetBlockedSections() {
+        when(blockedRepo.findAll()).thenReturn(asList(
+                CabBlockedEntity.builder()
+                        .cabId(1L)
+                        .build(),
+                CabBlockedEntity.builder()
+                        .cabId(2L)
+                        .build(),
+                CabBlockedEntity.builder()
+                        .cabId(3L)
+                        .build(),
+                CabBlockedEntity.builder()
+                        .cabId(4L)
+                        .build()));
+
+        when(locationService.getCabLocation(1L)).thenReturn(Optional.of(CabLocationEntity.builder()
+                .cabId(1L)
+                .section(2)
+                .build()));
+
+        when(locationService.getCabLocation(2L)).thenReturn(Optional.of(CabLocationEntity.builder()
+                .cabId(2L)
+                .section(8)
+                .build()));
+
+        when(locationService.getCabLocation(3L)).thenReturn(Optional.of(CabLocationEntity.builder()
+                .cabId(3L)
+                .section(4)
+                .build()));
+
+        when(locationService.getCabLocation(4L)).thenReturn(Optional.of(CabLocationEntity.builder()
+                .cabId(4L)
+                .section(9)
+                .build()));
+
+        assertThat(service.getBlockedSections())
+                .containsExactlyInAnyOrder(2, 4, 8, 9);
     }
 }

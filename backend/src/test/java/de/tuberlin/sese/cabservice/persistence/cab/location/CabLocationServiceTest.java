@@ -144,4 +144,21 @@ public class CabLocationServiceTest {
 
         verifyNoMoreInteractions(locationRepo);
     }
+
+    @Test
+    public void shouldGetCabLocation() {
+
+        when(locationRepo.findById(1L)).thenReturn(Optional.of(CabLocationEntity.builder()
+                .cabId(1L)
+                .section(3)
+                .build()));
+
+        Optional<CabLocationEntity> cabLocationOptional = service.getCabLocation(1L);
+        assertThat(cabLocationOptional).isPresent();
+        assertThat(cabLocationOptional.get().getCabId()).isEqualTo(1L);
+        assertThat(cabLocationOptional.get().getSection()).isEqualTo(3);
+
+        verify(locationRepo).findById(1L);
+        verifyNoMoreInteractions(locationRepo);
+    }
 }

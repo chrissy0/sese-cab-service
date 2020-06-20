@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,10 @@ public class CabLocationService {
     private final CabLocationRepo locationRepo;
 
     private final CabRepo cabRepo;
+
+    public Optional<CabLocationEntity> getCabLocation(Long id) {
+        return locationRepo.findById(id);
+    }
 
     public List<CabLocationEntity> getAllCabLocations() {
         List<CabLocationEntity> entities = new LinkedList<>();
