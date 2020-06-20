@@ -3,26 +3,31 @@ import {HttpClient} from '@angular/common/http';
 import {Job} from './job';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class BackendService {
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    saveJob(job: Job) {
-        return this.http.post('http://localhost:8080/api/bookr/job', job).toPromise();
-    }
+  developmentMode = true;
 
-    deleteJob(id: number) {
-        return this.http.delete('http://localhost:8080/api/bookr/job', {
-            params: {
-                id: id.toString()
-            }
-        }).toPromise();
-    }
+  host = this.developmentMode ? 'localhost' : '167.71.35.10';
+  port = 8081;
 
-    getJobs() {
-        return this.http.get('http://localhost:8080/api/bookr/jobs').toPromise() as Promise<Job[]>;
-    }
+  saveJob(job: Job) {
+    return this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/job', job).toPromise();
+  }
+
+  deleteJob(id: number) {
+    return this.http.delete('http://' + this.host + ':' + this.port + '/api/bookr/job', {
+      params: {
+        id: id.toString()
+      }
+    }).toPromise();
+  }
+
+  getJobs() {
+    return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/jobs').toPromise() as Promise<Job[]>;
+  }
 }
