@@ -212,7 +212,7 @@ GET /api/ec/requestRoute?id=0&version=0
 ##### Request
 
 ```http
-POST /api/ec/requestPickup?cabId=0&markerId=0&customerId=0
+POST /api/ec/requestPickup?cabId=0&customerId=0
 ```
 
 ##### Response
@@ -292,7 +292,7 @@ GET /api/ec/pickupsComplete?cabId=0
 ##### Request
 
 ```http
-POST /api/ec/requestDropoff?cabId=0&sectionId=0&customerId=0
+POST /api/ec/requestDropoff?cabId=0&customerId=0
 ```
 
 ##### Response
@@ -309,7 +309,7 @@ POST /api/ec/requestDropoff?cabId=0&sectionId=0&customerId=0
 409 CONFLICT
 ```
 
-###### Section ID unknown
+###### Cab at unknown location
 
 ```http
 409 CONFLICT
