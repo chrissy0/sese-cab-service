@@ -76,7 +76,7 @@ public class JobControllerTest {
                 .content("{\"start\": 11,\"end\": 12}"))
                 .andExpect(status().isOk());
 
-        verify(service).saveJob(entityCaptor.capture());
+        verify(service).saveNewJob(entityCaptor.capture());
         verifyNoMoreInteractions(service);
 
         assertThat(entityCaptor.getValue().getStart()).isEqualTo(11);

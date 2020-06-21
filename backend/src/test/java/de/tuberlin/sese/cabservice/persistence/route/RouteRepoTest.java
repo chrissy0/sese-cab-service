@@ -31,7 +31,7 @@ public class RouteRepoTest {
                 .build();
         RouteActionEntity routeAction2 = RouteActionEntity.builder()
                 .action(PICKUP)
-                .customerId(2)
+                .customerId(2L)
                 .marker(7)
                 .build();
 

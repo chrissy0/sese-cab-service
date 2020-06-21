@@ -26,7 +26,7 @@ public class RouteActionEntity {
     private Action action;
     private Direction direction;
     private Integer marker;
-    private Integer customerId;
+    private Long customerId;
 
     enum Action {
         @JsonProperty("turn")

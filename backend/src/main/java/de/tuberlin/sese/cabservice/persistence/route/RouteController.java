@@ -1,6 +1,7 @@
 package de.tuberlin.sese.cabservice.persistence.route;
 
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
+import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
 import de.tuberlin.sese.cabservice.util.exceptions.VersionException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class RouteController {
         RouteEntity route;
         try {
             route = service.getRoute(id, version);
-        } catch (VersionException | UnknownCabIdException e) {
+        } catch (VersionException | UnknownCabIdException | UnknownCabLocationException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

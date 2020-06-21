@@ -13,6 +13,7 @@
                 End Station
             </th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -20,6 +21,18 @@
             <td>{{job.id}}</td>
             <td>{{job.start}}</td>
             <td>{{job.end}}</td>
+            <td>
+                <!-- TODO delete job upon exiting cab -->
+                <button *ngIf="dropoffForJob(job.id)"
+                        type="submit"
+                        class="btn btn-danger"
+                        (click)="exitCab(job.id)">Exit Cab {{ dropoffForJob(job.id).cabId }}</button>
+                <!-- TODO disable deleting job upon entering cab -->
+                <button *ngIf="pickupForJob(job.id)"
+                        type="submit"
+                        class="btn btn-success"
+                        (click)="enterCab(job.id)">Enter Cab {{ pickupForJob(job.id).cabId }}</button>
+            </td>
             <td>
                 <fa-icon (click)="deleteJob(i)" [icon]="trashIcon"></fa-icon>
             </td>

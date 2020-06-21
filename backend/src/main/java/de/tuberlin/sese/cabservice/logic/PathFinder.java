@@ -25,7 +25,7 @@ public class PathFinder {
 
     private final CabBlockedService blockedService;
 
-    public Optional<List<Option>> getRouteBetween(int start, int end) throws NoPathException {
+    public List<Option> getRouteBetween(int start, int end) throws NoPathException {
 
         List<Option> route = new LinkedList<>();
 
@@ -35,13 +35,13 @@ public class PathFinder {
             if (nextActionOptional.isPresent()) {
                 Option nextAction = nextActionOptional.get();
                 route.add(nextAction);
-                currentSection = nextAction.getSection();
+                currentSection = nextAction.getToSection();
             } else {
-                return Optional.empty();
+                throw new NoPathException("No next action found");
             }
         }
 
-        return Optional.of(route);
+        return route;
     }
 
     private Optional<Option> getNextAction(int currentSection, int endSection) throws NoPathException {
@@ -53,83 +53,116 @@ public class PathFinder {
         switch (currentSection) {
             case 0:
                 onlyOption = Option.builder()
-                        .section(13)
+                        .fromSection(0)
+                        .toSection(13)
                         .direction(STRAIGHT)
                         .build();
 
                 return Optional.of(handleChoice(onlyOption, blockedSections));
             case 1:
                 primaryOption = Option.builder()
-                        .section(3)
+                        .fromSection(1)
+                        .toSection(3)
                         .direction(LEFT)
                         .build();
                 alternativeOption = Option.builder()
-                        .section(2)
+                        .fromSection(1)
+                        .toSection(2)
                         .direction(RIGHT)
                         .build();
 
                 return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
             case 2:
+                onlyOption = Option.builder()
+                        .fromSection(2)
+                        .toSection(4)
+                        .direction(STRAIGHT)
+                        .build();
+
+                return Optional.of(handleChoice(onlyOption, blockedSections));
             case 3:
                 onlyOption = Option.builder()
-                        .section(4)
+                        .fromSection(3)
+                        .toSection(4)
                         .direction(STRAIGHT)
                         .build();
 
                 return Optional.of(handleChoice(onlyOption, blockedSections));
             case 4:
                 primaryOption = Option.builder()
-                        .section(6)
+                        .fromSection(4)
+                        .toSection(6)
                         .direction(LEFT)
                         .build();
                 alternativeOption = Option.builder()
-                        .section(5)
+                        .fromSection(4)
+                        .toSection(5)
                         .direction(RIGHT)
                         .build();
 
                 return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
             case 5:
+                onlyOption = Option.builder()
+                        .fromSection(5)
+                        .toSection(7)
+                        .direction(STRAIGHT)
+                        .build();
+
+                return Optional.of(handleChoice(onlyOption, blockedSections));
             case 6:
                 onlyOption = Option.builder()
-                        .section(7)
+                        .fromSection(6)
+                        .toSection(7)
                         .direction(STRAIGHT)
                         .build();
 
                 return Optional.of(handleChoice(onlyOption, blockedSections));
             case 7:
                 primaryOption = Option.builder()
-                        .section(9)
+                        .fromSection(7)
+                        .toSection(9)
                         .direction(LEFT)
                         .build();
                 alternativeOption = Option.builder()
-                        .section(8)
+                        .fromSection(7)
+                        .toSection(8)
                         .direction(RIGHT)
                         .build();
 
                 return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
             case 8:
+                onlyOption = Option.builder()
+                        .fromSection(8)
+                        .toSection(10)
+                        .direction(STRAIGHT)
+                        .build();
+
+                return Optional.of(handleChoice(onlyOption, blockedSections));
             case 9:
                 onlyOption = Option.builder()
-                        .section(10)
+                        .fromSection(9)
+                        .toSection(10)
                         .direction(STRAIGHT)
                         .build();
 
                 return Optional.of(handleChoice(onlyOption, blockedSections));
             case 10:
                 primaryOption = Option.builder()
-                        .section(12)
+                        .fromSection(10)
+                        .toSection(12)
                         .direction(LEFT)
                         .build();
                 alternativeOption = Option.builder()
-                        .section(11)
+                        .fromSection(10)
+                        .toSection(11)
                         .direction(RIGHT)
                         .build();
 
                 return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
             case 11:
-            case 13:
                 onlyOption = Option.builder()
-                        .section(1)
+                        .fromSection(11)
+                        .toSection(1)
                         .direction(STRAIGHT)
                         .build();
 
@@ -142,7 +175,8 @@ public class PathFinder {
                     }
 
                     return Optional.ofNullable(Option.builder()
-                            .section(14)
+                            .fromSection(12)
+                            .toSection(14)
                             .direction(LEFT)
                             .build());
                 }
@@ -153,23 +187,35 @@ public class PathFinder {
                     }
 
                     return Optional.ofNullable(Option.builder()
-                            .section(14)
+                            .fromSection(12)
+                            .toSection(14)
                             .direction(LEFT)
                             .build());
                 }
 
                 return Optional.ofNullable(Option.builder()
-                        .section(13)
+                        .fromSection(12)
+                        .toSection(13)
                         .direction(RIGHT)
                         .build());
+            case 13:
+                onlyOption = Option.builder()
+                        .fromSection(13)
+                        .toSection(1)
+                        .direction(STRAIGHT)
+                        .build();
+
+                return Optional.of(handleChoice(onlyOption, blockedSections));
 
             case 14:
                 primaryOption = Option.builder()
-                        .section(0)
+                        .fromSection(14)
+                        .toSection(0)
                         .direction(RIGHT)
                         .build();
                 alternativeOption = Option.builder()
-                        .section(15)
+                        .fromSection(14)
+                        .toSection(15)
                         .direction(LEFT)
                         .build();
 
@@ -182,16 +228,16 @@ public class PathFinder {
     }
 
     private Option handleChoice(Option primaryOption, Option alternativeOption, int endSection, List<Integer> blockedSections) throws NoPathException {
-        if (endSection == alternativeOption.getSection()) {
-            if (blockedSections.contains(alternativeOption.getSection())) {
+        if (endSection == alternativeOption.getToSection()) {
+            if (blockedSections.contains(alternativeOption.getToSection())) {
                 throw new NoPathException();
             }
 
             return alternativeOption;
         }
 
-        if (blockedSections.contains(primaryOption.getSection())) {
-            if (blockedSections.contains(alternativeOption.getSection())) {
+        if (blockedSections.contains(primaryOption.getToSection())) {
+            if (blockedSections.contains(alternativeOption.getToSection())) {
                 throw new NoPathException();
             }
 
@@ -202,7 +248,7 @@ public class PathFinder {
     }
 
     private Option handleChoice(Option onlyOption, List<Integer> blockedSections) throws NoPathException {
-        if (blockedSections.contains(onlyOption.getSection())) {
+        if (blockedSections.contains(onlyOption.getToSection())) {
             throw new NoPathException();
         }
 

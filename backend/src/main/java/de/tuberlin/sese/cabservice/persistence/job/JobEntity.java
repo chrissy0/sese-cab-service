@@ -22,8 +22,17 @@ public class JobEntity {
     private Long id;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long customerId;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private CustomerState customerState;
     private int start;
     private int end;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime timestamp;
+    private boolean inProgress;
+
+    public enum CustomerState {
+        WAITING,
+        IN_CAB,
+        AT_DESTINATION
+    }
 }

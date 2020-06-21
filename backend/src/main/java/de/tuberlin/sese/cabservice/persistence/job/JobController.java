@@ -19,7 +19,7 @@ public class JobController {
 
     @PostMapping("/bookr/job")
     public void addJob(@RequestBody JobEntity entity) {
-        service.saveJob(entity);
+        service.saveNewJob(entity);
     }
 
     @DeleteMapping("/bookr/job")

@@ -63,7 +63,7 @@ public class JobServiceTest {
                 .id(1L)
                 .build());
 
-        long jobId = service.saveJob(entity);
+        long jobId = service.saveNewJob(entity);
 
         assertThat(jobId).isEqualTo(1);
 

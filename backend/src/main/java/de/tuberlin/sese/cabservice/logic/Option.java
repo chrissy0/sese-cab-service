@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 public class Option {
 
-    private Integer section;
+    private Integer toSection;
+    private Integer fromSection;
     private Direction direction;
 
     public enum Direction {

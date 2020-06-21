@@ -23,7 +23,7 @@ public class JobServiceIT {
     @Test
     public void shouldOnlySaveOneEntity() {
 
-        service.saveJob(JobEntity.builder()
+        service.saveNewJob(JobEntity.builder()
                 .start(10)
                 .end(11)
                 .build());

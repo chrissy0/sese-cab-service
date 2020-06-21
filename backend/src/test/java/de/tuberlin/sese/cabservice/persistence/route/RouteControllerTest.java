@@ -47,12 +47,12 @@ public class RouteControllerTest {
                                 .build(),
                         RouteActionEntity.builder()
                                 .action(PICKUP)
-                                .customerId(0)
+                                .customerId(0L)
                                 .marker(2)
                                 .build(),
                         RouteActionEntity.builder()
                                 .action(DROPOFF)
-                                .customerId(0)
+                                .customerId(0L)
                                 .marker(4)
                                 .build(),
                         RouteActionEntity.builder()
