@@ -1,5 +1,9 @@
 package Motor_Controller is
 
+   ----------------------------------
+   -- TYPES USED IN OTHER PACKAGES --
+   ----------------------------------
+
    -- type to motor actor
    type Motor_ID_T is
      (MOTOR_FRONT_LEFT, MOTOR_FRONT_RIGHT, MOTOR_BACK_LEFT, MOTOR_BACK_RIGHT);
@@ -28,7 +32,11 @@ package Motor_Controller is
    type Job_Executer_Next_t is
      (SHUTDOWN_S, EMPTY_S);
 
-   -- type of internal states
+   ----------------------------------------
+   -- type of internal states            --
+   -- public for initialization purposes --
+   ----------------------------------------
+
    type Motor_Controller_State_T is (SYSTEM_ERROR, NORMAL_DRIVING);
    type Normal_Driving_State_T is (FRONT_CLEAR, FRONT_BLOCKED);
    type Front_Clear_State_T is (DRIVE, STOP);
@@ -37,6 +45,9 @@ package Motor_Controller is
    type System_Error_State_T is
      (STOP, LEFT, RIGHT, DRIVE_OVER_CURB, STAND_ON_TRACK, STAND_OFF_TRACK);
 
+   ---------------------------
+   -- task (or thread) type --
+   ---------------------------
    task type Motor_Controller_Task_T is
       entry Constructor
         (MC_State               : in Motor_Controller_State_T;

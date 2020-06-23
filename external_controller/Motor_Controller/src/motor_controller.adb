@@ -3,10 +3,9 @@ pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
 package body Motor_Controller is
 
-   procedure print_motor_value (f : Float) is
-   begin
-      Put (f'Image);
-   end print_motor_value;
+   -----------------
+   -- LOCAL TYPES --
+   -----------------
 
    type Module_Tasks is (LANE_DETECTION, JOB_EXECUTER, FRONT_DISTANCE);
    type Boolean_Tasks_Arrays is array (Module_Tasks) of Boolean;
@@ -16,27 +15,32 @@ package body Motor_Controller is
    ---------------------------
 
    task body Motor_Controller_Task_T is
-      Motor_Controller_State : Motor_Controller_State_T := NORMAL_DRIVING;
-      Normal_Driving_State   : Normal_Driving_State_T   := FRONT_CLEAR;
-      Front_Clear_State      : Front_Clear_State_T      := DRIVE;
-      Drive_State            : Drive_State_T            := STRAIGHT;
-      Lean_State             : Lean_State_T             := NEXT_UNKOWN;
-      System_Error_State     : System_Error_State_T     := STOP;
-      Motor_Straight_Speed   : Long_Float;
-      Motor_Turn_Speed       : Long_Float;
-      set_motor_value        : set_motor_value_procedure_t;
-      running                : Boolean                  := True;
-      timeout                : Duration                 := 2.0;
-      Job_Executer_Next_Signal : Job_Executer_Next_t    := EMPTY_S;
-      Lane_Detection_Next_Signal : Lane_Detection_Next_T:= EMPTY_S;
-      Front_Distance_Next_Signal : Front_Distance_Next_t:= EMPTY_S;
+      Motor_Controller_State     : Motor_Controller_State_T := NORMAL_DRIVING;
+      Normal_Driving_State       : Normal_Driving_State_T   := FRONT_CLEAR;
+      Front_Clear_State          : Front_Clear_State_T      := DRIVE;
+      Drive_State                : Drive_State_T            := STRAIGHT;
+      Lean_State                 : Lean_State_T             := NEXT_UNKOWN;
+      System_Error_State         : System_Error_State_T     := STOP;
+      Motor_Straight_Speed       : Long_Float;
+      Motor_Turn_Speed           : Long_Float;
+      set_motor_value            : set_motor_value_procedure_t;
+      running                    : Boolean                  := True;
+      timeout                    : Duration                 := 2.0;
+      Job_Executer_Next_Signal   : Job_Executer_Next_t      := EMPTY_S;
+      Lane_Detection_Next_Signal : Lane_Detection_Next_T    := EMPTY_S;
+      Front_Distance_Next_Signal : Front_Distance_Next_t    := EMPTY_S;
       task_done_array            : Boolean_Tasks_Arrays;
+
+      --------------------------
+      -- TASK LOCAL FUNCTIONS --
+      --------------------------
 
       procedure Log_Line (message : String) is
       begin
          Put_Line ("[motor_controller] " & message);
       end Log_Line;
 
+      -- calculate motor actor output for drive state
       procedure drive_state_output is
       begin
          case Lean_State is
@@ -77,6 +81,8 @@ package body Motor_Controller is
 
       end drive_state_output;
 
+
+      -- calculate motor actor output for front clear state
       procedure front_clear_state_output is
       begin
          case Front_Clear_State is
@@ -92,6 +98,8 @@ package body Motor_Controller is
          end case;
       end front_clear_state_output;
 
+
+      -- calculate motor actor output for normal driving state
       procedure normal_driving_state_output is
       begin
          case Normal_Driving_State is
@@ -108,6 +116,7 @@ package body Motor_Controller is
          end case;
       end normal_driving_state_output;
 
+      -- calculate motor actor output for one iteration
       procedure calculate_outputs is
       begin
          case Motor_Controller_State is
@@ -202,6 +211,8 @@ package body Motor_Controller is
          end case;
       end handle_job_executer_done;
 
+
+      -- set all_task_done_array to false => no package task done yet!
       procedure reset_all_tasks_done(all_tasks_done_array : in out Boolean_Tasks_Arrays)
       is
       begin
@@ -210,6 +221,7 @@ package body Motor_Controller is
          end loop;
       end reset_all_tasks_done;
 
+      -- check if all package tasks are done
       function are_all_tasks_done(all_tasks_done_array : in out Boolean_Tasks_Arrays) return Boolean
       is
       begin
