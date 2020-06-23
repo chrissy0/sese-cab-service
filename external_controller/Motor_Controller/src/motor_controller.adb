@@ -1,3 +1,4 @@
+-- Final safe state not implemented yet!
 pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
 package body Motor_Controller is
@@ -115,6 +116,7 @@ package body Motor_Controller is
                normal_driving_state_output;
             when SYSTEM_ERROR =>
                Log_Line ("System error state");
+               -- TODO implement system_error
          end case;
       end calculate_outputs;
 

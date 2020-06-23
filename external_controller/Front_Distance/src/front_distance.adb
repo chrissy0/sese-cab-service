@@ -21,7 +21,7 @@ package body Front_Distance is
       Output                           : Front_Distance_Done_t;
       Next_Signal                      : Front_Distance_Next_t;
    begin
-      Log_Line("Startinh Front_Distance Thread.");
+      Log_Line("Starting Front_Distance Thread.");
       Log_Line("Front_Distance: Waiting for Construct...");
       accept Construct
         (get_distance_sensor_value_access : in get_distance_sensor_value_t;

@@ -13,7 +13,7 @@ package Front_Distance is
       entry Construct
         (get_distance_sensor_value_access : in get_distance_sensor_value_t;
          us_thresh                        : in Long_Float;
-         Motor_Controller_Task_A : in Motor_Controller_Task_Access_T
+         Motor_Controller_Task_A          : in Motor_Controller_Task_Access_T
         );
    end Front_Distance_Task_T;
 
