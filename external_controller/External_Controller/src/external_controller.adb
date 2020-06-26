@@ -3,6 +3,7 @@ with Motor_Controller; use Motor_Controller;
 with WC2EC;            use WC2EC;
 with Ada.Text_IO;      use Ada.Text_IO;
 with Front_Distance;   use Front_Distance;
+with Job_Executer;     use Job_Executer;
 with WC2EC_Interface;
 
 
@@ -11,6 +12,7 @@ procedure External_Controller is
    Lane_Detection_Task   : Lane_Detection_Taks_T;
    Front_Distance_Task   : Front_Distance_Task_T;
    Motor_Controller_Task : Motor_Controller_Task_Access_T;
+   Job_Executer_Task     : Job_Executer_Task_T;
    WC2EC_Driver          : wc2ec_thread_access_t;
    job_execute_next_v    : Job_Executer_Next_t;
 
@@ -53,10 +55,17 @@ begin
      );
    Log_Line("All set up!");
 
+   Job_Executer_Task.Constructor(Motor_Controller_Task_A => Motor_Controller_Task,
+                                 timeout_v               => 2.0);
+
    loop
-      Motor_Controller_Task.job_executer_done(EMPTY_S);
+       Motor_Controller_Task.job_executer_done(EMPTY_S);
+      -- HINT uncomment the above line to enabel job_executer
+
       Motor_Controller_Task.main_shutdown_signal(False);
-      Motor_Controller_Task.job_executer_next(job_execute_next_v);
+
+       Motor_Controller_Task.job_executer_next(job_execute_next_v);
+      -- HINT uncomment the above line to enabel job_executer
    end loop;
 
 
