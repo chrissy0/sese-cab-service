@@ -14,6 +14,8 @@ package body Lane_Detection is
       IR_Lane_Mid_Value                       : Long_Float;
       US_Curb_Right_Value, US_Curb_Left_Value : Long_Float;
       Output                                  : Lane_Detection_Done_T;
+      next_signal                             : Lane_Detection_Next_T;
+      running                                 : Boolean := True;
    begin
 
       accept Construct
@@ -31,7 +33,7 @@ package body Lane_Detection is
       -- each iteration has three steps: 1. Read sensor data and calculate
       -- outputs 2. and send output via lane_detection_don(value) 3. Wait
       -- for lane_detection_next and start next iteration
-      loop
+      while running loop
          -- Read sensor values
          Put_Line ("Reading Sensor data ...");
          US_Curb_Left_Value := WC2EC.get_distance_sensor_data ("dist_l"); --we use the variable such "curf_fl, curf_cl",so it has to be changed 
@@ -64,7 +66,7 @@ package body Lane_Detection is
          Put_Line (" ------");
 
          Output := EMPTY_S;
-       if
+         if
            (IR_Lane_Right_Value < IR_Lane_Threshhold and
             IR_Lane_Left_Value > IR_Lane_Threshhold)
          then
@@ -90,11 +92,26 @@ package body Lane_Detection is
          Motor_Controller_Task.lane_detection_done (Output);
 
          Put_Line ("Waiting for main_next");
-         Motor_Controller_Task
-           .lane_detection_next; -- wait for all signals to be processed
+          -- wait for all signals to be processed
+         Motor_Controller_Task.lane_detection_next(next_signal);
          Put_Line ("Main_next recieved!");
          Put_Line ("");
+
+         -- handle next signal
+         case next_signal is
+            when SHUTDOWN_S =>
+               running := False;
+            when EMPTY_S =>
+               null;
+            when LEAN_LEFT_S =>
+               Put_Line ("LEAN_LEFT_S handling uninplemeted!");
+            when LEAN_RIGHT_S =>
+               Put_Line ("LEAN_RIGHT_S handling uninplemeted!");
+            when NO_LEAN_S =>
+               Put_Line ("NO_LEAN_S handling uninplemeted!");
+         end case;
       end loop;
+      Put_Line("Shutting down. So long, and thanks for all the lanes!");
    end Lane_Detection_Taks_T;
 
 end Lane_Detection;

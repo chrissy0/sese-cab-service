@@ -5,8 +5,11 @@ package Motor_Controller.Test is
 
    type Test is new AUnit.Test_Fixtures.Test_Fixture with null record;
 
-   function Name (T : Test) return AUnit.Message_String;
+   procedure test_drive_states (T : in out Test);
 
-   procedure test_lane_detection_processing (T : in out Test);
+   procedure test_normal_driving_states (T : in out Test);
 
+   procedure test_front_clear_states (T : in out Test);
+
+   procedure test_lean_states (T : in out Test);
 end Motor_Controller.Test;

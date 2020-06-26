@@ -16,7 +16,25 @@ package body Motor_Controller_Suite is
       Ret.Add_Test
         (Caller.Create
            ("Test Motor Controller drive_state_output",
-            Motor_Controller.Test.test_lane_detection_processing'Access));
+            Motor_Controller.Test.test_drive_states'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("Test Motor Controller test_normal_driving_states",
+            Motor_Controller.Test.test_normal_driving_states'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("Test Motor Controller test_front_clear_states",
+            Motor_Controller.Test.test_front_clear_states'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("Test Motor Controller test_front_clear_states",
+            Motor_Controller.Test.test_lean_states'Access));
+
+
+
       return Ret;
    end Suite;
 
