@@ -35,14 +35,14 @@ begin
                                      D_State        => INIT,
                                      SE_State       => STOP,
                                      LE_STATE       => NEXT_UNKOWN,
-                                     MS_Speed       => 6.0,
+                                     MS_Speed       => 2.0,
                                      MT_Speed       => 1.0,
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
                                      timeout_v       => 1.0);
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
-     (IR_Threshhold => 250.0, US_Threshhold => 870.0, US_Max_Value => 1_000.0,
+     (IR_Threshhold => 350.0, US_Threshhold => 870.0, US_Max_Value => 1_000.0,
       Motor_Task_A  => Motor_Controller_Task, WC2EC_Driver_A => WC2EC_Driver);
 
    Log_Line("Setting up Front_Distance_Task ...");

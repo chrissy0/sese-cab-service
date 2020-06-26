@@ -61,16 +61,16 @@ package body Motor_Controller is
                set_motor_value (MOTOR_BACK_RIGHT, Motor_Straight_Speed);
             when LEFT =>
                Log_Line ("driving left");
-               set_motor_value (MOTOR_FRONT_LEFT, 0.0);
-               set_motor_value (MOTOR_BACK_LEFT, 0.0);
-               set_motor_value (MOTOR_FRONT_RIGHT, Motor_Turn_Speed);
-               set_motor_value (MOTOR_BACK_RIGHT, Motor_Turn_Speed);
+               set_motor_value (MOTOR_FRONT_LEFT, -Motor_Turn_Speed);
+               set_motor_value (MOTOR_BACK_LEFT, -Motor_Turn_Speed);
+               set_motor_value (MOTOR_FRONT_RIGHT, Motor_Turn_Speed/2.0);
+               set_motor_value (MOTOR_BACK_RIGHT, Motor_Turn_Speed/2.0);
             when RIGHT =>
                Log_Line ("driving right");
-               set_motor_value (MOTOR_FRONT_LEFT, Motor_Turn_Speed);
-               set_motor_value (MOTOR_BACK_LEFT, Motor_Turn_Speed);
-               set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
-               set_motor_value (MOTOR_BACK_RIGHT, 0.0);
+               set_motor_value (MOTOR_FRONT_LEFT, Motor_Turn_Speed/2.0);
+               set_motor_value (MOTOR_BACK_LEFT, Motor_Turn_Speed/2.0);
+               set_motor_value (MOTOR_FRONT_RIGHT, -Motor_Turn_Speed);
+               set_motor_value (MOTOR_BACK_RIGHT, -Motor_Turn_Speed);
             when INIT =>
                Log_Line ("driving Init");
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
