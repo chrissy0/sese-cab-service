@@ -1,3 +1,5 @@
+with "..\Job_Executer\job_executer.gpr";
+with "..\Front_Distance\front_distance.gpr";
 with "..\Motor_Controller\motor_controller.gpr";
 with "..\Lane_Detection\lane_detection.gpr";
 
