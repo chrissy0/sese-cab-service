@@ -1,3 +1,4 @@
+with "..\Road_Marker\roadmarker.gpr";
 with "../Motor_Controller/motor_controller.gpr";
 
 project Job_Executer is

@@ -1,5 +1,4 @@
 pragma Ada_2012;
-with Roadmarker_Functions; use Roadmarker_Functions;
 package body Lane_Detection is
 
    procedure Log_Line(Message : String) is
