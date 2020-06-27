@@ -163,49 +163,95 @@ int send_sensor_data(SOCKET *client_socket)
     }
     return 0;
 }
-long unsigned int execute_command(struct package_format *pkg)
-{
-    WbDeviceTag tag;
-    int32_t bytes_used = 0;
+long int execute_command(struct package_format* pkg, long unsigned int bytes_left) {
+	WbDeviceTag tag;
+	long unsigned int bytes_used;
+ 
+	if (bytes_left < sizeof(struct package_format))
+        	return 0;
+          
+	if (pkg->command != WC2EC_SET_VALUE)
+		return -1;
+  
+                
+    	tag = wb_robot_get_device_by_index(pkg->sensor_id);
+	     
+    	switch(pkg->sensor_type) {
+    	case WB_NODE_ROTATIONAL_MOTOR:
+		bytes_used = sizeof(double);
+		if (bytes_left < bytes_used + sizeof(struct package_format))
+			return 0;
+		if (WC2EC_DEBUG_RECEIVE)
+		{
+		    printf("Received Rotational Motor command\n");
+		    printf("Setting velocity to: %f\n", *((double *)pkg->data));
+		    printf("For %s\n", wb_device_get_name(tag));
+		}
+		wb_motor_set_velocity(tag, *((double *)pkg->data));
+		break;
 
-    if (pkg->command != WC2EC_SET_VALUE ) {
-        printf("Received Package with unknown command!\n");
-        return 0;
-    }  
-    /* TODO errorhandling */
-    tag = wb_robot_get_device_by_index(pkg->sensor_id);
-     
-    switch(pkg->sensor_type) {
-    case WB_NODE_ROTATIONAL_MOTOR:
-        if (WC2EC_DEBUG_RECEIVE)
-        {
-            printf("Received Rotational Motor command\n");
-            printf("Setting velocity to: %f\n", *((double *)pkg->data));
-            printf("For %s\n", wb_device_get_name(tag));
-        }
-        wb_motor_set_velocity(tag, *((double *)pkg->data));
-        bytes_used = sizeof(double);
-        break;
-    case WB_NODE_LINEAR_MOTOR:
-        if (WC2EC_DEBUG_RECEIVE)
-        {
-            printf("Received linear Motor command\n");
-            printf("Setting position to: %f\n", *((double *)pkg->data));
-            printf("For %s\n", wb_device_get_name(tag));
-        }
-        wb_motor_set_position(tag, *((double*) pkg->data));
-        bytes_used = sizeof(double);
-        break;
+    	case WB_NODE_LINEAR_MOTOR:
+		bytes_used = sizeof(double);
+		if (bytes_left < bytes_used + sizeof(struct package_format))
+			return 0;
+		if (WC2EC_DEBUG_RECEIVE)
+		{
+		    printf("Received linear Motor command\n");
+		    printf("Setting position to: %f\n", *((double *)pkg->data));
+		    printf("For %s\n", wb_device_get_name(tag));
+		}
+		wb_motor_set_position(tag, *((double*) pkg->data));
+		break;
     default: 
-        printf("Sent SET_VALUE command for unknown motortype\n");
-        return 0; 
+	printf("Sent SET_VALUE command for unknown motortype\n");
+	return 0; 
     } 
     return bytes_used + sizeof(struct package_format);
 }
 
-int receive_commands(SOCKET *client_socket, LPWSABUF *socket_buffer)
-{
-    long unsigned int recvBytes, flags = 0, consumed = 0;
+
+void suspend_command_execution(LPWSABUF *socket_buffer, long unsigned int offset, long unsigned int length) {
+     if (WC2EC_DEBUG_RECEIVE) {
+         printf("PRE SUSPEND: \n");
+         printf("SocketB: %p\n", (*socket_buffer)->buf);
+         printf("SocketLen: %lu\n", (*socket_buffer)->len);
+         printf("Offset: %lu\n", length);
+         printf("Length: %lu\n", offset);
+    }     
+    memcpy((*socket_buffer)->buf, (*socket_buffer)->buf + offset, length);
+    (*socket_buffer)->len = SOCKET_BUFFER_SIZE - length;
+    (*socket_buffer)->buf = (*socket_buffer)->buf + length;
+    if (WC2EC_DEBUG_RECEIVE) {
+         printf("POST SUSPEND: \n");
+         printf("SocketB: %p\n", (*socket_buffer)->buf);
+         printf("SocketLen: %lu\n", (*socket_buffer)->len);
+    }
+}
+
+void resume_command_execution(LPWSABUF *socket_buffer, long unsigned int *recvBytes) {
+     long unsigned int offset;
+     
+     offset = SOCKET_BUFFER_SIZE - (*socket_buffer)->len;
+     if (offset) {
+           if (WC2EC_DEBUG_RECEIVE) {
+               printf("Resume_command: \n");
+               printf("SocketB: %p\n", (*socket_buffer)->buf);
+               printf("SocketLen: %lu\n", (*socket_buffer)->len);
+           }
+           (*socket_buffer)->len = SOCKET_BUFFER_SIZE;
+           (*socket_buffer)->buf = (*socket_buffer)->buf - offset; 
+           *recvBytes += offset;
+           if (WC2EC_DEBUG_RECEIVE) {
+               printf("POST Resume_command: \n");
+               printf("SocketB: %p\n", (*socket_buffer)->buf);
+               printf("SocketLen: %lu\n", (*socket_buffer)->len);
+           }
+     }
+
+}
+
+int receive_commands(SOCKET *client_socket, LPWSABUF *socket_buffer) {
+    long unsigned int recvBytes, flags = 0, consumed = 0, offset = 0;
     struct package_format *recvPkg;
     FD_SET ReadSet;
     TIMEVAL timeout = {.tv_sec = 0,
@@ -249,26 +295,31 @@ int receive_commands(SOCKET *client_socket, LPWSABUF *socket_buffer)
                     printf("%x\n", (*socket_buffer)->buf[i]);
                 }
             }
-
-            /* TODO handle partial receive case
-              * e.g. a package is split into two receives... ugly
-              */
-            while (recvBytes != consumed)
-            {
-                recvPkg = (struct package_format *)((*socket_buffer)->buf + consumed);
-                if (WC2EC_DEBUG_RECEIVE)
-                {
-                    printf("command: %u\n", recvPkg->command);
-                    printf("sensorType: %u\n", recvPkg->sensor_type);
-                    printf("sensorID: %u\n", recvPkg->sensor_id);
-                    printf("consumed: %lu\n", consumed);
+            resume_command_execution(socket_buffer, &recvBytes);
+            for (offset = 0; recvBytes > offset; offset += consumed) {
+                recvPkg = (struct package_format*) ((*socket_buffer)->buf + offset);
+                if (WC2EC_DEBUG_RECEIVE) {
+                  printf("command: %u\n", recvPkg->command);
+                  printf("sensorType: %u\n", recvPkg->sensor_type);
+                  printf("sensorID: %u\n", recvPkg->sensor_id);
+                  printf("consumed: %lu\n", consumed);
                 }
-                consumed += execute_command(recvPkg);
+                if((consumed = execute_command(recvPkg, recvBytes - offset)) <= 0) {
+                    if (consumed < 0) {
+                         printf("Received unexpected command\n");
+                         return -1;
+                    }
+                    
+                    suspend_command_execution(socket_buffer, offset, recvBytes - offset);
+                    break;
+                }
             }
         }
-    }
+    } 
     return 0;
 }
+
+
 
 void wc2ec_cleanup_socket_buffer(LPWSABUF *socket_buffer)
 {
