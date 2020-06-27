@@ -32,6 +32,7 @@ public class DropoffService {
 
     private final JobService jobService;
 
+    @SuppressWarnings("DuplicatedCode")
     public void dropoff(Long cabId, Long customerId) {
         if (cabId == null || customerId == null) {
             throw new IllegalArgumentException("Cab ID or customer ID is null");
@@ -87,6 +88,7 @@ public class DropoffService {
                 .build();
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public void acceptDropoff(Long customerId) {
         if (customerId == null) {
             throw new IllegalArgumentException("Customer ID is null");

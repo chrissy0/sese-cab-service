@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.persistence.customerinteraction.pickup;
+package de.tuberlin.sese.cabservice.persistence.customerinteraction.dropoff;
 
 import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflictException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
@@ -23,201 +23,201 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = PickupController.class)
-public class PickupControllerTest {
+@WebMvcTest(controllers = DropoffController.class)
+public class DropoffControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private PickupService service;
+    private DropoffService service;
 
     @Test
-    public void shouldRequestPickup() throws Exception {
+    public void shouldRequestDropoff() throws Exception {
 
-        mockMvc.perform(post("/api/ec/requestPickup")
+        mockMvc.perform(post("/api/ec/requestDropoff")
                 .param("cabId", "1")
                 .param("customerId", "1"))
                 .andExpect(status().isOk());
 
-        verify(service).pickup(1L, 1L);
+        verify(service).dropoff(1L, 1L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn409ConflictUponUnknownCabIdExceptionDuringPickup() throws Exception {
-        doThrow(new UnknownCabIdException()).when(service).pickup(2L, 3L);
+    public void shouldReturn409ConflictUponUnknownCabIdExceptionDuringDropoff() throws Exception {
+        doThrow(new UnknownCabIdException()).when(service).dropoff(2L, 3L);
 
-        mockMvc.perform(post("/api/ec/requestPickup")
+        mockMvc.perform(post("/api/ec/requestDropoff")
                 .param("cabId", "2")
                 .param("customerId", "3"))
                 .andExpect(status().isConflict());
 
-        verify(service).pickup(2L, 3L);
+        verify(service).dropoff(2L, 3L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn409ConflictUponUnknownCabLocationExceptionDuringPickup() throws Exception {
-        doThrow(new UnknownCabLocationException()).when(service).pickup(2L, 3L);
+    public void shouldReturn409ConflictUponUnknownCabLocationExceptionDuringDropoff() throws Exception {
+        doThrow(new UnknownCabLocationException()).when(service).dropoff(2L, 3L);
 
-        mockMvc.perform(post("/api/ec/requestPickup")
+        mockMvc.perform(post("/api/ec/requestDropoff")
                 .param("cabId", "2")
                 .param("customerId", "3"))
                 .andExpect(status().isConflict());
 
-        verify(service).pickup(2L, 3L);
+        verify(service).dropoff(2L, 3L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn409ConflictUponUnknownJobIdExceptionDuringPickup() throws Exception {
-        doThrow(new UnknownJobIdException()).when(service).pickup(2L, 3L);
+    public void shouldReturn409ConflictUponUnknownJobIdExceptionDuringDropoff() throws Exception {
+        doThrow(new UnknownJobIdException()).when(service).dropoff(2L, 3L);
 
-        mockMvc.perform(post("/api/ec/requestPickup")
+        mockMvc.perform(post("/api/ec/requestDropoff")
                 .param("cabId", "2")
                 .param("customerId", "3"))
                 .andExpect(status().isConflict());
 
-        verify(service).pickup(2L, 3L);
+        verify(service).dropoff(2L, 3L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn409ConflictUponCabCustomerPositionConflictExceptionDuringPickup() throws Exception {
-        doThrow(new CabCustomerPositionConflictException()).when(service).pickup(2L, 3L);
+    public void shouldReturn409ConflictUponCabCustomerPositionConflictExceptionDuringDropoff() throws Exception {
+        doThrow(new CabCustomerPositionConflictException()).when(service).dropoff(2L, 3L);
 
-        mockMvc.perform(post("/api/ec/requestPickup")
+        mockMvc.perform(post("/api/ec/requestDropoff")
                 .param("cabId", "2")
                 .param("customerId", "3"))
                 .andExpect(status().isConflict());
 
-        verify(service).pickup(2L, 3L);
+        verify(service).dropoff(2L, 3L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn400BadRequestUponIllegalArgumentExceptionDuringPickup() throws Exception {
-        doThrow(new IllegalArgumentException()).when(service).pickup(2L, 3L);
+    public void shouldReturn400BadRequestUponIllegalArgumentExceptionDuringDropoff() throws Exception {
+        doThrow(new IllegalArgumentException()).when(service).dropoff(2L, 3L);
 
-        mockMvc.perform(post("/api/ec/requestPickup")
+        mockMvc.perform(post("/api/ec/requestDropoff")
                 .param("cabId", "2")
                 .param("customerId", "3"))
                 .andExpect(status().isBadRequest());
 
-        verify(service).pickup(2L, 3L);
+        verify(service).dropoff(2L, 3L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturnPickupsComplete() throws Exception {
-        when(service.pickupsComplete(1L)).thenReturn(PickupCompleteModel.builder()
+    public void shouldReturnDropoffsComplete() throws Exception {
+        when(service.dropoffsComplete(1L)).thenReturn(DropoffCompleteModel.builder()
                 .complete(true)
                 .build());
 
-        mockMvc.perform(get("/api/ec/pickupsComplete")
+        mockMvc.perform(get("/api/ec/dropoffsComplete")
                 .param("cabId", "1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.completed").value("true"));
 
-        verify(service).pickupsComplete(1L);
+        verify(service).dropoffsComplete(1L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn409ConflictUponUnknownCabIdExceptionOnPickupsComplete() throws Exception {
-        doThrow(new UnknownCabIdException()).when(service).pickupsComplete(2L);
+    public void shouldReturn409ConflictUponUnknownCabIdExceptionOnDropoffsComplete() throws Exception {
+        doThrow(new UnknownCabIdException()).when(service).dropoffsComplete(2L);
 
-        mockMvc.perform(get("/api/ec/pickupsComplete")
+        mockMvc.perform(get("/api/ec/dropoffsComplete")
                 .param("cabId", "2"))
                 .andExpect(status().isConflict());
 
-        verify(service).pickupsComplete(2L);
+        verify(service).dropoffsComplete(2L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn400BadRequestUponIllegalArgumentExceptionOnPickupsComplete() throws Exception {
-        doThrow(new IllegalArgumentException()).when(service).pickupsComplete(2L);
+    public void shouldReturn400BadRequestUponIllegalArgumentExceptionOnDropoffsComplete() throws Exception {
+        doThrow(new IllegalArgumentException()).when(service).dropoffsComplete(2L);
 
-        mockMvc.perform(get("/api/ec/pickupsComplete")
+        mockMvc.perform(get("/api/ec/dropoffsComplete")
                 .param("cabId", "2"))
                 .andExpect(status().isBadRequest());
 
-        verify(service).pickupsComplete(2L);
+        verify(service).dropoffsComplete(2L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturnPickupRequests() throws Exception {
-        when(service.getPickupRequests()).thenReturn(asList(
-                PickupRequestEntity.builder()
+    public void shouldReturnDropoffRequests() throws Exception {
+        when(service.getDropoffRequests()).thenReturn(asList(
+                DropoffRequestEntity.builder()
                         .cabId(1L)
                         .customerId(1L)
                         .build(),
-                PickupRequestEntity.builder()
+                DropoffRequestEntity.builder()
                         .cabId(2L)
                         .customerId(2L)
                         .build()));
 
-        mockMvc.perform(get("/api/bookr/pickupRequests"))
+        mockMvc.perform(get("/api/bookr/dropoffRequests"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].cabId").value(1))
                 .andExpect(jsonPath("$[0].customerId").value(1))
                 .andExpect(jsonPath("$[1].cabId").value(2))
                 .andExpect(jsonPath("$[1].customerId").value(2));
 
-        verify(service).getPickupRequests();
+        verify(service).getDropoffRequests();
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturnEmptyListWhenPickupRequestsReturnsEmptyList() throws Exception {
-        when(service.getPickupRequests()).thenReturn(emptyList());
+    public void shouldReturnEmptyListWhenDropoffRequestsReturnsEmptyList() throws Exception {
+        when(service.getDropoffRequests()).thenReturn(emptyList());
 
-        MvcResult mvcResult = mockMvc.perform(get("/api/bookr/pickupRequests"))
+        MvcResult mvcResult = mockMvc.perform(get("/api/bookr/dropoffRequests"))
                 .andExpect(status().isOk())
                 .andReturn();
 
         assertThat(mvcResult.getResponse().getContentAsString())
                 .isEqualToIgnoringWhitespace("[]");
 
-        verify(service).getPickupRequests();
+        verify(service).getDropoffRequests();
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldAcceptPickup() throws Exception {
+    public void shouldAcceptDropoff() throws Exception {
 
-        mockMvc.perform(post("/api/bookr/acceptPickup")
+        mockMvc.perform(post("/api/bookr/acceptDropoff")
                 .param("customerId", "1"))
                 .andExpect(status().isOk());
 
-        verify(service).acceptPickup(1L);
+        verify(service).acceptDropoff(1L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn409ConflictUponUnknownJobIdExceptionDuringAcceptPickup() throws Exception {
-        doThrow(new UnknownJobIdException()).when(service).acceptPickup(2L);
+    public void shouldReturn409ConflictUponUnknownJobIdExceptionDuringAcceptDropoff() throws Exception {
+        doThrow(new UnknownJobIdException()).when(service).acceptDropoff(2L);
 
-        mockMvc.perform(post("/api/bookr/acceptPickup")
+        mockMvc.perform(post("/api/bookr/acceptDropoff")
                 .param("customerId", "2"))
                 .andExpect(status().isConflict());
 
-        verify(service).acceptPickup(2L);
+        verify(service).acceptDropoff(2L);
         verifyNoMoreInteractions(service);
     }
 
     @Test
-    public void shouldReturn400BadRequestUponIllegalArgumentExceptionDuringAcceptPickup() throws Exception {
-        doThrow(new IllegalArgumentException()).when(service).acceptPickup(2L);
+    public void shouldReturn400BadRequestUponIllegalArgumentExceptionDuringAcceptDropoff() throws Exception {
+        doThrow(new IllegalArgumentException()).when(service).acceptDropoff(2L);
 
-        mockMvc.perform(post("/api/bookr/acceptPickup")
+        mockMvc.perform(post("/api/bookr/acceptDropoff")
                 .param("customerId", "2"))
                 .andExpect(status().isBadRequest());
 
-        verify(service).acceptPickup(2L);
+        verify(service).acceptDropoff(2L);
         verifyNoMoreInteractions(service);
     }
 }
