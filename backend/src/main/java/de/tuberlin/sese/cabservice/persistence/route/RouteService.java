@@ -18,8 +18,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import static de.tuberlin.sese.cabservice.persistence.job.JobEntity.CustomerState.*;
 import static de.tuberlin.sese.cabservice.persistence.route.RouteActionEntity.Action.*;
-import static java.util.Collections.singletonList;
+import static java.util.Collections.emptyList;
 
 @Service
 @RequiredArgsConstructor
@@ -38,12 +39,6 @@ public class RouteService {
     private static final Integer SECTION_DEPOT = 0;
 
     public RouteEntity getRoute(Long cabId, Integer version) {
-        /*
-          TODO
-          Not finished
-          - modularize buildRoute()
-          - handle existing routed including version etc.
-         */
 
         if (!cabRepo.findById(cabId).isPresent()) {
             throw new UnknownCabIdException("Cannot get route for unknown cab ID");
@@ -51,137 +46,170 @@ public class RouteService {
 
         Optional<RouteEntity> routeOptional = routeRepo.findById(cabId);
 
-        if (routeOptional.isPresent()) {
-            // TODO if block is placeholder code
+        if (routeOptional.isPresent() && routeOptional.get().getJobId() != null) {
             RouteEntity route = routeOptional.get();
-            route.setVersion(route.getVersion() + 1);
-            return route;
+            Optional<JobEntity> jobOptional = jobService.getJob(route.getJobId());
+
+            Preconditions.checkState(jobOptional.isPresent(), "Job should be present");
+            Preconditions.checkState(jobOptional.get().isInProgress(), "Job should be in progress");
+
+            JobEntity job = jobOptional.get();
+
+            RouteEntity updatedRoute = buildRouteForJob(cabId, job);
+            routeRepo.save(updatedRoute);
+
+            if (updatedRoute.isSubRouteOf(route)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .build();
+            }
+
+            updatedRoute.setVersion(updatedRoute.getVersion() + 1);
+            routeRepo.save(updatedRoute);
+            return updatedRoute;
         } else {
+            // TODO Route should not be sent if nothing changed. In this else branch, a route could be available, but no job associated. Still, don't send whole route again.
+            // TODO Change from Waiting at 0 -> job should already increment version
+            // TODO Blocked: Routing should take into account markers which are not explicitly in route, but still part of route. If those are blocked, get new route.
             List<JobEntity> waitingJobs = jobService.getAllWaitingJobs();
 
             if (waitingJobs.isEmpty()) {
-                return RouteEntity.builder()
-                        .version(0)
-                        .routeActions(singletonList(RouteActionEntity.builder()
-                                .action(WAIT)
-                                .marker(0)
-                                .build()))
-                        .build();
+                RouteEntity route = getRouteToDepot(cabId);
+                routeRepo.save(route);
+                return route;
             } else {
                 JobEntity job = waitingJobs.get(0);
-                return buildRoute(cabId, job);
+                RouteEntity route = buildRouteForJob(cabId, job);
+                routeRepo.save(route);
+                job.setInProgress(true);
+                jobService.updateJob(job);
+                return route;
             }
         }
     }
 
-    private RouteEntity buildRoute(Long cabId, JobEntity job) {
+    private RouteEntity buildRouteForJob(Long cabId, JobEntity job) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
-        List<Option> toStartOptions = null;
-        List<Option> toEndOptions = null;
-        List<Option> toDepotOptions = null;
+        List<RouteActionEntity> actions = new LinkedList<>();
+
         try {
-            toStartOptions = pathFinder.getRouteBetween(cabLocation.getSection(), job.getStart());
-            toEndOptions = pathFinder.getRouteBetween(job.getStart(), job.getEnd());
-            toDepotOptions = pathFinder.getRouteBetween(job.getEnd(), SECTION_DEPOT);
+            if (WAITING.equals(job.getCustomerState())) {
+                actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getStart()));
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job.getCustomerId())
+                        .marker(job.getStart())
+                        .build());
+
+                actions.addAll(getActionsFromTo(job.getStart(), job.getEnd()));
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job.getCustomerId())
+                        .marker(job.getEnd())
+                        .build());
+
+                actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
+
+                actions.add(RouteActionEntity.builder()
+                        .action(WAIT)
+                        .marker(SECTION_DEPOT)
+                        .build());
+            }
+
+            if (IN_CAB.equals(job.getCustomerState())) {
+                actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getEnd()));
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job.getCustomerId())
+                        .marker(job.getEnd())
+                        .build());
+
+                actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
+
+                actions.add(RouteActionEntity.builder()
+                        .action(WAIT)
+                        .marker(SECTION_DEPOT)
+                        .build());
+            }
+
+            if (AT_DESTINATION.equals(job.getCustomerState())) {
+                actions.addAll(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
+
+                actions.add(RouteActionEntity.builder()
+                        .action(WAIT)
+                        .marker(SECTION_DEPOT)
+                        .build());
+            }
+
 
         } catch (NoPathException e) {
             // TODO handle
         }
 
-        if (toStartOptions == null || toEndOptions == null || toDepotOptions == null) {
-            throw new IllegalStateException("Options are definitely not null, because getRouteBetween() never return null");
-        }
+        return RouteEntity.builder()
+                .version(0)
+                .routeActions(actions)
+                .cabId(cabId)
+                .jobId(job.getId())
+                .build();
+    }
 
-        Preconditions.checkArgument(toEndOptions.size() > 0, "Start station must not equal end station");
+    private RouteEntity getRouteToDepot(Long cabId) {
+        CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
         List<RouteActionEntity> actions = new LinkedList<>();
-
-        for (Option option : toStartOptions) {
-            if (Option.Direction.STRAIGHT.equals(option.getDirection())) {
-                continue;
-            }
-
-            RouteActionEntity.Direction direction;
-            if (Option.Direction.LEFT.equals(option.getDirection())) {
-                direction = RouteActionEntity.Direction.LEFT;
-            } else if (Option.Direction.RIGHT.equals(option.getDirection())) {
-                direction = RouteActionEntity.Direction.RIGHT;
-            } else {
-                throw new IllegalStateException("Unknown direction");
-            }
+        try {
+            actions.addAll(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
 
             actions.add(RouteActionEntity.builder()
-                    .action(TURN)
-                    .direction(direction)
-                    .marker(option.getFromSection())
+                    .action(WAIT)
+                    .marker(SECTION_DEPOT)
                     .build());
+        } catch (NoPathException e) {
+            // TODO handle
         }
-
-        int startSection = toEndOptions.get(0).getFromSection();
-        actions.add(RouteActionEntity.builder()
-                .action(PICKUP)
-                .customerId(job.getCustomerId())
-                .marker(startSection)
-                .build());
-
-        for (Option option : toEndOptions) {
-            if (Option.Direction.STRAIGHT.equals(option.getDirection())) {
-                continue;
-            }
-
-            RouteActionEntity.Direction direction;
-            if (Option.Direction.LEFT.equals(option.getDirection())) {
-                direction = RouteActionEntity.Direction.LEFT;
-            } else if (Option.Direction.RIGHT.equals(option.getDirection())) {
-                direction = RouteActionEntity.Direction.RIGHT;
-            } else {
-                throw new IllegalStateException("Unknown direction");
-            }
-
-            actions.add(RouteActionEntity.builder()
-                    .action(TURN)
-                    .direction(direction)
-                    .marker(option.getFromSection())
-                    .build());
-        }
-
-        int endSection = toEndOptions.get(toEndOptions.size() - 1).getToSection();
-        actions.add(RouteActionEntity.builder()
-                .action(DROPOFF)
-                .customerId(job.getCustomerId())
-                .marker(endSection)
-                .build());
-
-        for (Option option : toDepotOptions) {
-            if (Option.Direction.STRAIGHT.equals(option.getDirection())) {
-                continue;
-            }
-
-            RouteActionEntity.Direction direction;
-            if (Option.Direction.LEFT.equals(option.getDirection())) {
-                direction = RouteActionEntity.Direction.LEFT;
-            } else if (Option.Direction.RIGHT.equals(option.getDirection())) {
-                direction = RouteActionEntity.Direction.RIGHT;
-            } else {
-                throw new IllegalStateException("Unknown direction");
-            }
-
-            actions.add(RouteActionEntity.builder()
-                    .action(TURN)
-                    .direction(direction)
-                    .marker(option.getFromSection())
-                    .build());
-        }
-
-        actions.add(RouteActionEntity.builder()
-                .action(WAIT)
-                .marker(SECTION_DEPOT)
-                .build());
 
         return RouteEntity.builder()
                 .version(0)
                 .routeActions(actions)
+                .cabId(cabId)
                 .build();
+    }
+
+    private List<RouteActionEntity> getActionsFromTo(int from, int to) throws NoPathException {
+        List<Option> routeOptions = pathFinder.getRouteBetween(from, to);
+
+        if (routeOptions.size() == 0) {
+            return emptyList();
+        }
+
+        List<RouteActionEntity> actions = new LinkedList<>();
+
+        for (Option option : routeOptions) {
+            if (Option.Direction.STRAIGHT.equals(option.getDirection())) {
+                continue;
+            }
+
+            RouteActionEntity.Direction direction;
+            if (Option.Direction.LEFT.equals(option.getDirection())) {
+                direction = RouteActionEntity.Direction.LEFT;
+            } else if (Option.Direction.RIGHT.equals(option.getDirection())) {
+                direction = RouteActionEntity.Direction.RIGHT;
+            } else {
+                throw new IllegalStateException("Unknown direction");
+            }
+
+            actions.add(RouteActionEntity.builder()
+                    .action(TURN)
+                    .direction(direction)
+                    .marker(option.getFromSection())
+                    .build());
+        }
+
+        return actions;
     }
 }
