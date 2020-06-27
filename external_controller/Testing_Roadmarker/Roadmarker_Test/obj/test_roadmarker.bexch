@@ -1,0 +1,32 @@
+[GENERATED OBJECT FILE]
+b__test_roadmarker.o
+[PROJECT FILES]
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker_Test\roadmarker_test.gpr
+20200623171642
+C:\gnat\2019\share\gpr\aunit.gpr
+20190518140612
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker\lane_detection.gpr
+20200619180806
+[BOUND OBJECT FILES]
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker\obj\roadmarker_functions.o
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker\obj\roadmarker.o
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker_Test\obj\roadmarker_test.o
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker_Test\obj\roadmarker_suite.o
+C:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker_Test\obj\test_roadmarker.o
+[GENERATED SOURCE FILES]
+b__test_roadmarker.ads
+b__test_roadmarker.adb
+b__test_roadmarker.ali
+[RESULTING OPTIONS]
+-LC:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker_Test\obj\
+-LC:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker_Test\obj\
+-LC:\Users\Dean_84\Desktop\Master\SS20\Project_SW of ES\Ada\Testing_Roadmarker\Roadmarker\obj\
+-LC:\gnat\2019\lib\aunit\
+-LC:/gnat/2019/lib/gcc/x86_64-pc-mingw32/8.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2019/lib/gcc/x86_64-pc-mingw32/8.3.1/adalib/libgnarl.a
+C:/gnat/2019/lib/gcc/x86_64-pc-mingw32/8.3.1/adalib/libgnat.a
+-Xlinker
+--stack=0x200000,0x1000
+-mthreads

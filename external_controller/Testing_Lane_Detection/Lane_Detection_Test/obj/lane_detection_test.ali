@@ -1,0 +1,218 @@
+V "GNAT Lib v2019"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DELAY
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_PROTECTED_TYPES
+RV NO_RELATIVE_DELAY
+RV NO_SELECT_STATEMENTS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+RV MAX_ASYNCHRONOUS_SELECT_NESTING=1+
+RV MAX_ENTRY_QUEUE_LENGTH=1+
+
+U lane_detection_test%b	lane_detection_test.adb	1e5969c0 OO PK
+W ada%s			ada.ads			ada.ali
+Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.task_identification%s  a-taside.adb	a-taside.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W aunit%s		aunit.adb		aunit.ali
+W aunit.assertions%s	aunit-assertions.adb	aunit-assertions.ali
+Z interfaces%s		interfac.ads		interfac.ali
+W lane_detection%s	lane_detection.adb	lane_detection.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.async_delays%s  s-taasde.adb	s-taasde.ali
+Z system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+
+U lane_detection_test%s	lane_detection_test.ads	ff1b9ed1 EE OO PF PK
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W aunit%s		aunit.adb		aunit.ali
+W aunit.test_fixtures%s	aunit-test_fixtures.adb	aunit-test_fixtures.ali
+Z system%s		system.ads		system.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+
+D ada.ads		20190518041256 76789da1 ada%s
+D a-calend.ads		20190518041256 474d9720 ada.calendar%s
+D a-caldel.ads		20190518041256 9f20b83d ada.calendar.delays%s
+D a-except.ads		20190518041256 291912d5 ada.exceptions%s
+D a-finali.ads		20190518041256 bf4f806b ada.finalization%s
+D a-ioexce.ads		20190518041256 e4a01f64 ada.io_exceptions%s
+D a-reatim.ads		20190518041258 0240fc73 ada.real_time%s
+D a-stream.ads		20190518041256 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041258 491b781d ada.tags%s
+D a-taside.ads		20190518041258 00e3a3f6 ada.task_identification%s
+D a-textio.ads		20190518041258 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041256 0e9b276f ada.unchecked_conversion%s
+D ada_containers.ads	20190430040726 11329e00 ada_containers%s
+D ada_containers-aunit_lists.ads  20190430040726 d9ebc89a ada_containers.aunit_lists%s
+D aunit.ads		20190430040726 76cdf7c6 aunit%s
+D aunit-assertions.ads	20190430040726 b7f9ecd6 aunit.assertions%s
+D aunit-test_fixtures.ads  20190430040726 faadeab5 aunit.test_fixtures%s
+D aunit-test_results.ads  20190430040726 171847c9 aunit.test_results%s
+D aunit-tests.ads	20190430040726 1da11d49 aunit.tests%s
+D aunit-time_measure.ads  20190430040726 a8b9fbfb aunit.time_measure%s
+D gnat.ads		20190518041258 b5988c27 gnat%s
+D g-souinf.ads		20190518041258 291df751 gnat.source_info%s
+D interfac.ads		20190518041256 5ab55268 interfaces%s
+D i-c.ads		20190518041256 5421119b interfaces.c%s
+D i-cstrin.ads		20190518041256 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20190518041256 e53d8b8e interfaces.c_streams%s
+D lane_detection.ads	20200622202316 7143201f lane_detection%s
+D lane_detection_test.ads  20200619205006 737b83a2 lane_detection_test%s
+D lane_detection_test.adb  20200623175020 058f5030 lane_detection_test%b
+D roadmarker_functions.ads  20200616203214 0febe8a2 roadmarker_functions%s
+D system.ads		20190518041258 32a08138 system%s
+D s-atacco.ads		20190518041258 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20190518041256 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041256 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041258 078245e4 system.file_control_block%s
+D s-finmas.ads		20190518041256 7811a767 system.finalization_masters%s
+D s-finroo.ads		20190518041258 4ff27390 system.finalization_root%s
+D s-multip.ads		20190518041256 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20190518041258 97504df8 system.os_interface%s
+D s-parame.ads		20190518041258 48ec542b system.parameters%s
+D s-pooglo.ads		20190518041256 ede33ef8 system.pool_global%s
+D s-secsta.ads		20190518041258 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041256 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041258 a37c21ec system.stack_checking%s
+D s-stausa.ads		20190518041256 017a0a05 system.stack_usage%s
+D s-stalib.ads		20190518041258 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041258 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20190518041256 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20190518041256 b16154c2 system.storage_pools%s
+D s-tasinf.ads		20190518041258 601f6b72 system.task_info%s
+D s-taspri.ads		20190518041258 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20190518041258 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20190518041258 b9d612e2 system.tasking%s
+D s-taasde.ads		20190518041258 422600df system.tasking.async_delays%s
+D s-taprob.ads		20190518041258 acd6094d system.tasking.protected_objects%s
+D s-tassta.ads		20190518041258 cca55c94 system.tasking.stages%s
+D s-traent.ads		20190518041256 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041256 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041256 1b7d22d2 system.wch_con%s
+D s-win32.ads		20190518041256 90ecf4e6 system.win32%s
+G a e
+G c Z s b [name lane_detection_test 8 13 none]
+G c Z s b [test_lane_detection lane_detection_test 10 14 none]
+G c Z s s [testDF lane_detection_test 6 9 none]
+G c Z s s [testIP lane_detection_test 6 9 none]
+G c Z b b [set_value_sensor lane_detection_test__lane_values_t 12 17 none]
+G c Z b b [get lane_detection_test__lane_values_t 13 16 none]
+G c Z b b [lane_values_t__set_value_sensorN lane_detection_test 12 7 none]
+G c Z b b [lane_values_t__set_value_sensorP lane_detection_test 12 7 none]
+G c Z b b [lane_values_t__getN lane_detection_test 13 7 none]
+G c Z b b [lane_values_t__getP lane_detection_test 13 7 none]
+G c Z b b [Tlane_values_long_float_array_tBIP lane_detection_test 8 4 none]
+G c Z b b [lane_values_tVIP lane_detection_test 10 4 none]
+G r c none [name lane_detection_test 8 13 none] [format aunit 44 13 none]
+G r c none [test_lane_detection lane_detection_test 10 14 none] [lane_detection_process lane_detection 18 13 none]
+G r c none [test_lane_detection lane_detection_test 10 14 none] [assert aunit__assertions 48 14 none]
+G r s test_fixture [testIP lane_detection_test 6 9 none] [test_fixtureIP aunit__test_fixtures 88 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 29|3r6 3r35 4r6 4r35
+X 10 a-taside.ads
+45K13*Task_Identification 104e28 29|3w10 3r39
+X 11 a-textio.ads
+57K13*Text_IO 727e16 29|4w10 4r39
+508U14*Put_Line 29|66s8 71s13 218s17 224s13 245s16 251s15 269s10
+X 14 ada_containers-aunit_lists.ads
+53R9*Cursor
+X 15 aunit.ads
+34K9*AUnit 48e10 28|1w6 2r6 6r21 8r36 29|2r6 2r35 46r36 49r14
+36P9*Message_String(string) 28|8r42 29|46r42
+44V13*Format{36P9} 29|49s20
+X 16 aunit-assertions.ads
+44K15*Assertions 155e21 29|2w12 2r41
+48U14*Assert 29|72s13 189s16 198s15 201s15 204s15 219s15 225s13 228s15 231s16
+. 246s15 252s17 255s15 258s16
+101U14*Init_Test
+104U14*Clear_Failures
+107V13*Has_Failures{boolean}
+110R9*Failure_Iter<14|53R9[145]>
+113V13*First_Failure{110R9}
+X 17 aunit-test_fixtures.ads
+76K15*Test_Fixtures 90e24 28|2w12 6r27
+78R9*Test_Fixture<16|96R9> 88e67 28|6r41
+80U14*Set_Up
+83U14*Tear_Down
+X 27 lane_detection.ads
+6K9*Lane_Detection 40e19 29|5w6 5r35 82r28 99r28 114r28 131r28 148r28 165r28
+10E9*Lane_Detection_Done_T 11e69 29|59r16 60r39
+11n7*SYSTEM_ERROR_S{10E9} 29|182r15
+11n23*GO_STRAIGHT_S{10E9} 29|195r15
+11n38*GO_LEFT_S{10E9} 29|212r15
+11n49*GO_RIGHT_S{10E9} 29|240r15
+11n61*EMPTY_S{10E9} 29|266r18
+12E9*Lane_ID_T 12e108 29|8r50 12r40 13r26 24r40 30r26
+12n23*Lane_Mid_Value{12E9} 29|76r42 85r63 93r42 102r63 108r42 117r63 125r41
+. 134r63 142r42 151r63 159r42 168r63 184r34 199r36 214r31 226r36 241r32 253r36
+12n39*Lane_Left_Value{12E9} 29|77r42 83r63 94r42 100r63 109r42 115r63 126r42
+. 132r63 143r42 149r63 160r42 166r63 186r36 202r36 216r31 229r36 243r33 256r36
+12n56*Lane_Right_Value{12E9} 29|78r42 84r63 95r42 101r63 110r42 116r63 127r42
+. 133r63 144r42 150r63 161r42 167r63 185r31 205r36 215r31 232r36 242r33 259r36
+12n74*Curb_Left_Value{12E9} 29|79r42 86r63 96r42 103r63 111r42 118r63 128r42
+. 135r63 145r42 152r63 162r42 169r63 189r40 247r36
+12n91*Curb_Right_Value{12E9} 29|80r42 87r63 97r42 104r63 112r42 119r63 129r42
+. 136r63 146r42 153r63 163r42 170r63 190r40 220r36
+18V13*Lane_Detection_Process{10E9} 29|82s43 99s43 114s43 131s43 148s43 165s43
+X 28 lane_detection_test.ads
+4K9*Lane_Detection_Test 12l5 12e24 29|6b14 273l5 273t24
+6R9*Test<17|78R9> 16|101p14 104p14 107p13 113p13 17|80p14 83p14 28|6e70 8p13
+. 8r23 10p14 10r46 29|46r23 57r46
+8V13*Name{15|36P9} 8>19 29|46b13 50l8 50t12
+8r19 T{6R9} 29|46b19 47r28
+10U14*test_lane_detection 10=35 29|57b14 272l8 272t27
+10r35 T{6R9} 29|57b35 58r28
+X 29 lane_detection_test.adb
+8A9 Lane_Values_Long_Float_Array_T(long_float)<27|12E9> 17r27
+10W19 Lane_Values_T 17E7 19l8 19e21 22b19 34l8 34t21 37r18
+12U17 set_value_sensor 12>35 12>51 24b17 28l11 28t27 76s25 77s25 78s25 79s25
+. 80s25 93s25 94s25 95s25 96s25 97s25 108s25 109s25 110s25 111s25 112s25
+. 125s24 126s25 127s25 128s25 129s25 142s25 143s25 144s25 145s25 146s25 159s25
+. 160s25 161s25 162s25 163s25
+12e35 ID{27|12E9} 24b35 26r29
+12f51 Value{long_float} 24b51 26r36
+13V16 get{long_float} 13>21 30b16 33l11 33t14 83s59 84s59 85s59 86s59 87s59
+. 100s59 101s59 102s59 103s59 104s59 115s59 116s59 117s59 118s59 119s59 132s59
+. 133s59 134s59 135s59 136s59 149s59 150s59 151s59 152s59 153s59 166s59 167s59
+. 168s59 169s59 170s59 184s29 185s26 186s31 189s35 190s35 199s31 202s31 205s31
+. 214s26 215s26 216s26 220s31 226s31 229s31 232s31 241s27 242s28 243s28 247s31
+. 253s31 256s31 259s31
+13e21 ID{27|12E9} 30b21 32r36
+17a7 Lane_Values_Array{8A9} 26r10 32r17
+37w4 Lane_Values{10W19} 76r13 77r13 78r13 79r13 80r13 83r47 84r47 85r47 86r47
+. 87r47 93r13 94r13 95r13 96r13 97r13 100r47 101r47 102r47 103r47 104r47
+. 108r13 109r13 110r13 111r13 112r13 115r47 116r47 117r47 118r47 119r47 125r12
+. 126r13 127r13 128r13 129r13 132r47 133r47 134r47 135r47 136r47 142r13 143r13
+. 144r13 145r13 146r13 149r47 150r47 151r47 152r47 153r47 159r13 160r13 161r13
+. 162r13 163r13 166r47 167r47 168r47 169r47 170r47 184r17 185r14 186r19 189r23
+. 190r23 199r19 202r19 205r19 214r14 215r14 216r14 220r19 226r19 229r19 232r19
+. 241r15 242r16 243r16 247r19 253r19 256r19 259r19
+59e6 Output_T{27|10E9} 82r67 99r67 114r67 131r67 148r67 165r67
+60e6 Output_function{27|10E9} 82m10 99m10 114m10 131m10 148m10 165m10 180r15
+61f6 Lane_IR_Threshhold{long_float} 88r47 105r47 120r47 137r47 154r47 171r47
+. 184r52 185r51 186r55 199r54 202r55 205r56 214r49 215r51 216r50 226r54 229r55
+. 232r56 241r50 242r53 243r52 253r54 256r55 259r56
+62f6 Lane_UR_Threshhold{long_float} 89r47 106r47 121r47 138r47 155r47 172r47
+. 220r56 247r55
+X 45 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+
