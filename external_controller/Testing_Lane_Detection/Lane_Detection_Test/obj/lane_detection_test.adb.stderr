@@ -1,0 +1,1 @@
+lane_detection_test.adb:59:06: warning: variable "Output_T" is read but never assigned

@@ -1,0 +1,87 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DISPATCH
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U test_lane_detection%b	test_lane_detection.adb	54194486 NE OO SU
+W aunit%s		aunit.adb		aunit.ali
+W aunit.reporter%s	aunit-reporter.ads	aunit-reporter.ali
+W aunit.reporter.xml%s	aunit-reporter-xml.adb	aunit-reporter-xml.ali
+W aunit.run%s		aunit-run.adb		aunit-run.ali
+W lane_detection_suite%s  lane_detection_suite.adb  lane_detection_suite.ali
+
+D ada.ads		20190518041256 76789da1 ada%s
+D a-calend.ads		20190518041256 474d9720 ada.calendar%s
+D a-except.ads		20190518041256 291912d5 ada.exceptions%s
+D a-finali.ads		20190518041256 bf4f806b ada.finalization%s
+D a-stream.ads		20190518041256 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041258 491b781d ada.tags%s
+D a-unccon.ads		20190518041256 0e9b276f ada.unchecked_conversion%s
+D ada_containers.ads	20190430040726 11329e00 ada_containers%s
+D ada_containers-aunit_lists.ads  20190430040726 d9ebc89a ada_containers.aunit_lists%s
+D aunit.ads		20190430040726 76cdf7c6 aunit%s
+D aunit-assertions.ads	20190430040726 b7f9ecd6 aunit.assertions%s
+D aunit-options.ads	20190430040726 6e5a02a6 aunit.options%s
+D aunit-reporter.ads	20190430040726 1856e702 aunit.reporter%s
+D aunit-reporter-xml.ads  20190430040726 0e6e0390 aunit.reporter.xml%s
+D aunit-run.ads		20190430040726 34d20999 aunit.run%s
+D aunit-run.adb		20190430040726 1550dc91 aunit.run%b
+D aunit-simple_test_cases.ads  20190430040726 4111c32f aunit.simple_test_cases%s
+D aunit-test_filters.ads  20190430040726 f10b2127 aunit.test_filters%s
+D aunit-test_results.ads  20190430040726 171847c9 aunit.test_results%s
+D aunit-test_suites.ads	20190430040726 6821dc24 aunit.test_suites%s
+D aunit-tests.ads	20190430040726 1da11d49 aunit.tests%s
+D aunit-time_measure.ads  20190430040726 a8b9fbfb aunit.time_measure%s
+D gnat.ads		20190518041258 b5988c27 gnat%s
+D g-souinf.ads		20190518041258 291df751 gnat.source_info%s
+D lane_detection_suite.ads  20200619170530 a7156ef8 lane_detection_suite%s
+D system.ads		20190518041258 32a08138 system%s
+D s-exctab.ads		20190518041256 54135002 system.exception_table%s
+D s-finmas.ads		20190518041256 7811a767 system.finalization_masters%s
+D s-finroo.ads		20190518041258 4ff27390 system.finalization_root%s
+D s-parame.ads		20190518041258 48ec542b system.parameters%s
+D s-pooglo.ads		20190518041256 ede33ef8 system.pool_global%s
+D s-secsta.ads		20190518041258 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041256 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041258 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041258 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041258 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20190518041256 b16154c2 system.storage_pools%s
+D s-traent.ads		20190518041256 005bf670 system.traceback_entries%s
+D test_lane_detection.adb  20200619170610 c9b02077 test_lane_detection%b
+G a e
+G c Z b b [test_lane_detection standard 5 11 none]
+G r i none [test_lane_detection standard 5 11 none] [test_runner aunit__run 42 14 none]
+G r s xml_reporter [test_lane_detection standard 5 11 none] [xml_reporterIP aunit__reporter__xml 35 9 none]
+G r s result [test_lane_detection standard 5 11 none] [resultIP aunit__test_results 140 9 none]
+G r c none [test_lane_detection standard 5 11 none] [clear aunit__test_results 133 14 none]
+G r c none [test_lane_detection standard 5 11 none] [suite lane_detection_suite 8 13 none]
+G r c none [test_lane_detection standard 5 11 none] [run aunit__run 37 14 none]
+X 10 aunit.ads
+34K9*AUnit 48e10 39|1r6 2r6 6r28 7r15
+X 13 aunit-reporter.ads
+35K15*Reporter 46e19 39|1r12 7r21
+X 14 aunit-reporter-xml.ads
+33K24*XML 40e23 39|1w21 7r30
+35R9*XML_Reporter<13|37R9> 35e54 39|7r34
+X 15 aunit-run.ads
+38K15*Run 65e14 39|2w12 6r34
+42u14*Test_Runner 39|6r38
+X 20 aunit-test_suites.ads
+44P9*Access_Test_Suite(43R9)
+X 25 lane_detection_suite.ads
+6K9*Lane_Detection_Suite 10e25 39|3w6 3r32
+8V13*Suite{20|44P9} 39|6r51
+X 39 test_lane_detection.adb
+5U11*Test_Lane_Detection 5b11 10l5 10t24
+6U14 Runner[15|42] 16|79b14 39|9s4
+7r4 Reporter{14|35R9} 9r12
+
