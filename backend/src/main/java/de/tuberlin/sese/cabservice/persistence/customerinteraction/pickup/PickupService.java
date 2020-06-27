@@ -6,7 +6,7 @@ import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.job.JobEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobService;
-import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflict;
+import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflictException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownJobIdException;
@@ -32,8 +32,9 @@ public class PickupService {
 
     private final JobService jobService;
 
+    @SuppressWarnings("DuplicatedCode")
     public void pickup(Long cabId, Long customerId) {
-        if (cabId == null || customerId == 0) {
+        if (cabId == null || customerId == null) {
             throw new IllegalArgumentException("Cab ID or customer ID is null");
         }
 
@@ -55,11 +56,11 @@ public class PickupService {
         Integer cabSection = cabLocationOptional.get().getSection();
 
         if (!cabSection.equals(customerSection)) {
-            throw new CabCustomerPositionConflict();
+            throw new CabCustomerPositionConflictException();
         }
 
         if (!WAITING.equals(job.getCustomerState())) {
-            throw new CabCustomerPositionConflict("Already picked up customer");
+            throw new CabCustomerPositionConflictException("Already picked up customer");
         }
 
         repo.save(PickupRequestEntity.builder()
@@ -88,6 +89,7 @@ public class PickupService {
                 .build();
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public void acceptPickup(Long customerId) {
         if (customerId == null) {
             throw new IllegalArgumentException("Customer ID is null");

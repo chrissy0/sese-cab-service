@@ -6,7 +6,7 @@ import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.job.JobEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobService;
-import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflict;
+import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflictException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownJobIdException;
@@ -33,7 +33,7 @@ public class DropoffService {
     private final JobService jobService;
 
     public void dropoff(Long cabId, Long customerId) {
-        if (cabId == null || customerId == 0) {
+        if (cabId == null || customerId == null) {
             throw new IllegalArgumentException("Cab ID or customer ID is null");
         }
 
@@ -54,11 +54,11 @@ public class DropoffService {
         Integer cabSection = cabLocationOptional.get().getSection();
 
         if (!cabSection.equals(job.getEnd())) {
-            throw new CabCustomerPositionConflict();
+            throw new CabCustomerPositionConflictException();
         }
 
         if (!IN_CAB.equals(job.getCustomerState())) {
-            throw new CabCustomerPositionConflict("Already dropped off customer or never picked up customer");
+            throw new CabCustomerPositionConflictException("Already dropped off customer or never picked up customer");
         }
 
         repo.save(DropoffRequestEntity.builder()

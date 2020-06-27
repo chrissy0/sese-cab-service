@@ -1,6 +1,6 @@
 package de.tuberlin.sese.cabservice.persistence.customerinteraction.dropoff;
 
-import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflict;
+import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflictException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownJobIdException;
@@ -20,7 +20,7 @@ public class DropoffController {
     public ResponseEntity<?> requestDropoff(@RequestParam Long cabId, @RequestParam Long customerId) {
         try {
             service.dropoff(cabId, customerId);
-        } catch (UnknownCabIdException | UnknownCabLocationException | UnknownJobIdException | CabCustomerPositionConflict e) {
+        } catch (UnknownCabIdException | UnknownCabLocationException | UnknownJobIdException | CabCustomerPositionConflictException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
