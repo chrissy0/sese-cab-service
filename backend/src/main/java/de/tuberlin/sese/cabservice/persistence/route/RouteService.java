@@ -1,6 +1,5 @@
 package de.tuberlin.sese.cabservice.persistence.route;
 
-import com.google.common.base.Preconditions;
 import de.tuberlin.sese.cabservice.logic.Option;
 import de.tuberlin.sese.cabservice.logic.PathFinder;
 import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationEntity;
@@ -38,57 +37,87 @@ public class RouteService {
 
     private static final Integer SECTION_DEPOT = 0;
 
-    public RouteEntity getRoute(Long cabId, Integer version) {
-
-        if (!cabRepo.findById(cabId).isPresent()) {
-            throw new UnknownCabIdException("Cannot get route for unknown cab ID");
-        }
+    // TODO Test version field in different constellations
+    // TODO Blocked: Routing should take into account markers which are not explicitly in route, but still part of route. If those are blocked, get new route. Works in tests, but didn't work via Postman?
+    public RouteEntity getRoute(Long cabId, int version) {
+        validateCabId(cabId);
 
         Optional<RouteEntity> routeOptional = routeRepo.findById(cabId);
 
-        if (routeOptional.isPresent() && routeOptional.get().getJobId() != null) {
-            RouteEntity route = routeOptional.get();
-            Optional<JobEntity> jobOptional = jobService.getJob(route.getJobId());
-
-            Preconditions.checkState(jobOptional.isPresent(), "Job should be present");
-            Preconditions.checkState(jobOptional.get().isInProgress(), "Job should be in progress");
-
-            JobEntity job = jobOptional.get();
-
-            RouteEntity updatedRoute = buildRouteForJob(cabId, job);
-            routeRepo.save(updatedRoute);
-
-            if (updatedRoute.isSubRouteOf(route)) {
-                return RouteEntity.builder()
-                        .version(version)
-                        .build();
-            }
-
-            updatedRoute.setVersion(updatedRoute.getVersion() + 1);
-            routeRepo.save(updatedRoute);
-            return updatedRoute;
-        } else {
-            // TODO Route should not be sent if nothing changed. In this else branch, a route could be available, but no job associated. Still, don't send whole route again.
-            // TODO Change from Waiting at 0 -> job should already increment version
-            // TODO Blocked: Routing should take into account markers which are not explicitly in route, but still part of route. If those are blocked, get new route.
-            List<JobEntity> waitingJobs = jobService.getAllWaitingJobs();
-
-            if (waitingJobs.isEmpty()) {
-                RouteEntity route = getRouteToDepot(cabId);
-                routeRepo.save(route);
-                return route;
+        if (routeOptional.isPresent()) {
+            RouteEntity loadedRoute = routeOptional.get();
+            if (isJobRoute(loadedRoute)) {
+                Optional<JobEntity> jobOptional = jobService.getJob(loadedRoute.getJobId());
+                if (jobOptional.isPresent()) {
+                    RouteEntity updatedRoute = buildRouteForJob(cabId, jobOptional.get(), version);
+                    if (updatedRoute.isSubRouteOf(loadedRoute)) {
+                        return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
+                    }
+                    return incrementVersion(updatedRoute);
+                } else {
+                    throw new IllegalStateException("Route included JobId for non-existing job");
+                }
             } else {
-                JobEntity job = waitingJobs.get(0);
-                RouteEntity route = buildRouteForJob(cabId, job);
-                routeRepo.save(route);
-                job.setInProgress(true);
-                jobService.updateJob(job);
-                return route;
+                Optional<JobEntity> jobOptional = getFirstAvailableJob();
+                if (jobOptional.isPresent()) {
+                    RouteEntity route = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion() + 1);
+                    routeRepo.save(route);
+                    return route;
+                } else {
+                    RouteEntity updatedRoute = getRouteToDepot(cabId, loadedRoute.getVersion());
+                    if (updatedRoute.isSubRouteOf(loadedRoute)) {
+                        return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
+                    }
+                    return incrementVersion(updatedRoute);
+                }
             }
+        } else {
+            Optional<JobEntity> jobOptional = getFirstAvailableJob();
+            RouteEntity route;
+            if (jobOptional.isPresent()) {
+                route = buildRouteForJob(cabId, jobOptional.get(), 0);
+            } else {
+                route = getRouteToDepot(cabId, 0);
+            }
+            routeRepo.save(route);
+            return route;
         }
     }
 
-    private RouteEntity buildRouteForJob(Long cabId, JobEntity job) {
+    private Optional<JobEntity> getFirstAvailableJob() {
+        List<JobEntity> availableJobs = jobService.getAllWaitingJobs();
+        if (availableJobs.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(availableJobs.get(0));
+    }
+
+    private RouteEntity incrementVersion(RouteEntity route) {
+        route.setVersion(route.getVersion() + 1);
+        routeRepo.save(route);
+        return route;
+    }
+
+    private boolean isJobRoute(RouteEntity route) {
+        return route.getJobId() != null;
+    }
+
+    private void validateCabId(Long cabId) {
+        if (!cabRepo.findById(cabId).isPresent()) {
+            throw new UnknownCabIdException("Cannot get route for unknown cab ID");
+        }
+    }
+
+    private RouteEntity getRouteToReturnForSubRoute(Integer version, RouteEntity loadedRoute, RouteEntity updatedRoute) {
+        if (version.equals(loadedRoute.getVersion())) {
+            return RouteEntity.builder()
+                    .version(version)
+                    .build();
+        }
+        return updatedRoute;
+    }
+
+    private RouteEntity buildRouteForJob(Long cabId, JobEntity job, int version) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
         List<RouteActionEntity> actions = new LinkedList<>();
@@ -151,14 +180,14 @@ public class RouteService {
         }
 
         return RouteEntity.builder()
-                .version(0)
+                .version(version)
                 .routeActions(actions)
                 .cabId(cabId)
                 .jobId(job.getId())
                 .build();
     }
 
-    private RouteEntity getRouteToDepot(Long cabId) {
+    private RouteEntity getRouteToDepot(Long cabId, int version) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
         List<RouteActionEntity> actions = new LinkedList<>();
@@ -174,7 +203,7 @@ public class RouteService {
         }
 
         return RouteEntity.builder()
-                .version(0)
+                .version(version)
                 .routeActions(actions)
                 .cabId(cabId)
                 .build();

@@ -298,6 +298,10 @@ public class RouteServiceIT {
     }
 
     // TODO no path on existing route
-    // TODO job no longer in progress (deleted?) after dropping off
+    // TODO (I) job deleted after dropping off (1. happens?, 2. handles correctly? -> next job or to depot)
+    // TODO (II) test IllegalStateException, gone after implementing (I)? If not, maybe also test what happens to state and in controller upon IllegalStateException
     // TODO Route changed immediately upon new job
+    // TODO version tests
+    // TODO All getRoute paths
+    // TODO remove delete-button from frontend after picking up, delete job after dropping off
 }
