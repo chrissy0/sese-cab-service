@@ -6,6 +6,7 @@ import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.job.JobEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobService;
+import de.tuberlin.sese.cabservice.persistence.route.RouteService;
 import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflictException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
@@ -17,20 +18,21 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.google.common.collect.Streams.stream;
-import static de.tuberlin.sese.cabservice.persistence.job.JobEntity.CustomerState.AT_DESTINATION;
 import static de.tuberlin.sese.cabservice.persistence.job.JobEntity.CustomerState.IN_CAB;
 
 @Service
 @RequiredArgsConstructor
 public class DropoffService {
 
-    private final DropoffRepo repo;
+    private final DropoffRepo dropoffRepo;
 
     private final CabRepo cabRepo;
 
     private final CabLocationService locationService;
 
     private final JobService jobService;
+
+    private final RouteService routeService;
 
     @SuppressWarnings("DuplicatedCode")
     public void dropoff(Long cabId, Long customerId) {
@@ -62,14 +64,14 @@ public class DropoffService {
             throw new CabCustomerPositionConflictException("Already dropped off customer or never picked up customer");
         }
 
-        repo.save(DropoffRequestEntity.builder()
+        dropoffRepo.save(DropoffRequestEntity.builder()
                 .customerId(customerId)
                 .cabId(cabId)
                 .build());
     }
 
     public List<DropoffRequestEntity> getDropoffRequests() {
-        return Lists.newArrayList(repo.findAll());
+        return Lists.newArrayList(dropoffRepo.findAll());
     }
 
     public DropoffCompleteModel dropoffsComplete(Long cabId) {
@@ -81,7 +83,7 @@ public class DropoffService {
             throw new UnknownCabIdException();
         }
 
-        boolean complete = stream(repo.findAll()).noneMatch(pickup -> cabId.equals(pickup.getCabId()));
+        boolean complete = stream(dropoffRepo.findAll()).noneMatch(pickup -> cabId.equals(pickup.getCabId()));
 
         return DropoffCompleteModel.builder()
                 .complete(complete)
@@ -100,9 +102,9 @@ public class DropoffService {
         }
 
         JobEntity job = jobOptional.get();
-        job.setCustomerState(AT_DESTINATION);
-        jobService.updateJob(job);
+        jobService.deleteJob(job.getId());
+        routeService.removeJobFromRoutes(job.getId());
 
-        repo.deleteById(customerId);
+        dropoffRepo.deleteById(customerId);
     }
 }

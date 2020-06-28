@@ -411,10 +411,11 @@ public class RouteServiceIT {
         assertThat(updatedRoute2.getRouteActions()).isNull();
     }
 
-    // TODO (I) job deleted after dropping off (1. happens?, 2. handles correctly? -> next job or to depot)
+    // TODO (I) job deleted after dropping off (1. happens?, 2. handles correctly? -> next job / to depot [test both possibilities])
     // TODO (II) test IllegalStateException, gone after implementing (I)? If not, maybe also test what happens to state and in controller upon IllegalStateException
     // TODO Route changed immediately upon new job
     // TODO version tests (different constellations)
     // TODO All getRoute paths
-    // TODO remove delete-button from frontend after picking up, delete job after dropping off
+    // TODO test multiple jobs at once, so firstAvailable..() etc. are made sure to work as expected, setInProgress() is used where applicable etc.
+    // TODO Test if route updates when job is deleted prematurely (before customer is IN_CAB) -> deletion only then possible, and happens automatically upon dropoff
 }

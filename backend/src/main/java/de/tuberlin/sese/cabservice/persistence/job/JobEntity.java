@@ -30,6 +30,7 @@ public class JobEntity {
     private LocalDateTime timestamp;
     private boolean inProgress;
 
+    // Keep consistent with Frontend (job.ts)
     public enum CustomerState {
         WAITING,
         IN_CAB,

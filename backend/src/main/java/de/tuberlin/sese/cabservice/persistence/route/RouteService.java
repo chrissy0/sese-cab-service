@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import static com.google.common.collect.Streams.stream;
 import static de.tuberlin.sese.cabservice.persistence.job.JobEntity.CustomerState.*;
 import static de.tuberlin.sese.cabservice.persistence.route.RouteActionEntity.Action.*;
 import static java.util.Collections.emptyList;
@@ -55,7 +57,7 @@ public class RouteService {
                     throw new IllegalStateException("Route included JobId for non-existing job");
                 }
             } else {
-                Optional<JobEntity> jobOptional = getFirstAvailableJob();
+                Optional<JobEntity> jobOptional = getFirstAvailableJobAndSetInProgress();
                 if (jobOptional.isPresent()) {
                     RouteEntity route = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion() + 1);
                     routeRepo.save(route);
@@ -69,7 +71,7 @@ public class RouteService {
                 }
             }
         } else {
-            Optional<JobEntity> jobOptional = getFirstAvailableJob();
+            Optional<JobEntity> jobOptional = getFirstAvailableJobAndSetInProgress();
             RouteEntity route;
             if (jobOptional.isPresent()) {
                 route = buildRouteForJob(cabId, jobOptional.get(), 0);
@@ -81,12 +83,28 @@ public class RouteService {
         }
     }
 
-    private Optional<JobEntity> getFirstAvailableJob() {
+    public void removeJobFromRoutes(Long jobId) {
+        validateJobId(jobId);
+
+        List<RouteEntity> routesOfJob = stream(routeRepo.findAll())
+                .filter(route -> jobId.equals(route.getJobId()))
+                .collect(Collectors.toList());
+
+        for (RouteEntity route : routesOfJob) {
+            route.setJobId(null);
+            routeRepo.save(route);
+        }
+    }
+
+    private Optional<JobEntity> getFirstAvailableJobAndSetInProgress() {
         List<JobEntity> availableJobs = jobService.getAllWaitingJobs();
         if (availableJobs.isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(availableJobs.get(0));
+        JobEntity job = availableJobs.get(0);
+        job.setInProgress(true);
+        jobService.updateJob(job);
+        return Optional.of(job);
     }
 
     private RouteEntity incrementVersion(RouteEntity route) {
@@ -100,8 +118,17 @@ public class RouteService {
     }
 
     private void validateCabId(Long cabId) {
+        if (cabId == null) {
+            throw new IllegalArgumentException("Cab ID was null");
+        }
         if (!cabRepo.findById(cabId).isPresent()) {
             throw new UnknownCabIdException("Cannot get route for unknown cab ID");
+        }
+    }
+
+    private void validateJobId(Long jobId) {
+        if (jobId == null) {
+            throw new IllegalArgumentException("Job ID was null");
         }
     }
 
