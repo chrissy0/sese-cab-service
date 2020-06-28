@@ -1,5 +1,6 @@
 package de.tuberlin.sese.cabservice.persistence.job;
 
+import de.tuberlin.sese.cabservice.persistence.route.RouteService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -28,14 +29,17 @@ public class JobControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private JobService service;
+    private JobService jobService;
+
+    @MockBean
+    private RouteService routeService;
 
     @Captor
     private ArgumentCaptor<JobEntity> entityCaptor;
 
     @Test
     public void shouldReturnJobs() throws Exception {
-        when(service.getAllJobs()).thenReturn(asList(
+        when(jobService.getAllJobs()).thenReturn(asList(
                 JobEntity.builder()
                         .id(1L)
                         .customerId(1L)
@@ -65,8 +69,8 @@ public class JobControllerTest {
                 .andExpect(jsonPath("$[1].end").value(13))
                 .andExpect(jsonPath("$[1].timestamp").exists());
 
-        verify(service).getAllJobs();
-        verifyNoMoreInteractions(service);
+        verify(jobService).getAllJobs();
+        verifyNoMoreInteractions(jobService);
     }
 
     @Test
@@ -76,8 +80,8 @@ public class JobControllerTest {
                 .content("{\"start\": 11,\"end\": 12}"))
                 .andExpect(status().isOk());
 
-        verify(service).saveNewJob(entityCaptor.capture());
-        verifyNoMoreInteractions(service);
+        verify(jobService).saveNewJob(entityCaptor.capture());
+        verifyNoMoreInteractions(jobService);
 
         assertThat(entityCaptor.getValue().getStart()).isEqualTo(11);
         assertThat(entityCaptor.getValue().getEnd()).isEqualTo(12);
@@ -90,7 +94,7 @@ public class JobControllerTest {
                 .content("{\"start\": \"malformed-start-station\",\"end\": 12}"))
                 .andExpect(status().is4xxClientError());
 
-        verifyNoMoreInteractions(service);
+        verifyNoMoreInteractions(jobService);
     }
 
     @Test
@@ -101,7 +105,7 @@ public class JobControllerTest {
                 .content("{\"start\": \"11\",\"end\": 12, \"timestamp\": \"2020-06-14T16:09:50.207\"}"))
                 .andExpect(status().is4xxClientError());
 
-        verifyNoMoreInteractions(service);
+        verifyNoMoreInteractions(jobService);
     }
 
     @Test
@@ -110,7 +114,10 @@ public class JobControllerTest {
                 .param("id", "1"))
                 .andExpect(status().isOk());
 
-        verify(service).deleteJob(1L);
-        verifyNoMoreInteractions(service);
+        verify(routeService).removeJobFromRoutes(1L);
+        verify(jobService).deleteJob(1L);
+
+        verifyNoMoreInteractions(routeService);
+        verifyNoMoreInteractions(jobService);
     }
 }

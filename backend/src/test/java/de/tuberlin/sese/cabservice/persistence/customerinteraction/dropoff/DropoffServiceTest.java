@@ -6,6 +6,7 @@ import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.persistence.CabEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobService;
+import de.tuberlin.sese.cabservice.persistence.route.RouteService;
 import de.tuberlin.sese.cabservice.util.exceptions.CabCustomerPositionConflictException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
@@ -49,11 +50,11 @@ public class DropoffServiceTest {
     @MockBean
     private JobService jobService;
 
-    @Captor
-    private ArgumentCaptor<DropoffRequestEntity> dropoffRequestCaptor;
+    @MockBean
+    private RouteService routeService;
 
     @Captor
-    private ArgumentCaptor<JobEntity> jobCaptor;
+    private ArgumentCaptor<DropoffRequestEntity> dropoffRequestCaptor;
 
     @Test
     public void shouldDropoffCustomer() {
@@ -356,12 +357,13 @@ public class DropoffServiceTest {
         dropoffService.acceptDropoff(1L);
 
         verify(jobService).getJob(1L);
-        verify(jobService).updateJob(jobCaptor.capture());
-        assertThat(jobCaptor.getValue().getCustomerState()).isEqualTo(AT_DESTINATION);
+        verify(jobService).deleteJob(1L);
         verify(dropoffRepo).deleteById(1L);
+        verify(routeService).removeJobFromRoutes(1L);
 
         verifyNoMoreInteractions(jobService);
         verifyNoMoreInteractions(dropoffRepo);
+        verifyNoMoreInteractions(routeService);
     }
 
     @Test
