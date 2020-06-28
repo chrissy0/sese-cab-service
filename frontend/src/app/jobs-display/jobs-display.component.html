@@ -34,7 +34,7 @@
                         (click)="enterCab(job.id)">Enter Cab {{ pickupForJob(job.id).cabId }}</button>
             </td>
             <td>
-                <fa-icon (click)="deleteJob(i)" [icon]="trashIcon"></fa-icon>
+                <fa-icon *ngIf="deleteJobButtonEnabled(job)" (click)="deleteJob(i)" [icon]="trashIcon"></fa-icon>
             </td>
         </tr>
         </tbody>

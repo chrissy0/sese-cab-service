@@ -4,6 +4,7 @@ import {BackendService} from '../backend.service';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons/faTrashAlt';
 import {Pickup} from '../pickup';
 import {Dropoff} from '../dropoff';
+import {CustomerState} from '../customer-state';
 
 @Component({
     selector: 'app-jobs-display',
@@ -54,6 +55,10 @@ export class JobsDisplayComponent implements OnInit {
 
     deleteJob(tableIndex: number) {
         this.backendService.deleteJob(this.jobs[tableIndex].id);
+    }
+
+    deleteJobButtonEnabled(job: Job) {
+        return CustomerState.WAITING === job.customerState;
     }
 
     jobsActive() {
