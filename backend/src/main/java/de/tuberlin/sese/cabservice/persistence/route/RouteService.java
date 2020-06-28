@@ -7,7 +7,6 @@ import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.job.JobEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobService;
-import de.tuberlin.sese.cabservice.util.exceptions.NoPathException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabLocationException;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,6 @@ public class RouteService {
 
     private static final Integer SECTION_DEPOT = 0;
 
-    // TODO Test version field in different constellations
     // TODO Blocked: Routing should take into account markers which are not explicitly in route, but still part of route. If those are blocked, get new route. Works in tests, but didn't work via Postman?
     public RouteEntity getRoute(Long cabId, int version) {
         validateCabId(cabId);
@@ -117,67 +115,117 @@ public class RouteService {
         return updatedRoute;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     private RouteEntity buildRouteForJob(Long cabId, JobEntity job, int version) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
         List<RouteActionEntity> actions = new LinkedList<>();
 
-        try {
-            if (WAITING.equals(job.getCustomerState())) {
-                actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getStart()));
+        if (WAITING.equals(job.getCustomerState())) {
+            actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getStart()));
 
-                actions.add(RouteActionEntity.builder()
-                        .action(PICKUP)
-                        .customerId(job.getCustomerId())
-                        .marker(job.getStart())
-                        .build());
-
-                actions.addAll(getActionsFromTo(job.getStart(), job.getEnd()));
-
-                actions.add(RouteActionEntity.builder()
-                        .action(DROPOFF)
-                        .customerId(job.getCustomerId())
-                        .marker(job.getEnd())
-                        .build());
-
-                actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
-
-                actions.add(RouteActionEntity.builder()
-                        .action(WAIT)
-                        .marker(SECTION_DEPOT)
-                        .build());
+            if (routeIsFinished(actions)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .routeActions(actions)
+                        .cabId(cabId)
+                        .jobId(job.getId())
+                        .build();
             }
 
-            if (IN_CAB.equals(job.getCustomerState())) {
-                actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getEnd()));
+            actions.add(RouteActionEntity.builder()
+                    .action(PICKUP)
+                    .customerId(job.getCustomerId())
+                    .marker(job.getStart())
+                    .build());
 
-                actions.add(RouteActionEntity.builder()
-                        .action(DROPOFF)
-                        .customerId(job.getCustomerId())
-                        .marker(job.getEnd())
-                        .build());
+            actions.addAll(getActionsFromTo(job.getStart(), job.getEnd()));
 
-                actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
-
-                actions.add(RouteActionEntity.builder()
-                        .action(WAIT)
-                        .marker(SECTION_DEPOT)
-                        .build());
+            if (routeIsFinished(actions)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .routeActions(actions)
+                        .cabId(cabId)
+                        .jobId(job.getId())
+                        .build();
             }
 
-            if (AT_DESTINATION.equals(job.getCustomerState())) {
-                actions.addAll(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
+            actions.add(RouteActionEntity.builder()
+                    .action(DROPOFF)
+                    .customerId(job.getCustomerId())
+                    .marker(job.getEnd())
+                    .build());
 
-                actions.add(RouteActionEntity.builder()
-                        .action(WAIT)
-                        .marker(SECTION_DEPOT)
-                        .build());
+            actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
+
+            if (routeIsFinished(actions)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .routeActions(actions)
+                        .cabId(cabId)
+                        .jobId(job.getId())
+                        .build();
             }
 
-
-        } catch (NoPathException e) {
-            // TODO handle
+            actions.add(RouteActionEntity.builder()
+                    .action(WAIT)
+                    .marker(SECTION_DEPOT)
+                    .build());
         }
+
+        if (IN_CAB.equals(job.getCustomerState())) {
+            actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getEnd()));
+
+            if (routeIsFinished(actions)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .routeActions(actions)
+                        .cabId(cabId)
+                        .jobId(job.getId())
+                        .build();
+            }
+
+            actions.add(RouteActionEntity.builder()
+                    .action(DROPOFF)
+                    .customerId(job.getCustomerId())
+                    .marker(job.getEnd())
+                    .build());
+
+            actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
+
+            if (routeIsFinished(actions)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .routeActions(actions)
+                        .cabId(cabId)
+                        .jobId(job.getId())
+                        .build();
+            }
+
+            actions.add(RouteActionEntity.builder()
+                    .action(WAIT)
+                    .marker(SECTION_DEPOT)
+                    .build());
+        }
+
+        if (AT_DESTINATION.equals(job.getCustomerState())) {
+            actions.addAll(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
+
+            if (routeIsFinished(actions)) {
+                return RouteEntity.builder()
+                        .version(version)
+                        .routeActions(actions)
+                        .cabId(cabId)
+                        .jobId(job.getId())
+                        .build();
+            }
+
+            actions.add(RouteActionEntity.builder()
+                    .action(WAIT)
+                    .marker(SECTION_DEPOT)
+                    .build());
+        }
+
 
         return RouteEntity.builder()
                 .version(version)
@@ -187,20 +235,30 @@ public class RouteService {
                 .build();
     }
 
+    private boolean routeIsFinished(List<RouteActionEntity> actions) {
+        if (actions.size() == 0) {
+            return false;
+        }
+        return WAIT.equals(actions.get(actions.size() - 1).getAction());
+    }
+
     private RouteEntity getRouteToDepot(Long cabId, int version) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
-        List<RouteActionEntity> actions = new LinkedList<>();
-        try {
-            actions.addAll(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
+        List<RouteActionEntity> actions = new LinkedList<>(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
 
-            actions.add(RouteActionEntity.builder()
-                    .action(WAIT)
-                    .marker(SECTION_DEPOT)
-                    .build());
-        } catch (NoPathException e) {
-            // TODO handle
+        if (routeIsFinished(actions)) {
+            return RouteEntity.builder()
+                    .version(version)
+                    .routeActions(actions)
+                    .cabId(cabId)
+                    .build();
         }
+
+        actions.add(RouteActionEntity.builder()
+                .action(WAIT)
+                .marker(SECTION_DEPOT)
+                .build());
 
         return RouteEntity.builder()
                 .version(version)
@@ -209,7 +267,7 @@ public class RouteService {
                 .build();
     }
 
-    private List<RouteActionEntity> getActionsFromTo(int from, int to) throws NoPathException {
+    private List<RouteActionEntity> getActionsFromTo(int from, int to) {
         List<Option> routeOptions = pathFinder.getRouteBetween(from, to);
 
         if (routeOptions.size() == 0) {
@@ -228,6 +286,12 @@ public class RouteService {
                 direction = RouteActionEntity.Direction.LEFT;
             } else if (Option.Direction.RIGHT.equals(option.getDirection())) {
                 direction = RouteActionEntity.Direction.RIGHT;
+            } else if (Option.Direction.WAIT.equals(option.getDirection())) {
+                actions.add(RouteActionEntity.builder()
+                        .action(WAIT)
+                        .marker(option.getFromSection())
+                        .build());
+                return actions;
             } else {
                 throw new IllegalStateException("Unknown direction");
             }

@@ -25,7 +25,7 @@ public class PathFinder {
 
     private final CabBlockedService blockedService;
 
-    public List<Option> getRouteBetween(int start, int end) throws NoPathException {
+    public List<Option> getRouteBetween(int start, int end) {
 
         List<Option> route = new LinkedList<>();
 
@@ -35,195 +35,212 @@ public class PathFinder {
             if (nextActionOptional.isPresent()) {
                 Option nextAction = nextActionOptional.get();
                 route.add(nextAction);
+                if (WAIT.equals(nextAction.getDirection())) {
+                    return route;
+                }
                 currentSection = nextAction.getToSection();
             } else {
-                throw new NoPathException("No next action found");
+                route.add(Option.builder()
+                        .fromSection(currentSection)
+                        .toSection(currentSection)
+                        .direction(WAIT)
+                        .build());
+                return route;
             }
         }
 
         return route;
     }
 
-    private Optional<Option> getNextAction(int currentSection, int endSection) throws NoPathException {
+    private Optional<Option> getNextAction(int currentSection, int endSection) {
         List<Integer> blockedSections = blockedService.getBlockedSections();
 
         Option onlyOption;
         Option primaryOption;
         Option alternativeOption;
-        switch (currentSection) {
-            case 0:
-                onlyOption = Option.builder()
-                        .fromSection(0)
-                        .toSection(13)
-                        .direction(STRAIGHT)
-                        .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 1:
-                primaryOption = Option.builder()
-                        .fromSection(1)
-                        .toSection(3)
-                        .direction(LEFT)
-                        .build();
-                alternativeOption = Option.builder()
-                        .fromSection(1)
-                        .toSection(2)
-                        .direction(RIGHT)
-                        .build();
+        try {
+            switch (currentSection) {
+                case 0:
+                    onlyOption = Option.builder()
+                            .fromSection(0)
+                            .toSection(13)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
-            case 2:
-                onlyOption = Option.builder()
-                        .fromSection(2)
-                        .toSection(4)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 1:
+                    primaryOption = Option.builder()
+                            .fromSection(1)
+                            .toSection(3)
+                            .direction(LEFT)
+                            .build();
+                    alternativeOption = Option.builder()
+                            .fromSection(1)
+                            .toSection(2)
+                            .direction(RIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 3:
-                onlyOption = Option.builder()
-                        .fromSection(3)
-                        .toSection(4)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
+                case 2:
+                    onlyOption = Option.builder()
+                            .fromSection(2)
+                            .toSection(4)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 4:
-                primaryOption = Option.builder()
-                        .fromSection(4)
-                        .toSection(6)
-                        .direction(LEFT)
-                        .build();
-                alternativeOption = Option.builder()
-                        .fromSection(4)
-                        .toSection(5)
-                        .direction(RIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 3:
+                    onlyOption = Option.builder()
+                            .fromSection(3)
+                            .toSection(4)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
-            case 5:
-                onlyOption = Option.builder()
-                        .fromSection(5)
-                        .toSection(7)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 4:
+                    primaryOption = Option.builder()
+                            .fromSection(4)
+                            .toSection(6)
+                            .direction(LEFT)
+                            .build();
+                    alternativeOption = Option.builder()
+                            .fromSection(4)
+                            .toSection(5)
+                            .direction(RIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 6:
-                onlyOption = Option.builder()
-                        .fromSection(6)
-                        .toSection(7)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
+                case 5:
+                    onlyOption = Option.builder()
+                            .fromSection(5)
+                            .toSection(7)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 7:
-                primaryOption = Option.builder()
-                        .fromSection(7)
-                        .toSection(9)
-                        .direction(LEFT)
-                        .build();
-                alternativeOption = Option.builder()
-                        .fromSection(7)
-                        .toSection(8)
-                        .direction(RIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 6:
+                    onlyOption = Option.builder()
+                            .fromSection(6)
+                            .toSection(7)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
-            case 8:
-                onlyOption = Option.builder()
-                        .fromSection(8)
-                        .toSection(10)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 7:
+                    primaryOption = Option.builder()
+                            .fromSection(7)
+                            .toSection(9)
+                            .direction(LEFT)
+                            .build();
+                    alternativeOption = Option.builder()
+                            .fromSection(7)
+                            .toSection(8)
+                            .direction(RIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 9:
-                onlyOption = Option.builder()
-                        .fromSection(9)
-                        .toSection(10)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
+                case 8:
+                    onlyOption = Option.builder()
+                            .fromSection(8)
+                            .toSection(10)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 10:
-                primaryOption = Option.builder()
-                        .fromSection(10)
-                        .toSection(12)
-                        .direction(LEFT)
-                        .build();
-                alternativeOption = Option.builder()
-                        .fromSection(10)
-                        .toSection(11)
-                        .direction(RIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 9:
+                    onlyOption = Option.builder()
+                            .fromSection(9)
+                            .toSection(10)
+                            .direction(STRAIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
-            case 11:
-                onlyOption = Option.builder()
-                        .fromSection(11)
-                        .toSection(1)
-                        .direction(STRAIGHT)
-                        .build();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 10:
+                    primaryOption = Option.builder()
+                            .fromSection(10)
+                            .toSection(12)
+                            .direction(LEFT)
+                            .build();
+                    alternativeOption = Option.builder()
+                            .fromSection(10)
+                            .toSection(11)
+                            .direction(RIGHT)
+                            .build();
 
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-            case 12:
-                if (endSection == 14 || endSection == 15 || endSection == 0) {
+                    return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
+                case 11:
+                    onlyOption = Option.builder()
+                            .fromSection(11)
+                            .toSection(1)
+                            .direction(STRAIGHT)
+                            .build();
 
-                    if (blockedSections.contains(14)) {
-                        throw new NoPathException();
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
+                case 12:
+                    if (endSection == 14 || endSection == 15 || endSection == 0) {
+
+                        if (blockedSections.contains(14)) {
+                            throw new NoPathException();
+                        }
+
+                        return Optional.ofNullable(Option.builder()
+                                .fromSection(12)
+                                .toSection(14)
+                                .direction(LEFT)
+                                .build());
+                    }
+
+                    if (blockedSections.contains(13)) {
+                        if (blockedSections.contains(14)) {
+                            throw new NoPathException();
+                        }
+
+                        return Optional.ofNullable(Option.builder()
+                                .fromSection(12)
+                                .toSection(14)
+                                .direction(LEFT)
+                                .build());
                     }
 
                     return Optional.ofNullable(Option.builder()
                             .fromSection(12)
-                            .toSection(14)
-                            .direction(LEFT)
+                            .toSection(13)
+                            .direction(RIGHT)
                             .build());
-                }
+                case 13:
+                    onlyOption = Option.builder()
+                            .fromSection(13)
+                            .toSection(1)
+                            .direction(STRAIGHT)
+                            .build();
 
-                if (blockedSections.contains(13)) {
-                    if (blockedSections.contains(14)) {
-                        throw new NoPathException();
-                    }
+                    return Optional.of(handleChoice(onlyOption, blockedSections));
 
-                    return Optional.ofNullable(Option.builder()
-                            .fromSection(12)
-                            .toSection(14)
+                case 14:
+                    primaryOption = Option.builder()
+                            .fromSection(14)
+                            .toSection(0)
+                            .direction(RIGHT)
+                            .build();
+                    alternativeOption = Option.builder()
+                            .fromSection(14)
+                            .toSection(15)
                             .direction(LEFT)
-                            .build());
-                }
+                            .build();
 
-                return Optional.ofNullable(Option.builder()
-                        .fromSection(12)
-                        .toSection(13)
-                        .direction(RIGHT)
-                        .build());
-            case 13:
-                onlyOption = Option.builder()
-                        .fromSection(13)
-                        .toSection(1)
-                        .direction(STRAIGHT)
-                        .build();
-
-                return Optional.of(handleChoice(onlyOption, blockedSections));
-
-            case 14:
-                primaryOption = Option.builder()
-                        .fromSection(14)
-                        .toSection(0)
-                        .direction(RIGHT)
-                        .build();
-                alternativeOption = Option.builder()
-                        .fromSection(14)
-                        .toSection(15)
-                        .direction(LEFT)
-                        .build();
-
-                return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
-            case 15:
-                return Optional.empty();
-            default:
-                throw new IllegalArgumentException("Unknown current section");
+                    return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
+                case 15:
+                    return Optional.empty();
+                default:
+                    throw new IllegalArgumentException("Unknown current section");
+            }
+        } catch (NoPathException e) {
+            return Optional.of(Option.builder()
+                    .fromSection(currentSection)
+                    .toSection(currentSection)
+                    .direction(WAIT)
+                    .build());
         }
     }
 

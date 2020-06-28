@@ -16,6 +16,7 @@ public class Option {
     public enum Direction {
         LEFT,
         RIGHT,
-        STRAIGHT
+        STRAIGHT,
+        WAIT
     }
 }

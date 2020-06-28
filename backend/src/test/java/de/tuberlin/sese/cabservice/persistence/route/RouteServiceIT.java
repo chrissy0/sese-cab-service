@@ -5,6 +5,7 @@ import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationEntity;
 import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRegistrationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.persistence.CabEntity;
+import de.tuberlin.sese.cabservice.persistence.customerinteraction.dropoff.DropoffService;
 import de.tuberlin.sese.cabservice.persistence.customerinteraction.pickup.PickupService;
 import de.tuberlin.sese.cabservice.persistence.job.JobEntity;
 import de.tuberlin.sese.cabservice.persistence.job.JobService;
@@ -40,6 +41,9 @@ public class RouteServiceIT {
 
     @Autowired
     private PickupService pickupService;
+
+    @Autowired
+    private DropoffService dropoffService;
 
     @Autowired
     private JobService jobService;
@@ -297,11 +301,120 @@ public class RouteServiceIT {
         assertThat(updatedRoute.getRouteActions()).isNull();
     }
 
-    // TODO no path on existing route
+    @Test
+    public void shouldHandleNoPathAvailable() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Cab Name")
+                        .build(),
+                1);
+
+
+        long jobId = jobService.saveNewJob(JobEntity.builder()
+                .start(2)
+                .end(8)
+                .build());
+
+        long blockedCabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Blocked Cab Name")
+                        .build(),
+                7);
+
+        blockedService.setBlocked(blockedCabId, true);
+
+        RouteEntity route = routeService.getRoute(cabId, 0);
+
+        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isEqualTo(jobId);
+
+        assertThat(route.getRouteActions()).hasSize(4);
+
+        assertThat(route.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+        assertThat(route.getRouteActions().get(0).getMarker()).isEqualTo(1);
+
+        assertThat(route.getRouteActions().get(1).getAction()).isEqualTo(PICKUP);
+        assertThat(route.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId);
+        assertThat(route.getRouteActions().get(1).getMarker()).isEqualTo(2);
+
+        assertThat(route.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+        assertThat(route.getRouteActions().get(2).getMarker()).isEqualTo(4);
+
+        assertThat(route.getRouteActions().get(3).getAction()).isEqualTo(WAIT);
+        assertThat(route.getRouteActions().get(3).getMarker()).isEqualTo(6);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(2)
+                .build());
+
+        pickupService.pickup(cabId, jobId);
+        pickupService.acceptPickup(jobId);
+
+        blockedService.setBlocked(blockedCabId, false);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(6)
+                .build());
+
+        RouteEntity updatedRoute = routeService.getRoute(cabId, route.getVersion());
+
+        assertThat(updatedRoute.getVersion()).isEqualTo(1);
+        assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute.getJobId()).isEqualTo(jobId);
+
+        assertThat(updatedRoute.getRouteActions()).hasSize(6);
+
+        assertThat(updatedRoute.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+        assertThat(updatedRoute.getRouteActions().get(0).getMarker()).isEqualTo(7);
+
+        assertThat(updatedRoute.getRouteActions().get(1).getAction()).isEqualTo(DROPOFF);
+        assertThat(updatedRoute.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId);
+        assertThat(updatedRoute.getRouteActions().get(1).getMarker()).isEqualTo(8);
+
+        assertThat(updatedRoute.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+        assertThat(updatedRoute.getRouteActions().get(2).getMarker()).isEqualTo(10);
+
+        assertThat(updatedRoute.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(3).getDirection()).isEqualTo(LEFT);
+        assertThat(updatedRoute.getRouteActions().get(3).getMarker()).isEqualTo(12);
+
+        assertThat(updatedRoute.getRouteActions().get(4).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(4).getDirection()).isEqualTo(RIGHT);
+        assertThat(updatedRoute.getRouteActions().get(4).getMarker()).isEqualTo(14);
+
+        assertThat(updatedRoute.getRouteActions().get(5).getAction()).isEqualTo(WAIT);
+        assertThat(updatedRoute.getRouteActions().get(5).getMarker()).isEqualTo(0);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(8)
+                .build());
+
+        dropoffService.dropoff(cabId, jobId);
+        dropoffService.acceptDropoff(jobId);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(0)
+                .build());
+
+        RouteEntity updatedRoute2 = routeService.getRoute(cabId, updatedRoute.getVersion());
+
+        assertThat(updatedRoute2.getVersion()).isEqualTo(1);
+        assertThat(updatedRoute2.getCabId()).isNull();
+        assertThat(updatedRoute2.getJobId()).isNull();
+        assertThat(updatedRoute2.getRouteActions()).isNull();
+    }
+
     // TODO (I) job deleted after dropping off (1. happens?, 2. handles correctly? -> next job or to depot)
     // TODO (II) test IllegalStateException, gone after implementing (I)? If not, maybe also test what happens to state and in controller upon IllegalStateException
     // TODO Route changed immediately upon new job
-    // TODO version tests
+    // TODO version tests (different constellations)
     // TODO All getRoute paths
     // TODO remove delete-button from frontend after picking up, delete job after dropping off
 }
