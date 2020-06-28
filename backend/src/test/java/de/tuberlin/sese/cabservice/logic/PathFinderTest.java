@@ -1,7 +1,6 @@
 package de.tuberlin.sese.cabservice.logic;
 
 import de.tuberlin.sese.cabservice.persistence.cab.blocked.CabBlockedService;
-import de.tuberlin.sese.cabservice.util.exceptions.NoPathException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import java.util.List;
 import static com.google.common.primitives.Ints.asList;
 import static de.tuberlin.sese.cabservice.logic.Option.Direction.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -28,7 +26,7 @@ public class PathFinderTest {
     private CabBlockedService blockedService;
 
     @Test
-    public void shouldFindShortestPath_between0And15() throws Exception {
+    public void shouldFindShortestPath_between0And15() {
         List<Option> route = pathFinder.getRouteBetween(0, 15);
 
         assertThat(route.get(0).getToSection()).isEqualTo(13);
@@ -66,7 +64,7 @@ public class PathFinderTest {
     }
 
     @Test
-    public void shouldFindShortestPathWithBlockedSection_between0And15() throws Exception {
+    public void shouldFindShortestPathWithBlockedSection_between0And15() {
         when(blockedService.getBlockedSections()).thenReturn(asList(6, 9));
 
         List<Option> route = pathFinder.getRouteBetween(0, 15);
@@ -103,13 +101,5 @@ public class PathFinderTest {
 
         assertThat(route.get(10).getToSection()).isEqualTo(15);
         assertThat(route.get(10).getDirection()).isEqualTo(LEFT);
-    }
-
-    @Test
-    public void shouldThrowNoPathExceptionOnBlockedSections() {
-        when(blockedService.getBlockedSections()).thenReturn(asList(5, 6));
-
-        assertThatThrownBy(() -> pathFinder.getRouteBetween(4, 7))
-                .isExactlyInstanceOf(NoPathException.class);
     }
 }
