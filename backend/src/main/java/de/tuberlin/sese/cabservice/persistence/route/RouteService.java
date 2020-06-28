@@ -47,7 +47,7 @@ public class RouteService {
             if (isJobRoute(loadedRoute)) {
                 Optional<JobEntity> jobOptional = jobService.getJob(loadedRoute.getJobId());
                 if (jobOptional.isPresent()) {
-                    RouteEntity updatedRoute = buildRouteForJob(cabId, jobOptional.get(), version);
+                    RouteEntity updatedRoute = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion());
                     if (updatedRoute.isSubRouteOf(loadedRoute)) {
                         return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                     }
