@@ -1,0 +1,10 @@
+with "..\Road_Marker\roadmarker.gpr";
+with "../Motor_Controller/motor_controller.gpr";
+
+project Job_Executer is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+
+end Job_Executer;
+

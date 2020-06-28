@@ -1,35 +1,73 @@
 with Lane_Detection;   use Lane_Detection;
 with Motor_Controller; use Motor_Controller;
 with WC2EC;            use WC2EC;
-with Roadmarker;        use Roadmarker;
 with Ada.Text_IO;      use Ada.Text_IO;
+with Front_Distance;   use Front_Distance;
+with Job_Executer;     use Job_Executer;
+with WC2EC_Interface;
+
+
 
 procedure External_Controller is
    Lane_Detection_Task   : Lane_Detection_Taks_T;
+   Front_Distance_Task   : Front_Distance_Task_T;
    Motor_Controller_Task : Motor_Controller_Task_Access_T;
+   Job_Executer_Task     : Job_Executer_Task_T;
    WC2EC_Driver          : wc2ec_thread_access_t;
-   Roadmarker_Task       : Roadmarker_Task_T;
+   job_execute_next_v    : Job_Executer_Next_t;
+
+   procedure Log_Line(message : String) is
+   begin
+      Put_Line("[external_controller] " & message);
+   end Log_Line;
 
 begin
-   Put_Line ("Setting up WC2EC_Driver...");
+   Log_Line ("Setting up WC2EC_Driver...");
    WC2EC_Driver := new wc2ec_thread_t;
    while WC2EC.ready /= True loop
       delay 1.0;
    end loop;
-   Put_Line ("Setting up Motor_Controller_Task...");
+
+   Log_Line ("Setting up Motor_Controller_Task...");
    Motor_Controller_Task := new Motor_Controller_Task_T;
-   Motor_Controller_Task.Construct
-     (WC2EC_Driver_A => WC2EC_Driver, Straight_Speed => 3.0,
-      Turn_Speed     => 1.0);
-   Put_Line ("Setting up Lane_Detection_Task...");
+
+   Motor_Controller_Task.Constructor(MC_State       => NORMAL_DRIVING,
+                                     ND_State       => FRONT_CLEAR,
+                                     FC_State       => DRIVE,
+                                     D_State        => INIT,
+                                     SE_State       => STOP,
+                                     LE_STATE       => NEXT_UNKOWN,
+                                     MS_Speed       => 2.0,
+                                     MT_Speed       => 1.0,
+                                     set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
+                                     timeout_v       => 1.0);
+
+   Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
-     (IR_Threshhold => 250.0, US_Threshhold => 600.0, US_Max_Value => 1_000.0,
+     (IR_Threshhold => 350.0, US_Threshhold => 870.0, US_Max_Value => 1_000.0,
       Motor_Task_A  => Motor_Controller_Task, WC2EC_Driver_A => WC2EC_Driver);
 
-   Put_Line ("Setting up Roadmarker_Task...");
-   Roadmarker_Task.Construct
-     ( WC2EC_Driver_A => WC2EC_Driver);
+   Log_Line("Setting up Front_Distance_Task ...");
+   Front_Distance_Task.Construct
+     (get_distance_sensor_value_access => WC2EC_Interface.get_front_distance_value'Access ,
+      us_thresh                        => 600.0,
+      Motor_Controller_Task_A          => Motor_Controller_Task
+     );
+   Log_Line("All set up!");
 
-   delay (10_000.0);
+   Job_Executer_Task.Constructor(Motor_Controller_Task_A => Motor_Controller_Task,
+                                 timeout_v               => 2.0,
+                                 RM_get_sensor_value_a   => WC2EC_Interface.get_rm_sensor_value'Access);
+
+   loop
+       --Motor_Controller_Task.job_executer_done(EMPTY_S);
+      -- HINT uncomment the above line to enabel job_executer
+
+      Motor_Controller_Task.main_shutdown_signal(False);
+
+      -- Motor_Controller_Task.job_executer_next(job_execute_next_v);
+      -- HINT uncomment the above line to enabel job_executer
+   end loop;
+
 
 end External_Controller;
