@@ -36,7 +36,6 @@ public class RouteService {
 
     private static final Integer SECTION_DEPOT = 0;
 
-    // TODO Blocked: Routing should take into account markers which are not explicitly in route, but still part of route. If those are blocked, get new route. Works in tests, but didn't work via Postman?
     public RouteEntity getRoute(Long cabId, int version) {
         validateCabId(cabId);
 
