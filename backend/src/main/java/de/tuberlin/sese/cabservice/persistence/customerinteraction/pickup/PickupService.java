@@ -24,7 +24,7 @@ import static de.tuberlin.sese.cabservice.persistence.job.JobEntity.CustomerStat
 @RequiredArgsConstructor
 public class PickupService {
 
-    private final PickupRepo repo;
+    private final PickupRepo pickupRepo;
 
     private final CabRepo cabRepo;
 
@@ -63,14 +63,14 @@ public class PickupService {
             throw new CabCustomerPositionConflictException("Already picked up customer");
         }
 
-        repo.save(PickupRequestEntity.builder()
+        pickupRepo.save(PickupRequestEntity.builder()
                 .customerId(customerId)
                 .cabId(cabId)
                 .build());
     }
 
     public List<PickupRequestEntity> getPickupRequests() {
-        return Lists.newArrayList(repo.findAll());
+        return Lists.newArrayList(pickupRepo.findAll());
     }
 
     public PickupCompleteModel pickupsComplete(Long cabId) {
@@ -82,7 +82,19 @@ public class PickupService {
             throw new UnknownCabIdException();
         }
 
-        boolean complete = stream(repo.findAll()).noneMatch(pickup -> cabId.equals(pickup.getCabId()));
+        boolean complete = stream(pickupRepo.findAll())
+                .filter(pickup -> {
+                    if (!jobService.getJob(pickup.getCustomerId()).isPresent()) {
+                        // If job was deleted after pickup was requested, pickup request should be deleted
+                        // Cab receives "completed: true" if no other pickups are in progress
+                        // Cab should always request new route after pickup so it doesn't attempt dropping
+                        // off customer it never picked up
+                        pickupRepo.deleteById(pickup.getCustomerId());
+                        return false;
+                    }
+                    return true;
+                })
+                .noneMatch(pickup -> cabId.equals(pickup.getCabId()));
 
         return PickupCompleteModel.builder()
                 .complete(complete)
@@ -104,6 +116,6 @@ public class PickupService {
         job.setCustomerState(IN_CAB);
         jobService.updateJob(job);
 
-        repo.deleteById(customerId);
+        pickupRepo.deleteById(customerId);
     }
 }
