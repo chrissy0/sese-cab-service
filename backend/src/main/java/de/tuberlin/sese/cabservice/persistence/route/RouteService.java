@@ -44,8 +44,10 @@ public class RouteService {
         Optional<RouteEntity> routeOptional = routeRepo.findById(cabId);
 
         if (routeOptional.isPresent()) {
+            // Route exists in database
             RouteEntity loadedRoute = routeOptional.get();
             if (isJobRoute(loadedRoute)) {
+                // Database route has job associated with it
                 Optional<JobEntity> jobOptional = jobService.getJob(loadedRoute.getJobId());
                 if (jobOptional.isPresent()) {
                     RouteEntity updatedRoute = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion());
@@ -59,14 +61,17 @@ public class RouteService {
                     return getRoute(cabId, version);
                 }
             } else {
+                // Database route does not have job associated with it
                 Optional<JobEntity> jobOptional = getFirstAvailableJob();
                 if (jobOptional.isPresent() && cabShouldGetNewJob(cabId)) {
+                    // At least one job is available
                     JobEntity job = jobOptional.get();
                     setJobInProgress(job);
                     RouteEntity route = buildRouteForJob(cabId, job, loadedRoute.getVersion() + 1);
                     routeRepo.save(route);
                     return route;
                 } else {
+                    // No job is available
                     RouteEntity updatedRoute = getRouteToDepot(cabId, loadedRoute.getVersion());
                     if (updatedRoute.isSubRouteOf(loadedRoute)) {
                         return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
@@ -75,13 +80,16 @@ public class RouteService {
                 }
             }
         } else {
+            // Route does not exist in database
             Optional<JobEntity> jobOptional = getFirstAvailableJob();
             RouteEntity route;
             if (jobOptional.isPresent() && cabShouldGetNewJob(cabId)) {
+                // At least one job is available
                 JobEntity job = jobOptional.get();
                 setJobInProgress(job);
                 route = buildRouteForJob(cabId, job, 0);
             } else {
+                // No job is available
                 route = getRouteToDepot(cabId, 0);
             }
             routeRepo.save(route);
