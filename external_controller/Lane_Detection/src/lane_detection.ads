@@ -10,6 +10,8 @@ package Lane_Detection is
          US_Max_Value                 : in Long_Float;
          Motor_Task_A                 : in Motor_Controller_Task_Access_T;
          WC2EC_Driver_A               : in wc2ec_thread_access_t);
-   end Lane_Detection_Taks_T;
 
+
+
+   end Lane_Detection_Taks_T;
 end Lane_Detection;

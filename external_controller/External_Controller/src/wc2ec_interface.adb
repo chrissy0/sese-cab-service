@@ -1,6 +1,7 @@
 pragma Ada_2012;
 with Motor_Controller; use Motor_Controller;
 with Front_Distance; use Front_Distance;
+with Roadmarker; use Roadmarker;
 package body WC2EC_Interface is
 
    ---------------------
@@ -51,5 +52,37 @@ package body WC2EC_Interface is
             return WC2EC.get_distance_sensor_data("dist_r2");
       end case;
    end get_front_distance_value;
+
+   -------------------------
+   -- get_rm_sensor_value --
+   -------------------------
+
+   function get_rm_sensor_value
+     (ID : Roadmarker.Roadmarker_Sensor_ID_T)
+   return Long_Float is
+   begin
+      case ID is
+         when FRONT_LEFT =>
+            return WC2EC.get_distance_sensor_data("inf_rm_fl_act");
+         when FRONT_RIGHT =>
+            return WC2EC.get_distance_sensor_data("inf_rm_fr_act");
+
+         when BEHIND_LEFT =>
+            return WC2EC.get_distance_sensor_data("inf_rm_bl_act");
+         when BEHIND_RIGHT =>
+            return WC2EC.get_distance_sensor_data("inf_rm_br_act");
+
+         when RM_FL =>
+            return WC2EC.get_distance_sensor_data("inf_rm_fl");
+         when RM_FR =>
+            return WC2EC.get_distance_sensor_data("inf_rm_fr");
+
+
+         when RM_BL =>
+            return WC2EC.get_distance_sensor_data("inf_rm_bl");
+         when RM_BR =>
+            return WC2EC.get_distance_sensor_data("inf_rm_br");
+      end case;
+   end get_rm_sensor_value;
 
 end WC2EC_Interface;

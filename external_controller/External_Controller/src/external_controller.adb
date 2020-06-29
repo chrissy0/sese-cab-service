@@ -56,15 +56,16 @@ begin
    Log_Line("All set up!");
 
    Job_Executer_Task.Constructor(Motor_Controller_Task_A => Motor_Controller_Task,
-                                 timeout_v               => 2.0);
+                                 timeout_v               => 2.0,
+                                 RM_get_sensor_value_a   => WC2EC_Interface.get_rm_sensor_value'Access);
 
    loop
-       Motor_Controller_Task.job_executer_done(EMPTY_S);
+       --Motor_Controller_Task.job_executer_done(EMPTY_S);
       -- HINT uncomment the above line to enabel job_executer
 
       Motor_Controller_Task.main_shutdown_signal(False);
 
-       Motor_Controller_Task.job_executer_next(job_execute_next_v);
+      -- Motor_Controller_Task.job_executer_next(job_execute_next_v);
       -- HINT uncomment the above line to enabel job_executer
    end loop;
 
