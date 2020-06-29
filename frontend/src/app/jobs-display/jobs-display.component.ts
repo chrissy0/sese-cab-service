@@ -77,7 +77,7 @@ export class JobsDisplayComponent implements OnInit {
         this.updateTable();
         setInterval(() => {
             this.updateTable();
-        }, 2000);
+        }, 1000);
     }
 
 }
