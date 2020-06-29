@@ -150,4 +150,17 @@ public class RouteControllerTest {
         verify(service).getRoute(12L, 0);
         verifyNoMoreInteractions(service);
     }
+
+    @Test
+    public void shouldReturn500InternalServerErrorOnIllegalStateException() throws Exception {
+        doThrow(new IllegalStateException()).when(service).getRoute(12L, 0);
+
+        mockMvc.perform(get("/api/ec/requestRoute")
+                .param("id", "12")
+                .param("version", "0"))
+                .andExpect(status().isInternalServerError());
+
+        verify(service).getRoute(12L, 0);
+        verifyNoMoreInteractions(service);
+    }
 }

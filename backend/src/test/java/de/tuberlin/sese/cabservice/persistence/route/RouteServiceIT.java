@@ -588,7 +588,6 @@ public class RouteServiceIT {
         assertThat(updatedRoute2.getRouteActions()).isNull();
     }
 
-    // TODO (II) test IllegalStateException, gone after implementing (I)? If not, maybe also test what happens to state and in controller upon IllegalStateException
     // TODO Route changed immediately upon new job
     // TODO version tests (different constellations)
     // TODO All getRoute paths

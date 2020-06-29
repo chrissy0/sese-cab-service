@@ -54,7 +54,9 @@ public class RouteService {
                     }
                     return incrementVersion(updatedRoute);
                 } else {
-                    throw new IllegalStateException("Route included JobId for non-existing job");
+                    loadedRoute.setJobId(null);
+                    routeRepo.save(loadedRoute);
+                    return getRoute(cabId, version);
                 }
             } else {
                 Optional<JobEntity> jobOptional = getFirstAvailableJobAndSetInProgress();

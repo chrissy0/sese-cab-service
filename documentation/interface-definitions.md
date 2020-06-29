@@ -207,6 +207,12 @@ GET /api/ec/requestRoute?id=0&version=0
 400 Bad Request
 ```
 
+###### Other error / exception (should not happen)
+
+```http
+500 Internal Server Error
+```
+
 ### Pickup Person
 
 ##### Request

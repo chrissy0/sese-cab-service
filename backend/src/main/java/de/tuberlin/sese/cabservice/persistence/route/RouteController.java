@@ -31,6 +31,8 @@ public class RouteController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception | Error e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         return ResponseEntity.ok(route);
