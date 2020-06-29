@@ -642,7 +642,104 @@ public class RouteServiceIT {
         assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
     }
 
+    @Test
+    public void shouldRerouteIfJobIsDeletedPrematurelyEvenIfJobIdWasNotRemovedFromRoute() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Cab Name")
+                        .build(),
+                0);
+
+        long jobId = jobService.saveNewJob(JobEntity.builder()
+                .start(2)
+                .end(8)
+                .build());
+
+        RouteEntity route = routeService.getRoute(cabId, 0);
+
+        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isEqualTo(jobId);
+
+        assertThat(route.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(route.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(1).getMarker()).isEqualTo(2);
+        assertThat(route.getRouteActions().get(1).getAction()).isEqualTo(PICKUP);
+        assertThat(route.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId);
+
+        assertThat(route.getRouteActions().get(2).getMarker()).isEqualTo(4);
+        assertThat(route.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(3).getMarker()).isEqualTo(7);
+        assertThat(route.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(3).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(4).getMarker()).isEqualTo(8);
+        assertThat(route.getRouteActions().get(4).getAction()).isEqualTo(DROPOFF);
+        assertThat(route.getRouteActions().get(4).getCustomerId()).isEqualTo(jobId);
+
+        assertThat(route.getRouteActions().get(5).getMarker()).isEqualTo(10);
+        assertThat(route.getRouteActions().get(5).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(5).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(6).getMarker()).isEqualTo(12);
+        assertThat(route.getRouteActions().get(6).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(6).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(7).getMarker()).isEqualTo(14);
+        assertThat(route.getRouteActions().get(7).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(7).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(8).getMarker()).isEqualTo(0);
+        assertThat(route.getRouteActions().get(8).getAction()).isEqualTo(WAIT);
+
+        assertThat(route.getRouteActions()).hasSize(9);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(1)
+                .build());
+
+        jobService.deleteJob(jobId);
+
+        RouteEntity updatedRoute = routeService.getRoute(cabId, route.getVersion());
+
+        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
+        assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute.getJobId()).isEqualTo(null);
+
+        assertThat(updatedRoute.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(1).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute.getRouteActions().get(1).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(1).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(2).getMarker()).isEqualTo(7);
+        assertThat(updatedRoute.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(3).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(3).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(4).getMarker()).isEqualTo(12);
+        assertThat(updatedRoute.getRouteActions().get(4).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(4).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(5).getMarker()).isEqualTo(14);
+        assertThat(updatedRoute.getRouteActions().get(5).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(5).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(6).getMarker()).isEqualTo(0);
+        assertThat(updatedRoute.getRouteActions().get(6).getAction()).isEqualTo(WAIT);
+
+        assertThat(updatedRoute.getRouteActions()).hasSize(7);
+    }
+
     // TODO version tests (different constellations)
     // TODO All getRoute paths
-    // TODO Test if route updates when job is deleted prematurely (before customer is IN_CAB) -> deletion only then possible, and happens automatically upon dropoff
 }
