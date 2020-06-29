@@ -876,13 +876,4 @@ public class RouteServiceIT {
         assertThat(updatedRoute.getRouteActions().get(10).getMarker()).isEqualTo(0);
         assertThat(updatedRoute.getRouteActions().get(10).getAction()).isEqualTo(WAIT);
     }
-
-    // TODO Test all getRoute paths including version
-    // DONE route exists, job id available, job exists, route is subroute of saved route
-    // DONE route exists, job id available, job exists, route is not subroute of saved route
-    // DONE route exists, job id available, job does not exist
-    // DONE route exists, job id unavailable, new job available
-    // DONE route exists, job id unavailable, no new job available
-    // DONE route does not exist, new job is available and cab in eligible section
-    // DONE route does not exist, new job is not available
 }
