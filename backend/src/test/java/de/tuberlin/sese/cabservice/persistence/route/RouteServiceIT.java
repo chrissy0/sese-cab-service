@@ -125,6 +125,37 @@ public class RouteServiceIT {
     }
 
     @Test
+    public void shouldReturnRouteToDepotForNoJobWaiting() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Cab Name")
+                        .build(),
+                9);
+
+        RouteEntity route = routeService.getRoute(cabId, 0);
+
+        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isNull();
+
+        assertThat(route.getRouteActions().get(0).getMarker()).isEqualTo(10);
+        assertThat(route.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(0).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(1).getMarker()).isEqualTo(12);
+        assertThat(route.getRouteActions().get(1).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(1).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(2).getMarker()).isEqualTo(14);
+        assertThat(route.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(2).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(3).getMarker()).isEqualTo(0);
+        assertThat(route.getRouteActions().get(3).getAction()).isEqualTo(WAIT);
+
+        assertThat(route.getRouteActions()).hasSize(4);
+    }
+
+    @Test
     public void shouldReturnUpdatedRouteForInProgressJobWhenRouteIsBlocked() {
         long cabId = registrationService.registerCab(CabEntity.builder()
                         .name("Some Cab Name")
@@ -422,7 +453,7 @@ public class RouteServiceIT {
 
         assertThat(preJobRoute.getVersion()).isEqualTo(0);
         assertThat(preJobRoute.getCabId()).isEqualTo(cabId);
-        assertThat(preJobRoute.getJobId()).isEqualTo(null);
+        assertThat(preJobRoute.getJobId()).isNull();
 
         assertThat(preJobRoute.getRouteActions().get(0).getMarker()).isEqualTo(0);
         assertThat(preJobRoute.getRouteActions().get(0).getAction()).isEqualTo(WAIT);
@@ -617,7 +648,7 @@ public class RouteServiceIT {
 
         assertThat(route.getVersion()).isEqualTo(0);
         assertThat(route.getCabId()).isEqualTo(cabId);
-        assertThat(route.getJobId()).isEqualTo(null);
+        assertThat(route.getJobId()).isNull();
 
         assertThat(route.getRouteActions().get(0).getMarker()).isEqualTo(14);
         assertThat(route.getRouteActions().get(0).getAction()).isEqualTo(TURN);
@@ -642,6 +673,8 @@ public class RouteServiceIT {
         assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
     }
 
+    // This test implicitly verifies, that the routing algorithm can handle an existing
+    // route which has a job id of a non-existing job associated with it
     @Test
     public void shouldRerouteIfJobIsDeletedPrematurelyEvenIfJobIdWasNotRemovedFromRoute() {
         long cabId = registrationService.registerCab(CabEntity.builder()
@@ -708,7 +741,7 @@ public class RouteServiceIT {
 
         assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
         assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
-        assertThat(updatedRoute.getJobId()).isEqualTo(null);
+        assertThat(updatedRoute.getJobId()).isNull();
 
         assertThat(updatedRoute.getRouteActions().get(0).getMarker()).isEqualTo(1);
         assertThat(updatedRoute.getRouteActions().get(0).getAction()).isEqualTo(TURN);
@@ -740,6 +773,116 @@ public class RouteServiceIT {
         assertThat(updatedRoute.getRouteActions()).hasSize(7);
     }
 
-    // TODO version tests (different constellations)
-    // TODO All getRoute paths
+    @Test
+    public void shouldHandleRouteExistsAndJobIdIsAvailableAndJobExistsAndRouteIsSubrouteOfSavedRoute() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Cab Name")
+                        .build(),
+                0);
+
+        long jobId = jobService.saveNewJob(JobEntity.builder()
+                .start(5)
+                .end(8)
+                .build());
+
+        RouteEntity route = routeService.getRoute(cabId, 0);
+
+        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isEqualTo(jobId);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(1)
+                .build());
+
+        RouteEntity updatedRoute = routeService.getRoute(cabId, route.getVersion());
+
+        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion());
+        assertThat(updatedRoute.getCabId()).isNull();
+        assertThat(updatedRoute.getJobId()).isNull();
+        assertThat(updatedRoute.getRouteActions()).isNull();
+    }
+
+    @Test
+    public void shouldHandleRouteExistsAndJobIdIsAvailableAndJobExistsAndRouteIsNotSubrouteOfSavedRoute() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Cab Name")
+                        .build(),
+                0);
+
+        long jobId = jobService.saveNewJob(JobEntity.builder()
+                .start(5)
+                .end(8)
+                .build());
+
+        RouteEntity route = routeService.getRoute(cabId, 0);
+
+        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isEqualTo(jobId);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(10)
+                .build());
+
+        RouteEntity updatedRoute = routeService.getRoute(cabId, route.getVersion());
+
+        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
+        assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute.getJobId()).isEqualTo(jobId);
+
+        assertThat(updatedRoute.getRouteActions().get(0).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(1).getMarker()).isEqualTo(12);
+        assertThat(updatedRoute.getRouteActions().get(1).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(1).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(2).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(3).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(3).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(4).getMarker()).isEqualTo(5);
+        assertThat(updatedRoute.getRouteActions().get(4).getAction()).isEqualTo(PICKUP);
+        assertThat(updatedRoute.getRouteActions().get(4).getCustomerId()).isEqualTo(jobId);
+
+        assertThat(updatedRoute.getRouteActions().get(5).getMarker()).isEqualTo(7);
+        assertThat(updatedRoute.getRouteActions().get(5).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(5).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(6).getMarker()).isEqualTo(8);
+        assertThat(updatedRoute.getRouteActions().get(6).getAction()).isEqualTo(DROPOFF);
+        assertThat(updatedRoute.getRouteActions().get(6).getCustomerId()).isEqualTo(jobId);
+
+        assertThat(updatedRoute.getRouteActions().get(7).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute.getRouteActions().get(7).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(7).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(8).getMarker()).isEqualTo(12);
+        assertThat(updatedRoute.getRouteActions().get(8).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(8).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(9).getMarker()).isEqualTo(14);
+        assertThat(updatedRoute.getRouteActions().get(9).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(9).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(10).getMarker()).isEqualTo(0);
+        assertThat(updatedRoute.getRouteActions().get(10).getAction()).isEqualTo(WAIT);
+    }
+
+    // TODO Test all getRoute paths including version
+    // DONE route exists, job id available, job exists, route is subroute of saved route
+    // DONE route exists, job id available, job exists, route is not subroute of saved route
+    // DONE route exists, job id available, job does not exist
+    // DONE route exists, job id unavailable, new job available
+    // DONE route exists, job id unavailable, no new job available
+    // DONE route does not exist, new job is available and cab in eligible section
+    // DONE route does not exist, new job is not available
 }
