@@ -411,6 +411,7 @@ public class RouteServiceIT {
         assertThat(updatedRoute2.getRouteActions()).isNull();
     }
 
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Test
     public void shouldStartSecondJobImmediatelyAfterFinishingFirst() {
         long cabId = registrationService.registerCab(CabEntity.builder()
@@ -418,6 +419,14 @@ public class RouteServiceIT {
                         .build(),
                 0);
 
+        RouteEntity preJobRoute = routeService.getRoute(cabId, 0);
+
+        assertThat(preJobRoute.getVersion()).isEqualTo(0);
+        assertThat(preJobRoute.getCabId()).isEqualTo(cabId);
+        assertThat(preJobRoute.getJobId()).isEqualTo(null);
+
+        assertThat(preJobRoute.getRouteActions().get(0).getMarker()).isEqualTo(0);
+        assertThat(preJobRoute.getRouteActions().get(0).getAction()).isEqualTo(WAIT);
 
         long jobId1 = jobService.saveNewJob(JobEntity.builder()
                 .start(2)
@@ -430,9 +439,12 @@ public class RouteServiceIT {
                 .end(11)
                 .build());
 
-        RouteEntity route = routeService.getRoute(cabId, 0);
+        RouteEntity route = routeService.getRoute(cabId, preJobRoute.getVersion() + 1);
 
-        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(jobService.getJob(jobId1).get().isInProgress()).isTrue();
+        assertThat(jobService.getJob(jobId2).get().isInProgress()).isFalse();
+
+        assertThat(route.getVersion()).isEqualTo(preJobRoute.getVersion() + 1);
         assertThat(route.getCabId()).isEqualTo(cabId);
         assertThat(route.getJobId()).isEqualTo(jobId1);
 
@@ -494,6 +506,8 @@ public class RouteServiceIT {
         assertThat(jobService.getJob(jobId1)).isNotPresent();
 
         RouteEntity updatedRoute = routeService.getRoute(cabId, route.getVersion());
+
+        assertThat(jobService.getJob(jobId2).get().isInProgress()).isTrue();
 
         assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
         assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
@@ -588,7 +602,6 @@ public class RouteServiceIT {
         assertThat(updatedRoute2.getRouteActions()).isNull();
     }
 
-    // TODO Route changed immediately upon new job
     // TODO version tests (different constellations)
     // TODO All getRoute paths
     // TODO test multiple jobs at once, so firstAvailable..() etc. are made sure to work as expected, setInProgress() is used where applicable etc.
