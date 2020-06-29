@@ -37,7 +37,7 @@ begin
                                      D_State        => INIT,
                                      SE_State       => STOP,
                                      LE_STATE       => NEXT_UNKOWN,
-                                     MS_Speed       => 2.0,
+                                     MS_Speed       => 5.0,
                                      MT_Speed       => 1.0,
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
                                      timeout_v       => 1.0);
@@ -50,7 +50,7 @@ begin
    Log_Line("Setting up Front_Distance_Task ...");
    Front_Distance_Task.Construct
      (get_distance_sensor_value_access => WC2EC_Interface.get_front_distance_value'Access ,
-      us_thresh                        => 600.0,
+      us_thresh                        => 300.0,
       Motor_Controller_Task_A          => Motor_Controller_Task
      );
    Log_Line("All set up!");

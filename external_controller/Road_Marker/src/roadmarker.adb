@@ -14,6 +14,7 @@ package body Roadmarker is
       get_sensor_value              : get_roadmarker_sensor_value_access;
       sensors                       : Roadmarker_Sensor_Array;
       running                       : Boolean := True;
+      is_on_RM                      : Boolean := True;
    begin
 
       accept Construct
@@ -25,15 +26,13 @@ package body Roadmarker is
       while (running) loop
 
          -- Read sensor values
-         Put_Line ("Reading Sensor data ...");
+         -- Put_Line ("Reading Sensor data ...");
          for I in Roadmarker_Sensor_ID_T loop
             sensors(I) := get_sensor_value(I);
          end loop;
 
          -- TODO signal system error, when marker fail.
-         Put_Line
-           (ASCII.HT & "Current_Marker := " & Integer(Current_Marker)'Image);
-
+         is_on_RM := False;
 
          if
            on_Road_Marker(sensors(FRONT_LEFT), sensors(FRONT_RIGHT),
@@ -42,6 +41,7 @@ package body Roadmarker is
             Current_Marker :=
               get_Road_MarkerID( sensors(RM_FL) , sensors(RM_FR) ,
                                  sensors(RM_BL) , sensors(RM_BR));
+            is_on_RM := True;
          end if;
 
          select

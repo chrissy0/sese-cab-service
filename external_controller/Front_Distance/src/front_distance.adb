@@ -56,18 +56,20 @@ package body Front_Distance is
            or (Sensor_Values(RIGHT_0) = 0.0 and Sensor_Values(RIGHT_1) = 0.0)
          then
             Output := SYSTEM_ERROR_S;
+            Log_Line("throwing System Error!");
          else
             -- if one sensor shows value smaller than thresh, front is blocked
             for ID in Distance_Sensor_ID_T loop
                if Sensor_Values(ID) < US_Obst_Thresh and Sensor_Values(ID) > 0.0 then
                   Output := FRONT_BLOCKED_S;
+                  Log_Line("Front is blocked!");
                   exit;
                end if;
             end loop;
          end if;
 
 
-         Log_Line("Front_Distance: sending front_distance_done with value " & Output'Image & "...");
+        -- Log_Line("Front_Distance: sending front_distance_done with value " & Output'Image & "...");
          -- Output signal
          select
            Motor_Controller_Task.front_distance_done(Output);
@@ -77,10 +79,10 @@ package body Front_Distance is
             running := False;
             goto Continue;
          end select;
-         Log_Line("Front_Distance: ...  recieved!");
+         --Log_Line("Front_Distance: ...  recieved!");
 
 
-         Log_Line("Front_Distance: sending front_distance_next...");
+         --Log_Line("Front_Distance: sending front_distance_next...");
          -- wait for signal to start next iteration
          select
             delay 2.0;
@@ -90,7 +92,7 @@ package body Front_Distance is
          then abort
            Motor_Controller_Task.front_distance_next(Signal => Next_Signal);
          end select;
-         Log_Line("Front_Distance: ...  recieved!");
+         --Log_Line("Front_Distance: ...  recieved!");
 
 
          <<Continue>>

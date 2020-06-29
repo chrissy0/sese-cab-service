@@ -10,16 +10,6 @@ package body Job_Executer is
 
    type Road_Marker_ID_T is new Integer range 0 .. 15;
 
-   function calculate_rm_next_output
-     (Current_RM_ID  : in Road_Marker_Done_T) return Job_Executer_Done_T is
-   begin
-      if Current_RM_ID mod 2 = 0 then
-         return NEXT_RIGHT_S;
-      else
-         return NEXT_LEFT_S;
-      end if;
-   end calculate_rm_next_output;
-
    ---------------------------
    -- Front_Distance_Task_T --
    ---------------------------
@@ -35,6 +25,85 @@ package body Job_Executer is
       RM_get_sensor_value     : get_roadmarker_sensor_value_access;
       RM_next                 : Roadmarker.Road_Marker_Next_T;
       section                 : Roadmarker.Road_Marker_Done_T;
+      rounds                  : Integer := 0;
+      section_old             : Roadmarker.Road_Marker_Done_T := 17;
+
+
+
+   function calculate_rm_next_output
+     (Current_RM_ID  : in Road_Marker_Done_T) return Job_Executer_Done_T is
+   begin
+      if Current_RM_ID = 1 then
+         rounds := rounds + 1;
+      end if;
+
+      case Current_RM_ID is
+         when 0 =>
+            return NEXT_LEFT_S;
+         when 1 =>
+            if rounds mod 2 = 1 then
+               return NEXT_RIGHT_S;
+            else
+               return NEXT_LEFT_S;
+            end if;
+         when 2 =>
+            return NEXT_RIGHT_S;
+         when 3 =>
+            return NEXT_LEFT_S;
+         when 4 =>
+            if rounds mod 2 = 1 then
+               return NEXT_RIGHT_S;
+            else
+               return NEXT_LEFT_S;
+            end if;
+         when 5 =>
+            return NEXT_RIGHT_S;
+         when 6 =>
+            return NEXT_LEFT_S;
+         when 7 =>
+            if rounds mod 2 = 1 then
+               return NEXT_RIGHT_S;
+            else
+               return NEXT_LEFT_S;
+            end if;
+         when 8 =>
+            return NEXT_RIGHT_S;
+         when 9 =>
+            return NEXT_LEFT_S;
+         when 10 =>
+            if rounds mod 2 = 1 then
+               return NEXT_RIGHT_S;
+            else
+               return NEXT_LEFT_S;
+            end if;
+         when 11 =>
+            return NEXT_RIGHT_S;
+         when 12 =>
+            if rounds mod 2 = 1 then
+               return NEXT_RIGHT_S;
+            else
+               return NEXT_LEFT_S;
+            end if;
+         when 13 =>
+            return NEXT_RIGHT_S;
+         when 14 =>
+            return NEXT_RIGHT_S;
+         when 15 =>
+            loop
+               Log_Line("How the f did I get to 15??");
+            end loop;
+         when 16 =>
+            loop
+               Log_Line("How the f did I get to 16??");
+            end loop;
+         when 17 =>
+
+            loop
+               Log_Line("How the f did I get to 15??");
+            end loop;
+
+      end case;
+   end calculate_rm_next_output;
 
    begin
       Log_Line("Starting Module");
@@ -66,17 +135,10 @@ package body Job_Executer is
          end select;
 
          Job_Executer_Done_Signal := calculate_rm_next_output(section);
-
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-         Log_Line("------------------------------ CURRENT SECTION: " & section'Image & " -------------------------");
-
+         if section /= section_old then
+            Log_Line("We are in section " & section'Image);
+            section_old := section;
+         end if;
          select
             delay timeout;
             Log_Line("job_executer_done timed out, shutting down...");

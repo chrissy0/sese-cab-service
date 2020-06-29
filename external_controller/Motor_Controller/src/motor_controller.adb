@@ -54,25 +54,25 @@ package body Motor_Controller is
 
          case Drive_State is
             when STRAIGHT =>
-               Log_Line ("driving straight");
+               --Log_Line ("driving straight");
                set_motor_value (MOTOR_FRONT_LEFT, Motor_Straight_Speed);
                set_motor_value (MOTOR_BACK_LEFT, Motor_Straight_Speed);
                set_motor_value (MOTOR_FRONT_RIGHT, Motor_Straight_Speed);
                set_motor_value (MOTOR_BACK_RIGHT, Motor_Straight_Speed);
             when LEFT =>
-               Log_Line ("driving left");
+              -- Log_Line ("driving left");
                set_motor_value (MOTOR_FRONT_LEFT, -Motor_Turn_Speed);
                set_motor_value (MOTOR_BACK_LEFT, -Motor_Turn_Speed);
-               set_motor_value (MOTOR_FRONT_RIGHT, Motor_Turn_Speed/2.0);
-               set_motor_value (MOTOR_BACK_RIGHT, Motor_Turn_Speed/2.0);
+               set_motor_value (MOTOR_FRONT_RIGHT, Motor_Turn_Speed);
+               set_motor_value (MOTOR_BACK_RIGHT, Motor_Turn_Speed);
             when RIGHT =>
-               Log_Line ("driving right");
-               set_motor_value (MOTOR_FRONT_LEFT, Motor_Turn_Speed/2.0);
-               set_motor_value (MOTOR_BACK_LEFT, Motor_Turn_Speed/2.0);
+              -- Log_Line ("driving right");
+               set_motor_value (MOTOR_FRONT_LEFT, Motor_Turn_Speed);
+               set_motor_value (MOTOR_BACK_LEFT, Motor_Turn_Speed);
                set_motor_value (MOTOR_FRONT_RIGHT, -Motor_Turn_Speed);
                set_motor_value (MOTOR_BACK_RIGHT, -Motor_Turn_Speed);
             when INIT =>
-               Log_Line ("driving Init");
+               --Log_Line ("driving Init");
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
@@ -87,10 +87,10 @@ package body Motor_Controller is
       begin
          case Front_Clear_State is
             when DRIVE =>
-               Log_Line ("Drive state");
+              -- Log_Line ("Drive state");
                drive_state_output;
             when STOP =>
-               Log_Line ("Stop state");
+              -- Log_Line ("Stop state");
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
@@ -104,10 +104,10 @@ package body Motor_Controller is
       begin
          case Normal_Driving_State is
             when FRONT_CLEAR =>
-               Log_Line ("Front clear state");
+              -- Log_Line ("Front clear state");
                front_clear_state_output;
             when FRONT_BLOCKED =>
-               Log_Line ("Front Blocked State");
+              -- Log_Line ("Front Blocked State");
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
                set_motor_value (MOTOR_FRONT_RIGHT, 0.0);
@@ -121,11 +121,12 @@ package body Motor_Controller is
       begin
          case Motor_Controller_State is
             when NORMAL_DRIVING =>
-               Log_Line ("Normal Driving state");
+               --Log_Line ("Normal Driving state");
                normal_driving_state_output;
             when SYSTEM_ERROR =>
-               Log_Line ("System error state");
+               --Log_Line ("System error state");
                -- TODO implement system_error
+               null;
          end case;
       end calculate_outputs;
 
@@ -342,6 +343,7 @@ package body Motor_Controller is
          end select;
 
 
+         delay 0.01;
 
 
          reset_all_tasks_done(all_tasks_done_array => task_done_array);

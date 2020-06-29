@@ -45,7 +45,6 @@ package body Lane_Detection is
       -- for lane_detection_next and start next iteration
       while running loop
          -- Read sensor values
-         Log_Line ("Reading Sensor data ...");
          US_Curb_Left_Value := WC2EC.get_distance_sensor_data ("dist_l");
 
          US_Curb_Right_Value := WC2EC.get_distance_sensor_data ("dist_r");
@@ -55,22 +54,6 @@ package body Lane_Detection is
          IR_Lane_Left_Value := WC2EC.get_distance_sensor_data ("inf_left");
 
          IR_Lane_Mid_Value := WC2EC.get_distance_sensor_data ("inf_cent");
-
-
-
-         Log_Line ("Read Sensor Data:\n ------");
-
-         Log_Line
-           (ASCII.HT & "US_Curb_Left_Value := " & US_Curb_Left_Value'Image);
-         Log_Line
-           (ASCII.HT & "US_Curb_Right_Value := " & US_Curb_Right_Value'Image);
-         Log_Line
-           (ASCII.HT & "IR_Lane_Right_Value := " & IR_Lane_Right_Value'Image);
-         Log_Line
-           (ASCII.HT & "IR_Lane_Left_Value := " & IR_Lane_Left_Value'Image);
-         Log_Line
-           (ASCII.HT & "IR_Lane_Mid_Value := " & IR_Lane_Mid_Value'Image);
-         Log_Line (" ------");
 
 
          L_Detected := IR_Lane_Left_Value < IR_Lane_Threshhold;
@@ -128,7 +111,7 @@ package body Lane_Detection is
 
 
          -- Output Signal
-         Log_Line ("Sending lane_detection_done...");
+         --Log_Line ("Sending lane_detection_done...");
          select
            Motor_Controller_Task.lane_detection_done(Output);
          then abort
@@ -137,9 +120,9 @@ package body Lane_Detection is
             running := False;
             goto Continue;
          end select;
-         Log_Line(" ... lane_detection_done recieved!");
+         --Log_Line(" ... lane_detection_done recieved!");
 
-         Log_Line ("Waiting for lane_detection_next");
+        -- Log_Line ("Waiting for lane_detection_next");
           -- wait for all signals to be processed
          select
             Motor_Controller_Task.lane_detection_next(next_signal);
@@ -166,7 +149,7 @@ package body Lane_Detection is
             running := False;
             goto Continue;
          end select;
-         Log_Line("... lane_detection_next recieved!");
+         --Log_Line("... lane_detection_next recieved!");
 
 
          -- handle next signal
