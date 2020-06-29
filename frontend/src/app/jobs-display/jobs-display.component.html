@@ -3,6 +3,7 @@
     <table *ngIf="jobsActive()" class="table">
         <thead>
         <tr>
+            <th style="width: 5%"></th>
             <th style="width: 15%">
                 Job ID
             </th>
@@ -12,12 +13,15 @@
             <th style="width: 20%">
                 End Station
             </th>
-            <th style="width: 35%"></th>
+            <th style="width: 30%"></th>
             <th style="width: 10%"></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let job of jobs; let i = index">
+            <td>
+                <fa-icon *ngIf="job.inProgress" [icon]="taxiIcon"></fa-icon>
+            </td>
             <td>{{job.id}}</td>
             <td>{{job.start}}</td>
             <td>{{job.end}}</td>

@@ -5,6 +5,7 @@ export class Job {
       public id?: number,
       public start?: number,
       public end?: number,
+      public inProgress?: boolean,
       public customerState?: CustomerState,
   ) {
   }

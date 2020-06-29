@@ -5,6 +5,7 @@ import {faTrashAlt} from '@fortawesome/free-regular-svg-icons/faTrashAlt';
 import {Pickup} from '../pickup';
 import {Dropoff} from '../dropoff';
 import {CustomerState} from '../customer-state';
+import {faTaxi} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-jobs-display',
@@ -20,6 +21,7 @@ export class JobsDisplayComponent implements OnInit {
     pickups: Pickup[] = [];
     dropoffs: Dropoff[] = [];
 
+    taxiIcon = faTaxi;
     trashIcon = faTrashAlt;
 
     pickupForJob(jobId: number) {
