@@ -22,15 +22,15 @@ else
 fi
 
 echo ""
-echo "COMPILING PROJECT:"
+echo "COMPILING PROJECT $PROJECT_NAME:"
 echo ""
 
-if gprbuild "$PROJECT_NAME"; then
+if gprbuild "$PROJECT_NAME.gpr"; then
 	echo ""
 	echo "Compilation sucessfull!"
 else
 	echo ""
-	echo "Compilation failed!" -x
+	echo "Compilation failed!"
 	exit 1
 fi
 
