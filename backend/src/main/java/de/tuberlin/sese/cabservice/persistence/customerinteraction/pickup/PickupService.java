@@ -73,7 +73,6 @@ public class PickupService {
         return Lists.newArrayList(pickupRepo.findAll());
     }
 
-    // TODO test multiple pickups
     public PickupCompleteModel pickupsComplete(Long cabId) {
         if (cabId == null) {
             throw new IllegalArgumentException("Cab ID is null");

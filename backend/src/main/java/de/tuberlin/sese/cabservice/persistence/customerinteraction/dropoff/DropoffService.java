@@ -74,7 +74,6 @@ public class DropoffService {
         return Lists.newArrayList(dropoffRepo.findAll());
     }
 
-    // TODO test multiple dropoffs
     public DropoffCompleteModel dropoffsComplete(Long cabId) {
         if (cabId == null) {
             throw new IllegalArgumentException("Cab ID is null");
