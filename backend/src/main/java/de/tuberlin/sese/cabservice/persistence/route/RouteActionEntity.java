@@ -45,4 +45,18 @@ public class RouteActionEntity {
         @JsonProperty("right")
         RIGHT
     }
+
+    @Override
+    public String toString() {
+        if (action.equals(Action.TURN)) {
+            return marker + " turn " + direction;
+        }
+        if (action.equals(Action.PICKUP) || action.equals(Action.DROPOFF)) {
+            return marker + " " + action + " customer " + customerId;
+        }
+        if (action.equals(Action.WAIT)) {
+            return marker + " " + action;
+        }
+        return null;
+    }
 }
