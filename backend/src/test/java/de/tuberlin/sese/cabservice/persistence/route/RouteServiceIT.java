@@ -413,11 +413,10 @@ public class RouteServiceIT {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Test
-    public void shouldStartSecondJobImmediatelyAfterFinishingFirst() {
+    public void shouldStartSecondJobImmediatelyAfterFinishingFirstAndSetInProgressCorrectly() {
         long cabId = registrationService.registerCab(CabEntity.builder()
-                        .name("Some Cab Name")
-                        .build(),
-                0);
+                .name("Some Cab Name")
+                .build(), 0);
 
         RouteEntity preJobRoute = routeService.getRoute(cabId, 0);
 
@@ -645,6 +644,5 @@ public class RouteServiceIT {
 
     // TODO version tests (different constellations)
     // TODO All getRoute paths
-    // TODO test multiple jobs at once, so firstAvailable..() etc. are made sure to work as expected, setInProgress() is used where applicable etc.
     // TODO Test if route updates when job is deleted prematurely (before customer is IN_CAB) -> deletion only then possible, and happens automatically upon dropoff
 }
