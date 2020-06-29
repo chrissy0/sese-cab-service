@@ -602,6 +602,47 @@ public class RouteServiceIT {
         assertThat(updatedRoute2.getRouteActions()).isNull();
     }
 
+    @Test
+    public void shouldNotGiveJobToCabInDepot() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                        .name("Some Cab Name")
+                        .build(),
+                14);
+
+        long jobId = jobService.saveNewJob(JobEntity.builder()
+                .start(2)
+                .end(8)
+                .build());
+
+        RouteEntity route = routeService.getRoute(cabId, 0);
+
+        assertThat(route.getVersion()).isEqualTo(0);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isEqualTo(null);
+
+        assertThat(route.getRouteActions().get(0).getMarker()).isEqualTo(14);
+        assertThat(route.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(1).getMarker()).isEqualTo(0);
+        assertThat(route.getRouteActions().get(1).getAction()).isEqualTo(WAIT);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(cabId)
+                .section(0)
+                .build());
+
+        RouteEntity updatedRoute = routeService.getRoute(cabId, 0);
+
+        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
+        assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute.getJobId()).isEqualTo(jobId);
+
+        assertThat(updatedRoute.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+    }
+
     // TODO version tests (different constellations)
     // TODO All getRoute paths
     // TODO test multiple jobs at once, so firstAvailable..() etc. are made sure to work as expected, setInProgress() is used where applicable etc.

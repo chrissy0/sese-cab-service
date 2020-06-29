@@ -59,9 +59,11 @@ public class RouteService {
                     return getRoute(cabId, version);
                 }
             } else {
-                Optional<JobEntity> jobOptional = getFirstAvailableJobAndSetInProgress();
-                if (jobOptional.isPresent()) {
-                    RouteEntity route = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion() + 1);
+                Optional<JobEntity> jobOptional = getFirstAvailableJob();
+                if (jobOptional.isPresent() && cabShouldGetNewJob(cabId)) {
+                    JobEntity job = jobOptional.get();
+                    setJobInProgress(job);
+                    RouteEntity route = buildRouteForJob(cabId, job, loadedRoute.getVersion() + 1);
                     routeRepo.save(route);
                     return route;
                 } else {
@@ -73,15 +75,32 @@ public class RouteService {
                 }
             }
         } else {
-            Optional<JobEntity> jobOptional = getFirstAvailableJobAndSetInProgress();
+            Optional<JobEntity> jobOptional = getFirstAvailableJob();
             RouteEntity route;
-            if (jobOptional.isPresent()) {
-                route = buildRouteForJob(cabId, jobOptional.get(), 0);
+            if (jobOptional.isPresent() && cabShouldGetNewJob(cabId)) {
+                JobEntity job = jobOptional.get();
+                setJobInProgress(job);
+                route = buildRouteForJob(cabId, job, 0);
             } else {
                 route = getRouteToDepot(cabId, 0);
             }
             routeRepo.save(route);
             return route;
+        }
+    }
+
+    private void setJobInProgress(JobEntity job) {
+        job.setInProgress(true);
+        jobService.updateJob(job);
+    }
+
+    private boolean cabShouldGetNewJob(Long cabId) {
+        Optional<CabLocationEntity> locationOptional = locationService.getCabLocation(cabId);
+        if (locationOptional.isPresent() && locationOptional.get().getSection() != null) {
+            int location = locationOptional.get().getSection();
+            return location != 12 && location != 14 && location != 15;
+        } else {
+            throw new UnknownCabLocationException();
         }
     }
 
@@ -98,15 +117,12 @@ public class RouteService {
         }
     }
 
-    private Optional<JobEntity> getFirstAvailableJobAndSetInProgress() {
+    private Optional<JobEntity> getFirstAvailableJob() {
         List<JobEntity> availableJobs = jobService.getAllWaitingJobs();
         if (availableJobs.isEmpty()) {
             return Optional.empty();
         }
-        JobEntity job = availableJobs.get(0);
-        job.setInProgress(true);
-        jobService.updateJob(job);
-        return Optional.of(job);
+        return Optional.of(availableJobs.get(0));
     }
 
     private RouteEntity incrementVersion(RouteEntity route) {
