@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.6416893222067196 -0.7314751579459136 -0.2306055226439334 5.369861123577764
-  position 2.492335286213341 2.1631838112973494 4.539702342079065
+  orientation -0.16626651335906198 0.9643356353596172 0.20594229509982762 1.8185422523096
+  position 1.608304060568377 0.653261417611381 2.6706518291676966
   follow "robot"
 }
 TexturedBackground {
@@ -11,8 +11,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  translation 0.6677087720286282 0.0368793991084833 2.9439763382766997
-  rotation -1.14663999999722e-06 0.9999999999975755 1.8799399999954422e-06 -1.5720953071795858
+  translation 0.387709 0.0368794 2.9436
+  rotation -1.1562299999971839e-06 0.9999999999975644 1.8799399999954212e-06 -1.5720953071795858
   children [
     Solid {
       translation 0 0.025 0
@@ -567,7 +567,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999352 -0.024999
+      translation 0.0400009 -0.0099928 -0.034999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -583,7 +583,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.0099928 -0.034999
+      translation 0.0400009 -0.00999208 -0.044999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -599,7 +599,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999064 -0.064999
+      translation 0.0400009 -0.00998992 -0.074999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -615,7 +615,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00998992 -0.074999
+      translation 0.0400009 -0.0099892 -0.084999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -631,7 +631,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998776 -0.024999
+      translation -0.0399991 -0.00998704 -0.034999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -647,7 +647,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998704 -0.034999
+      translation -0.0399991 -0.00998632 -0.044999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -663,7 +663,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998488 -0.064999
+      translation -0.0399991 -0.00998414 -0.074999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -679,7 +679,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998416 -0.074999
+      translation -0.0399991 -0.00998344 -0.084999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -999,7 +999,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319229026266 -0.635534257345984 -0.4384009383103308 3.967922729648997
+        rotation 0.6355319229026266 -0.6355342573459839 -0.43840093831033067 3.967922729648997
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -1053,7 +1053,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6361317666020844 -0.6361341032487992 0.43665750675278375 2.3181891857492625
+        rotation 0.6361317666020844 -0.6361341032487993 0.43665750675278364 2.3181891857492625
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1075,7 +1075,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6381028739728818 0.6381052178598957 -0.4308670945518158 3.955249214095261
+        rotation -0.6381028739728819 0.6381052178598957 -0.4308670945518159 3.955249214095261
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
