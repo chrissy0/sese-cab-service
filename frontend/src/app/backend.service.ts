@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Job} from './job';
 import {Pickup} from './pickup';
 import {Dropoff} from './dropoff';
+import {Route} from './route';
 
 @Injectable({
     providedIn: 'root'
@@ -48,5 +49,9 @@ export class BackendService {
     acceptDropoff(customerId: number) {
         return this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/acceptDropoff?customerId=' + customerId, {})
             .toPromise();
+    }
+
+    getRoutes() {
+        return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/getRoutes').toPromise() as Promise<Route[]>;
     }
 }

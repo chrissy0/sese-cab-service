@@ -1,6 +1,5 @@
 package de.tuberlin.sese.cabservice.persistence.route;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -23,7 +22,7 @@ public class RouteEntity {
     @Id
     private Long cabId;
     private Integer version;
-    @JsonIgnore
+    // TODO Okay that jobId is included in route sent to EC?
     private Long jobId;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonProperty("route")
