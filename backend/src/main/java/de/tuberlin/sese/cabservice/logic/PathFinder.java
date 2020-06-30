@@ -218,18 +218,18 @@ public class PathFinder {
                     return Optional.of(handleChoice(onlyOption, blockedSections));
 
                 case 14:
-                    primaryOption = Option.builder()
+                    if (endSection == 15) {
+                        return Optional.of(Option.builder()
+                                .fromSection(14)
+                                .toSection(15)
+                                .direction(LEFT)
+                                .build());
+                    }
+                    return Optional.of(Option.builder()
                             .fromSection(14)
                             .toSection(0)
                             .direction(RIGHT)
-                            .build();
-                    alternativeOption = Option.builder()
-                            .fromSection(14)
-                            .toSection(15)
-                            .direction(LEFT)
-                            .build();
-
-                    return Optional.of(handleChoice(primaryOption, alternativeOption, endSection, blockedSections));
+                            .build());
                 case 15:
                     return Optional.empty();
                 default:
