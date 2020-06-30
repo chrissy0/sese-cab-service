@@ -233,6 +233,14 @@ public class PickupServiceTest {
                         .customerId(2L)
                         .build()));
 
+        when(jobService.getJob(1L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(1L)
+                .build()));
+
+        when(jobService.getJob(2L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(2L)
+                .build()));
+
         PickupCompleteModel pickupCompleteModel = pickupService.pickupsComplete(1L);
 
         assertThat(pickupCompleteModel).isNotNull();
@@ -261,6 +269,16 @@ public class PickupServiceTest {
                         .cabId(1L)
                         .customerId(2L)
                         .build()));
+
+
+        when(jobService.getJob(1L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(1L)
+                .build()));
+
+
+        when(jobService.getJob(2L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(2L)
+                .build()));
 
         PickupCompleteModel pickupCompleteModel = pickupService.pickupsComplete(1L);
 
@@ -294,6 +312,18 @@ public class PickupServiceTest {
                         .cabId(3L)
                         .customerId(4L)
                         .build()));
+
+        when(jobService.getJob(1L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(1L)
+                .build()));
+
+        when(jobService.getJob(2L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(2L)
+                .build()));
+
+        when(jobService.getJob(4L)).thenReturn(Optional.of(JobEntity.builder()
+                .id(4L)
+                .build()));
 
         PickupCompleteModel pickupCompleteModel = pickupService.pickupsComplete(1L);
 
