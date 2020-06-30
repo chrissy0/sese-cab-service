@@ -52,6 +52,7 @@ public class RouteService {
                 if (jobOptional.isPresent()) {
                     RouteEntity updatedRoute = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion());
                     if (updatedRoute.isSubRouteOf(loadedRoute)) {
+                        routeRepo.save(updatedRoute);
                         return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                     }
                     return incrementVersion(updatedRoute);
@@ -74,6 +75,7 @@ public class RouteService {
                     // No job is available
                     RouteEntity updatedRoute = getRouteToDepot(cabId, loadedRoute.getVersion());
                     if (updatedRoute.isSubRouteOf(loadedRoute)) {
+                        routeRepo.save(updatedRoute);
                         return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                     }
                     return incrementVersion(updatedRoute);
@@ -356,5 +358,11 @@ public class RouteService {
         }
 
         return actions;
+    }
+
+    public List<RouteEntity> getRoutes() {
+        List<RouteEntity> entities = new LinkedList<>();
+        routeRepo.findAll().forEach(entities::add);
+        return entities;
     }
 }
