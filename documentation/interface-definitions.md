@@ -484,7 +484,7 @@ GET /api/ec/sensorStatus?cabId=1
     	{
             "name": "some-sensor",
             "disabled": false,
-            "whoosh": 5 //between 1 and 100
+            "whoosh": 5
         },
     	{
             "name": "some-other-sensor",
