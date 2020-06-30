@@ -60,14 +60,12 @@ package body Lane_Detection is
          R_Detected := IR_Lane_Right_Value < IR_Lane_Threshhold;
          C_Detected := IR_Lane_Mid_Value < IR_Lane_Threshhold;
 
-         next_signal := LEAN_RIGHT_S;
-
 
          if not Leaning_Left then
-            if R_Detected then
+            if R_Detected or (C_Detected and not L_Detected) then
                Output := GO_RIGHT_S;
-            elsif C_Detected then
-               OUTPUT := GO_STRAIGHT_S;
+            elsif (L_Detected and C_Detected) then
+               Output := GO_STRAIGHT_S;
             elsif L_Detected then
                OUTPUT := GO_LEFT_S;
             else

@@ -37,8 +37,8 @@ begin
                                      D_State        => INIT,
                                      SE_State       => STOP,
                                      LE_STATE       => NEXT_UNKOWN,
-                                     MS_Speed       => 5.0,
-                                     MT_Speed       => 1.0,
+                                     MS_Speed       => 4.0,
+                                     MT_Speed       => 2.0,
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
                                      timeout_v       => 1.0);
 

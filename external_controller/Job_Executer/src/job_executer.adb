@@ -33,9 +33,6 @@ package body Job_Executer is
    function calculate_rm_next_output
      (Current_RM_ID  : in Road_Marker_Done_T) return Job_Executer_Done_T is
    begin
-      if Current_RM_ID = 1 then
-         rounds := rounds + 1;
-      end if;
 
       case Current_RM_ID is
          when 0 =>
@@ -134,9 +131,16 @@ package body Job_Executer is
            Roadmarker_Task.road_marker_done(section);
          end select;
 
+
+         if section /= section_old then
+            if section = 1 then
+               rounds := rounds + 1;
+            end if;
+         end if;
+
          Job_Executer_Done_Signal := calculate_rm_next_output(section);
          if section /= section_old then
-            Log_Line("We are in section " & section'Image);
+            Log_Line("We are in section " & section'Image & ", " & Job_Executer_Done_Signal'Image);
             section_old := section;
          end if;
          select

@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.9563580733733341 -0.2904439916748902 0.03196127647014339 0.2291212830746068
-  position -0.20592957705175757 0.021430218118297508 4.435542847765512
+  orientation -0.09123157567064705 -0.9803281607021506 -0.17502427527342945 2.9187722441916857
+  position -0.9948656653738999 0.45312613421535813 2.0373835183902305
   follow "robot"
 }
 TexturedBackground {
@@ -11,8 +11,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  translation -0.213435 0.04 3.8228
-  rotation 0 1 0 3.14029
+  translation -0.5227821813089812 0.03687956730987829 2.9355119058194363
+  rotation -1.6039513270298551e-06 0.9999999999980395 -1.1611263521718919e-06 -2.3869227674459803
   children [
     Solid {
       translation 0 0.025 0
@@ -34,6 +34,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lf SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -47,7 +48,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0.1
+        translation 0.05 -0.02 0.1
         children [
           Shape {
             appearance PBRAppearance {
@@ -62,6 +63,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lf2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -75,7 +77,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0.09
+        translation 0.05 -0.02 0.09
         children [
           Shape {
             appearance PBRAppearance {
@@ -90,6 +92,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lc SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -103,7 +106,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0.01
+        translation 0.05 -0.02 0.01
         children [
           Shape {
             appearance PBRAppearance {
@@ -118,6 +121,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lc2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -131,7 +135,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0
+        translation 0.05 -0.02 0
         children [
           Shape {
             appearance PBRAppearance {
@@ -146,6 +150,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lb SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -159,7 +164,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 -0.09
+        translation 0.05 -0.02 -0.09
         children [
           Shape {
             appearance PBRAppearance {
@@ -174,6 +179,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lb2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -187,7 +193,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 -0.1
+        translation 0.05 -0.02 -0.1
         children [
           Shape {
             appearance PBRAppearance {
@@ -202,6 +208,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rb2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -215,7 +222,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.05 -0.01 -0.1
+        translation -0.05 -0.02 -0.1
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
@@ -231,6 +238,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rb SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -244,7 +252,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499999 -0.01 -0.09
+        translation -0.0499999 -0.02 -0.09
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
@@ -260,6 +268,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rc2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -273,7 +282,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499991 -0.01 -2.69848e-13
+        translation -0.0499991 -0.02 -2.69848e-13
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
@@ -289,6 +298,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rc SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -302,7 +312,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.049999 -0.01 0.01
+        translation -0.049999 -0.02 0.01
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
@@ -318,6 +328,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rf2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -331,7 +342,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499982 -0.01 0.09
+        translation -0.0499982 -0.02 0.09
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
@@ -347,6 +358,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rf SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -360,7 +372,7 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499983 -0.01 0.1
+        translation -0.0499983 -0.02 0.1
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
@@ -439,7 +451,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999208 0.035001
+      translation -0.0499991 -0.00999136 0.035001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -455,7 +467,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999136 0.025001
+      translation -0.0499991 -0.00999064 0.025001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -471,7 +483,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999496 0.075001
+      translation -0.0499991 -0.00999424 0.075001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -487,7 +499,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999424 0.065001
+      translation -0.0499991 -0.00999352 0.065001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -503,7 +515,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999784 0.035001
+      translation 0.0500009 -0.00999856 0.035001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -519,7 +531,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999712 0.025001
+      translation 0.0500009 -0.00999784 0.025001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -535,7 +547,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.0100007 0.075001
+      translation 0.0500009 -0.0100014 0.075001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -551,7 +563,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999998 0.065001
+      translation 0.0500009 -0.0100007 0.065001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -567,7 +579,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.0099928 -0.034999
+      translation 0.0500009 -0.00999352 -0.034999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -583,7 +595,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999208 -0.044999
+      translation 0.0500009 -0.0099928 -0.044999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -599,7 +611,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00998992 -0.074999
+      translation 0.0500009 -0.00999064 -0.074999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -615,7 +627,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.0099892 -0.084999
+      translation 0.0500009 -0.00998992 -0.084999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -631,7 +643,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998704 -0.034999
+      translation -0.0499991 -0.00998632 -0.034999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -647,7 +659,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998632 -0.044999
+      translation -0.0499991 -0.0099856 -0.044999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -663,7 +675,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998414 -0.074999
+      translation -0.0499991 -0.00998342 -0.074999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -679,7 +691,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998344 -0.084999
+      translation -0.0499991 -0.00998272 -0.084999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -989,7 +1001,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2768.9508428194763
+        position 3504.5659480595828
         anchor 0.06 0 0.05
       }
       device [
@@ -999,7 +1011,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319229026266 -0.6355342573459839 -0.43840093831033067 3.967922729648997
+        rotation -0.5529743288829303 0.5529763600745928 0.623246770384835 2.026920806446328
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -1017,11 +1029,13 @@ Robot {
         boundingObject USE WHEEL
         physics DEF WHEEL_PH Physics {
         }
+        linearVelocity 7.029234832641947e-07 1.1423776357713775e-05 2.577289404453685e-08
+        angularVelocity 8.345693185255614e-07 -1.1103925779611203e-12 -2.1993883497680527e-05
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2323.5518724124586
+        position 3059.391012208471
         anchor 0.06 0 -0.05
       }
       device [
@@ -1031,7 +1045,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.4988647169928738 0.4988665494286402 0.7087073867265544 1.9085041711340476
+        rotation 0.2490855854908934 -0.24908650043500716 -0.9359018572487715 4.646189051619331
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1039,11 +1053,13 @@ Robot {
         name "solid(1)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
+        linearVelocity 7.029257830286232e-07 9.8428347884265e-06 2.5773322250430233e-08
+        angularVelocity 8.34583492500612e-07 -1.1163767349806416e-12 -2.1993868597567567e-05
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2402.1152677896257
+        position 3068.3874533123803
         anchor -0.06 0 -0.05
       }
       device [
@@ -1053,7 +1069,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6361317666020844 -0.6361341032487994 0.4366575067527835 2.3181891857492625
+        rotation 0.6646674218173713 -0.664669863278302 0.3412201506714573 2.4839312653675574
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1061,11 +1077,13 @@ Robot {
         name "solid(2)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
+        linearVelocity 7.029286135714766e-07 7.988780914161354e-06 2.5772851821575634e-08
+        angularVelocity 8.345560473346626e-07 -1.105777729356949e-12 -2.1993897932861256e-05
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 1956.0244093603387
+        position 2622.4885507195163
         anchor -0.06 0 0.05
       }
       device [
@@ -1075,7 +1093,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.638102873972882 0.6381052178598956 -0.4308670945518159 3.955249214095261
+        rotation -0.6818304356849959 0.6818329401926029 -0.2649737697243243 3.6596332771084583
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1083,6 +1101,8 @@ Robot {
         name "solid(3)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
+        linearVelocity 7.029260588249928e-07 9.569722458393478e-06 2.5772663360938232e-08
+        angularVelocity 8.345531142554003e-07 -1.1046585856107044e-12 -2.1993900876229146e-05
       }
     }
   ]
@@ -1091,10 +1111,12 @@ Robot {
   }
   controller "WC2EC_Controller"
   controllerArgs "27015"
+  linearVelocity 7.011804460480697e-07 -1.0372216955975676e-07 2.3907021536101393e-08
+  angularVelocity 8.346260257595644e-07 -1.1151421849536999e-12 -2.1993943268317287e-05
 }
 DEF dummy Robot {
-  translation 1.174777886349841 0.04472097934013764 1.2210373274815713
-  rotation -8.481012778796294e-09 -1 4.8884379764203145e-09 2.0957026223863284
+  translation 1.1747778863499385 0.044721004222592044 1.221037327481326
+  rotation -8.480648675401614e-09 -0.9999999999999999 4.888875597865031e-09 2.095702622389072
   children [
     DEF BODY Shape {
       appearance PBRAppearance {
@@ -1108,7 +1130,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2768.95084279646
+        position 2768.9508427964684
         anchor 0.06 0 0.05
       }
       device [
@@ -1118,7 +1140,7 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319259100225 -0.6355342603533917 -0.4384009295908998 3.967922715021514
+        rotation 0.6355319259089531 -0.6355342603523219 -0.4384009295940007 3.9679227150267162
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -1135,11 +1157,13 @@ DEF dummy Robot {
         boundingObject USE WHEEL
         physics DEF WHEEL_PH Physics {
         }
+        linearVelocity 2.2281463284551595e-13 2.4282183104991773e-05 -4.746559234534049e-13
+        angularVelocity -1.2458505244164804e-11 -2.253444114559451e-12 -7.214763037193233e-12
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2323.551872435413
+        position 2323.551872435421
         anchor 0.06 0 -0.05
       }
       device [
@@ -1149,18 +1173,20 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.49886471088322226 0.4988665433189647 0.7087073953278508 1.9085041596829644
+        rotation -0.4988647108820855 0.49886654332295255 0.708707395325844 1.908504159675938
         children [
           USE WHEEL
         ]
         name "solid(1)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
+        linearVelocity -1.9255999900330152e-13 2.4282183105769244e-05 2.4257402541373e-13
+        angularVelocity 1.1999384619024027e-11 -2.253790841725814e-12 6.9478361965345396e-12
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2402.115267816953
+        position 2402.1152678169456
         anchor -0.06 0 -0.05
       }
       device [
@@ -1170,18 +1196,20 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.636131770154025 -0.636134106800754 0.4366574964036612 2.318189203132921
+        rotation 0.636131770157175 -0.6361341067956503 0.4366574964065077 2.318189203137658
         children [
           USE WHEEL
         ]
         name "solid(2)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
+        linearVelocity 2.6569988673892624e-13 2.4282432518576932e-05 -3.683368732170053e-13
+        angularVelocity -1.2605908886075435e-11 -2.253791072068399e-12 -7.309537409518884e-12
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 1956.0244093876554
+        position 1956.0244093876424
         anchor -0.06 0 0.05
       }
       device [
@@ -1191,13 +1219,15 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.638102877461599 0.6381052213486271 -0.4308670842183784 3.955249196664413
+        rotation -0.6381028774599441 0.6381052213469717 -0.43086708422328085 3.9552491966726837
         children [
           USE WHEEL
         ]
         name "solid(3)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
+        linearVelocity 3.1114292905752946e-13 2.4282432517304712e-05 -4.468619506939376e-13
+        angularVelocity -1.3116325468462212e-11 -2.2537914087109904e-12 -7.603587761001418e-12
       }
     }
   ]
@@ -1206,6 +1236,8 @@ DEF dummy Robot {
   physics Physics {
   }
   controller ""
+  linearVelocity 1.517744603146969e-13 -2.426969068096263e-07 -2.618201007972576e-13
+  angularVelocity -7.62179215623623e-14 -2.2549360414842073e-12 -5.182944012666117e-14
 }
 DEF floor Solid {
   translation -0.37 0 0.25
@@ -2455,7 +2487,7 @@ DEF line Solid {
   name "line(59)"
 }
 DEF road_marker Solid {
-  translation 0.316522 0.0001 0.649284
+  translation 0.316522 0.0001 0.659284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2472,7 +2504,7 @@ DEF road_marker Solid {
   name "road marker(6)"
 }
 DEF road_marker Solid {
-  translation 0.356522 0.0001 0.569284
+  translation 0.356522 0.0001 0.559284
   rotation 0 -1 0 3.1415853071795863
   children [
     Shape {
@@ -2489,7 +2521,7 @@ DEF road_marker Solid {
   name "road marker(10)"
 }
 DEF road_marker Solid {
-  translation 0.426522 0.0001 0.569284
+  translation 0.426522 0.0001 0.559284
   rotation 0 -1 0 3.1415853071795863
   children [
     Shape {
@@ -2506,7 +2538,7 @@ DEF road_marker Solid {
   name "road marker(13)"
 }
 DEF road_marker Solid {
-  translation 0.466522 0.0001 0.649284
+  translation 0.466522 0.0001 0.659284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2523,7 +2555,7 @@ DEF road_marker Solid {
   name "road marker(7)"
 }
 DEF road_marker Solid {
-  translation 0.466522 0.0001 0.569284
+  translation 0.466522 0.0001 0.559284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2540,7 +2572,7 @@ DEF road_marker Solid {
   name "road marker(8)"
 }
 DEF road_marker Solid {
-  translation 0.316522 0.0001 0.569284
+  translation 0.316522 0.0001 0.559284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2557,7 +2589,7 @@ DEF road_marker Solid {
   name "road marker(9)"
 }
 DEF road_marker Solid {
-  translation -0.389839 0.0001 0.449077
+  translation -0.39691 0.0001 0.442006
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2574,7 +2606,7 @@ DEF road_marker Solid {
   name "road marker(22)"
 }
 DEF road_marker Solid {
-  translation -0.283774 0.0001 0.343012
+  translation -0.290845 0.0001 0.335941
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2591,7 +2623,7 @@ DEF road_marker Solid {
   name "road marker(24)"
 }
 DEF road_marker Solid {
-  translation -0.227206 0.0001 0.39958
+  translation -0.220135 0.0001 0.406651
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2608,7 +2640,7 @@ DEF road_marker Solid {
   name "road marker(25)"
 }
 DEF road_marker Solid {
-  translation -0.361555 0.0001 0.420793
+  translation -0.368626 0.0001 0.413722
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2625,7 +2657,7 @@ DEF road_marker Solid {
   name "road marker(28)"
 }
 DEF road_marker Solid {
-  translation -0.25549 0.0001 0.427864
+  translation -0.248419 0.0001 0.434935
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2642,7 +2674,7 @@ DEF road_marker Solid {
   name "road marker(29)"
 }
 DEF road_marker Solid {
-  translation -0.333271 0.0001 0.505645
+  translation -0.3262 0.0001 0.512716
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2659,7 +2691,7 @@ DEF road_marker Solid {
   name "road marker(23)"
 }
 DEF road_marker Solid {
-  translation -0.502975 0.0001 0.675349
+  translation -0.495904 0.0001 0.68242
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2676,7 +2708,7 @@ DEF road_marker Solid {
   name "road marker(30)"
 }
 DEF road_marker Solid {
-  translation -0.60904 0.0001 0.781414
+  translation -0.601969 0.0001 0.788485
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2693,7 +2725,7 @@ DEF road_marker Solid {
   name "road marker(31)"
 }
 DEF road_marker Solid {
-  translation -0.665608 0.0001 0.724846
+  translation -0.672679 0.0001 0.717775
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2710,7 +2742,7 @@ DEF road_marker Solid {
   name "road marker(32)"
 }
 DEF road_marker Solid {
-  translation -0.559543 0.0001 0.618781
+  translation -0.566614 0.0001 0.61171
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2727,7 +2759,7 @@ DEF road_marker Solid {
   name "road marker(33)"
 }
 DEF road_marker Solid {
-  translation -0.637324 0.0001 0.696562
+  translation -0.644395 0.0001 0.689491
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2744,7 +2776,7 @@ DEF road_marker Solid {
   name "road marker(35)"
 }
 DEF road_marker Solid {
-  translation 1.50208 0.0001 0.880928
+  translation 1.49501 0.0001 0.887999
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -2761,7 +2793,7 @@ DEF road_marker Solid {
   name "road marker(38)"
 }
 DEF road_marker Solid {
-  translation 1.65762 0.0001 1.03649
+  translation 1.65055 0.0001 1.04356
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -2778,7 +2810,7 @@ DEF road_marker Solid {
   name "road marker(46)"
 }
 DEF road_marker Solid {
-  translation 1.52571 0.0001 1.86457
+  translation 1.51571 0.0001 1.86457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -2795,7 +2827,7 @@ DEF road_marker Solid {
   name "road marker(62)"
 }
 DEF road_marker Solid {
-  translation 1.3086 0.0001 2.87878
+  translation 1.30153 0.0001 2.87171
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -2812,7 +2844,7 @@ DEF road_marker Solid {
   name "road marker(70)"
 }
 DEF road_marker Solid {
-  translation 0.3279 0.0001 2.90948
+  translation 0.3279 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -2829,7 +2861,7 @@ DEF road_marker Solid {
   name "road marker(94)"
 }
 DEF road_marker Solid {
-  translation -0.704735 0.0001 2.69028
+  translation -0.662309 0.0001 2.71856
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2846,7 +2878,7 @@ DEF road_marker Solid {
   name "road marker(102)"
 }
 DEF road_marker Solid {
-  translation -0.59867 0.0001 2.79633
+  translation -0.556244 0.0001 2.82461
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2863,7 +2895,7 @@ DEF road_marker Solid {
   name "road marker(104)"
 }
 DEF road_marker Solid {
-  translation -0.761301 0.0001 2.74687
+  translation -0.733017 0.0001 2.78929
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2880,7 +2912,7 @@ DEF road_marker Solid {
   name "road marker(103)"
 }
 DEF road_marker Solid {
-  translation -0.733017 0.0001 2.77515
+  translation -0.704733 0.0001 2.81757
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2897,7 +2929,7 @@ DEF road_marker Solid {
   name "road marker(15)"
 }
 DEF road_marker Solid {
-  translation -0.655236 0.0001 2.85292
+  translation -0.626952 0.0001 2.89534
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2914,7 +2946,7 @@ DEF road_marker Solid {
   name "road marker(107)"
 }
 DEF road_marker Solid {
-  translation -0.931005 0.0001 2.57719
+  translation -0.938076 0.0001 2.58426
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2931,7 +2963,7 @@ DEF road_marker Solid {
   name "road marker(110)"
 }
 DEF road_marker Solid {
-  translation -1.03707 0.0001 2.47114
+  translation -1.04414 0.0001 2.47821
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2948,7 +2980,7 @@ DEF road_marker Solid {
   name "road marker(115)"
 }
 DEF road_marker Solid {
-  translation -0.874437 0.0001 2.52063
+  translation -0.867366 0.0001 2.51356
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2965,7 +2997,7 @@ DEF road_marker Solid {
   name "road marker(111)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.69995
+  translation -0.722854 0.0001 1.69995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -2982,7 +3014,7 @@ DEF road_marker Solid {
   name "road marker(126)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.84995
+  translation -0.722854 0.0001 1.84995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -2999,7 +3031,7 @@ DEF road_marker Solid {
   name "road marker(127)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.73995
+  translation -0.722854 0.0001 1.73995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3016,7 +3048,7 @@ DEF road_marker Solid {
   name "road marker(133)"
 }
 DEF road_marker Solid {
-  translation -0.812854 0.0001 1.84995
+  translation -0.822854 0.0001 1.84995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3033,7 +3065,7 @@ DEF road_marker Solid {
   name "road marker(128)"
 }
 DEF road_marker Solid {
-  translation -0.812854 0.0001 1.69995
+  translation -0.822854 0.0001 1.69995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3050,7 +3082,7 @@ DEF road_marker Solid {
   name "road marker(129)"
 }
 DEF road_marker Solid {
-  translation -0.980502 0.0001 2.41458
+  translation -0.973431 0.0001 2.40751
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -3067,7 +3099,7 @@ DEF road_marker Solid {
   name "road marker(112)"
 }
 DEF road_marker Solid {
-  translation -0.952218 0.0001 2.44286
+  translation -0.945147 0.0001 2.43579
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -3084,7 +3116,7 @@ DEF road_marker Solid {
   name "road marker(113)"
 }
 DEF road_marker Solid {
-  translation -1.00879 0.0001 2.49942
+  translation -1.01586 0.0001 2.50649
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -3101,7 +3133,7 @@ DEF road_marker Solid {
   name "road marker(16)"
 }
 DEF road_marker Solid {
-  translation 0.3279 0.0001 2.98948
+  translation 0.3279 0.0001 2.99948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3118,7 +3150,7 @@ DEF road_marker Solid {
   name "road marker(95)"
 }
 DEF road_marker Solid {
-  translation 0.4779 0.0001 2.98948
+  translation 0.4779 0.0001 2.99948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3135,7 +3167,7 @@ DEF road_marker Solid {
   name "road marker(96)"
 }
 DEF road_marker Solid {
-  translation 0.4779 0.0001 2.90948
+  translation 0.4779 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3152,7 +3184,7 @@ DEF road_marker Solid {
   name "road marker(97)"
 }
 DEF road_marker Solid {
-  translation 0.4379 0.0001 2.90948
+  translation 0.4379 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3169,7 +3201,7 @@ DEF road_marker Solid {
   name "road marker(98)"
 }
 DEF road_marker Solid {
-  translation 0.3679 0.0001 2.90948
+  translation 0.3679 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3186,7 +3218,7 @@ DEF road_marker Solid {
   name "road marker(99)"
 }
 DEF road_marker Solid {
-  translation 0.3679 0.0001 2.98948
+  translation 0.3679 0.0001 2.99948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3203,7 +3235,7 @@ DEF road_marker Solid {
   name "road marker(19)"
 }
 DEF road_marker Solid {
-  translation 1.41465 0.0001 2.77273
+  translation 1.40758 0.0001 2.76566
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3220,7 +3252,7 @@ DEF road_marker Solid {
   name "road marker(71)"
 }
 DEF road_marker Solid {
-  translation 1.47121 0.0001 2.82929
+  translation 1.47828 0.0001 2.83636
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3237,7 +3269,7 @@ DEF road_marker Solid {
   name "road marker(72)"
 }
 DEF road_marker Solid {
-  translation 1.36516 0.0001 2.93534
+  translation 1.37223 0.0001 2.94241
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3254,7 +3286,7 @@ DEF road_marker Solid {
   name "road marker(73)"
 }
 DEF road_marker Solid {
-  translation 1.07527 0.0001 3.22523
+  translation 1.08234 0.0001 3.2323
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3271,7 +3303,7 @@ DEF road_marker Solid {
   name "road marker(158)"
 }
 DEF road_marker Solid {
-  translation 1.18133 0.0001 3.11917
+  translation 1.1884 0.0001 3.12624
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3288,7 +3320,7 @@ DEF road_marker Solid {
   name "road marker(159)"
 }
 DEF road_marker Solid {
-  translation 1.12477 0.0001 3.06261
+  translation 1.1177 0.0001 3.05554
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3305,7 +3337,7 @@ DEF road_marker Solid {
   name "road marker(160)"
 }
 DEF road_marker Solid {
-  translation 1.01871 0.0001 3.16867
+  translation 1.01164 0.0001 3.1616
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3322,7 +3354,7 @@ DEF road_marker Solid {
   name "road marker(161)"
 }
 DEF road_marker Solid {
-  translation 1.09648 0.0001 3.0909
+  translation 1.08941 0.0001 3.08383
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3339,7 +3371,7 @@ DEF road_marker Solid {
   name "road marker(163)"
 }
 DEF road_marker Solid {
-  translation 1.15305 0.0001 3.14747
+  translation 1.16012 0.0001 3.15454
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3356,7 +3388,7 @@ DEF road_marker Solid {
   name "road marker(165)"
 }
 DEF road_marker Solid {
-  translation 1.38637 0.0001 2.80101
+  translation 1.3793 0.0001 2.79394
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3373,7 +3405,7 @@ DEF road_marker Solid {
   name "road marker(76)"
 }
 DEF road_marker Solid {
-  translation 1.33688 0.0001 2.8505
+  translation 1.32981 0.0001 2.84343
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3390,7 +3422,7 @@ DEF road_marker Solid {
   name "road marker(18)"
 }
 DEF road_marker Solid {
-  translation 0.778012 0.0001 3.19936
+  translation 0.778012 0.0001 3.18936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3407,7 +3439,7 @@ DEF road_marker Solid {
   name "road marker(79)"
 }
 DEF road_marker Solid {
-  translation 0.628012 0.0001 3.19936
+  translation 0.628012 0.0001 3.18936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3424,7 +3456,7 @@ DEF road_marker Solid {
   name "road marker(78)"
 }
 DEF road_marker Solid {
-  translation 0.628012 0.0001 3.27936
+  translation 0.628012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3441,7 +3473,7 @@ DEF road_marker Solid {
   name "road marker(80)"
 }
 DEF road_marker Solid {
-  translation 0.778012 0.0001 3.27936
+  translation 0.778012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3458,7 +3490,7 @@ DEF road_marker Solid {
   name "road marker(81)"
 }
 DEF road_marker Solid {
-  translation -0.254578 0.0001 3.6097
+  translation -0.264578 0.0001 3.6097
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3475,7 +3507,7 @@ DEF road_marker Solid {
   name "road marker(1)"
 }
 DEF road_marker Solid {
-  translation -0.174578 0.0001 3.6097
+  translation -0.164578 0.0001 3.6097
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3492,7 +3524,7 @@ DEF road_marker Solid {
   name "road marker(3)"
 }
 DEF road_marker Solid {
-  translation -0.139223 0.0001 4.61849
+  translation -0.132152 0.0001 4.61142
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3509,7 +3541,7 @@ DEF road_marker Solid {
   name "road marker(5)"
 }
 DEF road_marker Solid {
-  translation -0.110939 0.0001 4.64677
+  translation -0.103868 0.0001 4.6397
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3526,7 +3558,7 @@ DEF road_marker Solid {
   name "road marker(34)"
 }
 DEF road_marker Solid {
-  translation -0.195791 0.0001 4.67505
+  translation -0.202862 0.0001 4.68212
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3543,7 +3575,7 @@ DEF road_marker Solid {
   name "road marker(11)"
 }
 DEF road_marker Solid {
-  translation -1.93323 0.0001 4.63987
+  translation -1.93323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3560,7 +3592,7 @@ DEF road_marker Solid {
   name "road marker(36)"
 }
 DEF road_marker Solid {
-  translation -1.93323 0.0001 4.55987
+  translation -1.93323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3577,7 +3609,7 @@ DEF road_marker Solid {
   name "road marker(37)"
 }
 DEF road_marker Solid {
-  translation -1.78323 0.0001 4.55987
+  translation -1.78323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3594,7 +3626,7 @@ DEF road_marker Solid {
   name "road marker(42)"
 }
 DEF road_marker Solid {
-  translation -1.82323 0.0001 4.55987
+  translation -1.82323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3611,7 +3643,7 @@ DEF road_marker Solid {
   name "road marker(44)"
 }
 DEF road_marker Solid {
-  translation -1.82323 0.0001 4.63987
+  translation -1.82323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3628,7 +3660,7 @@ DEF road_marker Solid {
   name "road marker(52)"
 }
 DEF road_marker Solid {
-  translation -1.78323 0.0001 4.63987
+  translation -1.78323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3645,7 +3677,7 @@ DEF road_marker Solid {
   name "road marker(53)"
 }
 DEF road_marker Solid {
-  translation -1.89323 0.0001 4.63987
+  translation -1.89323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3662,7 +3694,7 @@ DEF road_marker Solid {
   name "road marker(54)"
 }
 DEF road_marker Solid {
-  translation -1.89323 0.0001 4.55987
+  translation -1.89323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3679,7 +3711,7 @@ DEF road_marker Solid {
   name "road marker(55)"
 }
 DEF road_marker Solid {
-  translation -0.089726 0.0001 4.7811
+  translation -0.0967971 0.0001 4.78817
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3696,7 +3728,7 @@ DEF road_marker Solid {
   name "road marker(12)"
 }
 DEF road_marker Solid {
-  translation -0.11801 0.0001 4.75282
+  translation -0.125081 0.0001 4.75989
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3713,7 +3745,7 @@ DEF road_marker Solid {
   name "road marker(27)"
 }
 DEF road_marker Solid {
-  translation -0.0331572 0.0001 4.72454
+  translation -0.0260861 0.0001 4.71747
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3730,7 +3762,7 @@ DEF road_marker Solid {
   name "road marker(14)"
 }
 DEF road_marker Solid {
-  translation -0.0614412 0.0001 4.69626
+  translation -0.0543701 0.0001 4.68919
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3747,7 +3779,7 @@ DEF road_marker Solid {
   name "road marker(26)"
 }
 DEF road_marker Solid {
-  translation -0.174578 0.0001 3.4597
+  translation -0.164578 0.0001 3.4597
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3764,7 +3796,7 @@ DEF road_marker Solid {
   name "road marker(4)"
 }
 DEF road_marker Solid {
-  translation -0.254578 0.0001 3.4597
+  translation -0.264578 0.0001 3.4597
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3781,7 +3813,7 @@ DEF road_marker Solid {
   name "road marker(2)"
 }
 DEF road_marker Solid {
-  translation 0.668012 0.0001 3.27936
+  translation 0.668012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3798,7 +3830,7 @@ DEF road_marker Solid {
   name "road marker(83)"
 }
 DEF road_marker Solid {
-  translation 0.738012 0.0001 3.27936
+  translation 0.738012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3815,7 +3847,7 @@ DEF road_marker Solid {
   name "road marker(20)"
 }
 DEF road_marker Solid {
-  translation 0.738012 0.0001 3.19936
+  translation 0.738012 0.0001 3.18936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3832,7 +3864,7 @@ DEF road_marker Solid {
   name "road marker(21)"
 }
 DEF road_marker Solid {
-  translation 1.52571 0.0001 1.71457
+  translation 1.51571 0.0001 1.71457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3849,7 +3881,7 @@ DEF road_marker Solid {
   name "road marker(63)"
 }
 DEF road_marker Solid {
-  translation 1.60571 0.0001 1.71457
+  translation 1.61571 0.0001 1.71457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3866,7 +3898,7 @@ DEF road_marker Solid {
   name "road marker(64)"
 }
 DEF road_marker Solid {
-  translation 1.60571 0.0001 1.86457
+  translation 1.61571 0.0001 1.86457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3883,7 +3915,7 @@ DEF road_marker Solid {
   name "road marker(65)"
 }
 DEF road_marker Solid {
-  translation 1.52571 0.0001 1.75457
+  translation 1.51571 0.0001 1.75457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3900,7 +3932,7 @@ DEF road_marker Solid {
   name "road marker(68)"
 }
 DEF road_marker Solid {
-  translation 1.76367 0.0001 1.14254
+  translation 1.7566 0.0001 1.14961
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3917,7 +3949,7 @@ DEF road_marker Solid {
   name "road marker(47)"
 }
 DEF road_marker Solid {
-  translation 1.82023 0.0001 1.08598
+  translation 1.8273 0.0001 1.07891
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3934,7 +3966,7 @@ DEF road_marker Solid {
   name "road marker(48)"
 }
 DEF road_marker Solid {
-  translation 1.71418 0.0001 0.979927
+  translation 1.72125 0.0001 0.972856
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3951,7 +3983,7 @@ DEF road_marker Solid {
   name "road marker(49)"
 }
 DEF road_marker Solid {
-  translation 1.6859 0.0001 1.06477
+  translation 1.67883 0.0001 1.07184
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3968,7 +4000,7 @@ DEF road_marker Solid {
   name "road marker(50)"
 }
 DEF road_marker Solid {
-  translation 1.79195 0.0001 1.0577
+  translation 1.79902 0.0001 1.05063
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3985,7 +4017,7 @@ DEF road_marker Solid {
   name "road marker(51)"
 }
 DEF road_marker Solid {
-  translation 1.39603 0.0001 0.774863
+  translation 1.38896 0.0001 0.781934
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4002,7 +4034,7 @@ DEF road_marker Solid {
   name "road marker(39)"
 }
 DEF road_marker Solid {
-  translation 1.45259 0.0001 0.718295
+  translation 1.45966 0.0001 0.711224
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4019,7 +4051,7 @@ DEF road_marker Solid {
   name "road marker(40)"
 }
 DEF road_marker Solid {
-  translation 1.55865 0.0001 0.82436
+  translation 1.56572 0.0001 0.817289
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4036,7 +4068,7 @@ DEF road_marker Solid {
   name "road marker(41)"
 }
 DEF road_marker Solid {
-  translation 1.48088 0.0001 0.746579
+  translation 1.48795 0.0001 0.739508
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4053,7 +4085,7 @@ DEF road_marker Solid {
   name "road marker(43)"
 }
 DEF road_marker Solid {
-  translation 1.47381 0.0001 0.852644
+  translation 1.46674 0.0001 0.859715
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4070,7 +4102,7 @@ DEF road_marker Solid {
   name "road marker(45)"
 }
 DEF road_marker Solid {
-  translation 1.53037 0.0001 0.796076
+  translation 1.53744 0.0001 0.789005
   rotation 0 1 0 2.3562
   children [
     Shape {
