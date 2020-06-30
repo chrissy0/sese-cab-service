@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.16626651335906198 0.9643356353596172 0.20594229509982762 1.8185422523096
-  position 1.608304060568377 0.653261417611381 2.6706518291676966
+  orientation 0.9563580733733341 -0.2904439916748902 0.03196127647014339 0.2291212830746068
+  position -0.20592957705175757 0.021430218118297508 4.435542847765512
   follow "robot"
 }
 TexturedBackground {
@@ -11,8 +11,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  translation 0.387709 0.0368794 2.9436
-  rotation -1.1562299999971839e-06 0.9999999999975644 1.8799399999954212e-06 -1.5720953071795858
+  translation -0.213435 0.04 3.8228
+  rotation 0 1 0 3.14029
   children [
     Solid {
       translation 0 0.025 0
@@ -1053,7 +1053,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6361317666020844 -0.6361341032487993 0.43665750675278364 2.3181891857492625
+        rotation 0.6361317666020844 -0.6361341032487994 0.4366575067527835 2.3181891857492625
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1075,7 +1075,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6381028739728819 0.6381052178598957 -0.4308670945518159 3.955249214095261
+        rotation -0.638102873972882 0.6381052178598956 -0.4308670945518159 3.955249214095261
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -2464,7 +2464,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2481,7 +2481,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2498,7 +2498,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2515,7 +2515,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2532,7 +2532,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2549,7 +2549,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2566,7 +2566,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2583,7 +2583,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2600,7 +2600,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2617,7 +2617,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2634,7 +2634,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2651,7 +2651,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2668,7 +2668,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2685,7 +2685,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2702,7 +2702,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2719,7 +2719,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2736,7 +2736,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2753,7 +2753,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2770,7 +2770,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2787,7 +2787,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2804,7 +2804,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2821,7 +2821,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2838,7 +2838,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2855,7 +2855,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2872,7 +2872,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2889,7 +2889,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2906,7 +2906,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2923,7 +2923,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2940,7 +2940,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2957,7 +2957,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2974,7 +2974,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2991,7 +2991,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3008,7 +3008,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3025,7 +3025,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3042,7 +3042,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3059,7 +3059,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3076,7 +3076,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3093,7 +3093,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3110,7 +3110,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3127,7 +3127,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3144,7 +3144,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3161,7 +3161,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3178,7 +3178,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3195,7 +3195,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3212,7 +3212,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3229,7 +3229,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3246,7 +3246,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3263,7 +3263,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3280,7 +3280,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3297,7 +3297,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3314,7 +3314,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3331,7 +3331,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3348,7 +3348,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3365,7 +3365,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3382,7 +3382,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3399,7 +3399,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3416,7 +3416,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3433,7 +3433,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3450,7 +3450,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3467,7 +3467,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3484,7 +3484,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3501,7 +3501,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3518,7 +3518,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3535,7 +3535,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3552,7 +3552,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3569,7 +3569,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3586,7 +3586,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3603,7 +3603,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3620,7 +3620,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3637,7 +3637,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3654,7 +3654,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3671,7 +3671,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3688,7 +3688,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3705,7 +3705,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3722,7 +3722,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3739,7 +3739,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3756,7 +3756,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3773,7 +3773,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3790,7 +3790,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3807,7 +3807,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3824,7 +3824,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3841,7 +3841,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3858,7 +3858,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3875,7 +3875,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3892,7 +3892,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3909,7 +3909,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3926,7 +3926,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3943,7 +3943,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3960,7 +3960,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3977,7 +3977,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3994,7 +3994,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4011,7 +4011,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4028,7 +4028,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4045,7 +4045,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4062,7 +4062,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4079,7 +4079,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
