@@ -31,11 +31,13 @@ package body Job_Executer is
       cab_id                  : Integer;
       cmd_queue               : cmd_queue_access_t;
       next_command            : Command_t;
+      current_command         : Command_t;
       cab_version : Integer := 0;
       cab_version_old : Integer := 0;
 
 
    begin
+      current_command.action := NEXT_UNKOWN_S;
       Log_Line("Starting Module");
       Log_Line("Waiting for Constructor call..");
       accept Constructor
@@ -81,11 +83,15 @@ package body Job_Executer is
             update_cabLocation(cab_id, section);
             if (Integer(section) = next_command.marker) then
                Put_Line(section'Image & " = " & next_command.marker'Image);
-
-               case(next_command.action) is
+               current_command := next_command;
+               case(current_command.action) is
                when PICK_UP_S => request_pickup(cab_id, next_command.customer_ID);
+                  cmd_queue.Dequeue(next_command);
+                  Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.marker'Image);
 
                when DROP_OFF_S => request_dropoff(cab_id, next_command.customer_ID);
+                  cmd_queue.Dequeue(next_command);
+                  Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.marker'Image);
                when WAIT_S => null;
                when others =>
                   cmd_queue.Dequeue(next_command);
@@ -101,12 +107,13 @@ package body Job_Executer is
          cmd_queue := request_route(cmd_queue, cab_id, cab_version);
          if (cab_version_old /= cab_version) then
             cmd_queue.Dequeue(next_command);
+            current_command.action := NEXT_UNKOWN_S;
          end if;
 
          Job_Executer_Done_Signal := EMPTY_S;
          Put_Line("NEXT ACTION: " & next_command.action'Image);
          while (Job_Executer_Done_Signal = EMPTY_S) loop
-            case (next_command.action) is
+            case (current_command.action) is
             when NEXT_LEFT_S => Job_Executer_Done_Signal := NEXT_LEFT_S ;
             when NEXT_RIGHT_S => Job_Executer_Done_Signal := NEXT_RIGHT_S;
             when NEXT_UNKOWN_S => Job_Executer_Done_Signal := NEXT_UNKOWN_S;
