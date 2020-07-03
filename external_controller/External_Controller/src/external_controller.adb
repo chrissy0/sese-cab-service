@@ -14,7 +14,7 @@ procedure External_Controller is
    Motor_Controller_Task : Motor_Controller_Task_Access_T;
    Job_Executer_Task     : Job_Executer_Task_T;
    WC2EC_Driver          : wc2ec_thread_access_t;
-   job_execute_next_v    : Job_Executer_Next_t;
+   --job_execute_next_v    : Job_Executer_Next_t;
 
    procedure Log_Line(message : String) is
    begin
@@ -50,7 +50,7 @@ begin
 
    Log_Line("Setting up Front_Distance_Task ...");
    Front_Distance_Task.Construct
-     (get_sensor_value_access          => WC2EC_Interface.get_front_distance_value'Access ,
+     (get_sensor_value_a               => WC2EC_Interface.get_front_distance_value'Access ,
       us_thresh                        => 300.0,
       ir_thresh                        => 300.0,
       Motor_Controller_Task_A          => Motor_Controller_Task

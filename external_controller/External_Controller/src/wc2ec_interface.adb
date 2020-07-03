@@ -36,9 +36,9 @@ package body WC2EC_Interface is
 
    function get_front_distance_value
    (
-      typ : in Sensor_Type_T;
-      pos : in Sensor_Position_T;
-      num : in Sensor_Number_T
+      typ : in Front_Distance.Sensor_Type_T;
+      pos : in Front_Distance.Sensor_Position_T;
+      num : in Front_Distance.Sensor_Number_T
    ) return Long_Float is
       id_string : Unbounded_String;
    begin

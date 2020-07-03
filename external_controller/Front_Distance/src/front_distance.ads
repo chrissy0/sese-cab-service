@@ -8,7 +8,7 @@ package Front_Distance is
 
    type Sensor_Type_T is (IR, US);
 
-   type get_sensor_value_t is access
+   type get_sensor_value_access is access
      function
        (
         typ : in Sensor_Type_T;
@@ -20,7 +20,7 @@ package Front_Distance is
    task type Front_Distance_Task_T is
       entry Construct
         (
-         get_sensor_value_access          : in get_sensor_value_t;
+         get_sensor_value_a               : in get_sensor_value_access;
          us_thresh                        : in Long_Float;
          ir_thresh                        : in Long_Float;
          Motor_Controller_Task_A          : in Motor_Controller_Task_Access_T

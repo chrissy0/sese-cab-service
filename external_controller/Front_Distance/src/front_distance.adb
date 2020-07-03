@@ -73,7 +73,7 @@ package body Front_Distance is
    procedure retrieve_all_sensor_values
      (
       all_sensor_values : out All_Sensor_Values_Array_T;
-      get_sensor_value  : in get_sensor_value_t
+      get_sensor_value  : in get_sensor_value_access
      )
    is
    begin
@@ -93,7 +93,7 @@ package body Front_Distance is
 
    task body Front_Distance_Task_T is
       threshholds                      : Threshhold_Array_T;
-      get_sensor_value_func            : get_sensor_value_t;
+      get_sensor_value_func            : get_sensor_value_access;
       Motor_Controller_Task            : Motor_Controller_Task_Access_T;
       running                          : Boolean := True;
       Output                           : Front_Distance_Done_t;
@@ -104,15 +104,15 @@ package body Front_Distance is
       Log_Line("Starting Front_Distance Thread.");
       Log_Line("Front_Distance: Waiting for Construct...");
       accept Construct
-        (get_sensor_value_access : in get_sensor_value_t;
-         us_thresh                        : in Long_Float;
-         ir_thresh                        : in Long_Float;
-         Motor_Controller_Task_A          : in Motor_Controller_Task_Access_T
+        (get_sensor_value_a       : in get_sensor_value_access;
+         us_thresh                : in Long_Float;
+         ir_thresh                : in Long_Float;
+         Motor_Controller_Task_A  : in Motor_Controller_Task_Access_T
         )
       do
          threshholds(IR) := ir_thresh;
          threshholds(US) := us_thresh;
-         get_sensor_value_func := get_sensor_value_access;
+         get_sensor_value_func := get_sensor_value_a;
          Motor_Controller_Task := Motor_Controller_Task_A;
       end Construct;
       Log_Line("... Front_Distance constructor done");
