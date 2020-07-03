@@ -37,10 +37,11 @@ begin
                                      D_State        => INIT,
                                      SE_State       => STOP,
                                      LE_STATE       => NEXT_UNKOWN,
-                                     MS_Speed       => 4.0,
-                                     MT_Speed       => 2.0,
+                                     MS_Speed       => 2.0,
+                                     MT_Speed       => 1.0,
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
-                                     timeout_v       => 1.0);
+                                     timeout_v      => 1.3,
+                                     iteration_delay_s => 0.1);
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
@@ -49,8 +50,9 @@ begin
 
    Log_Line("Setting up Front_Distance_Task ...");
    Front_Distance_Task.Construct
-     (get_distance_sensor_value_access => WC2EC_Interface.get_front_distance_value'Access ,
+     (get_sensor_value_access          => WC2EC_Interface.get_front_distance_value'Access ,
       us_thresh                        => 300.0,
+      ir_thresh                        => 300.0,
       Motor_Controller_Task_A          => Motor_Controller_Task
      );
    Log_Line("All set up!");
@@ -60,7 +62,7 @@ begin
                                  RM_get_sensor_value_a   => WC2EC_Interface.get_rm_sensor_value'Access);
 
    loop
-       --Motor_Controller_Task.job_executer_done(EMPTY_S);
+      -- Motor_Controller_Task.job_executer_done(NEXT_LEFT_S);
       -- HINT uncomment the above line to enabel job_executer
 
       Motor_Controller_Task.main_shutdown_signal(False);

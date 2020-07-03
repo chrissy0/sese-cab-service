@@ -7,30 +7,112 @@ package body Front_Distance is
       Put_Line("[front_distance] " & Message);
    end Log_Line;
 
+   type All_Sensor_Values_Array_T is array (Sensor_Type_T, Sensor_Position_T, Sensor_Number_T) of Long_Float;
+
+   type Threshhold_Array_T is array (Sensor_Type_T) of Long_Float;
+
+
+   -- Checks both sensor arrays for errors. If both are in an error state,
+   function calculate_output
+     (
+      all_sensor_values : in All_Sensor_Values_Array_T;
+      threshholds       : in Threshhold_Array_T
+     ) return Front_Distance_Done_t
+   is
+
+      type minimal_position_values_t is array (Sensor_Type_T, Sensor_Position_T) of Long_Float;
+      type type_boolean_array_t is array (Sensor_Type_T) of Boolean;
+      is_sensor_type_fault    : type_boolean_array_t;
+      front_distance_error    : Boolean := True;
+      are_error_values        : Boolean := False;
+      object_detected         : type_boolean_array_t;
+      is_front_distance_error : Boolean := True;
+      front_blocked           : Boolean := False;
+      Output                  : Front_Distance_Done_t;
+
+   begin
+      -- check each type for error
+      -- error: -1 for all sensors at the same position
+      for typ in Sensor_Type_T loop
+         is_sensor_type_fault(typ) := False;
+
+         for pos in Sensor_Position_T loop
+            -- initialize with value smaller than 0 (smalles valid sensor value)
+            are_error_values := False;
+            for num in Sensor_Number_T loop
+               if all_sensor_values(typ, pos, num) = -1.0 then
+                  is_sensor_type_fault(typ) := True;
+               elsif all_sensor_values(typ, pos, num) < threshholds(typ) then
+                  object_detected(typ) := True;
+               end if;
+            end loop;
+         end loop;
+      end loop;
+
+      for typ in Sensor_Type_T loop
+         is_front_distance_error :=
+           is_front_distance_error and is_sensor_type_fault(typ);
+         front_blocked           :=
+           front_blocked or object_detected(typ);
+      end loop;
+
+      case is_front_distance_error is
+         when True =>
+            Output := FD_FAULT_S;
+         when False =>
+            case front_blocked is
+               when True =>
+                  Output := FRONT_BLOCKED_S;
+               when False =>
+                  Output := FRONT_CLEAR_S;
+            end case;
+      end case;
+      return Output;
+   end calculate_output;
+
+   procedure retrieve_all_sensor_values
+     (
+      all_sensor_values : out All_Sensor_Values_Array_T;
+      get_sensor_value  : in get_sensor_value_t
+     )
+   is
+   begin
+      for typ in Sensor_Type_T loop
+         for pos in Sensor_Position_T loop
+            for num in Sensor_Number_T loop
+               all_sensor_values(typ, pos, num) := get_sensor_value(typ, pos, num);
+            end loop;
+         end loop;
+      end loop;
+   end retrieve_all_sensor_values;
+
 
    ---------------------------
    -- Front_Distance_Task_T --
    ---------------------------
 
    task body Front_Distance_Task_T is
-      Sensor_Values                    : Distance_Sensor_Values_Array_T;
-      US_Obst_Thresh                   : Long_Float;
-      get_distance_sensor_value        : get_distance_sensor_value_t;
+      threshholds                      : Threshhold_Array_T;
+      get_sensor_value_func            : get_sensor_value_t;
       Motor_Controller_Task            : Motor_Controller_Task_Access_T;
       running                          : Boolean := True;
       Output                           : Front_Distance_Done_t;
       Next_Signal                      : Front_Distance_Next_t;
+      active_sensor_type               : Sensor_Type_T := US;
+      all_sensor_values                : All_Sensor_Values_Array_T;
    begin
       Log_Line("Starting Front_Distance Thread.");
       Log_Line("Front_Distance: Waiting for Construct...");
       accept Construct
-        (get_distance_sensor_value_access : in get_distance_sensor_value_t;
-         us_thresh : in Long_Float;
-         Motor_Controller_Task_A : in Motor_Controller_Task_Access_T
+        (get_sensor_value_access : in get_sensor_value_t;
+         us_thresh                        : in Long_Float;
+         ir_thresh                        : in Long_Float;
+         Motor_Controller_Task_A          : in Motor_Controller_Task_Access_T
         )
       do
-         US_Obst_Thresh := us_thresh;
-         get_distance_sensor_value := get_distance_sensor_value_access;
+         threshholds(IR) := ir_thresh;
+         threshholds(US) := us_thresh;
+         get_sensor_value_func := get_sensor_value_access;
          Motor_Controller_Task := Motor_Controller_Task_A;
       end Construct;
       Log_Line("... Front_Distance constructor done");
@@ -38,36 +120,12 @@ package body Front_Distance is
       -- main loop
       while running loop
 
-         -- reading sensor values:
-         for ID in Distance_Sensor_ID_T loop
-            Sensor_Values(ID) := get_distance_sensor_value(ID);
-         end loop;
-
+         -- retrieve sensor values
+         retrieve_all_sensor_values(all_sensor_values, get_sensor_value_func);
 
          -- calculate output:
-         Output := FRONT_CLEAR_S;
-
-         -- check if one sensor senses front blocked
-         -- system erro when both sensors in same direction mailfunctioning
-         -- blocked when at least one sensor detects block
-         -- (CENTER_0, CENTER_1, LEFT_0, LEFT_1, RIGHT_0, RIGHT_1);
-         if (Sensor_Values(CENTER_0) = 0.0 and Sensor_Values(CENTER_1) = 0.0)
-           or (Sensor_Values(LEFT_0) = 0.0 and Sensor_Values(LEFT_1) = 0.0)
-           or (Sensor_Values(RIGHT_0) = 0.0 and Sensor_Values(RIGHT_1) = 0.0)
-         then
-            Output := SYSTEM_ERROR_S;
-            Log_Line("throwing System Error!");
-         else
-            -- if one sensor shows value smaller than thresh, front is blocked
-            for ID in Distance_Sensor_ID_T loop
-               if Sensor_Values(ID) < US_Obst_Thresh and Sensor_Values(ID) > 0.0 then
-                  Output := FRONT_BLOCKED_S;
-                  Log_Line("Front is blocked!");
-                  exit;
-               end if;
-            end loop;
-         end if;
-
+         Output := calculate_output(all_sensor_values => all_sensor_values,
+                                    threshholds       => threshholds);
 
         -- Log_Line("Front_Distance: sending front_distance_done with value " & Output'Image & "...");
          -- Output signal

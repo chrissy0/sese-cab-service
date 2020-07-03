@@ -25,11 +25,12 @@ package body Motor_Controller is
       Motor_Turn_Speed           : Long_Float;
       set_motor_value            : set_motor_value_procedure_t;
       running                    : Boolean                  := True;
-      timeout                    : Duration                 := 2.0;
+      timeout                    : Duration;
       Job_Executer_Next_Signal   : Job_Executer_Next_t      := EMPTY_S;
       Lane_Detection_Next_Signal : Lane_Detection_Next_T    := EMPTY_S;
       Front_Distance_Next_Signal : Front_Distance_Next_t    := EMPTY_S;
       task_done_array            : Boolean_Tasks_Arrays;
+      Iteration_Delay            : Duration;
 
       --------------------------
       -- TASK LOCAL FUNCTIONS --
@@ -165,7 +166,7 @@ package body Motor_Controller is
       is
       begin
          case Front_Distance_Signal_Value is
-            when SYSTEM_ERROR_S =>
+            when FD_FAULT_S =>
                -- TODO handle system error
                set_motor_value (MOTOR_FRONT_LEFT, 0.0);
                set_motor_value (MOTOR_BACK_LEFT, 0.0);
@@ -241,20 +242,23 @@ package body Motor_Controller is
       -- on timeout, close motor controller this is needed so that test cases
       -- termintate if an assert fails
       select
-         delay timeout;
+                 -- static, longer timeout for constructor
+         delay 2.0;
          Log_Line ("Constructor Timed out, exiting motor_controller");
          running := False;
       or
          accept Constructor(MC_State             : in Motor_Controller_State_T;
-                          ND_State               : in Normal_Driving_State_T;
-                          FC_State               : in Front_Clear_State_T;
-                          D_State                : in Drive_State_T;
-                          LE_State               : in Lean_State_T;
-                          SE_State               : in System_Error_State_T;
-                          MS_Speed               : in Long_Float;
-                          MT_Speed               : in Long_Float;
-                          set_motor_value_access : in set_motor_value_procedure_t;
-                          timeout_v              : in Duration)
+                            ND_State               : in Normal_Driving_State_T;
+                            FC_State               : in Front_Clear_State_T;
+                            D_State                : in Drive_State_T;
+                            LE_State               : in Lean_State_T;
+                            SE_State               : in System_Error_State_T;
+                            MS_Speed               : in Long_Float;
+                            MT_Speed               : in Long_Float;
+                            set_motor_value_access : in set_motor_value_procedure_t;
+                            timeout_v              : in Duration;
+                            iteration_delay_s      : in Duration
+                           )
          do
             Motor_Controller_State := MC_State;
             Normal_Driving_State   := ND_State;
@@ -266,6 +270,7 @@ package body Motor_Controller is
             Motor_Turn_Speed       := MT_Speed;
             set_motor_value        := set_motor_value_access;
             timeout                := timeout;
+            Iteration_Delay        := iteration_delay_s;
 
          end Constructor;
       end select;
@@ -303,7 +308,7 @@ package body Motor_Controller is
                   task_done_array(FRONT_DISTANCE) := True;
                end front_distance_done;
             or
-               delay 2.0;
+               delay timeout;
                Log_Line
                  ("done signals timed out, killing External_Controller");
 
@@ -335,7 +340,7 @@ package body Motor_Controller is
                end if;
             end main_shutdown_signal;
          or
-            delay 2.0;
+            delay timeout;
             Log_Line
               ("main_shutdown_signal timed out, killing External_Controller");
             running := False;
@@ -343,7 +348,7 @@ package body Motor_Controller is
          end select;
 
 
-         delay 0.01;
+         delay Iteration_Delay;
 
 
          reset_all_tasks_done(all_tasks_done_array => task_done_array);
@@ -371,7 +376,7 @@ package body Motor_Controller is
                   task_done_array(FRONT_DISTANCE) := True;
                end front_distance_next;
             or
-               delay 2.0;
+               delay timeout;
                Log_Line
                  ("next signals timed out, killing External_Controller");
 

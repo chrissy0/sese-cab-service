@@ -20,7 +20,7 @@ package Motor_Controller is
 
 
    type Front_Distance_Done_t is
-     (FRONT_BLOCKED_S, FRONT_CLEAR_S, SYSTEM_ERROR_S, EMPTY_S);
+     (FRONT_BLOCKED_S, FRONT_CLEAR_S, FD_FAULT_S, EMPTY_S);
 
    type Front_Distance_Next_t is
      (SHUTDOWN_S, EMPTY_S);
@@ -61,7 +61,8 @@ package Motor_Controller is
 
          -- function to set motor values with
          set_motor_value_access : in set_motor_value_procedure_t;
-         timeout_v              : in Duration);
+         timeout_v              : in Duration;
+         iteration_delay_s      : in Duration);
 
 
       entry lane_detection_done

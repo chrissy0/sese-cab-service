@@ -2,6 +2,9 @@ pragma Ada_2012;
 with Motor_Controller; use Motor_Controller;
 with Front_Distance; use Front_Distance;
 with Roadmarker; use Roadmarker;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
+with Ada.Strings.Unbounded;
 package body WC2EC_Interface is
 
    ---------------------
@@ -32,25 +35,39 @@ package body WC2EC_Interface is
    ------------------------------
 
    function get_front_distance_value
-     (ID : Front_Distance.Distance_Sensor_ID_T)
-   return Long_Float is
+   (
+      typ : in Sensor_Type_T;
+      pos : in Sensor_Position_T;
+      num : in Sensor_Number_T
+   ) return Long_Float is
+      id_string : Unbounded_String;
    begin
-      case ID is
-         when CENTER_0 =>
-            return WC2EC.get_distance_sensor_data("dist_c");
-         when CENTER_1 =>
-            return WC2EC.get_distance_sensor_data("dist_c2");
-
-         when LEFT_0 =>
-            return WC2EC.get_distance_sensor_data("dist_l");
-         when LEFT_1 =>
-            return WC2EC.get_distance_sensor_data("dist_l2");
-
-         when RIGHT_0 =>
-            return WC2EC.get_distance_sensor_data("dist_r");
-         when RIGHT_1 =>
-            return WC2EC.get_distance_sensor_data("dist_r2");
+      -- set up string
+      case typ is
+         when US =>
+            id_string := To_Unbounded_String("dist_");
+         when IR =>
+            id_string := To_Unbounded_String("dist_ir_");
       end case;
+      case pos is
+         when CENTER =>
+            Append(id_string, To_Unbounded_String("c"));
+         when LEFT =>
+            Append(id_string, To_Unbounded_String("l"));
+         when RIGHT =>
+            Append(id_string, To_Unbounded_String("r"));
+      end case;
+      case num is
+         when 0 =>
+            null;
+         when 1 =>
+            Append(id_string, To_Unbounded_String("2"));
+      end case;
+
+      -- get value:
+      return WC2EC.get_distance_sensor_data(To_String(id_string));
+
+
    end get_front_distance_value;
 
    -------------------------
