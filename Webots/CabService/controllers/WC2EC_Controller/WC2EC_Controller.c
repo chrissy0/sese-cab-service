@@ -438,32 +438,10 @@ int register_sensor_at_external_controller(WbDeviceTag tag, uint8_t index, SOCKE
     return 0;
 }
 
-int init_sensors(SOCKET *client_socket)
-{
-    /* Current implementation uses an uint8_t for the the device id
-     * This can be extended easily, but it is a nasty bug, so just
-     * insert a small reminder
-     */
-    WbDeviceTag tag;
-    WbNodeType type;
-    const char *name;
-    int n_devices = wb_robot_get_number_of_devices();
 
-    if (wb_robot_get_number_of_devices() > UINT8_MAX)
-        return -1;
-
-    for (int index = 0; index < n_devices; index++)
+int sensor_set_default_value(WbDeviceTag tag, WbNodeType type) {
+    switch (type)
     {
-        tag = wb_robot_get_device_by_index(index);
-        name = wb_device_get_name(tag);
-        type = wb_device_get_node_type(tag);
-
-        if (WC2EC_DEBUG_INIT)
-            printf("Enabled Device #%d name = %s\n", index, name);
-
-        register_sensor_at_external_controller(tag, index, client_socket);
-        switch (type)
-        {
         case WB_NODE_DISTANCE_SENSOR:
             wb_distance_sensor_enable(tag, TIME_STEP);
             break;
@@ -478,8 +456,63 @@ int init_sensors(SOCKET *client_socket)
         default:
             printf("Cant enable unknown sensor of type: %d\n", type);
             return -1;
-        }
+     }
+     return 0;
+
+}
+
+int set_all_sensors_to_default_value() {
+    WbDeviceTag tag;
+    WbNodeType type;
+
+    int n_devices = wb_robot_get_number_of_devices();
+
+    if (wb_robot_get_number_of_devices() > UINT8_MAX)
+        return -1;
+
+    for (int index = 0; index < n_devices; index++)
+    {
+        tag = wb_robot_get_device_by_index(index);
+        type = wb_device_get_node_type(tag);
+        if (sensor_set_default_value(tag, type))
+            return -1;
     }
+    return 0;
+}
+
+int register_all_sensors(SOCKET *client_socket) {
+    WbDeviceTag tag;
+    const char *name;
+    int n_devices = wb_robot_get_number_of_devices();
+    
+    if (wb_robot_get_number_of_devices() > UINT8_MAX)
+        return -1;
+
+    for (int index = 0; index < n_devices; index++)
+    {
+        tag = wb_robot_get_device_by_index(index);
+        name = wb_device_get_name(tag);
+
+        if (WC2EC_DEBUG_INIT)
+            printf("Enabled Device #%d name = %s\n", index, name);
+
+        register_sensor_at_external_controller(tag, index, client_socket);
+    }
+    return 0;
+}
+int init_sensors(SOCKET *client_socket)
+{
+    /* Current implementation uses an uint8_t for the the device id
+     * This can be extended easily, but it is a nasty bug, so just
+     * insert a small reminder
+     */
+
+    if (set_all_sensors_to_default_value())
+        return -1;
+        
+    if (register_all_sensors(client_socket))
+        return -1;
+
     return 0;
 }
 
@@ -565,7 +598,7 @@ int main(int argc, char **argv)
         }
     }
 TERMINATE_CONTROLLER:
-    /* TODO: MAYBE STOP ALL WHEELS */
+    set_all_sensors_to_default_value();
     wc2ec_cleanup(&socket_buffer, &listen_socket, &client_socket);
 WB_CLEANUP:
     wb_robot_cleanup();
