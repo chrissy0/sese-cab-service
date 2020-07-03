@@ -1,6 +1,7 @@
 pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
 with Roadmarker; use Roadmarker;
+with ec2b; use ec2b;
 package body Job_Executer is
 
    procedure Log_Line(Message : String) is
@@ -27,80 +28,12 @@ package body Job_Executer is
       section                 : Roadmarker.Road_Marker_Done_T;
       rounds                  : Integer := 0;
       section_old             : Roadmarker.Road_Marker_Done_T := 17;
+      cab_id                  : Integer;
+      cmd_queue               : cmd_queue_access_t;
+      next_command            : Command_t;
+      cab_version : Integer := 0;
+      cab_version_old : Integer := 0;
 
-
-
-   function calculate_rm_next_output
-     (Current_RM_ID  : in Road_Marker_Done_T) return Job_Executer_Done_T is
-   begin
-
-      case Current_RM_ID is
-         when 0 =>
-            return NEXT_LEFT_S;
-         when 1 =>
-            if rounds mod 2 = 1 then
-               return NEXT_RIGHT_S;
-            else
-               return NEXT_LEFT_S;
-            end if;
-         when 2 =>
-            return NEXT_RIGHT_S;
-         when 3 =>
-            return NEXT_LEFT_S;
-         when 4 =>
-            if rounds mod 2 = 1 then
-               return NEXT_RIGHT_S;
-            else
-               return NEXT_LEFT_S;
-            end if;
-         when 5 =>
-            return NEXT_RIGHT_S;
-         when 6 =>
-            return NEXT_LEFT_S;
-         when 7 =>
-            if rounds mod 2 = 1 then
-               return NEXT_RIGHT_S;
-            else
-               return NEXT_LEFT_S;
-            end if;
-         when 8 =>
-            return NEXT_RIGHT_S;
-         when 9 =>
-            return NEXT_LEFT_S;
-         when 10 =>
-            if rounds mod 2 = 1 then
-               return NEXT_RIGHT_S;
-            else
-               return NEXT_LEFT_S;
-            end if;
-         when 11 =>
-            return NEXT_RIGHT_S;
-         when 12 =>
-            if rounds mod 2 = 1 then
-               return NEXT_RIGHT_S;
-            else
-               return NEXT_LEFT_S;
-            end if;
-         when 13 =>
-            return NEXT_RIGHT_S;
-         when 14 =>
-            return NEXT_RIGHT_S;
-         when 15 =>
-            loop
-               Log_Line("How the f did I get to 15??");
-            end loop;
-         when 16 =>
-            loop
-               Log_Line("How the f did I get to 16??");
-            end loop;
-         when 17 =>
-
-            loop
-               Log_Line("How the f did I get to 15??");
-            end loop;
-
-      end case;
-   end calculate_rm_next_output;
 
    begin
       Log_Line("Starting Module");
@@ -119,6 +52,17 @@ package body Job_Executer is
       Log_Line("Constructor done!");
 
       Roadmarker_Task.Construct(get_sensor_value_a => RM_get_sensor_value);
+      cab_id := register_cab("Dieter3", 0); -- Todo use real cab_name
+      -- Todo error handling
+      if cab_id < 0 then
+         cab_id := 1;
+      end if;
+
+      Put_Line("Register cab returned: " & cab_id'Image);
+      update_cabLocation(cab_id, 14);
+      cmd_queue := request_route(cmd_queue, cab_id, cab_version);
+      cmd_queue.Dequeue(next_command);
+      Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.marker'Image);
 
       -- main loop
       while running loop
@@ -132,17 +76,64 @@ package body Job_Executer is
          end select;
 
 
-         if section /= section_old then
-            if section = 1 then
-               rounds := rounds + 1;
+         case section is
+         when 0 .. 15 =>
+            update_cabLocation(cab_id, section);
+            if (Integer(section) = next_command.marker) then
+               Put_Line(section'Image & " = " & next_command.marker'Image);
+
+               case(next_command.action) is
+               when PICK_UP_S => request_pickup(cab_id, next_command.customer_ID);
+
+               when DROP_OFF_S => request_dropoff(cab_id, next_command.customer_ID);
+               when WAIT_S => null;
+               when others =>
+                  cmd_queue.Dequeue(next_command);
+                  Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.marker'Image);
+               end case;
+
             end if;
+            when 16 => null; -- TODO
+            when 17 => null; -- TODO
+         end case;
+
+         cab_version_old := cab_version;
+         cmd_queue := request_route(cmd_queue, cab_id, cab_version);
+         if (cab_version_old /= cab_version) then
+            cmd_queue.Dequeue(next_command);
          end if;
 
-         Job_Executer_Done_Signal := calculate_rm_next_output(section);
-         if section /= section_old then
-            Log_Line("We are in section " & section'Image & ", " & Job_Executer_Done_Signal'Image);
-            section_old := section;
-         end if;
+         Job_Executer_Done_Signal := EMPTY_S;
+         Put_Line("NEXT ACTION: " & next_command.action'Image);
+         while (Job_Executer_Done_Signal = EMPTY_S) loop
+            case (next_command.action) is
+            when NEXT_LEFT_S => Job_Executer_Done_Signal := NEXT_LEFT_S ;
+            when NEXT_RIGHT_S => Job_Executer_Done_Signal := NEXT_RIGHT_S;
+            when NEXT_UNKOWN_S => Job_Executer_Done_Signal := NEXT_UNKOWN_S;
+            when WAIT_S => Job_Executer_Done_Signal := STOP_S;
+            when STOP_S => Job_Executer_Done_Signal := STOP_S;
+            when PICK_UP_S =>
+               if(pickup_complete(cab_id)) then
+                  cmd_queue.Dequeue(next_command);
+               else
+                  request_pickup(cab_id, next_command.customer_ID);
+                  Job_Executer_Done_Signal := STOP_S;
+               end if;
+            when DROP_OFF_S =>
+               if(dropoff_complete(cab_id)) then
+                  cmd_queue.Dequeue(next_command);
+               else
+                  request_dropoff(cab_id, next_command.customer_ID);
+                  Job_Executer_Done_Signal := STOP_S;
+               end if;
+
+            when EMPTY_S => Job_Executer_Done_Signal := SYSTEM_ERROR_S;
+            when SYSTEM_ERROR_S => Job_Executer_Done_Signal := SYSTEM_ERROR_S;
+            end case;
+         end loop;
+
+         Put_Line("Job Executor Done ACTION: " & Job_Executer_Done_Signal'Image);
+
          select
             delay timeout;
             Log_Line("job_executer_done timed out, shutting down...");
@@ -159,9 +150,9 @@ package body Job_Executer is
             Motor_Controller_Task.job_executer_next(Signal => Job_Executer_Next_Signal);
             case Job_Executer_Next_Signal is
                when SHUTDOWN_S =>
-                  RM_next := SHUTDOWN_S;
+                  RM_next := SHUTDOWN_S; -- TODO
                when EMPTY_S =>
-                  RM_next := EMPTY_S;
+                  RM_next := EMPTY_S; -- TODO
             end case;
 
          end select;

@@ -1,3 +1,4 @@
+with "..\EC2B\ec2b.gpr";
 with "..\Road_Marker\roadmarker.gpr";
 with "../Motor_Controller/motor_controller.gpr";
 

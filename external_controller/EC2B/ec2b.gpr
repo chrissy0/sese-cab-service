@@ -1,0 +1,18 @@
+with "..\Road_Marker\roadmarker.gpr";
+with "..\Motor_Controller\motor_controller.gpr";
+with "gnatcoll.gpr";
+with "aws";
+
+project Ec2B is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Exec_Dir use ".";
+   for Main use ("ec2b-main.adb");
+
+   package Builder is
+      for Executable ("ec2b-main.adb") use "ec2b";
+   end Builder;
+
+end Ec2B;
+
