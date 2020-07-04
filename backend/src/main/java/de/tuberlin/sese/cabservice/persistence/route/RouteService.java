@@ -50,14 +50,14 @@ public class RouteService {
                 // Database route has job associated with it
                 Optional<JobEntity> jobOptional = jobService.getJob(loadedRoute.getJobId());
                 if (jobOptional.isPresent()) {
-                    RouteEntity updatedRoute = buildRouteForJob(cabId, jobOptional.get(), loadedRoute.getVersion());
+                    RouteEntity updatedRoute = buildRouteForJobs(cabId, jobOptional.get(), null, loadedRoute.getVersion());
                     if (updatedRoute.isSubRouteOf(loadedRoute)) {
                         routeRepo.save(updatedRoute);
                         return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                     }
                     return incrementVersion(updatedRoute);
                 } else {
-                    loadedRoute.setJobId(null);
+                    loadedRoute.setJobIds();
                     routeRepo.save(loadedRoute);
                     return getRoute(cabId, version);
                 }
@@ -68,7 +68,7 @@ public class RouteService {
                     // At least one job is available
                     JobEntity job = jobOptional.get();
                     setJobInProgress(job);
-                    RouteEntity route = buildRouteForJob(cabId, job, loadedRoute.getVersion() + 1);
+                    RouteEntity route = buildRouteForJobs(cabId, job, null, loadedRoute.getVersion() + 1);
                     routeRepo.save(route);
                     return route;
                 } else {
@@ -89,7 +89,7 @@ public class RouteService {
                 // At least one job is available
                 JobEntity job = jobOptional.get();
                 setJobInProgress(job);
-                route = buildRouteForJob(cabId, job, 0);
+                route = buildRouteForJobs(cabId, job, null, 0);
             } else {
                 // No job is available
                 route = getRouteToDepot(cabId, 0);
@@ -122,7 +122,7 @@ public class RouteService {
                 .collect(Collectors.toList());
 
         for (RouteEntity route : routesOfJob) {
-            route.setJobId(null);
+            route.setJobIds();
             routeRepo.save(route);
         }
     }
@@ -170,55 +170,1024 @@ public class RouteService {
     }
 
     @SuppressWarnings("DuplicatedCode")
-    private RouteEntity buildRouteForJob(Long cabId, JobEntity job, int version) {
+    private RouteEntity buildRouteForJobs(Long cabId, JobEntity job1, JobEntity job2, int version) {
+        if (job2 == null) {
+            return buildRouteForJob(cabId, job1, version);
+        }
+        if (AT_DESTINATION.equals(job1.getCustomerState()) && AT_DESTINATION.equals(job2.getCustomerState())) {
+            return getRouteToDepot(cabId, version);
+        }
+        if (AT_DESTINATION.equals(job1.getCustomerState())) {
+            return buildRouteForJob(cabId, job2, version);
+        }
+        if (AT_DESTINATION.equals(job2.getCustomerState())) {
+            return buildRouteForJob(cabId, job1, version);
+        }
+
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
         List<RouteActionEntity> actions = new LinkedList<>();
 
-        if (WAITING.equals(job.getCustomerState())) {
-            actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getStart()));
+        if (WAITING.equals(job1.getCustomerState()) && WAITING.equals(job2.getCustomerState())) {
+            List<RouteActionEntity> toJob1Start = getActionsFromTo(cabLocation.getSection(), job1.getStart());
+            List<RouteActionEntity> toJob2Start = getActionsFromTo(cabLocation.getSection(), job2.getStart());
+
+            if (toJob1Start.size() <= toJob2Start.size()) {
+                // starting job 1
+                actions.addAll(toJob1Start);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getStart())
+                        .build());
+
+                toJob2Start = getActionsFromTo(job1.getStart(), job2.getStart());
+                List<RouteActionEntity> toJob1End = getActionsFromTo(job1.getStart(), job1.getEnd());
+
+                if (toJob2Start.size() < toJob1End.size()) {
+                    // starting job 2
+                    actions.addAll(toJob2Start);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(PICKUP)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getStart())
+                            .build());
+
+                    toJob1End = getActionsFromTo(job2.getStart(), job1.getEnd());
+                    List<RouteActionEntity> toJob2End = getActionsFromTo(job2.getStart(), job2.getEnd());
+
+                    if (toJob1End.size() < toJob2End.size()) {
+                        // ending job 1
+                        actions.addAll(toJob1End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job1.getCustomerId())
+                                .marker(job1.getEnd())
+                                .build());
+
+                        // ending job 2
+                        toJob2End = getActionsFromTo(job1.getEnd(), job2.getEnd());
+                        actions.addAll(toJob2End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job2.getCustomerId())
+                                .marker(job2.getEnd())
+                                .build());
+
+                        // to depot
+                        List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                        actions.addAll(toDepot);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+                    } else {
+                        // ending job 2
+                        actions.addAll(toJob2End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job2.getCustomerId())
+                                .marker(job2.getEnd())
+                                .build());
+
+                        // ending job 1
+                        toJob1End = getActionsFromTo(job2.getEnd(), job1.getEnd());
+                        actions.addAll(toJob1End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job1.getCustomerId())
+                                .marker(job1.getEnd())
+                                .build());
+
+                        // to depot
+                        List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                        actions.addAll(toDepot);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+                    }
+                } else {
+                    // ending job 1
+                    actions.addAll(toJob1End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getEnd())
+                            .build());
+
+                    // starting job 2
+                    toJob2Start = getActionsFromTo(job1.getEnd(), job2.getStart());
+                    actions.addAll(toJob2Start);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(PICKUP)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getStart())
+                            .build());
+
+                    // ending job 2
+                    List<RouteActionEntity> toJob2End = getActionsFromTo(job2.getStart(), job2.getEnd());
+                    actions.addAll(toJob2End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getEnd())
+                            .build());
+
+                    // to depot
+                    List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                    actions.addAll(toDepot);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+                }
+            } else {
+                // starting job 2
+                actions.addAll(toJob2Start);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getStart())
+                        .build());
+
+                toJob1Start = getActionsFromTo(job2.getStart(), job1.getStart());
+                List<RouteActionEntity> toJob2End = getActionsFromTo(job2.getStart(), job2.getEnd());
+
+                if (toJob1Start.size() < toJob2End.size()) {
+                    // starting job 1
+                    actions.addAll(toJob1Start);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(PICKUP)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getStart())
+                            .build());
+
+                    List<RouteActionEntity> toJob1End = getActionsFromTo(job1.getStart(), job1.getEnd());
+                    toJob2End = getActionsFromTo(job1.getStart(), job2.getEnd());
+
+                    if (toJob1End.size() < toJob2End.size()) {
+                        // ending job 1
+                        actions.addAll(toJob1End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job1.getCustomerId())
+                                .marker(job1.getEnd())
+                                .build());
+
+                        // ending job 2
+                        toJob2End = getActionsFromTo(job1.getEnd(), job2.getEnd());
+                        actions.addAll(toJob2End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job2.getCustomerId())
+                                .marker(job2.getEnd())
+                                .build());
+
+                        // to depot
+                        List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                        actions.addAll(toDepot);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+                    } else {
+                        // ending job 2
+                        actions.addAll(toJob2End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job2.getCustomerId())
+                                .marker(job2.getEnd())
+                                .build());
+
+                        // ending job 1
+                        toJob1End = getActionsFromTo(job2.getEnd(), job1.getEnd());
+                        actions.addAll(toJob1End);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+
+                        actions.add(RouteActionEntity.builder()
+                                .action(DROPOFF)
+                                .customerId(job1.getCustomerId())
+                                .marker(job1.getEnd())
+                                .build());
+
+                        // to depot
+                        List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                        actions.addAll(toDepot);
+
+                        if (routeIsFinished(actions)) {
+                            return RouteEntity.builder()
+                                    .version(version)
+                                    .routeActions(actions)
+                                    .cabId(cabId)
+                                    .build()
+                                    .setJobIds(job1.getId(), job2.getId());
+                        }
+                    }
+                } else {
+                    // ending job 2
+                    actions.addAll(toJob2End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getEnd())
+                            .build());
+
+                    // starting job 1
+                    toJob1Start = getActionsFromTo(job2.getEnd(), job1.getStart());
+                    actions.addAll(toJob1Start);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(PICKUP)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getStart())
+                            .build());
+
+                    // ending job 1
+                    List<RouteActionEntity> toJob1End = getActionsFromTo(job1.getStart(), job1.getEnd());
+                    actions.addAll(toJob1End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getEnd())
+                            .build());
+
+                    // to depot
+                    List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                    actions.addAll(toDepot);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+                }
+            }
+        } else if (IN_CAB.equals(job1.getCustomerState()) && IN_CAB.equals(job2.getCustomerState())) {
+            List<RouteActionEntity> toJob1End = getActionsFromTo(cabLocation.getSection(), job1.getEnd());
+            List<RouteActionEntity> toJob2End = getActionsFromTo(cabLocation.getSection(), job2.getEnd());
+
+            if (toJob1End.size() < toJob2End.size()) {
+                // ending job 1
+                actions.addAll(toJob1End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getEnd())
+                        .build());
+
+                //ending job 2
+                toJob2End = getActionsFromTo(job1.getEnd(), job2.getEnd());
+                actions.addAll(toJob2End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getEnd())
+                        .build());
+
+                // to depot
+                List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                actions.addAll(toDepot);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+            } else {
+                // ending job 2
+                actions.addAll(toJob2End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getEnd())
+                        .build());
+
+                //ending job 1
+                toJob1End = getActionsFromTo(job2.getEnd(), job1.getEnd());
+                actions.addAll(toJob1End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getEnd())
+                        .build());
+
+                // to depot
+                List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                actions.addAll(toDepot);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+            }
+        } else if (WAITING.equals(job1.getCustomerState()) && IN_CAB.equals(job2.getCustomerState())) {
+            List<RouteActionEntity> toJob1Start = getActionsFromTo(cabLocation.getSection(), job1.getStart());
+            List<RouteActionEntity> toJob2End = getActionsFromTo(cabLocation.getSection(), job2.getEnd());
+
+            if (toJob1Start.size() < toJob2End.size()) {
+                // starting job 1
+                actions.addAll(toJob1Start);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getStart())
+                        .build());
+
+                List<RouteActionEntity> toJob1End = getActionsFromTo(job1.getStart(), job1.getEnd());
+                toJob2End = getActionsFromTo(job1.getStart(), job2.getEnd());
+
+                if (toJob1End.size() < toJob2End.size()) {
+                    // ending job 1
+                    actions.addAll(toJob1End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getEnd())
+                            .build());
+
+                    // ending job 2
+                    toJob2End = getActionsFromTo(job1.getEnd(), job2.getEnd());
+                    actions.addAll(toJob2End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getEnd())
+                            .build());
+
+                    // to depot
+                    List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                    actions.addAll(toDepot);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+                } else {
+                    // ending job 2
+                    actions.addAll(toJob2End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getEnd())
+                            .build());
+
+                    // ending job 1
+                    toJob1End = getActionsFromTo(job2.getEnd(), job1.getEnd());
+                    actions.addAll(toJob1End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getEnd())
+                            .build());
+
+                    // to depot
+                    List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                    actions.addAll(toDepot);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+                }
+            } else {
+                // ending job 2
+                actions.addAll(toJob2End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getEnd())
+                        .build());
+
+                // starting job 1
+                toJob1Start = getActionsFromTo(job2.getEnd(), job1.getStart());
+                actions.addAll(toJob1Start);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getStart())
+                        .build());
+
+                // ending job 1
+                List<RouteActionEntity> toJob1End = getActionsFromTo(job1.getStart(), job1.getEnd());
+                actions.addAll(toJob1End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getEnd())
+                        .build());
+
+                // to depot
+                List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                actions.addAll(toDepot);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+            }
+        } else if (IN_CAB.equals(job1.getCustomerState()) && WAITING.equals(job2.getCustomerState())) {
+            List<RouteActionEntity> toJob1End = getActionsFromTo(cabLocation.getSection(), job1.getEnd());
+            List<RouteActionEntity> toJob2Start = getActionsFromTo(cabLocation.getSection(), job2.getStart());
+
+            if (toJob2Start.size() < toJob1End.size()) {
+                // starting job 2
+                actions.addAll(toJob2Start);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getStart())
+                        .build());
+
+                toJob1End = getActionsFromTo(job2.getStart(), job1.getEnd());
+                List<RouteActionEntity> toJob2End = getActionsFromTo(job2.getStart(), job2.getEnd());
+
+                if (toJob1End.size() < toJob2End.size()) {
+                    // ending job 1
+                    actions.addAll(toJob1End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getEnd())
+                            .build());
+
+                    // ending job 2
+                    toJob2End = getActionsFromTo(job1.getEnd(), job2.getEnd());
+                    actions.addAll(toJob2End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getEnd())
+                            .build());
+
+                    // to depot
+                    List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                    actions.addAll(toDepot);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+                } else {
+                    // ending job 2
+                    actions.addAll(toJob2End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job2.getCustomerId())
+                            .marker(job2.getEnd())
+                            .build());
+
+                    // ending job 1
+                    toJob1End = getActionsFromTo(job2.getEnd(), job1.getEnd());
+                    actions.addAll(toJob1End);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+
+                    actions.add(RouteActionEntity.builder()
+                            .action(DROPOFF)
+                            .customerId(job1.getCustomerId())
+                            .marker(job1.getEnd())
+                            .build());
+
+                    // to depot
+                    List<RouteActionEntity> toDepot = getActionsFromTo(job1.getEnd(), SECTION_DEPOT);
+                    actions.addAll(toDepot);
+
+                    if (routeIsFinished(actions)) {
+                        return RouteEntity.builder()
+                                .version(version)
+                                .routeActions(actions)
+                                .cabId(cabId)
+                                .build()
+                                .setJobIds(job1.getId(), job2.getId());
+                    }
+                }
+            } else {
+                // ending job 1
+                actions.addAll(toJob1End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job1.getCustomerId())
+                        .marker(job1.getEnd())
+                        .build());
+
+                // starting job 2
+                toJob2Start = getActionsFromTo(job1.getEnd(), job2.getStart());
+                actions.addAll(toJob2Start);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(PICKUP)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getStart())
+                        .build());
+
+                // ending job 2
+                List<RouteActionEntity> toJob2End = getActionsFromTo(job2.getStart(), job2.getEnd());
+                actions.addAll(toJob2End);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+
+                actions.add(RouteActionEntity.builder()
+                        .action(DROPOFF)
+                        .customerId(job2.getCustomerId())
+                        .marker(job2.getEnd())
+                        .build());
+
+                // to depot
+                List<RouteActionEntity> toDepot = getActionsFromTo(job2.getEnd(), SECTION_DEPOT);
+                actions.addAll(toDepot);
+
+                if (routeIsFinished(actions)) {
+                    return RouteEntity.builder()
+                            .version(version)
+                            .routeActions(actions)
+                            .cabId(cabId)
+                            .build()
+                            .setJobIds(job1.getId(), job2.getId());
+                }
+            }
+        }
+
+        actions.add(RouteActionEntity.builder()
+                .action(WAIT)
+                .marker(SECTION_DEPOT)
+                .build());
+
+
+        return RouteEntity.builder()
+                .version(version)
+                .routeActions(actions)
+                .cabId(cabId)
+                .build()
+                .setJobIds(job1.getId(), job2.getId());
+    }
+
+    @SuppressWarnings("DuplicatedCode")
+    private RouteEntity buildRouteForJob(Long cabId, JobEntity job1, int version) {
+        CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
+
+        List<RouteActionEntity> actions = new LinkedList<>();
+
+        if (WAITING.equals(job1.getCustomerState())) {
+            actions.addAll(getActionsFromTo(cabLocation.getSection(), job1.getStart()));
 
             if (routeIsFinished(actions)) {
                 return RouteEntity.builder()
                         .version(version)
                         .routeActions(actions)
                         .cabId(cabId)
-                        .jobId(job.getId())
-                        .build();
+                        .build()
+                        .setJobIds(job1.getId());
             }
 
             actions.add(RouteActionEntity.builder()
                     .action(PICKUP)
-                    .customerId(job.getCustomerId())
-                    .marker(job.getStart())
+                    .customerId(job1.getCustomerId())
+                    .marker(job1.getStart())
                     .build());
 
-            actions.addAll(getActionsFromTo(job.getStart(), job.getEnd()));
+            actions.addAll(getActionsFromTo(job1.getStart(), job1.getEnd()));
 
             if (routeIsFinished(actions)) {
                 return RouteEntity.builder()
                         .version(version)
                         .routeActions(actions)
                         .cabId(cabId)
-                        .jobId(job.getId())
-                        .build();
+                        .build()
+                        .setJobIds(job1.getId());
             }
 
             actions.add(RouteActionEntity.builder()
                     .action(DROPOFF)
-                    .customerId(job.getCustomerId())
-                    .marker(job.getEnd())
+                    .customerId(job1.getCustomerId())
+                    .marker(job1.getEnd())
                     .build());
 
-            actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
+            actions.addAll(getActionsFromTo(job1.getEnd(), SECTION_DEPOT));
 
             if (routeIsFinished(actions)) {
                 return RouteEntity.builder()
                         .version(version)
                         .routeActions(actions)
                         .cabId(cabId)
-                        .jobId(job.getId())
-                        .build();
+                        .build()
+                        .setJobIds(job1.getId());
             }
 
             actions.add(RouteActionEntity.builder()
@@ -227,33 +1196,33 @@ public class RouteService {
                     .build());
         }
 
-        if (IN_CAB.equals(job.getCustomerState())) {
-            actions.addAll(getActionsFromTo(cabLocation.getSection(), job.getEnd()));
+        if (IN_CAB.equals(job1.getCustomerState())) {
+            actions.addAll(getActionsFromTo(cabLocation.getSection(), job1.getEnd()));
 
             if (routeIsFinished(actions)) {
                 return RouteEntity.builder()
                         .version(version)
                         .routeActions(actions)
                         .cabId(cabId)
-                        .jobId(job.getId())
-                        .build();
+                        .build()
+                        .setJobIds(job1.getId());
             }
 
             actions.add(RouteActionEntity.builder()
                     .action(DROPOFF)
-                    .customerId(job.getCustomerId())
-                    .marker(job.getEnd())
+                    .customerId(job1.getCustomerId())
+                    .marker(job1.getEnd())
                     .build());
 
-            actions.addAll(getActionsFromTo(job.getEnd(), SECTION_DEPOT));
+            actions.addAll(getActionsFromTo(job1.getEnd(), SECTION_DEPOT));
 
             if (routeIsFinished(actions)) {
                 return RouteEntity.builder()
                         .version(version)
                         .routeActions(actions)
                         .cabId(cabId)
-                        .jobId(job.getId())
-                        .build();
+                        .build()
+                        .setJobIds(job1.getId());
             }
 
             actions.add(RouteActionEntity.builder()
@@ -262,7 +1231,7 @@ public class RouteService {
                     .build());
         }
 
-        if (AT_DESTINATION.equals(job.getCustomerState())) {
+        if (AT_DESTINATION.equals(job1.getCustomerState())) {
             actions.addAll(getActionsFromTo(cabLocation.getSection(), SECTION_DEPOT));
 
             if (routeIsFinished(actions)) {
@@ -270,8 +1239,8 @@ public class RouteService {
                         .version(version)
                         .routeActions(actions)
                         .cabId(cabId)
-                        .jobId(job.getId())
-                        .build();
+                        .build()
+                        .setJobIds(job1.getId());
             }
 
             actions.add(RouteActionEntity.builder()
@@ -285,8 +1254,8 @@ public class RouteService {
                 .version(version)
                 .routeActions(actions)
                 .cabId(cabId)
-                .jobId(job.getId())
-                .build();
+                .build()
+                .setJobIds(job1.getId());
     }
 
     private boolean routeIsFinished(List<RouteActionEntity> actions) {
