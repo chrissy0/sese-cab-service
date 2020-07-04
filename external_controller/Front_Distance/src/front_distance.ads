@@ -23,7 +23,8 @@ package Front_Distance is
          get_sensor_value_a               : in get_sensor_value_access;
          us_thresh                        : in Long_Float;
          ir_thresh                        : in Long_Float;
-         Motor_Controller_Task_A          : in Motor_Controller_Task_Access_T
+         Motor_Controller_Task_A          : in Motor_Controller_Task_Access_T;
+         timeout_v                        : in Duration
         );
    end Front_Distance_Task_T;
 
