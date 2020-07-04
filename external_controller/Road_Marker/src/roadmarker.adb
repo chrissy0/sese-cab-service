@@ -1,5 +1,6 @@
 pragma Ada_2012;
 with Roadmarker_Functions; use Roadmarker_Functions;
+
 package body Roadmarker is
 
    procedure Log_Line(msg : String) is
@@ -25,6 +26,11 @@ package body Roadmarker is
       end loop;
    end retrieve_all_sensor_values;
 
+
+   -- Return true if the default or backup sensor array contains an error,
+   -- depending on the is_backup_sensor value.
+   -- @param all_sensor_value array filled with sensor values to be tested
+   -- @
    function check_error_sensor_array
      (
       all_sensor_values : All_Sensor_Values_Array_T;
