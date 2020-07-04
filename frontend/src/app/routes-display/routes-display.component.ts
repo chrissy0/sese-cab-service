@@ -26,11 +26,14 @@ export class RoutesDisplayComponent implements OnInit {
         return this.routes.length > 0;
     }
 
-    jobIdString(jobId: number) {
-        if (jobId === undefined) {
+    jobIdsString(route: Route) {
+        if (route.jobId === undefined) {
             return '-';
         }
-        return jobId;
+        if (route.jobId2 === undefined) {
+            return route.jobId;
+        }
+        return route.jobId + ', ' + route.jobId2;
     }
 
     routeActionsString(routeActions: RouteAction[]) {

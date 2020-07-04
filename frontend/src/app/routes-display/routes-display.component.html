@@ -7,7 +7,7 @@
                 Cab ID
             </th>
             <th style="width: 15%">
-                Job ID
+                Job IDs
             </th>
             <th style="width: 15%">
                 Version
@@ -20,7 +20,7 @@
         <tbody>
         <tr *ngFor="let route of routes; let i = index">
             <td>{{ route.cabId }}</td>
-            <td>{{ jobIdString(route.jobId) }}</td>
+            <td>{{ jobIdsString(route) }}</td>
             <td>{{ route.version }}</td>
             <td style="font-family:'Lucida Console', monospace" [innerHTML]="routeActionsString(route.route)"></td>
         </tr>
