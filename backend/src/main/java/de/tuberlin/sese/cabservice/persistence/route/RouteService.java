@@ -46,29 +46,66 @@ public class RouteService {
         if (routeOptional.isPresent()) {
             // Route exists in database
             RouteEntity loadedRoute = routeOptional.get();
-            if (isJobRoute(loadedRoute)) {
+
+            if (loadedRoute.getJobId() != null) {
                 // Database route has job associated with it
                 Optional<JobEntity> jobOptional = jobService.getJob(loadedRoute.getJobId());
                 if (jobOptional.isPresent()) {
-                    RouteEntity updatedRoute = buildRouteForJobs(cabId, jobOptional.get(), null, loadedRoute.getVersion());
-                    if (updatedRoute.isSubRouteOf(loadedRoute)) {
-                        routeRepo.save(updatedRoute);
-                        return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
+                    if (loadedRoute.getJobId2() != null) {
+                        // if 2 jobs are set
+                        Optional<JobEntity> jobOptional2 = jobService.getJob(loadedRoute.getJobId2());
+                        if (jobOptional2.isPresent()) {
+                            RouteEntity updatedRoute = buildRouteForJobs(cabId, jobOptional.get(), jobOptional2.get(), loadedRoute.getVersion());
+                            if (updatedRoute.isSubRouteOf(loadedRoute)) {
+                                routeRepo.save(updatedRoute);
+                                return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
+                            }
+                            return incrementVersion(updatedRoute);
+                        } else {
+                            // if second job id is set but second job is not available
+                            loadedRoute.setJobIds(loadedRoute.getJobId());
+                            routeRepo.save(loadedRoute);
+                            return getRoute(cabId, version);
+                        }
+                    } else {
+                        // if only job 1 is set
+                        RouteEntity updatedRoute = buildRouteForJobs(cabId, jobOptional.get(), null, loadedRoute.getVersion());
+                        if (updatedRoute.isSubRouteOf(loadedRoute)) {
+                            routeRepo.save(updatedRoute);
+                            return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
+                        }
+                        return incrementVersion(updatedRoute);
                     }
-                    return incrementVersion(updatedRoute);
                 } else {
-                    loadedRoute.setJobIds();
+                    // if job id 1 is set, but associated job does not exist
+                    if (loadedRoute.getJobId2() != null) {
+                        loadedRoute.setJobIds(loadedRoute.getJobId2());
+                    } else {
+                        loadedRoute.setJobIds();
+                    }
                     routeRepo.save(loadedRoute);
                     return getRoute(cabId, version);
                 }
             } else {
                 // Database route does not have job associated with it
-                Optional<JobEntity> jobOptional = getFirstAvailableJob();
-                if (jobOptional.isPresent() && cabShouldGetNewJob(cabId)) {
+                Optional<JobEntity> jobOptional1 = getFirstAvailableJob();
+                if (jobOptional1.isPresent() && cabShouldGetNewJob(cabId)) {
                     // At least one job is available
-                    JobEntity job = jobOptional.get();
-                    setJobInProgress(job);
-                    RouteEntity route = buildRouteForJobs(cabId, job, null, loadedRoute.getVersion() + 1);
+
+                    Optional<JobEntity> jobOptional2 = getSecondAvailableJob();
+                    if (jobOptional2.isPresent()) {
+                        JobEntity job1 = jobOptional1.get();
+                        setJobInProgress(job1);
+                        JobEntity job2 = jobOptional2.get();
+                        setJobInProgress(job2);
+                        RouteEntity route = buildRouteForJobs(cabId, job1, job2, loadedRoute.getVersion() + 1);
+                        routeRepo.save(route);
+                        return route;
+                    }
+
+                    JobEntity job1 = jobOptional1.get();
+                    setJobInProgress(job1);
+                    RouteEntity route = buildRouteForJobs(cabId, job1, null, loadedRoute.getVersion() + 1);
                     routeRepo.save(route);
                     return route;
                 } else {
@@ -83,19 +120,33 @@ public class RouteService {
             }
         } else {
             // Route does not exist in database
-            Optional<JobEntity> jobOptional = getFirstAvailableJob();
-            RouteEntity route;
-            if (jobOptional.isPresent() && cabShouldGetNewJob(cabId)) {
+            Optional<JobEntity> jobOptional1 = getFirstAvailableJob();
+
+            if (jobOptional1.isPresent() && cabShouldGetNewJob(cabId)) {
                 // At least one job is available
-                JobEntity job = jobOptional.get();
-                setJobInProgress(job);
-                route = buildRouteForJobs(cabId, job, null, 0);
+
+                Optional<JobEntity> jobOptional2 = getSecondAvailableJob();
+                if (jobOptional2.isPresent()) {
+                    JobEntity job1 = jobOptional1.get();
+                    setJobInProgress(job1);
+                    JobEntity job2 = jobOptional2.get();
+                    setJobInProgress(job2);
+                    RouteEntity route = buildRouteForJobs(cabId, job1, job2, 0);
+                    routeRepo.save(route);
+                    return route;
+                }
+
+                JobEntity job1 = jobOptional1.get();
+                setJobInProgress(job1);
+                RouteEntity route = buildRouteForJobs(cabId, job1, null, 0);
+                routeRepo.save(route);
+                return route;
             } else {
                 // No job is available
-                route = getRouteToDepot(cabId, 0);
+                RouteEntity route = getRouteToDepot(cabId, 0);
+                routeRepo.save(route);
+                return route;
             }
-            routeRepo.save(route);
-            return route;
         }
     }
 
@@ -118,11 +169,28 @@ public class RouteService {
         validateJobId(jobId);
 
         List<RouteEntity> routesOfJob = stream(routeRepo.findAll())
-                .filter(route -> jobId.equals(route.getJobId()))
+                .filter(route -> jobId.equals(route.getJobId()) || jobId.equals(route.getJobId2()))
                 .collect(Collectors.toList());
 
         for (RouteEntity route : routesOfJob) {
-            route.setJobIds();
+            Long jobId1 = route.getJobId();
+            Long jobId2 = route.getJobId2();
+
+            if (jobId2 == null) {
+                route.setJobIds();
+            } else {
+                if (jobId1.equals(jobId)) {
+                    route.setJobIds(jobId2);
+                } else if (jobId2.equals(jobId)) {
+                    route.setJobIds(jobId1);
+                }
+            }
+
+            // if for some reason the same job id was set in both job id fields
+            if (jobId.equals(route.getJobId())) {
+                route.setJobIds();
+            }
+
             routeRepo.save(route);
         }
     }
@@ -135,14 +203,18 @@ public class RouteService {
         return Optional.of(availableJobs.get(0));
     }
 
+    private Optional<JobEntity> getSecondAvailableJob() {
+        List<JobEntity> availableJobs = jobService.getAllWaitingJobs();
+        if (availableJobs.size() < 2) {
+            return Optional.empty();
+        }
+        return Optional.of(availableJobs.get(1));
+    }
+
     private RouteEntity incrementVersion(RouteEntity route) {
         route.setVersion(route.getVersion() + 1);
         routeRepo.save(route);
         return route;
-    }
-
-    private boolean isJobRoute(RouteEntity route) {
-        return route.getJobId() != null;
     }
 
     private void validateCabId(Long cabId) {
