@@ -12,7 +12,12 @@ package body Front_Distance is
    type Threshhold_Array_T is array (Sensor_Type_T) of Long_Float;
 
 
-   -- Checks both sensor arrays for errors. If both are in an error state,
+   -- Returns the Front_Distance_Done_T Signal from sensor data.
+   -- It returns FD_FAULT_S when all sensor types are faulty. A sensor type
+   -- is fault, when every sensor of this type at one position is faulty.
+   -- If a sensor type is not faulty and at least one sensor detects an object,
+   -- the function returns FRONT_BLOCKED. In every other case, it returns
+   -- FRONT_CLEAR.
    function calculate_output
      (
       all_sensor_values : in All_Sensor_Values_Array_T;
@@ -23,37 +28,42 @@ package body Front_Distance is
       type minimal_position_values_t is array (Sensor_Type_T, Sensor_Position_T) of Long_Float;
       type type_boolean_array_t is array (Sensor_Type_T) of Boolean;
       is_sensor_type_fault    : type_boolean_array_t;
-      front_distance_error    : Boolean := True;
-      are_error_values        : Boolean := False;
       object_detected         : type_boolean_array_t;
       is_front_distance_error : Boolean := True;
       front_blocked           : Boolean := False;
       Output                  : Front_Distance_Done_t;
-
    begin
       -- check each type for error
       -- error: -1 for all sensors at the same position
       for typ in Sensor_Type_T loop
-         is_sensor_type_fault(typ) := False;
-
          for pos in Sensor_Position_T loop
-            -- initialize with value smaller than 0 (smalles valid sensor value)
-            are_error_values := False;
+            -- default: no error detected for (typ, num)
+            is_sensor_type_fault(typ) := True;
             for num in Sensor_Number_T loop
-               if all_sensor_values(typ, pos, num) = -1.0 then
-                  is_sensor_type_fault(typ) := True;
-               elsif all_sensor_values(typ, pos, num) < threshholds(typ) then
-                  object_detected(typ) := True;
+               -- if one valid value for all nums is found, then there is no
+               -- error for this sensor type for this postion
+               if all_sensor_values(typ, pos, num) /= -1.0 then
+                  is_sensor_type_fault(typ) := False;
+
+                  -- if one sensor detects object, there is an object
+                  if all_sensor_values(typ, pos, num) < threshholds(typ) then
+                     object_detected(typ) := True;
+                  end if;
                end if;
             end loop;
+
+            -- when every num for one position is faulty, the sensor type is
+            -- faulty. No need to check the other positions of this type.
+            -- Go straight to next type.
+            exit when is_sensor_type_fault(typ);
          end loop;
       end loop;
 
       for typ in Sensor_Type_T loop
-         is_front_distance_error :=
-           is_front_distance_error and is_sensor_type_fault(typ);
-         front_blocked           :=
-           front_blocked or object_detected(typ);
+            is_front_distance_error :=
+              is_front_distance_error and is_sensor_type_fault(typ);
+            front_blocked           :=
+              front_blocked or object_detected(typ);
       end loop;
 
       case is_front_distance_error is

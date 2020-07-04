@@ -7,15 +7,16 @@ package Roadmarker is
    -- 17   No Road Marker
    subtype Road_Marker_Done_T is Integer range 0 .. 17;
 
+   type Sensor_Position_T is
+     (FRONT_LEFT, FRONT_RIGHT, BACK_LEFT, BACK_RIGHT, CENTER_LEFT, CENTER_RIGHT);
+
    type Road_Marker_Next_T is (EMPTY_S, SHUTDOWN_S);
 
    type Roadmarker_Sensor_ID_T is
      (FRONT_LEFT, FRONT_RIGHT, BEHIND_LEFT, BEHIND_RIGHT, RM_FL, RM_FR, RM_BL, RM_BR);
 
-
    type get_roadmarker_sensor_value_access is access
-     function (ID : in Roadmarker_Sensor_ID_T) return Long_Float;
-
+     function (ID : in Roadmarker_Sensor_ID_T; is_backup_sensor : Boolean) return Long_Float;
 
    task type Roadmarker_Task_T is
       entry Construct

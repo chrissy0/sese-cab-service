@@ -16,8 +16,9 @@ package WC2EC_Interface is
    ) return Long_Float;
 
    function get_rm_sensor_value
-     (
-      ID : Roadmarker.Roadmarker_Sensor_ID_T
-     ) return Long_Float;
+   (
+      ID        : Roadmarker.Roadmarker_Sensor_ID_T;
+      is_backup : Boolean
+   ) return Long_Float;
 
 end WC2EC_Interface;

@@ -39,7 +39,8 @@ package body WC2EC_Interface is
       typ : in Front_Distance.Sensor_Type_T;
       pos : in Front_Distance.Sensor_Position_T;
       num : in Front_Distance.Sensor_Number_T
-   ) return Long_Float is
+   ) return Long_Float
+   is
       id_string : Unbounded_String;
    begin
       -- set up string
@@ -75,31 +76,40 @@ package body WC2EC_Interface is
    -------------------------
 
    function get_rm_sensor_value
-     (ID : Roadmarker.Roadmarker_Sensor_ID_T)
-   return Long_Float is
+     (
+      ID        : Roadmarker.Roadmarker_Sensor_ID_T;
+      is_backup : Boolean
+     ) return Long_Float
+   is
+      id_string : Unbounded_String;
    begin
       case ID is
          when FRONT_LEFT =>
-            return WC2EC.get_distance_sensor_data("inf_rm_fl_act");
+            id_string := To_Unbounded_String("inf_rm_fl_act");
          when FRONT_RIGHT =>
-            return WC2EC.get_distance_sensor_data("inf_rm_fr_act");
-
+            id_string := To_Unbounded_String("inf_rm_fr_act");
          when BEHIND_LEFT =>
-            return WC2EC.get_distance_sensor_data("inf_rm_bl_act");
+            id_string := To_Unbounded_String("inf_rm_bl_act");
          when BEHIND_RIGHT =>
-            return WC2EC.get_distance_sensor_data("inf_rm_br_act");
+            id_string := To_Unbounded_String("inf_rm_br_act");
 
          when RM_FL =>
-            return WC2EC.get_distance_sensor_data("inf_rm_fl");
+            id_string := To_Unbounded_String("inf_rm_fl");
          when RM_FR =>
-            return WC2EC.get_distance_sensor_data("inf_rm_fr");
-
+            id_string := To_Unbounded_String("inf_rm_fr");
 
          when RM_BL =>
-            return WC2EC.get_distance_sensor_data("inf_rm_bl");
+            id_string := To_Unbounded_String("inf_rm_bl");
          when RM_BR =>
-            return WC2EC.get_distance_sensor_data("inf_rm_br");
+            id_string := To_Unbounded_String("inf_rm_br");
       end case;
+
+      if is_backup then
+         Append(id_string, to_Unbounded_String("2"));
+      end if;
+
+      return WC2EC.get_distance_sensor_data(To_String(id_string));
+
    end get_rm_sensor_value;
 
 end WC2EC_Interface;
