@@ -100,6 +100,7 @@ package body Front_Distance is
       Next_Signal                      : Front_Distance_Next_t;
       active_sensor_type               : Sensor_Type_T := US;
       all_sensor_values                : All_Sensor_Values_Array_T;
+      timeout                          : Duration;
    begin
       Log_Line("Starting Front_Distance Thread.");
       Log_Line("Front_Distance: Waiting for Construct...");
@@ -107,13 +108,15 @@ package body Front_Distance is
         (get_sensor_value_a       : in get_sensor_value_access;
          us_thresh                : in Long_Float;
          ir_thresh                : in Long_Float;
-         Motor_Controller_Task_A  : in Motor_Controller_Task_Access_T
+         Motor_Controller_Task_A  : in Motor_Controller_Task_Access_T;
+         timeout_v                : in Duration
         )
       do
          threshholds(IR) := ir_thresh;
          threshholds(US) := us_thresh;
          get_sensor_value_func := get_sensor_value_a;
          Motor_Controller_Task := Motor_Controller_Task_A;
+         timeout := timeout_v;
       end Construct;
       Log_Line("... Front_Distance constructor done");
 
@@ -132,7 +135,7 @@ package body Front_Distance is
          select
            Motor_Controller_Task.front_distance_done(Output);
          then abort
-            delay 2.0;
+            delay timeout;
             Log_Line("front_distance_done timed out, shutting Front_Distance down...");
             running := False;
             goto Continue;
@@ -143,7 +146,7 @@ package body Front_Distance is
          --Log_Line("Front_Distance: sending front_distance_next...");
          -- wait for signal to start next iteration
          select
-            delay 2.0;
+            delay timeout;
             Log_Line("lane_detection_next timed out, shutting Front_Distance down...");
             running := False;
             goto Continue;

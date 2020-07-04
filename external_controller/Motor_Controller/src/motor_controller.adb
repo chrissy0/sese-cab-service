@@ -269,7 +269,7 @@ package body Motor_Controller is
             Motor_Straight_Speed   := MS_Speed;
             Motor_Turn_Speed       := MT_Speed;
             set_motor_value        := set_motor_value_access;
-            timeout                := timeout;
+            timeout                := timeout_v;
             Iteration_Delay        := iteration_delay_s;
 
          end Constructor;
