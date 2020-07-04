@@ -241,6 +241,7 @@ public class RouteService {
         return updatedRoute;
     }
 
+    // TODO check manually and carefully
     @SuppressWarnings("DuplicatedCode")
     private RouteEntity buildRouteForJobs(Long cabId, JobEntity job1, JobEntity job2, int version) {
         if (job2 == null) {

@@ -24,7 +24,6 @@ public class RouteEntity {
     @Id
     private Long cabId;
     private Integer version;
-    // TODO Okay that jobId is included in route sent to EC?
     private Long jobId;
     private Long jobId2;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

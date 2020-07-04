@@ -697,7 +697,7 @@ public class RouteServiceIT {
         assertThat(updatedRoute4.getRouteActions()).isNull();
     }
 
-    // TODO 2-job-route with blocked sections
+    // TODO test 2-job-route with blocked sections
 
     @Test
     public void shouldNotGiveJobToCabInDepot() {
