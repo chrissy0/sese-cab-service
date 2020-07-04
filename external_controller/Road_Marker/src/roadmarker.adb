@@ -89,11 +89,10 @@ package body Roadmarker is
       Output       : Road_Marker_Done_T;
    begin
       for I in Boolean loop
-         faulty := check_error_sensor_array(all_sensor_values, I);
-         exit when not faulty;
-
          Output := read_road_marker(all_sensor_values, I);
 
+         faulty := check_error_sensor_array(all_sensor_values, I);
+         exit when not faulty;
       end loop;
 
       case faulty is
