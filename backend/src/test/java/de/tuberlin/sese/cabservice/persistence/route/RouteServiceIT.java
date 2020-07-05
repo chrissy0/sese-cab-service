@@ -477,7 +477,7 @@ public class RouteServiceIT {
                 .end(11)
                 .build());
 
-        RouteEntity route = routeService.getRoute(cabId, preJobRoute.getVersion() + 1);
+        RouteEntity route = routeService.getRoute(cabId, preJobRoute.getVersion());
 
         assertThat(jobService.getJob(jobId1).get().isInProgress()).isTrue();
         assertThat(jobService.getJob(jobId2).get().isInProgress()).isTrue();
@@ -697,7 +697,278 @@ public class RouteServiceIT {
         assertThat(updatedRoute4.getRouteActions()).isNull();
     }
 
-    // TODO test 2-job-route with blocked sections
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
+    @Test
+    public void shouldHandleBlockedSectionsOnMultiJobRouteCorrectly() {
+        long cabId = registrationService.registerCab(CabEntity.builder()
+                .name("Some Cab Name")
+                .build(), 0);
+
+        RouteEntity preJobRoute = routeService.getRoute(cabId, 0);
+
+        assertThat(preJobRoute.getVersion()).isEqualTo(0);
+        assertThat(preJobRoute.getCabId()).isEqualTo(cabId);
+        assertThat(preJobRoute.getJobId()).isNull();
+
+        assertThat(preJobRoute.getRouteActions().get(0).getMarker()).isEqualTo(0);
+        assertThat(preJobRoute.getRouteActions().get(0).getAction()).isEqualTo(WAIT);
+
+        long jobId1 = jobService.saveNewJob(JobEntity.builder()
+                .start(2)
+                .end(11)
+                .build());
+
+
+        long jobId2 = jobService.saveNewJob(JobEntity.builder()
+                .start(8)
+                .end(2)
+                .build());
+
+        RouteEntity route = routeService.getRoute(cabId, preJobRoute.getVersion());
+
+        assertThat(jobService.getJob(jobId1).get().isInProgress()).isTrue();
+        assertThat(jobService.getJob(jobId2).get().isInProgress()).isTrue();
+
+        assertThat(route.getVersion()).isEqualTo(preJobRoute.getVersion() + 1);
+        assertThat(route.getCabId()).isEqualTo(cabId);
+        assertThat(route.getJobId()).isEqualTo(jobId1);
+        assertThat(route.getJobId2()).isEqualTo(jobId2);
+
+        assertThat(route.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(route.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(1).getMarker()).isEqualTo(2);
+        assertThat(route.getRouteActions().get(1).getAction()).isEqualTo(PICKUP);
+        assertThat(route.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(route.getRouteActions().get(2).getMarker()).isEqualTo(4);
+        assertThat(route.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(3).getMarker()).isEqualTo(7);
+        assertThat(route.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(3).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(4).getMarker()).isEqualTo(8);
+        assertThat(route.getRouteActions().get(4).getAction()).isEqualTo(PICKUP);
+        assertThat(route.getRouteActions().get(4).getCustomerId()).isEqualTo(jobId2);
+
+        assertThat(route.getRouteActions().get(5).getMarker()).isEqualTo(10);
+        assertThat(route.getRouteActions().get(5).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(5).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(6).getMarker()).isEqualTo(11);
+        assertThat(route.getRouteActions().get(6).getAction()).isEqualTo(DROPOFF);
+        assertThat(route.getRouteActions().get(6).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(route.getRouteActions().get(7).getMarker()).isEqualTo(1);
+        assertThat(route.getRouteActions().get(7).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(7).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(8).getMarker()).isEqualTo(2);
+        assertThat(route.getRouteActions().get(8).getAction()).isEqualTo(DROPOFF);
+        assertThat(route.getRouteActions().get(8).getCustomerId()).isEqualTo(jobId2);
+
+        assertThat(route.getRouteActions().get(9).getMarker()).isEqualTo(4);
+        assertThat(route.getRouteActions().get(9).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(9).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(10).getMarker()).isEqualTo(7);
+        assertThat(route.getRouteActions().get(10).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(10).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(11).getMarker()).isEqualTo(10);
+        assertThat(route.getRouteActions().get(11).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(11).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(12).getMarker()).isEqualTo(12);
+        assertThat(route.getRouteActions().get(12).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(12).getDirection()).isEqualTo(LEFT);
+
+        assertThat(route.getRouteActions().get(13).getMarker()).isEqualTo(14);
+        assertThat(route.getRouteActions().get(13).getAction()).isEqualTo(TURN);
+        assertThat(route.getRouteActions().get(13).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(route.getRouteActions().get(14).getMarker()).isEqualTo(0);
+        assertThat(route.getRouteActions().get(14).getAction()).isEqualTo(WAIT);
+
+        assertThat(route.getRouteActions()).hasSize(15);
+
+        long blockedCabId = registrationService.registerCab(CabEntity.builder()
+                .name("Some Blocked Cab Name")
+                .build(), 6);
+
+        blockedService.setBlocked(blockedCabId, true);
+
+        RouteEntity updatedRoute = routeService.getRoute(cabId, route.getVersion());
+
+        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
+        assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute.getJobId()).isEqualTo(jobId1);
+        assertThat(updatedRoute.getJobId2()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(1).getMarker()).isEqualTo(2);
+        assertThat(updatedRoute.getRouteActions().get(1).getAction()).isEqualTo(PICKUP);
+        assertThat(updatedRoute.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(updatedRoute.getRouteActions().get(2).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(2).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(3).getMarker()).isEqualTo(7);
+        assertThat(updatedRoute.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(3).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(4).getMarker()).isEqualTo(8);
+        assertThat(updatedRoute.getRouteActions().get(4).getAction()).isEqualTo(PICKUP);
+        assertThat(updatedRoute.getRouteActions().get(4).getCustomerId()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute.getRouteActions().get(5).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute.getRouteActions().get(5).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(5).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(6).getMarker()).isEqualTo(11);
+        assertThat(updatedRoute.getRouteActions().get(6).getAction()).isEqualTo(DROPOFF);
+        assertThat(updatedRoute.getRouteActions().get(6).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(updatedRoute.getRouteActions().get(7).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute.getRouteActions().get(7).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(7).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(8).getMarker()).isEqualTo(2);
+        assertThat(updatedRoute.getRouteActions().get(8).getAction()).isEqualTo(DROPOFF);
+        assertThat(updatedRoute.getRouteActions().get(8).getCustomerId()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute.getRouteActions().get(9).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute.getRouteActions().get(9).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(9).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(10).getMarker()).isEqualTo(7);
+        assertThat(updatedRoute.getRouteActions().get(10).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(10).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(11).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute.getRouteActions().get(11).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(11).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(12).getMarker()).isEqualTo(12);
+        assertThat(updatedRoute.getRouteActions().get(12).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(12).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute.getRouteActions().get(13).getMarker()).isEqualTo(14);
+        assertThat(updatedRoute.getRouteActions().get(13).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute.getRouteActions().get(13).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute.getRouteActions().get(14).getMarker()).isEqualTo(0);
+        assertThat(updatedRoute.getRouteActions().get(14).getAction()).isEqualTo(WAIT);
+
+        assertThat(updatedRoute.getRouteActions()).hasSize(15);
+
+        long blockedCabId2 = registrationService.registerCab(CabEntity.builder()
+                .name("Some Other Blocked Cab Name")
+                .build(), 5);
+
+        blockedService.setBlocked(blockedCabId2, true);
+
+        RouteEntity updatedRoute2 = routeService.getRoute(cabId, updatedRoute.getVersion());
+
+        assertThat(updatedRoute2.getVersion()).isEqualTo(updatedRoute.getVersion() + 1);
+        assertThat(updatedRoute2.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute2.getJobId()).isEqualTo(jobId1);
+        assertThat(updatedRoute2.getJobId2()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute2.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute2.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute2.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute2.getRouteActions().get(1).getMarker()).isEqualTo(2);
+        assertThat(updatedRoute2.getRouteActions().get(1).getAction()).isEqualTo(PICKUP);
+        assertThat(updatedRoute2.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(updatedRoute2.getRouteActions().get(2).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute2.getRouteActions().get(2).getAction()).isEqualTo(WAIT);
+
+        assertThat(updatedRoute2.getRouteActions()).hasSize(3);
+
+        locationService.saveCabLocation(CabLocationEntity.builder()
+                .cabId(blockedCabId)
+                .section(15)
+                .build());
+
+        RouteEntity updatedRoute3 = routeService.getRoute(cabId, updatedRoute2.getVersion());
+
+        assertThat(updatedRoute3.getVersion()).isEqualTo(updatedRoute2.getVersion() + 1);
+        assertThat(updatedRoute3.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute3.getJobId()).isEqualTo(jobId1);
+        assertThat(updatedRoute3.getJobId2()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute3.getRouteActions().get(0).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute3.getRouteActions().get(0).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(0).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute3.getRouteActions().get(1).getMarker()).isEqualTo(2);
+        assertThat(updatedRoute3.getRouteActions().get(1).getAction()).isEqualTo(PICKUP);
+        assertThat(updatedRoute3.getRouteActions().get(1).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(updatedRoute3.getRouteActions().get(2).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute3.getRouteActions().get(2).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(2).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute3.getRouteActions().get(3).getMarker()).isEqualTo(7);
+        assertThat(updatedRoute3.getRouteActions().get(3).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(3).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute3.getRouteActions().get(4).getMarker()).isEqualTo(8);
+        assertThat(updatedRoute3.getRouteActions().get(4).getAction()).isEqualTo(PICKUP);
+        assertThat(updatedRoute3.getRouteActions().get(4).getCustomerId()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute3.getRouteActions().get(5).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute3.getRouteActions().get(5).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(5).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute3.getRouteActions().get(6).getMarker()).isEqualTo(11);
+        assertThat(updatedRoute3.getRouteActions().get(6).getAction()).isEqualTo(DROPOFF);
+        assertThat(updatedRoute3.getRouteActions().get(6).getCustomerId()).isEqualTo(jobId1);
+
+        assertThat(updatedRoute3.getRouteActions().get(7).getMarker()).isEqualTo(1);
+        assertThat(updatedRoute3.getRouteActions().get(7).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(7).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute3.getRouteActions().get(8).getMarker()).isEqualTo(2);
+        assertThat(updatedRoute3.getRouteActions().get(8).getAction()).isEqualTo(DROPOFF);
+        assertThat(updatedRoute3.getRouteActions().get(8).getCustomerId()).isEqualTo(jobId2);
+
+        assertThat(updatedRoute3.getRouteActions().get(9).getMarker()).isEqualTo(4);
+        assertThat(updatedRoute3.getRouteActions().get(9).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(9).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute3.getRouteActions().get(10).getMarker()).isEqualTo(7);
+        assertThat(updatedRoute3.getRouteActions().get(10).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(10).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute3.getRouteActions().get(11).getMarker()).isEqualTo(10);
+        assertThat(updatedRoute3.getRouteActions().get(11).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(11).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute3.getRouteActions().get(12).getMarker()).isEqualTo(12);
+        assertThat(updatedRoute3.getRouteActions().get(12).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(12).getDirection()).isEqualTo(LEFT);
+
+        assertThat(updatedRoute3.getRouteActions().get(13).getMarker()).isEqualTo(14);
+        assertThat(updatedRoute3.getRouteActions().get(13).getAction()).isEqualTo(TURN);
+        assertThat(updatedRoute3.getRouteActions().get(13).getDirection()).isEqualTo(RIGHT);
+
+        assertThat(updatedRoute3.getRouteActions().get(14).getMarker()).isEqualTo(0);
+        assertThat(updatedRoute3.getRouteActions().get(14).getAction()).isEqualTo(WAIT);
+
+        assertThat(updatedRoute3.getRouteActions()).hasSize(15);
+
+    }
 
     @Test
     public void shouldNotGiveJobToCabInDepot() {
