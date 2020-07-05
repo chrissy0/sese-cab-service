@@ -271,7 +271,7 @@ GET /api/ec/pickupsComplete?cabId=0
 
 ```json
 {
-    "complete": false
+    "completed": false
 }
 ```
 
@@ -357,7 +357,7 @@ GET /api/ec/dropoffsComplete?cabId=0
 
 ```json
 {
-    "complete": false
+    "completed": false
 }
 ```
 
