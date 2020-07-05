@@ -76,7 +76,7 @@ package body JSON_Wrappers is
       response_data_JSON := Create_Object;
       build_uri(uri, path, parameters);
       --Put_Line("URL: " & To_String(url));
-      Client.Get(con,URI => To_String(uri), Result => response);
+      Client.Get(con, URI => To_String(uri), Result => response);
       status_code := AWS.Response.Status_Code(response);
       if (status_code /= Messages.S200) then
          return status_code;

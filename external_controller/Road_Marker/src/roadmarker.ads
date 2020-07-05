@@ -11,6 +11,8 @@ package Roadmarker is
    -- 0-15 Road Marker IDs
    -- 16   System Error
    -- 17   No Road Marker
+   RM_system_error : constant Integer   := 16;
+   RM_no_road_marker : constant Integer := 17;
    subtype Road_Marker_Done_T is Integer range 0 .. 17;
 
    -- Commands the road marker can recieve with road_marker_next.
