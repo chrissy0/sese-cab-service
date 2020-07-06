@@ -55,8 +55,7 @@ public class JobControllerTest {
                         .timestamp(LocalDateTime.of(2020, 6, 14, 17, 11))
                         .build()));
 
-        mockMvc.perform(get("/api/bookr/jobs")
-                .contentType(APPLICATION_JSON))
+        mockMvc.perform(get("/api/bookr/jobs"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
                 .andExpect(jsonPath("$[0].customerId").value(1L))

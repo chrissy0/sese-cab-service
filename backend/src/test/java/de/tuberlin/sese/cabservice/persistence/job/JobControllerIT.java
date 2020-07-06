@@ -45,8 +45,7 @@ public class JobControllerIT {
                 .content("{\"start\": 12,\"end\": 13}"))
                 .andExpect(status().isOk());
 
-        mockMvc.perform(get("/api/bookr/jobs")
-                .contentType(APPLICATION_JSON))
+        mockMvc.perform(get("/api/bookr/jobs"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
                 .andExpect(jsonPath("$[0].customerId").value(1L))

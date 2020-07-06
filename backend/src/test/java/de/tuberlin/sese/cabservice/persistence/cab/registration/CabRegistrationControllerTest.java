@@ -83,8 +83,7 @@ public class CabRegistrationControllerTest {
 
     @Test
     public void shouldReturn400BadRequestOnMissingContent() throws Exception {
-        mockMvc.perform(post("/api/ec/registerCab")
-                .contentType(APPLICATION_JSON))
+        mockMvc.perform(post("/api/ec/registerCab"))
                 .andExpect(status().isBadRequest());
     }
 }

@@ -46,8 +46,7 @@ public class CabLocationControllerTest {
                         .section(8)
                         .build()));
 
-        mockMvc.perform(get("/api/bookr/cabLocations")
-                .contentType(APPLICATION_JSON))
+        mockMvc.perform(get("/api/bookr/cabLocations"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].cabId").value(0L))
                 .andExpect(jsonPath("$[0].section").value(11))
@@ -143,8 +142,7 @@ public class CabLocationControllerTest {
         doThrow(new IllegalArgumentException()).when(service).saveCabLocation(any(CabLocationEntity.class));
 
         mockMvc.perform(post("/api/ec/cabLocation")
-                .param("cabId", "1")
-                .contentType(APPLICATION_JSON))
+                .param("cabId", "1"))
                 .andExpect(status().isBadRequest());
 
         verifyNoMoreInteractions(service);
