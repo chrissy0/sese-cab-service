@@ -17,11 +17,11 @@ package body Roadmarker_Suite is
       --        Roadmarker_Test.test_roadmarker'Access));
       Ret.Add_Test
         (Caller.Create
-           ("-------------Test Roadmarker functions-------------",
+           ("-------------Test Roadmarke Function's get_roadmarker-------------",
             Roadmarker_Functions.Test.test_roadmarker_functions'Access));
       Ret.Add_Test
         (Caller.Create
-           ("-------------Test Roadmarker functions-------------",
+           ("-------------Test Roadmarke Function's on_roadmarker-------------",
             Roadmarker_Functions.Test.test_on_road_marker'Access));
 
 
