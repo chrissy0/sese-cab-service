@@ -1,0 +1,12 @@
+with "..\Road_Marker\roadmarker.gpr";
+with "aunit.gpr";
+
+project Road_Marker_Testing is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Main use ("test_roadmarker");
+   for Exec_Dir use ".";
+
+end Road_Marker_Testing;
+

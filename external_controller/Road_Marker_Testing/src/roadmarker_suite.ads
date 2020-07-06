@@ -1,6 +1,3 @@
---
---  Copyright (C) 2008, AdaCore
---
 with AUnit.Test_Suites; use AUnit.Test_Suites;
 
 package Roadmarker_Suite is
