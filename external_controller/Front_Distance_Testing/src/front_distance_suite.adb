@@ -16,8 +16,12 @@ package body Front_Distance_Suite is
    begin
       Ret.Add_Test
         (Caller.Create
-           ("Test Motor Controller drive_state_output",
-            Front_Distance.Test.test_front_distance'Access));
+           ("Test motor values",
+            Front_Distance.Test.check_motor_values'Access));
+      Ret.Add_Test
+        (Caller.Create
+           ("Test ouput function",
+            Front_Distance.Test.test_calculate_output'Access));
       return Ret;
    end Suite;
 

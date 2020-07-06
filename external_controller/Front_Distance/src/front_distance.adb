@@ -7,11 +7,6 @@ package body Front_Distance is
       Put_Line("[front_distance] " & Message);
    end Log_Line;
 
-   type All_Sensor_Values_Array_T is array (Sensor_Type_T, Sensor_Position_T, Sensor_Number_T) of Long_Float;
-
-   type Threshhold_Array_T is array (Sensor_Type_T) of Long_Float;
-
-
    -- Returns the Front_Distance_Done_T Signal from sensor data.
    -- It returns FD_FAULT_S when all sensor types are faulty. A sensor type
    -- is fault, when every sensor of this type at one position is faulty.
@@ -36,13 +31,14 @@ package body Front_Distance is
       -- check each type for error
       -- error: -1 for all sensors at the same position
       for typ in Sensor_Type_T loop
+         object_detected(typ) := False;
          for pos in Sensor_Position_T loop
             -- default: no error detected for (typ, num)
             is_sensor_type_fault(typ) := True;
             for num in Sensor_Number_T loop
                -- if one valid value for all nums is found, then there is no
                -- error for this sensor type for this postion
-               if all_sensor_values(typ, pos, num) /= -1.0 then
+               if all_sensor_values(typ, pos, num) >= 0.0 then
                   is_sensor_type_fault(typ) := False;
 
                   -- if one sensor detects object, there is an object
@@ -60,10 +56,11 @@ package body Front_Distance is
       end loop;
 
       for typ in Sensor_Type_T loop
-            is_front_distance_error :=
-              is_front_distance_error and is_sensor_type_fault(typ);
-            front_blocked           :=
-              front_blocked or object_detected(typ);
+         is_front_distance_error :=
+           is_front_distance_error and is_sensor_type_fault(typ);
+
+         -- only consider blocked when not faulty sensors
+         front_blocked := front_blocked or (object_detected(typ) and not is_sensor_type_fault(typ));
       end loop;
 
       case is_front_distance_error is
