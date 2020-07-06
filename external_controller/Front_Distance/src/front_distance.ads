@@ -17,6 +17,27 @@ package Front_Distance is
    -- @value US ultra sonic sensor
    type Sensor_Type_T is (IR, US);
 
+   -- Array to store all sensor values.
+   -- Only global for unit testing purposes.
+   type All_Sensor_Values_Array_T is array (Sensor_Type_T, Sensor_Position_T, Sensor_Number_T) of Long_Float;
+
+   -- Array to store all sensor threshholds.
+   -- Only global for unit testing purposes.
+   type Threshhold_Array_T is array (Sensor_Type_T) of Long_Float;
+
+   -- Returns the Front_Distance_Done_T Signal from sensor data.
+   -- It returns FD_FAULT_S when all sensor types are faulty. A sensor type
+   -- is fault, when every sensor of this type at one position is faulty.
+   -- If a sensor type is not faulty and at least one sensor detects an object,
+   -- the function returns FRONT_BLOCKED. In every other case, it returns
+   -- FRONT_CLEAR.
+   -- Global for testing purposes
+   function calculate_output
+     (
+      all_sensor_values : in All_Sensor_Values_Array_T;
+      threshholds       : in Threshhold_Array_T
+     ) return Front_Distance_Done_t;
+
    -- Acces type to getter function for front distance sensor values.
    -- The sensor is referenced by type, position and number.
    type get_sensor_value_access is access
