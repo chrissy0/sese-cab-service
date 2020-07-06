@@ -8,7 +8,7 @@ with AWS.Messages; use AWS;
 
 package ec2b is
 
-   connection : HTTP_Connection := Create("http://167.71.35.10:8081");
+   connection : HTTP_Connection := Create("http://167.71.35.10:8081", Timeouts =>  Timeouts(Each => 0.1 ));
    --connection : HTTP_Connection := Create("http://127.0.0.1:8081");
 
    function failed(status_code : Messages.Status_Code) return Boolean;
