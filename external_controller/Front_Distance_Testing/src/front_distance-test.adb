@@ -171,7 +171,7 @@ package body Front_Distance.Test is
          Assert (SPEED_STRAIGHT = Motor_Values.get(I), "Motor not driving straight even though front clear! Expected motor value SPEED_STRAIGHT, got " & Motor_Values.get(I)'Image);
       end loop;
 
-      -- all above threshold -> front blocked
+      -- all below threshold -> front blocked
       set_all_values(IR_THRESH_V - SENSOR_DELTA, US_THRESH_V - SENSOR_DELTA);
       proceed;
       proceed;
