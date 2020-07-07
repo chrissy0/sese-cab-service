@@ -138,10 +138,10 @@ package body Job_Executer is
          Motor_Controller_Task := Motor_Controller_Task_A;
          timeout               := timeout_v;
          RM_get_sensor_value   := RM_get_sensor_value_a;
+         Roadmarker_Task.Construct(get_sensor_value_a => RM_get_sensor_value, timeout_v => timeout, MC_Task => Motor_Controller_Task);
       end Constructor;
       Log_Line("Constructor done!");
 
-      Roadmarker_Task.Construct(get_sensor_value_a => RM_get_sensor_value);
       return_code := register_cab(cab_name, start_section, cab_id);
       if (not success(return_code, error_counter)) then
          retry_register := True;

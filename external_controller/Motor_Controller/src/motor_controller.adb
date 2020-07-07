@@ -31,6 +31,9 @@ package body Motor_Controller is
       Front_Distance_Next_Signal : Front_Distance_Next_t    := EMPTY_S;
       task_done_array            : Boolean_Tasks_Arrays;
       Iteration_Delay            : Duration;
+      force_left                 : Boolean := False;
+      got_force_left             : Boolean;
+      last_lean                  : Lean_State_T;
 
       --------------------------
       -- TASK LOCAL FUNCTIONS --
@@ -193,15 +196,18 @@ package body Motor_Controller is
                null;
             when NEXT_LEFT_S =>
                Lean_State := NEXT_LEFT;
+               last_lean := NEXT_LEFT;
                --Lane_Detection_Next_Signal := LEAN_LEFT_S;
                null;
             when NEXT_RIGHT_S =>
                Lean_State := NEXT_RIGHT;
+               last_lean := NEXT_RIGHT;
                --Lane_Detection_Next_Signal := LEAN_RIGHT_S;
                null;
             when NEXT_UNKOWN_S =>
-               Lean_State := NEXT_UNKOWN;
-               --Lane_Detection_Next_Signal := NO_LEAN_S;
+               --Lane_Detection_Next_Signal := NO_LEAN_S;      Motor_Controller_State     : Motor_Controller_State_T := NORMAL_DRIVING;
+               Front_Clear_State := DRIVE;
+               Lean_State := last_lean;
                null;
             when EMPTY_S =>
                -- dont change state
@@ -211,6 +217,8 @@ package body Motor_Controller is
                --Lane_Detection_Next_Signal := NO_LEAN_S;
                null;
          end case;
+
+         -- hotfix
       end handle_job_executer_done;
 
 
@@ -285,8 +293,9 @@ package body Motor_Controller is
 
           -- initialize task_done_array
          reset_all_tasks_done(all_tasks_done_array => task_done_array);
+         got_force_left := False;
 
-         while not are_all_tasks_done(task_done_array) loop
+         while not (are_all_tasks_done(task_done_array) and got_force_left) loop
             select
                accept job_executer_done (Signal : in Job_Executer_Done_T) do
                   handle_job_executer_done (Signal);
@@ -308,10 +317,20 @@ package body Motor_Controller is
                   task_done_array(FRONT_DISTANCE) := True;
                end front_distance_done;
             or
-               delay timeout;
+               accept rm_hotfix_signal
+                 (Signal : in Boolean)
+               do
+                  force_left := Signal;
+                  got_force_left := True;
+               end rm_hotfix_signal;
+
+            or
+               delay 100.0;
                Log_Line
                  ("done signals timed out, killing External_Controller");
 
+               Log_Line
+                 ("rm_hotfix_signal := " & got_force_left'Image);
                for I in Module_Tasks loop
                   Log_Line("tasks_done_array(" & I'Image & ") = " & task_done_array(I)'Image);
                end loop;
@@ -323,11 +342,17 @@ package body Motor_Controller is
 
          end loop;
 
+         if force_left then
+            Log_Line("Forcing LEFT");
+            Lean_State := NEXT_LEFT;
+         end if;
+
 
          -- Output stuff depending on State
          -- This has to be done before processing of main_shutdown_signal,
          -- because main_shutdown_signal may override those signals
          calculate_outputs;
+
 
          -- check for main task to exit
          select

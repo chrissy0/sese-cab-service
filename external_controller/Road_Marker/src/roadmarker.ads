@@ -1,4 +1,5 @@
 with Ada.Text_IO;      use Ada.Text_IO;
+with Motor_Controller; use Motor_Controller;
 
 -- @summary
 -- Detecting and parsing road markers
@@ -75,7 +76,8 @@ package Roadmarker is
    function calculate_output
      (
       all_sensor_values : All_Sensor_Values_Array_T;
-      history           : in out Road_Marker_History_T
+      history           : in out Road_Marker_History_T;
+      was_on_hotfix_rm  : in out Boolean
      ) return Road_Marker_Done_T;
 
    -- Return true if the default or backup sensor array contains an error,
@@ -93,7 +95,11 @@ package Roadmarker is
    -- with the Job Executer Task by road_marker_done and road_marker_next.
    task type Roadmarker_Task_T is
       entry Construct
-        (get_sensor_value_a   : in get_roadmarker_sensor_value_access);
+        (
+         get_sensor_value_a   : in get_roadmarker_sensor_value_access;
+         timeout_v            : in Duration;
+         MC_Task              : in Motor_Controller_Task_Access_T
+        );
       entry road_marker_done (Signal : out Road_Marker_Done_T);
       entry road_marker_next (Signal : in Road_Marker_Next_T);
    end Roadmarker_Task_T;

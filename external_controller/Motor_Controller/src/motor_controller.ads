@@ -62,7 +62,8 @@ package Motor_Controller is
          -- function to set motor values with
          set_motor_value_access : in set_motor_value_procedure_t;
          timeout_v              : in Duration;
-         iteration_delay_s      : in Duration);
+         iteration_delay_s      : in Duration
+        );
 
 
       entry lane_detection_done
@@ -87,6 +88,10 @@ package Motor_Controller is
 
       entry main_shutdown_signal
         (is_shutdown : in Boolean);
+
+
+      entry rm_hotfix_signal
+        (Signal : in Boolean);
 
    end Motor_Controller_Task_T;
 

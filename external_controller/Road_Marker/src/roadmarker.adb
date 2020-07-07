@@ -110,6 +110,28 @@ package body Roadmarker is
    end calculate_output_from_history;
 
 
+   ---------------------
+   -- is_on_hotfix_rm --
+   ---------------------
+
+   function is_on_hotfix_rm
+     (
+      sensors : All_Sensor_Values_Array_T;
+      is_backup_sensor  : Boolean
+     ) return Boolean
+   is
+      count : Integer := 0;
+   begin
+      for ID in Roadmarker_Sensor_ID_T loop
+         if 250.0 > sensors(ID, is_backup_sensor) and sensors(ID, is_backup_sensor) > 240.0 then
+            count := count + 1;
+         end if;
+      end loop;
+
+      return count >= 2;
+   end is_on_hotfix_rm;
+
+
    ----------------------
    -- calculate_output --
    ----------------------
@@ -117,20 +139,25 @@ package body Roadmarker is
    function calculate_output
      (
       all_sensor_values : All_Sensor_Values_Array_T;
-      history           : in out Road_Marker_History_T
+      history           : in out Road_Marker_History_T;
+      was_on_hotfix_rm  : in out Boolean
      ) return Road_Marker_Done_T
    is
       faulty     : Boolean;
       Output     : Road_Marker_Done_T;
       current_RM : Road_Marker_Done_T;
+      on_hotfix_rm : Boolean;
    begin
       -- check both RM sensors
       for I in Boolean loop
          current_RM := read_road_marker(all_sensor_values, I);
 
          faulty := check_error_sensor_array(all_sensor_values, I);
+         on_hotfix_rm := is_on_hotfix_rm(all_sensor_values, I);
          exit when not faulty;
       end loop;
+
+      was_on_hotfix_rm := on_hotfix_rm or (not (current_RM < 16) and was_on_hotfix_rm);
 
       history(current_RM) := history(current_RM) + 1;
 
@@ -167,13 +194,22 @@ package body Roadmarker is
       running                       : Boolean := True;
       is_on_RM                      : Boolean := True;
       history                       : Road_Marker_History_T;
+      was_on_hotfix_rm              : Boolean := False;
+      timeout                       : Duration;
+      Motor_Controller_Task         : Motor_Controller_Task_Access_T;
    begin
 
       accept Construct
-        (get_sensor_value_a   : in get_roadmarker_sensor_value_access)
+        (
+         get_sensor_value_a   : in get_roadmarker_sensor_value_access;
+         timeout_v            : in Duration;
+         MC_Task              : in Motor_Controller_Task_Access_T
+        )
       do
          get_sensor_value  := get_sensor_value_a;
          empty_history(history => history);
+         timeout := timeout_v;
+         Motor_Controller_Task := MC_Task;
       end Construct;
 
       while (running) loop
@@ -185,7 +221,7 @@ package body Roadmarker is
          -- TODO signal system error, when marker fail.
          is_on_RM := False;
 
-         Output := calculate_output(all_sensor_values, history);
+         Output := calculate_output(all_sensor_values, history, was_on_hotfix_rm);
 
          select
             accept road_marker_done(Signal : out Road_Marker_Done_T) do
@@ -196,10 +232,19 @@ package body Roadmarker is
                Signal := Output;
             end road_marker_done;
          or
-            delay 2.0;
+            delay timeout;
             Log_Line("road_marker_done timed out!");
             running := false;
             goto Continue;
+         end select;
+
+         select
+            delay timeout;
+            Log_Line("rm_hotfix_signal out, shutting Front_Distance down...");
+            running := False;
+            goto Continue;
+         then abort
+           Motor_Controller_Task.rm_hotfix_signal(Signal => was_on_hotfix_rm);
          end select;
 
          select
@@ -215,7 +260,7 @@ package body Roadmarker is
                end case;
             end road_marker_next;
          or
-            delay 2.0;
+            delay timeout;
             Log_Line("road_marker_done timed out!");
             running := false;
             goto Continue;
