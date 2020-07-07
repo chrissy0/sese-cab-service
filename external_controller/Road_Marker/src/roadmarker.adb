@@ -8,9 +8,6 @@ package body Roadmarker is
       Put_Line("[Road_Marker]" & msg);
    end Log_Line;
 
-   -- array of sensor values. Second index true => access backup sensor
-   type All_Sensor_Values_Array_T is array (Roadmarker_Sensor_ID_T, Boolean) of Long_Float;
-
    -- set all_sensor_values with new values from driver
    procedure retrieve_all_sensor_values
      (
@@ -30,7 +27,7 @@ package body Roadmarker is
    -- Return true if the default or backup sensor array contains an error,
    -- depending on the is_backup_sensor value.
    -- @param all_sensor_value array filled with sensor values to be tested
-   -- @
+   -- @is_backup_sensor True => check backup sensor array, false => check normal sensor array
    function check_error_sensor_array
      (
       all_sensor_values : All_Sensor_Values_Array_T;
@@ -54,7 +51,7 @@ package body Roadmarker is
      ) return Road_Marker_Done_T
    is
       -- initial value: not on road marker
-      Current_Marker : Road_Marker_Done_T := 17;
+      Current_Marker : Road_Marker_Done_T := RM_no_road_marker;
    begin
       if
         on_Road_Marker( sensors(FRONT_LEFT, is_backup_sensor),
@@ -73,52 +70,97 @@ package body Roadmarker is
       return Integer(Current_Marker);
    end read_road_marker;
 
-   -- check both normal and backup sensors for error. If both are in an error
-   -- state, output RM_FAULT_S. The active sensor is the normal one. In case of
-   -- an error in the normal sensor, the backup sensors are the active sensors.
-   -- If the outer active sensors detect a roadmarker, read the roadmarker ID
-   -- from the inner sensors.
-   -- Returns 17 on error, 16 when there is no road marker and else the
-   -- road marker's section ID
-   function calculate_output
+   procedure empty_history(history: in out Road_Marker_History_T)
+   is
+   begin
+      for I in Road_Marker_Done_T loop
+         history(I) := 0;
+      end loop;
+   end empty_history;
+
+   -- Returns the road marker with the history entry, prioritising road markers
+   -- with higher road marker numbers (15-0). If there is no such entry,
+   -- return no road marker.
+   function calculate_output_from_history
      (
-      all_sensor_values : All_Sensor_Values_Array_T
+      history   : in Road_Marker_History_T
      ) return Road_Marker_Done_T
    is
-      faulty : Boolean;
-      Output       : Road_Marker_Done_T;
+      max_value : Integer   := 0;
+      output    : Road_Marker_Done_T := RM_no_road_marker;
    begin
+      for I in reverse 0 .. 15 loop
+         if history(I) > max_value then
+            max_value := history(I);
+            output    := I;
+         end if;
+      end loop;
+
+      return output;
+   end calculate_output_from_history;
+
+   -- check normal and then backup sensors for error. If both are in an error
+   -- state, output RM_system_error. The active sensor is the normal one. In case of
+   -- an error in the normal sensor, the backup sensors are the active sensors.
+   -- While the outer sensors detetcts that the cab is on a roadmarker,
+   -- add each read roadmarker to the history. When the cab stops detecting
+   -- a roadmarker, it searches the history for the most oftenly read roadmarker
+   -- and returns it. Otherwise, this function returns RM_no_road_marker.
+   function calculate_output
+     (
+      all_sensor_values : All_Sensor_Values_Array_T;
+      history           : in out Road_Marker_History_T
+     ) return Road_Marker_Done_T
+   is
+      faulty     : Boolean;
+      Output     : Road_Marker_Done_T;
+      current_RM : Road_Marker_Done_T;
+   begin
+      -- check both RM sensors
       for I in Boolean loop
-         Output := read_road_marker(all_sensor_values, I);
+         current_RM := read_road_marker(all_sensor_values, I);
 
          faulty := check_error_sensor_array(all_sensor_values, I);
          exit when not faulty;
       end loop;
 
+      history(current_RM) := history(current_RM) + 1;
+
       case faulty is
          when True =>
-            -- system error
-            return 16;
+            Output := RM_system_error;
+            empty_history(history);
          when False =>
-            return Output;
+            if current_RM = RM_no_road_marker then
+               Output := calculate_output_from_history(history);
+               empty_history(history);
+            else
+               -- keep history
+               Output := RM_no_road_marker;
+            end if;
+
       end case;
+
+      return Output;
    end calculate_output;
 
 
    type Roadmarker_Sensor_Array is array (Roadmarker_Sensor_ID_T) of Long_Float;
 
    task body Roadmarker_Task_T is
-      Current_Marker                : Integer := 0;
+      Output                        : Integer := 0;
       all_sensor_values             : All_Sensor_Values_Array_T;
       get_sensor_value              : get_roadmarker_sensor_value_access;
       running                       : Boolean := True;
       is_on_RM                      : Boolean := True;
+      history                       : Road_Marker_History_T;
    begin
 
       accept Construct
         (get_sensor_value_a   : in get_roadmarker_sensor_value_access)
       do
          get_sensor_value  := get_sensor_value_a;
+         empty_history(history => history);
       end Construct;
 
       while (running) loop
@@ -130,11 +172,15 @@ package body Roadmarker is
          -- TODO signal system error, when marker fail.
          is_on_RM := False;
 
-         Current_Marker := calculate_output(all_sensor_values);
+         Output := calculate_output(all_sensor_values, history);
 
          select
             accept road_marker_done(Signal : out Road_Marker_Done_T) do
-               Signal := Current_Marker;
+               if Output < 16 then
+                  Log_Line(Output'Image);
+               end if;
+
+               Signal := Output;
             end road_marker_done;
          or
             delay 2.0;

@@ -1,5 +1,6 @@
 with Roadmarker_Test; use Roadmarker_Test;
 with Roadmarker_Functions.Test; use Roadmarker_Functions.Test;
+with Roadmarker.Test; use Roadmarker_Test;
 with AUnit.Test_Caller;
 
 package body Roadmarker_Suite is
@@ -23,6 +24,20 @@ package body Roadmarker_Suite is
         (Caller.Create
            ("-------------Test Roadmarke Function's on_roadmarker-------------",
             Roadmarker_Functions.Test.test_on_road_marker'Access));
+      Ret.Add_Test
+        (Caller.Create
+           ("test_calculate_output_from_history",
+            Roadmarker.Test.test_calculate_output_from_history'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("test_calculate_output",
+            Roadmarker.Test.test_calculate_output'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("test_check_error_sensor_array",
+            Roadmarker.Test.test_check_error_sensor_array'Access));
 
 
       return Ret;
