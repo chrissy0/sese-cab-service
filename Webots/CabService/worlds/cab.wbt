@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.09123157567064705 -0.9803281607021506 -0.17502427527342945 2.9187722441916857
-  position -0.9948656653738999 0.45312613421535813 2.0373835183902305
+  orientation 1 0 0 4.71238898038469
+  position -0.5258278389344664 1.8518332210126085 2.938402220939436
   follow "robot"
 }
 TexturedBackground {
@@ -1011,7 +1011,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation -0.5529743288829303 0.5529763600745928 0.623246770384835 2.026920806446328
+        rotation -0.5529743288829301 0.5529763600745926 0.6232467703848351 2.026920806446329
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -1029,8 +1029,6 @@ Robot {
         boundingObject USE WHEEL
         physics DEF WHEEL_PH Physics {
         }
-        linearVelocity 7.029234832641947e-07 1.1423776357713775e-05 2.577289404453685e-08
-        angularVelocity 8.345693185255614e-07 -1.1103925779611203e-12 -2.1993883497680527e-05
       }
     }
     HingeJoint {
@@ -1053,8 +1051,6 @@ Robot {
         name "solid(1)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-        linearVelocity 7.029257830286232e-07 9.8428347884265e-06 2.5773322250430233e-08
-        angularVelocity 8.34583492500612e-07 -1.1163767349806416e-12 -2.1993868597567567e-05
       }
     }
     HingeJoint {
@@ -1069,7 +1065,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6646674218173713 -0.664669863278302 0.3412201506714573 2.4839312653675574
+        rotation 0.6646674218173718 -0.6646698632783016 0.34122015067145706 2.4839312653675574
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1077,8 +1073,6 @@ Robot {
         name "solid(2)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-        linearVelocity 7.029286135714766e-07 7.988780914161354e-06 2.5772851821575634e-08
-        angularVelocity 8.345560473346626e-07 -1.105777729356949e-12 -2.1993897932861256e-05
       }
     }
     HingeJoint {
@@ -1093,7 +1087,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6818304356849959 0.6818329401926029 -0.2649737697243243 3.6596332771084583
+        rotation -0.6818304356849957 0.681832940192603 -0.26497376972432446 3.6596332771084583
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1101,8 +1095,6 @@ Robot {
         name "solid(3)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-        linearVelocity 7.029260588249928e-07 9.569722458393478e-06 2.5772663360938232e-08
-        angularVelocity 8.345531142554003e-07 -1.1046585856107044e-12 -2.1993900876229146e-05
       }
     }
   ]
@@ -1111,8 +1103,6 @@ Robot {
   }
   controller "WC2EC_Controller"
   controllerArgs "27015"
-  linearVelocity 7.011804460480697e-07 -1.0372216955975676e-07 2.3907021536101393e-08
-  angularVelocity 8.346260257595644e-07 -1.1151421849536999e-12 -2.1993943268317287e-05
 }
 DEF dummy Robot {
   translation 1.1747778863499385 0.044721004222592044 1.221037327481326
@@ -1140,7 +1130,7 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319259089531 -0.6355342603523219 -0.4384009295940007 3.9679227150267162
+        rotation 0.6355319259089531 -0.635534260352322 -0.43840092959400073 3.9679227150267162
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -1157,8 +1147,6 @@ DEF dummy Robot {
         boundingObject USE WHEEL
         physics DEF WHEEL_PH Physics {
         }
-        linearVelocity 2.2281463284551595e-13 2.4282183104991773e-05 -4.746559234534049e-13
-        angularVelocity -1.2458505244164804e-11 -2.253444114559451e-12 -7.214763037193233e-12
       }
     }
     HingeJoint {
@@ -1173,15 +1161,13 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.4988647108820855 0.49886654332295255 0.708707395325844 1.908504159675938
+        rotation -0.4988647108820855 0.49886654332295255 0.7087073953258439 1.9085041596759382
         children [
           USE WHEEL
         ]
         name "solid(1)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-        linearVelocity -1.9255999900330152e-13 2.4282183105769244e-05 2.4257402541373e-13
-        angularVelocity 1.1999384619024027e-11 -2.253790841725814e-12 6.9478361965345396e-12
       }
     }
     HingeJoint {
@@ -1196,15 +1182,13 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.636131770157175 -0.6361341067956503 0.4366574964065077 2.318189203137658
+        rotation 0.6361317701571749 -0.6361341067956503 0.43665749640650764 2.318189203137658
         children [
           USE WHEEL
         ]
         name "solid(2)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-        linearVelocity 2.6569988673892624e-13 2.4282432518576932e-05 -3.683368732170053e-13
-        angularVelocity -1.2605908886075435e-11 -2.253791072068399e-12 -7.309537409518884e-12
       }
     }
     HingeJoint {
@@ -1219,15 +1203,13 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6381028774599441 0.6381052213469717 -0.43086708422328085 3.9552491966726837
+        rotation -0.6381028774599442 0.6381052213469717 -0.43086708422328085 3.9552491966726837
         children [
           USE WHEEL
         ]
         name "solid(3)"
         boundingObject USE WHEEL
         physics USE WHEEL_PH
-        linearVelocity 3.1114292905752946e-13 2.4282432517304712e-05 -4.468619506939376e-13
-        angularVelocity -1.3116325468462212e-11 -2.2537914087109904e-12 -7.603587761001418e-12
       }
     }
   ]
@@ -1236,8 +1218,6 @@ DEF dummy Robot {
   physics Physics {
   }
   controller ""
-  linearVelocity 1.517744603146969e-13 -2.426969068096263e-07 -2.618201007972576e-13
-  angularVelocity -7.62179215623623e-14 -2.2549360414842073e-12 -5.182944012666117e-14
 }
 DEF floor Solid {
   translation -0.37 0 0.25
@@ -6812,7 +6792,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -2.10996 -0.0299 4.58783
+  translation -2.10996 0.0201 4.58783
   rotation 0 1 0 1.57079
   children [
     Shape {
