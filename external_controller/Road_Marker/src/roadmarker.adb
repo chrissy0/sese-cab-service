@@ -24,10 +24,10 @@ package body Roadmarker is
    end retrieve_all_sensor_values;
 
 
-   -- Return true if the default or backup sensor array contains an error,
-   -- depending on the is_backup_sensor value.
-   -- @param all_sensor_value array filled with sensor values to be tested
-   -- @is_backup_sensor True => check backup sensor array, false => check normal sensor array
+   ------------------------------
+   -- check_error_sensor_array --
+   ------------------------------
+
    function check_error_sensor_array
      (
       all_sensor_values : All_Sensor_Values_Array_T;
@@ -43,6 +43,11 @@ package body Roadmarker is
 
       return is_error;
    end check_error_sensor_array;
+
+
+   ----------------------
+   -- read_road_marker --
+   ----------------------
 
    function read_road_marker
      (
@@ -69,6 +74,11 @@ package body Roadmarker is
 
       return Integer(Current_Marker);
    end read_road_marker;
+
+
+   -------------------
+   -- empty_history --
+   -------------------
 
    procedure empty_history(history: in out Road_Marker_History_T)
    is
@@ -99,13 +109,11 @@ package body Roadmarker is
       return output;
    end calculate_output_from_history;
 
-   -- check normal and then backup sensors for error. If both are in an error
-   -- state, output RM_system_error. The active sensor is the normal one. In case of
-   -- an error in the normal sensor, the backup sensors are the active sensors.
-   -- While the outer sensors detetcts that the cab is on a roadmarker,
-   -- add each read roadmarker to the history. When the cab stops detecting
-   -- a roadmarker, it searches the history for the most oftenly read roadmarker
-   -- and returns it. Otherwise, this function returns RM_no_road_marker.
+
+   ----------------------
+   -- calculate_output --
+   ----------------------
+
    function calculate_output
      (
       all_sensor_values : All_Sensor_Values_Array_T;
@@ -146,6 +154,11 @@ package body Roadmarker is
 
 
    type Roadmarker_Sensor_Array is array (Roadmarker_Sensor_ID_T) of Long_Float;
+
+
+   ------------------------
+   -- Roadmarkeer_Task_T --
+   ------------------------
 
    task body Roadmarker_Task_T is
       Output                        : Integer := 0;

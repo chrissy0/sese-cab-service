@@ -7,12 +7,11 @@ package body Front_Distance is
       Put_Line("[front_distance] " & Message);
    end Log_Line;
 
-   -- Returns the Front_Distance_Done_T Signal from sensor data.
-   -- It returns FD_FAULT_S when all sensor types are faulty. A sensor type
-   -- is fault, when every sensor of this type at one position is faulty.
-   -- If a sensor type is not faulty and at least one sensor detects an object,
-   -- the function returns FRONT_BLOCKED. In every other case, it returns
-   -- FRONT_CLEAR.
+
+   ----------------------
+   -- calculate_output --
+   ----------------------
+
    function calculate_output
      (
       all_sensor_values : in All_Sensor_Values_Array_T;
@@ -76,6 +75,11 @@ package body Front_Distance is
       end case;
       return Output;
    end calculate_output;
+
+
+   --------------------------------
+   -- retrieve_all_sensor_values --
+   --------------------------------
 
    procedure retrieve_all_sensor_values
      (

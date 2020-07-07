@@ -25,21 +25,13 @@ package Front_Distance is
    -- Only global for unit testing purposes.
    type Threshhold_Array_T is array (Sensor_Type_T) of Long_Float;
 
-   -- Returns the Front_Distance_Done_T Signal from sensor data.
-   -- It returns FD_FAULT_S when all sensor types are faulty. A sensor type
-   -- is fault, when every sensor of this type at one position is faulty.
-   -- If a sensor type is not faulty and at least one sensor detects an object,
-   -- the function returns FRONT_BLOCKED. In every other case, it returns
-   -- FRONT_CLEAR.
-   -- Global for testing purposes
-   function calculate_output
-     (
-      all_sensor_values : in All_Sensor_Values_Array_T;
-      threshholds       : in Threshhold_Array_T
-     ) return Front_Distance_Done_t;
-
    -- Acces type to getter function for front distance sensor values.
    -- The sensor is referenced by type, position and number.
+   -- Should only be used by Front_Distance_Task
+   -- @param typ sensor type
+   -- @param pos sesnor position
+   -- @param num sensor number
+   -- @return sensor value
    type get_sensor_value_access is access
      function
        (
@@ -47,6 +39,22 @@ package Front_Distance is
         pos : in Sensor_Position_T;
         num : in Sensor_Number_T
        ) return Long_Float;
+
+   -- Returns the Front_Distance_Done_T Signal from sensor data.
+   -- It returns FD_FAULT_S when all sensor types are faulty. A sensor type
+   -- is fault, when every sensor of this type at one position is faulty.
+   -- If a sensor type is not faulty and at least one sensor detects an object,
+   -- the function returns FRONT_BLOCKED. In every other case, it returns
+   -- FRONT_CLEAR.
+   -- Should only be used by Front_Distance_Task
+   -- @param all_sensor_values array containing all sensor values
+   -- @param threshholds array with threshholds for each sensor type
+   -- @return Done Signal value
+   function calculate_output
+     (
+      all_sensor_values : in All_Sensor_Values_Array_T;
+      threshholds       : in Threshhold_Array_T
+     ) return Front_Distance_Done_t;
 
    -- Task to fetch and evaluate front distance sensor values. Communicates
    -- with the External Controller Task by calling the entries

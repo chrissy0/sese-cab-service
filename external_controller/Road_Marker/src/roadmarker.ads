@@ -40,11 +40,19 @@ package Roadmarker is
    -- Global for testing purposes.
    type All_Sensor_Values_Array_T is array (Roadmarker_Sensor_ID_T, Boolean) of Long_Float;
 
+   -- Acces type to getter function for road marker sensor values.
+   -- The sensor is referenced by ID and a Boolean. The boolean indicates
+   -- whether the normal sensor (False) or the default sensor (True) is read.
+   type get_roadmarker_sensor_value_access is access
+     function (ID : in Roadmarker_Sensor_ID_T; is_backup_sensor : Boolean) return Long_Float;
+
 
    -- Returns the road marker with the history entry, prioritising road markers
    -- with higher road marker numbers (15-0). If there is no such entry,
    -- return no road marker.
-   -- Global for testing purposes.
+   -- Should only be used in Roadmarker_Task.
+   -- @param history history of last read roadmarkers
+   -- @retrn Output calculated from history
    function calculate_output_from_history
      (
       history   : in Road_Marker_History_T
@@ -61,18 +69,14 @@ package Roadmarker is
    -- add each read roadmarker to the history. When the cab stops detecting
    -- a roadmarker, it searches the history for the most oftenly read roadmarker
    -- and returns it. Otherwise, this function returns RM_no_road_marker.
-   -- Global for testing purposes.
+   -- Should only be used in Roadmarker_Task.
+   -- @param all_sensor_values array with current sensor values
+   -- @param history history of previously read road markers
    function calculate_output
      (
       all_sensor_values : All_Sensor_Values_Array_T;
       history           : in out Road_Marker_History_T
      ) return Road_Marker_Done_T;
-
-   -- Acces type to getter function for road marker sensor values.
-   -- The sensor is referenced by ID and a Boolean. The boolean indicates
-   -- whether the normal sensor (False) or the default sensor (True) is read.
-   type get_roadmarker_sensor_value_access is access
-     function (ID : in Roadmarker_Sensor_ID_T; is_backup_sensor : Boolean) return Long_Float;
 
    -- Return true if the default or backup sensor array contains an error,
    -- depending on the is_backup_sensor value.
