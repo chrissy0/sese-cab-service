@@ -24,6 +24,7 @@ procedure External_Controller is
 begin
    Log_Line ("Setting up WC2EC_Driver...");
    WC2EC_Driver := new wc2ec_thread_t;
+   WC2EC_Driver.Constructor("127.0.0.1", 27015);
    while WC2EC.ready /= True loop
       delay 1.0;
    end loop;

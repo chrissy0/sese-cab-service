@@ -1,6 +1,6 @@
 with WC2EC;
 with Ada.Text_IO; use Ada.Text_IO;
-
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body WC2EC is
 
    function get_ring_index(sensor_name : String) return Standard.Integer is
@@ -86,16 +86,27 @@ package body WC2EC is
    function get_Stream(ip : String; port : Port_Type) return Stream_Access is
       Client  : Socket_Type; -- stores the socket
       Address : Sock_Addr_Type; -- stores the server address
+      status : Selector_Status := Expired;
+      Selector :  Selector_Access := null;
    begin
+
       GNAT.Sockets.Initialize;  -- initialize a new packet
-      Create_Socket(Client); -- create a socket + store it as variable Client
+
 
       -- Set the server address:
       Address.Addr := Inet_Addr(ip); -- localhost
       Address.Port := port;
 
-      Connect_Socket(Client, Address); -- bind the address to the socket + connect
+      while (status /= Completed) loop
+         Create_Socket(Client); -- create a socket + store it as variable Client
+         -- bind the address to the socket + connect
+         Connect_Socket(Client, Address, Selector => Selector,Timeout => 1.0, Status => status);
+         if (status /= Completed) then
+            Close_Socket(Client);
+         end if;
 
+      end loop;
+      Put_Line("Left loop");
       return Stream (Client); -- create a stream to access the socket
    end;
 
@@ -103,16 +114,32 @@ Task body wc2ec_thread_t is
 
    -- Define variables
 
-   ip : String := "127.0.0.1";
-   port : Port_Type := 27015;
-   hdr : wc2ec_header_t;
+      ip : Ada.Strings.Unbounded.Unbounded_String;
+      port : Port_Type;
+      hdr : wc2ec_header_t;
+      running : Boolean := true;
 
    begin
+      -- accept constructor call
+      -- on timeout, close motor controller this is needed so that test cases
+      -- termintate if an assert fails
+      select
+                 -- static, longer timeout for constructor
+         delay 2.0;
+         running := False;
+      or
+         accept Constructor(ip_arg :String; port_arg : Port_Type)
+         do
+            ip := To_Unbounded_String(ip_arg);
+            port := port_arg;
+
+         end Constructor;
+      end select;
 
    -- TODO check return value!
-   Channel := get_Stream(ip, port);
+   Channel := get_Stream(To_String(ip), port);
 
-   while TRUE loop
+   while running loop
       wc2ec_header_t'Read (Channel, hdr);
 
 

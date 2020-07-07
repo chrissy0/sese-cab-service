@@ -46,7 +46,11 @@ package WC2EC is
 
 
    -- Thread definition
-   Task Type wc2ec_thread_t; -- Thread type
+   Task Type wc2ec_thread_t is
+       entry Constructor
+        ( ip_arg :String; port_arg : Port_Type);
+
+      end wc2ec_thread_t; -- Thread type
    type wc2ec_thread_access_t is access wc2ec_thread_t;
 
    -- Variables (maybe hide those)
