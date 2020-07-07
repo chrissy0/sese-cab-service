@@ -2,24 +2,28 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 1 0 0 4.71238898038469
-  position -0.5258278389344664 1.8518332210126085 2.938402220939436
+  orientation 0.9991006743607412 0.029982015375157274 0.029982015375157274 4.711489250230901
+  position -0.2615858959613207 2.603192168163539 3.083772469539973
   follow "robot"
+  followSmoothness 0.2
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+  castShadows FALSE
 }
 Robot {
-  translation -0.5227821813089812 0.03687956730987829 2.9355119058194363
-  rotation -1.6039513270298551e-06 0.9999999999980395 -1.1611263521718919e-06 -2.3869227674459803
+  translation -0.51627 0.0368798 2.92385
+  rotation -1.6423299999961082e-06 0.9999999999976303 1.4290999999966136e-06 -2.3869253071795864
   children [
     Solid {
       translation 0 0.025 0
+      rotation 0 0 1 -5.307179586466759e-06
       children [
         Shape {
           appearance PBRAppearance {
             baseColor 1 0.7 0
+            transparency 0.8
             metalness 0
           }
           geometry Box {
@@ -387,7 +391,7 @@ Robot {
       }
     }
     DistanceSensor {
-      translation -0.0149993 -0.01 0.05
+      translation -0.0149993 -0.00999998 0.05
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -403,7 +407,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.015 -0.01 0.06
+      translation -0.015 -0.00999854 0.04
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -419,7 +423,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 7.15325e-07 -0.01 0.05
+      translation 7.15325e-07 -0.00999998 0.05
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -435,7 +439,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 7.5516e-07 -0.00999928 0.06
+      translation 8.3483e-07 -0.00999782 0.04
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -974,7 +978,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.015 -0.01 0.06
+      translation 0.015 -0.00999854 0.04
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -992,6 +996,7 @@ Robot {
     DEF BODY Shape {
       appearance PBRAppearance {
         baseColor 1 0.7 0
+        transparency 0.8
         roughness 1
         metalness 0
       }
@@ -1043,7 +1048,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation 0.2490855854908934 -0.24908650043500716 -0.9359018572487715 4.646189051619331
+        rotation 0.24908558549089357 -0.2490865004350072 -0.9359018572487715 4.646189051619331
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -2875,6 +2880,24 @@ DEF road_marker Solid {
   name "road marker(104)"
 }
 DEF road_marker Solid {
+  translation -0.280475 0.0001 3.10034
+  rotation 0 1 0 -0.785395307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(56)"
+}
+DEF road_marker Solid {
   translation -0.733017 0.0001 2.78929
   rotation 0 1 0 -0.785395307179586
   children [
@@ -2924,6 +2947,24 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(107)"
+}
+DEF road_marker Solid {
+  translation -0.351183 0.0001 3.17107
+  rotation 0 1 0 -0.785395307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(57)"
 }
 DEF road_marker Solid {
   translation -0.938076 0.0001 2.58426
