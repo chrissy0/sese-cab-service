@@ -3,7 +3,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 1 0 0 4.71238898038469
-  position -0.4029265698186648 2.726242148817044 2.9735066747584593
+  position -0.5104424062750517 2.26018683607874 2.956715366207877
   follow "robot"
   followSmoothness 0.2
 }
@@ -13,8 +13,8 @@ TexturedBackgroundLight {
   castShadows FALSE
 }
 Robot {
-  translation -0.496141 0.0368794 2.9599
-  rotation -1.6423299999961082e-06 0.9999999999976303 1.4290999999966136e-06 -2.3869253071795864
+  translation -0.506729 0.0368796 2.95311
+  rotation -1.8816599999947474e-06 0.9999999999972085 1.4290999999960107e-06 -2.3869253071795864
   children [
     Solid {
       translation 0 0.025 0
@@ -23,7 +23,6 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0.7 0
-            transparency 0.8
             metalness 0
           }
           geometry Box {
@@ -35,6 +34,187 @@ Robot {
       boundingObject Box {
         size 0.1 0.03 0.2
       }
+    }
+    Solid {
+      translation 0.05 -0.01 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    Solid {
+      translation 0.05 -0.01 -0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(13)"
+    }
+    Solid {
+      translation 0.05 -0.01 -0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(14)"
+    }
+    Solid {
+      translation 0.05 -0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(15)"
+    }
+    Solid {
+      translation 0.05 -0.01 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(16)"
+    }
+    Solid {
+      translation 0.05 -0.01 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(6)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(7)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(8)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(9)"
+    }
+    Solid {
+      translation -0.05 -0.01 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(10)"
+    }
+    Solid {
+      translation -0.05 -0.01 -0.09
+      rotation 0 1 0 4.692820414042842e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(11)"
+    }
+    Solid {
+      translation -0.05 -0.01 -0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(12)"
     }
     DEF curb-sensor-slider-joint-lf SliderJoint {
       jointParameters JointParameters {
@@ -52,10 +232,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.02 0.1
+        translation 0.055 -0.02 0.1
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -81,10 +262,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.02 0.09
+        translation 0.055 -0.02 0.09
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -110,10 +292,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.02 0.01
+        translation 0.055 -0.02 0.01
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -139,10 +322,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.02 0
+        translation 0.055 -0.02 0
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -168,10 +352,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.02 -0.09
+        translation 0.055 -0.02 -0.09
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -197,10 +382,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.02 -0.1
+        translation 0.055 -0.02 -0.1
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -226,11 +412,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.05 -0.02 -0.1
+        translation -0.055 -0.02 -0.1
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -256,11 +443,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499999 -0.02 -0.09
+        translation -0.055 -0.02 -0.09
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -286,11 +474,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499991 -0.02 -2.69848e-13
+        translation -0.055 -0.02 -2.69848e-13
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -316,11 +505,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.049999 -0.02 0.01
+        translation -0.055 -0.02 0.01
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -346,11 +536,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499982 -0.02 0.09
+        translation -0.055 -0.02 0.09
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -376,11 +567,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499983 -0.02 0.1
+        translation -0.055 -0.02 0.1
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -463,7 +655,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -479,7 +671,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -495,7 +687,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -511,7 +703,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -527,7 +719,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -543,7 +735,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -559,7 +751,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -575,7 +767,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -591,7 +783,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -607,7 +799,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -623,7 +815,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -639,7 +831,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -655,7 +847,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -671,7 +863,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -687,7 +879,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -703,7 +895,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -716,6 +908,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -731,6 +924,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -747,6 +941,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -762,6 +957,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -776,6 +972,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -790,6 +987,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -804,6 +1002,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -818,6 +1017,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -832,6 +1032,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -847,6 +1048,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -863,6 +1065,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -893,6 +1096,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -907,6 +1111,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -922,6 +1127,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -938,6 +1144,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -953,6 +1160,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -996,7 +1204,6 @@ Robot {
     DEF BODY Shape {
       appearance PBRAppearance {
         baseColor 1 0.7 0
-        transparency 0.8
         roughness 1
         metalness 0
       }
