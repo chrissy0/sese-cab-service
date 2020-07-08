@@ -3,7 +3,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 1 0 0 4.71238898038469
-  position -0.4991866345540994 2.3398544078026053 2.962790387568455
+  position -0.4029265698186648 2.726242148817044 2.9735066747584593
   follow "robot"
   followSmoothness 0.2
 }
@@ -3599,7 +3599,7 @@ DEF road_marker Solid {
   name "road marker(11)"
 }
 DEF road_marker Solid {
-  translation -1.93323 0.0001 4.64987
+  translation -0.48323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3616,7 +3616,7 @@ DEF road_marker Solid {
   name "road marker(36)"
 }
 DEF road_marker Solid {
-  translation -1.93323 0.0001 4.54987
+  translation -0.48323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3633,7 +3633,7 @@ DEF road_marker Solid {
   name "road marker(37)"
 }
 DEF road_marker Solid {
-  translation -1.78323 0.0001 4.54987
+  translation -0.33323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3650,7 +3650,7 @@ DEF road_marker Solid {
   name "road marker(42)"
 }
 DEF road_marker Solid {
-  translation -1.82323 0.0001 4.54987
+  translation -0.37323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3667,7 +3667,7 @@ DEF road_marker Solid {
   name "road marker(44)"
 }
 DEF road_marker Solid {
-  translation -1.82323 0.0001 4.64987
+  translation -0.37323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3684,7 +3684,7 @@ DEF road_marker Solid {
   name "road marker(52)"
 }
 DEF road_marker Solid {
-  translation -1.78323 0.0001 4.64987
+  translation -0.33323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3701,7 +3701,7 @@ DEF road_marker Solid {
   name "road marker(53)"
 }
 DEF road_marker Solid {
-  translation -1.89323 0.0001 4.64987
+  translation -0.44323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3718,7 +3718,7 @@ DEF road_marker Solid {
   name "road marker(54)"
 }
 DEF road_marker Solid {
-  translation -1.89323 0.0001 4.54987
+  translation -0.44323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
