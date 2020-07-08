@@ -57,7 +57,7 @@ package body ec2b is
       end if;
 
       version := GNATCOLL.JSON.Get(response_json, "version");
-      if (version = cab_version and version /= 0) then
+      if (version = cab_version) then
          return status_code;
       end if;
       cab_version := version;

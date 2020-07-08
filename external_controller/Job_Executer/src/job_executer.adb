@@ -105,8 +105,8 @@ package body Job_Executer is
       current_command         : Command_t;
       error_counter           : Integer := 0;
       retry_location_update   : Boolean := False;
-      cab_version             : Integer := 0;
-      cab_version_old         : Integer := 0;
+      cab_version             : Integer := -1;
+      cab_version_old         : Integer := -1;
       return_code             : AWS.Messages.Status_Code;
       cab_name                : String := "Dieter3";   -- TODO Move into constructor
       start_section           : Integer := 0;         -- TODO Move into constructor
