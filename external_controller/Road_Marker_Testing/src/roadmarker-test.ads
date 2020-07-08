@@ -11,4 +11,6 @@ package Roadmarker.Test is
 
    procedure test_check_error_sensor_array(T : in out Roadmarker_Functions.Test.Test);
 
+   procedure test_calculate_output_was_on_hotfix_rm(T : in out Roadmarker_Functions.Test.Test);
+
 end Roadmarker.Test;

@@ -159,14 +159,17 @@ package body Roadmarker is
 
       was_on_hotfix_rm := on_hotfix_rm or (not (current_RM < 16) and was_on_hotfix_rm);
 
-      history(current_RM) := history(current_RM) + 1;
+      if not on_hotfix_rm then
+         history(current_RM) := history(current_RM) + 1;
+      end if;
+
 
       case faulty is
          when True =>
             Output := RM_system_error;
             empty_history(history);
          when False =>
-            if current_RM = RM_no_road_marker then
+            if current_RM = RM_no_road_marker and not was_on_hotfix_rm then
                Output := calculate_output_from_history(history);
                empty_history(history);
             else
