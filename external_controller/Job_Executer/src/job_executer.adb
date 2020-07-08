@@ -115,8 +115,8 @@ package body Job_Executer is
       retry_register          : Boolean := False;
       pickup_completed        : Boolean;
       dropoff_completed       : Boolean;
-      next_command_old            : Command_t;
-      current_command_old         : Command_t;
+      next_command_old        : Command_t;
+      current_command_old     : Command_t;
 
    begin
       -- TODO INIT Correctly
@@ -134,7 +134,7 @@ package body Job_Executer is
         (Motor_Controller_Task_A : in Motor_Controller_Task_Access_T;
          timeout_v               : in Duration;
          RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access;
-         cab_name_arg            : in String;
+         cab_name_arg            : in Ada.Strings.Unbounded.Unbounded_String;
          start_section_arg       : in Integer
         )
       do
@@ -142,7 +142,7 @@ package body Job_Executer is
          timeout               := timeout_v;
          RM_get_sensor_value   := RM_get_sensor_value_a;
          Roadmarker_Task.Construct(get_sensor_value_a => RM_get_sensor_value, timeout_v => timeout, MC_Task => Motor_Controller_Task);
-         cab_name := To_Unbounded_String(cab_name_arg);
+         cab_name := cab_name_arg;
          start_section := start_section_arg;
       end Constructor;
       Log_Line("Constructor done!");
@@ -197,6 +197,8 @@ package body Job_Executer is
             if (cab_version_old /= cab_version) then
                Put_Line("Received new Route\n");
                cmd_queue.Dequeue(next_command);
+               Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+               Process_Section(section, current_command, next_command, cab_id, cmd_queue, error_counter, retry_location_update);
                current_command.action := NEXT_UNKOWN_S; -- TODO Init correct.
             end if;
          end if;

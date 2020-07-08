@@ -12,6 +12,8 @@ use Ada.Containers;
 with Ada.Strings.Fixed;
 with Ring_Buffer;
 with distance_sensor_p; use distance_sensor_p;
+with Ada.Strings.Unbounded;
+
 package WC2EC is
    type RingIndex is mod 2**4;
    --package distance_sensor_Ring is new Ring_Buffer(distance_sensor_t, RingIndex, distance_sensor_p.print_Distance_Sensor);
@@ -48,7 +50,7 @@ package WC2EC is
    -- Thread definition
    Task Type wc2ec_thread_t is
        entry Constructor
-        ( ip_arg :String; port_arg : Port_Type);
+        (ip_arg : Ada.Strings.Unbounded.Unbounded_String ; port_arg : Port_Type);
 
       end wc2ec_thread_t; -- Thread type
    type wc2ec_thread_access_t is access wc2ec_thread_t;

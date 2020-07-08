@@ -5,8 +5,10 @@ with Ada.Text_IO;      use Ada.Text_IO;
 with Front_Distance;   use Front_Distance;
 with Job_Executer;     use Job_Executer;
 with WC2EC_Interface;
-
-
+with Ada.Command_Line; use Ada.Command_Line;
+with Ada.Strings;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with GNAT.Sockets; use GNAT.Sockets;
 
 procedure External_Controller is
    Lane_Detection_Task   : Lane_Detection_Taks_T;
@@ -15,6 +17,10 @@ procedure External_Controller is
    Job_Executer_Task     : Job_Executer_Task_T;
    WC2EC_Driver          : wc2ec_thread_access_t;
    --job_execute_next_v    : Job_Executer_Next_t;
+   ip                    : Ada.Strings.Unbounded.Unbounded_String := To_Unbounded_String("127.0.0.1");
+   port                  : Port_Type := 27015;
+   cab_name              : Ada.Strings.Unbounded.Unbounded_String := To_Unbounded_String("default");
+   start_section         : Integer := 0;
 
    procedure Log_Line(message : String) is
    begin
@@ -22,9 +28,16 @@ procedure External_Controller is
    end Log_Line;
 
 begin
+   Put_Line("Command line arguments: " & Ada.Command_Line.Argument_Count'Image);
+   if (Ada.Command_Line.Argument_Count = 4) then
+      ip := To_Unbounded_String(Argument(1));
+      port := Port_Type'Value(Argument(2));
+      cab_name := To_Unbounded_String(Argument(3));
+      start_section := Integer'Value(Argument(4));
+   end if;
    Log_Line ("Setting up WC2EC_Driver...");
    WC2EC_Driver := new wc2ec_thread_t;
-   WC2EC_Driver.Constructor("127.0.0.1", 27015);
+   WC2EC_Driver.Constructor(ip, port);
    while WC2EC.ready /= True loop
       delay 1.0;
    end loop;
@@ -62,8 +75,8 @@ begin
    Job_Executer_Task.Constructor(Motor_Controller_Task_A => Motor_Controller_Task,
                                  timeout_v               => 1.5,
                                  RM_get_sensor_value_a   => WC2EC_Interface.get_rm_sensor_value'Access,
-                                 cab_name_arg => "jürgen2",
-                                 start_section_arg => 1);
+                                 cab_name_arg => cab_name,
+                                 start_section_arg => start_section);
 
    loop
       -- Motor_Controller_Task.job_executer_done(NEXT_LEFT_S);

@@ -1,5 +1,7 @@
 with Motor_Controller; use Motor_Controller;
 with Roadmarker; use Roadmarker;
+with Ada.Strings.Unbounded;
+
 package Job_Executer is
    
    type Intersection_Option_T is (Left, Right);
@@ -10,7 +12,7 @@ package Job_Executer is
         (Motor_Controller_Task_A : in Motor_Controller_Task_Access_T;
          timeout_v               : in Duration;
          RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access;
-         cab_name_arg            : in String;
+         cab_name_arg            : in Ada.Strings.Unbounded.Unbounded_String;
          start_section_arg         : in Integer 
         );
    end Job_Executer_Task_T;

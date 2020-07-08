@@ -128,9 +128,9 @@ Task body wc2ec_thread_t is
          delay 2.0;
          running := False;
       or
-         accept Constructor(ip_arg :String; port_arg : Port_Type)
+         accept Constructor(ip_arg :Ada.Strings.Unbounded.Unbounded_String ; port_arg : Port_Type)
          do
-            ip := To_Unbounded_String(ip_arg);
+            ip := ip_arg;
             port := port_arg;
 
          end Constructor;
