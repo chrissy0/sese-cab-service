@@ -3,6 +3,8 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Roadmarker; use Roadmarker;
 with ec2b; use ec2b;
 with AWS.Messages;
+with Ada;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 package body Job_Executer is
 
    procedure Log_Line(Message : String) is
@@ -108,8 +110,8 @@ package body Job_Executer is
       cab_version             : Integer := -1;
       cab_version_old         : Integer := -1;
       return_code             : AWS.Messages.Status_Code;
-      cab_name                : String := "Dieter3";   -- TODO Move into constructor
-      start_section           : Integer := 0;         -- TODO Move into constructor
+      cab_name                : Ada.Strings.Unbounded.Unbounded_String;
+      start_section           : Integer := 0;
       retry_register          : Boolean := False;
       pickup_completed        : Boolean;
       dropoff_completed       : Boolean;
@@ -131,30 +133,33 @@ package body Job_Executer is
       accept Constructor
         (Motor_Controller_Task_A : in Motor_Controller_Task_Access_T;
          timeout_v               : in Duration;
-         RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access
+         RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access;
+         cab_name_arg            : in String;
+         start_section_arg       : in Integer
         )
       do
-         null;
          Motor_Controller_Task := Motor_Controller_Task_A;
          timeout               := timeout_v;
          RM_get_sensor_value   := RM_get_sensor_value_a;
          Roadmarker_Task.Construct(get_sensor_value_a => RM_get_sensor_value, timeout_v => timeout, MC_Task => Motor_Controller_Task);
+         cab_name := To_Unbounded_String(cab_name_arg);
+         start_section := start_section_arg;
       end Constructor;
       Log_Line("Constructor done!");
 
-      return_code := register_cab(cab_name, start_section, cab_id);
+      return_code := register_cab(To_String(cab_name), start_section, cab_id);
       if (not success(return_code, error_counter)) then
          retry_register := True;
       end if;
 
       -- Todo for testing only
       if retry_register then
-         cab_id := 1;
+         cab_id := 5;
          retry_register := False;
       end if;
 
       Put_Line("Register cab returned: " & cab_id'Image);
-      return_code := update_cabLocation(cab_id, 1); -- TODO just for testing
+      -- return_code := update_cabLocation(cab_id, 1); -- TODO just for testing
       return_code := request_route(cmd_queue, cab_id, cab_version);
       if (success(return_code, error_counter)) then
          cmd_queue.Dequeue(next_command);
@@ -164,15 +169,14 @@ package body Job_Executer is
 
       -- main loop
       while running loop
-         if (current_command.action /= current_command_old.action) then
+         if (current_command.action /= current_command_old.action) then -- TODO Testing only
             Put_Line("Current Action: " & current_command.action'Image);
          end if;
          current_command_old := current_command;
-         if (next_command.action /= next_command_old.action) then
+         if (next_command.action /= next_command_old.action) then -- TODO Testing only
             Put_Line("Next Action: " & Next_command.action'Image);
          end if;
          Next_command_old := Next_command;
-
          select
             delay timeout;
             Log_Line("road_marker_done timed out, shutting down...");

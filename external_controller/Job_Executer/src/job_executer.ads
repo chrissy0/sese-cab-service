@@ -9,7 +9,9 @@ package Job_Executer is
       entry Constructor
         (Motor_Controller_Task_A : in Motor_Controller_Task_Access_T;
          timeout_v               : in Duration;
-         RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access
+         RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access;
+         cab_name_arg            : in String;
+         start_section_arg         : in Integer 
         );
    end Job_Executer_Task_T;
    
