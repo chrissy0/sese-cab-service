@@ -39,6 +39,11 @@ package body Roadmarker_Suite is
            ("test_check_error_sensor_array",
             Roadmarker.Test.test_check_error_sensor_array'Access));
 
+      Ret.Add_Test
+        (Caller.Create
+           ("test_calculate_output_was_on_hotfix_rm",
+            Roadmarker.Test.test_calculate_output_was_on_hotfix_rm'Access));
+
 
       return Ret;
    end Suite;

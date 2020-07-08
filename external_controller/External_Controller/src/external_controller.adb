@@ -38,11 +38,11 @@ begin
                                      D_State        => INIT,
                                      SE_State       => STOP,
                                      LE_STATE       => NEXT_UNKOWN,
-                                     MS_Speed       => 2.0,
-                                     MT_Speed       => 1.0,
+                                     MS_Speed       => 3.0,
+                                     MT_Speed       => 1.5,
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
                                      timeout_v      => 1.3,
-                                     iteration_delay_s => 0.1);
+                                     iteration_delay_s => 0.01);
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
