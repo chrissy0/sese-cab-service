@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.9991006743607412 0.029982015375157274 0.029982015375157274 4.711489250230901
-  position -0.2615858959613207 2.603192168163539 3.083772469539973
+  orientation 1 0 0 4.71238898038469
+  position -0.4991866345540994 2.3398544078026053 2.962790387568455
   follow "robot"
   followSmoothness 0.2
 }
@@ -13,7 +13,7 @@ TexturedBackgroundLight {
   castShadows FALSE
 }
 Robot {
-  translation -0.51627 0.0368798 2.92385
+  translation -0.496141 0.0368794 2.9599
   rotation -1.6423299999961082e-06 0.9999999999976303 1.4290999999966136e-06 -2.3869253071795864
   children [
     Solid {
@@ -1048,7 +1048,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation 0.24908558549089357 -0.2490865004350072 -0.9359018572487715 4.646189051619331
+        rotation 0.24908558549129273 -0.24908650043540637 -0.935901857248559 4.646189051619104
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1070,7 +1070,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6646674218173718 -0.6646698632783016 0.34122015067145706 2.4839312653675574
+        rotation 0.6646674218173285 -0.6646698632782583 0.3412201506716258 2.483931265367255
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1092,7 +1092,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6818304356849957 0.681832940192603 -0.26497376972432446 3.6596332771084583
+        rotation -0.6818304356849635 0.6818329401925708 -0.2649737697244904 3.6596332771087683
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1248,8 +1248,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1528,7 +1528,7 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
+        baseColor 0.3 0.3 0.3
         roughness 0.6
         metalness 0
       }
@@ -1541,12 +1541,13 @@ DEF line Solid {
   name "line(26)"
 }
 DEF line Solid {
-  translation 1.00652 0.0002 3.32928
+  translation 1.00652 0.0002 3.33928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1563,8 +1564,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1684,7 +1685,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1837,7 +1839,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2109,8 +2112,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2372,8 +2375,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2390,8 +2393,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8758,8 +8761,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8794,8 +8797,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8812,8 +8815,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8830,8 +8833,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8848,8 +8851,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8866,8 +8869,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8884,8 +8887,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8902,8 +8905,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8938,8 +8941,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8956,8 +8959,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8974,8 +8977,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8992,7 +8995,7 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
+        baseColor 0.6 0.6 0.6
         roughness 0.3
         metalness 0
       }
@@ -9005,13 +9008,13 @@ DEF line Solid {
   name "line(87)"
 }
 DEF line Solid {
-  translation 0.87653 0.0002 3.23928
+  translation 0.79653 0.0002 3.23928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -9021,23 +9024,6 @@ DEF line Solid {
     }
   ]
   name "line(88)"
-}
-DEF line Solid {
-  translation 0.87653 0.0001 3.23928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(106)"
 }
 DEF line Solid {
   translation 0.91653 0.0001 3.23928
@@ -9076,7 +9062,7 @@ DEF line Solid {
   name "line(37)"
 }
 DEF line Solid {
-  translation 1.49276 0.0002 0.813443
+  translation 1.49276 0.0001 0.813443
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9093,7 +9079,41 @@ DEF line Solid {
   name "line(49)"
 }
 DEF line Solid {
-  translation 1.63417 0.0002 0.954863
+  translation 1.40085 0.0001 0.72152
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(121)"
+}
+DEF line Solid {
+  translation 1.18874 0.0001 0.50939
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(122)"
+}
+DEF line Solid {
+  translation 1.63417 0.0001 0.954863
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9127,7 +9147,7 @@ DEF line Solid {
   name "line(75)"
 }
 DEF line Solid {
-  translation 1.35136 0.0002 0.672023
+  translation 1.57053 0.0002 0.891224
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9145,7 +9165,7 @@ DEF line Solid {
   name "line(50)"
 }
 DEF line Solid {
-  translation 1.20995 0.0002 0.530603
+  translation 1.28066 0.0002 0.601313
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9180,31 +9200,13 @@ DEF line Solid {
   name "line(58)"
 }
 DEF line Solid {
-  translation -0.56484 0.0002 2.88514
+  translation -0.479986 0.0002 2.97
   rotation 0 1 0 2.3562
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(38)"
-}
-DEF line Solid {
-  translation -0.423418 0.0002 3.02656
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9214,6 +9216,24 @@ DEF line Solid {
     }
   ]
   name "line(68)"
+}
+DEF line Solid {
+  translation -0.78404 0.0002 2.66598
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(116)"
 }
 DEF line Solid {
   translation -0.352709 0.0003 3.09725
@@ -9238,8 +9258,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.6 0.6 0.6
-        roughness 0.6
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9251,7 +9271,7 @@ DEF line Solid {
   name "line(115)"
 }
 DEF line Solid {
-  translation -0.70626 0.0002 2.74374
+  translation -0.70626 0.0001 2.74374
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9268,7 +9288,24 @@ DEF line Solid {
   name "line(39)"
 }
 DEF line Solid {
-  translation -0.84768 0.0002 2.60234
+  translation -0.564838 0.0001 2.88516
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(38)"
+}
+DEF line Solid {
+  translation -0.84768 0.0001 2.60234
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9302,13 +9339,12 @@ DEF line Solid {
   name "line(67)"
 }
 DEF line Solid {
-  translation -0.699194 0.0002 0.813418
+  translation -0.699194 0.0001 0.813418
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0 0 0
         metalness 0
       }
       geometry Box {
@@ -9320,7 +9356,24 @@ DEF line Solid {
   name "line(1)"
 }
 DEF line Solid {
-  translation -0.840614 0.0002 0.954838
+  translation -0.840614 0.0001 0.954838
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(64)"
+}
+DEF line Solid {
+  translation -0.776975 0.0002 0.891199
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9335,7 +9388,25 @@ DEF line Solid {
       castShadows FALSE
     }
   ]
-  name "line(64)"
+  name "line(106)"
+}
+DEF line Solid {
+  translation -0.494135 0.0002 0.608359
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(120)"
 }
 DEF line Solid {
   translation -0.977 0.0001 1.095
@@ -9355,7 +9426,7 @@ DEF line Solid {
   name "line(65)"
 }
 DEF line Solid {
-  translation -0.557774 0.0002 0.671998
+  translation -0.557774 0.0001 0.671998
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9372,7 +9443,7 @@ DEF line Solid {
   name "line(2)"
 }
 DEF line Solid {
-  translation -0.416354 0.0002 0.530578
+  translation -0.416354 0.0001 0.530578
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9406,7 +9477,7 @@ DEF line Solid {
   name "line(54)"
 }
 DEF line Solid {
-  translation 1.49987 0.0002 2.74367
+  translation 1.28777 0.0003 2.95577
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9424,7 +9495,25 @@ DEF line Solid {
   name "line(27)"
 }
 DEF line Solid {
-  translation 1.64128 0.0002 2.60226
+  translation 1.03324 0.0003 3.2103
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(119)"
+}
+DEF line Solid {
+  translation 1.57058 0.0002 2.67296
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9457,6 +9546,40 @@ DEF line Solid {
     }
   ]
   name "line(73)"
+}
+DEF line Solid {
+  translation 1.64834 0.0001 2.5952
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(117)"
+}
+DEF line Solid {
+  translation 1.49986 0.0001 2.74368
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(118)"
 }
 DEF line Solid {
   translation 1.35847 0.0002 2.88507
