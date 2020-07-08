@@ -57,7 +57,7 @@ package body ec2b is
       end if;
 
       version := GNATCOLL.JSON.Get(response_json, "version");
-      if (version = cab_version and version /= 0) then
+      if (version = cab_version) then
          return status_code;
       end if;
       cab_version := version;
@@ -91,6 +91,13 @@ package body ec2b is
          cmd_queue.Enqueue(command.all);
       end loop;
       return status_code;
+   exception
+      when Constraint_Error =>
+         Put_Line("CONSTRAINT ERROR");
+         return Messages.S500;
+      when Error : others =>
+         Put_Line("Unknown error");
+         return Messages.S500;
 end request_route;
 
    ------------------
@@ -116,6 +123,13 @@ end request_route;
       Put_Line("ID: " & cab_id'Image);
 
       return status_code;
+   exception
+      when Constraint_Error =>
+         Put_Line("CONSTRAINT ERROR");
+         return Messages.S500;
+      when Error : others =>
+         Put_Line("Unknown error");
+         return Messages.S500;
    end register_cab;
 
    ------------------------
@@ -133,6 +147,13 @@ end request_route;
       parameters.Insert("cabId", cab_id_str);
       status_code := post_JSON(connection, "/api/ec/cabLocation", parameters, section_JSON, response_data_JSON);
       return status_code;
+   exception
+      when Constraint_Error =>
+         Put_Line("CONSTRAINT ERROR");
+         return Messages.S500;
+      when Error : others =>
+         Put_Line("Unknown error");
+         return Messages.S500;
    end update_cabLocation;
 
 
@@ -169,9 +190,15 @@ end request_route;
       end if;
       complete := GNATCOLL.JSON.Get(response_JSON, "completed");
       pickup_completed := complete;
-      Put_Line("PICKUP_COMPLETED: " & pickup_completed'Image);
       return status_code;
 
+  exception
+      when Constraint_Error =>
+         Put_Line("CONSTRAINT ERROR");
+         return Messages.S500;
+      when Error : others =>
+         Put_Line("Unknown error");
+         return Messages.S500;
    end pickup_complete;
 
    ------------------------
@@ -208,8 +235,14 @@ end request_route;
       end if;
       complete := GNATCOLL.JSON.Get(Val => response_JSON, Field => "completed");
       dropoff_completed := complete;
-      Put_Line("Dropoff_COMPLETED: " & dropoff_completed'Image);
       return status_code;
+   exception
+      when Constraint_Error =>
+         Put_Line("CONSTRAINT ERROR");
+         return Messages.S500;
+      when Error : others =>
+         Put_Line("Unknown error");
+         return Messages.S500;
    end dropoff_complete;
 
 end ec2b;
