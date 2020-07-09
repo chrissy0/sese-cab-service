@@ -49,7 +49,7 @@ package body Roadmarker.Test is
       -- test 5 =>1, 2 => 2, 10 => 2
       history := (5 => 1, 2 => 2, 10 => 2, others => 0);
       Output := calculate_output_from_history(history);
-      Assert(Output = 10, "history(5) = 1, history(2) = 2, history(10) = 1, else 0 history. Expected 10, got " & Output'Image);
+      Assert(Output = 10, "history(5) = 1, history(2) = 2, history(10) = 2, else 0 history. Expected 10, got " & Output'Image);
 
       -- test all 1s
       history := (others => 1);
