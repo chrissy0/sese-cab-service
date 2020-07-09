@@ -324,7 +324,7 @@ package body Roadmarker.Test is
       was_on_hotfix_rm : Boolean := False;
    begin
       --
-      -- check only one hotfix detected -> no RM or
+      -- check only one hotfix detected -> no RM
       --
 
       for I in Roadmarker_Sensor_ID_T loop
@@ -343,7 +343,7 @@ package body Roadmarker.Test is
       end loop;
 
       --
-      -- check two hotfix detected -> no RM or
+      -- check two hotfix detected -> no RM
       --
 
       for I in Roadmarker_Sensor_ID_T loop
@@ -359,7 +359,7 @@ package body Roadmarker.Test is
                                           history           => history,
                                           was_on_hotfix_rm => was_on_hotfix_rm);
 
-               Assert(was_on_hotfix_rm, "expected was_on_hotfix_rm = False, got True");
+               Assert(was_on_hotfix_rm, "expected was_on_hotfix_rm = True, got False");
                for I in Road_Marker_Done_T loop
                   Assert(history(I) = 0, "expected history("& I'Image & ") = 0, but history(" & I'Image & ") = " & history(I)'Image);
                end loop;
@@ -390,7 +390,7 @@ package body Roadmarker.Test is
                                           history           => history,
                                           was_on_hotfix_rm => was_on_hotfix_rm);
 
-               Assert(was_on_hotfix_rm, "expected was_on_hotfix_rm = False, got True");
+               Assert(was_on_hotfix_rm, "expected was_on_hotfix_rm = True, got False");
                for I in Road_Marker_Done_T loop
                   Assert(history(I) = 0, "expected history("& I'Image & ") = 0, but history(" & I'Image & ") = " & history(I)'Image);
                end loop;
@@ -461,7 +461,7 @@ package body Roadmarker.Test is
                                  history           => history,
                                  was_on_hotfix_rm => was_on_hotfix_rm);
       Assert(Output = RM_no_road_marker, "expected RM_no_road_marker, got " & Output'Image);
-      Assert(was_on_hotfix_rm, "expected was_on_hotfix_rm = False, got True");
+      Assert(was_on_hotfix_rm, "expected was_on_hotfix_rm = True, got False");
 
 
    end test_calculate_output_was_on_hotfix_rm;
