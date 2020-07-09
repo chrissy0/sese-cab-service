@@ -34,6 +34,14 @@ begin
       port := Port_Type'Value(Argument(2));
       cab_name := To_Unbounded_String(Argument(3));
       start_section := Integer'Value(Argument(4));
+      if (start_section < 0 or start_section > 15) then
+         Put_Line("Start section has to be between 0 and 15");
+         raise Constraint_Error;
+      end if;
+      Put_Line("IP: " & To_string(ip));
+      Put_Line("Port: " & port'Image);
+      Put_Line("Cab_name: " & To_String(cab_name));
+      Put_Line("Start_section " & start_section'Image);
    end if;
    Log_Line ("Setting up WC2EC_Driver...");
    WC2EC_Driver := new wc2ec_thread_t;
@@ -88,5 +96,14 @@ begin
       -- HINT uncomment the above line to enabel job_executer
    end loop;
 
-
+  exception
+      when Constraint_Error =>
+      Put_Line("CONSTRAINT ERROR");
+      Put_Line("Your probably entered an invalid argument");
+      put_line("Arguments are:");
+      Put_Line("IP (string) PORT (Unsigned Integer 0 -  65 535) cab_name (string) start_section (integer 0 - 15)");
+         return;
+      when Error : others =>
+         Put_Line("Unknown error");
+         return;
 end External_Controller;
