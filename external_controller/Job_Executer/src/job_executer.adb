@@ -89,7 +89,7 @@ package body Job_Executer is
       section                 : Roadmarker.Road_Marker_Done_T;
       rounds                  : Integer := 0;
       section_old             : Roadmarker.Road_Marker_Done_T := 17;
-      cab_id                  : Integer;
+      cab_id                  : Integer := -1;
       cmd_queue               : cmd_queue_access_t;
       next_command            : Command_t;
       current_command         : Command_t;
@@ -134,18 +134,13 @@ package body Job_Executer is
       end Constructor;
       Log_Line("Constructor done!");
 
-
-
+      return_code := register_cab(To_String(cab_name), start_section, cab_id);
+      if (not success(return_code, error_counter)) then
+         retry_register := True;
+      end if;
 
       -- Todo for testing only
-      return_code := register_cab(To_String(cab_name), start_section, cab_id);
-      while not success(return_code, error_counter) loop
-         Put_Line("Registering the cab failed. Retry in 5 seconds.");
-         Put_Line("Please make sure the cab_name is unique");
-         return_code := register_cab(To_String(cab_name), start_section, cab_id);
-         delay 5.0;
 
-      end loop;
 
       Put_Line("Register cab returned: " & cab_id'Image);
       return_code := request_route(cmd_queue, cab_id, cab_version);
@@ -158,12 +153,16 @@ package body Job_Executer is
       -- main loop
       while running loop
          Job_Executer_Done_Signal := EMPTY_S;
-
-         if (error_counter >= errors_till_backend_failed) then
-            backend_failed := True;
-         else
-            backend_failed := False;
+         if retry_register then
+            return_code := register_cab(To_String(cab_name), start_section, cab_id);
+            if (not success(return_code, error_counter)) then
+               retry_register := True;
+               Job_Executer_Done_Signal := STOP_S;
+               Put_Line("Could not register at the Backend. Did you enter a unique cab_name?");
+            end if;
          end if;
+
+
          -- TODO START TESTING ONLY
          if (current_command.action /= current_command_old.action) then
             Put_Line("Current Action: " & current_command.action'Image);
