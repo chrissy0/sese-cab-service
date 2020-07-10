@@ -5,7 +5,7 @@ with Ada.Strings.Unbounded;
 package Job_Executer is
    
    type Intersection_Option_T is (Left, Right);
-   
+    errors_till_backend_failed : constant Integer := 10;
 
    task type Job_Executer_Task_T is
       entry Constructor

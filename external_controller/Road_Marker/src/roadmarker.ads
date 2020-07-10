@@ -15,6 +15,7 @@ package Roadmarker is
    RM_system_error : constant Integer   := 16;
    RM_no_road_marker : constant Integer := 17;
    subtype Road_Marker_Done_T is Integer range 0 .. 17;
+   subtype Road_Marker_valid_T is Integer range 0 .. 15;
 
    type Road_Marker_History_T is array (Road_Marker_Done_T) of Natural;
 

@@ -115,7 +115,6 @@ end request_route;
       cab_JSON.Set_Field ("section", Create (Integer(section)));
       status_code := post_JSON(connection, "/api/ec/registerCab", value => cab_JSON, response_data_JSON => response_data_JSON);
       if (failed(status_code)) then
-         Put_Line("Register failed");
          return status_code;
       end if;
 
