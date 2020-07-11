@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.9999772696811204 -0.004523366107321052 -0.004999928014541835 4.612366363391345
-  position 0.6246257814701758 7.552348417828248 1.059211116066778
+  orientation 0.9890838924918548 0.10971732073873525 0.09836240716388756 4.60158900716808
+  position -0.2340605307711135 2.0716425298162005 3.1701806419708256
   follow "robot"
   followSmoothness 0.2
 }
@@ -4285,8 +4285,8 @@ DEF road_marker Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4354,8 +4354,8 @@ DEF road_marker Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0.3 0.3 0.3
-        roughness 0.3
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {

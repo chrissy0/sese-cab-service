@@ -25,6 +25,9 @@ package body Lane_Detection_Suite is
       Ret.Add_Test
         (Caller.Create("test_calculate_output", Lane_Detection.Test.test_calculate_output'Access));
 
+      Ret.Add_Test
+        (Caller.Create("test_get_lean_from_line_color", Lane_Detection.Test.test_get_lean_from_line_color'Access));
+
       return Ret;
    end Suite;
 

@@ -12,5 +12,7 @@ package Lane_Detection.Test is
    procedure test_output_from_curb_detection (T : in out Test);
 
    procedure test_calculate_output (T : in out Test);
+   
+   procedure test_get_lean_from_line_color (T : in out Test);
 
 end Lane_Detection.Test;

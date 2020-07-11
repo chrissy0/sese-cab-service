@@ -12,12 +12,11 @@ package body Lane_Detection.Test is
       pragma Unreferenced (T);
 
       sensor_values  : Line_Sensor_Values_Array_T;
-      threshhold     : constant Long_Float := 200.0;
       detected_array : Line_Sensor_Detected_Array_T;
       sensor_array_failure : Line_Sensor_Array_Failure_Array_T;
 
-      one_above      : constant Long_Float := threshhold + 0.1;
-      one_below      : constant Long_Float := threshhold - 0.1;
+      one_above      : constant Long_Float := LINE_FOLLOW_THRESHHOLD + LINE_DELTA;
+      one_below      : constant Long_Float := LINE_FOLLOW_THRESHHOLD - LINE_DELTA;
       max_val        : constant Long_Float := 1_000.0;
       failure        : constant Long_Float := -1.0;
    begin
@@ -26,7 +25,6 @@ package body Lane_Detection.Test is
       sensor_values := (others => (others => one_above));
 
       detect_lanes(all_sensor_values => sensor_values,
-                   threshhold        => threshhold,
                    detected_array    => detected_array,
                    sensor_array_failure => sensor_array_failure
                   );
@@ -42,7 +40,6 @@ package body Lane_Detection.Test is
       sensor_values := (others => (others => max_val));
 
       detect_lanes(all_sensor_values => sensor_values,
-                   threshhold        => threshhold,
                    detected_array    => detected_array,
                    sensor_array_failure => sensor_array_failure);
       for pos2 in Line_Sensor_Position_T loop
@@ -58,7 +55,6 @@ package body Lane_Detection.Test is
             sensor_values := (others => (others => one_above));
             sensor_values(pos, I) := one_below;
             detect_lanes(all_sensor_values => sensor_values,
-                         threshhold        => threshhold,
                          detected_array    => detected_array,
                          sensor_array_failure => sensor_array_failure);
 
@@ -80,7 +76,6 @@ package body Lane_Detection.Test is
       sensor_values := (others => (others => one_below));
 
       detect_lanes(all_sensor_values => sensor_values,
-                   threshhold        => threshhold,
                    detected_array    => detected_array,
                    sensor_array_failure => sensor_array_failure);
       for pos2 in Line_Sensor_Position_T loop
@@ -94,7 +89,6 @@ package body Lane_Detection.Test is
       sensor_values := (others => (others => 0.0));
 
       detect_lanes(all_sensor_values => sensor_values,
-                   threshhold        => threshhold,
                    detected_array    => detected_array,
                    sensor_array_failure => sensor_array_failure);
       for pos2 in Line_Sensor_Position_T loop
@@ -110,13 +104,10 @@ package body Lane_Detection.Test is
             sensor_values         := (others => (others => one_below));
             sensor_values(pos, I) :=  failure;
             detect_lanes(all_sensor_values => sensor_values,
-                         threshhold        => threshhold,
                          detected_array    => detected_array,
                          sensor_array_failure => sensor_array_failure);
 
-            for I2 in Boolean loop
-               Assert(sensor_array_failure(I2), "expected sensor array failure, but didnt get one!");
-            end loop;
+            Assert(sensor_array_failure(I), "expected sensor array failure, but didnt get one!");
          end loop;
       end loop;
    end test_detect_lanes;
@@ -189,6 +180,7 @@ package body Lane_Detection.Test is
       -- not l, c,  r => Go_Straight
       detected_array := (others => (others => False));
       detected_array(CENTER, False) := True;
+      detected_array(RIGHT, False) := True;
 
 
       Output := output_from_line_detection(detected_array       => detected_array,
@@ -202,7 +194,7 @@ package body Lane_Detection.Test is
       sensor_array_failure(False) := True;
 
       -- test lean right on backup sensor
-      Leaning_Left := True;
+      Leaning_Left := False;
 
       for pos in Line_Sensor_Position_T loop
          -- if leaning left, and left line is detected, always rotate left
@@ -250,10 +242,10 @@ package body Lane_Detection.Test is
       Assert(Output = ROTATE_RIGHT_S,
              "Expected GO_RIGHT_S, got something else!");
 
-      -- not left
-      -- not l, c,  r => Go_Straight
+      -- not r, c,  l => Go_Straight
       detected_array := (others => (others => False));
-      detected_array(CENTER, False) := True;
+      detected_array(CENTER, TRUE) := True;
+      detected_array(LEFT, TRUE)   := True;
 
 
       Output := output_from_line_detection(detected_array       => detected_array,
@@ -266,6 +258,122 @@ package body Lane_Detection.Test is
 
    end test_output_from_line_detection;
 
+
+   -----------------------------------
+   -- test_get_lean_from_line_color --
+   -----------------------------------
+
+   procedure test_get_lean_from_line_color (T : in out Test) is
+      sensor_values  : Line_Sensor_Values_Array_T;
+      old_lean       : Boolean;
+      sensor_array_failure : Line_Sensor_Array_Failure_Array_T;
+   begin
+      sensor_array_failure := (others => False);
+      old_lean := True;
+      sensor_values := (others => (others => LINE_BLACK));
+
+      -- check old lean true and on black lane => return true
+
+      Assert(get_lean_from_line_color(line_sensor_values   => sensor_values,
+                                      sensor_array_failure => sensor_array_failure,
+                                      old_lean             => old_lean),
+             "expected lean left, got lean right");
+
+
+      sensor_values := (others => (others => LINE_LIGHT_GREY));
+
+      -- check old lean true and on light grey lane => return false
+
+      Assert(not get_lean_from_line_color(line_sensor_values   => sensor_values,
+                                          sensor_array_failure => sensor_array_failure,
+                                          old_lean             => old_lean),
+             "expected lean right, got lean left");
+
+
+      -- old lean left false and on dark grey line => return false
+      sensor_values := (others => (others => LINE_DARK_GREY));
+
+      Assert(not get_lean_from_line_color(line_sensor_values => sensor_values,
+                                      sensor_array_failure  => sensor_array_failure,
+                                      old_lean              => False),
+             "expected lean left, got lean right");
+
+
+      -- old lean left TRUE and on dark grey line => return TRUE
+      sensor_values := (others => (others => LINE_DARK_GREY));
+
+      Assert(get_lean_from_line_color(line_sensor_values => sensor_values,
+                                      sensor_array_failure  => sensor_array_failure,
+                                      old_lean              => True),
+             "expected lean left, got lean right");
+
+      -- test all three lines detected and old lean true => return true
+      sensor_values(LEFT, False) := LINE_LIGHT_GREY;
+      sensor_values(CENTER, False) := LINE_DARK_GREY;
+      sensor_values(RIGHT, False) := LINE_BLACK;
+
+      Assert(get_lean_from_line_color(line_sensor_values => sensor_values,
+                                      sensor_array_failure  => sensor_array_failure,
+                                      old_lean              => True),
+             "expected lean left, got lean right");
+
+      Assert(not get_lean_from_line_color(line_sensor_values => sensor_values,
+                                      sensor_array_failure  => sensor_array_failure,
+                                      old_lean              => False),
+             "expected lean right, got lean Left");
+
+      -- test first sensor array failing
+      sensor_array_failure(False) := True;
+
+      -- check on black lane => return true
+      sensor_values := (others => (others => LINE_BLACK));
+      Assert(get_lean_from_line_color(line_sensor_values   => sensor_values,
+                                      sensor_array_failure => sensor_array_failure,
+                                      old_lean             => old_lean),
+             "expected lean left, got lean right");
+
+      -- check on light grey lane => return false
+      sensor_values := (others => (others => LINE_LIGHT_GREY));
+
+      Assert(not get_lean_from_line_color(line_sensor_values   => sensor_values,
+                                          sensor_array_failure => sensor_array_failure,
+                                          old_lean             => old_lean),
+             "expected lean right, got lean left");
+
+      -- check on dark grey lane and old lean false => return false
+      sensor_values := (others => (others => LINE_DARK_GREY));
+
+      Assert(not get_lean_from_line_color(line_sensor_values   => sensor_values,
+                                          sensor_array_failure => sensor_array_failure,
+                                          old_lean             => False),
+             "expected lean right, got lean left");
+
+      -- check on dark grey lane and old lean true => return true
+      sensor_values := (others => (others => LINE_DARK_GREY));
+
+      Assert(get_lean_from_line_color(line_sensor_values   => sensor_values,
+                                          sensor_array_failure => sensor_array_failure,
+                                          old_lean             => True),
+             "expected lean left, got lean right");
+
+      -- test all three lines detected and old lean true => return true
+      sensor_values(LEFT, True) := LINE_LIGHT_GREY;
+      sensor_values(CENTER, True) := LINE_DARK_GREY;
+      sensor_values(RIGHT, True) := LINE_BLACK;
+
+      Assert(get_lean_from_line_color(line_sensor_values => sensor_values,
+                                      sensor_array_failure  => sensor_array_failure,
+                                      old_lean              => True),
+             "expected lean left, got lean right");
+
+      Assert(not get_lean_from_line_color(line_sensor_values => sensor_values,
+                                      sensor_array_failure  => sensor_array_failure,
+                                      old_lean              => False),
+             "expected lean right, got lean Left");
+   end test_get_lean_from_line_color;
+
+
+
    -------------------------------------
    -- test_output_from_curb_detection --
    -------------------------------------
@@ -273,7 +381,7 @@ package body Lane_Detection.Test is
    procedure test_output_from_curb_detection (T : in out Test) is
       pragma Unreferenced (T);
    begin
-      null;
+      null; -- TODO
    end test_output_from_curb_detection;
 
    ---------------------------
@@ -283,7 +391,7 @@ package body Lane_Detection.Test is
    procedure test_calculate_output (T : in out Test) is
       pragma Unreferenced (T);
    begin
-      null;
+      null; -- TODO
    end test_calculate_output;
 
 end Lane_Detection.Test;

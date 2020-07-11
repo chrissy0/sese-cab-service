@@ -51,9 +51,6 @@ package Lane_Detection is
    task type Lane_Detection_Taks_T is
       entry Construct
         (
-         Curb_Threshhold_v       : in Long_Float;
-         Line_Threshhold_v       : in Long_Float;
-         Wall_Threshhold_v       : in Long_Float;
          Motor_Task_A            : in Motor_Controller_Task_Access_T;
          get_line_sensor_value_a : in get_line_sensor_value_access;
          get_curb_sensor_value_a : in get_curb_sensor_value_access;
@@ -63,6 +60,17 @@ package Lane_Detection is
    end Lane_Detection_Taks_T;
 
 private
+
+   LINE_DARK_GREY  : constant Long_Float := 246.0;
+   LINE_LIGHT_GREY : constant Long_Float := 286.0;
+   LINE_WHITE      : constant Long_Float := 365.0;
+   LINE_BLACK      : constant Long_Float := 217.0;
+   LINE_DELTA      : constant Long_Float := 15.0;
+
+   LINE_FOLLOW_THRESHHOLD : constant Long_Float := line_light_grey + line_delta;
+   CURB_THRESHHOLD        : constant Long_Float := 870.0; -- TODO determine value
+   WALL_THRESHHOLD        : constant Long_Float := 870.0; -- TODO determine value
+
    -- array of sensor values. Second index true => access backup sensor
    type Line_Sensor_Values_Array_T is array (Line_Sensor_Position_T, Boolean) of Long_Float;
 
@@ -94,16 +102,13 @@ private
       line_sensor_values : Line_Sensor_Values_Array_T;
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
-      Leaning_Left       : Boolean;
-      line_threshhold    : Long_Float;
-      curb_threshhold    : Long_Float;
-      wall_threshhold    : Long_Float
+      is_lean_from_line  : Boolean;
+      Leaning_Left       : in out Boolean
      ) return Lane_Detection_Done_T;
 
    procedure detect_lanes
      (
       all_sensor_values    : Line_Sensor_Values_Array_T;
-      threshhold           : Long_Float;
       detected_array       : out Line_Sensor_Detected_Array_T;
       sensor_array_failure : out Line_Sensor_Array_Failure_Array_T
      );
@@ -130,10 +135,14 @@ private
    function output_from_curb_detection
      (
       curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T;
-      curb_threshhold    : Long_Float;
-      wall_threshhold    : Long_Float
+      wall_sensor_values : Wall_Sensor_Values_Array_T
      ) return Lane_Detection_Done_T;
 
+   function get_lean_from_line_color
+     (
+      line_sensor_values   : Line_Sensor_Values_Array_T;
+      sensor_array_failure : Line_Sensor_Array_Failure_Array_T;
+      old_lean             : Boolean
+     ) return Boolean;
 
 end Lane_Detection;

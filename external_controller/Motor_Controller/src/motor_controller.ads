@@ -16,7 +16,7 @@ package Motor_Controller is
      (SYSTEM_ERROR_S, GO_STRAIGHT_S, ROTATE_LEFT_S, ROTATE_RIGHT_S, EMPTY_S);
 
    type Lane_Detection_Next_T is
-     (LEAN_LEFT_S, LEAN_RIGHT_S, NO_LEAN_S, EMPTY_S, SHUTDOWN_S);
+     (LEAN_LEFT_S, LEAN_RIGHT_S, NO_LEAN_S, EMPTY_S, SHUTDOWN_S, LEAN_FROM_LINE);
 
 
    type Front_Distance_Done_t is

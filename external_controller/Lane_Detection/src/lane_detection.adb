@@ -1,6 +1,7 @@
 pragma Ada_2012;
 package body Lane_Detection is
 
+
    procedure Log_Line(Message : String) is
    begin
       Put_Line("[Lane_Detection] " & Message);
@@ -51,7 +52,6 @@ package body Lane_Detection is
    procedure detect_lanes
      (
       all_sensor_values    : Line_Sensor_Values_Array_T;
-      threshhold           : Long_Float;
       detected_array       : out Line_Sensor_Detected_Array_T;
       sensor_array_failure : out Line_Sensor_Array_Failure_Array_T
      )
@@ -60,8 +60,8 @@ package body Lane_Detection is
       sensor_array_failure := (others => False);
       for pos in Line_Sensor_Position_T loop
          for I in Boolean loop
-            detected_array(pos, I) := all_sensor_values(pos, I) < threshhold;
-            sensor_array_failure(I) := sensor_array_failure(I) or all_sensor_values(pos, I) < 0.0;
+            detected_array(pos, I) := all_sensor_values(pos, I) < LINE_FOLLOW_THRESHHOLD;
+            sensor_array_failure(I) := sensor_array_failure(I) or (all_sensor_values(pos, I) < 0.0);
          end loop;
       end loop;
    end detect_lanes;
@@ -121,9 +121,7 @@ package body Lane_Detection is
    function output_from_curb_detection
      (
       curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T;
-      curb_threshhold    : Long_Float;
-      wall_threshhold    : Long_Float
+      wall_sensor_values : Wall_Sensor_Values_Array_T
      ) return Lane_Detection_Done_T
    is
       Leaning_Left        : Boolean := True;
@@ -148,7 +146,7 @@ package body Lane_Detection is
 
       -- if there is a wall on the right side -> go right
       for I in Boolean loop
-         if wall_sensor_values(RIGHT, I) <= curb_threshhold then
+         if wall_sensor_values(RIGHT, I) <= CURB_THRESHHOLD then
             Leaning_Left := False;
          end if;
       end loop;
@@ -156,6 +154,46 @@ package body Lane_Detection is
       -- TODO
       return SYSTEM_ERROR_S;
    end output_from_curb_detection;
+
+
+   ------------------------------
+   -- get_lean_from_line_color --
+   ------------------------------
+
+   function get_lean_from_line_color
+     (
+      line_sensor_values   : Line_Sensor_Values_Array_T;
+      sensor_array_failure : Line_Sensor_Array_Failure_Array_T;
+      old_lean             : Boolean
+     ) return Boolean
+   is
+      Output : Boolean := True;
+   begin
+      for I in Boolean loop
+         -- if sensor array failed, dont use it.
+         if not sensor_array_failure(I) then
+            for pos in Line_Sensor_Position_T loop
+               if
+                 line_sensor_values(pos, I) < line_dark_grey + line_delta and
+                 line_dark_grey - line_delta < line_sensor_values(pos, I)
+               then
+                  return old_lean;
+               elsif
+                 line_sensor_values(pos, I) < line_light_grey + line_delta and
+                 line_light_grey - line_delta < line_sensor_values(pos, I)
+               then
+                  Output := False;
+               elsif
+                 line_sensor_values(pos, I) < line_black + line_delta and
+                 line_black - line_delta < line_sensor_values(pos, I)
+               then
+                  Output := True;
+               end if;
+            end loop;
+         end if;
+      end loop;
+      return Output;
+   end get_lean_from_line_color;
 
 
    ----------------------
@@ -167,28 +205,29 @@ package body Lane_Detection is
       line_sensor_values : Line_Sensor_Values_Array_T;
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
-      Leaning_Left       : Boolean;
-      line_threshhold    : Long_Float;
-      curb_threshhold    : Long_Float;
-      wall_threshhold    : Long_Float
+      is_lean_from_line  : Boolean;
+      Leaning_Left       : in out Boolean
      ) return Lane_Detection_Done_T
    is
       detected_array     : Line_Sensor_Detected_Array_T;
       Output             : Lane_Detection_Done_T;
       line_failure_array : Line_Sensor_Array_Failure_Array_T;
    begin
+
       detect_lanes(all_sensor_values    => line_sensor_values,
-                   threshhold           => line_threshhold,
                    detected_array       => detected_array,
                    sensor_array_failure => line_failure_array);
 
+      if is_lean_from_line then
+         Leaning_Left := get_lean_from_line_color(line_sensor_values   => line_sensor_values,
+                                                  sensor_array_failure => line_failure_array,
+                                                  old_lean             => Leaning_Left);
+      end if;
       Output := output_from_line_detection(detected_array, Leaning_Left, line_failure_array);
 
       if Output = SYSTEM_ERROR_S then
          Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values,
-                                              wall_sensor_values => wall_sensor_values,
-                                              curb_threshhold         => curb_threshhold,
-                                              wall_threshhold    => wall_threshhold);
+                                              wall_sensor_values => wall_sensor_values);
       end if;
 
       return Output;
@@ -200,9 +239,6 @@ package body Lane_Detection is
    ---------------------------
 
    task body Lane_Detection_Taks_T is
-      Curb_Threshhold       : Long_Float;
-      Line_Threshhold       : Long_Float;
-      Wall_Threshhold       : Long_Float;
       Motor_Controller_Task : Motor_Controller_Task_Access_T;
       next_signal           : Lane_Detection_Next_T := NO_LEAN_S;
       running               : Boolean := True;
@@ -216,16 +252,13 @@ package body Lane_Detection is
       get_curb_sensor_value : get_curb_sensor_value_access;
       get_wall_sensor_value : get_wall_sensor_value_access;
       timeout               : Duration;
-
+      is_lean_from_line     : Boolean := False;
    begin
 
       Log_Line("Starting Thread.");
       Log_Line("Waiting for Construct...");
       accept Construct
         (
-         Curb_Threshhold_v       : in Long_Float;
-         Line_Threshhold_v       : in Long_Float;
-         Wall_Threshhold_v       : in Long_Float;
          Motor_Task_A            : in Motor_Controller_Task_Access_T;
          get_line_sensor_value_a : in get_line_sensor_value_access;
          get_curb_sensor_value_a : in get_curb_sensor_value_access;
@@ -234,9 +267,6 @@ package body Lane_Detection is
         )
       do
          Motor_Controller_Task := Motor_Task_A;
-         Curb_Threshhold       := Curb_Threshhold_v;
-         Line_Threshhold       := Line_Threshhold_v;
-         Wall_Threshhold       := Wall_Threshhold_v;
          get_line_sensor_value := get_line_sensor_value_a;
          get_curb_sensor_value := get_curb_sensor_value_a;
          get_wall_sensor_value := get_wall_sensor_value_a;
@@ -257,9 +287,7 @@ package body Lane_Detection is
                                     curb_sensor_values => curb_sensor_values,
                                     wall_sensor_values => wall_sensor_values,
                                     Leaning_Left       => Leaning_Left,
-                                    line_threshhold    => Line_Threshhold,
-                                    curb_threshhold    => Curb_Threshhold,
-                                    wall_threshhold    => Wall_Threshhold);
+                                    is_lean_from_line  => is_lean_from_line);
 
          select
            Motor_Controller_Task.lane_detection_done(Output);
@@ -280,12 +308,17 @@ package body Lane_Detection is
             case next_signal is
             when LEAN_LEFT_S =>
                Leaning_Left := True;
+               is_lean_from_line := False;
             when LEAN_RIGHT_S=>
                Leaning_Left := False;
+               is_lean_from_line := False;
             when NO_LEAN_S =>
                Leaning_Left := True;
+               is_lean_from_line := False;
             when EMPTY_S =>
                null;
+            when LEAN_FROM_LINE =>
+               is_lean_from_line := True;
             when SHUTDOWN_S =>
                Leaning_Left := True;
                running := False;
