@@ -5,7 +5,7 @@ package body Roadmarker is
 
    procedure Log_Line(msg : String) is
    begin
-      Put_Line("[Road_Marker]" & msg);
+      Put_Line("[Road_Marker] " & msg);
    end Log_Line;
 
    -- set all_sensor_values with new values from driver
@@ -202,6 +202,8 @@ package body Roadmarker is
       Motor_Controller_Task         : Motor_Controller_Task_Access_T;
    begin
 
+      Log_Line("Starting Thread.");
+      Log_Line("Waiting for Construct...");
       accept Construct
         (
          get_sensor_value_a   : in get_roadmarker_sensor_value_access;
@@ -214,6 +216,7 @@ package body Roadmarker is
          timeout := timeout_v;
          Motor_Controller_Task := MC_Task;
       end Construct;
+      Log_Line("... constructor done");
 
       while (running) loop
 
@@ -264,7 +267,7 @@ package body Roadmarker is
             end road_marker_next;
          or
             delay timeout;
-            Log_Line("road_marker_done timed out!");
+            Log_Line("road_marker_next timed out!");
             running := false;
             goto Continue;
          end select;
@@ -272,6 +275,8 @@ package body Roadmarker is
 
          <<Continue>>
       end loop;
+      Log_Line
+        (" Shutting down. So long, and thanks for all the markers.");
    end  Roadmarker_Task_T;
 
 end Roadmarker;

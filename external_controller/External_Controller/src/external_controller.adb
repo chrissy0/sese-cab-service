@@ -21,6 +21,7 @@ procedure External_Controller is
    port                  : Port_Type := 27015;
    cab_name              : Ada.Strings.Unbounded.Unbounded_String := To_Unbounded_String("default");
    start_section         : Integer := 0;
+   timeout               : Duration := 2.0;
 
    procedure Log_Line(message : String) is
    begin
@@ -62,13 +63,21 @@ begin
                                      MS_Speed       => 3.0,
                                      MT_Speed       => 1.5,
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
-                                     timeout_v      => 1.3,
+                                     timeout_v      => timeout,
                                      iteration_delay_s => 0.01);
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
-     (IR_Threshhold => 350.0, US_Threshhold => 870.0, US_Max_Value => 1_000.0,
-      Motor_Task_A  => Motor_Controller_Task, WC2EC_Driver_A => WC2EC_Driver);
+     (Curb_Threshhold_v       => 350.0,
+      Line_Threshhold_v       => 870.0,
+      Wall_Threshhold_v       => 870.0,  -- TODO determine value
+      Motor_Task_A            => Motor_Controller_Task,
+      get_line_sensor_value_a => WC2EC_Interface.get_line_detection_sensor_value'Access,
+      get_curb_sensor_value_a => WC2EC_Interface.get_curb_detection_sensor_value'Access,
+      get_wall_sensor_value_a => WC2EC_Interface.get_wall_detection_sensor_value'Access,
+      timeout_v               => timeout
+
+     );
 
    Log_Line("Setting up Front_Distance_Task ...");
    Front_Distance_Task.Construct
@@ -76,12 +85,12 @@ begin
       us_thresh                        => 300.0,
       ir_thresh                        => 300.0,
       Motor_Controller_Task_A          => Motor_Controller_Task,
-      timeout_v                        => 2.0
+      timeout_v                        => timeout
      );
    Log_Line("All set up!");
 
    Job_Executer_Task.Constructor(Motor_Controller_Task_A => Motor_Controller_Task,
-                                 timeout_v               => 1.5,
+                                 timeout_v               => timeout,
                                  RM_get_sensor_value_a   => WC2EC_Interface.get_rm_sensor_value'Access,
                                  cab_name_arg => cab_name,
                                  start_section_arg => start_section);

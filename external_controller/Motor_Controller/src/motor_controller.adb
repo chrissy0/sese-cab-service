@@ -246,42 +246,40 @@ package body Motor_Controller is
 
 
    begin
+
+      Log_Line("Starting Thread.");
+      Log_Line("Waiting for Construct...");
       -- accept constructor call
       -- on timeout, close motor controller this is needed so that test cases
       -- termintate if an assert fails
-      select
-                 -- static, longer timeout for constructor
-         delay 2.0;
-         Log_Line ("Constructor Timed out, exiting motor_controller");
-         running := False;
-      or
-         accept Constructor(MC_State             : in Motor_Controller_State_T;
-                            ND_State               : in Normal_Driving_State_T;
-                            FC_State               : in Front_Clear_State_T;
-                            D_State                : in Drive_State_T;
-                            LE_State               : in Lean_State_T;
-                            SE_State               : in System_Error_State_T;
-                            MS_Speed               : in Long_Float;
-                            MT_Speed               : in Long_Float;
-                            set_motor_value_access : in set_motor_value_procedure_t;
-                            timeout_v              : in Duration;
-                            iteration_delay_s      : in Duration
-                           )
-         do
-            Motor_Controller_State := MC_State;
-            Normal_Driving_State   := ND_State;
-            Front_Clear_State      := FC_State;
-            Drive_State            := D_State;
-            Lean_State             := LE_State;
-            System_Error_State     := SE_State;
-            Motor_Straight_Speed   := MS_Speed;
-            Motor_Turn_Speed       := MT_Speed;
-            set_motor_value        := set_motor_value_access;
-            timeout                := timeout_v;
-            Iteration_Delay        := iteration_delay_s;
 
-         end Constructor;
-      end select;
+      accept Constructor(MC_State             : in Motor_Controller_State_T;
+                         ND_State               : in Normal_Driving_State_T;
+                         FC_State               : in Front_Clear_State_T;
+                         D_State                : in Drive_State_T;
+                         LE_State               : in Lean_State_T;
+                         SE_State               : in System_Error_State_T;
+                         MS_Speed               : in Long_Float;
+                         MT_Speed               : in Long_Float;
+                         set_motor_value_access : in set_motor_value_procedure_t;
+                         timeout_v              : in Duration;
+                         iteration_delay_s      : in Duration
+                        )
+      do
+         Motor_Controller_State := MC_State;
+         Normal_Driving_State   := ND_State;
+         Front_Clear_State      := FC_State;
+         Drive_State            := D_State;
+         Lean_State             := LE_State;
+         System_Error_State     := SE_State;
+         Motor_Straight_Speed   := MS_Speed;
+         Motor_Turn_Speed       := MT_Speed;
+         set_motor_value        := set_motor_value_access;
+         timeout                := timeout_v;
+         Iteration_Delay        := iteration_delay_s;
+
+      end Constructor;
+      Log_Line("... constructor done");
 
       -- main loop
       while running loop
@@ -325,7 +323,7 @@ package body Motor_Controller is
                end rm_hotfix_signal;
 
             or
-               delay 100.0;
+               delay timeout;
                Log_Line
                  ("done signals timed out, killing External_Controller");
 

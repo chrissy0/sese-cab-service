@@ -3,117 +3,232 @@ package body Lane_Detection is
 
    procedure Log_Line(Message : String) is
    begin
-      Put_Line("[lane_detection] " & Message);
+      Put_Line("[Lane_Detection] " & Message);
    end Log_Line;
+
+
+   --------------------------------
+   -- retrieve_all_sensor_values --
+   --------------------------------
+
+   procedure retrieve_all_sensor_values
+     (
+      get_line_sensor_value : in get_line_sensor_value_access;
+      get_curb_sensor_value : in get_curb_sensor_value_access;
+      get_wall_sensor_value : in get_wall_sensor_value_access;
+      line_sensor_values : out Line_Sensor_Values_Array_T;
+      curb_sensor_values : out Curb_Sensor_Values_Array_T;
+      wall_sensor_values : out Wall_Sensor_Values_Array_T
+     )
+   is
+   begin
+      for pos in Line_Sensor_Position_T loop
+         for I in Boolean loop
+            line_sensor_values(pos, I) := get_line_sensor_value(pos, I);
+         end loop;
+      end loop;
+
+      for pos in Curb_Sensor_Position_T loop
+         for ori in Sensor_Orientation_T loop
+            for I in Boolean loop
+               curb_sensor_values(pos, ori, I) := get_curb_sensor_value(pos, ori, I);
+            end loop;
+         end loop;
+      end loop;
+
+      for ori in Sensor_Orientation_T loop
+         for I in Boolean loop
+            wall_sensor_values(ori, I) := get_wall_sensor_value(ori, I);
+         end loop;
+      end loop;
+   end retrieve_all_sensor_values;
+
+
+   ------------------
+   -- detect_lanes --
+   ------------------
+
+   procedure detect_lanes
+     (
+      all_sensor_values : Line_Sensor_Values_Array_T;
+      threshhold        : Long_Float;
+      detected_array    : out Line_Sensor_Detected_Array_T
+     )
+   is
+   begin
+      for pos in Line_Sensor_Position_T loop
+         for I in Boolean loop
+            detected_array(pos, I) := all_sensor_values(pos, I) < threshhold;
+         end loop;
+      end loop;
+   end detect_lanes;
+
+
+   ------------------------------------------
+   -- calculate_output_from_line_detection --
+   ------------------------------------------
+
+   function output_from_line_detection
+     (
+      detected_array : Line_Sensor_Detected_Array_T;
+      Leaning_Left   : Boolean
+     ) return Lane_Detection_Done_T
+   is
+   begin
+
+      for I in Boolean loop
+         -- handle lean right
+         if not Leaning_Left then
+            if detected_array(RIGHT, I) or
+              ( detected_array(CENTER, I) and not detected_array(LEFT, I) )
+            then
+               return GO_RIGHT_S;
+            elsif (detected_array(LEFT, I) and detected_array(CENTER, I)) then
+               return GO_STRAIGHT_S;
+            elsif detected_array(LEFT, I) then
+               return GO_LEFT_S;
+            end if;
+         else -- handle lean left and lean unkown
+            if detected_array(LEFT, I) or
+              ( detected_array(CENTER, I) and not detected_array(RIGHT, I) )
+            then
+               return GO_LEFT_S;
+            elsif (detected_array(RIGHT, I) and detected_array(CENTER, I)) then
+               return GO_STRAIGHT_S;
+            elsif detected_array(RIGHT, I) then
+               return GO_RIGHT_S;
+            end if;
+         end if;
+      end loop;
+      -- if nothing was detected: System error
+      return SYSTEM_ERROR_S;
+   end output_from_line_detection;
+
+
+   --------------------------------
+   -- output_from_curb_detection --
+   --------------------------------
+
+   function output_from_curb_detection
+     (
+      curb_sensor_values : Curb_Sensor_Values_Array_T;
+      wall_sensor_values : Wall_Sensor_Values_Array_T;
+      Leaning_Left       : Boolean;
+      curb_threshhold    : Long_Float;
+      wall_threshhold    : Long_Float
+     ) return Lane_Detection_Done_T
+   is
+   begin
+      for I in Boolean loop
+         null;
+      end loop;
+      return SYSTEM_ERROR_S;
+   end output_from_curb_detection;
+
+
+   ----------------------
+   -- calculate_output --
+   ----------------------
+
+   function calculate_output
+     (
+      line_sensor_values : Line_Sensor_Values_Array_T;
+      curb_sensor_values : Curb_Sensor_Values_Array_T;
+      wall_sensor_values : Wall_Sensor_Values_Array_T;
+      Leaning_Left       : Boolean;
+      line_threshhold    : Long_Float;
+      curb_threshhold    : Long_Float;
+      wall_threshhold    : Long_Float
+     ) return Lane_Detection_Done_T
+   is
+      detected_array : Line_Sensor_Detected_Array_T;
+      Output         : Lane_Detection_Done_T;
+   begin
+      detect_lanes(line_sensor_values, line_threshhold, detected_array);
+
+      Output := output_from_line_detection(detected_array, Leaning_Left);
+
+      if Output = SYSTEM_ERROR_S then
+         Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values,
+                                              wall_sensor_values => wall_sensor_values,
+                                              Leaning_Left       => Leaning_Left,
+                                              curb_threshhold    => curb_threshhold,
+                                              wall_threshhold    => wall_threshhold);
+      end if;
+
+      return Output;
+   end calculate_output;
+
 
    ---------------------------
    -- Lane_Detection_Taks_T --
    ---------------------------
 
    task body Lane_Detection_Taks_T is
-      US_Curb_Threshhold, IR_Lane_Threshhold  : Long_Float;
-      US_Curb_Max_Value                       : Long_Float;
-      Motor_Controller_Task                   : Motor_Controller_Task_Access_T;
-      WC2EC_Driver                            : wc2ec_thread_access_t;
-      IR_Lane_Right_Value, IR_Lane_Left_Value : Long_Float;
-      IR_Lane_Mid_Value                       : Long_Float;
-      US_Curb_Right_Value, US_Curb_Left_Value : Long_Float;
-      next_signal                             : Lane_Detection_Next_T := NO_LEAN_S;
-      running                                 : Boolean := True;
-      R_Detected                              : Boolean;
-      L_Detected                              : Boolean;
-      C_Detected                              : Boolean;
-      Leaning_Left                            : Boolean := True;
-      Output                                  : Lane_Detection_Done_T;
+      Curb_Threshhold       : Long_Float;
+      Line_Threshhold       : Long_Float;
+      Wall_Threshhold       : Long_Float;
+      Motor_Controller_Task : Motor_Controller_Task_Access_T;
+      next_signal           : Lane_Detection_Next_T := NO_LEAN_S;
+      running               : Boolean := True;
+      Leaning_Left          : Boolean := True;
+      Output                : Lane_Detection_Done_T;
+
+      line_sensor_values    : Line_Sensor_Values_Array_T;
+      curb_sensor_values    : Curb_Sensor_Values_Array_T;
+      wall_sensor_values    : Wall_Sensor_Values_Array_T;
+      get_line_sensor_value : get_line_sensor_value_access;
+      get_curb_sensor_value : get_curb_sensor_value_access;
+      get_wall_sensor_value : get_wall_sensor_value_access;
+      timeout               : Duration;
 
    begin
 
+      Log_Line("Starting Thread.");
+      Log_Line("Waiting for Construct...");
       accept Construct
-        (IR_Threshhold, US_Threshhold : in Long_Float;
-         US_Max_Value                 : in Long_Float;
-         Motor_Task_A                 : in Motor_Controller_Task_Access_T;
-         WC2EC_Driver_A               : in wc2ec_thread_access_t)
+        (
+         Curb_Threshhold_v       : in Long_Float;
+         Line_Threshhold_v       : in Long_Float;
+         Wall_Threshhold_v       : in Long_Float;
+         Motor_Task_A            : in Motor_Controller_Task_Access_T;
+         get_line_sensor_value_a : in get_line_sensor_value_access;
+         get_curb_sensor_value_a : in get_curb_sensor_value_access;
+         get_wall_sensor_value_a : in get_wall_sensor_value_access;
+         timeout_v               : in Duration
+        )
       do
          Motor_Controller_Task := Motor_Task_A;
-         US_Curb_Threshhold    := US_Threshhold;
-         IR_Lane_Threshhold    := IR_Threshhold;
-         WC2EC_Driver          := WC2EC_Driver_A;
-         US_Curb_Max_Value     := US_Max_Value;
+         Curb_Threshhold       := Curb_Threshhold_v;
+         Line_Threshhold       := Line_Threshhold_v;
+         Wall_Threshhold       := Wall_Threshhold_v;
+         get_line_sensor_value := get_line_sensor_value_a;
+         get_curb_sensor_value := get_curb_sensor_value_a;
+         get_wall_sensor_value := get_wall_sensor_value_a;
+         timeout               := timeout_v;
       end Construct;
-      -- each iteration has three steps: 1. Read sensor data and calculate
-      -- outputs 2. and send output via lane_detection_don(value) 3. Wait
-      -- for lane_detection_next and start next iteration
+      Log_Line("... constructor done");
+
       while running loop
-         -- Read sensor values
-         US_Curb_Left_Value := WC2EC.get_distance_sensor_data ("dist_l");
+         retrieve_all_sensor_values(get_line_sensor_value => get_line_sensor_value,
+                                    get_curb_sensor_value => get_curb_sensor_value,
+                                    get_wall_sensor_value => get_wall_sensor_value,
+                                    line_sensor_values    => line_sensor_values,
+                                    curb_sensor_values    => curb_sensor_values,
+                                    wall_sensor_values    => wall_sensor_values);
 
-         US_Curb_Right_Value := WC2EC.get_distance_sensor_data ("dist_r");
+         output := calculate_output(line_sensor_values => line_sensor_values,
+                                    curb_sensor_values => curb_sensor_values,
+                                    wall_sensor_values => wall_sensor_values,
+                                    Leaning_Left       => Leaning_Left,
+                                    line_threshhold    => line_threshhold,
+                                    curb_threshhold    => curb_threshhold,
+                                    wall_threshhold    => Wall_Threshhold);
 
-         IR_Lane_Right_Value := WC2EC.get_distance_sensor_data ("inf_right");
-
-         IR_Lane_Left_Value := WC2EC.get_distance_sensor_data ("inf_left");
-
-         IR_Lane_Mid_Value := WC2EC.get_distance_sensor_data ("inf_cent");
-
-
-         L_Detected := IR_Lane_Left_Value < IR_Lane_Threshhold;
-         R_Detected := IR_Lane_Right_Value < IR_Lane_Threshhold;
-         C_Detected := IR_Lane_Mid_Value < IR_Lane_Threshhold;
-
-
-         if not Leaning_Left then
-            if R_Detected or (C_Detected and not L_Detected) then
-               Output := GO_RIGHT_S;
-            elsif (L_Detected and C_Detected) then
-               Output := GO_STRAIGHT_S;
-            elsif L_Detected then
-               OUTPUT := GO_LEFT_S;
-            else
-               OUTPUT := SYSTEM_ERROR_S;
-            end if;
-         else
-            if L_Detected then
-               Output := GO_LEFT_S;
-            elsif C_Detected then
-               OUTPUT := GO_STRAIGHT_S;
-            elsif R_Detected then
-               OUTPUT := GO_RIGHT_S;
-            else
-			   Log_Line("No line found, switching to curb detection!");
-               if
-                 (US_Curb_Left_Value > US_Curb_Threshhold and
-                    US_Curb_Left_Value <1000.0 )
-               then
-                  Put_Line("Sending Go Right_Curb");
-                  Output := GO_RIGHT_S;
-
-               elsif
-                 (US_Curb_Right_Value > US_Curb_Threshhold and
-                    US_Curb_Right_Value <1000.0  )
-               then
-                  Put_Line("Sending Go Left_Curb");
-                  Output := GO_LEFT_S;
-
-               elsif
-                 (US_Curb_Left_Value = 1000.0)
-               then
-                  Put_Line("Curb Error");
-                  Put_Line("System Error");
-
-               else
-                  Put_Line("Sending Go Straight_Curb");
-                  Output := GO_STRAIGHT_S;
-               end if;
-            end if;
-         end if;
-
-
-         -- Output Signal
-         --Log_Line ("Sending lane_detection_done...");
          select
            Motor_Controller_Task.lane_detection_done(Output);
          then abort
-            delay 2.0;
+            delay timeout;
             Log_Line("lane_detection_done timed out, shutting down...");
             running := False;
             goto Continue;
@@ -142,7 +257,7 @@ package body Lane_Detection is
             end case;
 
          then abort
-            delay 2.0;
+            delay timeout;
             Log_Line("lane_detection_next out, shutting down...");
             running := False;
             goto Continue;

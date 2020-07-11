@@ -113,8 +113,8 @@ package body Front_Distance is
       all_sensor_values                : All_Sensor_Values_Array_T;
       timeout                          : Duration;
    begin
-      Log_Line("Starting Front_Distance Thread.");
-      Log_Line("Front_Distance: Waiting for Construct...");
+      Log_Line("Starting Thread.");
+      Log_Line("Waiting for Construct...");
       accept Construct
         (get_sensor_value_a       : in get_sensor_value_access;
          us_thresh                : in Long_Float;
@@ -129,7 +129,7 @@ package body Front_Distance is
          Motor_Controller_Task := Motor_Controller_Task_A;
          timeout := timeout_v;
       end Construct;
-      Log_Line("... Front_Distance constructor done");
+      Log_Line("... constructor done");
 
       -- main loop
       while running loop
@@ -158,7 +158,7 @@ package body Front_Distance is
          -- wait for signal to start next iteration
          select
             delay timeout;
-            Log_Line("lane_detection_next timed out, shutting Front_Distance down...");
+            Log_Line("front_distance_next timed out, shutting Front_Distance down...");
             running := False;
             goto Continue;
          then abort
@@ -170,7 +170,7 @@ package body Front_Distance is
          <<Continue>>
       end loop;
       Log_Line
-        ("Front_Distance shutting down. So long, and thanks for all the distance (?)");
+        (" Shutting down. So long, and thanks for all the distance (?)");
 
 
    end Front_Distance_Task_T;
