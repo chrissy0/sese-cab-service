@@ -123,7 +123,7 @@ package body Roadmarker is
       count : Integer := 0;
    begin
       for ID in Roadmarker_Sensor_ID_T loop
-         if 250.0 > sensors(ID, is_backup_sensor) and sensors(ID, is_backup_sensor) > 240.0 then
+         if 290.0 > sensors(ID, is_backup_sensor) and sensors(ID, is_backup_sensor) > 270.0 then
             count := count + 1;
          end if;
       end loop;
