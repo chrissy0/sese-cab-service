@@ -1,14 +1,31 @@
 pragma Ada_2012;
+with AUnit.Test_Caller;
+with Lane_Detection.Test; use Lane_Detection.Test;
 package body Lane_Detection_Suite is
+
+   package Caller is new AUnit.Test_Caller
+     (Test_Fixture => Lane_Detection.Test.Test);
 
    -----------
    -- Suite --
    -----------
 
    function Suite return Access_Test_Suite is
+      Ret : constant Access_Test_Suite := new Test_Suite;
    begin
-      pragma Compile_Time_Warning (Standard.True, "Suite unimplemented");
-      return raise Program_Error with "Unimplemented function Suite";
+      Ret.Add_Test
+        (Caller.Create("test detect lanes", Lane_Detection.Test.test_detect_lanes'Access));
+
+      Ret.Add_Test
+        (Caller.Create("test_output_from_line_detection", Lane_Detection.Test.test_output_from_line_detection'Access));
+
+      Ret.Add_Test
+        (Caller.Create("test_output_from_curb_detection", Lane_Detection.Test.test_output_from_curb_detection'Access));
+
+      Ret.Add_Test
+        (Caller.Create("test_calculate_output", Lane_Detection.Test.test_calculate_output'Access));
+
+      return Ret;
    end Suite;
 
 end Lane_Detection_Suite;
