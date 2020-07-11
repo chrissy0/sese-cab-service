@@ -68,8 +68,8 @@ begin
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct
-     (Curb_Threshhold_v       => 350.0,
-      Line_Threshhold_v       => 870.0,
+     (Curb_Threshhold_v       => 870.0,
+      Line_Threshhold_v       => 350.0,
       Wall_Threshhold_v       => 870.0,  -- TODO determine value
       Motor_Task_A            => Motor_Controller_Task,
       get_line_sensor_value_a => WC2EC_Interface.get_line_detection_sensor_value'Access,

@@ -63,13 +63,13 @@ package body Motor_Controller is
                set_motor_value (MOTOR_BACK_LEFT, Motor_Straight_Speed);
                set_motor_value (MOTOR_FRONT_RIGHT, Motor_Straight_Speed);
                set_motor_value (MOTOR_BACK_RIGHT, Motor_Straight_Speed);
-            when LEFT =>
+            when ROTATE_LEFT =>
               -- Log_Line ("driving left");
                set_motor_value (MOTOR_FRONT_LEFT, -Motor_Turn_Speed);
                set_motor_value (MOTOR_BACK_LEFT, -Motor_Turn_Speed);
                set_motor_value (MOTOR_FRONT_RIGHT, Motor_Turn_Speed);
                set_motor_value (MOTOR_BACK_RIGHT, Motor_Turn_Speed);
-            when RIGHT =>
+            when ROTATE_RIGHT =>
               -- Log_Line ("driving right");
                set_motor_value (MOTOR_FRONT_LEFT, Motor_Turn_Speed);
                set_motor_value (MOTOR_BACK_LEFT, Motor_Turn_Speed);
@@ -155,10 +155,10 @@ package body Motor_Controller is
 
             when GO_STRAIGHT_S =>
                Drive_State := STRAIGHT;
-            when GO_LEFT_S =>
-               Drive_State := LEFT;
-            when GO_RIGHT_S =>
-               Drive_State := RIGHT;
+            when ROTATE_LEFT_S =>
+               Drive_State := ROTATE_LEFT;
+            when ROTATE_RIGHT_S =>
+               Drive_State := ROTATE_RIGHT;
             when EMPTY_S =>
                null;
          end case;
@@ -305,6 +305,7 @@ package body Motor_Controller is
                do
                   handle_lane_detection_done (Signal);
                   task_done_array(LANE_DETECTION) := True;
+
                end lane_detection_done;
             or
 

@@ -75,6 +75,8 @@ private
    -- array of sensor values. Second index true => access backup sensor
    type Line_Sensor_Detected_Array_T is array (Line_Sensor_Position_T, Boolean) of Boolean;
 
+   type Line_Sensor_Array_Failure_Array_T is array (Boolean) of Boolean;
+
 
    -- set all_sensor_values with new values from driver
    procedure retrieve_all_sensor_values
@@ -100,22 +102,35 @@ private
 
    procedure detect_lanes
      (
-      all_sensor_values : Line_Sensor_Values_Array_T;
-      threshhold        : Long_Float;
-      detected_array    : out Line_Sensor_Detected_Array_T
+      all_sensor_values    : Line_Sensor_Values_Array_T;
+      threshhold           : Long_Float;
+      detected_array       : out Line_Sensor_Detected_Array_T;
+      sensor_array_failure : out Line_Sensor_Array_Failure_Array_T
      );
 
+   -- For lean left, the output is as follows:
+   -- l | c | r || Output
+   -- 0 | 0 | 0 || Error
+   -- 0 | 0 | 1 || Go_Right
+   -- 0 | 1 | 0 || Go_Left
+   -- 0 | 1 | 1 || Go_Straight
+   -- 1 | 0 | 0 || Go_Left
+   -- 1 | 0 | 1 || Go_Left
+   -- 1 | 1 | 0 || Go_Left
+   -- 1 | 1 | 1 || Go_Left
+   -- For the leaning right, Left and right have to switched.
+   --
    function output_from_line_detection
      (
       detected_array : Line_Sensor_Detected_Array_T;
-      Leaning_Left   : Boolean
+      Leaning_Left   : Boolean;
+      sensor_array_failure : Line_Sensor_Array_Failure_Array_T
      ) return Lane_Detection_Done_T;
 
    function output_from_curb_detection
      (
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
-      Leaning_Left       : Boolean;
       curb_threshhold    : Long_Float;
       wall_threshhold    : Long_Float
      ) return Lane_Detection_Done_T;

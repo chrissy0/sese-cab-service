@@ -13,7 +13,7 @@ package Motor_Controller is
 
    -- type of values send with signal from and to each component
    type Lane_Detection_Done_T is
-     (SYSTEM_ERROR_S, GO_STRAIGHT_S, GO_LEFT_S, GO_RIGHT_S, EMPTY_S);
+     (SYSTEM_ERROR_S, GO_STRAIGHT_S, ROTATE_LEFT_S, ROTATE_RIGHT_S, EMPTY_S);
 
    type Lane_Detection_Next_T is
      (LEAN_LEFT_S, LEAN_RIGHT_S, NO_LEAN_S, EMPTY_S, SHUTDOWN_S);
@@ -40,7 +40,7 @@ package Motor_Controller is
    type Motor_Controller_State_T is (SYSTEM_ERROR, NORMAL_DRIVING);
    type Normal_Driving_State_T is (FRONT_CLEAR, FRONT_BLOCKED);
    type Front_Clear_State_T is (DRIVE, STOP);
-   type Drive_State_T is (STRAIGHT, LEFT, RIGHT, INIT);
+   type Drive_State_T is (STRAIGHT, ROTATE_LEFT, ROTATE_RIGHT, INIT);
    type Lean_State_T is (NEXT_LEFT, NEXT_RIGHT, NEXT_UNKOWN);
    type System_Error_State_T is
      (STOP, LEFT, RIGHT, DRIVE_OVER_CURB, STAND_ON_TRACK, STAND_OFF_TRACK);

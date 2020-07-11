@@ -50,15 +50,18 @@ package body Lane_Detection is
 
    procedure detect_lanes
      (
-      all_sensor_values : Line_Sensor_Values_Array_T;
-      threshhold        : Long_Float;
-      detected_array    : out Line_Sensor_Detected_Array_T
+      all_sensor_values    : Line_Sensor_Values_Array_T;
+      threshhold           : Long_Float;
+      detected_array       : out Line_Sensor_Detected_Array_T;
+      sensor_array_failure : out Line_Sensor_Array_Failure_Array_T
      )
    is
    begin
+      sensor_array_failure := (others => False);
       for pos in Line_Sensor_Position_T loop
          for I in Boolean loop
             detected_array(pos, I) := all_sensor_values(pos, I) < threshhold;
+            sensor_array_failure(I) := sensor_array_failure(I) or all_sensor_values(pos, I) < 0.0;
          end loop;
       end loop;
    end detect_lanes;
@@ -70,35 +73,41 @@ package body Lane_Detection is
 
    function output_from_line_detection
      (
-      detected_array : Line_Sensor_Detected_Array_T;
-      Leaning_Left   : Boolean
+      detected_array       : Line_Sensor_Detected_Array_T;
+      Leaning_Left         : Boolean;
+      sensor_array_failure : Line_Sensor_Array_Failure_Array_T
      ) return Lane_Detection_Done_T
    is
    begin
 
       for I in Boolean loop
-         -- handle lean right
-         if not Leaning_Left then
-            if detected_array(RIGHT, I) or
-              ( detected_array(CENTER, I) and not detected_array(LEFT, I) )
-            then
-               return GO_RIGHT_S;
-            elsif (detected_array(LEFT, I) and detected_array(CENTER, I)) then
-               return GO_STRAIGHT_S;
-            elsif detected_array(LEFT, I) then
-               return GO_LEFT_S;
-            end if;
-         else -- handle lean left and lean unkown
-            if detected_array(LEFT, I) or
-              ( detected_array(CENTER, I) and not detected_array(RIGHT, I) )
-            then
-               return GO_LEFT_S;
-            elsif (detected_array(RIGHT, I) and detected_array(CENTER, I)) then
-               return GO_STRAIGHT_S;
-            elsif detected_array(RIGHT, I) then
-               return GO_RIGHT_S;
+         -- if sensor array failed, dont use it.
+         if not sensor_array_failure(I) then
+
+            -- handle lean right
+            if not Leaning_Left then
+               if detected_array(RIGHT, I) or
+                 ( detected_array(CENTER, I) and not detected_array(LEFT, I) )
+               then
+                  return ROTATE_RIGHT_S;
+               elsif (detected_array(LEFT, I) and detected_array(CENTER, I)) then
+                  return GO_STRAIGHT_S;
+               elsif detected_array(LEFT, I) then
+                  return ROTATE_LEFT_S;
+               end if;
+            else -- handle lean left and lean unkown
+               if detected_array(LEFT, I) or
+                 ( detected_array(CENTER, I) and not detected_array(RIGHT, I) )
+               then
+                  return ROTATE_LEFT_S;
+               elsif (detected_array(RIGHT, I) and detected_array(CENTER, I)) then
+                  return GO_STRAIGHT_S;
+               elsif detected_array(RIGHT, I) then
+                  return ROTATE_RIGHT_S;
+               end if;
             end if;
          end if;
+
       end loop;
       -- if nothing was detected: System error
       return SYSTEM_ERROR_S;
@@ -113,15 +122,38 @@ package body Lane_Detection is
      (
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
-      Leaning_Left       : Boolean;
       curb_threshhold    : Long_Float;
       wall_threshhold    : Long_Float
      ) return Lane_Detection_Done_T
    is
+      Leaning_Left        : Boolean := True;
+      Output              : Lane_Detection_Done_T := SYSTEM_ERROR_S;
+      Wall_Sensor_Failure : Boolean;
    begin
+      -- if wall sensor failed, we cannot operate in this mode
       for I in Boolean loop
-         null;
+         Wall_Sensor_Failure := False;
+         for pos in Curb_Sensor_Position_T loop
+            if wall_sensor_values(RIGHT, I) < 0.0 then
+
+               if Wall_Sensor_Failure then
+                  return System_Error_S;
+               else
+                  Wall_Sensor_Failure := True;
+               end if;
+
+            end if;
+         end loop;
       end loop;
+
+      -- if there is a wall on the right side -> go right
+      for I in Boolean loop
+         if wall_sensor_values(RIGHT, I) <= curb_threshhold then
+            Leaning_Left := False;
+         end if;
+      end loop;
+
+      -- TODO
       return SYSTEM_ERROR_S;
    end output_from_curb_detection;
 
@@ -141,18 +173,21 @@ package body Lane_Detection is
       wall_threshhold    : Long_Float
      ) return Lane_Detection_Done_T
    is
-      detected_array : Line_Sensor_Detected_Array_T;
-      Output         : Lane_Detection_Done_T;
+      detected_array     : Line_Sensor_Detected_Array_T;
+      Output             : Lane_Detection_Done_T;
+      line_failure_array : Line_Sensor_Array_Failure_Array_T;
    begin
-      detect_lanes(line_sensor_values, line_threshhold, detected_array);
+      detect_lanes(all_sensor_values    => line_sensor_values,
+                   threshhold           => line_threshhold,
+                   detected_array       => detected_array,
+                   sensor_array_failure => line_failure_array);
 
-      Output := output_from_line_detection(detected_array, Leaning_Left);
+      Output := output_from_line_detection(detected_array, Leaning_Left, line_failure_array);
 
       if Output = SYSTEM_ERROR_S then
          Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values,
                                               wall_sensor_values => wall_sensor_values,
-                                              Leaning_Left       => Leaning_Left,
-                                              curb_threshhold    => curb_threshhold,
+                                              curb_threshhold         => curb_threshhold,
                                               wall_threshhold    => wall_threshhold);
       end if;
 
@@ -217,12 +252,13 @@ package body Lane_Detection is
                                     curb_sensor_values    => curb_sensor_values,
                                     wall_sensor_values    => wall_sensor_values);
 
+
          output := calculate_output(line_sensor_values => line_sensor_values,
                                     curb_sensor_values => curb_sensor_values,
                                     wall_sensor_values => wall_sensor_values,
                                     Leaning_Left       => Leaning_Left,
-                                    line_threshhold    => line_threshhold,
-                                    curb_threshhold    => curb_threshhold,
+                                    line_threshhold    => Line_Threshhold,
+                                    curb_threshhold    => Curb_Threshhold,
                                     wall_threshhold    => Wall_Threshhold);
 
          select
