@@ -30,6 +30,7 @@ package ec2b is
 
    type cmd_queue_access_t is access Cmd_Queue_p.Queue;
 
+   function update_sensor_manipulation(cab_id : Integer) return Messages.Status_Code;
    function request_route(cmd_queue: in out cmd_queue_access_t; cab_id : Integer; cab_version : in out Integer) return Messages.Status_Code;
    function register_cab(cabname : String; section : Road_Marker_Done_T; cab_id : out Integer)  return Messages.Status_Code;
    function update_cabLocation(cab_id : Integer; cab_section : Road_Marker_Done_T) return Messages.Status_Code;

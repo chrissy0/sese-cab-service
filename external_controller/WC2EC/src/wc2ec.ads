@@ -31,14 +31,14 @@ package WC2EC is
                                                               Equivalent_Keys => "=");
    use sensor_map_p;
 
-   subtype woosh_t is Integer range 1 .. 100;
-   subtype woosh_randomness_t is Integer range -100 .. 100;
+   subtype whoosh_t is Integer range 1 .. 100;
+   subtype whoosh_randomness_t is Integer range -100 .. 100;
 
-   package random_woosh_p is new Ada.Numerics.Discrete_Random (woosh_randomness_t);
+   package random_whoosh_p is new Ada.Numerics.Discrete_Random (whoosh_randomness_t);
 
    type sensor_manipulation_t is record
       disabled : Boolean;
-      whoosh : woosh_t;
+      whoosh : whoosh_t;
    end record;
 
 
@@ -46,7 +46,9 @@ package WC2EC is
                                                                    Element_Type    => sensor_manipulation_t,
                                                                    Hash            => Ada.Strings.Hash,
                                                                    Equivalent_Keys => "=");
-   --subtype sensor_manipulation_map_access_t is access sensor_manipulation_map_p;
+
+   type sensor_manipulation_map_access_t is access sensor_manipulation_map_p.Map;
+   procedure update_sensor_manipulation_map(new_sensor_manipulation_map : sensor_manipulation_map_access_t);
    type wc2ec_header_t is record
       command : Interfaces.Unsigned_8;
       sensor_type : Interfaces.Unsigned_8;
@@ -72,10 +74,10 @@ package WC2EC is
       end wc2ec_thread_t; -- Thread type
    type wc2ec_thread_access_t is access wc2ec_thread_t;
 
-   type sensor_manipulation_access_t is access sensor_manipulation_map_p.Map;
+
    -- Variables (maybe hide those)
    sensor_map :  sensor_map_p.Map;
-   sensor_manipulation_map : sensor_manipulation_access_t;
+   sensor_manipulation_map : sensor_manipulation_map_access_t;
    sensor_ring : sensor_ring_access_t;
    Channel : Stream_Access; -- socket I/O interface
    ready : Boolean := false;

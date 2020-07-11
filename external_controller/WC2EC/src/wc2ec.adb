@@ -2,8 +2,14 @@ with WC2EC; use WC2EC;
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 --use random_woosh_p;
-with Ada.Numerics.Discrete_Random; use WC2EC.random_woosh_p;
+with Ada.Numerics.Discrete_Random; use WC2EC.random_whoosh_p;
 package body WC2EC is
+
+
+   procedure update_sensor_manipulation_map(new_sensor_manipulation_map : sensor_manipulation_map_access_t) is
+   begin
+      sensor_manipulation_map := new_sensor_manipulation_map;
+   end update_sensor_manipulation_map;
 
    function get_ring_index(sensor_name : String) return Standard.Integer is
       ring_index : Standard.Integer;
@@ -20,7 +26,7 @@ package body WC2EC is
       value : Long_Float;
       manipulator : sensor_manipulation_t;
       woosh : Long_Float;
-      random_woosh : woosh_randomness_t;
+      random_woosh : whoosh_randomness_t;
       G : Generator;
    begin
 

@@ -22,11 +22,8 @@ begin
    return_code := register_cab("Dieter3", 14, cab_id);
    -- Todo error handling
    if failed(return_code)  then
-      cab_id := 1;
+      cab_id := 0;
    end if;
-   return_code := request_route(cmd_queue, cab_id, cab_version);
-   return_code := dropoff_complete(cab_id, dropoff_completed);
-   return;
 
    Put_Line("Register cab returned: " & cab_id'Image);
    return_code := update_cabLocation(cab_id, 14);
@@ -36,7 +33,8 @@ begin
    --for I in 1 .. cmd_queue.Current_Use loop
    --   cmd_queue.Dequeue(next_command);
    --end loop;
-
+   return_code := update_sensor_manipulation(0);
+   return;
       for I in  roadmarkers_input'Range loop
 
       case roadmarkers_input(I) is

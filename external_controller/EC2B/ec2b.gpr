@@ -1,3 +1,4 @@
+with "..\WC2EC\wc2ec.gpr";
 with "..\Road_Marker\roadmarker.gpr";
 with "..\Motor_Controller\motor_controller.gpr";
 with "gnatcoll.gpr";
