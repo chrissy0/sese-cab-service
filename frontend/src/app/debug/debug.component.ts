@@ -14,9 +14,23 @@ export class DebugComponent implements OnInit {
   constructor(private backendService: BackendService) {
   }
 
+  debugMode = false;
+
   cabs: Cab[] = [];
 
   cabSensors: CabSensors[] = [];
+
+  softResetBackend() {
+    this.backendService.softResetBackend();
+    this.cabs = [];
+    this.cabSensors = [];
+  }
+
+  hardResetBackend() {
+    this.backendService.hardResetBackend();
+    this.cabs = [];
+    this.cabSensors = [];
+  }
 
   getCabSensors(cabId: number) {
     return this.cabSensors.filter(elem => elem.cabId === cabId)[0].sensors;
