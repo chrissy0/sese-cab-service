@@ -1,7 +1,15 @@
-with WC2EC;
+with WC2EC; use WC2EC;
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+--use random_woosh_p;
+with Ada.Numerics.Discrete_Random; use WC2EC.random_whoosh_p;
 package body WC2EC is
+
+
+   procedure update_sensor_manipulation_map(new_sensor_manipulation_map : sensor_manipulation_map_access_t) is
+   begin
+      sensor_manipulation_map := new_sensor_manipulation_map;
+   end update_sensor_manipulation_map;
 
    function get_ring_index(sensor_name : String) return Standard.Integer is
       ring_index : Standard.Integer;
@@ -15,13 +23,31 @@ package body WC2EC is
       ring_index : Standard.Integer;
       --head_index : RingIndex;
       --vec_output : distance_sensor_Ring.Element_Vector.Vector;
+      value : Long_Float;
+      manipulator : sensor_manipulation_t;
+      woosh : Long_Float;
+      random_woosh : whoosh_randomness_t;
+      G : Generator;
    begin
 
       ring_index := get_ring_index(sensor_name);
       --vec_output := sensor_ring(ring_index).get_elements;
 
       --return vec_output.Element(Index => vec_output.First_Index);
-      return sensor_ring(ring_index).distance;
+      value := sensor_ring(ring_index).distance;
+      if (sensor_manipulation_map.Contains(sensor_name)) then
+         manipulator := sensor_manipulation_map.Element(sensor_name);
+         if (manipulator.disabled) then
+            value := -1.0;
+         else
+            Reset(G);
+            random_woosh := Random(G);
+
+            woosh :=  Long_Float(manipulator.whoosh * random_woosh) / Long_Float(10000.0);
+            value := value + value * woosh;
+         end if;
+      end if;
+      return value;
    end;
 
    procedure set_motor_sensor_data(sensor_name : String; velocity : Long_Float) is
@@ -123,6 +149,7 @@ Task body wc2ec_thread_t is
       -- accept constructor call
       -- on timeout, close motor controller this is needed so that test cases
       -- termintate if an assert fails
+      sensor_manipulation_map := new sensor_manipulation_map_p.Map;
       select
                  -- static, longer timeout for constructor
          delay 2.0;

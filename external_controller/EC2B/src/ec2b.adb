@@ -12,6 +12,7 @@ use AWS;
 with Ada.Strings.Fixed;
 with json_Wrappers;
 use JSON_Wrappers;
+with WC2EC; use WC2EC;
 package body ec2b is
 
    function failed(status_code : Messages.Status_Code) return Boolean is
@@ -32,6 +33,45 @@ package body ec2b is
    -------------------
    -- request_route --
    -------------------
+
+   function update_sensor_manipulation(cab_id : Integer) return Messages.Status_Code is
+      cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
+      parameters : param_map_p.Map;
+      response_json : JSON_Value;
+      sensors_json : JSON_Array;
+      sensor_errors : Boolean;
+      sensor_json : JSON_Value;
+      sensor_manipulator : access sensor_manipulation_t;
+      sensor_name : Ada.Strings.Unbounded.Unbounded_String;
+      new_sensor_manipulation_map : sensor_manipulation_map_access_t;
+      status_code : Messages.Status_Code;
+      whoosh : Integer;
+   begin
+      parameters.Insert("cabId", cab_id_str);
+      status_code := get_JSON(connection, "/api/ec/sensorStatus", parameters, response_json);
+      if (failed(status_code)) then
+         return status_code;
+      end if;
+      sensor_errors := GNATCOLL.JSON.Get(response_json, "sensorErrors");
+      if (not sensor_errors) then
+         return status_code;
+      end if;
+      new_sensor_manipulation_map := new sensor_manipulation_map_p.Map;
+      sensors_json := GNATCOLL.JSON.Get(response_json, "sensors");
+      for I in 1 .. GNATCOLL.JSON.Length(sensors_json) loop
+         sensor_json := GNATCOLL.JSON.Get(sensors_json, I);
+         sensor_name := GNATCOLL.JSON.get(sensor_json, "name");
+         sensor_manipulator := new sensor_manipulation_t;
+         sensor_manipulator.disabled := GNATCOLL.JSON.get(sensor_json, "disabled");
+         if (not sensor_manipulator.disabled) then
+            whoosh := GNATCOLL.JSON.get(sensor_json, "whoosh");
+            sensor_manipulator.whoosh := whoosh;
+         end if;
+         new_sensor_manipulation_map.Insert(To_String(sensor_name), sensor_manipulator.all);
+      end loop;
+      update_sensor_manipulation_map(new_sensor_manipulation_map);
+      return status_code;
+   end update_sensor_manipulation;
 
    function request_route(cmd_queue: in out cmd_queue_access_t;
                           cab_id : Integer; cab_version : in out Integer

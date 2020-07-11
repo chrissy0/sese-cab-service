@@ -106,6 +106,7 @@ package body Job_Executer is
       backend_failed          : Boolean := False;
       next_command_old        : Command_t;
       current_command_old     : Command_t;
+      ignored_boolean         : Boolean;
 
    begin
       current_command.action := NEXT_UNKOWN_S;
@@ -295,6 +296,8 @@ package body Job_Executer is
            Roadmarker_Task.road_marker_next(RM_next);
          end select;
 
+         return_code := update_sensor_manipulation(cab_id);
+         ignored_boolean := success(return_code, error_counter);
       end loop;
 
 
