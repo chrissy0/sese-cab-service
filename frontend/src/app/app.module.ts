@@ -9,13 +9,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {JobsDisplayComponent} from './jobs-display/jobs-display.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RoutesDisplayComponent} from './routes-display/routes-display.component';
+import {DebugComponent} from './debug/debug.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookingFormComponent,
     JobsDisplayComponent,
-    RoutesDisplayComponent
+    RoutesDisplayComponent,
+    DebugComponent
   ],
   imports: [
     BrowserModule,

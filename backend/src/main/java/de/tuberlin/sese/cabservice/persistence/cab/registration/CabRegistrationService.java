@@ -9,6 +9,11 @@ import de.tuberlin.sese.cabservice.util.exceptions.UnknownSectionException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.google.common.collect.Streams.stream;
+
 @Service
 @RequiredArgsConstructor
 public class CabRegistrationService {
@@ -49,5 +54,9 @@ public class CabRegistrationService {
                 throw new NameAlreadyInUseException("CabName \"" + entity.getName() + "\" is already in use");
             }
         });
+    }
+
+    public List<CabEntity> registeredCabs() {
+        return stream(repo.findAll()).collect(Collectors.toList());
     }
 }

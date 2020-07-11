@@ -4,16 +4,19 @@ import {Job} from './job';
 import {Pickup} from './pickup';
 import {Dropoff} from './dropoff';
 import {Route} from './route';
+import {Cab} from './cab';
+import {Sensor} from './sensor';
+import {BackendCabSensorStatus} from './backend-cab-sensor-status';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class BackendService {
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    developmentMode = true;
+  developmentMode = true;
 
     host = this.developmentMode ? 'localhost' : '167.71.35.10';
     port = 8081;
@@ -46,12 +49,28 @@ export class BackendService {
         return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/dropoffRequests').toPromise() as Promise<Dropoff[]>;
     }
 
-    acceptDropoff(customerId: number) {
-        return this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/acceptDropoff?customerId=' + customerId, {})
-            .toPromise();
-    }
+  acceptDropoff(customerId: number) {
+    return this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/acceptDropoff?customerId=' + customerId, {})
+      .toPromise();
+  }
 
-    getRoutes() {
-        return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/getRoutes').toPromise() as Promise<Route[]>;
-    }
+  getRoutes() {
+    return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/getRoutes').toPromise() as Promise<Route[]>;
+  }
+
+  getRegisteredCabs() {
+    return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/registeredCabs').toPromise() as Promise<Cab[]>;
+  }
+
+  saveSensorData(cabId: number, sensor: Sensor) {
+    this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/setSensorStatus' +
+      '?cabId=' + cabId + '&sensorName=' + sensor.name +
+      '&disabled=' + !sensor.active + '&noise=' + sensor.noise, {})
+      .toPromise();
+  }
+
+  getSensorData(cabId: number) {
+    return this.http.get('http://' + this.host + ':' + this.port + '/api/ec/sensorStatus?cabId=' + cabId, {})
+      .toPromise() as Promise<BackendCabSensorStatus>;
+  }
 }

@@ -1,0 +1,36 @@
+<div class="container">
+  <br>
+  <div *ngIf="cabs.length > 0" class="card">
+    <div class="card-header">
+      Debug Panel
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let cab of cabs" class="list-group-item">
+        <h5 class="ml-4">Cab {{ cab.id }} ({{ cab.name }})</h5>
+        <hr/>
+        <div class="container">
+          <div *ngFor="let sensor of getCabSensors(cab.id)" class="custom-control custom-switch">
+            <div class="row">
+              <div class="col-2">
+                {{ sensor.name }}
+              </div>
+              <div class="col">
+                <input type="checkbox" [checked]="sensor.active"
+                       (change)="setActive(cab.id, sensor, !sensor.active)"
+                       class="custom-control-input" id="switch-{{ cab.id + '-' + sensor.name }}">
+                <label class="custom-control-label"
+                       for="switch-{{ cab.id + '-' + sensor.name }}"></label>
+
+                <!--suppress HtmlFormInputWithoutLabel -->
+                <input #noiseSlider type="range" style="width: 93%" [value]="sensor.noise"
+                       (change)="setNoise(cab.id, sensor, noiseSlider.value)" min="0" max="100"
+                       id="range-{{ cab.id + '-' + sensor.name }}">
+                {{ sensor.noise }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
