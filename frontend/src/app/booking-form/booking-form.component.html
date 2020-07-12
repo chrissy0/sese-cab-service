@@ -13,8 +13,6 @@
             <option *ngFor="let start of getStartStations()" [value]="start">Station {{start}}</option>
           </select>
         </div>
-      </div>
-      <div class="col">
         <div class="form-group">
           <label for="end-station">To ..</label>
           <select class="form-control"
@@ -27,7 +25,41 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="submitButtonDisabled()" style="float: right">Submit</button>
+    <div class="row">
+      <div class="col-3">
+        <button type="button" class="btn btn-block btn-primary" (click)="pictureCollapsed = !pictureCollapsed"
+                [attr.aria-expanded]="!pictureCollapsed" aria-controls="picCollapse">
+          {{ pictureCollapsed ? 'Show Map' : 'Hide Map' }}
+        </button>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-block btn-success" [disabled]="submitButtonDisabled()"
+                style="float: right">
+          Submit
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <br>
+        <div id="picCollapse" [ngbCollapse]="pictureCollapsed">
+          <div class="card">
+            <div class="card-body">
+              <img src="assets/img/stations-landscape.png"
+                   style="width: 60%; margin: 0 auto; display: block;"
+                   alt="map">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <br>
+
+      </div>
+    </div>
 
   </form>
 </div>

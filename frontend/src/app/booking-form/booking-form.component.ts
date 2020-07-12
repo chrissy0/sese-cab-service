@@ -16,6 +16,8 @@ export class BookingFormComponent {
 
   model = new Job();
 
+  pictureCollapsed = true;
+
   submitButtonDisabled() {
     return this.model.start === undefined || this.model.end === undefined;
   }

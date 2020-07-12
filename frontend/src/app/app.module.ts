@@ -10,6 +10,7 @@ import {JobsDisplayComponent} from './jobs-display/jobs-display.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {RoutesDisplayComponent} from './routes-display/routes-display.component';
 import {DebugComponent} from './debug/debug.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {DebugComponent} from './debug/debug.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
