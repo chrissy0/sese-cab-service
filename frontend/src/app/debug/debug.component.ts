@@ -48,6 +48,9 @@ export class DebugComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadDebugPanel();
+    setInterval(() => {
+      this.loadDebugPanel();
+    }, 1000);
   }
 
   private loadDebugPanel() {
