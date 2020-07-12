@@ -54,17 +54,10 @@ begin
    Log_Line ("Setting up Motor_Controller_Task...");
    Motor_Controller_Task := new Motor_Controller_Task_T;
 
-   Motor_Controller_Task.Constructor(MC_State       => NORMAL_DRIVING,
-                                     ND_State       => FRONT_CLEAR,
-                                     FC_State       => DRIVE,
-                                     D_State        => INIT,
-                                     SE_State       => STOP,
-                                     LE_STATE       => NEXT_UNKOWN,
-                                     MS_Speed       => 3.0,
-                                     MT_Speed       => 1.5,
+   Motor_Controller_Task.Constructor(
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
-                                     timeout_v      => timeout,
-                                     iteration_delay_s => 0.01);
+                                     timeout_v              => timeout,
+                                     iteration_delay_s      => 0.01);
 
    Log_Line ("Setting up Lane_Detection_Task...");
    Lane_Detection_Task.Construct

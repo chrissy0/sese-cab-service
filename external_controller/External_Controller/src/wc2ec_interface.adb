@@ -14,21 +14,28 @@ package body WC2EC_Interface is
    ---------------------
 
    procedure set_motor_value
-     (ID : Motor_Controller.Motor_ID_T; Value : Long_Float)
+     (
+      vertical   : Vertical_Position_T;
+      horizontal : Horizontal_Position_T;
+      value      : Long_Float
+     )
    is
    begin
-      case ID is
-         when MOTOR_FRONT_LEFT =>
-            WC2EC.set_motor_sensor_data("wheel1", Value);
-
-         when MOTOR_FRONT_RIGHT =>
-            WC2EC.set_motor_sensor_data("wheel2", Value);
-
-         when MOTOR_BACK_LEFT =>
-            WC2EC.set_motor_sensor_data("wheel3", Value);
-
-         when MOTOR_BACK_RIGHT =>
-            WC2EC.set_motor_sensor_data("wheel4", Value);
+      case vertical is
+         when FRONT =>
+            case horizontal is
+               when LEFT =>
+                  WC2EC.set_motor_sensor_data("wheel1", Value);
+               when RIGHT =>
+                  WC2EC.set_motor_sensor_data("wheel2", Value);
+            end case;
+         when BACK =>
+            case horizontal is
+               when LEFT =>
+                  WC2EC.set_motor_sensor_data("wheel3", Value);
+               when RIGHT =>
+                  WC2EC.set_motor_sensor_data("wheel4", Value);
+            end case;
       end case;
    end set_motor_value;
 

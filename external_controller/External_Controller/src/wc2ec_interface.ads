@@ -6,8 +6,12 @@ with Roadmarker;
 with Lane_Detection;
 package WC2EC_Interface is
 
-   procedure set_motor_value (ID    : Motor_Controller.Motor_ID_T;
-                              Value : Long_Float);
+   procedure set_motor_value
+     (
+      vertical   : Motor_Controller.Vertical_Position_T;
+      horizontal : Motor_Controller.Horizontal_Position_T;
+      value      : Long_Float
+     );
 
    function get_front_distance_value
      (

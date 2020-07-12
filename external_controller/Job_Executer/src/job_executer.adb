@@ -283,6 +283,9 @@ package body Job_Executer is
                   RM_next := SHUTDOWN_S;
                when EMPTY_S =>
                   RM_next := EMPTY_S;
+               when BLOCKED_S =>
+                  -- TODO
+                  null;
             end case;
 
          end select;

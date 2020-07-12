@@ -152,6 +152,7 @@ package body Lane_Detection is
       end loop;
 
       -- TODO
+      Log_Line("TODO");
       return SYSTEM_ERROR_S;
    end output_from_curb_detection;
 
@@ -240,7 +241,7 @@ package body Lane_Detection is
 
    task body Lane_Detection_Taks_T is
       Motor_Controller_Task : Motor_Controller_Task_Access_T;
-      next_signal           : Lane_Detection_Next_T := NO_LEAN_S;
+      next_signal           : Lane_Detection_Next_T := LEAN_LEFT_S;
       running               : Boolean := True;
       Leaning_Left          : Boolean := True;
       Output                : Lane_Detection_Done_T;
@@ -288,7 +289,6 @@ package body Lane_Detection is
                                     wall_sensor_values => wall_sensor_values,
                                     Leaning_Left       => Leaning_Left,
                                     is_lean_from_line  => is_lean_from_line);
-
          select
            Motor_Controller_Task.lane_detection_done(Output);
          then abort
@@ -312,15 +312,11 @@ package body Lane_Detection is
             when LEAN_RIGHT_S=>
                Leaning_Left := False;
                is_lean_from_line := False;
-            when NO_LEAN_S =>
-               Leaning_Left := True;
-               is_lean_from_line := False;
             when EMPTY_S =>
                null;
             when LEAN_FROM_LINE =>
                is_lean_from_line := True;
             when SHUTDOWN_S =>
-               Leaning_Left := True;
                running := False;
                goto Continue;
             end case;
