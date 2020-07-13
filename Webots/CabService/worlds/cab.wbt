@@ -3,7 +3,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 1 0 0 4.71238898038469
-  position 0.7211742695325039 10.077188563456492 2.5571272274931487
+  position -0.18169094414818188 3.104147869393026 3.3287432668739583
   follow "robot"
   followType "None"
   followSmoothness 0.2
@@ -1278,7 +1278,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6646674218173285 -0.6646698632782582 0.3412201506716257 2.483931265367255
+        rotation 0.6646674218173285 -0.6646698632782582 0.34122015067162564 2.483931265367255
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -2582,7 +2582,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6646674218173285 -0.6646698632782582 0.3412201506716257 2.483931265367255
+        rotation 0.6646674218173285 -0.6646698632782582 0.34122015067162564 2.483931265367255
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -5233,6 +5233,42 @@ DEF road_marker Solid {
     }
   ]
   name "road marker(2)"
+}
+DEF road_marker Solid {
+  translation -0.264578 0.0001 3.4097
+  rotation 0 -1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(58)"
+}
+DEF road_marker Solid {
+  translation -0.164578 0.0001 3.4097
+  rotation 0 -1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(59)"
 }
 DEF road_marker Solid {
   translation 0.668012 0.0001 3.28936
