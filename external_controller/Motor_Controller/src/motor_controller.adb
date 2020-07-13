@@ -1,6 +1,8 @@
 -- Final safe state not implemented yet!
 pragma Ada_2012;
+with Ada.Calendar; use Ada.Calendar;
 with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Real_Time; use Ada.Real_Time;
 package body Motor_Controller is
 
    procedure Log_Line (message : String) is
@@ -20,7 +22,48 @@ package body Motor_Controller is
      )
    is
    begin
-      case JE_Signal is
+      if state.Base = SYSTEM_ERROR and state.System_Error = FINAL_SAFE_STATE then
+         case state.Final_Safe_State is
+            when ROTATE_LEFT_90 =>
+               if state.Counter >= ITERAION_NUM_90_DEGREE then
+                  state.Counter := 0;
+                  state.Final_Safe_State := DRIVE_OFF_LEFT;
+               else
+                  state.Counter := state.Counter + 1;
+               end if;
+            when DRIVE_OFF_LEFT =>
+               if state.Counter >= ITERAION_NUM_DRIVE_OFF then
+                  state.Counter := 0;
+                  state.Final_Safe_State := DONE;
+               elsif FD_Signal = FRONT_BLOCKED_S then
+                  state.Counter := 0;
+                  state.Final_Safe_State := ROTATE_RIGHT_180_DEGREE;
+               else
+                  state.Counter := state.Counter + 1;
+               end if;
+            when ROTATE_RIGHT_180_DEGREE =>
+               if state.Counter >= 2 * ITERAION_NUM_90_DEGREE then
+                  state.Counter := 0;
+                  state.Final_Safe_State := DRIVE_OFF_RIGHT;
+               else
+                  state.Counter := state.Counter + 1;
+               end if;
+            when DRIVE_OFF_RIGHT =>
+               if state.Counter >= ITERAION_NUM_DRIVE_OFF * 2 then
+                  state.Counter := 0;
+                  state.Final_Safe_State := DONE;
+               elsif FD_Signal = FRONT_BLOCKED_S then
+                  state.Counter := 0;
+                  state.System_Error := STAND_ON_TRACK;
+               else
+                  state.Counter := state.Counter + 1;
+               end if;
+            when DONE =>
+               state.Base := SHUTDOWN;
+         end case;
+
+      else
+         case JE_Signal is
          when SYSTEM_ERROR_S =>
             state.Leaning := LEAN_FROM_LINE;
          when NEXT_LEFT_S =>
@@ -36,21 +79,10 @@ package body Motor_Controller is
             null;
          when STOP_S =>
             state.Front_Is_Clear := STOP;
-      end case;
+         end case;
 
-      case FD_Signal is
-         when FRONT_BLOCKED_S =>
-            state.No_System_Error := FRONT_BLOCKED;
-         when FRONT_CLEAR_S =>
-            state.No_System_Error := FRONT_CLEAR;
-         when FD_FAULT_S =>
-            state.Base            := SYSTEM_ERROR;
-            state.System_Error    := STAND_ON_TRACK;
-         when EMPTY_S =>
-            null;
-      end case;
 
-      case LD_Signal is
+         case LD_Signal is
          when SYSTEM_ERROR_S =>
             state.System_Error    := FINAL_SAFE_STATE;
             state.Base            := SYSTEM_ERROR;
@@ -62,15 +94,29 @@ package body Motor_Controller is
             state.Driving := ROTATE_RIGHT;
          when EMPTY_S =>
             null;
-      end case;
+         end case;
 
-      if RM_Force_Left then
-         state.Leaning := NEXT_LEFT;
+         case FD_Signal is
+         when FRONT_BLOCKED_S =>
+            state.No_System_Error := FRONT_BLOCKED;
+         when FRONT_CLEAR_S =>
+            state.No_System_Error := FRONT_CLEAR;
+         when FD_FAULT_S =>
+            state.Base            := SYSTEM_ERROR;
+            state.System_Error    := STAND_ON_TRACK;
+         when EMPTY_S =>
+            null;
+         end case;
+
+         if RM_Force_Left then
+            state.Leaning := NEXT_LEFT;
+         end if;
       end if;
 
       if is_shutdown then
          state.Base := SHUTDOWN;
       end if;
+
 
 
    end do_state_transition;
@@ -101,7 +147,10 @@ package body Motor_Controller is
 
       case state.Base is
          when SYSTEM_ERROR =>
-            null;
+            FD_Next_Signal := EMPTY_S;
+            output_system_error(state          => state,
+                                motor_values   => motor_values,
+                                JE_Next_Signal => JE_Next_Signal);
          when NO_SYSTEM_ERROR =>
             FD_Next_Signal := EMPTY_S;
             output_no_system_error(state          => state,
@@ -115,6 +164,66 @@ package body Motor_Controller is
       end case;
 
    end calculate_output;
+
+
+   procedure output_system_error
+     (
+      state          : Cab_State_T;
+      motor_values   : out Motor_Values_T;
+      JE_Next_Signal : out Job_Executer_Next_t
+     )
+   is
+
+   begin
+      case state.System_Error is
+         when FINAL_SAFE_STATE =>
+            output_final_safe_state(state          => state,
+                                   motor_values   => motor_values,
+                                   JE_Next_Signal => JE_Next_Signal);
+         when STAND_ON_TRACK =>
+            JE_Next_Signal := BLOCKED_S;
+            motor_values := (others => (others => 0.0));
+
+      end case;
+   end output_system_error;
+
+   procedure output_final_safe_state
+     (
+      state          : Cab_State_T;
+      motor_values   : out Motor_Values_T;
+      JE_Next_Signal : out Job_Executer_Next_t
+     )
+   is
+   begin
+      case state.Final_Safe_State is
+         when ROTATE_LEFT_90 =>
+            JE_Next_Signal := BLOCKED_S;
+            for v in Vertical_Position_T loop
+               motor_values(v, LEFT)  := 0.0;
+               motor_values(v, RIGHT) := MOTOR_ROTATE_SPEED * 2.0;
+            end loop;
+            JE_Next_Signal := BLOCKED_S;
+         when DRIVE_OFF_LEFT =>
+            JE_Next_Signal := BLOCKED_S;
+            motor_values := (others => (others => MOTOR_DRIVE_SPEED * 2.0));
+         when ROTATE_RIGHT_180_DEGREE =>
+            JE_Next_Signal := BLOCKED_S;
+            for v in Vertical_Position_T loop
+               motor_values(v, LEFT)  := MOTOR_ROTATE_SPEED * 2.0;
+               motor_values(v, RIGHT) := 0.0;
+            end loop;
+         when DRIVE_OFF_RIGHT =>
+            JE_Next_Signal := BLOCKED_S;
+            motor_values := (others => (others => MOTOR_DRIVE_SPEED * 2.0));
+
+         when DONE =>
+            JE_Next_Signal := EMPTY_S;
+            motor_values := (others => (others => 0.0));
+      end case;
+
+
+   end output_final_safe_state;
+
 
    procedure output_no_system_error
      (
@@ -221,13 +330,15 @@ package body Motor_Controller is
 
 
    task body Motor_Controller_Task_T is
-      state           : Cab_State_T := (Base            => NO_SYSTEM_ERROR,
-                                        System_Error    => STAND_ON_TRACK,
-                                        No_System_Error => FRONT_BLOCKED,
-                                        Front_Is_Clear  => Drive,
-                                        Driving         => Init,
-                                        Leaning         => NEXT_LEFT,
-                                        Forcing_Left    => False
+      state           : Cab_State_T := (Base             => NO_SYSTEM_ERROR,
+                                        System_Error     => FINAL_SAFE_STATE,
+                                        No_System_Error  => FRONT_BLOCKED,
+                                        Final_Safe_State => ROTATE_LEFT_90,
+                                        Front_Is_Clear   => Drive,
+                                        Driving          => Init,
+                                        Leaning          => NEXT_LEFT,
+                                        Forcing_Left     => False,
+                                        Counter => 0
                                        );
 
       set_motor_value            : set_motor_value_procedure_access_t;
@@ -249,11 +360,13 @@ package body Motor_Controller is
       Job_Executer_Done_Signal_o      : Job_Executer_Done_t      := EMPTY_S;
       Lane_Detection_Done_Signal_o    : Lane_Detection_Done_T    := EMPTY_S;
       Front_Distance_Done_Signal_o    : Front_Distance_Done_t    := EMPTY_S;
-      Road_Marker_Force_Left_Signal : Boolean                  := False;
-      Main_Force_Shutdown_Signal    : Boolean                  := False;
+      Road_Marker_Force_Left_Signal   : Boolean                  := False;
+      Main_Force_Shutdown_Signal      : Boolean                  := False;
 
       task_done_array            : Boolean_Tasks_Arrays;
       got_force_left             : Boolean                  := False;
+
+      Next                       : Ada.Calendar.Time;
    begin
 
       Log_Line("Starting Thread.");
@@ -273,6 +386,8 @@ package body Motor_Controller is
       end Constructor;
       Log_Line("... constructor done");
 
+      Next := Ada.Calendar.Clock;
+      Next := Next + Iteration_Delay;
       -- main loop
       while running loop
 
@@ -365,8 +480,7 @@ package body Motor_Controller is
                              FD_Signal     => Front_Distance_Done_Signal,
                              LD_Signal     => Lane_Detection_Done_Signal,
                              RM_Force_Left => Road_Marker_Force_Left_Signal,
-                             Is_Shutdown   => Main_Force_Shutdown_Signal
-                            );
+                             Is_Shutdown   => Main_Force_Shutdown_Signal);
 
          calculate_output(state          => state,
                           motor_values   => motor_values,
@@ -395,7 +509,8 @@ package body Motor_Controller is
          apply_motor_values(motor_values    => motor_values,
                             set_motor_value => set_motor_value);
 
-         delay Iteration_Delay;
+         delay until Next;
+         Next := Next + Iteration_Delay;
 
 
          reset_all_tasks_done(all_tasks_done_array => task_done_array);

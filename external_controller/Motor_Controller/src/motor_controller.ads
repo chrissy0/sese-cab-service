@@ -118,6 +118,9 @@ private
    MOTOR_ROTATE_SPEED : constant Long_Float := 1.0;
    -- Wheel speed when driving forwards
    MOTOR_DRIVE_SPEED  : constant Long_Float := 3.0;
+   -- Number of iterations to rotate 90 degrees
+   ITERAION_NUM_90_DEGREE : constant Natural := 90;
+   ITERAION_NUM_DRIVE_OFF : constant Natural := 70;
 
    type Motor_Values_T is array (Vertical_Position_T, Horizontal_Position_T) of Long_Float;
 
@@ -159,22 +162,35 @@ private
    -- @value LEAN_FROM_LINE Use the line color to find the path to the sidetrack
    type Lean_State_T is (NEXT_LEFT, NEXT_RIGHT, LEAN_FROM_LINE);
 
+   -- State variable type to further describe the System_Error_State_T´s FINAL_SAFE_STATE
+   -- @value ROTATE_LEFT_90 Rotate to the left side to prepare driving off track
+   -- @value DRIVE_OFF_LEFT Drive off the left side of the track
+   -- @value ROTATE_RIGHT_180_DEGREE Rotate to the right side of the track. Done if left side is blocked (wall).
+   -- @value DRIVE_OFF_RIGHT Drive off the right side of the track
+   -- @value DONE Final Safe state finished
+   type Final_Safe_State_State_t is (ROTATE_LEFT_90, DRIVE_OFF_LEFT, ROTATE_RIGHT_180_DEGREE, DRIVE_OFF_RIGHT, DONE);
+
+
    -- Cab states representation
    -- @field Base Base state
    -- @field System_Error System error state. Further describes Base´s SYSTEM_ERROR state
+   -- @field Final_Safe_State Final safe state state. Further describes System_Error's FINAL_SAFE_STATE
    -- @field No_System_Error Normal functionality state. Further describes Base's NO_SYSTEM_ERROR state
    -- @field Front_Is_Clear Front is not blocked state. Further describes No_System_Error's FRONT_CLEAR state
    -- @field Driving Driving state. Further describes Front_Is_Clear's DRIVING state.
    -- @field Leaning Direction state. Describes which path to follow on an intersection.
    -- @field Forcing_Left Road-Marker's forcing left path following state. If true, override the Job Executer's leaning value.
+   -- @field Counter counter used in Final_Safe_State to rotate 90 or 180 degrees
    type Cab_State_T is record
-      Base            : Motor_Controller_State_T;
-      System_Error    : System_Error_State_T;
-      No_System_Error : No_System_Error_State_T;
-      Front_Is_Clear  : Front_Clear_State_T;
-      Driving         : Drive_State_T;
-      Leaning         : Lean_State_T;
-      Forcing_Left    : Boolean;
+      Base             : Motor_Controller_State_T;
+      System_Error     : System_Error_State_T;
+      Final_Safe_State : Final_Safe_State_State_t;
+      No_System_Error  : No_System_Error_State_T;
+      Front_Is_Clear   : Front_Clear_State_T;
+      Driving          : Drive_State_T;
+      Leaning          : Lean_State_T;
+      Forcing_Left     : Boolean;
+      Counter : Natural;
    end record;
 
 
@@ -193,6 +209,27 @@ private
       JE_Next_Signal : out Job_Executer_Next_t
      );
 
+   -- Calculate outputs by using the state's System_Error variable
+   -- @value state Cab state
+   -- @value motor_values Wheel speed output values
+   -- @value JE_Next_Signal Output value sent to Job Executer on Job_Executer_Next_Signal
+   procedure output_system_error
+     (
+      state          : Cab_State_T;
+      motor_values   : out Motor_Values_T;
+      JE_Next_Signal : out Job_Executer_Next_t
+     );
+
+   -- Calculate outputs by using the state's Final_Safe_State_State_t variable
+   -- @value state Cab state
+   -- @value motor_values Wheel speed output values
+   -- @value JE_Next_Signal Output value sent to Job Executer on Job_Executer_Next_Signal
+   procedure output_final_safe_state
+     (
+      state          : Cab_State_T;
+      motor_values   : out Motor_Values_T;
+      JE_Next_Signal : out Job_Executer_Next_t
+     );
 
    -- Calculate outputs by using the state's No_System_Error variable
    -- @value state Cab state

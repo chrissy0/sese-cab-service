@@ -72,8 +72,8 @@ begin
    Log_Line("Setting up Front_Distance_Task ...");
    Front_Distance_Task.Construct
      (get_sensor_value_a               => WC2EC_Interface.get_front_distance_value'Access ,
-      us_thresh                        => 300.0,
-      ir_thresh                        => 300.0,
+      us_thresh                        => 500.0,
+      ir_thresh                        => 500.0,
       Motor_Controller_Task_A          => Motor_Controller_Task,
       timeout_v                        => timeout
      );
