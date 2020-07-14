@@ -8,8 +8,9 @@ with AWS.Messages; use AWS;
 
 package ec2b is
 
-   connection : HTTP_Connection := Create("http://167.71.35.10:8081", Timeouts =>  Timeouts(Each => 0.1 ));
-   --connection : HTTP_Connection := Create("http://127.0.0.1:8081");
+   -- Backend 1 connection : HTTP_Connection := Create("http://167.71.35.10:8081", Timeouts =>  Timeouts(Each => 0.1 ));
+   connection : HTTP_Connection := Create("http://164.90.179.88:8081", Timeouts =>  Timeouts(Each => 0.1 ));
+   -- Local Host connection : HTTP_Connection := Create("http://127.0.0.1:8081", Timeouts =>  Timeouts(Each => 0.1 ));
 
    function failed(status_code : Messages.Status_Code) return Boolean;
    function success(status_code : Messages.Status_Code; connection_erros : in out Integer) return Boolean;
@@ -38,4 +39,5 @@ package ec2b is
    function pickup_complete(cab_id : Integer; pickup_completed : out Boolean)  return Messages.Status_Code;
    function request_dropoff(cab_id : Integer; customer_id : Integer)  return Messages.Status_Code;
    function dropoff_complete(cab_id : Integer; dropoff_completed : out Boolean)  return Messages.Status_Code;
+   function set_blocked_status(cab_id : Integer; blocked : in Boolean) return Messages.Status_Code;
 end ec2b;

@@ -30,9 +30,18 @@ package body ec2b is
          return False;
       end if;
    end success;
-   -------------------
-   -- request_route --
-   -------------------
+
+   function set_blocked_status(cab_id : Integer; blocked : in Boolean) return Messages.Status_Code is
+      cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
+      parameters : param_map_p.Map;
+      response_json : JSON_Value;
+      status_code : Messages.Status_Code;
+   begin
+      parameters.Insert("cabId", cab_id_str);
+      parameters.Insert("blocked", blocked'Image);
+      status_code := POST_JSON(connection, "/api/ec/blocked", parameters,response_data_JSON => response_json);
+      return status_code;
+   end set_blocked_status;
 
    function update_sensor_manipulation(cab_id : Integer) return Messages.Status_Code is
       cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
@@ -73,6 +82,9 @@ package body ec2b is
       return status_code;
    end update_sensor_manipulation;
 
+   -------------------
+   -- request_route --
+   -------------------
    function request_route(cmd_queue: in out cmd_queue_access_t;
                           cab_id : Integer; cab_version : in out Integer
                          ) return Messages.Status_Code is
