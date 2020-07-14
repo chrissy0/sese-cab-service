@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Current routes ..</h1>
+    <table *ngIf="routesAvailable()" class="table">
+        <thead>
+        <tr>
+            <th style="width: 15%">
+                Cab ID
+            </th>
+            <th style="width: 15%">
+                Job IDs
+            </th>
+            <th style="width: 15%">
+                Version
+            </th>
+            <th style="width: 55%">
+                Route
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let route of routes; let i = index">
+            <td>{{ route.cabId }}</td>
+            <td>{{ jobIdsString(route) }}</td>
+            <td>{{ route.version }}</td>
+            <td style="font-family:'Lucida Console', monospace" [innerHTML]="routeActionsString(route.route)"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!routesAvailable()" class="alert alert-info">
+        Currently, there are <strong>no active routes</strong>.
+    </div>
+</div>

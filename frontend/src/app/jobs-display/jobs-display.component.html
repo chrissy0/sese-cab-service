@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Current rides ..</h1>
+    <table *ngIf="jobsActive()" class="table">
+        <thead>
+        <tr>
+            <th style="width: 5%"></th>
+            <th style="width: 15%">
+                Job ID
+            </th>
+            <th style="width: 20%">
+                Start Station
+            </th>
+            <th style="width: 20%">
+                End Station
+            </th>
+            <th style="width: 30%"></th>
+            <th style="width: 10%"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let job of jobs; let i = index">
+            <td>
+                <fa-icon *ngIf="job.inProgress" [icon]="taxiIcon"></fa-icon>
+            </td>
+            <td>{{job.id}}</td>
+            <td>{{job.start}}</td>
+            <td>{{job.end}}</td>
+            <td>
+                <button *ngIf="dropoffForJob(job.id)"
+                        type="submit"
+                        class="btn btn-danger"
+                        (click)="exitCab(job.id)">Exit Cab {{ dropoffForJob(job.id).cabId }}</button>
+                <button *ngIf="pickupForJob(job.id)"
+                        type="submit"
+                        class="btn btn-success"
+                        (click)="enterCab(job.id)">Enter Cab {{ pickupForJob(job.id).cabId }}</button>
+            </td>
+            <td>
+                <fa-icon *ngIf="deleteJobButtonEnabled(job)" (click)="deleteJob(i)" [icon]="trashIcon"></fa-icon>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!jobsActive()" class="alert alert-info">
+        Currently, there are <strong>no active jobs</strong>.
+    </div>
+</div>
