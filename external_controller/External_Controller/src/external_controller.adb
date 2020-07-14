@@ -16,7 +16,6 @@ procedure External_Controller is
    Motor_Controller_Task : Motor_Controller_Task_Access_T;
    Job_Executer_Task     : Job_Executer_Task_T;
    WC2EC_Driver          : wc2ec_thread_access_t;
-   --job_execute_next_v    : Job_Executer_Next_t;
    ip                    : Ada.Strings.Unbounded.Unbounded_String := To_Unbounded_String("127.0.0.1");
    port                  : Port_Type := 27015;
    cab_name              : Ada.Strings.Unbounded.Unbounded_String := To_Unbounded_String("default");
@@ -71,11 +70,14 @@ begin
 
    Log_Line("Setting up Front_Distance_Task ...");
    Front_Distance_Task.Construct
-     (get_sensor_value_a               => WC2EC_Interface.get_front_distance_value'Access ,
-      us_thresh                        => 300.0,
-      ir_thresh                        => 300.0,
-      Motor_Controller_Task_A          => Motor_Controller_Task,
-      timeout_v                        => timeout
+     (
+      get_sensor_value_a      => WC2EC_Interface.get_front_distance_value'Access,
+      us_thresh_front         => 450.0,
+      ir_thresh_front         => 450.0,
+      us_thresh_side          => 350.0,
+      ir_thresh_side          => 350.0,
+      Motor_Controller_Task_A => Motor_Controller_Task,
+      timeout_v               => timeout
      );
    Log_Line("All set up!");
 
@@ -86,13 +88,7 @@ begin
                                  start_section_arg => start_section);
 
    loop
-      -- Motor_Controller_Task.job_executer_done(NEXT_LEFT_S);
-      -- HINT uncomment the above line to enabel job_executer
-
       Motor_Controller_Task.main_shutdown_signal(False);
-
-      -- Motor_Controller_Task.job_executer_next(job_execute_next_v);
-      -- HINT uncomment the above line to enabel job_executer
    end loop;
 
   exception
