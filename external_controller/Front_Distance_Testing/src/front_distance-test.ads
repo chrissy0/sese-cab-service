@@ -7,7 +7,7 @@ package Front_Distance.Test is
    
    procedure test_calculate_output (T : in out Test);
    
-   procedure check_motor_values (T : in out Test);
+  -- procedure check_motor_values (T : in out Test);
    
 
 end Front_Distance.Test;

@@ -14,13 +14,13 @@ package body Front_Distance_Suite is
    function Suite return Access_Test_Suite is
       Ret : constant Access_Test_Suite := new Test_Suite;
    begin
+      --  Ret.Add_Test
+      --    (Caller.Create
+      --       ("Test motor values",
+      --        Front_Distance.Test.check_motor_values'Access));
       Ret.Add_Test
         (Caller.Create
-           ("Test motor values",
-            Front_Distance.Test.check_motor_values'Access));
-      Ret.Add_Test
-        (Caller.Create
-           ("Test ouput function",
+           ("test_calculate_output",
             Front_Distance.Test.test_calculate_output'Access));
       return Ret;
    end Suite;

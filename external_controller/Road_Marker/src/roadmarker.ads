@@ -21,7 +21,7 @@ package Roadmarker is
 
    -- Commands the road marker can recieve with road_marker_next.
    -- @value EMPTY_S No command
-   -- @value SHUTODN_S Shutdown signal
+   -- @value SHUTDOWN_S Shutdown signal
    type Road_Marker_Next_T is (EMPTY_S, SHUTDOWN_S);
 
 
@@ -83,7 +83,7 @@ package Roadmarker is
 
    -- Return true if the default or backup sensor array contains an error,
    -- depending on the is_backup_sensor value.
-   -- @param all_sensor_value array filled with sensor values to be tested
+   -- @param all_sensor_values array filled with sensor values to be tested
    -- @is_backup_sensor True => check backup sensor array, false => check normal sensor array
    -- @return True => error in array, False => no error in selected arrray
    function check_error_sensor_array

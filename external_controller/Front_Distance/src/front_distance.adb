@@ -41,7 +41,7 @@ package body Front_Distance is
                   is_sensor_type_fault(typ) := False;
 
                   -- if one sensor detects object, there is an object
-                  if all_sensor_values(typ, pos, num) < threshholds(typ) then
+                  if all_sensor_values(typ, pos, num) < threshholds(typ, pos) then
                      object_detected(typ) := True;
                   end if;
                end if;
@@ -117,15 +117,21 @@ package body Front_Distance is
       Log_Line("Waiting for Construct...");
       accept Construct
         (get_sensor_value_a       : in get_sensor_value_access;
-         us_thresh                : in Long_Float;
-         ir_thresh                : in Long_Float;
+         us_thresh_front          : in Long_Float;
+         ir_thresh_front          : in Long_Float;
+         us_thresh_side           : in Long_Float;
+         ir_thresh_side           : in Long_Float;
          Motor_Controller_Task_A  : in Motor_Controller_Task_Access_T;
          timeout_v                : in Duration
         )
       do
-         threshholds(IR) := ir_thresh;
-         threshholds(US) := us_thresh;
-         get_sensor_value_func := get_sensor_value_a;
+         threshholds(IR, CENTER) := ir_thresh_front;
+         threshholds(IR, LEFT) := ir_thresh_side;
+         threshholds(IR, RIGHT) := ir_thresh_side;
+
+         threshholds(US, CENTER) := us_thresh_front;
+         threshholds(US, LEFT) := us_thresh_side;
+         threshholds(US, RIGHT) := us_thresh_side;         get_sensor_value_func := get_sensor_value_a;
          Motor_Controller_Task := Motor_Controller_Task_A;
          timeout := timeout_v;
       end Construct;

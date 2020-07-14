@@ -75,6 +75,9 @@ package Motor_Controller is
    type Job_Executer_Next_t is
      (SHUTDOWN_S, EMPTY_S, BLOCKED_S);
 
+   -- Task to evaluate all other tasks' output and set the motor actor
+   -- accordingly. Communicates with Lane_Detection, Roadmarker, Job_Executer
+   -- and Front_Distance Task
    task type Motor_Controller_Task_T is
       entry Constructor
         (
