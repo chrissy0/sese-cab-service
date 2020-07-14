@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 1 0 0 4.71238898038469
-  position -0.18169094414818188 3.104147869393026 3.3287432668739583
+  orientation 1 6.364732580132411e-15 3.865934911280139e-15 5.072388980384682
+  position -0.12093727323693948 6.032672317486701 5.216584133083501
   follow "robot"
   followType "None"
   followSmoothness 0.2
@@ -14,8 +14,8 @@ TexturedBackgroundLight {
   castShadows FALSE
 }
 Robot {
-  translation -0.506729 0.0368796 2.95311
-  rotation -1.8816599999947474e-06 0.9999999999972085 1.4290999999960107e-06 -2.3869253071795864
+  translation -0.221348 0.0468768 3.8348
+  rotation -1.1078399999973268e-06 0.999999999997587 1.8970799999954225e-06 3.11086
   children [
     Solid {
       translation 0 0.025 0
@@ -1224,7 +1224,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation -0.5529743288829301 0.5529763600745926 0.6232467703848351 2.026920806446329
+        rotation -0.5529743288829301 0.5529763600745925 0.6232467703848352 2.026920806446329
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -1256,7 +1256,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation 0.24908558549129278 -0.24908650043540637 -0.935901857248559 4.646189051619104
+        rotation 0.24908558549129292 -0.24908650043540637 -0.935901857248559 4.646189051619104
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1300,7 +1300,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6818304356849635 0.6818329401925708 -0.2649737697244904 3.6596332771087683
+        rotation -0.6818304356849635 0.6818329401925707 -0.26497376972449055 3.6596332771087683
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1318,12 +1318,12 @@ Robot {
   controllerArgs "27015"
 }
 Robot {
-  translation 1.84055 0.0368796 2.06792
-  rotation 0.00012346199873815655 -0.9999999897794994 7.209809926312132e-05 0.030729
+  translation -0.227142 0.0468796 4.19169
+  rotation -1.1078399999973268e-06 0.999999999997587 1.8970799999954225e-06 3.11086
   children [
     Solid {
       translation 0 0.025 0
-      rotation 9.589734505977885e-09 0.003613891698077883 0.9999934698720759 -5.307179586466759e-06
+      rotation -9.589734505977885e-09 -0.0036138916980778834 -0.999993469872076 5.307156870259904e-06
       children [
         Shape {
           appearance PBRAppearance {
@@ -2528,7 +2528,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation -0.5529743288829301 0.5529763600745926 0.6232467703848351 2.026920806446329
+        rotation -0.5529743288829301 0.5529763600745925 0.6232467703848352 2.026920806446329
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -2560,7 +2560,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation 0.24908558549129278 -0.24908650043540637 -0.935901857248559 4.646189051619104
+        rotation 0.2490855854912928 -0.24908650043540642 -0.9359018572485589 4.646189051619104
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -2582,7 +2582,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6646674218173285 -0.6646698632782582 0.34122015067162564 2.483931265367255
+        rotation 0.6646674218173286 -0.6646698632782583 0.34122015067162564 2.483931265367255
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -2604,7 +2604,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6818304356849635 0.6818329401925708 -0.2649737697244904 3.6596332771087683
+        rotation -0.6818304356849635 0.6818329401925708 -0.2649737697244903 3.6596332771087683
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -6599,7 +6599,7 @@ DEF curb Solid {
         metalness 0
       }
       geometry Box {
-        size 0.2 0.1 0.02
+        size 0.22 0.1 0.02
       }
       castShadows FALSE
     }
@@ -7670,7 +7670,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.073043 0.0201 3.11917
+  translation -0.063043 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -10170,7 +10170,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.180582 0.0201 3.10021
+  translation -0.187653 0.0201 3.09314
   rotation 0 -1 0 -2.3562053071795863
   children [
     Shape {
@@ -10179,7 +10179,7 @@ DEF curb Solid {
         metalness 0
       }
       geometry Box {
-        size 0.06 0.1 0.02
+        size 0.08 0.1 0.02
       }
       castShadows FALSE
     }

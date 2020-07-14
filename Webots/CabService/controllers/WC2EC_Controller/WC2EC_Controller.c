@@ -165,6 +165,7 @@ int send_sensor_data(SOCKET *client_socket)
 }
 long int execute_command(struct package_format* pkg, long unsigned int bytes_left) {
 	WbDeviceTag tag;
+	WbNodeType type;
 	long unsigned int bytes_used;
  
 	if (bytes_left < sizeof(struct package_format))
@@ -175,8 +176,9 @@ long int execute_command(struct package_format* pkg, long unsigned int bytes_lef
   
                 
     	tag = wb_robot_get_device_by_index(pkg->sensor_id);
+	type = wb_device_get_node_type(tag);   
 	     
-    	switch(pkg->sensor_type) {
+    	switch(type) {
     	case WB_NODE_ROTATIONAL_MOTOR:
 		bytes_used = sizeof(double);
 		if (bytes_left < bytes_used + sizeof(struct package_format))
