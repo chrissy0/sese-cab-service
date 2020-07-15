@@ -1,4 +1,3 @@
--- Final safe state not implemented yet!
 pragma Ada_2012;
 with Ada.Calendar; use Ada.Calendar;
 with Ada.Text_IO; use Ada.Text_IO;
@@ -343,6 +342,7 @@ package body Motor_Controller is
                                        );
 
       set_motor_value            : set_motor_value_procedure_access_t;
+      elevate_sensors            : elevate_curb_sensor_access_t;
       motor_values               : Motor_Values_T;
       running                    : Boolean                  := True;
       timeout                    : Duration;
@@ -384,6 +384,7 @@ package body Motor_Controller is
          set_motor_value        := set_motor_value_access;
          timeout                := timeout_v;
          Iteration_Delay        := iteration_delay_s;
+         elevate_sensors        := elevate_sensors_access;
 
       end Constructor;
       Log_Line("... constructor done");

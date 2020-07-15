@@ -1,3 +1,11 @@
+-- @summary
+-- Road Marker controller package.
+--
+-- @author Julian Hartmer and Chanki Hong
+-- @description
+-- This package controls the roadmarker by pulling and evaluating the road
+-- marker sensor values. Communicates with Motor Controller Task.
+
 with Ada.Text_IO;      use Ada.Text_IO;
 with Motor_Controller; use Motor_Controller;
 

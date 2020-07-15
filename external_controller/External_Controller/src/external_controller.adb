@@ -1,3 +1,11 @@
+-- @summary
+-- External Controller builder file.
+--
+-- @author Julian Hartmer
+-- @description
+-- This executable file builds the external controller by starting each task
+-- and providing accesses to the nedded ressources.
+
 with Lane_Detection;   use Lane_Detection;
 with Motor_Controller; use Motor_Controller;
 with WC2EC;            use WC2EC;

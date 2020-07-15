@@ -1,6 +1,7 @@
 -- @summary
 -- Communicates with Lane Detection, Front Distance, Road Marker and Job Executer and sets the wheel speed
 --
+-- @author Julian Hartmer
 -- @description
 -- This package communicates with all cab tasks. It manages the other tasks
 -- and controls the cab's wheels.

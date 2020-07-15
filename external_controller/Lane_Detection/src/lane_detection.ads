@@ -1,3 +1,11 @@
+-- @summary
+-- Lane detection controller package.
+--
+-- @author Julian Hartmer
+-- @description
+-- This package controls the lane detection by pulling and evaluating the lane
+-- detectopm sensor values. Communicates with Motor Controller Task.
+
 with Motor_Controller; use Motor_Controller;
 with Ada.Text_IO;      use Ada.Text_IO;
 

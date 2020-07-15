@@ -1,3 +1,11 @@
+-- @summary
+-- Front distance controller package.
+--
+-- @author Julian Hartmer
+-- @description
+-- This controls the front distance by pulling and evaluating the front
+-- distance sensor values. Communicates with Motor Controller Task.
+
 with Motor_Controller; use Motor_Controller;
 package Front_Distance is
 
