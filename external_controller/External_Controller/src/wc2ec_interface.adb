@@ -220,4 +220,11 @@ package body WC2EC_Interface is
 
    end get_wall_detection_sensor_value;
 
+   procedure elevate_curb_sensor is
+   begin
+      WC2EC.set_motor_sensor_data("slider_curb_lf", 0.0);
+      WC2EC.set_motor_sensor_data("slider_curb_lf2", 0.0);
+   end elevate_curb_sensor;
+
+
 end WC2EC_Interface;

@@ -195,6 +195,7 @@ package body Motor_Controller is
      )
    is
    begin
+
       case state.Final_Safe_State is
          when ROTATE_LEFT_90 =>
             JE_Next_Signal := BLOCKED_S;
@@ -375,6 +376,7 @@ package body Motor_Controller is
       accept Constructor
         (
          set_motor_value_access : in set_motor_value_procedure_access_t;
+         elevate_sensors_access : in elevate_curb_sensor_access_t;
          timeout_v              : in Duration;
          iteration_delay_s      : in Duration
         )

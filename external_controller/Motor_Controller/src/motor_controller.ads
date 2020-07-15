@@ -25,6 +25,9 @@ package Motor_Controller is
       value      : Long_Float
      );
 
+   -- Access to motor setter function
+   type elevate_curb_sensor_access_t is access procedure;
+
    -- Value of done signal sent by Lane Detection to Motor Controller
    -- @value SYSTEM_ERROR_S Lane Detection in error state
    -- @value GO_STRAIGHT_S Drive straight
@@ -83,6 +86,7 @@ package Motor_Controller is
         (
          -- function to set motor values with
          set_motor_value_access : in set_motor_value_procedure_access_t;
+         elevate_sensors_access : in elevate_curb_sensor_access_t;
          timeout_v              : in Duration;
          iteration_delay_s      : in Duration
         );

@@ -44,4 +44,7 @@ package WC2EC_Interface is
       orientation : in Lane_Detection.Sensor_Orientation_T;
       is_backup   : in Boolean
      ) return Long_Float;
+
+   procedure elevate_curb_sensor;
+
 end WC2EC_Interface;
