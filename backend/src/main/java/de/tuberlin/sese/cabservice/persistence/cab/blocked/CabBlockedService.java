@@ -50,6 +50,11 @@ public class CabBlockedService {
 
     }
 
+    public boolean isBlocked(Long cabId) {
+        validateCabId(cabId);
+        return blockedRepo.findById(cabId).isPresent();
+    }
+
     private void validateBlocked(Boolean blocked) {
         Preconditions.checkArgument(blocked != null, "\"blocked\" was null");
     }

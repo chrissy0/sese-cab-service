@@ -158,4 +158,30 @@ public class CabBlockedServiceTest {
         assertThat(service.getBlockedSections())
                 .containsExactlyInAnyOrder(2, 4, 8, 9);
     }
+
+    @Test
+    public void shouldReturnBlockedStateIfCabIsBlocked() {
+        when(cabRepo.findById(3L)).thenReturn(Optional.of(CabEntity.builder()
+                .id(3L)
+                .name("Some Cab Name")
+                .build()));
+
+        when(blockedRepo.findById(3L)).thenReturn(Optional.of(CabBlockedEntity.builder()
+                .cabId(3L)
+                .build()));
+
+        assertThat(service.isBlocked(3L)).isTrue();
+    }
+
+    @Test
+    public void shouldReturnBlockedStateIfCabIsNotBlocked() {
+        when(cabRepo.findById(3L)).thenReturn(Optional.of(CabEntity.builder()
+                .id(3L)
+                .name("Some Cab Name")
+                .build()));
+
+        when(blockedRepo.findById(3L)).thenReturn(Optional.empty());
+
+        assertThat(service.isBlocked(3L)).isFalse();
+    }
 }
