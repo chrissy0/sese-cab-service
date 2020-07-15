@@ -90,8 +90,11 @@ private
    -- Threshold to detect a line (any color)
    LINE_FOLLOW_THRESHHOLD : constant Long_Float := line_light_grey + line_delta;
 
-   -- Threshhold to detect curbs
-   CURB_THRESHHOLD        : constant Long_Float := 870.0; -- TODO determine value
+   -- min Threshhold to detect curbs
+   CURB_MIN_DETECTION_RANGE        : constant Long_Float := 999.0; -- TODO determine value
+
+   -- max Threshhold to detect curbs
+   CURB_MAX_DETECTION_RANGE        : constant Long_Float := 960.0; -- TODO determine value
 
    -- threshhold to detect walls
    WALL_THRESHHOLD        : constant Long_Float := 870.0; -- TODO determine value

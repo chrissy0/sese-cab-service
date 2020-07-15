@@ -120,13 +120,14 @@ package body Lane_Detection is
 
    function output_from_curb_detection
      (
-      curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T
+      curb_sensor_values   : Curb_Sensor_Values_Array_T;
+      wall_sensor_values   : Wall_Sensor_Values_Array_T
      ) return Lane_Detection_Done_T
    is
       Leaning_Left        : Boolean := True;
       Output              : Lane_Detection_Done_T := SYSTEM_ERROR_S;
       Wall_Sensor_Failure : Boolean;
+      sensor_value        : Long_Float := -1.0;
    begin
       -- if wall sensor failed, we cannot operate in this mode
       for I in Boolean loop
@@ -144,16 +145,50 @@ package body Lane_Detection is
          end loop;
       end loop;
 
-      -- if there is a wall on the right side -> go right
-      for I in Boolean loop
-         if wall_sensor_values(RIGHT, I) <= CURB_THRESHHOLD then
-            Leaning_Left := False;
-         end if;
-      end loop;
+      if Wall_Sensor_Failure then
+         Output :=  SYSTEM_ERROR_S;
+      else
+         -- if there is a wall on the left side -> go right
+         for I in Boolean loop
+            if wall_sensor_values(LEFT, I) <= WALL_THRESHHOLD then
+               Leaning_Left := False;
+            end if;
+         end loop;
 
-      -- TODO
-      Log_Line("TODO");
-      return SYSTEM_ERROR_S;
+         case Leaning_Left is
+            when True =>
+               for I in Boolean loop
+                  sensor_value :=Long_Float'Max(sensor_value, curb_sensor_values(FRONT, LEFT, I));
+               end loop;
+            when False =>
+               for I in Boolean loop
+                  sensor_value :=Long_Float'Max(sensor_value, curb_sensor_values(FRONT, LEFT, I));
+               end loop;
+         end case;
+
+         if sensor_value = -1.0 then
+            Output := SYSTEM_ERROR_S;
+         elsif  sensor_value < CURB_MIN_DETECTION_RANGE then
+            case Leaning_Left is
+            when True =>
+               Output := ROTATE_RIGHT_S;
+            when False =>
+               Output := ROTATE_LEFT_S;
+            end case;
+         elsif CURB_MAX_DETECTION_RANGE > sensor_value then
+            case Leaning_Left is
+            when False =>
+               Output := ROTATE_RIGHT_S;
+            when True =>
+               Output := ROTATE_LEFT_S;
+            end case;
+         else
+            Output := GO_STRAIGHT_S;
+         end if;
+      end if;
+
+
+      return Output;
    end output_from_curb_detection;
 
 
