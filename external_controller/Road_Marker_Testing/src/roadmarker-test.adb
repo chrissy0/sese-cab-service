@@ -318,7 +318,7 @@ package body Roadmarker.Test is
       history  : Road_Marker_History_T;
       Output   : Road_Marker_Done_T;
       black_on : constant Long_Float := 217.0;
-      grey_on  : constant Long_Float := 247.0;
+      grey_on  : constant Long_Float := ROADMARKER_THRESH_MAX - 5.0;
       Off      : constant Long_Float := 300.0;
       failure  : constant Long_Float := -1.0;
       was_on_hotfix_rm : Boolean := False;
@@ -403,14 +403,15 @@ package body Roadmarker.Test is
       -- should not set was_on_rm
       --
 
+      was_on_hotfix_rm := False;
       for I in Roadmarker_Sensor_ID_T loop
          sensors := (FRONT_LEFT  => (others => black_on),
                      FRONT_RIGHT  => (others => black_on),
                      BEHIND_LEFT  => (others => black_on),
                      BEHIND_RIGHT => (others => black_on),
                      others       => (others => Off));
-         sensors(I, False) := grey_on;
          sensors(I, True) := grey_on;
+         sensors(I, False) := grey_on;
 
          Output := calculate_output(all_sensor_values => sensors,
                                     history           => history,

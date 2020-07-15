@@ -380,8 +380,84 @@ package body Lane_Detection.Test is
 
    procedure test_output_from_curb_detection (T : in out Test) is
       pragma Unreferenced (T);
+      curb_sensor_values : Curb_Sensor_Values_Array_T;
+      Output             : Lane_Detection_Done_T;
    begin
-      null; -- TODO
+      -- all curb sensors detect curb => go straight
+      curb_sensor_values := (others => (others => (others => 400.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = GO_STRAIGHT_S, "Expected GO_STRAIGHT_S, got " & Output'Image);
+
+      -- 2 curb sensors fail => SYSTEM_ERROR_S
+      curb_sensor_values := (others => (others => (others => 400.0)));
+      curb_sensor_values(FRONT, LEFT, True) := SENSOR_FAULT;
+      curb_sensor_values(FRONT, LEFT, FAlse) := SENSOR_FAULT;
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = SYSTEM_ERROR_S, "Expected SYSTEM_ERROR_S, got " & Output'Image);
+
+
+      -- left  detected => go straight
+      curb_sensor_values := (others => (LEFT => (others => 400.0), RIGHT => (others => 0.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = GO_STRAIGHT_S, "Expected GO_STRAIGHT_S, got " & Output'Image);
+
+      -- left detected too close => go right
+      curb_sensor_values := (others => (LEFT => (others => 200.0), RIGHT => (others => 0.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = ROTATE_RIGHT_S, "Expected GO_STRAIGHT_S, got " & Output'Image);
+
+      -- left detected too far => go left
+      curb_sensor_values := (others => (LEFT => (others => 600.0), RIGHT => (others => 0.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = ROTATE_LEFT_S, "Expected ROTATE_LEFT_S, got " & Output'Image);
+
+
+      -- left not detected, right detected => go straight
+      curb_sensor_values := (others => (LEFT => (others => 400.0), RIGHT => (others => 400.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = GO_STRAIGHT_S, "Expected GO_STRAIGHT_S, got " & Output'Image);
+
+      -- left detected too close => go right
+      curb_sensor_values := (others => (LEFT => (others => 200.0), RIGHT => (others => 400.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = ROTATE_RIGHT_S, "Expected GO_STRAIGHT_S, got " & Output'Image);
+
+      -- left detected too far => go left
+      curb_sensor_values := (others => (LEFT => (others => 600.0), RIGHT => (others => 400.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = ROTATE_LEFT_S, "Expected ROTATE_LEFT_S, got " & Output'Image);
+
+
+      -- left not detected, right detected => go straight
+      curb_sensor_values := (others => (RIGHT => (others => 400.0), LEFT => (others => 1000.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = GO_STRAIGHT_S, "Expected GO_STRAIGHT_S, got " & Output'Image);
+
+      -- left detected too close => go right
+      curb_sensor_values := (others => (RIGHT => (others => 200.0), LEFT => (others => 1000.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = ROTATE_LEFT_S, "Expected ROTATE_LEFT_S, got " & Output'Image);
+
+      -- left detected too far => go left
+      curb_sensor_values := (others => (RIGHT => (others => 600.0), LEFT => (others => 1000.0)));
+      Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+
+      Assert(Output = ROTATE_RIGHT_S, "Expected ROTATE_RIGHT_S, got " & Output'Image);
+
+
+
+
+
    end test_output_from_curb_detection;
 
    ---------------------------

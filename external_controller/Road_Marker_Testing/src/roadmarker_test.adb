@@ -6,38 +6,6 @@ with Roadmarker;              use Roadmarker;
 
 package body Roadmarker_Test is
    
-   
-   --  type Marker_Values_Long_Float_Array_T is array (Marker_ID_T) of Long_Float;
-   --  
-   --  protected type Marker_Values_T is
-   --  
-   --     procedure set(ID : Marker_ID_T; Value : Long_Float); --Assign the value of sensor
-   --     function get (ID : Marker_ID_T) return Long_Float;
-   --  
-   --  private
-   --  
-   --     Marker_Values_Array : Marker_Values_Long_Float_Array_T; -- ex) (Lane_Mid_Value, Lane_Left_Value, Lane_Right_Value, Curb_Left_Value, Curb_Right_Value)
-   --  
-   --  end Marker_Values_T;
-   --  
-   --  
-   --  protected body Marker_Values_T is
-   --  
-   --     procedure set (ID : Marker_ID_T; Value : Long_Float) is
-   --     begin
-   --        Marker_Values_Array (ID) := Value;
-   --  
-   --     end set;
-   --  
-   --     function get (ID : Marker_ID_T) return Long_Float is
-   --     begin
-   --        return Marker_Values_Array (ID);
-   --     end get;
-   --  end Marker_Values_T;
-   --  
-   --  
-   --  Marker_Values : Marker_Values_T; ---new.
-
 
 
 
