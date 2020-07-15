@@ -1,3 +1,8 @@
+-- @summary
+-- Front distance controller child test package body.
+--
+-- @author Julian Hartmer
+
 pragma Ada_2012;
 with Motor_Controller; use Motor_Controller;
 with Front_Distance;

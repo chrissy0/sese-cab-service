@@ -91,13 +91,19 @@ private
    LINE_FOLLOW_THRESHHOLD : constant Long_Float := line_light_grey + line_delta;
 
    -- min Threshhold to detect curbs
-   CURB_MIN_DETECTION_RANGE        : constant Long_Float := 999.0; -- TODO determine value
+   CURB_MIN_DETECTION_RANGE        : constant Long_Float := 350.0;
 
    -- max Threshhold to detect curbs
-   CURB_MAX_DETECTION_RANGE        : constant Long_Float := 960.0; -- TODO determine value
+   CURB_MAX_DETECTION_RANGE        : constant Long_Float := 550.0;
+
+   -- max Threshhold to detect curbs
+   CURB_MAX_VALUE                  : constant Long_Float := 1_000.0;
 
    -- threshhold to detect walls
-   WALL_THRESHHOLD        : constant Long_Float := 870.0; -- TODO determine value
+   WALL_THRESHHOLD        : constant Long_Float := 999.0;
+
+   -- threshhold to detect walls
+   SENSOR_FAULT           : constant Long_Float := -1.0;
 
    -- array of sensor values. Second index true => access backup sensor
    type Line_Sensor_Values_Array_T is array (Line_Sensor_Position_T, Boolean) of Long_Float;
@@ -113,6 +119,10 @@ private
 
    -- array to monitor line sensor array failures. True => access backup sensor
    type Line_Sensor_Array_Failure_Array_T is array (Boolean) of Boolean;
+
+   type Curb_Detected_T is (DETECTED_TOO_CLOSE, DETECTED, DETECTED_TOO_FAR, FAILURE, NOT_DETECTED);
+
+   type Curb_Detected_Array_T is array (Sensor_Orientation_T) of Curb_Detected_T;
 
 
    -- set all_sensor_values with new values from driver
@@ -184,13 +194,11 @@ private
      ) return Lane_Detection_Done_T;
 
    -- Calculates Signal sent to motor controller from curb detection.
-   -- @param curb_sensor_values initialized curb sensor values
-   -- @param wall_sensor_values initialized wall sensor values
+   -- @param wall_sensor_values initialized curb sensor values
    -- @return  signal sent to Motor Controller Task
    function output_from_curb_detection
      (
-      curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T
+      curb_sensor_values       : Curb_Sensor_Values_Array_T
      ) return Lane_Detection_Done_T;
 
    -- Evaluate line color to set the lean state.

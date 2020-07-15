@@ -46,15 +46,37 @@ package Roadmarker is
      (FRONT_LEFT, FRONT_RIGHT, BEHIND_LEFT, BEHIND_RIGHT, RM_FL, RM_FR, RM_BL,
       RM_BR);
 
-   -- array of sensor values. Second index true => access backup sensor
-   -- Global for testing purposes.
-   type All_Sensor_Values_Array_T is array (Roadmarker_Sensor_ID_T, Boolean) of Long_Float;
-
    -- Acces type to getter function for road marker sensor values.
    -- The sensor is referenced by ID and a Boolean. The boolean indicates
    -- whether the normal sensor (False) or the default sensor (True) is read.
    type get_roadmarker_sensor_value_access is access
      function (ID : in Roadmarker_Sensor_ID_T; is_backup_sensor : Boolean) return Long_Float;
+
+
+   -- Task to fetch and evaluate road marker sensor values. Communicates
+   -- with the Job Executer Task by road_marker_done and road_marker_next.
+   task type Roadmarker_Task_T is
+      entry Construct
+        (
+         get_sensor_value_a   : in get_roadmarker_sensor_value_access;
+         timeout_v            : in Duration;
+         MC_Task              : in Motor_Controller_Task_Access_T
+        );
+      entry road_marker_done (Signal : out Road_Marker_Done_T);
+      entry road_marker_next (Signal : in Road_Marker_Next_T);
+   end Roadmarker_Task_T;
+
+   type Roadmarker_Task_Acces_T is access Roadmarker_Task_T;
+
+private
+   ROADMARKER_THRESH_MAX : constant Long_Float := 290.0;
+   ROADMARKER_THRESH_MIN : constant Long_Float := 270.0;
+   SENSOR_FAULT          : constant Long_Float := -1.0;
+
+
+   -- array of sensor values. Second index true => access backup sensor
+   -- Global for testing purposes.
+   type All_Sensor_Values_Array_T is array (Roadmarker_Sensor_ID_T, Boolean) of Long_Float;
 
 
    -- Returns the road marker with the history entry, prioritising road markers
@@ -99,19 +121,4 @@ package Roadmarker is
       all_sensor_values : All_Sensor_Values_Array_T;
       is_backup_sensor  : Boolean
      ) return Boolean;
-
-   -- Task to fetch and evaluate road marker sensor values. Communicates
-   -- with the Job Executer Task by road_marker_done and road_marker_next.
-   task type Roadmarker_Task_T is
-      entry Construct
-        (
-         get_sensor_value_a   : in get_roadmarker_sensor_value_access;
-         timeout_v            : in Duration;
-         MC_Task              : in Motor_Controller_Task_Access_T
-        );
-      entry road_marker_done (Signal : out Road_Marker_Done_T);
-      entry road_marker_next (Signal : in Road_Marker_Next_T);
-   end Roadmarker_Task_T;
-
-   type Roadmarker_Task_Acces_T is access Roadmarker_Task_T;
 end Roadmarker;

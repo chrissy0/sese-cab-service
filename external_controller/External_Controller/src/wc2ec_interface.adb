@@ -167,9 +167,9 @@ package body WC2EC_Interface is
    begin
       id_string := To_Unbounded_String("curb_");
       case orientation is
-         when LEFT =>
-            Append(id_string, to_Unbounded_String("r"));
          when RIGHT =>
+            Append(id_string, to_Unbounded_String("r"));
+         when LEFT =>
             Append(id_string, to_Unbounded_String("l"));
       end case;
 

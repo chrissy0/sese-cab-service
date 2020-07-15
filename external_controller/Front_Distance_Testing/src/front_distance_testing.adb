@@ -1,3 +1,7 @@
+-- @summary
+-- Front distance test runner.
+--
+-- @author Julian Hartmer
 with AUnit.Reporter.XML;
 with AUnit.Run;
 with Front_Distance_Suite; use Front_Distance_Suite;
