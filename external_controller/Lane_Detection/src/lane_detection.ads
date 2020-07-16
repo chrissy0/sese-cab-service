@@ -186,7 +186,8 @@ private
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
       is_lean_from_line  : Boolean;
-      Leaning_Left       : in out Boolean
+      Leaning_Left       : in out Boolean;
+      is_curb_detection  : out Boolean
      ) return Lane_Detection_Done_T;
 
    -- Detectes lanes using the line sensor values and threshholds.

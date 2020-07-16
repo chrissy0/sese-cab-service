@@ -301,6 +301,8 @@ package body Job_Executer is
             when BLOCKED_S =>
                return_code := set_blocked_status(cab_id  => cab_id, blocked => True);
                ignore_success := EC2B.success(return_code, error_counter);
+            when NOT_FUNCTIONAL =>
+               null; -- TODO
          end case;
       end select;
    end receive_next_signal;

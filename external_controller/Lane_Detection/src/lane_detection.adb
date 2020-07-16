@@ -181,7 +181,15 @@ package body Lane_Detection is
             when DETECTED =>
                Output := GO_STRAIGHT_S;
             when DETECTED_TOO_FAR =>
-               Output := ROTATE_LEFT_S;
+               if curb_detected_array(RIGHT) = DETECTED_TOO_CLOSE
+                 or curb_detected_array(RIGHT) = DETECTED
+               then
+                  Output := GO_STRAIGHT_S;
+               else
+
+                  Output := ROTATE_LEFT_S;
+               end if;
+
             when NOT_DETECTED =>
                case curb_detected_array(RIGHT) is
                   when DETECTED_TOO_CLOSE =>
@@ -251,13 +259,16 @@ package body Lane_Detection is
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
       is_lean_from_line  : Boolean;
-      Leaning_Left       : in out Boolean
+      Leaning_Left       : in out Boolean;
+      is_curb_detection  : out Boolean
      ) return Lane_Detection_Done_T
    is
       detected_array     : Line_Sensor_Detected_Array_T;
       Output             : Lane_Detection_Done_T;
       line_failure_array : Line_Sensor_Array_Failure_Array_T;
    begin
+
+      is_curb_detection := False;
 
       detect_lanes(all_sensor_values    => line_sensor_values,
                    detected_array       => detected_array,
@@ -273,6 +284,7 @@ package body Lane_Detection is
 
       if Output = SYSTEM_ERROR_S then
          Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+         is_curb_detection := True;
       end if;
 
       return Output;
@@ -298,6 +310,7 @@ package body Lane_Detection is
       get_wall_sensor_value : get_wall_sensor_value_access;
       timeout               : Duration;
       is_lean_from_line     : Boolean := False;
+      is_curb_detection     : Boolean := False;
    begin
 
       Log_Line("Starting Thread.");
@@ -332,9 +345,10 @@ package body Lane_Detection is
                                     curb_sensor_values => curb_sensor_values,
                                     wall_sensor_values => wall_sensor_values,
                                     Leaning_Left       => Leaning_Left,
-                                    is_lean_from_line  => is_lean_from_line);
+                                    is_lean_from_line  => is_lean_from_line,
+                                    is_curb_detection  => is_curb_detection);
          select
-           Motor_Controller_Task.lane_detection_done(Output);
+           Motor_Controller_Task.lane_detection_done(Output, is_curb_detection);
          then abort
             delay timeout;
             Log_Line("lane_detection_done timed out, shutting down...");

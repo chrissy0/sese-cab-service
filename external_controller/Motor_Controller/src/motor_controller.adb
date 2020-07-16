@@ -135,11 +135,12 @@ package body Motor_Controller is
    -- calculate motor actor output for drive state
    procedure calculate_output
      (
-      state          : Cab_State_T;
-      motor_values   : out Motor_Values_T;
-      LD_Next_Signal : out Lane_Detection_Next_T;
-      FD_Next_Signal : out Front_Distance_Next_t;
-      JE_Next_Signal : out Job_Executer_Next_t
+      state                 : Cab_State_T;
+      curb_detection_active : Boolean;
+      motor_values          : out Motor_Values_T;
+      LD_Next_Signal        : out Lane_Detection_Next_T;
+      FD_Next_Signal        : out Front_Distance_Next_t;
+      JE_Next_Signal        : out Job_Executer_Next_t
      )
    is
    begin
@@ -170,6 +171,12 @@ package body Motor_Controller is
             FD_Next_Signal := SHUTDOWN_S;
             JE_Next_Signal := SHUTDOWN_S;
       end case;
+
+      if curb_detection_active and LD_Next_Signal /= SHUTDOWN_S then
+         JE_Next_Signal := NOT_FUNCTIONAL;
+      end if;
+
+
 
    end calculate_output;
 
@@ -377,6 +384,8 @@ package body Motor_Controller is
       got_force_left             : Boolean                  := False;
 
       Next                       : Ada.Calendar.Time;
+
+      curb_detection_active          : Boolean := False;
    begin
 
       Log_Line("Starting Thread.");
@@ -394,6 +403,7 @@ package body Motor_Controller is
          timeout                := timeout_v;
          Iteration_Delay        := iteration_delay_s;
          elevate_sensors        := elevate_sensors_access;
+
 
       end Constructor;
       Log_Line("... constructor done");
@@ -416,8 +426,10 @@ package body Motor_Controller is
                end job_executer_done;
             or
                accept lane_detection_done
-                 (Signal : in Lane_Detection_Done_T)
+                 (Signal : in Lane_Detection_Done_T;
+                  is_curb_detection  : in Boolean)
                do
+                  curb_detection_active := is_curb_detection;
                   Lane_Detection_Done_Signal := Signal;
                   task_done_array(LANE_DETECTION) := True;
 
@@ -495,6 +507,7 @@ package body Motor_Controller is
                              Is_Shutdown   => Main_Force_Shutdown_Signal);
 
          calculate_output(state          => state,
+                          curb_detection_active => curb_detection_active,
                           motor_values   => motor_values,
                           LD_Next_Signal => Lane_Detection_Next_Signal,
                           FD_Next_Signal => Front_Distance_Next_Signal,
