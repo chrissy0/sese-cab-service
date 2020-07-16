@@ -1,4 +1,4 @@
-with "..\Lane_Detection\lane_detection.gpr";
+with "../Lane_Detection/lane_detection.gpr";
 with "aunit.gpr";
 
 project Lane_Detection_Testing is

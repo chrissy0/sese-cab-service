@@ -1,4 +1,4 @@
-with "..\Road_Marker\roadmarker.gpr";
+with "../Road_Marker/roadmarker.gpr";
 with "aunit.gpr";
 
 project Road_Marker_Testing is
