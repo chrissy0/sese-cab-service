@@ -1,4 +1,4 @@
-with "..\Motor_Controller\motor_controller.gpr";
+with "../Motor_Controller/motor_controller.gpr";
 
 project Roadmarker is
 
