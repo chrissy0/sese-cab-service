@@ -1,3 +1,8 @@
+-- @summary
+-- Road Marker controller child unit test package body.
+--
+-- @author Julian Hartmer
+
 pragma Ada_2012;
 with AUnit.Assertions; use AUnit.Assertions;
 with Roadmarker; use Roadmarker;

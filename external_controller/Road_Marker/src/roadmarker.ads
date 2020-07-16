@@ -1,5 +1,5 @@
 -- @summary
--- Road Marker controller package.
+-- Road Marker controller package specification.
 --
 -- @author Julian Hartmer and Chanki Hong
 -- @description
@@ -49,6 +49,9 @@ package Roadmarker is
    -- Acces type to getter function for road marker sensor values.
    -- The sensor is referenced by ID and a Boolean. The boolean indicates
    -- whether the normal sensor (False) or the default sensor (True) is read.
+   -- @param ID sensor ID
+   -- @param is_backup_sensor true: access backup sensor, false: access default sensor
+   -- @return Sensor value
    type get_roadmarker_sensor_value_access is access
      function (ID : in Roadmarker_Sensor_ID_T; is_backup_sensor : Boolean) return Long_Float;
 
@@ -56,13 +59,25 @@ package Roadmarker is
    -- Task to fetch and evaluate road marker sensor values. Communicates
    -- with the Job Executer Task by road_marker_done and road_marker_next.
    task type Roadmarker_Task_T is
+
+      -- Roadmarker task constructor. Tasks wait after spawning for constructor
+      -- to initialize the task.
+      -- @param get_sensor_value_a Access to road marker sensor getter function
+      -- @param timeout_v Rendezvous synchronization timeout
+      -- @param MC_Task Access to motor controller task
       entry Construct
         (
          get_sensor_value_a   : in get_roadmarker_sensor_value_access;
          timeout_v            : in Duration;
          MC_Task              : in Motor_Controller_Task_Access_T
         );
+
+      -- Rendezvous synchronization to send iteration result to job executer.
+      -- @param Signal iteration result
       entry road_marker_done (Signal : out Road_Marker_Done_T);
+
+      -- Rendezvous synchronization to wait for job executer for next iteration command.
+      -- @param Signal Next iteration command (shutdown or normal)
       entry road_marker_next (Signal : in Road_Marker_Next_T);
    end Roadmarker_Task_T;
 
@@ -92,6 +107,7 @@ private
 
    -- Fill array with 0s.
    -- Global for testing purposes.
+   -- @param history history to be filled with 0s
    procedure empty_history(history: in out Road_Marker_History_T);
 
    -- check normal and then backup sensors for error. If both are in an error
@@ -104,6 +120,7 @@ private
    -- Should only be used in Roadmarker_Task.
    -- @param all_sensor_values array with current sensor values
    -- @param history history of previously read road markers
+   -- @param was_on_hotfix_rm flag to show that cab was on hotfix road marker (forcing left)
    function calculate_output
      (
       all_sensor_values : All_Sensor_Values_Array_T;
@@ -114,7 +131,7 @@ private
    -- Return true if the default or backup sensor array contains an error,
    -- depending on the is_backup_sensor value.
    -- @param all_sensor_values array filled with sensor values to be tested
-   -- @is_backup_sensor True => check backup sensor array, false => check normal sensor array
+   -- @param is_backup_sensor True => check backup sensor array, false => check normal sensor array
    -- @return True => error in array, False => no error in selected arrray
    function check_error_sensor_array
      (

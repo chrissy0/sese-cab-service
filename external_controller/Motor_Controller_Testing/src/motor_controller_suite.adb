@@ -1,3 +1,8 @@
+-- @summary
+-- Motor Controller test suite body.
+--
+-- @author Julian Hartmer
+
 with Motor_Controller.Test; use Motor_Controller.Test;
 with AUnit.Test_Caller;
 

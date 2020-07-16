@@ -1,3 +1,8 @@
+-- @summary
+-- Road Marker controller child unit test package specification.
+--
+-- @author Julian Hartmer
+
 with AUnit;
 with Roadmarker_Functions.Test; use Roadmarker_Functions.Test;
 

@@ -1,3 +1,8 @@
+-- @summary
+-- Lane Detection controller child unit test package body.
+--
+-- @author Julian Hartmer
+
 pragma Ada_2012;
 with AUnit.Assertions;        use AUnit.Assertions;
 with Ada.Task_Identification; use Ada.Task_Identification;
@@ -459,15 +464,5 @@ package body Lane_Detection.Test is
 
 
    end test_output_from_curb_detection;
-
-   ---------------------------
-   -- test_calculate_output --
-   ---------------------------
-
-   procedure test_calculate_output (T : in out Test) is
-      pragma Unreferenced (T);
-   begin
-      null; -- TODO
-   end test_calculate_output;
 
 end Lane_Detection.Test;

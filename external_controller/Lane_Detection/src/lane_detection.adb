@@ -1,3 +1,11 @@
+-- @summary
+-- Lane detection controller package body.
+--
+-- @author Julian Hartmer
+-- @description
+-- This package controls the lane detection by pulling and evaluating the lane
+-- detection sensor values. Communicates with Motor Controller Task.
+
 pragma Ada_2012;
 package body Lane_Detection is
 
@@ -17,9 +25,9 @@ package body Lane_Detection is
       get_line_sensor_value : in get_line_sensor_value_access;
       get_curb_sensor_value : in get_curb_sensor_value_access;
       get_wall_sensor_value : in get_wall_sensor_value_access;
-      line_sensor_values : out Line_Sensor_Values_Array_T;
-      curb_sensor_values : out Curb_Sensor_Values_Array_T;
-      wall_sensor_values : out Wall_Sensor_Values_Array_T
+      line_sensor_values    : out Line_Sensor_Values_Array_T;
+      curb_sensor_values    : out Curb_Sensor_Values_Array_T;
+      wall_sensor_values    : out Wall_Sensor_Values_Array_T
      )
    is
    begin
@@ -153,12 +161,12 @@ package body Lane_Detection is
 
    function output_from_curb_detection
      (
-      curb_sensor_values       : Curb_Sensor_Values_Array_T
+      curb_sensor_values  : Curb_Sensor_Values_Array_T
      ) return Lane_Detection_Done_T
    is
       Output              : Lane_Detection_Done_T := SYSTEM_ERROR_S;
-      sensor_value        : Long_Float := SENSOR_FAULT;
-      curb_detected_array      : Curb_Detected_Array_T;
+      sensor_value        : Long_Float            := SENSOR_FAULT;
+      curb_detected_array : Curb_Detected_Array_T;
    begin
       curb_detected_array := detect_curb(curb_sensor_values => curb_sensor_values);
 

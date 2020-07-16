@@ -1,3 +1,12 @@
+-- @summary
+-- Motor controller package body. Communicates with Lane Detection,
+-- Front Distance, Road Marker and Job Executer and sets the wheel speed
+--
+-- @author Julian Hartmer
+-- @description
+-- This package communicates with all cab tasks. It manages the other tasks
+-- and controls the cab's wheels.
+
 pragma Ada_2012;
 with Ada.Calendar; use Ada.Calendar;
 with Ada.Text_IO; use Ada.Text_IO;

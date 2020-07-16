@@ -1,3 +1,8 @@
+-- @summary
+-- Motor Controller test runner.
+--
+-- @author Julian Hartmer
+
 with AUnit.Reporter.XML;
 with AUnit.Run;
 with Motor_Controller_Suite; use Motor_Controller_Suite;

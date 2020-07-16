@@ -1,3 +1,11 @@
+-- @summary
+-- Road Marker controller package body.
+--
+-- @author Julian Hartmer and Chanki Hong
+-- @description
+-- This package controls the roadmarker by pulling and evaluating the road
+-- marker sensor values. Communicates with Motor Controller Task.
+
 pragma Ada_2012;
 with Roadmarker_Functions; use Roadmarker_Functions;
 
