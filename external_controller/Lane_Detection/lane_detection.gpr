@@ -1,4 +1,3 @@
-with "../WC2EC/wc2ec.gpr";
 with "../Motor_Controller/motor_controller.gpr";
 
 project Lane_Detection is
