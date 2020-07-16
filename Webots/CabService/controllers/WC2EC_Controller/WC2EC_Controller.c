@@ -446,8 +446,7 @@ int register_sensor_at_external_controller(WbDeviceTag tag, uint8_t index, SOCKE
 }
 
 
-int sensor_set_
-_value(WbDeviceTag tag, WbNodeType type) {
+int sensor_set_default_value(WbDeviceTag tag, WbNodeType type) {
     switch (type)
     {
         case WB_NODE_DISTANCE_SENSOR:
