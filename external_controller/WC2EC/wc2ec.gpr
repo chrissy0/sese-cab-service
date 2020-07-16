@@ -1,4 +1,4 @@
-with "..\Ring_Buffer\ring_buffer.gpr";
+with "../Ring_Buffer/ring_buffer.gpr";
 
 project Wc2Ec is
 
