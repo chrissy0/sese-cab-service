@@ -1,0 +1,12 @@
+with "../Lane_Detection/lane_detection.gpr";
+with "aunit.gpr";
+
+project Lane_Detection_Testing is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Main use ("lane_detection_testing.adb");
+   for Exec_Dir use ".";
+
+end Lane_Detection_Testing;
+

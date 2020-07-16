@@ -1,0 +1,22 @@
+with Motor_Controller; use Motor_Controller;
+with Roadmarker; use Roadmarker;
+with Ada.Strings.Unbounded;
+
+package Job_Executer is
+   
+   type Intersection_Option_T is (Left, Right);
+    errors_till_backend_failed : constant Integer := 10;
+
+   task type Job_Executer_Task_T is
+      entry Constructor
+        (Motor_Controller_Task_A : in Motor_Controller_Task_Access_T;
+         timeout_v               : in Duration;
+         RM_get_sensor_value_a   : in get_roadmarker_sensor_value_access;
+         cab_name_arg            : in Ada.Strings.Unbounded.Unbounded_String;
+         start_section_arg         : in Integer 
+        );
+   end Job_Executer_Task_T;
+   
+   type Job_Executer_Task_Access_T is access Job_Executer_Task_T;
+
+end Job_Executer;

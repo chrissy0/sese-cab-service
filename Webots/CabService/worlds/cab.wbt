@@ -2,20 +2,24 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.5293262558273208 0.7595145998540604 0.3780889941539641 1.5347254684264715
-  position 4.096179598602898 5.505482608124745 4.098130162791214
+  orientation 0.9020747155587338 0.3938442921188579 0.1764876231213545 5.155560755920137
+  position 0.9463715418575599 0.6273293942876895 3.5515184977341807
   follow "robot"
+  followType "None"
+  followSmoothness 0.2
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+  castShadows FALSE
 }
 Robot {
-  translation 0.667827 0.0381835 2.95564
-  rotation -0.0018679107251753212 -0.9999963882266387 -0.0019324707502393333 1.57211
+  translation -0.221348 0.03683136 3.8348
+  rotation -1.107839999997329e-06 0.9999999999975869 1.897079999995423e-06 3.11086
   children [
     Solid {
       translation 0 0.025 0
+      rotation 0 0 -1 5.307156870259904e-06
       children [
         Shape {
           appearance PBRAppearance {
@@ -32,8 +36,190 @@ Robot {
         size 0.1 0.03 0.2
       }
     }
+    Solid {
+      translation 0.05 -0.01 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    Solid {
+      translation 0.05 -0.01 -0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(13)"
+    }
+    Solid {
+      translation 0.05 -0.01 -0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(14)"
+    }
+    Solid {
+      translation 0.05 -0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(15)"
+    }
+    Solid {
+      translation 0.05 -0.01 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(16)"
+    }
+    Solid {
+      translation 0.05 -0.01 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(6)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(7)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(8)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(9)"
+    }
+    Solid {
+      translation -0.05 -0.01 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(10)"
+    }
+    Solid {
+      translation -0.05 -0.01 -0.09
+      rotation 0 1 0 4.692820414042842e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(11)"
+    }
+    Solid {
+      translation -0.05 -0.01 -0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(12)"
+    }
     DEF curb-sensor-slider-joint-lf SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -47,10 +233,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0.1
+        translation 0.055 -0.02 0.1
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -62,6 +249,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lf2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -75,10 +263,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0.09
+        translation 0.055 -0.02 0.09
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -90,6 +279,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lc SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -103,10 +293,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0.01
+        translation 0.055 -0.02 0.01
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -118,6 +309,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lc2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -131,10 +323,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 0
+        translation 0.055 -0.02 0
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -146,6 +339,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lb SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -159,10 +353,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 -0.09
+        translation 0.055 -0.02 -0.09
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -174,6 +369,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-lb2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -187,10 +383,11 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation 0.05 -0.01 -0.1
+        translation 0.055 -0.02 -0.1
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -202,6 +399,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rb2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -215,11 +413,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.05 -0.01 -0.1
+        translation -0.055 -0.02 -0.1
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -231,6 +430,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rb SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -244,11 +444,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499999 -0.01 -0.09
+        translation -0.055 -0.02 -0.09
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -260,6 +461,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rc2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -273,11 +475,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499991 -0.01 -2.69848e-13
+        translation -0.055 -0.02 -2.69848e-13
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -289,6 +492,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rc SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -302,11 +506,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.049999 -0.01 0.01
+        translation -0.055 -0.02 0.01
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -318,6 +523,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rf2 SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -331,11 +537,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499982 -0.01 0.09
+        translation -0.055 -0.02 0.09
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -347,6 +554,7 @@ Robot {
     }
     DEF curb-sensor-slider-joint-rf SliderJoint {
       jointParameters JointParameters {
+        position -0.01
         axis 0 1 0
         minStop -2
         maxStop 2
@@ -360,11 +568,12 @@ Robot {
         }
       ]
       endPoint DistanceSensor {
-        translation -0.0499983 -0.01 0.1
+        translation -0.055 -0.02 0.1
         rotation 0 1 0 -3.1415853071795863
         children [
           Shape {
             appearance PBRAppearance {
+              roughness 1
             }
             geometry Box {
               size 0.01 0.01 0.01
@@ -375,7 +584,7 @@ Robot {
       }
     }
     DistanceSensor {
-      translation -0.0149993 -0.01 0.105001
+      translation -0.0149993 -0.00999998 0.05
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -391,7 +600,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0149993 -0.00999928 0.095001
+      translation -0.015 -0.00999854 0.04
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -407,7 +616,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 7.15325e-07 -0.01 0.105001
+      translation 7.15325e-07 -0.00999998 0.05
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -423,7 +632,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 7.5516e-07 -0.00999928 0.095001
+      translation 8.3483e-07 -0.00999782 0.04
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -439,7 +648,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999208 0.035001
+      translation -0.0499991 -0.00999136 0.035001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -447,7 +656,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -455,7 +664,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999136 0.025001
+      translation -0.0499991 -0.00999064 0.025001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -463,7 +672,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -471,7 +680,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999496 0.075001
+      translation -0.0499991 -0.00999424 0.075001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -479,7 +688,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -487,7 +696,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00999424 0.065001
+      translation -0.0499991 -0.00999352 0.065001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -495,7 +704,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -503,7 +712,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999784 0.035001
+      translation 0.0500009 -0.00999856 0.035001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -511,7 +720,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -519,7 +728,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999712 0.025001
+      translation 0.0500009 -0.00999784 0.025001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -527,7 +736,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -535,7 +744,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.0100007 0.075001
+      translation 0.0500009 -0.0100014 0.075001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -543,7 +752,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -551,7 +760,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999998 0.065001
+      translation 0.0500009 -0.0100007 0.065001
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -559,7 +768,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -567,7 +776,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999352 -0.024999
+      translation 0.0500009 -0.00999352 -0.034999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -575,7 +784,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -583,7 +792,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.0099928 -0.034999
+      translation 0.0500009 -0.0099928 -0.044999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -591,7 +800,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -599,7 +808,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00999064 -0.064999
+      translation 0.0500009 -0.00999064 -0.074999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -607,7 +816,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -615,7 +824,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0400009 -0.00998992 -0.074999
+      translation 0.0500009 -0.00998992 -0.084999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -623,7 +832,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -631,7 +840,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998776 -0.024999
+      translation -0.0499991 -0.00998632 -0.034999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -639,7 +848,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -647,7 +856,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998704 -0.034999
+      translation -0.0499991 -0.0099856 -0.044999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -655,7 +864,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -663,7 +872,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998488 -0.064999
+      translation -0.0499991 -0.00998342 -0.074999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -671,7 +880,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -679,7 +888,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.0399991 -0.00998416 -0.074999
+      translation -0.0499991 -0.00998272 -0.084999
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -687,7 +896,7 @@ Robot {
             baseColor 1 0 0
           }
           geometry Box {
-            size 0.01 0.01 0.01
+            size 0.01 0.01 0.003
           }
         }
       ]
@@ -700,6 +909,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -715,6 +925,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -731,6 +942,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -746,6 +958,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -760,6 +973,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -774,6 +988,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -788,6 +1003,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -802,6 +1018,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -816,6 +1033,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -831,6 +1049,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -847,6 +1066,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -877,6 +1097,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -891,6 +1112,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -906,6 +1128,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -922,6 +1145,7 @@ Robot {
         Shape {
           appearance PBRAppearance {
             baseColor 1 0 0
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -937,6 +1161,7 @@ Robot {
       children [
         Shape {
           appearance PBRAppearance {
+            roughness 1
           }
           geometry Box {
             size 0.01 0.01 0.01
@@ -946,7 +1171,7 @@ Robot {
       name "dist_l2"
     }
     DistanceSensor {
-      translation 0.0150007 -0.00999998 0.105001
+      translation 0.0150007 -0.00999998 0.05
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -962,7 +1187,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.0150007 -0.00999926 0.095001
+      translation 0.015 -0.00999854 0.04
       rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
       children [
         Shape {
@@ -989,7 +1214,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2768.9508427964515
+        position 3504.5659480595828
         anchor 0.06 0 0.05
       }
       device [
@@ -998,8 +1223,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL1 Solid {
-        translation 0.06 0 0.05
-        rotation 0.6355319259111519 -0.6355342603545203 -0.43840092958762633 3.9679227150160212
+        translation 0.06 0 0.04999999999999938
+        rotation -0.5529743288829303 0.5529763600745923 0.6232467703848352 2.0269208064463293
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -1021,7 +1246,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2323.5518724354147
+        position 3059.391012208471
         anchor 0.06 0 -0.05
       }
       device [
@@ -1031,7 +1256,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.49886471088273715 0.49886654331848135 0.7087073953285324 1.9085041596820589
+        rotation 0.2490855854912929 -0.24908650043540634 -0.9359018572485589 4.646189051619104
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1043,7 +1268,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2402.11526781694
+        position 3068.3874533123803
         anchor -0.06 0 -0.05
       }
       device [
@@ -1052,8 +1277,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL4 Solid {
-        translation -0.06 0 -0.05
-        rotation 0.6361317701523701 -0.6361341067990992 0.436657496408483 2.3181892031248212
+        translation -0.06 0 -0.050000000000000266
+        rotation 0.6646674218173287 -0.664669863278258 0.34122015067162587 2.483931265367255
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1065,7 +1290,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 1956.0244093876533
+        position 2622.4885507195163
         anchor -0.06 0 0.05
       }
       device [
@@ -1075,7 +1300,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6381028774613375 0.6381052213483658 -0.43086708421915254 3.9552491966657177
+        rotation -0.6818304356849635 0.6818329401925707 -0.26497376972449055 3.6596332771087683
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -1092,23 +1317,1208 @@ Robot {
   controller "WC2EC_Controller"
   controllerArgs "27015"
 }
-DEF dummy Robot {
-  translation 1.17493 0.04417 1.22104
-  rotation -0.0018821692298109283 -0.9999975907981046 -0.0011295295377932585 2.0957053071795864
+Robot {
+  translation -0.227142 0.03683416 4.19169
+  rotation -1.1078399999973234e-06 0.9999999999975868 1.8970799999954227e-06 3.11086
   children [
+    Solid {
+      translation 0 0.025 0
+      rotation -9.589734505977885e-09 -0.0036138916980778834 -0.999993469872076 5.307156870259904e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.2 0
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.03 0.2
+          }
+        }
+      ]
+      name "solid(4)"
+      boundingObject Box {
+        size 0.1 0.03 0.2
+      }
+    }
+    Solid {
+      translation 0.05 -0.01 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    Solid {
+      translation 0.05 -0.01 -0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(13)"
+    }
+    Solid {
+      translation 0.05 -0.01 -0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(14)"
+    }
+    Solid {
+      translation 0.05 -0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(15)"
+    }
+    Solid {
+      translation 0.05 -0.01 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(16)"
+    }
+    Solid {
+      translation 0.05 -0.01 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(6)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(7)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(8)"
+    }
+    Solid {
+      translation -0.05 -0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(9)"
+    }
+    Solid {
+      translation -0.05 -0.01 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(10)"
+    }
+    Solid {
+      translation -0.05 -0.01 -0.09
+      rotation 0 1 0 4.692820414042842e-06
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(11)"
+    }
+    Solid {
+      translation -0.05 -0.01 -0.1
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.001 0.01 0.001
+          }
+        }
+      ]
+      name "solid(12)"
+    }
+    DEF curb-sensor-slider-joint-lf SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_lf"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation 0.055 -0.02 0.1
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_lf"
+      }
+    }
+    DEF curb-sensor-slider-joint-lf2 SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_lf2"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation 0.055 -0.02 0.09
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_lf2"
+      }
+    }
+    DEF curb-sensor-slider-joint-lc SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_lc"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation 0.055 -0.02 0.01
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_lc"
+      }
+    }
+    DEF curb-sensor-slider-joint-lc2 SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_lc2"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation 0.055 -0.02 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_lc2"
+      }
+    }
+    DEF curb-sensor-slider-joint-lb SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_lb"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation 0.055 -0.02 -0.09
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_lb"
+      }
+    }
+    DEF curb-sensor-slider-joint-lb2 SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_lb2"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation 0.055 -0.02 -0.1
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_lb2"
+      }
+    }
+    DEF curb-sensor-slider-joint-rb2 SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_rb2"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation -0.055 -0.02 -0.1
+        rotation 0 1 0 -3.1415853071795863
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_rb2"
+      }
+    }
+    DEF curb-sensor-slider-joint-rb SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_rb"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation -0.055 -0.02 -0.09
+        rotation 0 1 0 -3.1415853071795863
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_rb"
+      }
+    }
+    DEF curb-sensor-slider-joint-rc2 SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_rc2"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation -0.055 -0.02 -2.69848e-13
+        rotation 0 1 0 -3.1415853071795863
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_rc2"
+      }
+    }
+    DEF curb-sensor-slider-joint-rc SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_rc"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation -0.055 -0.02 0.01
+        rotation 0 1 0 -3.1415853071795863
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_rc"
+      }
+    }
+    DEF curb-sensor-slider-joint-rf2 SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_rf2"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation -0.055 -0.02 0.09
+        rotation 0 1 0 -3.1415853071795863
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_rf2"
+      }
+    }
+    DEF curb-sensor-slider-joint-rf SliderJoint {
+      jointParameters JointParameters {
+        position -0.01
+        axis 0 1 0
+        minStop -2
+        maxStop 2
+      }
+      device [
+        LinearMotor {
+          name "slider_curb_rf"
+          acceleration 1
+          minPosition -1
+          maxPosition 1
+        }
+      ]
+      endPoint DistanceSensor {
+        translation -0.055 -0.02 0.1
+        rotation 0 1 0 -3.1415853071795863
+        children [
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+            }
+            geometry Box {
+              size 0.01 0.01 0.01
+            }
+          }
+        ]
+        name "curb_rf"
+      }
+    }
+    DistanceSensor {
+      translation -0.0149993 -0.00999998 0.05
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_right"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.015 -0.00999854 0.04
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_right2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 7.15325e-07 -0.00999998 0.05
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_cent"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 8.3483e-07 -0.00999782 0.04
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_cent2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00999136 0.035001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fr"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00999064 0.025001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fr2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00999424 0.075001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fr_act"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00999352 0.065001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fr_act2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.00999856 0.035001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fl"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.00999784 0.025001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fl2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.0100014 0.075001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fl_act"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.0100007 0.065001
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_fl_act2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.00999352 -0.034999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_bl"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.0099928 -0.044999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_bl2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.00999064 -0.074999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_bl_act"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0500009 -0.00998992 -0.084999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_bl_act2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00998632 -0.034999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_br"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.0099856 -0.044999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_br2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00998342 -0.074999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_br_act"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499991 -0.00998272 -0.084999
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.003
+          }
+        }
+      ]
+      name "inf_rm_br_act2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 2.13035e-06 0.01 0.105003
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_c"
+    }
+    DistanceSensor {
+      translation 2.83786e-06 0.02 0.105004
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_c"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 3.54537e-06 0.03 0.105005
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_c2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0499975 0.0100112 -0.00499715
+      rotation 3.537569995542025e-05 0.99999999873982 3.562189995511e-05 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_right"
+    }
+    DistanceSensor {
+      translation 0.0500025 0.010004 -0.00499677
+      rotation -0.7089590152377839 0.040980800880807744 0.7040580151324458 -0.0001053071795862337
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_left"
+    }
+    DistanceSensor {
+      translation 0.0500025 0.0100033 0.00500323
+      rotation -0.7089590152377839 0.040980800880807744 0.7040580151324458 -0.0001053071795862337
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_left2"
+    }
+    DistanceSensor {
+      translation -0.0499975 0.0100105 0.0050028
+      rotation 3.537569995542025e-05 0.99999999873982 3.562189995511e-05 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_wall_detector_right2"
+    }
+    DistanceSensor {
+      translation 1.42284e-06 5.04072e-11 0.105002
+      rotation 2.46305999379222e-07 -0.9999999974796472 -7.099749982106126e-05 1.5708
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_c2"
+    }
+    DistanceSensor {
+      translation -0.0399979 0.0100028 0.105003
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_r"
+    }
+    DistanceSensor {
+      translation -0.0399972 0.0200028 0.105004
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_r"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399965 0.0300028 0.105005
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_r2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399972 0.0200028 0.105004
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_if_r(1)"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.0399986 2.80005e-06 0.105002
+      rotation -2.583079996511147e-05 -0.9999999986493437 -4.5100799939084325e-05 2.618
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_r2"
+    }
+    DistanceSensor {
+      translation 0.0400021 0.0099972 0.105003
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_l"
+    }
+    DistanceSensor {
+      translation 0.0400028 0.0199972 0.105004
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_l"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0400035 0.0299972 0.105005
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_ir_l2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.0400014 -2.79995e-06 0.105002
+      rotation 9.756649816457575e-05 -0.9999999811879666 -0.00016764499684625669 0.523602
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "dist_l2"
+    }
+    DistanceSensor {
+      translation 0.0150007 -0.00999998 0.05
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_left"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.015 -0.00999854 0.04
+      rotation 0.5773372688908542 -0.5773372688908542 -0.5773762689090183 2.09448
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "inf_left2"
+      type "infra-red"
+    }
     DEF BODY Shape {
       appearance PBRAppearance {
-        baseColor 1 0 0
+        baseColor 1 0.2 0
         roughness 1
         metalness 0
       }
       geometry Box {
-        size 0.1 0.05 0.2
+        size 0.1 0.02 0.2
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2768.9508427964515
+        position 3504.5659480595828
         anchor 0.06 0 0.05
       }
       device [
@@ -1117,8 +2527,9 @@ DEF dummy Robot {
         }
       ]
       endPoint DEF WHEEL1 Solid {
-        translation 0.06 0 0.05
-        rotation 0.6355319259111513 -0.6355342603545208 -0.4384009295876268 3.967922715016023
+        translation 0.06 0 0.04999999999999982
+        rotation -0.5529743288829303 0.5529763600745923 0.6232467703848352 2.0269208064463293
+        scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -1139,7 +2550,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2323.5518724354147
+        position 3059.391012208471
         anchor 0.06 0 -0.05
       }
       device [
@@ -1148,8 +2559,9 @@ DEF dummy Robot {
         }
       ]
       endPoint DEF WHEEL3 Solid {
-        translation 0.06 0 -0.05
-        rotation -0.49886471088273826 0.49886654331848057 0.7087073953285323 1.908504159682057
+        translation 0.060000000000000026 0 -0.04999999999999982
+        rotation 0.24908558549129287 -0.24908650043540645 -0.935901857248559 4.646189051619104
+        scale 0.8 0.8 0.8
         children [
           USE WHEEL
         ]
@@ -1160,7 +2572,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2402.11526781694
+        position 3068.3874533123803
         anchor -0.06 0 -0.05
       }
       device [
@@ -1169,8 +2581,9 @@ DEF dummy Robot {
         }
       ]
       endPoint DEF WHEEL4 Solid {
-        translation -0.06 0 -0.05
-        rotation 0.6361317701523701 -0.636134106799099 0.4366574964084834 2.3181892031248212
+        translation -0.05999999999999997 -6.938893903907228e-18 -0.04999999999999982
+        rotation 0.6646674218173289 -0.6646698632782579 0.3412201506716259 2.483931265367255
+        scale 0.8 0.8 0.8
         children [
           USE WHEEL
         ]
@@ -1181,7 +2594,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 1956.0244093876533
+        position 2622.4885507195163
         anchor -0.06 0 0.05
       }
       device [
@@ -1190,8 +2603,9 @@ DEF dummy Robot {
         }
       ]
       endPoint DEF WHEEL2 Solid {
-        translation -0.06 0 0.05
-        rotation -0.6381028774613378 0.6381052213483658 -0.43086708421915254 3.9552491966657186
+        translation -0.05999999999999997 0 0.05000000000000071
+        rotation -0.6818304356849635 0.6818329401925708 -0.2649737697244903 3.6596332771087683
+        scale 0.8 0.8 0.8
         children [
           USE WHEEL
         ]
@@ -1201,11 +2615,14 @@ DEF dummy Robot {
       }
     }
   ]
-  name "robot dummy"
+  name "robot(1)"
   boundingObject USE BODY
   physics Physics {
   }
-  controller ""
+  controller "WC2EC_Controller"
+  controllerArgs "27016"
+  linearVelocity -1.4444474582904268e-36 -0.31392000000000003 9.62964972193618e-37
+  angularVelocity 6.655106487887105e-21 1.0388376905813809e-19 -2.1652471765644218e-19
 }
 DEF floor Solid {
   translation -0.37 0 0.25
@@ -1226,12 +2643,13 @@ DEF floor Solid {
   }
 }
 DEF line Solid {
-  translation 1.56652 0.0001 0.97928
+  translation 1.56652 0.0001 0.98928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1243,12 +2661,13 @@ DEF line Solid {
   name "line(16)"
 }
 DEF line Solid {
-  translation 1.56652 0.0001 1.17928
+  translation 1.56652 0.0002 1.17928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1401,7 +2820,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1418,7 +2838,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1435,7 +2856,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1452,7 +2874,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1469,7 +2892,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1486,7 +2910,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1503,7 +2928,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -1515,12 +2941,13 @@ DEF line Solid {
   name "line(26)"
 }
 DEF line Solid {
-  translation 1.00652 0.0001 3.32928
+  translation 1.00652 0.0002 3.33928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1532,12 +2959,13 @@ DEF line Solid {
   name "line(98)"
 }
 DEF line Solid {
-  translation -0.21348 0.0001 3.32928
+  translation -0.21348 0.0003 3.32928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1617,7 +3045,7 @@ DEF line Solid {
   name "line(97)"
 }
 DEF line Solid {
-  translation -0.21348 0.0001 4.32928
+  translation -0.21348 0.0002 4.32928
   rotation 0 1 0 1.5708
   children [
     Shape {
@@ -1639,7 +3067,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1651,12 +3080,13 @@ DEF line Solid {
   name "line(101)"
 }
 DEF line Solid {
-  translation -0.31348 0.0001 4.59928
+  translation -0.30348 0.0002 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -1668,7 +3098,7 @@ DEF line Solid {
   name "line(103)"
 }
 DEF line Solid {
-  translation -0.51348 0.0001 4.59928
+  translation -0.50348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1685,7 +3115,7 @@ DEF line Solid {
   name "line(104)"
 }
 DEF line Solid {
-  translation -0.71348 0.0001 4.59928
+  translation -0.70348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1702,7 +3132,7 @@ DEF line Solid {
   name "line(108)"
 }
 DEF line Solid {
-  translation -0.91348 0.0001 4.59928
+  translation -0.90348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1719,7 +3149,7 @@ DEF line Solid {
   name "line(109)"
 }
 DEF line Solid {
-  translation -1.11348 0.0001 4.59928
+  translation -1.10348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1736,7 +3166,7 @@ DEF line Solid {
   name "line(110)"
 }
 DEF line Solid {
-  translation -1.31348 0.0001 4.59928
+  translation -1.30348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1753,7 +3183,7 @@ DEF line Solid {
   name "line(111)"
 }
 DEF line Solid {
-  translation -1.51348 0.0001 4.59928
+  translation -1.50348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1770,7 +3200,7 @@ DEF line Solid {
   name "line(112)"
 }
 DEF line Solid {
-  translation -1.71348 0.0001 4.59928
+  translation -1.70348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1787,7 +3217,7 @@ DEF line Solid {
   name "line(113)"
 }
 DEF line Solid {
-  translation -1.91348 0.0001 4.59928
+  translation -1.88348 0.0001 4.59928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -1804,12 +3234,13 @@ DEF line Solid {
   name "line(114)"
 }
 DEF line Solid {
-  translation -0.142769 0.0001 4.66999
+  translation -0.142769 0.0002 4.66999
   rotation 0 -1 0 -2.3561953071795863
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2081,7 +3512,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2098,7 +3530,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2115,7 +3548,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2132,7 +3566,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2149,7 +3584,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2166,7 +3602,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2183,7 +3620,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2195,12 +3633,13 @@ DEF line Solid {
   name "line(46)"
 }
 DEF line Solid {
-  translation -0.773476 0.0001 1.17928
+  translation -0.773476 0.0002 1.17928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2331,12 +3770,13 @@ DEF line Solid {
   name "line(82)"
 }
 DEF line Solid {
-  translation -0.773476 0.0001 0.97928
+  translation -0.773476 0.0001 0.98928
   rotation 0 1 0 1.5708
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2353,7 +3793,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -2370,7 +3811,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -2382,8 +3824,8 @@ DEF line Solid {
   name "line(4)"
 }
 DEF line Solid {
-  translation -0.113479 0.0001 0.319283
-  rotation 0 1 0 -3.1415853071795863
+  translation -0.111 0.0001 0.32
+  rotation 0 1 0 -3.13
   children [
     Shape {
       appearance PBRAppearance {
@@ -2433,7 +3875,7 @@ DEF line Solid {
   name "line(59)"
 }
 DEF road_marker Solid {
-  translation 0.316522 0.0001 0.649284
+  translation 0.316522 0.0001 0.659284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2442,7 +3884,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2450,7 +3892,7 @@ DEF road_marker Solid {
   name "road marker(6)"
 }
 DEF road_marker Solid {
-  translation 0.356522 0.0001 0.569284
+  translation 0.356522 0.0001 0.559284
   rotation 0 -1 0 3.1415853071795863
   children [
     Shape {
@@ -2459,7 +3901,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2467,7 +3909,7 @@ DEF road_marker Solid {
   name "road marker(10)"
 }
 DEF road_marker Solid {
-  translation 0.426522 0.0001 0.569284
+  translation 0.426522 0.0001 0.559284
   rotation 0 -1 0 3.1415853071795863
   children [
     Shape {
@@ -2476,7 +3918,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2484,7 +3926,7 @@ DEF road_marker Solid {
   name "road marker(13)"
 }
 DEF road_marker Solid {
-  translation 0.466522 0.0001 0.649284
+  translation 0.466522 0.0001 0.659284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2493,7 +3935,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2501,7 +3943,7 @@ DEF road_marker Solid {
   name "road marker(7)"
 }
 DEF road_marker Solid {
-  translation 0.466522 0.0001 0.569284
+  translation 0.466522 0.0001 0.559284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2510,7 +3952,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2518,7 +3960,7 @@ DEF road_marker Solid {
   name "road marker(8)"
 }
 DEF road_marker Solid {
-  translation 0.316522 0.0001 0.569284
+  translation 0.316522 0.0001 0.559284
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
@@ -2527,7 +3969,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2535,7 +3977,7 @@ DEF road_marker Solid {
   name "road marker(9)"
 }
 DEF road_marker Solid {
-  translation -0.389839 0.0001 0.449077
+  translation -0.39691 0.0001 0.442006
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2544,7 +3986,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2552,7 +3994,7 @@ DEF road_marker Solid {
   name "road marker(22)"
 }
 DEF road_marker Solid {
-  translation -0.283774 0.0001 0.343012
+  translation -0.290845 0.0001 0.335941
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2561,7 +4003,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2569,7 +4011,7 @@ DEF road_marker Solid {
   name "road marker(24)"
 }
 DEF road_marker Solid {
-  translation -0.227206 0.0001 0.39958
+  translation -0.220135 0.0001 0.406651
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2578,7 +4020,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2586,7 +4028,7 @@ DEF road_marker Solid {
   name "road marker(25)"
 }
 DEF road_marker Solid {
-  translation -0.361555 0.0001 0.420793
+  translation -0.368626 0.0001 0.413722
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2595,7 +4037,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2603,7 +4045,7 @@ DEF road_marker Solid {
   name "road marker(28)"
 }
 DEF road_marker Solid {
-  translation -0.25549 0.0001 0.427864
+  translation -0.248419 0.0001 0.434935
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2612,7 +4054,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2620,7 +4062,7 @@ DEF road_marker Solid {
   name "road marker(29)"
 }
 DEF road_marker Solid {
-  translation -0.333271 0.0001 0.505645
+  translation -0.3262 0.0001 0.512716
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2629,7 +4071,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2637,7 +4079,7 @@ DEF road_marker Solid {
   name "road marker(23)"
 }
 DEF road_marker Solid {
-  translation -0.502975 0.0001 0.675349
+  translation -0.495904 0.0001 0.68242
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2646,7 +4088,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2654,7 +4096,7 @@ DEF road_marker Solid {
   name "road marker(30)"
 }
 DEF road_marker Solid {
-  translation -0.60904 0.0001 0.781414
+  translation -0.601969 0.0001 0.788485
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2663,7 +4105,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2671,7 +4113,7 @@ DEF road_marker Solid {
   name "road marker(31)"
 }
 DEF road_marker Solid {
-  translation -0.665608 0.0001 0.724846
+  translation -0.672679 0.0001 0.717775
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2680,7 +4122,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2688,7 +4130,7 @@ DEF road_marker Solid {
   name "road marker(32)"
 }
 DEF road_marker Solid {
-  translation -0.559543 0.0001 0.618781
+  translation -0.566614 0.0001 0.61171
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2697,7 +4139,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2705,7 +4147,7 @@ DEF road_marker Solid {
   name "road marker(33)"
 }
 DEF road_marker Solid {
-  translation -0.637324 0.0001 0.696562
+  translation -0.644395 0.0001 0.689491
   rotation 0 -1 0 2.35619
   children [
     Shape {
@@ -2714,7 +4156,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2722,7 +4164,7 @@ DEF road_marker Solid {
   name "road marker(35)"
 }
 DEF road_marker Solid {
-  translation 1.50208 0.0001 0.880928
+  translation 1.49501 0.0001 0.887999
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -2731,7 +4173,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2739,7 +4181,7 @@ DEF road_marker Solid {
   name "road marker(38)"
 }
 DEF road_marker Solid {
-  translation 1.65762 0.0001 1.03649
+  translation 1.65055 0.0001 1.04356
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -2748,7 +4190,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2756,7 +4198,7 @@ DEF road_marker Solid {
   name "road marker(46)"
 }
 DEF road_marker Solid {
-  translation 1.52571 0.0001 1.86457
+  translation 1.51571 0.0001 1.86457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -2765,7 +4207,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2773,7 +4215,7 @@ DEF road_marker Solid {
   name "road marker(62)"
 }
 DEF road_marker Solid {
-  translation 1.3086 0.0001 2.87878
+  translation 1.30153 0.0001 2.87171
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -2782,7 +4224,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2790,7 +4232,7 @@ DEF road_marker Solid {
   name "road marker(70)"
 }
 DEF road_marker Solid {
-  translation 0.3279 0.0001 2.90948
+  translation 0.3279 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -2799,7 +4241,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2807,7 +4249,7 @@ DEF road_marker Solid {
   name "road marker(94)"
 }
 DEF road_marker Solid {
-  translation -0.704735 0.0001 2.69028
+  translation -0.662309 0.0001 2.71856
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2816,7 +4258,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2824,7 +4266,7 @@ DEF road_marker Solid {
   name "road marker(102)"
 }
 DEF road_marker Solid {
-  translation -0.59867 0.0001 2.79633
+  translation -0.556244 0.0001 2.82461
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2833,7 +4275,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2841,7 +4283,25 @@ DEF road_marker Solid {
   name "road marker(104)"
 }
 DEF road_marker Solid {
-  translation -0.761301 0.0001 2.74687
+  translation -0.280475 0.0001 3.10034
+  rotation 0 1 0 -0.785395307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(56)"
+}
+DEF road_marker Solid {
+  translation -0.733017 0.0001 2.78929
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2850,7 +4310,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2858,7 +4318,7 @@ DEF road_marker Solid {
   name "road marker(103)"
 }
 DEF road_marker Solid {
-  translation -0.733017 0.0001 2.77515
+  translation -0.704733 0.0001 2.81757
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2867,7 +4327,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2875,7 +4335,7 @@ DEF road_marker Solid {
   name "road marker(15)"
 }
 DEF road_marker Solid {
-  translation -0.655236 0.0001 2.85292
+  translation -0.626952 0.0001 2.89534
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2884,7 +4344,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2892,7 +4352,25 @@ DEF road_marker Solid {
   name "road marker(107)"
 }
 DEF road_marker Solid {
-  translation -0.931005 0.0001 2.57719
+  translation -0.351183 0.0001 3.17107
+  rotation 0 1 0 -0.785395307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(57)"
+}
+DEF road_marker Solid {
+  translation -0.938076 0.0001 2.58426
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2901,7 +4379,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2909,7 +4387,7 @@ DEF road_marker Solid {
   name "road marker(110)"
 }
 DEF road_marker Solid {
-  translation -1.03707 0.0001 2.47114
+  translation -1.04414 0.0001 2.47821
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2918,7 +4396,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2926,7 +4404,7 @@ DEF road_marker Solid {
   name "road marker(115)"
 }
 DEF road_marker Solid {
-  translation -0.874437 0.0001 2.52063
+  translation -0.867366 0.0001 2.51356
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -2935,7 +4413,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2943,7 +4421,7 @@ DEF road_marker Solid {
   name "road marker(111)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.69995
+  translation -0.722854 0.0001 1.69995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -2952,7 +4430,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2960,7 +4438,7 @@ DEF road_marker Solid {
   name "road marker(126)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.84995
+  translation -0.722854 0.0001 1.84995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -2969,7 +4447,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2977,7 +4455,7 @@ DEF road_marker Solid {
   name "road marker(127)"
 }
 DEF road_marker Solid {
-  translation -0.732854 0.0001 1.73995
+  translation -0.722854 0.0001 1.73995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -2986,7 +4464,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -2994,7 +4472,7 @@ DEF road_marker Solid {
   name "road marker(133)"
 }
 DEF road_marker Solid {
-  translation -0.812854 0.0001 1.84995
+  translation -0.822854 0.0001 1.84995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3003,7 +4481,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3011,7 +4489,7 @@ DEF road_marker Solid {
   name "road marker(128)"
 }
 DEF road_marker Solid {
-  translation -0.812854 0.0001 1.69995
+  translation -0.822854 0.0001 1.69995
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3020,7 +4498,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3028,7 +4506,7 @@ DEF road_marker Solid {
   name "road marker(129)"
 }
 DEF road_marker Solid {
-  translation -0.980502 0.0001 2.41458
+  translation -0.973431 0.0001 2.40751
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -3037,7 +4515,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3045,7 +4523,7 @@ DEF road_marker Solid {
   name "road marker(112)"
 }
 DEF road_marker Solid {
-  translation -0.952218 0.0001 2.44286
+  translation -0.945147 0.0001 2.43579
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -3054,7 +4532,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3062,7 +4540,7 @@ DEF road_marker Solid {
   name "road marker(113)"
 }
 DEF road_marker Solid {
-  translation -1.00879 0.0001 2.49942
+  translation -1.01586 0.0001 2.50649
   rotation 0 1 0 -0.785395307179586
   children [
     Shape {
@@ -3071,7 +4549,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3079,7 +4557,7 @@ DEF road_marker Solid {
   name "road marker(16)"
 }
 DEF road_marker Solid {
-  translation 0.3279 0.0001 2.98948
+  translation 0.3279 0.0001 2.99948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3088,7 +4566,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3096,7 +4574,7 @@ DEF road_marker Solid {
   name "road marker(95)"
 }
 DEF road_marker Solid {
-  translation 0.4779 0.0001 2.98948
+  translation 0.4779 0.0001 2.99948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3105,7 +4583,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3113,7 +4591,7 @@ DEF road_marker Solid {
   name "road marker(96)"
 }
 DEF road_marker Solid {
-  translation 0.4779 0.0001 2.90948
+  translation 0.4779 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3122,7 +4600,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3130,7 +4608,7 @@ DEF road_marker Solid {
   name "road marker(97)"
 }
 DEF road_marker Solid {
-  translation 0.4379 0.0001 2.90948
+  translation 0.4379 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3139,7 +4617,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3147,7 +4625,7 @@ DEF road_marker Solid {
   name "road marker(98)"
 }
 DEF road_marker Solid {
-  translation 0.3679 0.0001 2.90948
+  translation 0.3679 0.0001 2.89948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3156,7 +4634,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3164,7 +4642,7 @@ DEF road_marker Solid {
   name "road marker(99)"
 }
 DEF road_marker Solid {
-  translation 0.3679 0.0001 2.98948
+  translation 0.3679 0.0001 2.99948
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3173,7 +4651,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3181,7 +4659,7 @@ DEF road_marker Solid {
   name "road marker(19)"
 }
 DEF road_marker Solid {
-  translation 1.41465 0.0001 2.77273
+  translation 1.40758 0.0001 2.76566
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3190,7 +4668,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3198,7 +4676,7 @@ DEF road_marker Solid {
   name "road marker(71)"
 }
 DEF road_marker Solid {
-  translation 1.47121 0.0001 2.82929
+  translation 1.47828 0.0001 2.83636
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3207,7 +4685,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3215,7 +4693,7 @@ DEF road_marker Solid {
   name "road marker(72)"
 }
 DEF road_marker Solid {
-  translation 1.36516 0.0001 2.93534
+  translation 1.37223 0.0001 2.94241
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3224,7 +4702,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3232,7 +4710,7 @@ DEF road_marker Solid {
   name "road marker(73)"
 }
 DEF road_marker Solid {
-  translation 1.07527 0.0001 3.22523
+  translation 1.08234 0.0001 3.2323
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3241,7 +4719,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3249,7 +4727,7 @@ DEF road_marker Solid {
   name "road marker(158)"
 }
 DEF road_marker Solid {
-  translation 1.18133 0.0001 3.11917
+  translation 1.1884 0.0001 3.12624
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3258,7 +4736,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3266,7 +4744,7 @@ DEF road_marker Solid {
   name "road marker(159)"
 }
 DEF road_marker Solid {
-  translation 1.12477 0.0001 3.06261
+  translation 1.1177 0.0001 3.05554
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3275,7 +4753,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3283,7 +4761,7 @@ DEF road_marker Solid {
   name "road marker(160)"
 }
 DEF road_marker Solid {
-  translation 1.01871 0.0001 3.16867
+  translation 1.01164 0.0001 3.1616
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3292,7 +4770,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3300,7 +4778,7 @@ DEF road_marker Solid {
   name "road marker(161)"
 }
 DEF road_marker Solid {
-  translation 1.09648 0.0001 3.0909
+  translation 1.08941 0.0001 3.08383
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3309,7 +4787,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3317,7 +4795,7 @@ DEF road_marker Solid {
   name "road marker(163)"
 }
 DEF road_marker Solid {
-  translation 1.15305 0.0001 3.14747
+  translation 1.16012 0.0001 3.15454
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3326,7 +4804,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3334,7 +4812,7 @@ DEF road_marker Solid {
   name "road marker(165)"
 }
 DEF road_marker Solid {
-  translation 1.38637 0.0001 2.80101
+  translation 1.3793 0.0001 2.79394
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3343,7 +4821,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3351,7 +4829,7 @@ DEF road_marker Solid {
   name "road marker(76)"
 }
 DEF road_marker Solid {
-  translation 1.33688 0.0001 2.8505
+  translation 1.32981 0.0001 2.84343
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -3360,7 +4838,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3368,7 +4846,7 @@ DEF road_marker Solid {
   name "road marker(18)"
 }
 DEF road_marker Solid {
-  translation 0.778012 0.0001 3.19936
+  translation 0.778012 0.0001 3.18936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3377,7 +4855,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3385,7 +4863,7 @@ DEF road_marker Solid {
   name "road marker(79)"
 }
 DEF road_marker Solid {
-  translation 0.628012 0.0001 3.19936
+  translation 0.628012 0.0001 3.18936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3394,7 +4872,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3402,7 +4880,7 @@ DEF road_marker Solid {
   name "road marker(78)"
 }
 DEF road_marker Solid {
-  translation 0.628012 0.0001 3.27936
+  translation 0.628012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3411,7 +4889,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3419,7 +4897,7 @@ DEF road_marker Solid {
   name "road marker(80)"
 }
 DEF road_marker Solid {
-  translation 0.778012 0.0001 3.27936
+  translation 0.778012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3428,7 +4906,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3436,7 +4914,7 @@ DEF road_marker Solid {
   name "road marker(81)"
 }
 DEF road_marker Solid {
-  translation -0.254578 0.0001 3.6097
+  translation -0.264578 0.0001 3.6097
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3445,7 +4923,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3453,7 +4931,7 @@ DEF road_marker Solid {
   name "road marker(1)"
 }
 DEF road_marker Solid {
-  translation -0.174578 0.0001 3.6097
+  translation -0.164578 0.0001 3.6097
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3462,7 +4940,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3470,7 +4948,7 @@ DEF road_marker Solid {
   name "road marker(3)"
 }
 DEF road_marker Solid {
-  translation -0.139223 0.0001 4.61849
+  translation -0.132152 0.0001 4.61142
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3479,7 +4957,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3487,7 +4965,7 @@ DEF road_marker Solid {
   name "road marker(5)"
 }
 DEF road_marker Solid {
-  translation -0.110939 0.0001 4.64677
+  translation -0.103868 0.0001 4.6397
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3496,7 +4974,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3504,7 +4982,7 @@ DEF road_marker Solid {
   name "road marker(34)"
 }
 DEF road_marker Solid {
-  translation -0.195791 0.0001 4.67505
+  translation -0.202862 0.0001 4.68212
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3513,7 +4991,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3521,7 +4999,7 @@ DEF road_marker Solid {
   name "road marker(11)"
 }
 DEF road_marker Solid {
-  translation -1.98323 0.0001 4.63987
+  translation -0.48323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3530,7 +5008,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3538,7 +5016,7 @@ DEF road_marker Solid {
   name "road marker(36)"
 }
 DEF road_marker Solid {
-  translation -1.98323 0.0001 4.55987
+  translation -0.48323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3547,7 +5025,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3555,7 +5033,7 @@ DEF road_marker Solid {
   name "road marker(37)"
 }
 DEF road_marker Solid {
-  translation -1.83323 0.0001 4.55987
+  translation -0.33323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3564,7 +5042,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3572,7 +5050,7 @@ DEF road_marker Solid {
   name "road marker(42)"
 }
 DEF road_marker Solid {
-  translation -1.87323 0.0001 4.55987
+  translation -0.37323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3581,7 +5059,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3589,7 +5067,7 @@ DEF road_marker Solid {
   name "road marker(44)"
 }
 DEF road_marker Solid {
-  translation -1.87323 0.0001 4.63987
+  translation -0.37323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3598,7 +5076,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3606,7 +5084,7 @@ DEF road_marker Solid {
   name "road marker(52)"
 }
 DEF road_marker Solid {
-  translation -1.83323 0.0001 4.63987
+  translation -0.33323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3615,7 +5093,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3623,7 +5101,7 @@ DEF road_marker Solid {
   name "road marker(53)"
 }
 DEF road_marker Solid {
-  translation -1.94323 0.0001 4.63987
+  translation -0.44323 0.0001 4.64987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3632,7 +5110,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3640,7 +5118,7 @@ DEF road_marker Solid {
   name "road marker(54)"
 }
 DEF road_marker Solid {
-  translation -1.94323 0.0001 4.55987
+  translation -0.44323 0.0001 4.54987
   rotation 0 1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3649,7 +5127,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3657,7 +5135,7 @@ DEF road_marker Solid {
   name "road marker(55)"
 }
 DEF road_marker Solid {
-  translation -0.089726 0.0001 4.7811
+  translation -0.0967971 0.0001 4.78817
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3666,7 +5144,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3674,7 +5152,7 @@ DEF road_marker Solid {
   name "road marker(12)"
 }
 DEF road_marker Solid {
-  translation -0.11801 0.0001 4.75282
+  translation -0.125081 0.0001 4.75989
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3683,7 +5161,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3691,7 +5169,7 @@ DEF road_marker Solid {
   name "road marker(27)"
 }
 DEF road_marker Solid {
-  translation -0.0331572 0.0001 4.72454
+  translation -0.0260861 0.0001 4.71747
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3700,7 +5178,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3708,7 +5186,7 @@ DEF road_marker Solid {
   name "road marker(14)"
 }
 DEF road_marker Solid {
-  translation -0.0614412 0.0001 4.69626
+  translation -0.0543701 0.0001 4.68919
   rotation 0 -1 0 0.785402
   children [
     Shape {
@@ -3717,7 +5195,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3725,7 +5203,7 @@ DEF road_marker Solid {
   name "road marker(26)"
 }
 DEF road_marker Solid {
-  translation -0.174578 0.0001 3.4597
+  translation -0.164578 0.0001 3.4597
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3734,7 +5212,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3742,7 +5220,7 @@ DEF road_marker Solid {
   name "road marker(4)"
 }
 DEF road_marker Solid {
-  translation -0.254578 0.0001 3.4597
+  translation -0.264578 0.0001 3.4597
   rotation 0 -1 0 1.5708
   children [
     Shape {
@@ -3751,7 +5229,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3759,7 +5237,43 @@ DEF road_marker Solid {
   name "road marker(2)"
 }
 DEF road_marker Solid {
-  translation 0.668012 0.0001 3.27936
+  translation -0.264578 0.0001 3.4097
+  rotation 0 -1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(58)"
+}
+DEF road_marker Solid {
+  translation -0.164578 0.0001 3.4097
+  rotation 0 -1 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 0.01 0.03
+      }
+      castShadows FALSE
+    }
+  ]
+  name "road marker(59)"
+}
+DEF road_marker Solid {
+  translation 0.668012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3768,7 +5282,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3776,7 +5290,7 @@ DEF road_marker Solid {
   name "road marker(83)"
 }
 DEF road_marker Solid {
-  translation 0.738012 0.0001 3.27936
+  translation 0.738012 0.0001 3.28936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3785,7 +5299,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3793,7 +5307,7 @@ DEF road_marker Solid {
   name "road marker(20)"
 }
 DEF road_marker Solid {
-  translation 0.738012 0.0001 3.19936
+  translation 0.738012 0.0001 3.18936
   rotation 0 -1 0 -5.307179586466759e-06
   children [
     Shape {
@@ -3802,7 +5316,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3810,7 +5324,7 @@ DEF road_marker Solid {
   name "road marker(21)"
 }
 DEF road_marker Solid {
-  translation 1.52571 0.0001 1.71457
+  translation 1.51571 0.0001 1.71457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3819,7 +5333,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3827,7 +5341,7 @@ DEF road_marker Solid {
   name "road marker(63)"
 }
 DEF road_marker Solid {
-  translation 1.60571 0.0001 1.71457
+  translation 1.61571 0.0001 1.71457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3836,7 +5350,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3844,7 +5358,7 @@ DEF road_marker Solid {
   name "road marker(64)"
 }
 DEF road_marker Solid {
-  translation 1.60571 0.0001 1.86457
+  translation 1.61571 0.0001 1.86457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3853,7 +5367,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3861,7 +5375,7 @@ DEF road_marker Solid {
   name "road marker(65)"
 }
 DEF road_marker Solid {
-  translation 1.52571 0.0001 1.75457
+  translation 1.51571 0.0001 1.75457
   rotation 0 -1 0 -1.5708053071795867
   children [
     Shape {
@@ -3870,7 +5384,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3878,7 +5392,7 @@ DEF road_marker Solid {
   name "road marker(68)"
 }
 DEF road_marker Solid {
-  translation 1.76367 0.0001 1.14254
+  translation 1.7566 0.0001 1.14961
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3887,7 +5401,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3895,7 +5409,7 @@ DEF road_marker Solid {
   name "road marker(47)"
 }
 DEF road_marker Solid {
-  translation 1.82023 0.0001 1.08598
+  translation 1.8273 0.0001 1.07891
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3904,7 +5418,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3912,7 +5426,7 @@ DEF road_marker Solid {
   name "road marker(48)"
 }
 DEF road_marker Solid {
-  translation 1.71418 0.0001 0.979927
+  translation 1.72125 0.0001 0.972856
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3921,7 +5435,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3929,7 +5443,7 @@ DEF road_marker Solid {
   name "road marker(49)"
 }
 DEF road_marker Solid {
-  translation 1.6859 0.0001 1.06477
+  translation 1.67883 0.0001 1.07184
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3938,7 +5452,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3946,7 +5460,7 @@ DEF road_marker Solid {
   name "road marker(50)"
 }
 DEF road_marker Solid {
-  translation 1.79195 0.0001 1.0577
+  translation 1.79902 0.0001 1.05063
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3955,7 +5469,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3963,7 +5477,7 @@ DEF road_marker Solid {
   name "road marker(51)"
 }
 DEF road_marker Solid {
-  translation 1.39603 0.0001 0.774863
+  translation 1.38896 0.0001 0.781934
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3972,7 +5486,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3980,7 +5494,7 @@ DEF road_marker Solid {
   name "road marker(39)"
 }
 DEF road_marker Solid {
-  translation 1.45259 0.0001 0.718295
+  translation 1.45966 0.0001 0.711224
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -3989,7 +5503,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -3997,7 +5511,7 @@ DEF road_marker Solid {
   name "road marker(40)"
 }
 DEF road_marker Solid {
-  translation 1.55865 0.0001 0.82436
+  translation 1.56572 0.0001 0.817289
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4006,7 +5520,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4014,7 +5528,7 @@ DEF road_marker Solid {
   name "road marker(41)"
 }
 DEF road_marker Solid {
-  translation 1.48088 0.0001 0.746579
+  translation 1.48795 0.0001 0.739508
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4023,7 +5537,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4031,7 +5545,7 @@ DEF road_marker Solid {
   name "road marker(43)"
 }
 DEF road_marker Solid {
-  translation 1.47381 0.0001 0.852644
+  translation 1.46674 0.0001 0.859715
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4040,7 +5554,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4048,7 +5562,7 @@ DEF road_marker Solid {
   name "road marker(45)"
 }
 DEF road_marker Solid {
-  translation 1.53037 0.0001 0.796076
+  translation 1.53744 0.0001 0.789005
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -4057,7 +5571,7 @@ DEF road_marker Solid {
         metalness 0
       }
       geometry Box {
-        size 0.03 0.01 0.02
+        size 0.03 0.01 0.03
       }
       castShadows FALSE
     }
@@ -4138,7 +5652,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4155,7 +5670,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4172,7 +5688,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4189,7 +5706,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4206,7 +5724,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4218,12 +5737,13 @@ DEF line Solid {
   name "line(9)"
 }
 DEF line Solid {
-  translation 1.00652 0.0001 0.609283
+  translation 1.00652 0.0002 0.609283
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -4972,7 +6492,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.903117 0.0201 3.06881
+  translation 0.813117 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -5072,7 +6592,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.096883 0.0201 3.06881
+  translation -0.066883 0.0201 3.06881
   rotation 0 1 0 4.07987e-06
   children [
     Shape {
@@ -5081,7 +6601,7 @@ DEF curb Solid {
         metalness 0
       }
       geometry Box {
-        size 0.2 0.1 0.02
+        size 0.22 0.1 0.02
       }
       castShadows FALSE
     }
@@ -6052,7 +7572,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.856957 0.0201 3.11917
+  translation 0.756957 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -6152,7 +7672,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.073043 0.0201 3.11917
+  translation -0.023043 0.0201 3.11917
   rotation 0 1 0 4.38702e-06
   children [
     Shape {
@@ -6292,8 +7812,8 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.11936 -0.0299 3.39265
-  rotation 0 -1 0 -1.5707953071795862
+  translation 1.13868 -0.0299 3.39783
+  rotation 0 -1 0 -1.3089953071795861
   children [
     Shape {
       appearance PBRAppearance {
@@ -6752,7 +8272,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -2.10996 -0.0299 4.58783
+  translation -2.10996 0.0201 4.58783
   rotation 0 1 0 1.57079
   children [
     Shape {
@@ -7513,7 +9033,7 @@ DEF curb Solid {
 }
 DEF curb Solid {
   translation 1.3235 -0.0299 3.08775
-  rotation 0 -1 0 -0.7854053071795866
+  rotation 0 1 0 0.785405
   children [
     Shape {
       appearance PBRAppearance {
@@ -7532,8 +9052,8 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 1.1821 -0.0299 3.22915
-  rotation 0 -1 0 -0.7854053071795866
+  translation 1.20808 -0.0299 3.24415
+  rotation 0 1 0 1.0472
   children [
     Shape {
       appearance PBRAppearance {
@@ -8572,7 +10092,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation 0.976916 0.0201 3.0966
+  translation 0.877922 0.0201 3.0966
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -8652,7 +10172,7 @@ DEF curb Solid {
   }
 }
 DEF curb Solid {
-  translation -0.180582 0.0201 3.10021
+  translation -0.145227 0.0201 3.09314
   rotation 0 -1 0 -2.3562053071795863
   children [
     Shape {
@@ -8661,7 +10181,7 @@ DEF curb Solid {
         metalness 0
       }
       geometry Box {
-        size 0.06 0.1 0.02
+        size 0.08 0.1 0.02
       }
       castShadows FALSE
     }
@@ -8677,7 +10197,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8694,7 +10215,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8711,7 +10233,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8728,7 +10251,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8745,7 +10269,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8762,7 +10287,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8779,7 +10305,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8796,7 +10323,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8813,7 +10341,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8830,7 +10359,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8847,7 +10377,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8864,7 +10395,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8881,7 +10413,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8898,7 +10431,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8910,12 +10444,13 @@ DEF line Solid {
   name "line(87)"
 }
 DEF line Solid {
-  translation 0.87653 0.0001 3.23928
+  translation 0.79653 0.0002 3.23928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.6 0.6 0.6
+        roughness 0.6
         metalness 0
       }
       geometry Box {
@@ -8927,29 +10462,13 @@ DEF line Solid {
   name "line(88)"
 }
 DEF line Solid {
-  translation 0.87653 0.0001 3.23928
-  rotation 0 1 0 -3.1415853071795863
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(106)"
-}
-DEF line Solid {
   translation 0.91653 0.0001 3.23928
   rotation 0 1 0 -3.1415853071795863
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8966,7 +10485,8 @@ DEF line Solid {
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -8993,6 +10513,40 @@ DEF line Solid {
     }
   ]
   name "line(49)"
+}
+DEF line Solid {
+  translation 1.40085 0.0001 0.72152
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(121)"
+}
+DEF line Solid {
+  translation 1.18874 0.0001 0.50939
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(122)"
 }
 DEF line Solid {
   translation 1.63417 0.0001 0.954863
@@ -9029,12 +10583,13 @@ DEF line Solid {
   name "line(75)"
 }
 DEF line Solid {
-  translation 1.35136 0.0001 0.672023
+  translation 1.57053 0.0002 0.891224
   rotation 0 1 0 2.3562
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9046,12 +10601,13 @@ DEF line Solid {
   name "line(50)"
 }
 DEF line Solid {
-  translation 1.20995 0.0001 0.530603
+  translation 1.28066 0.0002 0.601313
   rotation 0 1 0 2.3562
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9063,8 +10619,8 @@ DEF line Solid {
   name "line(57)"
 }
 DEF line Solid {
-  translation 1.06855 0.0001 0.389183
-  rotation 0 1 0 2.3562
+  translation 1.07 0.0001 0.389
+  rotation 0 1 0 2.345
   children [
     Shape {
       appearance PBRAppearance {
@@ -9080,29 +10636,13 @@ DEF line Solid {
   name "line(58)"
 }
 DEF line Solid {
-  translation -0.56484 0.0001 2.88514
+  translation -0.479986 0.0002 2.97
   rotation 0 1 0 2.3562
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.01 0.02
-      }
-      castShadows FALSE
-    }
-  ]
-  name "line(38)"
-}
-DEF line Solid {
-  translation -0.423418 0.0001 3.02656
-  rotation 0 1 0 2.3562
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9114,7 +10654,25 @@ DEF line Solid {
   name "line(68)"
 }
 DEF line Solid {
-  translation -0.281998 0.0001 3.16796
+  translation -0.78404 0.0002 2.66598
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(116)"
+}
+DEF line Solid {
+  translation -0.352709 0.0003 3.09725
   rotation 0 1 0 2.3562
   children [
     Shape {
@@ -9129,6 +10687,24 @@ DEF line Solid {
     }
   ]
   name "line(69)"
+}
+DEF line Solid {
+  translation -0.281998 0.0002 3.16796
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(115)"
 }
 DEF line Solid {
   translation -0.70626 0.0001 2.74374
@@ -9146,6 +10722,23 @@ DEF line Solid {
     }
   ]
   name "line(39)"
+}
+DEF line Solid {
+  translation -0.564838 0.0001 2.88516
+  rotation 0 1 0 2.3562
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(38)"
 }
 DEF line Solid {
   translation -0.84768 0.0001 2.60234
@@ -9216,8 +10809,44 @@ DEF line Solid {
   name "line(64)"
 }
 DEF line Solid {
-  translation -0.982034 0.0001 1.09625
+  translation -0.776975 0.0002 0.891199
   rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(106)"
+}
+DEF line Solid {
+  translation -0.494135 0.0002 0.608359
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(120)"
+}
+DEF line Solid {
+  translation -0.977 0.0001 1.095
+  rotation 0 1 0 0.81
   children [
     Shape {
       appearance PBRAppearance {
@@ -9284,12 +10913,13 @@ DEF line Solid {
   name "line(54)"
 }
 DEF line Solid {
-  translation 1.49987 0.0001 2.74367
+  translation 1.28777 0.0003 2.95577
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9301,12 +10931,31 @@ DEF line Solid {
   name "line(27)"
 }
 DEF line Solid {
-  translation 1.64128 0.0001 2.60226
+  translation 1.03324 0.0003 3.2103
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
       appearance PBRAppearance {
-        baseColor 0 0 0
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(119)"
+}
+DEF line Solid {
+  translation 1.57058 0.0002 2.67296
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.3
+        roughness 0.3
         metalness 0
       }
       geometry Box {
@@ -9335,7 +10984,41 @@ DEF line Solid {
   name "line(73)"
 }
 DEF line Solid {
-  translation 1.35847 0.0001 2.88507
+  translation 1.64834 0.0001 2.5952
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(117)"
+}
+DEF line Solid {
+  translation 1.49986 0.0001 2.74368
+  rotation 0 -1 0 -0.7854053071795866
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.01 0.02
+      }
+      castShadows FALSE
+    }
+  ]
+  name "line(118)"
+}
+DEF line Solid {
+  translation 1.35847 0.0002 2.88507
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9352,7 +11035,7 @@ DEF line Solid {
   name "line(28)"
 }
 DEF line Solid {
-  translation 1.21705 0.0001 3.02649
+  translation 1.21705 0.0002 3.02649
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {
@@ -9369,7 +11052,7 @@ DEF line Solid {
   name "line(70)"
 }
 DEF line Solid {
-  translation 1.07564 0.0001 3.1679
+  translation 1.07564 0.0002 3.1679
   rotation 0 -1 0 -0.7854053071795866
   children [
     Shape {

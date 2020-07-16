@@ -1,3 +1,9 @@
+# @author Julian Hartmer and Christopher Woggon
+# 
+# Runs the specified ADA unit testing project and evaluates the XML output.
+# Returns 0 if test successfull, otherwise 1. Used in Jenkins for CI of
+# ADA Unit testing
+
 #!/bin/sh
 if [ -z "$1" ]; then
 	echo "Usage: $0 GPR_FILE_WITHOUT_ENDING"
@@ -15,22 +21,22 @@ fi
 DIR=$(dirname "$1")
 PROJECT_NAME=$(basename "$1")
 if cd "$DIR"; then
-	echo "Switching directory to $1"
+	echo "Switching directory to $DIR"
 else
 	echo "Error: Couldnt switch directory to $DIR!"
 	exit 4;
 fi
 
 echo ""
-echo "COMPILING PROJECT:"
+echo "COMPILING PROJECT $PROJECT_NAME:"
 echo ""
 
-if gprbuild "$PROJECT_NAME"; then
+if gprbuild "$PROJECT_NAME.gpr"; then
 	echo ""
 	echo "Compilation sucessfull!"
 else
 	echo ""
-	echo "Compilation failed!" -x
+	echo "Compilation failed!"
 	exit 1
 fi
 
@@ -38,11 +44,16 @@ echo "--------------------"
 echo ""
 echo "EXECUTING TESTS"
 echo ""
-OUTPUT_FILE="${PROJECT_NAME}_output.xml"
+OUTPUT_FILE="${PROJECT_NAME}_output"
+OUTPUT_XML="${PROJECT_NAME}_output.xml"
+# remove everything until first xml tag
+# this is a hacky way to remove all Put_Line's in the tests
+
 echo "$OUTPUT_FILE"
 ./"$PROJECT_NAME" > "$OUTPUT_FILE"
-#xargs trims error message: Only real error, when it contains non-whitespace or linebreak character
-ERROR=$(xmlstarlet sel -t -m '//FailedTests[1]' -v . -n <"$OUTPUT_FILE")
+# trim everything up until <TestRun>
+awk '/<TestRun>/,0' $OUTPUT_FILE > $OUTPUT_XML
+ERROR=$(xmlstarlet sel -t -m '//FailedTests[1]' -v . -n <"$OUTPUT_XML")
 ERROR_TRIMMED=$(echo "$ERROR" | xargs)
 echo "--------------------"
 echo ""

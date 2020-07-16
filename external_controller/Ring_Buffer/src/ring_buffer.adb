@@ -1,3 +1,11 @@
+-- @summary
+-- Generic ring buffer package body.
+--
+-- @author Julian Hartmer
+-- @description
+-- This package is a generic ring buffer. You can set the element type
+-- when including this package.
+
 pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
 package body Ring_Buffer is

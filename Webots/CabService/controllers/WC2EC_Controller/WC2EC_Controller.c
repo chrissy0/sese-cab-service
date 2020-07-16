@@ -30,8 +30,8 @@
 #define TIME_STEP 20
 #define DEFAULT_PORT "27015"
 #define register_sensor 0
-#define WC2EC_CMD_WC2EC_CMD_SEND_SENSOR_DATA 1
-#define WC2EC_SET_VALUE 130
+#define WC2EC_CMD_SEND_SENSOR_DATA 1
+#define WC2EC_CMD_SET_VALUE 130
 #define NUM_SOCKET_BUFFERS 1
 #define SOCKET_BUFFER_SIZE 4096
 #define SENSOR_DOES_NOT_PROVIDE_DATA 0
@@ -48,6 +48,105 @@ struct package_format
     uint8_t sensor_id;
     char data[];
 } __attribute__((packed));
+
+/* Functions */
+
+
+
+void wc2ec_cleanup_socket_buffer(LPWSABUF *socket_buffer)
+{
+    if (!*socket_buffer)
+        return;
+    if ((*socket_buffer)->buf)
+    {
+        free((*socket_buffer)->buf);
+    }
+    free(*socket_buffer);
+    *socket_buffer = NULL;
+}
+void wc2ec_cleanup_sockets(SOCKET *listen_socket, SOCKET *client_socket)
+{
+    closesocket(*client_socket);
+    closesocket(*listen_socket);
+    WSACleanup();
+}
+void wc2ec_cleanup(LPWSABUF *socket_buffer, SOCKET *listen_socket, SOCKET *client_socket)
+{
+    wc2ec_cleanup_socket_buffer(socket_buffer);
+    wc2ec_cleanup_sockets(listen_socket, client_socket);
+}
+
+int setup_connection(SOCKET *listen_socket, SOCKET *client_socket, const char *port)
+{
+    WORD wVersionRequired;
+    WSADATA wsaData;
+    struct addrinfo *result = NULL;
+    struct addrinfo hints;
+
+    wVersionRequired = MAKEWORD(2, 2);
+    if (WSAStartup(wVersionRequired, &wsaData))
+    {
+        printf("WSAStartup failed\n");
+        return 1;
+    }
+
+    ZeroMemory(&hints, sizeof(hints));
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
+    hints.ai_flags = AI_PASSIVE;
+
+    if (getaddrinfo(NULL, port, &hints, &result))
+    {
+        printf("getaddrinfo failed\n");
+        goto WSA_CLEANUP;
+    }
+
+    *listen_socket = socket((result)->ai_family, (result)->ai_socktype, (result)->ai_protocol);
+    if (*listen_socket == INVALID_SOCKET)
+    {
+        printf("socket failed with error: %d\n", WSAGetLastError());
+        goto FREE_ADDRINFO;
+    }
+
+    if (bind(*listen_socket, (result)->ai_addr, (int)(result)->ai_addrlen) == SOCKET_ERROR)
+    {
+        printf("bind failed with error: %d\n", WSAGetLastError());
+        goto CLOSE_SOCKET;
+    }
+
+    printf("Waiting for the external Controller\n");
+    printf("Connect to: 127.0.0.1:%s\n", port);
+    /*Needed to print the printf */
+    wb_robot_step(1);
+
+    if (listen(*listen_socket, SOMAXCONN) == SOCKET_ERROR)
+    {
+        goto CLOSE_SOCKET;
+    }
+
+    *client_socket = accept(*listen_socket, NULL, NULL);
+    if (*client_socket == INVALID_SOCKET)
+    {
+        printf("accept failed with error: %d\n", WSAGetLastError());
+        goto CLOSE_SOCKET;
+    }
+
+    freeaddrinfo(result);
+
+    printf("external Controller connected\n");
+    /*Needed to print the printf */
+    wb_robot_step(1);
+    return 0;
+
+CLOSE_SOCKET:
+    closesocket(*listen_socket);
+FREE_ADDRINFO:
+    freeaddrinfo(result);
+WSA_CLEANUP:
+    WSACleanup();
+    return 1;
+}
 
 int send_package(struct package_format *pf, uint32_t package_length, SOCKET *client_socket)
 {
@@ -140,7 +239,7 @@ int send_sensor_data(SOCKET *client_socket)
         if (!(pf = malloc(package_length)))
             return -ENOMEM;
 
-        pf->command = WC2EC_CMD_WC2EC_CMD_SEND_SENSOR_DATA;
+        pf->command = WC2EC_CMD_SEND_SENSOR_DATA;
         pf->sensor_type = type;
         pf->sensor_id = index;
         if (get_sensor_data_for_sensor_type(type, tag, data_length, (pf->data)))
@@ -165,18 +264,22 @@ int send_sensor_data(SOCKET *client_socket)
 }
 long int execute_command(struct package_format* pkg, long unsigned int bytes_left) {
 	WbDeviceTag tag;
+
+	WbNodeType type;
 	long unsigned int bytes_used;
  
 	if (bytes_left < sizeof(struct package_format))
         	return 0;
           
-	if (pkg->command != WC2EC_SET_VALUE)
+
+	if (pkg->command != WC2EC_CMD_SET_VALUE)
 		return -1;
   
                 
     	tag = wb_robot_get_device_by_index(pkg->sensor_id);
+	type = wb_device_get_node_type(tag);   
 	     
-    	switch(pkg->sensor_type) {
+    	switch(type) {
     	case WB_NODE_ROTATIONAL_MOTOR:
 		bytes_used = sizeof(double);
 		if (bytes_left < bytes_used + sizeof(struct package_format))
@@ -320,102 +423,6 @@ int receive_commands(SOCKET *client_socket, LPWSABUF *socket_buffer) {
 }
 
 
-
-void wc2ec_cleanup_socket_buffer(LPWSABUF *socket_buffer)
-{
-    if (!*socket_buffer)
-        return;
-    if ((*socket_buffer)->buf)
-    {
-        free((*socket_buffer)->buf);
-    }
-    free(*socket_buffer);
-    *socket_buffer = NULL;
-}
-void wc2ec_cleanup_sockets(SOCKET *listen_socket, SOCKET *client_socket)
-{
-    closesocket(*client_socket);
-    closesocket(*listen_socket);
-    WSACleanup();
-}
-void wc2ec_cleanup(LPWSABUF *socket_buffer, SOCKET *listen_socket, SOCKET *client_socket)
-{
-    wc2ec_cleanup_socket_buffer(socket_buffer);
-    wc2ec_cleanup_sockets(listen_socket, client_socket);
-}
-
-int setup_connection(SOCKET *listen_socket, SOCKET *client_socket, const char *port)
-{
-    WORD wVersionRequired;
-    WSADATA wsaData;
-    struct addrinfo *result = NULL;
-    struct addrinfo hints;
-
-    wVersionRequired = MAKEWORD(2, 2);
-    if (WSAStartup(wVersionRequired, &wsaData))
-    {
-        printf("WSAStartup failed\n");
-        return 1;
-    }
-
-    ZeroMemory(&hints, sizeof(hints));
-    hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_protocol = IPPROTO_TCP;
-    hints.ai_flags = AI_PASSIVE;
-
-    if (getaddrinfo(NULL, port, &hints, &result))
-    {
-        printf("getaddrinfo failed\n");
-        goto WSA_CLEANUP;
-    }
-
-    *listen_socket = socket((result)->ai_family, (result)->ai_socktype, (result)->ai_protocol);
-    if (*listen_socket == INVALID_SOCKET)
-    {
-        printf("socket failed with error: %d\n", WSAGetLastError());
-        goto FREE_ADDRINFO;
-    }
-
-    if (bind(*listen_socket, (result)->ai_addr, (int)(result)->ai_addrlen) == SOCKET_ERROR)
-    {
-        printf("bind failed with error: %d\n", WSAGetLastError());
-        goto CLOSE_SOCKET;
-    }
-
-    printf("Waiting for the external Controller\n");
-    printf("Connect to: 127.0.0.1:%s\n", port);
-    /*Needed to print the printf */
-    wb_robot_step(1);
-
-    if (listen(*listen_socket, SOMAXCONN) == SOCKET_ERROR)
-    {
-        goto CLOSE_SOCKET;
-    }
-
-    *client_socket = accept(*listen_socket, NULL, NULL);
-    if (*client_socket == INVALID_SOCKET)
-    {
-        printf("accept failed with error: %d\n", WSAGetLastError());
-        goto CLOSE_SOCKET;
-    }
-
-    freeaddrinfo(result);
-
-    printf("external Controller connected\n");
-    /*Needed to print the printf */
-    wb_robot_step(1);
-    return 0;
-
-CLOSE_SOCKET:
-    closesocket(*listen_socket);
-FREE_ADDRINFO:
-    freeaddrinfo(result);
-WSA_CLEANUP:
-    WSACleanup();
-    return 1;
-}
-
 int register_sensor_at_external_controller(WbDeviceTag tag, uint8_t index, SOCKET *client_socket)
 {
     struct package_format *pf;
@@ -438,32 +445,11 @@ int register_sensor_at_external_controller(WbDeviceTag tag, uint8_t index, SOCKE
     return 0;
 }
 
-int init_sensors(SOCKET *client_socket)
-{
-    /* Current implementation uses an uint8_t for the the device id
-     * This can be extended easily, but it is a nasty bug, so just
-     * insert a small reminder
-     */
-    WbDeviceTag tag;
-    WbNodeType type;
-    const char *name;
-    int n_devices = wb_robot_get_number_of_devices();
 
-    if (wb_robot_get_number_of_devices() > UINT8_MAX)
-        return -1;
-
-    for (int index = 0; index < n_devices; index++)
+int sensor_set_
+_value(WbDeviceTag tag, WbNodeType type) {
+    switch (type)
     {
-        tag = wb_robot_get_device_by_index(index);
-        name = wb_device_get_name(tag);
-        type = wb_device_get_node_type(tag);
-
-        if (WC2EC_DEBUG_INIT)
-            printf("Enabled Device #%d name = %s\n", index, name);
-
-        register_sensor_at_external_controller(tag, index, client_socket);
-        switch (type)
-        {
         case WB_NODE_DISTANCE_SENSOR:
             wb_distance_sensor_enable(tag, TIME_STEP);
             break;
@@ -478,8 +464,63 @@ int init_sensors(SOCKET *client_socket)
         default:
             printf("Cant enable unknown sensor of type: %d\n", type);
             return -1;
-        }
+     }
+     return 0;
+
+}
+
+int set_all_sensors_to_default_value() {
+    WbDeviceTag tag;
+    WbNodeType type;
+
+    int n_devices = wb_robot_get_number_of_devices();
+
+    if (wb_robot_get_number_of_devices() > UINT8_MAX)
+        return -1;
+
+    for (int index = 0; index < n_devices; index++)
+    {
+        tag = wb_robot_get_device_by_index(index);
+        type = wb_device_get_node_type(tag);
+        if (sensor_set_default_value(tag, type))
+            return -1;
     }
+    return 0;
+}
+
+int register_all_sensors(SOCKET *client_socket) {
+    WbDeviceTag tag;
+    const char *name;
+    int n_devices = wb_robot_get_number_of_devices();
+    
+    if (wb_robot_get_number_of_devices() > UINT8_MAX)
+        return -1;
+
+    for (int index = 0; index < n_devices; index++)
+    {
+        tag = wb_robot_get_device_by_index(index);
+        name = wb_device_get_name(tag);
+
+        if (WC2EC_DEBUG_INIT)
+            printf("Enabled Device #%d name = %s\n", index, name);
+
+        register_sensor_at_external_controller(tag, index, client_socket);
+    }
+    return 0;
+}
+int init_sensors(SOCKET *client_socket)
+{
+    /* Current implementation uses an uint8_t for the the device id
+     * This can be extended easily, but it is a nasty bug, so just
+     * insert a small reminder
+     */
+
+    if (set_all_sensors_to_default_value())
+        return -1;
+        
+    if (register_all_sensors(client_socket))
+        return -1;
+
     return 0;
 }
 
@@ -540,7 +581,6 @@ int main(int argc, char **argv)
 
     /* necessary to initialize webots stuff */
     wb_robot_init();
-    /* TODO check rcs */
     if (argc)
         port = argv[1];
 
@@ -556,7 +596,7 @@ int main(int argc, char **argv)
    */
     while (wb_robot_step(TIME_STEP) != -1)
     {
-
+        /* Do not abort, even if send_sensor_data fails */
         send_sensor_data(&client_socket);
         if (receive_commands(&client_socket, &socket_buffer))
         {
@@ -565,7 +605,7 @@ int main(int argc, char **argv)
         }
     }
 TERMINATE_CONTROLLER:
-    /* TODO: MAYBE STOP ALL WHEELS */
+    set_all_sensors_to_default_value();
     wc2ec_cleanup(&socket_buffer, &listen_socket, &client_socket);
 WB_CLEANUP:
     wb_robot_cleanup();
