@@ -1,3 +1,11 @@
+-- @summary
+-- Generic ring buffer package specification.
+--
+-- @author Julian Hartmer
+-- @description
+-- This package is a generic ring buffer. You can set the element type
+-- when including this package.
+
 with Ada.Containers.Vectors;
 
 generic
