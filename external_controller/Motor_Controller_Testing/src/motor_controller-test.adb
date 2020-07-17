@@ -12,19 +12,23 @@ package body Motor_Controller.Test is
 
    procedure test_calculate_output (T : in out Test)
    is
+      curb_detection_active   : Boolean;
       input_state             : Cab_State_T;
       output_state            : Cab_State_T;
       motor_values            : Motor_Values_T;
       je_next_signal          : Job_Executer_Next_t;
       fd_next_signal          : Front_Distance_Next_t;
       ld_next_signal          : Lane_Detection_Next_T;
+      expected_curb_detection : Boolean;
       expected_state          : Cab_State_T;
       expected_motor_values   : Motor_Values_T;
       expected_je_next_signal : Job_Executer_Next_t;
       expected_ld_next_signal : Lane_Detection_Next_T;
       expected_fd_next_signal : Front_Distance_Next_t;
    begin
-<<<<<<< HEAD
+      curb_detection_active := False;
+
+
     for I in Lean_State_T loop
 
        input_state := (Base             => NO_SYSTEM_ERROR,
@@ -36,10 +40,10 @@ package body Motor_Controller.Test is
                       Leaning          => I,
                       Forcing_Left     => False,
                        Counter => 0);
-
+         expected_curb_detection := curb_detection_active;
          expected_state:= input_state;
          output_state := input_state;
-         calculate_output(output_state, motor_values,ld_next_signal,fd_next_signal, je_next_signal);
+         calculate_output(output_state,curb_detection_active, motor_values,ld_next_signal,fd_next_signal, je_next_signal);
 
          case I is
           when NEXT_LEFT =>
@@ -69,7 +73,7 @@ package body Motor_Controller.Test is
 
          expected_state:= input_state;
          output_state := input_state;
-         calculate_output(output_state, motor_values,ld_next_signal,fd_next_signal, je_next_signal);
+         calculate_output(output_state,curb_detection_active, motor_values,ld_next_signal,fd_next_signal, je_next_signal);
 
          case I is
           when SYSTEM_ERROR =>
@@ -89,37 +93,18 @@ package body Motor_Controller.Test is
             expected_je_next_signal := SHUTDOWN_S;
          end case;
 
-         Assert(expected_state= output_state and expected_motor_values = motor_values and expected_je_next_signal = je_next_signal
+         if expected_curb_detection and expected_ld_next_signal /= SHUTDOWN_S then
+         expected_je_next_signal := NOT_FUNCTIONAL;
+      end if;
+
+         Assert(expected_curb_detection = curb_detection_active and expected_state= output_state and expected_motor_values = motor_values and expected_je_next_signal = je_next_signal
                 and expected_fd_next_signal= fd_next_signal, "states differ on input : " &I'Image);
      end loop;
 
 
     end test_calculate_output;
-=======
-      Assert(True, "TODO");
-   end test_calculate_output;
->>>>>>> b4ad0b18cd504d1982b433ffcc2204c205b91810
 
 
-   procedure test_output_no_system_error (T : in out Test)
-   is
-   begin
-      Assert(True, "TODO");
-   end test_output_no_system_error;
-
-
-   procedure test_output_front_is_clear (T : in out Test)
-   is
-   begin
-      Assert(True, "TODO");
-   end test_output_front_is_clear;
-
-
-   procedure test_output_driving (T : in out Test)
-   is
-   begin
-      Assert(True, "TODO");
-   end test_output_driving;
 
 
    procedure test_do_state_transition (T : in out Test)
@@ -403,7 +388,7 @@ package body Motor_Controller.Test is
          end loop;
     end test_output_system_error;
 
-<<<<<<< HEAD
+
    procedure test_output_no_system_error (T : in out Test)
    is
       input_state             : Cab_State_T;
@@ -531,9 +516,6 @@ package body Motor_Controller.Test is
 
 
 
-
-=======
->>>>>>> b4ad0b18cd504d1982b433ffcc2204c205b91810
 end Motor_Controller.Test;
 
 

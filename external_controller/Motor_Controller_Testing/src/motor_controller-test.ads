@@ -10,11 +10,6 @@ package Motor_Controller.Test is
 
    type Test is new AUnit.Test_Fixtures.Test_Fixture with null record;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b4ad0b18cd504d1982b433ffcc2204c205b91810
    procedure test_calculate_output (T : in out Test);
 
    procedure test_do_state_transition (T : in out Test);
