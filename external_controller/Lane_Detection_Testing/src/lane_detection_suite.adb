@@ -1,3 +1,8 @@
+-- @summary
+-- Lane Detection controller child unit test suite body.
+--
+-- @author Julian Hartmer
+
 pragma Ada_2012;
 with AUnit.Test_Caller;
 with Lane_Detection.Test; use Lane_Detection.Test;
@@ -21,9 +26,6 @@ package body Lane_Detection_Suite is
 
       Ret.Add_Test
         (Caller.Create("test_output_from_curb_detection", Lane_Detection.Test.test_output_from_curb_detection'Access));
-
-      Ret.Add_Test
-        (Caller.Create("test_calculate_output", Lane_Detection.Test.test_calculate_output'Access));
 
       Ret.Add_Test
         (Caller.Create("test_get_lean_from_line_color", Lane_Detection.Test.test_get_lean_from_line_color'Access));

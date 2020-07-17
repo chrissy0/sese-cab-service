@@ -1,3 +1,7 @@
+-- @summary
+-- Front distance test suite body.
+--
+-- @author Julian Hartmer
 with Front_Distance.Test;
 with AUnit.Test_Caller;
 with Motor_Controller;

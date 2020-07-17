@@ -1,3 +1,8 @@
+-- @summary
+-- Lane Detection controller child test runner body.
+--
+-- @author Julian Hartmer
+
 with AUnit.Reporter.XML;
 with AUnit.Run;
 with Lane_Detection_Suite; use Lane_Detection_Suite;

@@ -1,3 +1,8 @@
+-- @summary
+-- Motor Controller child test package body.
+--
+-- @author Julian Hartmer
+
 pragma Ada_2012;
 with AUnit.Assertions;        use AUnit.Assertions;
 with Ada.Task_Identification; use Ada.Task_Identification;
@@ -19,6 +24,7 @@ package body Motor_Controller.Test is
       expected_ld_next_signal : Lane_Detection_Next_T;
       expected_fd_next_signal : Front_Distance_Next_t;
    begin
+<<<<<<< HEAD
     for I in Lean_State_T loop
 
        input_state := (Base             => NO_SYSTEM_ERROR,
@@ -89,6 +95,31 @@ package body Motor_Controller.Test is
 
 
     end test_calculate_output;
+=======
+      Assert(True, "TODO");
+   end test_calculate_output;
+>>>>>>> b4ad0b18cd504d1982b433ffcc2204c205b91810
+
+
+   procedure test_output_no_system_error (T : in out Test)
+   is
+   begin
+      Assert(True, "TODO");
+   end test_output_no_system_error;
+
+
+   procedure test_output_front_is_clear (T : in out Test)
+   is
+   begin
+      Assert(True, "TODO");
+   end test_output_front_is_clear;
+
+
+   procedure test_output_driving (T : in out Test)
+   is
+   begin
+      Assert(True, "TODO");
+   end test_output_driving;
 
 
    procedure test_do_state_transition (T : in out Test)
@@ -372,6 +403,7 @@ package body Motor_Controller.Test is
          end loop;
     end test_output_system_error;
 
+<<<<<<< HEAD
    procedure test_output_no_system_error (T : in out Test)
    is
       input_state             : Cab_State_T;
@@ -500,6 +532,8 @@ package body Motor_Controller.Test is
 
 
 
+=======
+>>>>>>> b4ad0b18cd504d1982b433ffcc2204c205b91810
 end Motor_Controller.Test;
 
 

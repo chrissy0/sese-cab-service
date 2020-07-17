@@ -1,3 +1,11 @@
+-- @summary
+-- Front distance controller package specification.
+--
+-- @author Julian Hartmer
+-- @description
+-- This controls the front distance by pulling and evaluating the front
+-- distance sensor values. Communicates with Motor Controller Task.
+
 with Motor_Controller; use Motor_Controller;
 package Front_Distance is
 
@@ -36,6 +44,16 @@ package Front_Distance is
    -- with the External Controller Task by calling the entries
    -- Front_Distance_Next and Front_Distance_Done.
    task type Front_Distance_Task_T is
+
+      -- Motor Task contrstrucor. Tasks wait after spawning for constructor
+      -- to initialize the task.
+      -- @param get_sensor_value_a Front distance sensor getter function
+      -- @param us_thresh_front ultrasonic front distance detection threshhold value
+      -- @param ir_thresh_front infrared front distance detection threshhold value
+      -- @param us_thresh_side ultrasonic side distance detection threshhold value
+      -- @param ir_thresh_side infrared side distance detection threshhold value
+      -- @param Motor_Controller_Task_A Access to motor controller task
+      -- @param timeout_v Rendezvous synchronization timeout
       entry Construct
         (
          get_sensor_value_a       : in get_sensor_value_access;

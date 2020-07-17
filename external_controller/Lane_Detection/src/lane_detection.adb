@@ -1,3 +1,11 @@
+-- @summary
+-- Lane detection controller package body.
+--
+-- @author Julian Hartmer
+-- @description
+-- This package controls the lane detection by pulling and evaluating the lane
+-- detection sensor values. Communicates with Motor Controller Task.
+
 pragma Ada_2012;
 package body Lane_Detection is
 
@@ -17,9 +25,9 @@ package body Lane_Detection is
       get_line_sensor_value : in get_line_sensor_value_access;
       get_curb_sensor_value : in get_curb_sensor_value_access;
       get_wall_sensor_value : in get_wall_sensor_value_access;
-      line_sensor_values : out Line_Sensor_Values_Array_T;
-      curb_sensor_values : out Curb_Sensor_Values_Array_T;
-      wall_sensor_values : out Wall_Sensor_Values_Array_T
+      line_sensor_values    : out Line_Sensor_Values_Array_T;
+      curb_sensor_values    : out Curb_Sensor_Values_Array_T;
+      wall_sensor_values    : out Wall_Sensor_Values_Array_T
      )
    is
    begin
@@ -114,46 +122,90 @@ package body Lane_Detection is
    end output_from_line_detection;
 
 
+   function detect_curb
+     (
+      curb_sensor_values       : Curb_Sensor_Values_Array_T
+     ) return Curb_Detected_Array_T
+   is
+      curb_detected_array      : Curb_Detected_Array_T;
+   begin
+      curb_detected_array := (others => FAILURE);
+      for ori in Sensor_Orientation_T loop
+         for I in Boolean loop
+            if curb_detected_array(ori) = FAILURE then
+               if curb_sensor_values(FRONT, ori, I) < 0.0 then
+                  curb_detected_array(ori) := FAILURE;
+               elsif curb_sensor_values(FRONT, ori, I) < CURB_MIN_DETECTION_RANGE then
+                  curb_detected_array(ori) := DETECTED_TOO_CLOSE;
+               elsif curb_sensor_values(FRONT, ori, I) < CURB_MAX_DETECTION_RANGE then
+                  curb_detected_array(ori) := DETECTED;
+               elsif curb_sensor_values(FRONT, ori, I) < CURB_MAX_VALUE then
+                  curb_detected_array(ori) := DETECTED_TOO_FAR;
+               else
+                  curb_detected_array(ori) := NOT_DETECTED;
+               end if;
+
+            end if;
+
+         end loop;
+
+      end loop;
+
+      return curb_detected_array;
+
+   end detect_curb;
+
    --------------------------------
    -- output_from_curb_detection --
    --------------------------------
 
    function output_from_curb_detection
      (
-      curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T
+      curb_sensor_values  : Curb_Sensor_Values_Array_T
      ) return Lane_Detection_Done_T
    is
-      Leaning_Left        : Boolean := True;
       Output              : Lane_Detection_Done_T := SYSTEM_ERROR_S;
-      Wall_Sensor_Failure : Boolean;
+      sensor_value        : Long_Float            := SENSOR_FAULT;
+      curb_detected_array : Curb_Detected_Array_T;
    begin
-      -- if wall sensor failed, we cannot operate in this mode
-      for I in Boolean loop
-         Wall_Sensor_Failure := False;
-         for pos in Curb_Sensor_Position_T loop
-            if wall_sensor_values(RIGHT, I) < 0.0 then
+      curb_detected_array := detect_curb(curb_sensor_values => curb_sensor_values);
 
-               if Wall_Sensor_Failure then
-                  return System_Error_S;
+      if curb_detected_array(LEFT) = FAILURE or curb_detected_array(LEFT) = FAILURE then
+         Output := SYSTEM_ERROR_S;
+      else
+         case curb_detected_array(LEFT) is
+            when FAILURE =>
+               Output := SYSTEM_ERROR_S;
+            when DETECTED_TOO_CLOSE =>
+               Output := ROTATE_RIGHT_S;
+            when DETECTED =>
+               Output := GO_STRAIGHT_S;
+            when DETECTED_TOO_FAR =>
+               if curb_detected_array(RIGHT) = DETECTED_TOO_CLOSE
+                 or curb_detected_array(RIGHT) = DETECTED
+               then
+                  Output := GO_STRAIGHT_S;
                else
-                  Wall_Sensor_Failure := True;
+
+                  Output := ROTATE_LEFT_S;
                end if;
 
-            end if;
-         end loop;
-      end loop;
-
-      -- if there is a wall on the right side -> go right
-      for I in Boolean loop
-         if wall_sensor_values(RIGHT, I) <= CURB_THRESHHOLD then
-            Leaning_Left := False;
-         end if;
-      end loop;
-
-      -- TODO
-      Log_Line("TODO");
-      return SYSTEM_ERROR_S;
+            when NOT_DETECTED =>
+               case curb_detected_array(RIGHT) is
+                  when DETECTED_TOO_CLOSE =>
+                     Output := ROTATE_LEFT_S;
+                  when DETECTED =>
+                     Output := GO_STRAIGHT_S;
+                  when DETECTED_TOO_FAR =>
+                     Output := ROTATE_RIGHT_S;
+                  when NOT_DETECTED =>
+                     Output := GO_STRAIGHT_S;
+                  when FAILURE =>
+                     Output := SYSTEM_ERROR_S;
+               end case;
+         end case;
+      end if;
+      return Output;
    end output_from_curb_detection;
 
 
@@ -207,13 +259,16 @@ package body Lane_Detection is
       curb_sensor_values : Curb_Sensor_Values_Array_T;
       wall_sensor_values : Wall_Sensor_Values_Array_T;
       is_lean_from_line  : Boolean;
-      Leaning_Left       : in out Boolean
+      Leaning_Left       : in out Boolean;
+      is_curb_detection  : out Boolean
      ) return Lane_Detection_Done_T
    is
       detected_array     : Line_Sensor_Detected_Array_T;
       Output             : Lane_Detection_Done_T;
       line_failure_array : Line_Sensor_Array_Failure_Array_T;
    begin
+
+      is_curb_detection := False;
 
       detect_lanes(all_sensor_values    => line_sensor_values,
                    detected_array       => detected_array,
@@ -224,11 +279,12 @@ package body Lane_Detection is
                                                   sensor_array_failure => line_failure_array,
                                                   old_lean             => Leaning_Left);
       end if;
+
       Output := output_from_line_detection(detected_array, Leaning_Left, line_failure_array);
 
       if Output = SYSTEM_ERROR_S then
-         Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values,
-                                              wall_sensor_values => wall_sensor_values);
+         Output := output_from_curb_detection(curb_sensor_values => curb_sensor_values);
+         is_curb_detection := True;
       end if;
 
       return Output;
@@ -254,6 +310,7 @@ package body Lane_Detection is
       get_wall_sensor_value : get_wall_sensor_value_access;
       timeout               : Duration;
       is_lean_from_line     : Boolean := False;
+      is_curb_detection     : Boolean := False;
    begin
 
       Log_Line("Starting Thread.");
@@ -288,19 +345,16 @@ package body Lane_Detection is
                                     curb_sensor_values => curb_sensor_values,
                                     wall_sensor_values => wall_sensor_values,
                                     Leaning_Left       => Leaning_Left,
-                                    is_lean_from_line  => is_lean_from_line);
+                                    is_lean_from_line  => is_lean_from_line,
+                                    is_curb_detection  => is_curb_detection);
          select
-           Motor_Controller_Task.lane_detection_done(Output);
+           Motor_Controller_Task.lane_detection_done(Output, is_curb_detection);
          then abort
             delay timeout;
             Log_Line("lane_detection_done timed out, shutting down...");
             running := False;
             goto Continue;
          end select;
-         --Log_Line(" ... lane_detection_done recieved!");
-
-        -- Log_Line ("Waiting for lane_detection_next");
-          -- wait for all signals to be processed
          select
             Motor_Controller_Task.lane_detection_next(next_signal);
 
@@ -327,10 +381,6 @@ package body Lane_Detection is
             running := False;
             goto Continue;
          end select;
-         --Log_Line("... lane_detection_next recieved!");
-
-
-         -- handle next signal
          <<Continue>>
       end loop;
       Log_Line("Shutting down. So long, and thanks for all the lanes!");

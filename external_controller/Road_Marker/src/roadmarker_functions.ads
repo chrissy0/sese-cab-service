@@ -1,3 +1,10 @@
+-- @summary
+-- Road Marker functionalities.
+--
+-- @author Chanki Hong
+-- @description
+-- This package provides functionalities to evaluate the road marker sensor
+-- values.
 package Roadmarker_Functions is
 
    function is_Active (inf_Value : Long_Float) return Boolean;

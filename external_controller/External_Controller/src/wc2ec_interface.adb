@@ -167,9 +167,9 @@ package body WC2EC_Interface is
    begin
       id_string := To_Unbounded_String("curb_");
       case orientation is
-         when LEFT =>
-            Append(id_string, to_Unbounded_String("r"));
          when RIGHT =>
+            Append(id_string, to_Unbounded_String("r"));
+         when LEFT =>
             Append(id_string, to_Unbounded_String("l"));
       end case;
 
@@ -219,5 +219,16 @@ package body WC2EC_Interface is
 
 
    end get_wall_detection_sensor_value;
+
+
+   -------------------------
+   -- elevate_curb_sensor --
+   -------------------------
+   procedure elevate_curb_sensor is
+   begin
+      WC2EC.set_motor_sensor_data("slider_curb_lf", 0.0);
+      WC2EC.set_motor_sensor_data("slider_curb_lf2", 0.0);
+   end elevate_curb_sensor;
+
 
 end WC2EC_Interface;

@@ -264,12 +264,14 @@ int send_sensor_data(SOCKET *client_socket)
 }
 long int execute_command(struct package_format* pkg, long unsigned int bytes_left) {
 	WbDeviceTag tag;
+
 	WbNodeType type;
 	long unsigned int bytes_used;
  
 	if (bytes_left < sizeof(struct package_format))
         	return 0;
           
+
 	if (pkg->command != WC2EC_CMD_SET_VALUE)
 		return -1;
   
@@ -420,6 +422,7 @@ int receive_commands(SOCKET *client_socket, LPWSABUF *socket_buffer) {
     return 0;
 }
 
+
 int register_sensor_at_external_controller(WbDeviceTag tag, uint8_t index, SOCKET *client_socket)
 {
     struct package_format *pf;
@@ -443,7 +446,8 @@ int register_sensor_at_external_controller(WbDeviceTag tag, uint8_t index, SOCKE
 }
 
 
-int sensor_set_default_value(WbDeviceTag tag, WbNodeType type) {
+int sensor_set_
+_value(WbDeviceTag tag, WbNodeType type) {
     switch (type)
     {
         case WB_NODE_DISTANCE_SENSOR:

@@ -1,3 +1,11 @@
+-- @summary
+-- External Controller builder file.
+--
+-- @author Julian Hartmer
+-- @description
+-- This executable file builds the external controller by starting each task
+-- and providing accesses to the nedded ressources.
+
 with Lane_Detection;   use Lane_Detection;
 with Motor_Controller; use Motor_Controller;
 with WC2EC;            use WC2EC;
@@ -55,6 +63,7 @@ begin
 
    Motor_Controller_Task.Constructor(
                                      set_motor_value_access => WC2EC_Interface.set_motor_value'Access,
+                                     elevate_sensors_access => WC2EC_Interface.elevate_curb_sensor'Access,
                                      timeout_v              => timeout,
                                      iteration_delay_s      => 0.01);
 

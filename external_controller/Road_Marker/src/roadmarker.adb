@@ -1,3 +1,11 @@
+-- @summary
+-- Road Marker controller package body.
+--
+-- @author Julian Hartmer and Chanki Hong
+-- @description
+-- This package controls the roadmarker by pulling and evaluating the road
+-- marker sensor values. Communicates with Motor Controller Task.
+
 pragma Ada_2012;
 with Roadmarker_Functions; use Roadmarker_Functions;
 
@@ -37,7 +45,7 @@ package body Roadmarker is
       is_error : Boolean := False;
    begin
       for ID in Roadmarker_Sensor_ID_T loop
-         is_error := all_sensor_values(ID, is_backup_sensor) = -1.0;
+         is_error := all_sensor_values(ID, is_backup_sensor) = SENSOR_FAULT;
          exit when is_error;
       end loop;
 
@@ -123,7 +131,7 @@ package body Roadmarker is
       count : Integer := 0;
    begin
       for ID in Roadmarker_Sensor_ID_T loop
-         if 290.0 > sensors(ID, is_backup_sensor) and sensors(ID, is_backup_sensor) > 270.0 then
+         if ROADMARKER_THRESH_MAX > sensors(ID, is_backup_sensor) and sensors(ID, is_backup_sensor) > ROADMARKER_THRESH_MIN then
             count := count + 1;
          end if;
       end loop;

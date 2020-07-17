@@ -1,3 +1,9 @@
+# @author Julian Hartmer and Christopher Woggon
+# 
+# Runs the specified ADA unit testing project and evaluates the XML output.
+# Returns 0 if test successfull, otherwise 1. Used in Jenkins for CI of
+# ADA Unit testing
+
 #!/bin/sh
 if [ -z "$1" ]; then
 	echo "Usage: $0 GPR_FILE_WITHOUT_ENDING"

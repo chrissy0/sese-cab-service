@@ -207,12 +207,18 @@ GET /api/ec/requestRoute?id=0&version=0
 400 Bad Request
 ```
 
+###### Other error / exception (should not happen)
+
+```http
+500 Internal Server Error
+```
+
 ### Pickup Person
 
 ##### Request
 
 ```http
-POST /api/ec/requestPickup?cabId=0&markerId=0&customerId=0
+POST /api/ec/requestPickup?cabId=0&customerId=0
 ```
 
 ##### Response
@@ -271,7 +277,7 @@ GET /api/ec/pickupsComplete?cabId=0
 
 ```json
 {
-    "complete": false
+    "completed": false
 }
 ```
 
@@ -292,7 +298,7 @@ GET /api/ec/pickupsComplete?cabId=0
 ##### Request
 
 ```http
-POST /api/ec/requestDropoff?cabId=0&sectionId=0&customerId=0
+POST /api/ec/requestDropoff?cabId=0&customerId=0
 ```
 
 ##### Response
@@ -309,7 +315,7 @@ POST /api/ec/requestDropoff?cabId=0&sectionId=0&customerId=0
 409 CONFLICT
 ```
 
-###### Section ID unknown
+###### Cab at unknown location
 
 ```http
 409 CONFLICT
@@ -357,7 +363,7 @@ GET /api/ec/dropoffsComplete?cabId=0
 
 ```json
 {
-    "complete": false
+    "completed": false
 }
 ```
 
@@ -400,3 +406,110 @@ POST /api/ec/blocked?cabId=0&blocked=true
 ```http
 400 Bad Request
 ```
+
+### Sensor status
+
+##### Considered sensors
+- `inf_right`
+- `inf_right2`
+- `inf_cent`
+- `inf_cent2`
+- `inf_rm_fr`
+- `inf_rm_fr2`
+- `inf_rm_fr_act`
+- `inf_rm_fr_act2`
+- `inf_rm_fl`
+- `inf_rm_fl2`
+- `inf_rm_fl_act`
+- `inf_rm_fl_act2`
+- `inf_rm_bl`
+- `inf_rm_bl2`
+- `inf_rm_bl_act`
+- `inf_rm_bl_act2`
+- `inf_rm_br`
+- `inf_rm_br2`
+- `inf_rm_br_act`
+- `inf_rm_br_act2`
+- `dist_c`
+- `dist_c2`
+- `curb_rb`
+- `curb_rb2`
+- `curb_rc`
+- `curb_rc2`
+- `curb_rf`
+- `curb_rf2`
+- `curb_lf`
+- `curb_lf2`
+- `curb_lc`
+- `curb_lc2`
+- `curb_lb`
+- `curb_lb2`
+- `dist_r`
+- `dist_r2`
+- `dist_l`
+- `dist_l2`
+- `inf_left`
+- `inf_left2`
+- `wheel1`
+- `wheel2`
+- `wheel3`
+- `wheel4`
+
+##### Request
+
+```http
+GET /api/ec/sensorStatus?cabId=1
+```
+
+##### Response
+
+###### All sensors working
+
+```http
+200 OK
+```
+
+```json
+{
+    "sensorErrors": false
+}
+```
+
+###### Sensor errors set
+
+*Returns sensors which don't work as usual*
+
+```http
+200 OK
+```
+
+```json
+{
+    "sensorErrors": true,
+    "sensors": [
+    	{
+            "name": "some-sensor",
+            "disabled": false,
+            "whoosh": 5
+        },
+    	{
+            "name": "some-other-sensor",
+            "disabled": true
+        }
+    ]
+}
+```
+
+###### Cab ID unknown
+
+```http
+409 CONFLICT
+```
+
+###### Missing parameters/info or malformed request
+
+```http
+400 Bad Request
+```
+
+### 

@@ -1,6 +1,8 @@
 -- @summary
--- Communicates with Lane Detection, Front Distance, Road Marker and Job Executer and sets the wheel speed
+-- Motor controller package specification. Communicates with Lane Detection,
+-- Front Distance, Road Marker and Job Executer and sets the wheel speed
 --
+-- @author Julian Hartmer
 -- @description
 -- This package communicates with all cab tasks. It manages the other tasks
 -- and controls the cab's wheels.
@@ -18,12 +20,18 @@ package Motor_Controller is
    type Horizontal_Position_T is (LEFT, RIGHT);
 
    -- Access to motor setter function
+   -- @param vertical vertical motor position
+   -- @param horizontal horizontal motor position
+   -- @param value value to set the sensor to
    type set_motor_value_procedure_access_t is access procedure
      (
       vertical   : Vertical_Position_T;
       horizontal : Horizontal_Position_T;
       value      : Long_Float
      );
+
+   -- Access to motor setter function
+   type elevate_curb_sensor_access_t is access procedure;
 
    -- Value of done signal sent by Lane Detection to Motor Controller
    -- @value SYSTEM_ERROR_S Lane Detection in error state
@@ -73,42 +81,71 @@ package Motor_Controller is
    -- @value EMPTY_S Nothing new
    -- @value BLOCKED_S Front is blocked
    type Job_Executer_Next_t is
-     (SHUTDOWN_S, EMPTY_S, BLOCKED_S);
+     (SHUTDOWN_S, EMPTY_S, BLOCKED_S, NOT_FUNCTIONAL);
 
    -- Task to evaluate all other tasks' output and set the motor actor
    -- accordingly. Communicates with Lane_Detection, Roadmarker, Job_Executer
    -- and Front_Distance Task
    task type Motor_Controller_Task_T is
+
+      -- Motor Task constructor. Tasks wait after spawning for constructor
+      -- to initialize the task.
+      -- @param set_motor_value_access Access to motor sensor setter procedure
+      -- @param elevate_sensors_access Access to procedure to elevate the curb sensors.
+      -- @param timeout_v Rendezvous synchronization timeout
+      -- @param iteration_delay_s Delay between iteration starts
       entry Constructor
         (
-         -- function to set motor values with
          set_motor_value_access : in set_motor_value_procedure_access_t;
+         elevate_sensors_access : in elevate_curb_sensor_access_t;
          timeout_v              : in Duration;
          iteration_delay_s      : in Duration
         );
 
 
+      -- Rendezvous synchronization for lane detection to get iteration result.
+      -- @param Signal lane detection iteration result
+      -- @param is_curb_detection true: curb detection on, false: line detection on
       entry lane_detection_done
-        (Signal : in Lane_Detection_Done_T);
+        (Signal : in Lane_Detection_Done_T; is_curb_detection : in Boolean);
+
+      -- Rendezvous synchronization for lane detection to wait for next iteration.
+      -- @param Signal Command for next iteration
       entry lane_detection_next
         (Signal : out Lane_Detection_Next_T);
 
 
+
+      -- Rendezvous synchronization for front distance to get iteration result.
+      -- @param Signal front distance iteration result
       entry front_distance_done
         (Signal : in Front_Distance_Done_t);
+
+      -- Rendezvous synchronization for front distance to wait for next iteration.
+      -- @param Signal Command for next iteration
       entry front_distance_next
         (Signal : out Front_Distance_Next_t);
 
 
+      -- Rendezvous synchronization for job executer to get iteration result.
+      -- @param Signal job executer iteration result
       entry job_executer_done
         (Signal : in Job_Executer_Done_T);
+
+      -- Rendezvous synchronization for job executer to wait for next iteration.
+      -- @param Signal job executer next iteration command.
       entry job_executer_next
         (Signal : out Job_Executer_Next_t);
 
+
+      -- Rendezvous synchronization for builder to start next iteration or shutdown external controller.
+      -- @param is_shutdown true: Shutdown external controller, false: start next iteration.
       entry main_shutdown_signal
         (is_shutdown : in Boolean);
 
 
+      -- Rendezvous synchronization for road marker so it can set force lean left.
+      -- @param Signal true: force lean left, false: do not force lean left
       entry rm_hotfix_signal
         (Signal : in Boolean);
 
@@ -123,11 +160,18 @@ private
    MOTOR_DRIVE_SPEED  : constant Long_Float := 3.0;
    -- Number of iterations to rotate 90 degrees
    ITERAION_NUM_90_DEGREE : constant Natural := 90;
+   -- Number of iterations to drive off track when rotated to left or right
    ITERAION_NUM_DRIVE_OFF : constant Natural := 70;
 
    type Motor_Values_T is array (Vertical_Position_T, Horizontal_Position_T) of Long_Float;
 
+   -- Enumeration of all tasks which send done and next signals
+   -- @value LANE_DETECTION lane detection task
+   -- @value JOB_EXECUTER job executer task
+   -- @value FRONT_DISTANCE front distance task
    type Module_Tasks is (LANE_DETECTION, JOB_EXECUTER, FRONT_DISTANCE);
+
+   -- Array type to store which tasks already sent done and next signals
    type Boolean_Tasks_Arrays is array (Module_Tasks) of Boolean;
 
    -- Base state of the motor controller
@@ -138,7 +182,7 @@ private
 
    -- State variable type to further describe error state
    -- @value FINAL_SAFE_STATE Drive the cab off the track
-   -- @value STAND_ON_TRACk Stop the cab on the track
+   -- @value STAND_ON_TRACK Stop the cab on the track
    type System_Error_State_T is
      (FINAL_SAFE_STATE, STAND_ON_TRACK);
 
@@ -205,11 +249,12 @@ private
    -- @value JE_Next_Signal Output value sent to Job Executer on Job_Executer_Next_Signal
    procedure calculate_output
      (
-      state          : Cab_State_T;
-      motor_values   : out Motor_Values_T;
-      LD_Next_Signal : out Lane_Detection_Next_T;
-      FD_Next_Signal : out Front_Distance_Next_t;
-      JE_Next_Signal : out Job_Executer_Next_t
+      state                 : Cab_State_T;
+      curb_detection_active : Boolean;
+      motor_values          : out Motor_Values_T;
+      LD_Next_Signal        : out Lane_Detection_Next_T;
+      FD_Next_Signal        : out Front_Distance_Next_t;
+      JE_Next_Signal        : out Job_Executer_Next_t
      );
 
    -- Calculate outputs by using the state's System_Error variable

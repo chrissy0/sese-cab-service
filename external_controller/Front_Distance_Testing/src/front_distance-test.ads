@@ -1,3 +1,7 @@
+-- @summary
+-- Front distance controller child test package specification.
+--
+-- @author Julian Hartmer
 with AUnit;
 with AUnit.Test_Fixtures;
 

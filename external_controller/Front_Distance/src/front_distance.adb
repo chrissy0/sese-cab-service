@@ -1,3 +1,10 @@
+-- @summary
+-- Front distance controller package body.
+--
+-- @author Julian Hartmer
+-- @description
+-- This controls the front distance by pulling and evaluating the front
+-- distance sensor values. Communicates with Motor Controller Task.
 pragma Ada_2012;
 with Ada.Text_IO; use Ada.Text_IO;
 package body Front_Distance is

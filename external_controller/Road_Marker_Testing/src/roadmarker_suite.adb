@@ -1,6 +1,10 @@
-with Roadmarker_Test; use Roadmarker_Test;
+-- @summary
+-- Road Marker test suite body.
+--
+-- @author Julian Hartmer and Chanki Hong
+
 with Roadmarker_Functions.Test; use Roadmarker_Functions.Test;
-with Roadmarker.Test; use Roadmarker_Test;
+with Roadmarker.Test; use Roadmarker.Test;
 with AUnit.Test_Caller;
 
 package body Roadmarker_Suite is
@@ -12,10 +16,6 @@ package body Roadmarker_Suite is
    function Suite return Access_Test_Suite is
       Ret : constant Access_Test_Suite := new Test_Suite;
    begin
-      --  Ret.Add_Test
-      --    (Caller.Create
-      --       ("-------------Test Roadmarker output-------------",
-      --        Roadmarker_Test.test_roadmarker'Access));
       Ret.Add_Test
         (Caller.Create
            ("-------------Test Roadmarke Function's get_roadmarker-------------",
