@@ -318,12 +318,15 @@ package body Job_Executer is
                RM_next := EMPTY_S;
                return_code := set_blocked_status(cab_id  => cab_id, blocked => False);
                ignore_success := EC2B.success(return_code, error_counter);
+               return_code := set_functional_status(cab_id  => cab_id, functional => True);
+               ignore_success := EC2B.success(return_code, error_counter);
 
             when BLOCKED_S =>
                return_code := set_blocked_status(cab_id  => cab_id, blocked => True);
                ignore_success := EC2B.success(return_code, error_counter);
             when NOT_FUNCTIONAL =>
-               null; -- TODO
+               return_code := set_functional_status(cab_id  => cab_id, functional => False);
+               ignore_success := EC2B.success(return_code, error_counter);
          end case;
       end select;
    end receive_next_signal;
