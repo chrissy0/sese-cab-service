@@ -16,8 +16,10 @@ export class DebugComponent implements OnInit {
 
   debugMode = false;
 
+  // stores all currently registered cabs
   cabs: Cab[] = [];
 
+  // stores all cab sensors for all cabs
   cabSensors: CabSensors[] = [];
 
   softResetBackend() {
@@ -32,15 +34,18 @@ export class DebugComponent implements OnInit {
     this.cabSensors = [];
   }
 
+  // returns all sensors for a specific cab
   getCabSensors(cabId: number) {
     return this.cabSensors.filter(elem => elem.cabId === cabId)[0].sensors;
   }
 
+  // sets noise for a specific sensor
   setNoise(cabId: number, sensor: Sensor, n: string) {
     sensor.noise = parseInt(n, 10);
     this.backendService.saveSensorData(cabId, sensor);
   }
 
+  // activates/deactivates sensor
   setActive(cabId: number, sensor: Sensor, active: boolean) {
     sensor.active = active;
     this.backendService.saveSensorData(cabId, sensor);
@@ -53,6 +58,7 @@ export class DebugComponent implements OnInit {
     }, 1000);
   }
 
+  // fills debug panel with default data, then loads changes from backend
   private loadDebugPanel() {
     this.backendService.getRegisteredCabs().then(cabs => {
       this.cabs = [];

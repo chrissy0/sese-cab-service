@@ -8,6 +8,9 @@ import {Cab} from './cab';
 import {Sensor} from './sensor';
 import {BackendCabSensorStatus} from './backend-cab-sensor-status';
 
+/**
+ * This service handles all backend communication
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -51,7 +54,7 @@ export class BackendService {
 
   acceptDropoff(customerId: number) {
     return this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/acceptDropoff?customerId=' + customerId, {})
-        .toPromise();
+      .toPromise();
   }
 
   getRoutes() {

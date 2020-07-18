@@ -44,6 +44,9 @@ public class RouteService {
 
     private static final Integer SECTION_DEPOT = 0;
 
+    /**
+     * Returns the ideal route for a given cab.
+     */
     public RouteEntity getRoute(Long cabId, int version) {
         validateCabId(cabId);
 
@@ -66,7 +69,7 @@ public class RouteService {
                                 routeRepo.save(updatedRoute);
                                 return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                             }
-                            return incrementVersion(updatedRoute);
+                            return incrementVersionAndSave(updatedRoute);
                         } else {
                             // if second job id is set but second job is not available
                             loadedRoute.setJobIds(loadedRoute.getJobId());
@@ -80,7 +83,7 @@ public class RouteService {
                             routeRepo.save(updatedRoute);
                             return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                         }
-                        return incrementVersion(updatedRoute);
+                        return incrementVersionAndSave(updatedRoute);
                     }
                 } else {
                     // if job id 1 is set, but associated job does not exist
@@ -121,7 +124,7 @@ public class RouteService {
                         routeRepo.save(updatedRoute);
                         return getRouteToReturnForSubRoute(version, loadedRoute, updatedRoute);
                     }
-                    return incrementVersion(updatedRoute);
+                    return incrementVersionAndSave(updatedRoute);
                 }
             }
         } else {
@@ -161,6 +164,9 @@ public class RouteService {
         jobService.updateJob(job);
     }
 
+    /**
+     * Checks different conditions to determine whether or not a cab should be assigned a job
+     */
     private boolean cabShouldGetNewJob(Long cabId) {
         if (blockedService.isBlocked(cabId)) {
             return false;
@@ -179,6 +185,10 @@ public class RouteService {
         }
     }
 
+    /**
+     * If a job is deleted, it should be removed from all routes.
+     * Increments version so EC receives changes upon requesting route.
+     */
     public void removeJobFromRoutes(Long jobId) {
         validateJobId(jobId);
 
@@ -227,7 +237,7 @@ public class RouteService {
         return Optional.of(availableJobs.get(1));
     }
 
-    private RouteEntity incrementVersion(RouteEntity route) {
+    private RouteEntity incrementVersionAndSave(RouteEntity route) {
         route.setVersion(route.getVersion() + 1);
         routeRepo.save(route);
         return route;
@@ -248,6 +258,10 @@ public class RouteService {
         }
     }
 
+    /**
+     * If updatedRoute is a subroute of loadedRoute, this method handles the return value.
+     * If the version didn't change, there's no need to send the whole route to the EC again.
+     */
     private RouteEntity getRouteToReturnForSubRoute(Integer version, RouteEntity loadedRoute, RouteEntity updatedRoute) {
         if (version.equals(loadedRoute.getVersion())) {
             return RouteEntity.builder()
@@ -258,6 +272,11 @@ public class RouteService {
     }
 
     // TODO check manually and carefully
+
+    /**
+     * This method creates a route (RouteEntity) for a given cab and up to two jobs.
+     * It takes into account the cab's current location.
+     */
     @SuppressWarnings("DuplicatedCode")
     private RouteEntity buildRouteForJobs(Long cabId, JobEntity job1, JobEntity job2, int version) {
         if (job2 == null) {
@@ -276,6 +295,10 @@ public class RouteService {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
         List<RouteActionEntity> actions = new LinkedList<>();
+
+        // Combines multiple parts of a route into one list of actions, which is then added to a new route.
+        // We have deliberately chosen to implement all possibilities manually instead of leveraging loops to
+        // prevent bugs.
 
         if (WAITING.equals(job1.getCustomerState()) && WAITING.equals(job2.getCustomerState())) {
             List<RouteActionEntity> toJob1Start = getActionsFromTo(cabLocation.getSection(), job1.getStart());
@@ -1227,6 +1250,9 @@ public class RouteService {
                 .setJobIds(job1.getId(), job2.getId());
     }
 
+    /**
+     * Creates a route for a single job
+     */
     @SuppressWarnings("DuplicatedCode")
     private RouteEntity buildRouteForJob(Long cabId, JobEntity job1, int version) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
@@ -1347,6 +1373,9 @@ public class RouteService {
                 .setJobIds(job1.getId());
     }
 
+    /**
+     * Checks if a route ends on "WAIT"
+     */
     private boolean routeIsFinished(List<RouteActionEntity> actions) {
         if (actions.size() == 0) {
             return false;
@@ -1354,6 +1383,9 @@ public class RouteService {
         return WAIT.equals(actions.get(actions.size() - 1).getAction());
     }
 
+    /**
+     * Returns a route from the current cab location to the depot
+     */
     private RouteEntity getRouteToDepot(Long cabId, int version) {
         CabLocationEntity cabLocation = locationService.getCabLocation(cabId).orElseThrow(UnknownCabLocationException::new);
 
@@ -1379,6 +1411,9 @@ public class RouteService {
                 .build();
     }
 
+    /**
+     * Leverages the PathFinder to return the actions (RouteActionEntity) required to get from one section to another
+     */
     private List<RouteActionEntity> getActionsFromTo(int from, int to) {
         List<Option> routeOptions = pathFinder.getRouteBetween(from, to);
 
@@ -1418,6 +1453,9 @@ public class RouteService {
         return actions;
     }
 
+    /**
+     * Returns all routes in the routeRepo
+     */
     public List<RouteEntity> getRoutes() {
         List<RouteEntity> entities = new LinkedList<>();
         routeRepo.findAll().forEach(entities::add);

@@ -11,6 +11,9 @@ import javax.persistence.Id;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
+/**
+ * Routes are made up of RouteActionEntities.
+ */
 @Entity
 @Builder
 @Getter

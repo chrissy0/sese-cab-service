@@ -4,6 +4,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Multiple options make up a PathFinder route
+ */
 @Builder
 @Getter
 @Setter

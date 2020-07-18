@@ -30,6 +30,9 @@ public class RouteEntity {
     @JsonProperty("route")
     private List<RouteActionEntity> routeActions;
 
+    /**
+     * Makes sure jobId2 is only set if jobId is already set
+     */
     public RouteEntity setJobIds(Long... ids) {
         if (ids.length > 2) {
             throw new IllegalArgumentException("maximum of 2 jobs allowed");
@@ -51,6 +54,10 @@ public class RouteEntity {
         return this;
     }
 
+    /**
+     * Returns true if this route is a subroute of the route passed as a parameter.
+     * A subroute's actions have to equal the last length(superRoute) actions of the superRoute.
+     */
     public boolean isSubRouteOf(RouteEntity superRoute) {
         List<RouteActionEntity> superRouteActions = superRoute.getRouteActions();
         if (superRouteActions.size() < routeActions.size()) {
@@ -91,10 +98,10 @@ public class RouteEntity {
     }
 
     private void setJobId(Long id) {
-        // prevent setting job id via setter
+        // prevents setting jobId via setter
     }
 
     private void setJobId2(Long id) {
-        // prevent setting job id 2 via setter
+        // prevents setting jobId2 via setter
     }
 }

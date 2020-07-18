@@ -13,6 +13,9 @@ import java.util.Optional;
 
 import static de.tuberlin.sese.cabservice.logic.Option.Direction.*;
 
+/**
+ * Class to generate shortest routes between two sections
+ */
 @Builder
 @Getter
 @Setter
@@ -52,6 +55,9 @@ public class PathFinder {
         return route;
     }
 
+    /**
+     * Returns the ideal next section to reach the endSection. Takes into account blocked sections.
+     */
     private Optional<Option> getNextAction(int currentSection, int endSection) {
         List<Integer> blockedSections = blockedService.getBlockedSections();
 
@@ -244,6 +250,11 @@ public class PathFinder {
         }
     }
 
+    /**
+     * Returns ideal next option for route.
+     * Takes into account blocked sections.
+     * Throws NoPathException is there is no possible route.
+     */
     private Option handleChoice(Option primaryOption, Option alternativeOption, int endSection, List<Integer> blockedSections) throws NoPathException {
         if (endSection == alternativeOption.getToSection()) {
             if (blockedSections.contains(alternativeOption.getToSection())) {
@@ -264,6 +275,11 @@ public class PathFinder {
         return primaryOption;
     }
 
+    /**
+     * Returns ideal next option for route if there is only one possible next section.
+     * Takes into account blocked sections.
+     * Throws NoPathException is there is no possible route.
+     */
     private Option handleChoice(Option onlyOption, List<Integer> blockedSections) throws NoPathException {
         if (blockedSections.contains(onlyOption.getToSection())) {
             throw new NoPathException();

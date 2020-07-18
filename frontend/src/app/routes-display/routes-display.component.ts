@@ -17,11 +17,16 @@ export class RoutesDisplayComponent implements OnInit {
   minusCircleIcon = faMinusCircle;
   boltIcon = faBolt;
 
+  // all currently active routes
   routes: Route[] = [];
 
+  // cab ids of all currently blocked cabs
   blockedCabIds: number[] = [];
+
+  // cab ids of all currently dysfunctional cabs
   dysfunctionalCabIds: number[] = [];
 
+  // updates route table including routes, blocked cabs and dysfunctional cabs
   updateTable() {
     this.backendService.getRoutes().then(routes => {
       this.routes = [];
@@ -39,10 +44,12 @@ export class RoutesDisplayComponent implements OnInit {
     });
   }
 
+  // returns true if there is at least one active route
   routesAvailable() {
     return this.routes.length > 0;
   }
 
+  // formats job ids to display in frontend
   jobIdsString(route: Route) {
     if (route.jobId === undefined) {
       return '-';
@@ -53,6 +60,7 @@ export class RoutesDisplayComponent implements OnInit {
     return route.jobId + ', ' + route.jobId2;
   }
 
+  // returns string representation of route to display in frontend
   routeActionsString(routeActions: RouteAction[]) {
     let routeString = '';
     for (let i = 0; i < routeActions.length; i++) {
@@ -83,6 +91,7 @@ export class RoutesDisplayComponent implements OnInit {
     return routeString;
   }
 
+  // updates route table every second
   ngOnInit(): void {
     this.updateTable();
     setInterval(() => {
