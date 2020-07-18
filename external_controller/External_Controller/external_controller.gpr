@@ -6,7 +6,7 @@ with "..\Lane_Detection\lane_detection.gpr";
 project External_Controller is
 
    package Documentation is
-      for Documentation_Dir use "html";
+      for Documentation_Dir use "../../documentation/external_controller/Code Documentation";
       for Ignored_Subprojects use
         (
          "Ada",

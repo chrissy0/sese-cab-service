@@ -24,7 +24,7 @@ GNATdoc.Documentation = {
         {
           "label": "Construct",
           "qualifier": "",
-          "line": 86,
+          "line": 72,
           "column": 13,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -35,7 +35,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 86,
+                  "number": 72,
                   "children": [
                     {
                       "kind": "span",
@@ -56,13 +56,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Construct",
-                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L86C13"
+                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L72C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 87,
+                  "number": 73,
                   "children": [
                     {
                       "kind": "span",
@@ -78,7 +78,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 88,
+                  "number": 74,
                   "children": [
                     {
                       "kind": "span",
@@ -89,7 +89,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Task_A",
-                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L88C10"
+                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L74C10"
                     },
                     {
                       "kind": "span",
@@ -120,7 +120,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Controller_Task_Access_T",
-                      "href": "docs/motor_controller___spec.html#L153C9"
+                      "href": "docs/motor_controller___spec.html#L155C9"
                     },
                     {
                       "kind": "span",
@@ -131,7 +131,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 89,
+                  "number": 75,
                   "children": [
                     {
                       "kind": "span",
@@ -142,7 +142,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_line_sensor_value_a",
-                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L89C10"
+                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L75C10"
                     },
                     {
                       "kind": "span",
@@ -184,7 +184,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 90,
+                  "number": 76,
                   "children": [
                     {
                       "kind": "span",
@@ -195,7 +195,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_curb_sensor_value_a",
-                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L90C10"
+                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L76C10"
                     },
                     {
                       "kind": "span",
@@ -226,7 +226,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_curb_sensor_value_access",
-                      "href": "docs/lane_detection___spec.html#L54C9"
+                      "href": "docs/lane_detection___spec.html#L53C9"
                     },
                     {
                       "kind": "span",
@@ -237,60 +237,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 91,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "         "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "get_wall_sensor_value_a",
-                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L91C10"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "get_wall_sensor_value_access",
-                      "href": "docs/lane_detection___spec.html#L68C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 92,
+                  "number": 77,
                   "children": [
                     {
                       "kind": "span",
@@ -301,7 +248,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "timeout_v",
-                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L92C10"
+                      "href": "docs/lane_detection___lane_detection_taks_t___spec.html#L77C10"
                     },
                     {
                       "kind": "span",
@@ -337,7 +284,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 93,
+                  "number": 78,
                   "children": [
                     {
                       "kind": "span",
@@ -375,11 +322,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "Motor_Task_A",
-              "line": 88,
+              "line": 74,
               "column": 10,
               "type": {
                 "label": "Motor_Controller.Motor_Controller_Task_Access_T",
-                "docHref": "docs/motor_controller___spec.html#L153C9"
+                "docHref": "docs/motor_controller___spec.html#L155C9"
               },
               "description": [
                 {
@@ -395,7 +342,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "get_line_sensor_value_a",
-              "line": 89,
+              "line": 75,
               "column": 10,
               "type": {
                 "label": "Lane_Detection.get_line_sensor_value_access",
@@ -415,11 +362,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "get_curb_sensor_value_a",
-              "line": 90,
+              "line": 76,
               "column": 10,
               "type": {
                 "label": "Lane_Detection.get_curb_sensor_value_access",
-                "docHref": "docs/lane_detection___spec.html#L54C9"
+                "docHref": "docs/lane_detection___spec.html#L53C9"
               },
               "description": [
                 {
@@ -428,23 +375,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "text": "access to curb sensor getter function\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "get_wall_sensor_value_a",
-              "line": 91,
-              "column": 10,
-              "type": {
-                "label": "Lane_Detection.get_wall_sensor_value_access",
-                "docHref": "docs/lane_detection___spec.html#L68C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "text": "access to wall sensor getter function\n"
@@ -455,7 +386,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "timeout_v",
-              "line": 92,
+              "line": 77,
               "column": 10,
               "type": {
                 "label": "Duration"

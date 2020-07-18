@@ -17,24 +17,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Boolean_Tasks_Arrays",
-      "docHref": "docs/motor_controller___spec.html#L174C9",
+      "docHref": "docs/motor_controller___spec.html#L176C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L174"
+      "srcHref": "srcs/motor_controller.ads.html#L176"
     },
     {
       "label": "Curb_Detected_Array_T",
-      "docHref": "docs/lane_detection___spec.html#L155C9",
+      "docHref": "docs/lane_detection___spec.html#L137C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L155"
+      "srcHref": "srcs/lane_detection.ads.html#L137"
     },
     {
       "label": "Curb_Detected_T",
-      "docHref": "docs/lane_detection___spec.html#L152C9",
+      "docHref": "docs/lane_detection___spec.html#L134C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L152"
+      "srcHref": "srcs/lane_detection.ads.html#L134"
     },
     {
       "label": "Curb_Sensor_Position_T",
@@ -45,17 +45,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Curb_Sensor_Values_Array_T",
-      "docHref": "docs/lane_detection___spec.html#L135C9",
+      "docHref": "docs/lane_detection___spec.html#L120C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L135"
+      "srcHref": "srcs/lane_detection.ads.html#L120"
     },
     {
       "label": "Drive_State_T",
-      "docHref": "docs/motor_controller___spec.html#L203C9",
+      "docHref": "docs/motor_controller___spec.html#L205C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L203"
+      "srcHref": "srcs/motor_controller.ads.html#L205"
     },
     {
       "label": "Ec2B_action_t",
@@ -66,17 +66,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Final_Safe_State_State_t",
-      "docHref": "docs/motor_controller___spec.html#L217C9",
+      "docHref": "docs/motor_controller___spec.html#L219C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L217"
+      "srcHref": "srcs/motor_controller.ads.html#L219"
     },
     {
       "label": "Front_Clear_State_T",
-      "docHref": "docs/motor_controller___spec.html#L196C9",
+      "docHref": "docs/motor_controller___spec.html#L198C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L196"
+      "srcHref": "srcs/motor_controller.ads.html#L198"
     },
     {
       "label": "Front_Distance_Done_t",
@@ -115,10 +115,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Job_Executer_Next_t",
-      "docHref": "docs/motor_controller___spec.html#L83C9",
+      "docHref": "docs/motor_controller___spec.html#L84C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L83"
+      "srcHref": "srcs/motor_controller.ads.html#L84"
     },
     {
       "label": "Lane_Detection_Done_T",
@@ -136,24 +136,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Lean_State_T",
-      "docHref": "docs/motor_controller___spec.html#L209C9",
+      "docHref": "docs/motor_controller___spec.html#L211C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L209"
+      "srcHref": "srcs/motor_controller.ads.html#L211"
     },
     {
       "label": "Line_Sensor_Array_Failure_Array_T",
-      "docHref": "docs/lane_detection___spec.html#L144C9",
+      "docHref": "docs/lane_detection___spec.html#L126C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L144"
+      "srcHref": "srcs/lane_detection.ads.html#L126"
     },
     {
       "label": "Line_Sensor_Detected_Array_T",
-      "docHref": "docs/lane_detection___spec.html#L141C9",
+      "docHref": "docs/lane_detection___spec.html#L123C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L141"
+      "srcHref": "srcs/lane_detection.ads.html#L123"
     },
     {
       "label": "Line_Sensor_Position_T",
@@ -164,45 +164,45 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Line_Sensor_Values_Array_T",
-      "docHref": "docs/lane_detection___spec.html#L132C9",
+      "docHref": "docs/lane_detection___spec.html#L117C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L132"
+      "srcHref": "srcs/lane_detection.ads.html#L117"
     },
     {
       "label": "Memory",
-      "docHref": "docs/ring_buffer___spec.html#L13C9",
+      "docHref": "docs/ring_buffer___spec.html#L21C9",
       "declared": "Ring_Buffer",
       "declared_qualifier": "",
-      "srcHref": "srcs/ring_buffer.ads.html#L13"
+      "srcHref": "srcs/ring_buffer.ads.html#L21"
     },
     {
       "label": "Module_Tasks",
-      "docHref": "docs/motor_controller___spec.html#L171C9",
+      "docHref": "docs/motor_controller___spec.html#L173C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L171"
+      "srcHref": "srcs/motor_controller.ads.html#L173"
     },
     {
       "label": "Motor_Controller_State_T",
-      "docHref": "docs/motor_controller___spec.html#L180C9",
+      "docHref": "docs/motor_controller___spec.html#L182C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L180"
+      "srcHref": "srcs/motor_controller.ads.html#L182"
     },
     {
       "label": "Motor_Values_T",
-      "docHref": "docs/motor_controller___spec.html#L165C9",
+      "docHref": "docs/motor_controller___spec.html#L167C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L165"
+      "srcHref": "srcs/motor_controller.ads.html#L167"
     },
     {
       "label": "No_System_Error_State_T",
-      "docHref": "docs/motor_controller___spec.html#L191C9",
+      "docHref": "docs/motor_controller___spec.html#L193C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L191"
+      "srcHref": "srcs/motor_controller.ads.html#L193"
     },
     {
       "label": "RingIndex",
@@ -283,10 +283,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "System_Error_State_T",
-      "docHref": "docs/motor_controller___spec.html#L185C9",
+      "docHref": "docs/motor_controller___spec.html#L187C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L185"
+      "srcHref": "srcs/motor_controller.ads.html#L187"
     },
     {
       "label": "Threshhold_Array_T",
@@ -301,13 +301,6 @@ GNATdoc.EntitiesCategory = {
       "declared": "Motor_Controller",
       "declared_qualifier": "",
       "srcHref": "srcs/motor_controller.ads.html#L15"
-    },
-    {
-      "label": "Wall_Sensor_Values_Array_T",
-      "docHref": "docs/lane_detection___spec.html#L138C9",
-      "declared": "Lane_Detection",
-      "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L138"
     },
     {
       "label": "whoosh_randomness_t",

@@ -9,6 +9,23 @@ with Ada.Strings.Unbounded;
 with Ada.Text_IO; use Ada.Text_IO;
 package body WC2EC_Interface is
 
+
+   -------------------------
+   -- detect_sensor_fault --
+   -------------------------
+
+   function detect_sensor_fault(value : Long_Float) return Long_Float
+   is
+      Output : Long_Float;
+   begin
+      Output := value;
+      if value > SENSOR_MAX_VAL or value < SENSOR_MIN_VAL then
+         Output := SENSOR_FAULT;
+      end if;
+
+      return Output;
+   end detect_sensor_fault;
+
    ---------------------
    -- set_motor_value --
    ---------------------
@@ -74,10 +91,8 @@ package body WC2EC_Interface is
             Append(id_string, To_Unbounded_String("2"));
       end case;
 
-      -- get value:
-      return WC2EC.get_distance_sensor_data(To_String(id_string));
-
-
+      return
+        detect_sensor_fault(WC2EC.get_distance_sensor_data(To_String(id_string)));
    end get_front_distance_value;
 
    -------------------------
@@ -117,7 +132,8 @@ package body WC2EC_Interface is
          Append(id_string, to_Unbounded_String("2"));
       end if;
 
-      return WC2EC.get_distance_sensor_data(To_String(id_string));
+      return
+        detect_sensor_fault(WC2EC.get_distance_sensor_data(To_String(id_string)));
 
    end get_rm_sensor_value;
 
@@ -147,7 +163,9 @@ package body WC2EC_Interface is
          Append(id_string, to_Unbounded_String("2"));
       end if;
 
-      return WC2EC.get_distance_sensor_data(To_String(id_string));
+
+      return
+        detect_sensor_fault(WC2EC.get_distance_sensor_data(To_String(id_string)));
 
    end get_line_detection_sensor_value;
 
@@ -158,7 +176,6 @@ package body WC2EC_Interface is
 
    function get_curb_detection_sensor_value
      (
-      pos         : in Lane_Detection.Curb_Sensor_Position_T;
       orientation : in Lane_Detection.Sensor_Orientation_T;
       is_backup   : in Boolean
      ) return Long_Float
@@ -173,53 +190,16 @@ package body WC2EC_Interface is
             Append(id_string, to_Unbounded_String("l"));
       end case;
 
-      case pos is
-         when FRONT =>
-            Append(id_string, to_Unbounded_String("f"));
-         when BACK =>
-            Append(id_string, to_Unbounded_String("b"));
-         when CENTER =>
-            Append(id_string, to_Unbounded_String("c"));
-      end case;
+      Append(id_string, to_Unbounded_String("f"));
 
       if is_backup then
          Append(id_string, to_Unbounded_String("2"));
       end if;
 
-      return WC2EC.get_distance_sensor_data(To_String(id_string));
+      return
+        detect_sensor_fault(WC2EC.get_distance_sensor_data(To_String(id_string)));
 
    end get_curb_detection_sensor_value;
-
-
-   -------------------------------------
-   -- get_wall_detection_sensor_value --
-   -------------------------------------
-
-   function get_wall_detection_sensor_value
-     (
-      orientation : in Lane_Detection.Sensor_Orientation_T;
-      is_backup   : in Boolean
-     ) return Long_Float
-   is
-      id_string : Unbounded_String;
-   begin
-      id_string := To_Unbounded_String("dist_wall_detector_");
-      case orientation is
-         when LEFT =>
-            Append(id_string, to_Unbounded_String("left"));
-         when RIGHT =>
-            Append(id_string, to_Unbounded_String("right"));
-      end case;
-
-      if is_backup then
-         Append(id_string, to_Unbounded_String("2"));
-      end if;
-
-      return WC2EC.get_distance_sensor_data(To_String(id_string));
-
-
-   end get_wall_detection_sensor_value;
-
 
    -------------------------
    -- elevate_curb_sensor --

@@ -10,24 +10,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "CURB_MAX_DETECTION_RANGE",
-      "docHref": "docs/lane_detection___spec.html#L120C4",
+      "docHref": "docs/lane_detection___spec.html#L105C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L120"
+      "srcHref": "srcs/lane_detection.ads.html#L105"
     },
     {
       "label": "CURB_MAX_VALUE",
-      "docHref": "docs/lane_detection___spec.html#L123C4",
+      "docHref": "docs/lane_detection___spec.html#L108C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L123"
+      "srcHref": "srcs/lane_detection.ads.html#L108"
     },
     {
       "label": "CURB_MIN_DETECTION_RANGE",
-      "docHref": "docs/lane_detection___spec.html#L117C4",
+      "docHref": "docs/lane_detection___spec.html#L102C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L117"
+      "srcHref": "srcs/lane_detection.ads.html#L102"
     },
     {
       "label": "errors_till_backend_failed",
@@ -38,73 +38,73 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "ITERAION_NUM_90_DEGREE",
-      "docHref": "docs/motor_controller___spec.html#L161C4",
-      "declared": "Motor_Controller",
-      "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L161"
-    },
-    {
-      "label": "ITERAION_NUM_DRIVE_OFF",
       "docHref": "docs/motor_controller___spec.html#L163C4",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
       "srcHref": "srcs/motor_controller.ads.html#L163"
     },
     {
+      "label": "ITERAION_NUM_DRIVE_OFF",
+      "docHref": "docs/motor_controller___spec.html#L165C4",
+      "declared": "Motor_Controller",
+      "declared_qualifier": "",
+      "srcHref": "srcs/motor_controller.ads.html#L165"
+    },
+    {
       "label": "LINE_BLACK",
-      "docHref": "docs/lane_detection___spec.html#L108C4",
+      "docHref": "docs/lane_detection___spec.html#L93C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L108"
+      "srcHref": "srcs/lane_detection.ads.html#L93"
     },
     {
       "label": "LINE_DARK_GREY",
+      "docHref": "docs/lane_detection___spec.html#L84C4",
+      "declared": "Lane_Detection",
+      "declared_qualifier": "",
+      "srcHref": "srcs/lane_detection.ads.html#L84"
+    },
+    {
+      "label": "LINE_DELTA",
+      "docHref": "docs/lane_detection___spec.html#L96C4",
+      "declared": "Lane_Detection",
+      "declared_qualifier": "",
+      "srcHref": "srcs/lane_detection.ads.html#L96"
+    },
+    {
+      "label": "LINE_FOLLOW_THRESHHOLD",
       "docHref": "docs/lane_detection___spec.html#L99C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
       "srcHref": "srcs/lane_detection.ads.html#L99"
     },
     {
-      "label": "LINE_DELTA",
-      "docHref": "docs/lane_detection___spec.html#L111C4",
-      "declared": "Lane_Detection",
-      "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L111"
-    },
-    {
-      "label": "LINE_FOLLOW_THRESHHOLD",
-      "docHref": "docs/lane_detection___spec.html#L114C4",
-      "declared": "Lane_Detection",
-      "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L114"
-    },
-    {
       "label": "LINE_LIGHT_GREY",
-      "docHref": "docs/lane_detection___spec.html#L102C4",
+      "docHref": "docs/lane_detection___spec.html#L87C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L102"
+      "srcHref": "srcs/lane_detection.ads.html#L87"
     },
     {
       "label": "LINE_WHITE",
-      "docHref": "docs/lane_detection___spec.html#L105C4",
+      "docHref": "docs/lane_detection___spec.html#L90C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L105"
+      "srcHref": "srcs/lane_detection.ads.html#L90"
     },
     {
       "label": "MOTOR_DRIVE_SPEED",
+      "docHref": "docs/motor_controller___spec.html#L161C4",
+      "declared": "Motor_Controller",
+      "declared_qualifier": "",
+      "srcHref": "srcs/motor_controller.ads.html#L161"
+    },
+    {
+      "label": "MOTOR_ROTATE_SPEED",
       "docHref": "docs/motor_controller___spec.html#L159C4",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
       "srcHref": "srcs/motor_controller.ads.html#L159"
-    },
-    {
-      "label": "MOTOR_ROTATE_SPEED",
-      "docHref": "docs/motor_controller___spec.html#L157C4",
-      "declared": "Motor_Controller",
-      "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L157"
     },
     {
       "label": "ready",
@@ -143,10 +143,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "SENSOR_FAULT",
-      "docHref": "docs/lane_detection___spec.html#L129C4",
+      "docHref": "docs/wc2ec_interface___spec.html#L81C4",
+      "declared": "WC2EC_Interface",
+      "declared_qualifier": "",
+      "srcHref": "srcs/wc2ec_interface.ads.html#L81"
+    },
+    {
+      "label": "SENSOR_FAULT",
+      "docHref": "docs/lane_detection___spec.html#L114C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L129"
+      "srcHref": "srcs/lane_detection.ads.html#L114"
     },
     {
       "label": "SENSOR_FAULT",
@@ -163,6 +170,20 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/wc2ec.ads.html#L80"
     },
     {
+      "label": "SENSOR_MAX_VAL",
+      "docHref": "docs/wc2ec_interface___spec.html#L84C4",
+      "declared": "WC2EC_Interface",
+      "declared_qualifier": "",
+      "srcHref": "srcs/wc2ec_interface.ads.html#L84"
+    },
+    {
+      "label": "SENSOR_MIN_VAL",
+      "docHref": "docs/wc2ec_interface___spec.html#L87C4",
+      "declared": "WC2EC_Interface",
+      "declared_qualifier": "",
+      "srcHref": "srcs/wc2ec_interface.ads.html#L87"
+    },
+    {
       "label": "sensor_ring",
       "docHref": "docs/wc2ec___spec.html#L81C4",
       "declared": "WC2EC",
@@ -171,10 +192,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "WALL_THRESHHOLD",
-      "docHref": "docs/lane_detection___spec.html#L126C4",
+      "docHref": "docs/lane_detection___spec.html#L111C4",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L126"
+      "srcHref": "srcs/lane_detection.ads.html#L111"
     }
   ]
 };

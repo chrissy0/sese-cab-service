@@ -1,7 +1,7 @@
 -- @summary
 -- Motor Controller child test package body.
 --
--- @author Julian Hartmer
+-- @author Julian Hartmer and Chanki Hong
 
 pragma Ada_2012;
 with AUnit.Assertions;        use AUnit.Assertions;
@@ -12,39 +12,108 @@ package body Motor_Controller.Test is
 
    procedure test_calculate_output (T : in out Test)
    is
+      curb_detection_active   : Boolean;
+      input_state             : Cab_State_T;
+      output_state            : Cab_State_T;
+      motor_values            : Motor_Values_T;
+      je_next_signal          : Job_Executer_Next_t;
+      fd_next_signal          : Front_Distance_Next_t;
+      ld_next_signal          : Lane_Detection_Next_T;
+      expected_curb_detection : Boolean;
+      expected_state          : Cab_State_T;
+      expected_motor_values   : Motor_Values_T;
+      expected_je_next_signal : Job_Executer_Next_t;
+      expected_ld_next_signal : Lane_Detection_Next_T;
+      expected_fd_next_signal : Front_Distance_Next_t;
    begin
-      Assert(True, "TODO");
-   end test_calculate_output;
+      curb_detection_active := False;
 
 
-   procedure test_output_no_system_error (T : in out Test)
-   is
-   begin
-      Assert(True, "TODO");
-   end test_output_no_system_error;
+    for I in Lean_State_T loop
+
+       input_state := (Base             => NO_SYSTEM_ERROR,
+                      System_Error     => STAND_ON_TRACK,
+                      No_System_Error  => FRONT_BLOCKED,
+                      Final_Safe_State => ROTATE_LEFT_90,
+                      Front_Is_Clear   => Drive,
+                      Driving          => Init,
+                      Leaning          => I,
+                      Forcing_Left     => False,
+                       Counter => 0);
+         expected_curb_detection := curb_detection_active;
+         expected_state:= input_state;
+         output_state := input_state;
+         calculate_output(output_state,curb_detection_active, motor_values,ld_next_signal,fd_next_signal, je_next_signal);
+
+         case I is
+          when NEXT_LEFT =>
+            expected_ld_next_signal := LEAN_LEFT_S;
+          when NEXT_RIGHT =>
+            expected_ld_next_signal := LEAN_RIGHT_S;
+          when LEAN_FROM_LINE =>
+            expected_ld_next_signal := LEAN_FROM_LINE;
+         end case;
+
+      Assert( expected_ld_next_signal= ld_next_signal, "states differ on input" &I'Image);
+
+     end loop;
 
 
-   procedure test_output_front_is_clear (T : in out Test)
-   is
-   begin
-      Assert(True, "TODO");
-   end test_output_front_is_clear;
+     for I in Motor_Controller_State_T loop
+
+       input_state := (Base             => I,
+                      System_Error     => STAND_ON_TRACK,
+                      No_System_Error  => FRONT_BLOCKED,
+                      Final_Safe_State => ROTATE_LEFT_90,
+                      Front_Is_Clear   => Drive,
+                      Driving          => Init,
+                      Leaning          => NEXT_LEFT,
+                      Forcing_Left     => False,
+                       Counter => 0);
+
+         expected_state:= input_state;
+         output_state := input_state;
+         calculate_output(output_state,curb_detection_active, motor_values,ld_next_signal,fd_next_signal, je_next_signal);
+
+         case I is
+          when SYSTEM_ERROR =>
+            expected_fd_next_signal := EMPTY_S;
+            output_system_error(state          => expected_state,
+                                motor_values   => expected_motor_values,
+                                JE_Next_Signal => expected_je_next_signal);
+          when NO_SYSTEM_ERROR =>
+            expected_fd_next_signal := EMPTY_S;
+            output_no_system_error(state          => expected_state,
+                                   motor_values   => expected_motor_values,
+                                   JE_Next_Signal => expected_je_next_signal);
+          when SHUTDOWN =>
+            expected_motor_values := (others => (others => 0.0));
+            expected_ld_next_signal := SHUTDOWN_S;
+            expected_fd_next_signal := SHUTDOWN_S;
+            expected_je_next_signal := SHUTDOWN_S;
+         end case;
+
+         if expected_curb_detection and expected_ld_next_signal /= SHUTDOWN_S then
+         expected_je_next_signal := NOT_FUNCTIONAL;
+      end if;
+
+         Assert(expected_curb_detection = curb_detection_active and expected_state= output_state and expected_motor_values = motor_values and expected_je_next_signal = je_next_signal
+                and expected_fd_next_signal= fd_next_signal, "states differ on input : " &I'Image);
+     end loop;
 
 
-   procedure test_output_driving (T : in out Test)
-   is
-   begin
-      Assert(True, "TODO");
-   end test_output_driving;
+    end test_calculate_output;
+
+
 
 
    procedure test_do_state_transition (T : in out Test)
    is
       input_state         : Cab_State_T;
-      output_state         : Cab_State_T;
-      expected_state : Cab_State_T;
-      RM_Force_Left : Boolean;
-      is_shutdown   : Boolean;
+      output_state        : Cab_State_T;
+      expected_state      : Cab_State_T;
+      RM_Force_Left       : Boolean;
+      is_shutdown         : Boolean;
    begin
       is_shutdown := False;
       RM_Force_Left := False;
@@ -218,5 +287,248 @@ package body Motor_Controller.Test is
 
    end test_do_state_transition;
 
+   procedure test_output_final_safe_state (T : in out Test)
+   is
+      input_state             : Cab_State_T;
+      output_state            : Cab_State_T;
+      motor_values            : Motor_Values_T;
+      je_next_signal          : Job_Executer_Next_t;
+      expected_state          : Cab_State_T;
+      expected_motor_values   : Motor_Values_T;
+      expected_je_next_signal : Job_Executer_Next_t;
+      MOTOR_ROTATE_SPEED : constant Long_Float := 1.0;
+      MOTOR_DRIVE_SPEED  : constant Long_Float := 3.0;
+   begin
+     for I in Final_Safe_State_State_t loop
+      input_state := (Base             => NO_SYSTEM_ERROR,
+                      System_Error     => STAND_ON_TRACK,
+                      No_System_Error  => FRONT_CLEAR,
+                      Final_Safe_State => I,
+                      Front_Is_Clear   => DRIVE,
+                      Driving          => INIT,
+                      Leaning          => NEXT_LEFT,
+                      Forcing_Left     => False,
+                      Counter => 0);
+
+         expected_state:= input_state;
+         output_state := input_state;
+         output_final_safe_state(output_state, motor_values, je_next_signal);
+
+         case I is
+          when ROTATE_LEFT_90 =>
+              expected_je_next_signal := BLOCKED_S;
+              for v in Vertical_Position_T loop
+                 expected_motor_values(v, LEFT)  := 0.0;
+                 expected_motor_values(v, RIGHT) := MOTOR_ROTATE_SPEED * 2.0;
+              end loop;
+              expected_je_next_signal := BLOCKED_S;
+          when DRIVE_OFF_LEFT =>
+              expected_je_next_signal := BLOCKED_S;
+              expected_motor_values := (others => (others => MOTOR_DRIVE_SPEED * 2.0));
+          when ROTATE_RIGHT_180_DEGREE =>
+              expected_je_next_signal := BLOCKED_S;
+              for v in Vertical_Position_T loop
+                 expected_motor_values(v, LEFT)  := MOTOR_ROTATE_SPEED * 2.0;
+                 expected_motor_values(v, RIGHT) := 0.0;
+              end loop;
+          when DRIVE_OFF_RIGHT =>
+              expected_je_next_signal := BLOCKED_S;
+              expected_motor_values := (others => (others => MOTOR_DRIVE_SPEED * 2.0));
+
+          when DONE =>
+              expected_je_next_signal := EMPTY_S;
+              expected_motor_values := (others => (others => 0.0));
+         end case;
+
+       Assert(expected_state = output_state and expected_motor_values = motor_values and expected_je_next_signal = je_next_signal  , "states differ on input" &I'Image);
+      end loop;
+
+
+   end test_output_final_safe_state;
+
+
+
+
+   procedure test_output_system_error (T : in out Test)
+   is
+      input_state             : Cab_State_T;
+      output_state            : Cab_State_T;
+      motor_values            : Motor_Values_T;
+      je_next_signal          : Job_Executer_Next_t;
+      expected_state          : Cab_State_T;
+      expected_motor_values   : Motor_Values_T;
+      expected_je_next_signal : Job_Executer_Next_t;
+   begin
+      for I in System_Error_State_T loop
+       input_state := (Base             => NO_SYSTEM_ERROR,
+                      System_Error     => I,
+                      No_System_Error  => FRONT_CLEAR,
+                      Final_Safe_State => DONE,
+                      Front_Is_Clear   => DRIVE,
+                      Driving          => INIT,
+                      Leaning          => NEXT_LEFT,
+                      Forcing_Left     => False,
+                      Counter => 0);
+
+         expected_state:= input_state;
+         output_state := input_state;
+         output_system_error(output_state, motor_values, je_next_signal);
+
+         case I is
+            when FINAL_SAFE_STATE =>
+                output_final_safe_state(state          => expected_state,
+                                       motor_values   => expected_motor_values,
+                                       JE_Next_Signal => expected_je_next_signal);
+            when STAND_ON_TRACK =>
+               expected_je_next_signal := BLOCKED_S;
+               expected_motor_values := (others => (others => 0.0));
+         end case;
+
+         Assert(expected_state = output_state and expected_motor_values = motor_values and expected_je_next_signal = je_next_signal  , "states differ on input" &I'Image);
+         end loop;
+    end test_output_system_error;
+
+
+   procedure test_output_no_system_error (T : in out Test)
+   is
+      input_state             : Cab_State_T;
+      output_state            : Cab_State_T;
+      motor_values            : Motor_Values_T;
+      je_next_signal          : Job_Executer_Next_t;
+      expected_state          : Cab_State_T;
+      expected_motor_values   : Motor_Values_T;
+      expected_je_next_signal : Job_Executer_Next_t;
+   begin
+      for I in No_System_Error_State_T loop
+      input_state := (Base             => NO_SYSTEM_ERROR,
+                      System_Error     => STAND_ON_TRACK,
+                      No_System_Error  => I,
+                      Final_Safe_State => DONE,
+                      Front_Is_Clear   => DRIVE,
+                      Driving          => INIT,
+                      Leaning          => NEXT_LEFT,
+                      Forcing_Left     => False,
+                      Counter => 0);
+
+         expected_state:= input_state;
+         output_state := input_state;
+         output_no_system_error(output_state, motor_values, je_next_signal);
+
+         case I is
+            when FRONT_CLEAR =>
+               expected_je_next_signal := EMPTY_S;
+               output_front_is_clear(state          => expected_state,
+                                     motor_values   => expected_motor_values);
+            when FRONT_BLOCKED =>
+               expected_je_next_signal := BLOCKED_S;
+               expected_motor_values := (others => (others => 0.0));
+         end case;
+
+         Assert(expected_state = output_state and expected_motor_values = motor_values and expected_je_next_signal = je_next_signal  , "states differ on input" &I'Image);
+         end loop;
+   end test_output_no_system_error;
+
+
+   procedure test_output_front_is_clear (T : in out Test)
+   is
+      input_state           : Cab_State_T;
+      output_state          : Cab_State_T;
+      motor_values          : Motor_Values_T;
+      expected_state        : Cab_State_T;
+      expected_motor_values : Motor_Values_T;
+   begin
+      for I in Front_Clear_State_T loop
+       input_state := (Base             => NO_SYSTEM_ERROR,
+                      System_Error     => STAND_ON_TRACK,
+                      No_System_Error  => FRONT_BLOCKED,
+                      Final_Safe_State => DONE,
+                      Front_Is_Clear   => I,
+                      Driving          => INIT,
+                      Leaning          => NEXT_LEFT,
+                      Forcing_Left     => False,
+                       Counter => 0);
+
+         expected_state:= input_state;
+         output_state := input_state;
+         output_front_is_clear(output_state, motor_values);
+
+         case I is
+            when DRIVE =>
+                output_driving(state          => expected_state,
+                               motor_values   => expected_motor_values);
+            when STOP =>
+               expected_motor_values := (others => (others => 0.0));
+         end case;
+         Assert(expected_state = output_state and expected_motor_values = motor_values , "states differ on input" &I'Image);
+       end loop;
+   end test_output_front_is_clear;
+
+
+   procedure test_output_driving (T : in out Test)
+   is
+      input_state           : Cab_State_T;
+      output_state          : Cab_State_T;
+      motor_values          : Motor_Values_T;
+      expected_state        : Cab_State_T;
+      expected_motor_values : Motor_Values_T;
+      MOTOR_DRIVE_SPEED  : constant Long_Float := 3.0;
+   begin
+      for I in Drive_State_T loop
+       input_state := (Base             => NO_SYSTEM_ERROR,
+                      System_Error     => STAND_ON_TRACK,
+                      No_System_Error  => FRONT_BLOCKED,
+                      Final_Safe_State => DONE,
+                      Front_Is_Clear   => Drive,
+                      Driving          => I,
+                      Leaning          => NEXT_LEFT,
+                      Forcing_Left     => False,
+                      Counter => 0);
+
+
+         expected_state:= input_state;
+         output_state := input_state;
+         output_driving(output_state, motor_values);
+
+         case I is
+            when STRAIGHT =>
+               expected_state.Driving := STRAIGHT;
+               expected_motor_values := (others => (others => MOTOR_DRIVE_SPEED));
+            when ROTATE_LEFT =>
+               expected_state.Driving := ROTATE_LEFT;
+               for v in Vertical_Position_T loop
+               expected_motor_values(v, LEFT)  := -MOTOR_ROTATE_SPEED;
+               expected_motor_values(v, RIGHT) := MOTOR_ROTATE_SPEED;
+               end loop;
+            when ROTATE_RIGHT =>
+               expected_state.Driving := ROTATE_RIGHT;
+               for v in Vertical_Position_T loop
+               expected_motor_values(v, LEFT)  := MOTOR_ROTATE_SPEED;
+               expected_motor_values(v, RIGHT) := -MOTOR_ROTATE_SPEED;
+               end loop;
+            when INIT =>
+               expected_state.Driving := INIT;
+               expected_motor_values := (others => (others => 0.0));
+         end case;
+
+         Assert(expected_state = output_state and expected_motor_values = motor_values , "states differ on input" &I'Image);
+      end loop;
+   end test_output_driving;
+
+
 
 end Motor_Controller.Test;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

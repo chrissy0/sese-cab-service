@@ -17,10 +17,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "get_curb_sensor_value_access",
-      "docHref": "docs/lane_detection___spec.html#L54C9",
+      "docHref": "docs/lane_detection___spec.html#L53C9",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L54"
+      "srcHref": "srcs/lane_detection.ads.html#L53"
     },
     {
       "label": "get_line_sensor_value_access",
@@ -44,13 +44,6 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/front_distance.ads.html#L35"
     },
     {
-      "label": "get_wall_sensor_value_access",
-      "docHref": "docs/lane_detection___spec.html#L68C9",
-      "declared": "Lane_Detection",
-      "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L68"
-    },
-    {
       "label": "Job_Executer_Task_Access_T",
       "docHref": "docs/job_executer___spec.html#L20C9",
       "declared": "Job_Executer",
@@ -59,10 +52,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "Motor_Controller_Task_Access_T",
-      "docHref": "docs/motor_controller___spec.html#L153C9",
+      "docHref": "docs/motor_controller___spec.html#L155C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L153"
+      "srcHref": "srcs/motor_controller.ads.html#L155"
     },
     {
       "label": "Roadmarker_Task_Acces_T",

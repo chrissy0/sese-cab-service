@@ -145,7 +145,7 @@ package body Front_Distance is
       Log_Line("... constructor done");
 
       -- main loop
-      while running loop
+Main_Loop: while running loop
 
          -- retrieve sensor values
          retrieve_all_sensor_values(all_sensor_values, get_sensor_value_func);
@@ -181,7 +181,7 @@ package body Front_Distance is
 
 
          <<Continue>>
-      end loop;
+      end loop Main_Loop;
       Log_Line
         (" Shutting down. So long, and thanks for all the distance (?)");
 

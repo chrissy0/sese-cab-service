@@ -18,25 +18,6 @@ package body Motor_Controller_Suite is
    function Suite return Access_Test_Suite is
       Ret : constant Access_Test_Suite := new Test_Suite;
    begin
-      --  Ret.Add_Test
-      --    (Caller.Create
-      --       ("Test Motor Controller drive_state_output",
-      --        Motor_Controller.Test.test_drive_states'Access));
-      --
-      --  Ret.Add_Test
-      --    (Caller.Create
-      --       ("Test Motor Controller test_normal_driving_states",
-      --        Motor_Controller.Test.test_normal_driving_states'Access));
-      --
-      --  Ret.Add_Test
-      --    (Caller.Create
-      --       ("Test Motor Controller test_front_clear_states",
-      --        Motor_Controller.Test.test_front_clear_states'Access));
-      --
-      --  Ret.Add_Test
-      --    (Caller.Create
-      --       ("Test Motor Controller test_front_clear_states",
-      --        Motor_Controller.Test.test_lean_states'Access));
 
       Ret.Add_Test
         (Caller.Create
@@ -47,6 +28,16 @@ package body Motor_Controller_Suite is
         (Caller.Create
            ("test_do_state_transition",
             test_do_state_transition'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("test_output_final_safe_state",
+            test_output_final_safe_state'Access));
+
+      Ret.Add_Test
+        (Caller.Create
+           ("test_output_system_error",
+            test_output_system_error'Access));
 
       Ret.Add_Test
         (Caller.Create

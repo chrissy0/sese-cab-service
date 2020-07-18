@@ -80,8 +80,9 @@ package Motor_Controller is
    -- @value SHUTDOWN_S Shutdown the Job Executer Thread
    -- @value EMPTY_S Nothing new
    -- @value BLOCKED_S Front is blocked
+   -- @value NOT_FUNCTIONAL cab cannot execute jobs
    type Job_Executer_Next_t is
-     (SHUTDOWN_S, EMPTY_S, BLOCKED_S);
+     (SHUTDOWN_S, EMPTY_S, BLOCKED_S, NOT_FUNCTIONAL);
 
    -- Task to evaluate all other tasks' output and set the motor actor
    -- accordingly. Communicates with Lane_Detection, Roadmarker, Job_Executer
@@ -105,8 +106,9 @@ package Motor_Controller is
 
       -- Rendezvous synchronization for lane detection to get iteration result.
       -- @param Signal lane detection iteration result
+      -- @param is_curb_detection true: curb detection on, false: line detection on
       entry lane_detection_done
-        (Signal : in Lane_Detection_Done_T);
+        (Signal : in Lane_Detection_Done_T; is_curb_detection : in Boolean);
 
       -- Rendezvous synchronization for lane detection to wait for next iteration.
       -- @param Signal Command for next iteration
@@ -158,7 +160,7 @@ private
    -- Wheel speed when driving forwards
    MOTOR_DRIVE_SPEED  : constant Long_Float := 3.0;
    -- Number of iterations to rotate 90 degrees
-   ITERAION_NUM_90_DEGREE : constant Natural := 90;
+   ITERAION_NUM_90_DEGREE : constant Natural := 70;
    -- Number of iterations to drive off track when rotated to left or right
    ITERAION_NUM_DRIVE_OFF : constant Natural := 70;
 
@@ -248,11 +250,12 @@ private
    -- @value JE_Next_Signal Output value sent to Job Executer on Job_Executer_Next_Signal
    procedure calculate_output
      (
-      state          : Cab_State_T;
-      motor_values   : out Motor_Values_T;
-      LD_Next_Signal : out Lane_Detection_Next_T;
-      FD_Next_Signal : out Front_Distance_Next_t;
-      JE_Next_Signal : out Job_Executer_Next_t
+      state                 : Cab_State_T;
+      curb_detection_active : Boolean;
+      motor_values          : out Motor_Values_T;
+      LD_Next_Signal        : out Lane_Detection_Next_T;
+      FD_Next_Signal        : out Front_Distance_Next_t;
+      JE_Next_Signal        : out Job_Executer_Next_t
      );
 
    -- Calculate outputs by using the state's System_Error variable

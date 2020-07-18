@@ -11,7 +11,7 @@ GNATdoc.Documentation = {
         {
           "label": "CURB_MAX_DETECTION_RANGE",
           "qualifier": "",
-          "line": 120,
+          "line": 105,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -22,7 +22,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 120,
+                  "number": 105,
                   "children": [
                     {
                       "kind": "span",
@@ -102,7 +102,7 @@ GNATdoc.Documentation = {
         {
           "label": "CURB_MAX_VALUE",
           "qualifier": "",
-          "line": 123,
+          "line": 108,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -113,7 +113,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 123,
+                  "number": 108,
                   "children": [
                     {
                       "kind": "span",
@@ -193,7 +193,7 @@ GNATdoc.Documentation = {
         {
           "label": "CURB_MIN_DETECTION_RANGE",
           "qualifier": "",
-          "line": 117,
+          "line": 102,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -204,7 +204,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 117,
+                  "number": 102,
                   "children": [
                     {
                       "kind": "span",
@@ -284,7 +284,7 @@ GNATdoc.Documentation = {
         {
           "label": "LINE_BLACK",
           "qualifier": "",
-          "line": 108,
+          "line": 93,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -295,7 +295,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 108,
+                  "number": 93,
                   "children": [
                     {
                       "kind": "span",
@@ -375,7 +375,7 @@ GNATdoc.Documentation = {
         {
           "label": "LINE_DARK_GREY",
           "qualifier": "",
-          "line": 99,
+          "line": 84,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -386,7 +386,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 99,
+                  "number": 84,
                   "children": [
                     {
                       "kind": "span",
@@ -466,7 +466,7 @@ GNATdoc.Documentation = {
         {
           "label": "LINE_DELTA",
           "qualifier": "",
-          "line": 111,
+          "line": 96,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -477,7 +477,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 111,
+                  "number": 96,
                   "children": [
                     {
                       "kind": "span",
@@ -557,7 +557,7 @@ GNATdoc.Documentation = {
         {
           "label": "LINE_FOLLOW_THRESHHOLD",
           "qualifier": "",
-          "line": 114,
+          "line": 99,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -568,7 +568,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 114,
+                  "number": 99,
                   "children": [
                     {
                       "kind": "span",
@@ -668,7 +668,7 @@ GNATdoc.Documentation = {
         {
           "label": "LINE_LIGHT_GREY",
           "qualifier": "",
-          "line": 102,
+          "line": 87,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -679,7 +679,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 102,
+                  "number": 87,
                   "children": [
                     {
                       "kind": "span",
@@ -759,7 +759,7 @@ GNATdoc.Documentation = {
         {
           "label": "LINE_WHITE",
           "qualifier": "",
-          "line": 105,
+          "line": 90,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -770,7 +770,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 105,
+                  "number": 90,
                   "children": [
                     {
                       "kind": "span",
@@ -850,7 +850,7 @@ GNATdoc.Documentation = {
         {
           "label": "SENSOR_FAULT",
           "qualifier": "",
-          "line": 129,
+          "line": 114,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -861,7 +861,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 129,
+                  "number": 114,
                   "children": [
                     {
                       "kind": "span",
@@ -946,7 +946,7 @@ GNATdoc.Documentation = {
         {
           "label": "WALL_THRESHHOLD",
           "qualifier": "",
-          "line": 126,
+          "line": 111,
           "column": 4,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -957,7 +957,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 126,
+                  "number": 111,
                   "children": [
                     {
                       "kind": "span",
@@ -1042,7 +1042,7 @@ GNATdoc.Documentation = {
         {
           "label": "Curb_Detected_Array_T",
           "qualifier": "",
-          "line": 155,
+          "line": 137,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -1053,7 +1053,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 155,
+                  "number": 137,
                   "children": [
                     {
                       "kind": "span",
@@ -1074,7 +1074,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Detected_Array_T",
-                      "href": "docs/lane_detection___spec.html#L155C9"
+                      "href": "docs/lane_detection___spec.html#L137C9"
                     },
                     {
                       "kind": "span",
@@ -1136,7 +1136,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Detected_T",
-                      "href": "docs/lane_detection___spec.html#L152C9"
+                      "href": "docs/lane_detection___spec.html#L134C9"
                     },
                     {
                       "kind": "span",
@@ -1161,7 +1161,7 @@ GNATdoc.Documentation = {
         {
           "label": "Curb_Detected_T",
           "qualifier": "",
-          "line": 152,
+          "line": 134,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -1172,7 +1172,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 152,
+                  "number": 134,
                   "children": [
                     {
                       "kind": "span",
@@ -1193,7 +1193,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Detected_T",
-                      "href": "docs/lane_detection___spec.html#L152C9"
+                      "href": "docs/lane_detection___spec.html#L134C9"
                     },
                     {
                       "kind": "span",
@@ -1219,7 +1219,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DETECTED_TOO_CLOSE",
-                      "href": "docs/lane_detection___spec.html#L152C29"
+                      "href": "docs/lane_detection___spec.html#L134C29"
                     },
                     {
                       "kind": "span",
@@ -1235,7 +1235,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DETECTED",
-                      "href": "docs/lane_detection___spec.html#L152C49"
+                      "href": "docs/lane_detection___spec.html#L134C49"
                     },
                     {
                       "kind": "span",
@@ -1251,7 +1251,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DETECTED_TOO_FAR",
-                      "href": "docs/lane_detection___spec.html#L152C59"
+                      "href": "docs/lane_detection___spec.html#L134C59"
                     },
                     {
                       "kind": "span",
@@ -1267,7 +1267,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FAILURE",
-                      "href": "docs/lane_detection___spec.html#L152C77"
+                      "href": "docs/lane_detection___spec.html#L134C77"
                     },
                     {
                       "kind": "span",
@@ -1283,7 +1283,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "NOT_DETECTED",
-                      "href": "docs/lane_detection___spec.html#L152C86"
+                      "href": "docs/lane_detection___spec.html#L134C86"
                     },
                     {
                       "kind": "span",
@@ -1294,7 +1294,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/lane_detection___spec.html#L152C9"
+                      "href": "docs/lane_detection___spec.html#L134C9"
                     }
                   ]
                 }
@@ -1313,7 +1313,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "DETECTED_TOO_CLOSE",
-              "line": 152,
+              "line": 134,
               "column": 29,
               "description": [
                 {
@@ -1329,7 +1329,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "DETECTED",
-              "line": 152,
+              "line": 134,
               "column": 49,
               "description": [
                 {
@@ -1345,7 +1345,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "DETECTED_TOO_FAR",
-              "line": 152,
+              "line": 134,
               "column": 59,
               "description": [
                 {
@@ -1361,7 +1361,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "FAILURE",
-              "line": 152,
+              "line": 134,
               "column": 77,
               "description": [
                 {
@@ -1377,7 +1377,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "NOT_DETECTED",
-              "line": 152,
+              "line": 134,
               "column": 86,
               "description": [
                 {
@@ -1573,7 +1573,7 @@ GNATdoc.Documentation = {
         {
           "label": "Curb_Sensor_Values_Array_T",
           "qualifier": "",
-          "line": 135,
+          "line": 120,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -1584,7 +1584,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 135,
+                  "number": 120,
                   "children": [
                     {
                       "kind": "span",
@@ -1605,7 +1605,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L135C9"
+                      "href": "docs/lane_detection___spec.html#L120C9"
                     },
                     {
                       "kind": "span",
@@ -1636,22 +1636,6 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Curb_Sensor_Position_T",
-                      "href": "docs/lane_detection___spec.html#L25C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ","
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -1722,7 +1706,7 @@ GNATdoc.Documentation = {
         {
           "label": "Line_Sensor_Array_Failure_Array_T",
           "qualifier": "",
-          "line": 144,
+          "line": 126,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -1733,7 +1717,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 144,
+                  "number": 126,
                   "children": [
                     {
                       "kind": "span",
@@ -1754,7 +1738,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Array_Failure_Array_T",
-                      "href": "docs/lane_detection___spec.html#L144C9"
+                      "href": "docs/lane_detection___spec.html#L126C9"
                     },
                     {
                       "kind": "span",
@@ -1839,7 +1823,7 @@ GNATdoc.Documentation = {
         {
           "label": "Line_Sensor_Detected_Array_T",
           "qualifier": "",
-          "line": 141,
+          "line": 123,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -1850,7 +1834,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 141,
+                  "number": 123,
                   "children": [
                     {
                       "kind": "span",
@@ -1871,7 +1855,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Detected_Array_T",
-                      "href": "docs/lane_detection___spec.html#L141C9"
+                      "href": "docs/lane_detection___spec.html#L123C9"
                     },
                     {
                       "kind": "span",
@@ -2149,7 +2133,7 @@ GNATdoc.Documentation = {
         {
           "label": "Line_Sensor_Values_Array_T",
           "qualifier": "",
-          "line": 132,
+          "line": 117,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -2160,7 +2144,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 132,
+                  "number": 117,
                   "children": [
                     {
                       "kind": "span",
@@ -2181,7 +2165,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L132C9"
+                      "href": "docs/lane_detection___spec.html#L117C9"
                     },
                     {
                       "kind": "span",
@@ -2423,139 +2407,6 @@ GNATdoc.Documentation = {
               ]
             }
           ]
-        },
-        {
-          "label": "Wall_Sensor_Values_Array_T",
-          "qualifier": "",
-          "line": 138,
-          "column": 9,
-          "src": "srcs/lane_detection.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 138,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "type"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Wall_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L138C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "is"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "array"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Sensor_Orientation_T",
-                      "href": "docs/lane_detection___spec.html#L31C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ","
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Boolean"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "of"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Long_Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "array of sensor values. Second index true => access backup sensor\n"
-                }
-              ]
-            }
-          ]
         }
       ],
       "label": "Simple types"
@@ -2565,7 +2416,7 @@ GNATdoc.Documentation = {
         {
           "label": "get_curb_sensor_value_access",
           "qualifier": "",
-          "line": 54,
+          "line": 53,
           "column": 9,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -2576,7 +2427,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 54,
+                  "number": 53,
                   "children": [
                     {
                       "kind": "span",
@@ -2592,7 +2443,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 55,
+                  "number": 54,
                   "children": [
                     {
                       "kind": "span",
@@ -2608,6 +2459,47 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
+                  "number": 55,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "        "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "orientation"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Sensor_Orientation_T"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
                   "number": 56,
                   "children": [
                     {
@@ -2618,92 +2510,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "pos"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "         "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Curb_Sensor_Position_T"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 57,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "        "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "orientation",
-                      "href": "docs/lane_detection___spec.html#L57C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Sensor_Orientation_T",
-                      "href": "docs/lane_detection___spec.html#L25C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 58,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "        "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
                       "text": "is_backup",
-                      "href": "docs/lane_detection___spec.html#L58C9"
+                      "href": "docs/lane_detection___spec.html#L56C9"
                     },
                     {
                       "kind": "span",
@@ -2730,7 +2538,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 59,
+                  "number": 57,
                   "children": [
                     {
                       "kind": "span",
@@ -2974,191 +2782,6 @@ GNATdoc.Documentation = {
               ]
             }
           ]
-        },
-        {
-          "label": "get_wall_sensor_value_access",
-          "qualifier": "",
-          "line": 68,
-          "column": 9,
-          "src": "srcs/lane_detection.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 68,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "     "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 69,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 70,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "        "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "orientation"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Sensor_Orientation_T"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 71,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "        "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "is_backup",
-                      "href": "docs/lane_detection___spec.html#L71C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Boolean",
-                      "href": "docs/lane_detection___spec.html#L31C9"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 72,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "       "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Long_Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Acces type to getter function for curb sensor values.\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "The sensor is referenced by ID and a Boolean. The boolean indicates\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "whether the normal sensor (False) or the default sensor (True) is read.\n"
-                }
-              ]
-            }
-          ]
         }
       ],
       "label": "Access types"
@@ -3168,12 +2791,12 @@ GNATdoc.Documentation = {
         {
           "label": "Lane_Detection_Taks_T",
           "qualifier": "",
-          "line": 77,
+          "line": 63,
           "column": 14,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
           ],
-          "href": "../docs/lane_detection___lane_detection_taks_t___spec.html#L77C14"
+          "href": "../docs/lane_detection___lane_detection_taks_t___spec.html#L63C14"
         }
       ],
       "label": "Tasks and task types"
@@ -3183,7 +2806,7 @@ GNATdoc.Documentation = {
         {
           "label": "calculate_output",
           "qualifier": "",
-          "line": 183,
+          "line": 163,
           "column": 13,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -3194,7 +2817,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 183,
+                  "number": 163,
                   "children": [
                     {
                       "kind": "span",
@@ -3215,13 +2838,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "calculate_output",
-                      "href": "docs/lane_detection___spec.html#L183C13"
+                      "href": "docs/lane_detection___spec.html#L163C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 184,
+                  "number": 164,
                   "children": [
                     {
                       "kind": "span",
@@ -3237,7 +2860,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 185,
+                  "number": 165,
                   "children": [
                     {
                       "kind": "span",
@@ -3248,7 +2871,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "line_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L185C7"
+                      "href": "docs/lane_detection___spec.html#L165C7"
                     },
                     {
                       "kind": "span",
@@ -3269,7 +2892,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L132C9"
+                      "href": "docs/lane_detection___spec.html#L117C9"
                     },
                     {
                       "kind": "span",
@@ -3280,7 +2903,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 186,
+                  "number": 166,
                   "children": [
                     {
                       "kind": "span",
@@ -3291,7 +2914,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "curb_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L186C7"
+                      "href": "docs/lane_detection___spec.html#L166C7"
                     },
                     {
                       "kind": "span",
@@ -3312,7 +2935,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L135C9"
+                      "href": "docs/lane_detection___spec.html#L120C9"
                     },
                     {
                       "kind": "span",
@@ -3323,50 +2946,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 187,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "wall_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L187C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Wall_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L138C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 188,
+                  "number": 167,
                   "children": [
                     {
                       "kind": "span",
@@ -3377,7 +2957,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "is_lean_from_line",
-                      "href": "docs/lane_detection___spec.html#L188C7"
+                      "href": "docs/lane_detection___spec.html#L167C7"
                     },
                     {
                       "kind": "span",
@@ -3408,7 +2988,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 189,
+                  "number": 168,
                   "children": [
                     {
                       "kind": "span",
@@ -3419,7 +2999,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Leaning_Left",
-                      "href": "docs/lane_detection___spec.html#L189C7"
+                      "href": "docs/lane_detection___spec.html#L168C7"
                     },
                     {
                       "kind": "span",
@@ -3460,12 +3040,64 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 190,
+                  "number": 169,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "is_curb_detection",
+                      "href": "docs/lane_detection___spec.html#L169C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "  "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 170,
                   "children": [
                     {
                       "kind": "span",
@@ -3524,11 +3156,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "line_sensor_values",
-              "line": 185,
+              "line": 165,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L132C9"
+                "docHref": "docs/lane_detection___spec.html#L117C9"
               },
               "description": [
                 {
@@ -3544,11 +3176,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "curb_sensor_values",
-              "line": 186,
+              "line": 166,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Curb_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L135C9"
+                "docHref": "docs/lane_detection___spec.html#L120C9"
               },
               "description": [
                 {
@@ -3557,23 +3189,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "text": "initialized curb sensor values\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "wall_sensor_values",
-              "line": 187,
-              "column": 7,
-              "type": {
-                "label": "Lane_Detection.Wall_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L138C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "text": "initialized wall sensor values\n"
@@ -3584,7 +3200,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "is_lean_from_line",
-              "line": 188,
+              "line": 167,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -3603,7 +3219,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Leaning_Left",
-              "line": 189,
+              "line": 168,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -3618,6 +3234,16 @@ GNATdoc.Documentation = {
                     }
                   ]
                 }
+              ]
+            },
+            {
+              "label": "is_curb_detection",
+              "line": 169,
+              "column": 7,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
               ]
             }
           ],
@@ -3638,7 +3264,7 @@ GNATdoc.Documentation = {
         {
           "label": "detect_lanes",
           "qualifier": "",
-          "line": 197,
+          "line": 177,
           "column": 14,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -3649,7 +3275,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 197,
+                  "number": 177,
                   "children": [
                     {
                       "kind": "span",
@@ -3670,13 +3296,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "detect_lanes",
-                      "href": "docs/lane_detection___spec.html#L197C14"
+                      "href": "docs/lane_detection___spec.html#L177C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 198,
+                  "number": 178,
                   "children": [
                     {
                       "kind": "span",
@@ -3692,7 +3318,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 199,
+                  "number": 179,
                   "children": [
                     {
                       "kind": "span",
@@ -3703,7 +3329,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "all_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L199C7"
+                      "href": "docs/lane_detection___spec.html#L179C7"
                     },
                     {
                       "kind": "span",
@@ -3724,7 +3350,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L132C9"
+                      "href": "docs/lane_detection___spec.html#L117C9"
                     },
                     {
                       "kind": "span",
@@ -3735,7 +3361,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 200,
+                  "number": 180,
                   "children": [
                     {
                       "kind": "span",
@@ -3746,7 +3372,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "detected_array",
-                      "href": "docs/lane_detection___spec.html#L200C7"
+                      "href": "docs/lane_detection___spec.html#L180C7"
                     },
                     {
                       "kind": "span",
@@ -3777,7 +3403,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Detected_Array_T",
-                      "href": "docs/lane_detection___spec.html#L141C9"
+                      "href": "docs/lane_detection___spec.html#L123C9"
                     },
                     {
                       "kind": "span",
@@ -3788,7 +3414,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 201,
+                  "number": 181,
                   "children": [
                     {
                       "kind": "span",
@@ -3799,7 +3425,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "sensor_array_failure",
-                      "href": "docs/lane_detection___spec.html#L201C7"
+                      "href": "docs/lane_detection___spec.html#L181C7"
                     },
                     {
                       "kind": "span",
@@ -3830,13 +3456,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Array_Failure_Array_T",
-                      "href": "docs/lane_detection___spec.html#L144C9"
+                      "href": "docs/lane_detection___spec.html#L126C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 202,
+                  "number": 182,
                   "children": [
                     {
                       "kind": "span",
@@ -3874,11 +3500,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "all_sensor_values",
-              "line": 199,
+              "line": 179,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L132C9"
+                "docHref": "docs/lane_detection___spec.html#L117C9"
               },
               "description": [
                 {
@@ -3894,11 +3520,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "detected_array",
-              "line": 200,
+              "line": 180,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Detected_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L141C9"
+                "docHref": "docs/lane_detection___spec.html#L123C9"
               },
               "description": [
                 {
@@ -3914,11 +3540,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "sensor_array_failure",
-              "line": 201,
+              "line": 181,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Array_Failure_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L144C9"
+                "docHref": "docs/lane_detection___spec.html#L126C9"
               },
               "description": [
                 {
@@ -3937,7 +3563,7 @@ GNATdoc.Documentation = {
         {
           "label": "get_lean_from_line_color",
           "qualifier": "",
-          "line": 239,
+          "line": 219,
           "column": 13,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -3948,7 +3574,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 239,
+                  "number": 219,
                   "children": [
                     {
                       "kind": "span",
@@ -3969,13 +3595,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_lean_from_line_color",
-                      "href": "docs/lane_detection___spec.html#L239C13"
+                      "href": "docs/lane_detection___spec.html#L219C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 240,
+                  "number": 220,
                   "children": [
                     {
                       "kind": "span",
@@ -3991,7 +3617,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 241,
+                  "number": 221,
                   "children": [
                     {
                       "kind": "span",
@@ -4002,7 +3628,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "line_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L241C7"
+                      "href": "docs/lane_detection___spec.html#L221C7"
                     },
                     {
                       "kind": "span",
@@ -4023,7 +3649,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L132C9"
+                      "href": "docs/lane_detection___spec.html#L117C9"
                     },
                     {
                       "kind": "span",
@@ -4034,7 +3660,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 242,
+                  "number": 222,
                   "children": [
                     {
                       "kind": "span",
@@ -4045,7 +3671,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "sensor_array_failure",
-                      "href": "docs/lane_detection___spec.html#L242C7"
+                      "href": "docs/lane_detection___spec.html#L222C7"
                     },
                     {
                       "kind": "span",
@@ -4066,7 +3692,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Array_Failure_Array_T",
-                      "href": "docs/lane_detection___spec.html#L144C9"
+                      "href": "docs/lane_detection___spec.html#L126C9"
                     },
                     {
                       "kind": "span",
@@ -4077,7 +3703,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 243,
+                  "number": 223,
                   "children": [
                     {
                       "kind": "span",
@@ -4088,7 +3714,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "old_lean",
-                      "href": "docs/lane_detection___spec.html#L243C7"
+                      "href": "docs/lane_detection___spec.html#L223C7"
                     },
                     {
                       "kind": "span",
@@ -4114,7 +3740,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 244,
+                  "number": 224,
                   "children": [
                     {
                       "kind": "span",
@@ -4168,11 +3794,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "line_sensor_values",
-              "line": 241,
+              "line": 221,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L132C9"
+                "docHref": "docs/lane_detection___spec.html#L117C9"
               },
               "description": [
                 {
@@ -4188,11 +3814,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "sensor_array_failure",
-              "line": 242,
+              "line": 222,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Array_Failure_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L144C9"
+                "docHref": "docs/lane_detection___spec.html#L126C9"
               },
               "description": [
                 {
@@ -4208,7 +3834,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "old_lean",
-              "line": 243,
+              "line": 223,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -4243,7 +3869,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_from_curb_detection",
           "qualifier": "",
-          "line": 229,
+          "line": 209,
           "column": 13,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -4254,7 +3880,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 229,
+                  "number": 209,
                   "children": [
                     {
                       "kind": "span",
@@ -4275,13 +3901,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_from_curb_detection",
-                      "href": "docs/lane_detection___spec.html#L229C13"
+                      "href": "docs/lane_detection___spec.html#L209C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 230,
+                  "number": 210,
                   "children": [
                     {
                       "kind": "span",
@@ -4297,7 +3923,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 231,
+                  "number": 211,
                   "children": [
                     {
                       "kind": "span",
@@ -4308,7 +3934,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "curb_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L231C7"
+                      "href": "docs/lane_detection___spec.html#L211C7"
                     },
                     {
                       "kind": "span",
@@ -4329,13 +3955,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L135C9"
+                      "href": "docs/lane_detection___spec.html#L120C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 232,
+                  "number": 212,
                   "children": [
                     {
                       "kind": "span",
@@ -4390,11 +4016,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "curb_sensor_values",
-              "line": 231,
+              "line": 211,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Curb_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L135C9"
+                "docHref": "docs/lane_detection___spec.html#L120C9"
               },
               "description": [
                 {
@@ -4426,7 +4052,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_from_line_detection",
           "qualifier": "",
-          "line": 219,
+          "line": 199,
           "column": 13,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -4437,7 +4063,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 219,
+                  "number": 199,
                   "children": [
                     {
                       "kind": "span",
@@ -4458,13 +4084,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_from_line_detection",
-                      "href": "docs/lane_detection___spec.html#L219C13"
+                      "href": "docs/lane_detection___spec.html#L199C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 220,
+                  "number": 200,
                   "children": [
                     {
                       "kind": "span",
@@ -4480,7 +4106,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 221,
+                  "number": 201,
                   "children": [
                     {
                       "kind": "span",
@@ -4491,7 +4117,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "detected_array",
-                      "href": "docs/lane_detection___spec.html#L221C7"
+                      "href": "docs/lane_detection___spec.html#L201C7"
                     },
                     {
                       "kind": "span",
@@ -4512,7 +4138,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Detected_Array_T",
-                      "href": "docs/lane_detection___spec.html#L141C9"
+                      "href": "docs/lane_detection___spec.html#L123C9"
                     },
                     {
                       "kind": "span",
@@ -4523,7 +4149,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 222,
+                  "number": 202,
                   "children": [
                     {
                       "kind": "span",
@@ -4534,7 +4160,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Leaning_Left",
-                      "href": "docs/lane_detection___spec.html#L222C7"
+                      "href": "docs/lane_detection___spec.html#L202C7"
                     },
                     {
                       "kind": "span",
@@ -4565,7 +4191,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 223,
+                  "number": 203,
                   "children": [
                     {
                       "kind": "span",
@@ -4576,7 +4202,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "sensor_array_failure",
-                      "href": "docs/lane_detection___spec.html#L223C7"
+                      "href": "docs/lane_detection___spec.html#L203C7"
                     },
                     {
                       "kind": "span",
@@ -4597,13 +4223,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Array_Failure_Array_T",
-                      "href": "docs/lane_detection___spec.html#L144C9"
+                      "href": "docs/lane_detection___spec.html#L126C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 224,
+                  "number": 204,
                   "children": [
                     {
                       "kind": "span",
@@ -4698,11 +4324,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "detected_array",
-              "line": 221,
+              "line": 201,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Detected_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L141C9"
+                "docHref": "docs/lane_detection___spec.html#L123C9"
               },
               "description": [
                 {
@@ -4718,7 +4344,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Leaning_Left",
-              "line": 222,
+              "line": 202,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -4737,11 +4363,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "sensor_array_failure",
-              "line": 223,
+              "line": 203,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Array_Failure_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L144C9"
+                "docHref": "docs/lane_detection___spec.html#L126C9"
               },
               "description": [
                 {
@@ -4773,7 +4399,7 @@ GNATdoc.Documentation = {
         {
           "label": "retrieve_all_sensor_values",
           "qualifier": "",
-          "line": 165,
+          "line": 147,
           "column": 14,
           "src": "srcs/lane_detection.ads.html",
           "summary": [
@@ -4784,7 +4410,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 165,
+                  "number": 147,
                   "children": [
                     {
                       "kind": "span",
@@ -4805,13 +4431,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "retrieve_all_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L165C14"
+                      "href": "docs/lane_detection___spec.html#L147C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 166,
+                  "number": 148,
                   "children": [
                     {
                       "kind": "span",
@@ -4827,7 +4453,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 167,
+                  "number": 149,
                   "children": [
                     {
                       "kind": "span",
@@ -4838,7 +4464,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_line_sensor_value",
-                      "href": "docs/lane_detection___spec.html#L167C7"
+                      "href": "docs/lane_detection___spec.html#L149C7"
                     },
                     {
                       "kind": "span",
@@ -4880,7 +4506,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 168,
+                  "number": 150,
                   "children": [
                     {
                       "kind": "span",
@@ -4891,7 +4517,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_curb_sensor_value",
-                      "href": "docs/lane_detection___spec.html#L168C7"
+                      "href": "docs/lane_detection___spec.html#L150C7"
                     },
                     {
                       "kind": "span",
@@ -4922,7 +4548,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_curb_sensor_value_access",
-                      "href": "docs/lane_detection___spec.html#L54C9"
+                      "href": "docs/lane_detection___spec.html#L53C9"
                     },
                     {
                       "kind": "span",
@@ -4933,60 +4559,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 169,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "get_wall_sensor_value",
-                      "href": "docs/lane_detection___spec.html#L169C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "get_wall_sensor_value_access",
-                      "href": "docs/lane_detection___spec.html#L68C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 170,
+                  "number": 151,
                   "children": [
                     {
                       "kind": "span",
@@ -4997,7 +4570,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "line_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L170C7"
+                      "href": "docs/lane_detection___spec.html#L151C7"
                     },
                     {
                       "kind": "span",
@@ -5028,7 +4601,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Line_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L132C9"
+                      "href": "docs/lane_detection___spec.html#L117C9"
                     },
                     {
                       "kind": "span",
@@ -5039,7 +4612,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 171,
+                  "number": 152,
                   "children": [
                     {
                       "kind": "span",
@@ -5050,7 +4623,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "curb_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L171C7"
+                      "href": "docs/lane_detection___spec.html#L152C7"
                     },
                     {
                       "kind": "span",
@@ -5081,66 +4654,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Curb_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L135C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
+                      "href": "docs/lane_detection___spec.html#L120C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 172,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "wall_sensor_values",
-                      "href": "docs/lane_detection___spec.html#L172C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "out"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Wall_Sensor_Values_Array_T",
-                      "href": "docs/lane_detection___spec.html#L138C9"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 173,
+                  "number": 153,
                   "children": [
                     {
                       "kind": "span",
@@ -5174,7 +4694,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "get_line_sensor_value",
-              "line": 167,
+              "line": 149,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.get_line_sensor_value_access",
@@ -5194,11 +4714,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "get_curb_sensor_value",
-              "line": 168,
+              "line": 150,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.get_curb_sensor_value_access",
-                "docHref": "docs/lane_detection___spec.html#L54C9"
+                "docHref": "docs/lane_detection___spec.html#L53C9"
               },
               "description": [
                 {
@@ -5207,23 +4727,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "text": "access to curb sensor getter function from driver interface\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "get_wall_sensor_value",
-              "line": 169,
-              "column": 7,
-              "type": {
-                "label": "Lane_Detection.get_wall_sensor_value_access",
-                "docHref": "docs/lane_detection___spec.html#L68C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "text": "access to wall sensor getter function from driver interface\n"
@@ -5234,11 +4738,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "line_sensor_values",
-              "line": 170,
+              "line": 151,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Line_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L132C9"
+                "docHref": "docs/lane_detection___spec.html#L117C9"
               },
               "description": [
                 {
@@ -5254,11 +4758,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "curb_sensor_values",
-              "line": 171,
+              "line": 152,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Curb_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L135C9"
+                "docHref": "docs/lane_detection___spec.html#L120C9"
               },
               "description": [
                 {
@@ -5267,23 +4771,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "text": "array filled with new curb sensor values\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "wall_sensor_values",
-              "line": 172,
-              "column": 7,
-              "type": {
-                "label": "Lane_Detection.Wall_Sensor_Values_Array_T",
-                "docHref": "docs/lane_detection___spec.html#L138C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
+                    },
                     {
                       "kind": "span",
                       "text": "array filled with new wall sensor values\n"

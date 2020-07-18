@@ -7,6 +7,89 @@ GNATdoc.SourceFile = {
       "children": [
         {
           "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @summary"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 2,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- Generic ring buffer package specification."
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 3,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "--"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 4,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @author Julian Hartmer"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 5,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @description"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 6,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- This package is a generic ring buffer. You can set the element type"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 7,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- when including this package."
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 8,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 9,
+      "children": [
+        {
+          "kind": "span",
           "cssClass": "keyword",
           "text": "with"
         },
@@ -29,13 +112,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 2,
+      "number": 10,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 3,
+      "number": 11,
       "children": [
         {
           "kind": "span",
@@ -46,7 +129,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 4,
+      "number": 12,
       "children": [
         {
           "kind": "span",
@@ -67,7 +150,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Element",
-          "href": "docs/ring_buffer___spec.html#L4C9"
+          "href": "docs/ring_buffer___spec.html#L12C9"
         },
         {
           "kind": "span",
@@ -108,7 +191,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 5,
+      "number": 13,
       "children": [
         {
           "kind": "span",
@@ -129,7 +212,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
+          "href": "docs/ring_buffer___spec.html#L13C9"
         },
         {
           "kind": "span",
@@ -170,13 +253,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 6,
+      "number": 14,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 7,
+      "number": 15,
       "children": [
         {
           "kind": "span",
@@ -192,7 +275,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 8,
+      "number": 16,
       "children": [
         {
           "kind": "span",
@@ -208,7 +291,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 9,
+      "number": 17,
       "children": [
         {
           "kind": "span",
@@ -239,7 +322,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "printElement",
-          "href": "docs/ring_buffer___spec.html#L9C19"
+          "href": "docs/ring_buffer___spec.html#L17C19"
         },
         {
           "kind": "span",
@@ -255,7 +338,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "E",
-          "href": "docs/ring_buffer___spec.html#L9C33"
+          "href": "docs/ring_buffer___spec.html#L17C33"
         },
         {
           "kind": "span",
@@ -301,7 +384,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 10,
+      "number": 18,
       "children": [
         {
           "kind": "span",
@@ -317,7 +400,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Ring_Buffer",
-          "href": "docs/ring_buffer___spec.html#L10C9"
+          "href": "docs/ring_buffer___spec.html#L18C9"
         },
         {
           "kind": "span",
@@ -333,13 +416,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 11,
+      "number": 19,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 12,
+      "number": 20,
       "children": [
         {
           "kind": "span",
@@ -355,7 +438,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 13,
+      "number": 21,
       "children": [
         {
           "kind": "span",
@@ -376,7 +459,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Memory",
-          "href": "docs/ring_buffer___spec.html#L13C9"
+          "href": "docs/ring_buffer___spec.html#L21C9"
         },
         {
           "kind": "span",
@@ -412,7 +495,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
+          "href": "docs/ring_buffer___spec.html#L13C9"
         },
         {
           "kind": "span",
@@ -448,13 +531,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 14,
+      "number": 22,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 15,
+      "number": 23,
       "children": [
         {
           "kind": "span",
@@ -550,7 +633,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 16,
+      "number": 24,
       "children": [
         {
           "kind": "span",
@@ -596,13 +679,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 17,
+      "number": 25,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 18,
+      "number": 26,
       "children": [
         {
           "kind": "span",
@@ -633,7 +716,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "RingBuffer",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L18C19"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L26C19"
         },
         {
           "kind": "span",
@@ -649,7 +732,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 19,
+      "number": 27,
       "children": [
         {
           "kind": "span",
@@ -665,7 +748,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 20,
+      "number": 28,
       "children": [
         {
           "kind": "span",
@@ -681,7 +764,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 21,
+      "number": 29,
       "children": [
         {
           "kind": "span",
@@ -697,7 +780,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 22,
+      "number": 30,
       "children": [
         {
           "kind": "span",
@@ -718,7 +801,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "push",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L22C17"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L30C17"
         },
         {
           "kind": "span",
@@ -734,7 +817,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "data",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L22C23"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L30C23"
         },
         {
           "kind": "span",
@@ -780,13 +863,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 23,
+      "number": 31,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 24,
+      "number": 32,
       "children": [
         {
           "kind": "span",
@@ -802,7 +885,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 25,
+      "number": 33,
       "children": [
         {
           "kind": "span",
@@ -818,7 +901,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 26,
+      "number": 34,
       "children": [
         {
           "kind": "span",
@@ -834,7 +917,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 27,
+      "number": 35,
       "children": [
         {
           "kind": "span",
@@ -855,7 +938,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "get",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L27C16"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L35C16"
         },
         {
           "kind": "span",
@@ -871,7 +954,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "idx",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L27C21"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L35C21"
         },
         {
           "kind": "span",
@@ -902,7 +985,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
+          "href": "docs/ring_buffer___spec.html#L13C9"
         },
         {
           "kind": "span",
@@ -938,13 +1021,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 28,
+      "number": 36,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 29,
+      "number": 37,
       "children": [
         {
           "kind": "span",
@@ -960,7 +1043,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 30,
+      "number": 38,
       "children": [
         {
           "kind": "span",
@@ -976,7 +1059,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 31,
+      "number": 39,
       "children": [
         {
           "kind": "span",
@@ -997,7 +1080,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "reset",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L31C17"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L39C17"
         },
         {
           "kind": "span",
@@ -1008,13 +1091,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 32,
+      "number": 40,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 33,
+      "number": 41,
       "children": [
         {
           "kind": "span",
@@ -1030,7 +1113,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 34,
+      "number": 42,
       "children": [
         {
           "kind": "span",
@@ -1051,7 +1134,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "removeLast",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L34C17"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L42C17"
         },
         {
           "kind": "span",
@@ -1062,13 +1145,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 35,
+      "number": 43,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 36,
+      "number": 44,
       "children": [
         {
           "kind": "span",
@@ -1084,7 +1167,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 37,
+      "number": 45,
       "children": [
         {
           "kind": "span",
@@ -1100,7 +1183,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 38,
+      "number": 46,
       "children": [
         {
           "kind": "span",
@@ -1116,7 +1199,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 39,
+      "number": 47,
       "children": [
         {
           "kind": "span",
@@ -1137,7 +1220,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "peek_blocking",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L39C13"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L47C13"
         },
         {
           "kind": "span",
@@ -1153,7 +1236,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "elem",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L39C28"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L47C28"
         },
         {
           "kind": "span",
@@ -1199,13 +1282,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 40,
+      "number": 48,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 41,
+      "number": 49,
       "children": [
         {
           "kind": "span",
@@ -1221,7 +1304,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 42,
+      "number": 50,
       "children": [
         {
           "kind": "span",
@@ -1237,7 +1320,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 43,
+      "number": 51,
       "children": [
         {
           "kind": "span",
@@ -1253,7 +1336,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 44,
+      "number": 52,
       "children": [
         {
           "kind": "span",
@@ -1274,7 +1357,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "peek_non_blocking",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L44C16"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L52C16"
         },
         {
           "kind": "span",
@@ -1290,7 +1373,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "value_on_empty",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L44C35"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L52C35"
         },
         {
           "kind": "span",
@@ -1356,188 +1439,6 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 45,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 46,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "-- get index of RB head element"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 47,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "-- @return index of RB head element"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 48,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "function"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "getHead",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L48C16"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "return"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 49,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 50,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "-- get index of RB tail element"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 51,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
-          "text": "-- @return index of RB tail element"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 52,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "      "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "function"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "getTail",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L52C16"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "return"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
       "number": 53,
       "children": [
       ]
@@ -1554,7 +1455,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- Checks if RB is empty"
+          "text": "-- get index of RB head element"
         }
       ]
     },
@@ -1570,7 +1471,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- @return true: empty, false: not empty"
+          "text": "-- @return index of RB head element"
         }
       ]
     },
@@ -1596,7 +1497,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "isEmpty",
+          "text": "getHead",
           "href": "docs/ring_buffer___ringbuffer___spec.html#L56C16"
         },
         {
@@ -1617,7 +1518,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Boolean"
+          "text": "Index",
+          "href": "docs/ring_buffer___spec.html#L13C9"
         },
         {
           "kind": "span",
@@ -1644,7 +1546,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- Checks if RB is full"
+          "text": "-- get index of RB tail element"
         }
       ]
     },
@@ -1660,7 +1562,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- @return true: full, false: not full"
+          "text": "-- @return index of RB tail element"
         }
       ]
     },
@@ -1686,8 +1588,99 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "isFull",
+          "text": "getTail",
           "href": "docs/ring_buffer___ringbuffer___spec.html#L60C16"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Index",
+          "href": "docs/ring_buffer___spec.html#L13C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 61,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 62,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- Checks if RB is empty"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 63,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @return true: empty, false: not empty"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 64,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "isEmpty",
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L64C16"
         },
         {
           "kind": "span",
@@ -1718,13 +1711,103 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 61,
+      "number": 65,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 62,
+      "number": 66,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- Checks if RB is full"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 67,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "-- @return true: full, false: not full"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 68,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "      "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "isFull",
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L68C16"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Boolean"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 69,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 70,
       "children": [
         {
           "kind": "span",
@@ -1740,7 +1823,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 63,
+      "number": 71,
       "children": [
         {
           "kind": "span",
@@ -1756,7 +1839,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 64,
+      "number": 72,
       "children": [
         {
           "kind": "span",
@@ -1772,7 +1855,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 65,
+      "number": 73,
       "children": [
         {
           "kind": "span",
@@ -1793,7 +1876,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "get_elements",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L65C16"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L73C16"
         },
         {
           "kind": "span",
@@ -1824,13 +1907,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 66,
+      "number": 74,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 67,
+      "number": 75,
       "children": [
         {
           "kind": "span",
@@ -1851,7 +1934,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "print",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L67C17"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L75C17"
         },
         {
           "kind": "span",
@@ -1862,13 +1945,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 68,
+      "number": 76,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 69,
+      "number": 77,
       "children": [
         {
           "kind": "span",
@@ -1884,7 +1967,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 70,
+      "number": 78,
       "children": [
         {
           "kind": "span",
@@ -1895,7 +1978,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "head",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L70C7"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L78C7"
         },
         {
           "kind": "span",
@@ -1916,7 +1999,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
+          "href": "docs/ring_buffer___spec.html#L13C9"
         },
         {
           "kind": "span",
@@ -1947,7 +2030,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 71,
+      "number": 79,
       "children": [
         {
           "kind": "span",
@@ -1958,7 +2041,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "tail",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L71C7"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L79C7"
         },
         {
           "kind": "span",
@@ -1979,7 +2062,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Index",
-          "href": "docs/ring_buffer___spec.html#L5C9"
+          "href": "docs/ring_buffer___spec.html#L13C9"
         },
         {
           "kind": "span",
@@ -2010,7 +2093,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 72,
+      "number": 80,
       "children": [
         {
           "kind": "span",
@@ -2021,7 +2104,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "buffer",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L72C7"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L80C7"
         },
         {
           "kind": "span",
@@ -2042,7 +2125,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "Memory",
-          "href": "docs/ring_buffer___spec.html#L13C9"
+          "href": "docs/ring_buffer___spec.html#L21C9"
         },
         {
           "kind": "span",
@@ -2053,7 +2136,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 73,
+      "number": 81,
       "children": [
         {
           "kind": "span",
@@ -2064,7 +2147,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "full",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L73C7"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L81C7"
         },
         {
           "kind": "span",
@@ -2115,7 +2198,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 74,
+      "number": 82,
       "children": [
         {
           "kind": "span",
@@ -2136,25 +2219,25 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "RingBuffer",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L18C19"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L26C19"
         },
         {
           "kind": "span",
           "cssClass": "identifier",
           "text": ";",
-          "href": "docs/ring_buffer___ringbuffer___spec.html#L18C19"
+          "href": "docs/ring_buffer___ringbuffer___spec.html#L26C19"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 75,
+      "number": 83,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 76,
+      "number": 84,
       "children": [
         {
           "kind": "span",
@@ -2170,7 +2253,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 77,
+      "number": 85,
       "children": [
         {
           "kind": "span",

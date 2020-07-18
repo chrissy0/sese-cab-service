@@ -226,7 +226,7 @@ package body Roadmarker is
       end Construct;
       Log_Line("... constructor done");
 
-      while (running) loop
+Main_Loop: while (running) loop
 
          -- Read sensor values
          -- Put_Line ("Reading Sensor data ...");
@@ -282,7 +282,7 @@ package body Roadmarker is
 
 
          <<Continue>>
-      end loop;
+      end loop Main_Loop;
       Log_Line
         (" Shutting down. So long, and thanks for all the markers.");
    end  Roadmarker_Task_T;

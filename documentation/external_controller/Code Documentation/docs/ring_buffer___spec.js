@@ -11,7 +11,7 @@ GNATdoc.Documentation = {
         {
           "label": "Memory",
           "qualifier": "",
-          "line": 13,
+          "line": 21,
           "column": 9,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -22,7 +22,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 13,
+                  "number": 21,
                   "children": [
                     {
                       "kind": "span",
@@ -43,7 +43,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Memory",
-                      "href": "docs/ring_buffer___spec.html#L13C9"
+                      "href": "docs/ring_buffer___spec.html#L21C9"
                     },
                     {
                       "kind": "span",
@@ -79,7 +79,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Index",
-                      "href": "docs/ring_buffer___spec.html#L5C9"
+                      "href": "docs/ring_buffer___spec.html#L13C9"
                     },
                     {
                       "kind": "span",
@@ -134,12 +134,12 @@ GNATdoc.Documentation = {
         {
           "label": "RingBuffer",
           "qualifier": "",
-          "line": 18,
+          "line": 26,
           "column": 19,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
           ],
-          "href": "../docs/ring_buffer___ringbuffer___spec.html#L18C19"
+          "href": "../docs/ring_buffer___ringbuffer___spec.html#L26C19"
         }
       ],
       "label": "Protected objects and protected types"
@@ -149,7 +149,7 @@ GNATdoc.Documentation = {
         {
           "label": "Element_Vector",
           "qualifier": "(generic instantiation)",
-          "line": 15,
+          "line": 23,
           "column": 12,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -160,7 +160,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 15,
+                  "number": 23,
                   "children": [
                     {
                       "kind": "span",
@@ -251,7 +251,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 16,
+                  "number": 24,
                   "children": [
                     {
                       "kind": "span",

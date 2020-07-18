@@ -73,7 +73,6 @@ begin
       Motor_Task_A            => Motor_Controller_Task,
       get_line_sensor_value_a => WC2EC_Interface.get_line_detection_sensor_value'Access,
       get_curb_sensor_value_a => WC2EC_Interface.get_curb_detection_sensor_value'Access,
-      get_wall_sensor_value_a => WC2EC_Interface.get_wall_detection_sensor_value'Access,
       timeout_v               => timeout
      );
 

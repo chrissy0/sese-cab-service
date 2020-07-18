@@ -14,6 +14,10 @@ package Motor_Controller.Test is
 
    procedure test_do_state_transition (T : in out Test);
 
+   procedure test_output_final_safe_state (T : in out Test);
+
+   procedure test_output_system_error (T : in out Test);
+
    procedure test_output_no_system_error (T : in out Test);
 
    procedure test_output_front_is_clear (T : in out Test);

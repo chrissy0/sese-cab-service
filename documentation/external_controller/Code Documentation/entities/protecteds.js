@@ -3,10 +3,10 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "RingBuffer",
-      "docHref": "docs/ring_buffer___ringbuffer___spec.html#L18C19",
+      "docHref": "docs/ring_buffer___ringbuffer___spec.html#L26C19",
       "declared": "Ring_Buffer",
       "declared_qualifier": "",
-      "srcHref": "srcs/ring_buffer.ads.html#L18"
+      "srcHref": "srcs/ring_buffer.ads.html#L26"
     }
   ]
 };
