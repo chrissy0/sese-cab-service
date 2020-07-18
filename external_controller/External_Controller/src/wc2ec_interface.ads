@@ -68,22 +68,26 @@ package WC2EC_Interface is
    -- @return current sensor value
    function get_curb_detection_sensor_value
      (
-      pos         : in Lane_Detection.Curb_Sensor_Position_T;
       orientation : in Lane_Detection.Sensor_Orientation_T;
       is_backup : in Boolean
      ) return Long_Float;
 
-   -- Getter for wall detection sensor values
-   -- @param orientation sensor orientaten
-   -- @param is_backup True: reference Backup sensor, False: Refernce default sensor
-   -- @return current sensor value
-   function get_wall_detection_sensor_value
-     (
-      orientation : in Lane_Detection.Sensor_Orientation_T;
-      is_backup   : in Boolean
-     ) return Long_Float;
 
    -- Call to elevate the curb sensors
    procedure elevate_curb_sensor;
 
+private
+   -- value to indicate faulty sensor
+   SENSOR_FAULT : Long_Float := -1.0;
+
+   -- minimum valid sensor values
+   SENSOR_MAX_VAL : Long_Float := 1000.0;
+
+   -- maximum valid sensor values
+   SENSOR_MIN_VAL : Long_Float := 0.0;
+
+   -- Returns value if value is valild. Otherwise returns SENSOR_FAULT
+   -- @param value sensor value
+   -- @return value in range or SENSOR_FAULT
+   function detect_sensor_fault(value : Long_Float) return Long_Float;
 end WC2EC_Interface;

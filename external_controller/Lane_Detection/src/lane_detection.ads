@@ -47,30 +47,16 @@ package Lane_Detection is
    -- Acces type to getter function for curb sensor values.
    -- The sensor is referenced by ID and a Boolean. The boolean indicates
    -- whether the normal sensor (False) or the default sensor (True) is read.
-   -- @param pos sensor position
    -- @param orientation sensor orientation
    -- @param is_backup true: access backup sensor, false: access default sensor
    -- @return current curb sensor value
    type get_curb_sensor_value_access is access
      function
        (
-        pos         : Curb_Sensor_Position_T;
         orientation : Sensor_Orientation_T;
         is_backup   : Boolean
        ) return Long_Float;
 
-   -- Acces type to getter function for curb sensor values.
-   -- The sensor is referenced by ID and a Boolean. The boolean indicates
-   -- whether the normal sensor (False) or the default sensor (True) is read.
-   -- @param orientation sensor orientation
-   -- @param is_backup true: access backup sensor, false: access default sensor
-   -- @return current wall sensor value
-   type get_wall_sensor_value_access is access
-     function
-       (
-        orientation : Sensor_Orientation_T;
-        is_backup   : Boolean
-       ) return Long_Float;
 
    -- Task to fetch and evaluate road marker sensor values. Communicates
    -- with the Job Executer Task by road_marker_done and road_marker_next.
@@ -88,7 +74,6 @@ package Lane_Detection is
          Motor_Task_A            : in Motor_Controller_Task_Access_T;
          get_line_sensor_value_a : in get_line_sensor_value_access;
          get_curb_sensor_value_a : in get_curb_sensor_value_access;
-         get_wall_sensor_value_a : in get_wall_sensor_value_access;
          timeout_v               : in Duration
         );
    end Lane_Detection_Taks_T;
@@ -132,10 +117,7 @@ private
    type Line_Sensor_Values_Array_T is array (Line_Sensor_Position_T, Boolean) of Long_Float;
 
    -- array of sensor values. Second index true => access backup sensor
-   type Curb_Sensor_Values_Array_T is array (Curb_Sensor_Position_T, Sensor_Orientation_T, Boolean) of Long_Float;
-
-   -- array of sensor values. Second index true => access backup sensor
-   type Wall_Sensor_Values_Array_T is array (Sensor_Orientation_T, Boolean) of Long_Float;
+   type Curb_Sensor_Values_Array_T is array (Sensor_Orientation_T, Boolean) of Long_Float;
 
    -- array of sensor values. Second index true => access backup sensor
    type Line_Sensor_Detected_Array_T is array (Line_Sensor_Position_T, Boolean) of Boolean;
@@ -166,10 +148,8 @@ private
      (
       get_line_sensor_value : in get_line_sensor_value_access;
       get_curb_sensor_value : in get_curb_sensor_value_access;
-      get_wall_sensor_value : in get_wall_sensor_value_access;
       line_sensor_values : out Line_Sensor_Values_Array_T;
-      curb_sensor_values : out Curb_Sensor_Values_Array_T;
-      wall_sensor_values : out Wall_Sensor_Values_Array_T
+      curb_sensor_values : out Curb_Sensor_Values_Array_T
      );
 
    -- Calculate the output sent to Motor Controller Task. May change Leaning_Left
@@ -184,7 +164,6 @@ private
      (
       line_sensor_values : Line_Sensor_Values_Array_T;
       curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T;
       is_lean_from_line  : Boolean;
       Leaning_Left       : in out Boolean;
       is_curb_detection  : out Boolean

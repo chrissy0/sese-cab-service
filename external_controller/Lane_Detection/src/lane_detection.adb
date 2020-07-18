@@ -24,10 +24,8 @@ package body Lane_Detection is
      (
       get_line_sensor_value : in get_line_sensor_value_access;
       get_curb_sensor_value : in get_curb_sensor_value_access;
-      get_wall_sensor_value : in get_wall_sensor_value_access;
       line_sensor_values    : out Line_Sensor_Values_Array_T;
-      curb_sensor_values    : out Curb_Sensor_Values_Array_T;
-      wall_sensor_values    : out Wall_Sensor_Values_Array_T
+      curb_sensor_values    : out Curb_Sensor_Values_Array_T
      )
    is
    begin
@@ -37,17 +35,9 @@ package body Lane_Detection is
          end loop;
       end loop;
 
-      for pos in Curb_Sensor_Position_T loop
-         for ori in Sensor_Orientation_T loop
-            for I in Boolean loop
-               curb_sensor_values(pos, ori, I) := get_curb_sensor_value(pos, ori, I);
-            end loop;
-         end loop;
-      end loop;
-
       for ori in Sensor_Orientation_T loop
          for I in Boolean loop
-            wall_sensor_values(ori, I) := get_wall_sensor_value(ori, I);
+            curb_sensor_values(ori, I) := get_curb_sensor_value(ori, I);
          end loop;
       end loop;
    end retrieve_all_sensor_values;
@@ -133,13 +123,13 @@ package body Lane_Detection is
       for ori in Sensor_Orientation_T loop
          for I in Boolean loop
             if curb_detected_array(ori) = FAILURE then
-               if curb_sensor_values(FRONT, ori, I) < 0.0 then
+               if curb_sensor_values(ori, I) < 0.0 then
                   curb_detected_array(ori) := FAILURE;
-               elsif curb_sensor_values(FRONT, ori, I) < CURB_MIN_DETECTION_RANGE then
+               elsif curb_sensor_values(ori, I) < CURB_MIN_DETECTION_RANGE then
                   curb_detected_array(ori) := DETECTED_TOO_CLOSE;
-               elsif curb_sensor_values(FRONT, ori, I) < CURB_MAX_DETECTION_RANGE then
+               elsif curb_sensor_values(ori, I) < CURB_MAX_DETECTION_RANGE then
                   curb_detected_array(ori) := DETECTED;
-               elsif curb_sensor_values(FRONT, ori, I) < CURB_MAX_VALUE then
+               elsif curb_sensor_values(ori, I) < CURB_MAX_VALUE then
                   curb_detected_array(ori) := DETECTED_TOO_FAR;
                else
                   curb_detected_array(ori) := NOT_DETECTED;
@@ -257,7 +247,6 @@ package body Lane_Detection is
      (
       line_sensor_values : Line_Sensor_Values_Array_T;
       curb_sensor_values : Curb_Sensor_Values_Array_T;
-      wall_sensor_values : Wall_Sensor_Values_Array_T;
       is_lean_from_line  : Boolean;
       Leaning_Left       : in out Boolean;
       is_curb_detection  : out Boolean
@@ -304,10 +293,8 @@ package body Lane_Detection is
 
       line_sensor_values    : Line_Sensor_Values_Array_T;
       curb_sensor_values    : Curb_Sensor_Values_Array_T;
-      wall_sensor_values    : Wall_Sensor_Values_Array_T;
       get_line_sensor_value : get_line_sensor_value_access;
       get_curb_sensor_value : get_curb_sensor_value_access;
-      get_wall_sensor_value : get_wall_sensor_value_access;
       timeout               : Duration;
       is_lean_from_line     : Boolean := False;
       is_curb_detection     : Boolean := False;
@@ -320,30 +307,25 @@ package body Lane_Detection is
          Motor_Task_A            : in Motor_Controller_Task_Access_T;
          get_line_sensor_value_a : in get_line_sensor_value_access;
          get_curb_sensor_value_a : in get_curb_sensor_value_access;
-         get_wall_sensor_value_a : in get_wall_sensor_value_access;
          timeout_v               : in Duration
         )
       do
          Motor_Controller_Task := Motor_Task_A;
          get_line_sensor_value := get_line_sensor_value_a;
          get_curb_sensor_value := get_curb_sensor_value_a;
-         get_wall_sensor_value := get_wall_sensor_value_a;
          timeout               := timeout_v;
       end Construct;
       Log_Line("... constructor done");
 
-      while running loop
+Main_Loop: while running loop
          retrieve_all_sensor_values(get_line_sensor_value => get_line_sensor_value,
                                     get_curb_sensor_value => get_curb_sensor_value,
-                                    get_wall_sensor_value => get_wall_sensor_value,
                                     line_sensor_values    => line_sensor_values,
-                                    curb_sensor_values    => curb_sensor_values,
-                                    wall_sensor_values    => wall_sensor_values);
+                                    curb_sensor_values    => curb_sensor_values);
 
 
          output := calculate_output(line_sensor_values => line_sensor_values,
                                     curb_sensor_values => curb_sensor_values,
-                                    wall_sensor_values => wall_sensor_values,
                                     Leaning_Left       => Leaning_Left,
                                     is_lean_from_line  => is_lean_from_line,
                                     is_curb_detection  => is_curb_detection);
@@ -381,8 +363,9 @@ package body Lane_Detection is
             running := False;
             goto Continue;
          end select;
+
          <<Continue>>
-      end loop;
+      end loop Main_Loop;
       Log_Line("Shutting down. So long, and thanks for all the lanes!");
    end Lane_Detection_Taks_T;
 

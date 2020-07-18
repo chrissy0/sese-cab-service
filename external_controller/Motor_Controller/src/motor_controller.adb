@@ -411,13 +411,14 @@ package body Motor_Controller is
       Next := Ada.Calendar.Clock;
       Next := Next + Iteration_Delay;
       -- main loop
-      while running loop
+Main_Loop: while running loop
 
 
          -- initialize task_done_array
          reset_all_tasks_done(all_tasks_done_array => task_done_array);
          got_force_left := False;
 
+         -- wait for all tasks to finish iteration
          while not (are_all_tasks_done(task_done_array) and got_force_left) loop
             select
                accept job_executer_done (Signal : in Job_Executer_Done_T) do
@@ -488,12 +489,12 @@ package body Motor_Controller is
          end select;
 
 
-         -- Output stuff depending on State
+         -- Print Output signal changes
          if Front_Distance_Done_Signal /= Front_Distance_Done_Signal_o then
             Log_Line("Front_Distance_Done_Signal = " & Front_Distance_Done_Signal'Image);
             Front_Distance_Done_Signal_o := Front_Distance_Done_Signal;
          end if;
-         -- Output stuff depending on State
+
          if Job_Executer_Done_Signal /= Job_Executer_Done_Signal_o then
             Log_Line("Job_Executer_Done_Signal = " & Job_Executer_Done_Signal'Image);
             Job_Executer_Done_Signal_o := Job_Executer_Done_Signal;
@@ -513,24 +514,24 @@ package body Motor_Controller is
                           FD_Next_Signal => Front_Distance_Next_Signal,
                           JE_Next_Signal => Job_Executer_Next_Signal);
 
-         -- Output stuff depending on State
+         -- Print Output signal changes
          if Lane_Detection_Next_Signal /= Lane_Detection_Next_Signal_o then
             Log_Line("Lane_Detection_Next_Signal = " & Lane_Detection_Next_Signal'Image);
             Lane_Detection_Next_Signal_o := Lane_Detection_Next_Signal;
          end if;
 
-         -- Output stuff depending on State
          if Front_Distance_Next_Signal /= Front_Distance_Next_Signal_o then
             Log_Line("Front_Distance_Next_Signal = " & Front_Distance_Next_Signal'Image);
             Front_Distance_Next_Signal_o := Front_Distance_Next_Signal;
          end if;
-         -- Output stuff depending on State
+
          if Job_Executer_Next_Signal /= Job_Executer_Next_Signal_o then
             Log_Line("Job_Executer_Next_Signal = " & Job_Executer_Next_Signal'Image);
             Job_Executer_Next_Signal_o := Job_Executer_Next_Signal;
          end if;
 
 
+         -- if the last iteration was too fast, sleep for a bit
          apply_motor_values(motor_values    => motor_values,
                             set_motor_value => set_motor_value);
 
@@ -579,7 +580,7 @@ package body Motor_Controller is
          end loop;
 
          <<Continue>>
-      end loop;
+      end loop Main_Loop;
       Log_Line
         ("Motor_Controller shutting down. So long, and thanks for all the gasoline");
 

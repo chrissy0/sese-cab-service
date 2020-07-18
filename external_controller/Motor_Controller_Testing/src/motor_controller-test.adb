@@ -1,7 +1,7 @@
 -- @summary
 -- Motor Controller child test package body.
 --
--- @author Julian Hartmer
+-- @author Julian Hartmer and Chanki Hong
 
 pragma Ada_2012;
 with AUnit.Assertions;        use AUnit.Assertions;
