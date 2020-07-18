@@ -60,7 +60,6 @@ package WC2EC is
    CMD_SENSOR_DATA      : constant := 1;
 
    CMD_CHANGE_SENSOR : constant := 130;
-  -- TODO check header file SENSOR_TYPE_DISTANCE : constant := 0;
    SENSOR_TYPE_MOTOR    : constant := 53;
 
 
@@ -81,7 +80,7 @@ package WC2EC is
    sensor_ring : sensor_ring_access_t;
    Channel : Stream_Access; -- socket I/O interface
    ready : Boolean := false;
-   -- TODO Create init function, set this bool, check in the external functions initialized : Boolean;
+
 
    -- functions
    function get_distance_sensor_data(sensor_name : String) return Long_Float;

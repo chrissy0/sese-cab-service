@@ -20,7 +20,6 @@ procedure Ec2B.Main is
 begin
 
    return_code := register_cab("Dieter3", 14, cab_id);
-   -- Todo error handling
    if failed(return_code)  then
       cab_id := 0;
    end if;
