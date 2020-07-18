@@ -407,6 +407,34 @@ POST /api/ec/blocked?cabId=0&blocked=true
 400 Bad Request
 ```
 
+### Set Functional/Dysfunctional
+
+##### Request
+
+```http
+POST /api/ec/functional?cabId=0&functional=false
+```
+
+##### Response
+
+###### Success
+
+```http
+200 OK
+```
+
+###### Cab ID unknown
+
+```http
+409 CONFLICT
+```
+
+###### Missing parameters/info or malformed request
+
+```http
+400 Bad Request
+```
+
 ### Sensor status
 
 ##### Considered sensors

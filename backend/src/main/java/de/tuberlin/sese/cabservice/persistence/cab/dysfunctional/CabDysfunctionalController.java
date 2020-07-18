@@ -1,4 +1,4 @@
-package de.tuberlin.sese.cabservice.persistence.cab.blocked;
+package de.tuberlin.sese.cabservice.persistence.cab.dysfunctional;
 
 import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import lombok.RequiredArgsConstructor;
@@ -12,18 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class CabBlockedController {
+public class CabDysfunctionalController {
 
-    private final CabBlockedService service;
+    private final CabDysfunctionalService service;
 
-    @PostMapping("/ec/blocked")
-    public ResponseEntity<?> cabBlocked(@RequestParam Long cabId, @RequestParam Boolean blocked) {
-        if (cabId == null || blocked == null) {
+    @PostMapping("/ec/functional")
+    public ResponseEntity<?> cabFunctional(@RequestParam Long cabId, @RequestParam Boolean functional) {
+        if (cabId == null || functional == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+        boolean dysfunctional = !functional;
+
         try {
-            service.setBlocked(cabId, blocked);
+            service.setDysfunctional(cabId, dysfunctional);
         } catch (UnknownCabIdException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
