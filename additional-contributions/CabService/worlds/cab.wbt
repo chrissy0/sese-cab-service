@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.04807562546044235 0.9893961545405534 0.13705467382381686 2.543398093544536
-  position 2.453766659775287 2.012569622164004 -1.338127489954479
+  orientation -0.1333085025464526 0.8777906289974714 0.4601222172347756 2.6645212832250738
+  position 1.6745895280040661 4.643144224788698 -0.45006873252277413
   follow "robot:curb_rc"
 }
 TexturedBackground {
@@ -11,8 +11,8 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Robot {
-  translation -1.245871133727735 0.03687961095238109 3.4732308813770665
-  rotation 7.51072125980913e-05 -0.9999999927666253 9.3944959825001e-05 0.11610516997004597
+  translation -1.2458707698735592 0.0368795553457557 3.4732306234205317
+  rotation 7.035207956890907e-08 -0.9999999999999859 1.5329787205234064e-07 0.11610516914138058
   children [
     DEF curb-sensor-slider-joint-lf SliderJoint {
       jointParameters JointParameters {
@@ -895,7 +895,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 4156.215795550191
+        position 4156.215795550195
         anchor 0.06 0 0.05
       }
       device [
@@ -905,7 +905,7 @@ Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation -0.7065576694485549 0.7065602647845132 -0.03935545668729042 3.2202626788291053
+        rotation -0.7065576694486001 0.7065602647845576 -0.03935545668568137 3.2202626788258923
         scale 0.8 0.8 0.8
         children [
           DEF WHEEL Shape {
@@ -927,7 +927,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 3710.816972304192
+        position 3710.8169723041956
         anchor 0.06 0 -0.05
       }
       device [
@@ -937,7 +937,7 @@ Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation 0.6909935754481135 -0.690996113613868 -0.21225515225775504 3.559893386027938
+        rotation 0.6909935754479118 -0.6909961136136662 -0.2122551522590686 3.559893386030452
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -949,7 +949,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 3783.286674391361
+        position 3783.286674391364
         anchor -0.06 0 -0.05
       }
       device [
@@ -959,7 +959,7 @@ Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.36626129103988614 -0.36626263639518764 0.8553971871982293 1.7263581298107737
+        rotation 0.3662612910410649 -0.36626263639636647 0.8553971871972197 1.7263581298119397
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -971,7 +971,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 3337.1956587562954
+        position 3337.1956587562922
         anchor -0.06 0 0.05
       }
       device [
@@ -981,7 +981,7 @@ Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.3718393472315735 0.37184071307626326 -0.8505703874161934 4.551239248645351
+        rotation -0.37183934723040696 0.3718407130750966 -0.8505703874172135 4.551239248646535
         scale 0.8 0.8 0.8
         children [
           USE WHEEL
@@ -998,8 +998,8 @@ Robot {
   controller "controller"
 }
 DEF dummy Robot {
-  translation 1.174777886341155 0.04472097940310219 1.2210373274801558
-  rotation -8.480427745211898e-09 -1 4.888748000177207e-09 2.095702622130286
+  translation 1.17477788634117 0.044720979308708914 1.2210373274801092
+  rotation -8.480431729347881e-09 -1 4.888749251261669e-09 2.095702622130754
   children [
     DEF BODY Shape {
       appearance PBRAppearance {
@@ -1013,7 +1013,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2768.9508427972537
+        position 2768.950842797256
         anchor 0.06 0 0.05
       }
       device [
@@ -1023,7 +1023,7 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL1 Solid {
         translation 0.06 0 0.05
-        rotation 0.6355319258063356 -0.6355342602497043 -0.4384009298915223 3.967922715525831
+        rotation 0.6355319258060386 -0.6355342602494073 -0.4384009298923838 3.9679227155272763
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -1044,7 +1044,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2323.5518724352237
+        position 2323.551872435226
         anchor 0.06 0 -0.05
       }
       device [
@@ -1054,7 +1054,7 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL3 Solid {
         translation 0.06 0 -0.05
-        rotation -0.4988647109346379 0.49886654337592456 0.7087073952515643 1.9085041597740313
+        rotation -0.49886471093424406 0.4988665433766446 0.7087073952513347 1.9085041597722285
         children [
           USE WHEEL
         ]
@@ -1065,7 +1065,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 2402.1152678161952
+        position 2402.115267816193
         anchor -0.06 0 -0.05
       }
       device [
@@ -1075,7 +1075,7 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL4 Solid {
         translation -0.06 0 -0.05
-        rotation 0.6361317700592352 -0.6361341066986302 0.4366574966905297 2.3181892026595197
+        rotation 0.6361317700597745 -0.6361341066976963 0.4366574966911047 2.318189202660253
         children [
           USE WHEEL
         ]
@@ -1086,7 +1086,7 @@ DEF dummy Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 1956.0244093878516
+        position 1956.0244093878541
         anchor -0.06 0 0.05
       }
       device [
@@ -1096,7 +1096,7 @@ DEF dummy Robot {
       ]
       endPoint DEF WHEEL2 Solid {
         translation -0.06 0 0.05
-        rotation -0.6381028774866607 0.6381052213736866 -0.43086708414415004 3.955249196539203
+        rotation -0.6381028774869801 0.638105221374006 -0.43086708414320396 3.9552491965376073
         children [
           USE WHEEL
         ]
@@ -1113,7 +1113,7 @@ DEF dummy Robot {
   controller ""
 }
 Ball {
-  translation 1.86647 0.064909 1.882
+  translation 1.20096 0.064909 1.86043
   rotation 0 0 -1 1.7708927104262168e-13
   radius 0.06
   mass 0.058

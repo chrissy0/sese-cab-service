@@ -72,9 +72,9 @@ void Obstacle_Avoidance();
 void Inside_Path(int MarkerId);
 void Order(int case_num);
 
-int Obstacle_mode=0;
+int Obstacle_mode=-1;
 int MarkerId=0;
-int StationPath_mode=1;
+int StationPath_mode=0;
 int Depot_Mode=-1;
 int Out_cnt=0;
 
@@ -96,7 +96,8 @@ int main(int argc, char ** argv) {
     
     if(onRoadMarker()){     
       MarkerId= getRoadMarkerId();
-      if(MarkerId == 9 && Station_cnt==2) Depot_Mode=1; // activation of Depot
+      cout <<"MarkerID : "<<MarkerId <<endl;
+      if(MarkerId == 9  ) Depot_Mode=1; // activation of Depot
   //  else if(MarkerId == 7) Depot_Mode=-1;
       
       ////after the changing the route, chang back to the route before
