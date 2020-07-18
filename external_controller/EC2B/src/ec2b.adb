@@ -15,6 +15,13 @@ use JSON_Wrappers;
 with WC2EC; use WC2EC;
 package body ec2b is
 
+   procedure reset_command(command : in out Command_t) is
+   begin
+      command.action := NEXT_UNKOWN_S;
+      command.customer_ID := -1;
+      command.section := -1;
+   end reset_command;
+
    function failed(status_code : Messages.Status_Code) return Boolean is
    begin
       return status_code not in Messages.Success;
@@ -42,6 +49,18 @@ package body ec2b is
       status_code := POST_JSON(connection, "/api/ec/blocked", parameters,response_data_JSON => response_json);
       return status_code;
    end set_blocked_status;
+
+   function set_functional_status(cab_id : Integer; functional : in Boolean) return Messages.Status_Code is
+      cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
+      parameters : param_map_p.Map;
+      response_json : JSON_Value;
+      status_code : Messages.Status_Code;
+   begin
+      parameters.Insert("cabId", cab_id_str);
+      parameters.Insert("functional", functional'Image);
+      status_code := POST_JSON(connection, "/api/ec/functional", parameters,response_data_JSON => response_json);
+      return status_code;
+   end set_functional_status;
 
    function update_sensor_manipulation(cab_id : Integer) return Messages.Status_Code is
       cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
@@ -118,6 +137,7 @@ package body ec2b is
       for I in 1 .. GNATCOLL.JSON.Length(route_json) loop
          command_json := GNATCOLL.JSON.Get(route_json, I);
          command := new Command_t;
+         reset_command(command.all);
          command.section := GNATCOLL.JSON.get(command_json, "marker");
          action := GNATCOLL.JSON.get(command_json, "action");
          if To_String(action) = "wait" then
@@ -158,7 +178,7 @@ end request_route;
 
 
    function register_cab(cabname : String; section : Road_Marker_Done_T;
-                         cab_id : out Integer)  return Messages.Status_Code is
+                         cab_id : in out Integer)  return Messages.Status_Code is
       cab_JSON : JSON_Value := Create_Object;
       response_data_JSON : JSON_Value := Create_Object;
       status_code : Messages.Status_Code;
@@ -221,6 +241,7 @@ end request_route;
    begin
       parameters.Insert("cabId", cab_id_str);
       parameters.Insert("customerId", customer_id_str);
+
       status_code := post_JSON(connection, "/api/ec/requestPickup", parameters,response_data_JSON => response_data_JSON);
       return status_code;
    end request_pickup;

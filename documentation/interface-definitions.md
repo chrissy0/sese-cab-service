@@ -407,6 +407,34 @@ POST /api/ec/blocked?cabId=0&blocked=true
 400 Bad Request
 ```
 
+### Set Functional/Dysfunctional
+
+##### Request
+
+```http
+POST /api/ec/functional?cabId=0&functional=false
+```
+
+##### Response
+
+###### Success
+
+```http
+200 OK
+```
+
+###### Cab ID unknown
+
+```http
+409 CONFLICT
+```
+
+###### Missing parameters/info or malformed request
+
+```http
+400 Bad Request
+```
+
 ### Sensor status
 
 ##### Considered sensors
@@ -432,18 +460,10 @@ POST /api/ec/blocked?cabId=0&blocked=true
 - `inf_rm_br_act2`
 - `dist_c`
 - `dist_c2`
-- `curb_rb`
-- `curb_rb2`
-- `curb_rc`
-- `curb_rc2`
 - `curb_rf`
 - `curb_rf2`
 - `curb_lf`
 - `curb_lf2`
-- `curb_lc`
-- `curb_lc2`
-- `curb_lb`
-- `curb_lb2`
 - `dist_r`
 - `dist_r2`
 - `dist_l`

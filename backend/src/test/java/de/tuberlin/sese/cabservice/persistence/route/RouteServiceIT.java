@@ -438,10 +438,10 @@ public class RouteServiceIT {
 
         RouteEntity updatedRoute2 = routeService.getRoute(cabId, updatedRoute.getVersion());
 
-        assertThat(updatedRoute2.getVersion()).isEqualTo(1);
-        assertThat(updatedRoute2.getCabId()).isNull();
+        assertThat(updatedRoute2.getVersion()).isEqualTo(2);
+        assertThat(updatedRoute2.getCabId()).isEqualTo(cabId);
         assertThat(updatedRoute2.getJobId()).isNull();
-        assertThat(updatedRoute2.getRouteActions()).isNull();
+        assertThat(updatedRoute2.getRouteActions()).isNotNull();
     }
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
@@ -586,9 +586,9 @@ public class RouteServiceIT {
         assertThat(jobService.getJob(jobId2).get().isInProgress()).isTrue();
         assertThat(jobService.getJob(jobId3).get().isInProgress()).isFalse();
 
-        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion());
-        assertThat(updatedRoute.getCabId()).isNull();
-        assertThat(updatedRoute.getJobId()).isNull();
+        assertThat(updatedRoute.getVersion()).isEqualTo(route.getVersion() + 1);
+        assertThat(updatedRoute.getCabId()).isEqualTo(cabId);
+        assertThat(updatedRoute.getJobId()).isNotNull();
 
         assertThat(jobService.getJob(jobId2)).isPresent();
         assertThat(jobService.getJob(jobId3)).isPresent();
@@ -606,7 +606,7 @@ public class RouteServiceIT {
 
         RouteEntity updatedRoute2 = routeService.getRoute(cabId, updatedRoute.getVersion());
 
-        assertThat(updatedRoute2.getVersion()).isEqualTo(updatedRoute.getVersion() + 1);
+        assertThat(updatedRoute2.getVersion()).isEqualTo(updatedRoute.getVersion() + 2);
         assertThat(updatedRoute2.getCabId()).isEqualTo(cabId);
         assertThat(updatedRoute2.getJobId()).isEqualTo(jobId3);
 
@@ -691,10 +691,10 @@ public class RouteServiceIT {
 
         RouteEntity updatedRoute4 = routeService.getRoute(cabId, updatedRoute3.getVersion());
 
-        assertThat(updatedRoute4.getVersion()).isEqualTo(updatedRoute3.getVersion());
-        assertThat(updatedRoute4.getCabId()).isNull();
+        assertThat(updatedRoute4.getVersion()).isEqualTo(updatedRoute3.getVersion() + 1);
+        assertThat(updatedRoute4.getCabId()).isEqualTo(cabId);
         assertThat(updatedRoute4.getJobId()).isNull();
-        assertThat(updatedRoute4.getRouteActions()).isNull();
+        assertThat(updatedRoute4.getRouteActions()).isNotNull();
     }
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
