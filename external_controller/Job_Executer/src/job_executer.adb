@@ -91,11 +91,7 @@ package body Job_Executer is
                                   ) is
       return_code : AWS.Messages.Status_Code;
    begin
-      Put_Line("In section" & section'Image);
-      return_code := update_cabLocation(cab_id, section);
-      if (not EC2B.success(return_code, error_counter)) then
-         retry_location_update := True;
-      end if;
+
       if (Reached_expected_roadmarker(section, next_command)) then
          Put_Line(section'Image & " = " & next_command.section'Image);
          current_command := next_command;
@@ -135,14 +131,20 @@ package body Job_Executer is
                              retry_location_update : in out Boolean;
                              Job_Executer_Done_Signal: in out Job_Executer_Done_T
                             ) is
+      return_code : AWS.Messages.Status_Code;
    begin
       if (section_signal in Road_Marker_valid_T) then
          section := section_signal;
+         Put_Line("In section" & section'Image);
+         return_code := update_cabLocation(cab_id, section);
+         if (not EC2B.success(return_code, error_counter)) then
+            retry_location_update := True;
+         end if;
+      end if;
+      if (section_signal = RM_system_error) then
+            Job_Executer_Done_Signal := SYSTEM_ERROR_S;
+      else
          Process_valid_Section(section, current_command, next_command, cab_id, cmd_queue, error_counter, retry_location_update);
-      elsif (section_signal = RM_no_road_marker) then
-         null;
-      elsif (section_signal = RM_system_error) then
-         Job_Executer_Done_Signal := SYSTEM_ERROR_S;
       end if;
    exception
       when Constraint_Error =>
