@@ -2,11 +2,22 @@
 
 ## Chanki Hong
 
-**Rolle:** 
+**Rolle:** Quality Manager
 
 **erledigte Aufgaben:** 
 
-- STICHPUNKTE
+- Aufbau des Cabs inclusiv von Sensoren
+- Initialisierung der Sensoren von Cab
+- Implementierung der Algorithmen in Webots 
+  (Line Detection, To the Depot, Obstacle Avoidance)
+- Verfassung des Coding standards
+  ( C , Socket Programming , ADA , JAVA )
+- Umsetzung die Algorithmen von Webots ins Ada
+  ( Line Detection, Roadmarker )
+- Unit testing in External Controller
+  ( Line detection, Roadmarker, Motor Controller )
+- Verification durch SPARK
+  ( Roadmarker , Motor Controller , Front Distance )
 
 ## Christopher Woggon
 
