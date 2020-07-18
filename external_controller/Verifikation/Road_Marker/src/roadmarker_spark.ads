@@ -82,21 +82,22 @@ package Roadmarker_SPARK with SPARK_Mode is
                            Post=> (if ir_marker_out_br >= 250.0 then Output_V11 = False  else Output_V11 = True);  
       
    procedure SPARK_12 with Pre => (ir_marker_out_fl >= 0.0 and ir_marker_out_fr >= 0.0 and ir_marker_out_bl >= 0.0 and ir_marker_out_br >= 0.0),
-                           Post=> (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 15.0 
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 14.0 
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 13.0 
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 12.0 
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 11.0 
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 10.0 
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 9.0  
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 8.0  
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 7.0  
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 6.0  
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 5.0  
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 4.0  
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 3.0  
-                                   else (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 2.0  
-                                   else (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 1.0  
-                                   else  Output_V12 = 0.0 )))))))))))))));
+                          Post=> (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 15.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 14.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 13.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br< 250.0  then Output_V12 = 12.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 11.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 10.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 9.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br< 250.0  then Output_V12 = 8.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 7.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 6.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 5.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr>= 250.0 and ir_marker_out_bl< 250.0  and ir_marker_out_br>= 250.0 then Output_V12 = 4.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 3.0) or
+                                   (if ir_marker_out_fl>= 250.0 and ir_marker_out_fr< 250.0  and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 2.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 1.0) or
+                                   (if ir_marker_out_fl< 250.0  and ir_marker_out_fr>= 250.0 and ir_marker_out_bl>= 250.0 and ir_marker_out_br>= 250.0 then Output_V12 = 0.0) ;
+
                                   
 end Roadmarker_SPARK;
