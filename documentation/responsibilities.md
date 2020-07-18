@@ -4,23 +4,65 @@
 
 **Rolle:** 
 
-**erledigte Aufgabe:** 
+**erledigte Aufgaben:** 
 
 - STICHPUNKTE
 
 ## Christopher Woggon
 
-**Rolle:** 
+**Rolle:** Technical Manager (zu Anfang: Quality Manager)
 
-**erledigte Aufgabe:** 
+**erledigte Aufgaben:** 
 
-- STICHPUNKTE
+- Webots
+    - Line following in C++ angepasst
+    - Collision detection in C++ entwickelt und umgesetzt, Sensoren an Cab angebracht
+    - Neue Welt von Grund auf erstellt (Layout, Boden, Linien, Curbs, Road Marker, Depot)
+    - Cab mit Sensoren (+ Backup-Sensoren) ausgestattet (für collision detection, curb detection, line following, road marker detection, wall detection)
+    - Motoren an Cab angebracht um Curb Detection Sensoren hoch- und runterzufahren (+ Konzept entwickelt)
+    - Road Marker Konzept entwickelt, Auswertungsalgorithmus is C++ implementiert
+- Quality Management
+    - QA Konzept erstellt (`QA.md`)
+- Technical Management
+    - Server
+        - 2 VPS
+        - Installation, Konfiguration
+        - Regelmäßiges Deployment von Frontend + Backend auf beiden Servern
+    - Jenkins
+        - Installation und Einrichtung
+        - docker-compose file um Ada Code in Pipeline zu kompilieren
+        - Java Tests
+    - git
+        - Umzug des Repos
+        - Pull Request Bedingungen
+            - Jenkins Pipeline
+            - Review
+- Backend entwickelt
+    - Sehr umfangreich getestet
+    - REST Schnittstellen + Logik für
+        - Jobs
+        - Routes
+        - Location
+        - Registration
+        - Pickup
+        - Dropoff
+        - Blocked
+        - Dysfunctional
+        - Debug
+        - Reset
+    - Logik für
+        - PathFinder (Routenfindung zwischen Sektionen)
+    - Schnittstellenkonzepte größtenteils mit Maximilian Weisenseel entwickelt (`interface-definitions.md`)
+- Frontend entwickelt
+- Anleitung für Installation/Ausführung von Backend/Frontend erstellt
+
+        
 
 ## Florentin Ehser
 
 **Rolle:** Time Manager
 
-**erledigte Aufgabe:** 
+**erledigte Aufgaben:** 
 
 - Zeitplan aufgestellt und aktuell gehalten
 - Arbeitspakete gemeinsam mit Gruppe erstellt und verteilt
@@ -51,7 +93,7 @@
 
 **Rolle:** Integrationsbeauftragter
 
-**erledigte Aufgabe:** 
+**erledigte Aufgaben:** 
 
 - Festlegen der Schnittstelle Externer Controller <-> Webots (mit Max)
 - Implementierung des Ringbuffers für die Kommunikation
@@ -66,6 +108,6 @@
 
 **Rolle:** 
 
-**erledigte Aufgabe:** 
+**erledigte Aufgaben:** 
 
 - STICHPUNKTE
