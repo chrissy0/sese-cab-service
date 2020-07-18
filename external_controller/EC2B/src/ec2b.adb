@@ -50,6 +50,18 @@ package body ec2b is
       return status_code;
    end set_blocked_status;
 
+   function set_functional_status(cab_id : Integer; functional : in Boolean) return Messages.Status_Code is
+      cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
+      parameters : param_map_p.Map;
+      response_json : JSON_Value;
+      status_code : Messages.Status_Code;
+   begin
+      parameters.Insert("cabId", cab_id_str);
+      parameters.Insert("functional", functional'Image);
+      status_code := POST_JSON(connection, "/api/ec/functional", parameters,response_data_JSON => response_json);
+      return status_code;
+   end set_functional_status;
+
    function update_sensor_manipulation(cab_id : Integer) return Messages.Status_Code is
       cab_id_str : String := Ada.Strings.Fixed.Trim(cab_id'Image, Ada.Strings.Left);
       parameters : param_map_p.Map;
