@@ -205,6 +205,8 @@ public class RouteService {
                 route.setJobIds();
             }
 
+            route.setVersion(route.getVersion() + 1);
+
             routeRepo.save(route);
         }
     }
