@@ -78,7 +78,7 @@ int StationPath_mode=1;
 int Depot_Mode=-1;
 int Out_cnt=0;
 
-int Station_cnt =1;
+int Station_cnt =0;
 int case_num =1;
 
 int main(int argc, char ** argv) {
@@ -89,7 +89,7 @@ int main(int argc, char ** argv) {
 
   while (robot->step(TIME_STEP) != -1) {
      
-   //  Order(case_num);
+     Order(case_num);
       
     
     if (dist_c->getValue() < 700)  Obstacle_mode++;
@@ -101,8 +101,8 @@ int main(int argc, char ** argv) {
       
       ////after the changing the route, chang back to the route before
       if((MarkerId !=2) && (MarkerId !=4) && (MarkerId !=6) && (MarkerId !=8)  && (Obstacle_mode==-1)){
-       // if(StationPath_mode ==0 ) StationPath_mode= 1;
-       // else StationPath_mode= 0;  
+       if(StationPath_mode ==0 ) StationPath_mode= 1;
+        else StationPath_mode= 0;  
         
         Obstacle_mode++;    
       }
