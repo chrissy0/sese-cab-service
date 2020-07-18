@@ -271,8 +271,6 @@ public class RouteService {
         return updatedRoute;
     }
 
-    // TODO check manually and carefully
-
     /**
      * This method creates a route (RouteEntity) for a given cab and up to two jobs.
      * It takes into account the cab's current location.

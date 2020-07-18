@@ -52,7 +52,6 @@ public class JobService {
     }
 
     public void deleteJob(Long id) {
-        // TODO delete jobId from routes from here? Currently causes circular dependency. Maybe not necessary, since getRoute fixes error once loading job is attempted?
         repo.deleteById(id);
     }
 }
