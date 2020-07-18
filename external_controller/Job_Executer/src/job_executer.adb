@@ -142,7 +142,7 @@ package body Job_Executer is
          end if;
       end if;
       if (section_signal = RM_system_error) then
-            Job_Executer_Done_Signal := SYSTEM_ERROR_S;
+         Job_Executer_Done_Signal := SYSTEM_ERROR_S;
       else
          Process_valid_Section(section, current_command, next_command, cab_id, cmd_queue, error_counter, retry_location_update);
       end if;
@@ -214,13 +214,16 @@ package body Job_Executer is
          when WAIT_S => Job_Executer_Done_Signal := STOP_S;
          when STOP_S => Job_Executer_Done_Signal := STOP_S;
          when PICK_UP_S =>
-            if (error_counter > errors_till_backend_failed) then
-               Put_Line("Could not connect to the backend, stop pickups");
-               current_command := next_command;
-               cmd_queue.Dequeue(next_command);
-               Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
-                          " Marker: " & next_command.section'Image & "Customer: "
-                        & next_command.customer_ID'Image);
+            if (error_counter >= errors_till_backend_failed) then
+               if (current_command.section = next_command.section) then
+                  current_command := next_command;
+                  cmd_queue.Dequeue(next_command);
+                  Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                             " Marker: " & next_command.section'Image & "Customer: "
+                           & next_command.customer_ID'Image);
+               else
+                  current_command.action := NEXT_UNKOWN_S;
+               end if;
             else
 
                return_code := pickup_complete(cab_id, pickup_completed);
@@ -243,13 +246,16 @@ package body Job_Executer is
                end if;
             end if;
          when DROP_OFF_S =>
-            if (error_counter > errors_till_backend_failed) then
-               Put_Line("Could not connect to the backend, stop dropoff");
-               current_command := next_command;
-               cmd_queue.Dequeue(next_command);
-               Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
-                          " Marker: " & next_command.section'Image & "Customer: "
-                        & next_command.customer_ID'Image);
+            if (error_counter >= errors_till_backend_failed) then
+               if (current_command.section = next_command.section) then
+                  current_command := next_command;
+                  cmd_queue.Dequeue(next_command);
+                  Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                             " Marker: " & next_command.section'Image & "Customer: "
+                           & next_command.customer_ID'Image);
+               else
+                  current_command.action := NEXT_UNKOWN_S;
+               end if;
             else
                return_code := dropoff_complete(cab_id, dropoff_completed);
                if(EC2B.success(return_code, error_counter) and dropoff_completed) then

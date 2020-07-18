@@ -1,3 +1,4 @@
+with "..\..\..\..\..\..\..\GNAT\2020\share\gpr\gnatcoll.gpr";
 with "..\Job_Executer\job_executer.gpr";
 with "..\..\..\..\..\..\..\GNAT\2020\share\gpr\aunit.gpr";
 with "aws";
