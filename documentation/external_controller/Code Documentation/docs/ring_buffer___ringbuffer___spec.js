@@ -11,7 +11,7 @@ GNATdoc.Documentation = {
         {
           "label": "peek_blocking",
           "qualifier": "",
-          "line": 39,
+          "line": 47,
           "column": 13,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -22,7 +22,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 39,
+                  "number": 47,
                   "children": [
                     {
                       "kind": "span",
@@ -43,7 +43,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "peek_blocking",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L39C13"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L47C13"
                     },
                     {
                       "kind": "span",
@@ -59,7 +59,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "elem",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L39C28"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L47C28"
                     },
                     {
                       "kind": "span",
@@ -122,11 +122,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "elem",
-              "line": 39,
+              "line": 47,
               "column": 28,
               "type": {
                 "label": "Ring_Buffer.Element",
-                "docHref": "docs/ring_buffer___spec.html#L4C9"
+                "docHref": "docs/ring_buffer___spec.html#L12C9"
               },
               "description": [
                 {
@@ -150,7 +150,7 @@ GNATdoc.Documentation = {
         {
           "label": "get",
           "qualifier": "",
-          "line": 27,
+          "line": 35,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -161,7 +161,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 27,
+                  "number": 35,
                   "children": [
                     {
                       "kind": "span",
@@ -182,7 +182,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L27C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L35C16"
                     },
                     {
                       "kind": "span",
@@ -198,7 +198,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "idx",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L27C21"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L35C21"
                     },
                     {
                       "kind": "span",
@@ -229,7 +229,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Index",
-                      "href": "docs/ring_buffer___spec.html#L5C9"
+                      "href": "docs/ring_buffer___spec.html#L13C9"
                     },
                     {
                       "kind": "span",
@@ -282,11 +282,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "idx",
-              "line": 27,
+              "line": 35,
               "column": 21,
               "type": {
                 "label": "Ring_Buffer.Index",
-                "docHref": "docs/ring_buffer___spec.html#L5C9"
+                "docHref": "docs/ring_buffer___spec.html#L13C9"
               },
               "description": [
                 {
@@ -305,7 +305,7 @@ GNATdoc.Documentation = {
         {
           "label": "get_elements",
           "qualifier": "",
-          "line": 65,
+          "line": 73,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -316,7 +316,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 65,
+                  "number": 73,
                   "children": [
                     {
                       "kind": "span",
@@ -337,7 +337,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_elements",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L65C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L73C16"
                     },
                     {
                       "kind": "span",
@@ -399,7 +399,7 @@ GNATdoc.Documentation = {
         {
           "label": "getHead",
           "qualifier": "",
-          "line": 48,
+          "line": 56,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -410,7 +410,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 48,
+                  "number": 56,
                   "children": [
                     {
                       "kind": "span",
@@ -431,7 +431,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "getHead",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L48C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L56C16"
                     },
                     {
                       "kind": "span",
@@ -452,7 +452,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Index",
-                      "href": "docs/ring_buffer___spec.html#L5C9"
+                      "href": "docs/ring_buffer___spec.html#L13C9"
                     },
                     {
                       "kind": "span",
@@ -490,7 +490,7 @@ GNATdoc.Documentation = {
         {
           "label": "getTail",
           "qualifier": "",
-          "line": 52,
+          "line": 60,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -501,7 +501,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 52,
+                  "number": 60,
                   "children": [
                     {
                       "kind": "span",
@@ -522,7 +522,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "getTail",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L52C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L60C16"
                     },
                     {
                       "kind": "span",
@@ -543,7 +543,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Index",
-                      "href": "docs/ring_buffer___spec.html#L5C9"
+                      "href": "docs/ring_buffer___spec.html#L13C9"
                     },
                     {
                       "kind": "span",
@@ -581,7 +581,7 @@ GNATdoc.Documentation = {
         {
           "label": "isEmpty",
           "qualifier": "",
-          "line": 56,
+          "line": 64,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -592,7 +592,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 56,
+                  "number": 64,
                   "children": [
                     {
                       "kind": "span",
@@ -613,7 +613,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "isEmpty",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L56C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L64C16"
                     },
                     {
                       "kind": "span",
@@ -671,7 +671,7 @@ GNATdoc.Documentation = {
         {
           "label": "isFull",
           "qualifier": "",
-          "line": 60,
+          "line": 68,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -682,7 +682,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 60,
+                  "number": 68,
                   "children": [
                     {
                       "kind": "span",
@@ -703,7 +703,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "isFull",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L60C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L68C16"
                     },
                     {
                       "kind": "span",
@@ -761,7 +761,7 @@ GNATdoc.Documentation = {
         {
           "label": "peek_non_blocking",
           "qualifier": "",
-          "line": 44,
+          "line": 52,
           "column": 16,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -772,7 +772,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 44,
+                  "number": 52,
                   "children": [
                     {
                       "kind": "span",
@@ -793,7 +793,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "peek_non_blocking",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L44C16"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L52C16"
                     },
                     {
                       "kind": "span",
@@ -809,7 +809,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "value_on_empty",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L44C35"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L52C35"
                     },
                     {
                       "kind": "span",
@@ -888,11 +888,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "value_on_empty",
-              "line": 44,
+              "line": 52,
               "column": 35,
               "type": {
                 "label": "Ring_Buffer.Element",
-                "docHref": "docs/ring_buffer___spec.html#L4C9"
+                "docHref": "docs/ring_buffer___spec.html#L12C9"
               },
               "description": [
                 {
@@ -924,7 +924,7 @@ GNATdoc.Documentation = {
         {
           "label": "print",
           "qualifier": "",
-          "line": 67,
+          "line": 75,
           "column": 17,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -935,7 +935,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 67,
+                  "number": 75,
                   "children": [
                     {
                       "kind": "span",
@@ -956,7 +956,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "print",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L67C17"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L75C17"
                     },
                     {
                       "kind": "span",
@@ -972,7 +972,7 @@ GNATdoc.Documentation = {
         {
           "label": "push",
           "qualifier": "",
-          "line": 22,
+          "line": 30,
           "column": 17,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -983,7 +983,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 22,
+                  "number": 30,
                   "children": [
                     {
                       "kind": "span",
@@ -1004,7 +1004,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "push",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L22C17"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L30C17"
                     },
                     {
                       "kind": "span",
@@ -1020,7 +1020,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "data",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L22C23"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L30C23"
                     },
                     {
                       "kind": "span",
@@ -1083,11 +1083,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "data",
-              "line": 22,
+              "line": 30,
               "column": 23,
               "type": {
                 "label": "Ring_Buffer.Element",
-                "docHref": "docs/ring_buffer___spec.html#L4C9"
+                "docHref": "docs/ring_buffer___spec.html#L12C9"
               },
               "description": [
                 {
@@ -1106,7 +1106,7 @@ GNATdoc.Documentation = {
         {
           "label": "removeLast",
           "qualifier": "",
-          "line": 34,
+          "line": 42,
           "column": 17,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -1117,7 +1117,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 34,
+                  "number": 42,
                   "children": [
                     {
                       "kind": "span",
@@ -1138,7 +1138,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "removeLast",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L34C17"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L42C17"
                     },
                     {
                       "kind": "span",
@@ -1163,7 +1163,7 @@ GNATdoc.Documentation = {
         {
           "label": "reset",
           "qualifier": "",
-          "line": 31,
+          "line": 39,
           "column": 17,
           "src": "srcs/ring_buffer.ads.html",
           "summary": [
@@ -1174,7 +1174,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 31,
+                  "number": 39,
                   "children": [
                     {
                       "kind": "span",
@@ -1195,7 +1195,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "reset",
-                      "href": "docs/ring_buffer___ringbuffer___spec.html#L31C17"
+                      "href": "docs/ring_buffer___ringbuffer___spec.html#L39C17"
                     },
                     {
                       "kind": "span",

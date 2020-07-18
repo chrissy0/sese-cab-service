@@ -385,7 +385,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Controller_Task_Access_T",
-                      "href": "docs/motor_controller___spec.html#L153C9"
+                      "href": "docs/motor_controller___spec.html#L155C9"
                     },
                     {
                       "kind": "span",
@@ -581,7 +581,7 @@ GNATdoc.Documentation = {
               "column": 10,
               "type": {
                 "label": "Motor_Controller.Motor_Controller_Task_Access_T",
-                "docHref": "docs/motor_controller___spec.html#L153C9"
+                "docHref": "docs/motor_controller___spec.html#L155C9"
               },
               "description": [
                 {

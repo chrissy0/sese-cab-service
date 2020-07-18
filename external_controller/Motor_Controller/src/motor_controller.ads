@@ -80,6 +80,7 @@ package Motor_Controller is
    -- @value SHUTDOWN_S Shutdown the Job Executer Thread
    -- @value EMPTY_S Nothing new
    -- @value BLOCKED_S Front is blocked
+   -- @value NOT_FUNCTIONAL cab cannot execute jobs
    type Job_Executer_Next_t is
      (SHUTDOWN_S, EMPTY_S, BLOCKED_S, NOT_FUNCTIONAL);
 

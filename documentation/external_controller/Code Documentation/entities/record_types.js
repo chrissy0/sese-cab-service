@@ -3,10 +3,10 @@ GNATdoc.EntitiesCategory = {
   "entities": [
     {
       "label": "Cab_State_T",
-      "docHref": "docs/motor_controller___spec.html#L230C9",
+      "docHref": "docs/motor_controller___spec.html#L232C9",
       "declared": "Motor_Controller",
       "declared_qualifier": "",
-      "srcHref": "srcs/motor_controller.ads.html#L230"
+      "srcHref": "srcs/motor_controller.ads.html#L232"
     },
     {
       "label": "Command_t",

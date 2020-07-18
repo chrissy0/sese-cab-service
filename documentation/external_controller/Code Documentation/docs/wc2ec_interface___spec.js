@@ -9,10 +9,177 @@ GNATdoc.Documentation = {
     {
       "entities": [
         {
-          "label": "elevate_curb_sensor",
+          "label": "SENSOR_FAULT",
+          "qualifier": "",
+          "line": 81,
+          "column": 4,
+          "src": "srcs/wc2ec_interface.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 81,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SENSOR_FAULT"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Long_Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "-"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "1.0"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "value to indicate faulty sensor\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "SENSOR_MAX_VAL",
+          "qualifier": "",
+          "line": 84,
+          "column": 4,
+          "src": "srcs/wc2ec_interface.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 84,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SENSOR_MAX_VAL"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Long_Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "1000.0"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "minimum valid sensor values\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "SENSOR_MIN_VAL",
           "qualifier": "",
           "line": 87,
-          "column": 14,
+          "column": 4,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
           ],
@@ -23,6 +190,239 @@ GNATdoc.Documentation = {
                 {
                   "kind": "line",
                   "number": 87,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "SENSOR_MIN_VAL"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Long_Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":="
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "number",
+                      "text": "0.0"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "maximum valid sensor values\n"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "Constants and variables"
+    },
+    {
+      "entities": [
+        {
+          "label": "detect_sensor_fault",
+          "qualifier": "",
+          "line": 92,
+          "column": 13,
+          "src": "srcs/wc2ec_interface.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 92,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "detect_sensor_fault",
+                      "href": "docs/wc2ec_interface___spec.html#L92C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "value",
+                      "href": "docs/wc2ec_interface___spec.html#L92C33"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Long_Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Long_Float"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "paragraph",
+              "children": [
+                {
+                  "kind": "span",
+                  "text": "Returns value if value is valild. Otherwise returns SENSOR_FAULT\n"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "value",
+              "line": 92,
+              "column": 33,
+              "type": {
+                "label": "Long_Float"
+              },
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "sensor value\n"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "returns": {
+            "description": [
+              {
+                "kind": "paragraph",
+                "children": [
+                  {
+                    "kind": "span",
+                    "text": "value in range or SENSOR_FAULT\n"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "elevate_curb_sensor",
+          "qualifier": "",
+          "line": 77,
+          "column": 14,
+          "src": "srcs/wc2ec_interface.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 77,
                   "children": [
                     {
                       "kind": "span",
@@ -43,7 +443,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "elevate_curb_sensor",
-                      "href": "docs/wc2ec_interface___spec.html#L87C14"
+                      "href": "docs/wc2ec_interface___spec.html#L77C14"
                     },
                     {
                       "kind": "span",
@@ -132,61 +532,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "pos",
-                      "href": "docs/wc2ec_interface___spec.html#L71C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "         "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Lane_Detection.Curb_Sensor_Position_T",
-                      "href": "docs/lane_detection___spec.html#L25C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 72,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
                       "text": "orientation",
-                      "href": "docs/wc2ec_interface___spec.html#L72C7"
+                      "href": "docs/wc2ec_interface___spec.html#L71C7"
                     },
                     {
                       "kind": "span",
@@ -228,7 +575,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 73,
+                  "number": 72,
                   "children": [
                     {
                       "kind": "span",
@@ -239,7 +586,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "is_backup",
-                      "href": "docs/wc2ec_interface___spec.html#L73C7"
+                      "href": "docs/wc2ec_interface___spec.html#L72C7"
                     },
                     {
                       "kind": "span",
@@ -275,7 +622,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 74,
+                  "number": 73,
                   "children": [
                     {
                       "kind": "span",
@@ -322,34 +669,18 @@ GNATdoc.Documentation = {
                 {
                   "kind": "span",
                   "text": "Getter for curb sensor values\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "sensor position\n"
                 }
               ]
             }
           ],
           "parameters": [
             {
-              "label": "pos",
-              "line": 71,
-              "column": 7,
-              "type": {
-                "label": "Lane_Detection.Curb_Sensor_Position_T",
-                "docHref": "docs/lane_detection___spec.html#L25C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "sensor position\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
               "label": "orientation",
-              "line": 72,
+              "line": 71,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Sensor_Orientation_T",
@@ -369,7 +700,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "is_backup",
-              "line": 73,
+              "line": 72,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -1234,269 +1565,6 @@ GNATdoc.Documentation = {
             {
               "label": "is_backup",
               "line": 49,
-              "column": 7,
-              "type": {
-                "label": "Boolean"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "True: reference Backup sensor, False: Refernce default sensor\n"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "returns": {
-            "description": [
-              {
-                "kind": "paragraph",
-                "children": [
-                  {
-                    "kind": "span",
-                    "text": "current sensor value\n"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "label": "get_wall_detection_sensor_value",
-          "qualifier": "",
-          "line": 80,
-          "column": 13,
-          "src": "srcs/wc2ec_interface.ads.html",
-          "summary": [
-          ],
-          "description": [
-            {
-              "kind": "code",
-              "children": [
-                {
-                  "kind": "line",
-                  "number": 80,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "function"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "get_wall_detection_sensor_value",
-                      "href": "docs/wc2ec_interface___spec.html#L80C13"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 81,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "     "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "("
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 82,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "orientation",
-                      "href": "docs/wc2ec_interface___spec.html#L82C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Lane_Detection.Sensor_Orientation_T",
-                      "href": "docs/lane_detection___spec.html#L31C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 83,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "is_backup",
-                      "href": "docs/wc2ec_interface___spec.html#L83C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "in"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Boolean"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 84,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "     "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ")"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "keyword",
-                      "text": "return"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Long_Float"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "paragraph",
-              "children": [
-                {
-                  "kind": "span",
-                  "text": "Getter for wall detection sensor values\n"
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "label": "orientation",
-              "line": 82,
-              "column": 7,
-              "type": {
-                "label": "Lane_Detection.Sensor_Orientation_T",
-                "docHref": "docs/lane_detection___spec.html#L31C9"
-              },
-              "description": [
-                {
-                  "kind": "paragraph",
-                  "children": [
-                    {
-                      "kind": "span",
-                      "text": "sensor orientaten\n"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "label": "is_backup",
-              "line": 83,
               "column": 7,
               "type": {
                 "label": "Boolean"

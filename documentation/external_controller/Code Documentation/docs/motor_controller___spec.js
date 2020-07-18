@@ -11,7 +11,7 @@ GNATdoc.Documentation = {
         {
           "label": "ITERAION_NUM_90_DEGREE",
           "qualifier": "",
-          "line": 161,
+          "line": 163,
           "column": 4,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -22,7 +22,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 161,
+                  "number": 163,
                   "children": [
                     {
                       "kind": "span",
@@ -77,7 +77,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "number",
-                      "text": "90"
+                      "text": "70"
                     },
                     {
                       "kind": "span",
@@ -102,7 +102,7 @@ GNATdoc.Documentation = {
         {
           "label": "ITERAION_NUM_DRIVE_OFF",
           "qualifier": "",
-          "line": 163,
+          "line": 165,
           "column": 4,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -113,7 +113,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 163,
+                  "number": 165,
                   "children": [
                     {
                       "kind": "span",
@@ -193,7 +193,7 @@ GNATdoc.Documentation = {
         {
           "label": "MOTOR_DRIVE_SPEED",
           "qualifier": "",
-          "line": 159,
+          "line": 161,
           "column": 4,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -204,7 +204,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 159,
+                  "number": 161,
                   "children": [
                     {
                       "kind": "span",
@@ -284,7 +284,7 @@ GNATdoc.Documentation = {
         {
           "label": "MOTOR_ROTATE_SPEED",
           "qualifier": "",
-          "line": 157,
+          "line": 159,
           "column": 4,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -295,7 +295,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 157,
+                  "number": 159,
                   "children": [
                     {
                       "kind": "span",
@@ -380,7 +380,7 @@ GNATdoc.Documentation = {
         {
           "label": "Boolean_Tasks_Arrays",
           "qualifier": "",
-          "line": 174,
+          "line": 176,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -391,7 +391,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 174,
+                  "number": 176,
                   "children": [
                     {
                       "kind": "span",
@@ -412,7 +412,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Boolean_Tasks_Arrays",
-                      "href": "docs/motor_controller___spec.html#L174C9"
+                      "href": "docs/motor_controller___spec.html#L176C9"
                     },
                     {
                       "kind": "span",
@@ -448,7 +448,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Module_Tasks",
-                      "href": "docs/motor_controller___spec.html#L171C9"
+                      "href": "docs/motor_controller___spec.html#L173C9"
                     },
                     {
                       "kind": "span",
@@ -498,7 +498,7 @@ GNATdoc.Documentation = {
         {
           "label": "Drive_State_T",
           "qualifier": "",
-          "line": 203,
+          "line": 205,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -509,7 +509,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 203,
+                  "number": 205,
                   "children": [
                     {
                       "kind": "span",
@@ -530,7 +530,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Drive_State_T",
-                      "href": "docs/motor_controller___spec.html#L203C9"
+                      "href": "docs/motor_controller___spec.html#L205C9"
                     },
                     {
                       "kind": "span",
@@ -556,7 +556,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "STRAIGHT",
-                      "href": "docs/motor_controller___spec.html#L203C27"
+                      "href": "docs/motor_controller___spec.html#L205C27"
                     },
                     {
                       "kind": "span",
@@ -572,7 +572,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "ROTATE_LEFT",
-                      "href": "docs/motor_controller___spec.html#L203C37"
+                      "href": "docs/motor_controller___spec.html#L205C37"
                     },
                     {
                       "kind": "span",
@@ -588,7 +588,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "ROTATE_RIGHT",
-                      "href": "docs/motor_controller___spec.html#L203C50"
+                      "href": "docs/motor_controller___spec.html#L205C50"
                     },
                     {
                       "kind": "span",
@@ -604,7 +604,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "INIT",
-                      "href": "docs/motor_controller___spec.html#L203C64"
+                      "href": "docs/motor_controller___spec.html#L205C64"
                     },
                     {
                       "kind": "span",
@@ -615,7 +615,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L203C9"
+                      "href": "docs/motor_controller___spec.html#L205C9"
                     }
                   ]
                 }
@@ -634,7 +634,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "STRAIGHT",
-              "line": 203,
+              "line": 205,
               "column": 27,
               "description": [
                 {
@@ -650,7 +650,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "ROTATE_LEFT",
-              "line": 203,
+              "line": 205,
               "column": 37,
               "description": [
                 {
@@ -666,7 +666,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "ROTATE_RIGHT",
-              "line": 203,
+              "line": 205,
               "column": 50,
               "description": [
                 {
@@ -682,7 +682,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "INIT",
-              "line": 203,
+              "line": 205,
               "column": 64,
               "description": [
                 {
@@ -701,7 +701,7 @@ GNATdoc.Documentation = {
         {
           "label": "Final_Safe_State_State_t",
           "qualifier": "",
-          "line": 217,
+          "line": 219,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -712,7 +712,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 217,
+                  "number": 219,
                   "children": [
                     {
                       "kind": "span",
@@ -733,7 +733,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Final_Safe_State_State_t",
-                      "href": "docs/motor_controller___spec.html#L217C9"
+                      "href": "docs/motor_controller___spec.html#L219C9"
                     },
                     {
                       "kind": "span",
@@ -759,7 +759,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "ROTATE_LEFT_90",
-                      "href": "docs/motor_controller___spec.html#L217C38"
+                      "href": "docs/motor_controller___spec.html#L219C38"
                     },
                     {
                       "kind": "span",
@@ -775,7 +775,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DRIVE_OFF_LEFT",
-                      "href": "docs/motor_controller___spec.html#L217C54"
+                      "href": "docs/motor_controller___spec.html#L219C54"
                     },
                     {
                       "kind": "span",
@@ -791,7 +791,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "ROTATE_RIGHT_180_DEGREE",
-                      "href": "docs/motor_controller___spec.html#L217C70"
+                      "href": "docs/motor_controller___spec.html#L219C70"
                     },
                     {
                       "kind": "span",
@@ -807,7 +807,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DRIVE_OFF_RIGHT",
-                      "href": "docs/motor_controller___spec.html#L217C95"
+                      "href": "docs/motor_controller___spec.html#L219C95"
                     },
                     {
                       "kind": "span",
@@ -823,7 +823,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DONE",
-                      "href": "docs/motor_controller___spec.html#L217C112"
+                      "href": "docs/motor_controller___spec.html#L219C112"
                     },
                     {
                       "kind": "span",
@@ -834,7 +834,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L217C9"
+                      "href": "docs/motor_controller___spec.html#L219C9"
                     }
                   ]
                 }
@@ -853,7 +853,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "ROTATE_LEFT_90",
-              "line": 217,
+              "line": 219,
               "column": 38,
               "description": [
                 {
@@ -869,7 +869,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "DRIVE_OFF_LEFT",
-              "line": 217,
+              "line": 219,
               "column": 54,
               "description": [
                 {
@@ -885,7 +885,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "ROTATE_RIGHT_180_DEGREE",
-              "line": 217,
+              "line": 219,
               "column": 70,
               "description": [
                 {
@@ -901,7 +901,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "DRIVE_OFF_RIGHT",
-              "line": 217,
+              "line": 219,
               "column": 95,
               "description": [
                 {
@@ -917,7 +917,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "DONE",
-              "line": 217,
+              "line": 219,
               "column": 112,
               "description": [
                 {
@@ -936,7 +936,7 @@ GNATdoc.Documentation = {
         {
           "label": "Front_Clear_State_T",
           "qualifier": "",
-          "line": 196,
+          "line": 198,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -947,7 +947,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 196,
+                  "number": 198,
                   "children": [
                     {
                       "kind": "span",
@@ -968,7 +968,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Front_Clear_State_T",
-                      "href": "docs/motor_controller___spec.html#L196C9"
+                      "href": "docs/motor_controller___spec.html#L198C9"
                     },
                     {
                       "kind": "span",
@@ -994,7 +994,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "DRIVE",
-                      "href": "docs/motor_controller___spec.html#L196C33"
+                      "href": "docs/motor_controller___spec.html#L198C33"
                     },
                     {
                       "kind": "span",
@@ -1010,7 +1010,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "STOP",
-                      "href": "docs/motor_controller___spec.html#L196C40"
+                      "href": "docs/motor_controller___spec.html#L198C40"
                     },
                     {
                       "kind": "span",
@@ -1021,7 +1021,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L196C9"
+                      "href": "docs/motor_controller___spec.html#L198C9"
                     }
                   ]
                 }
@@ -1040,7 +1040,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "DRIVE",
-              "line": 196,
+              "line": 198,
               "column": 33,
               "description": [
                 {
@@ -1056,7 +1056,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "STOP",
-              "line": 196,
+              "line": 198,
               "column": 40,
               "description": [
                 {
@@ -1841,7 +1841,7 @@ GNATdoc.Documentation = {
         {
           "label": "Job_Executer_Next_t",
           "qualifier": "",
-          "line": 83,
+          "line": 84,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -1852,7 +1852,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 83,
+                  "number": 84,
                   "children": [
                     {
                       "kind": "span",
@@ -1873,7 +1873,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Job_Executer_Next_t",
-                      "href": "docs/motor_controller___spec.html#L83C9"
+                      "href": "docs/motor_controller___spec.html#L84C9"
                     },
                     {
                       "kind": "span",
@@ -1889,7 +1889,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 84,
+                  "number": 85,
                   "children": [
                     {
                       "kind": "span",
@@ -1905,7 +1905,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHUTDOWN_S",
-                      "href": "docs/motor_controller___spec.html#L84C7"
+                      "href": "docs/motor_controller___spec.html#L85C7"
                     },
                     {
                       "kind": "span",
@@ -1921,7 +1921,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "EMPTY_S",
-                      "href": "docs/motor_controller___spec.html#L84C19"
+                      "href": "docs/motor_controller___spec.html#L85C19"
                     },
                     {
                       "kind": "span",
@@ -1937,7 +1937,23 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "BLOCKED_S",
-                      "href": "docs/motor_controller___spec.html#L84C28"
+                      "href": "docs/motor_controller___spec.html#L85C28"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ","
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "NOT_FUNCTIONAL",
+                      "href": "docs/motor_controller___spec.html#L85C39"
                     },
                     {
                       "kind": "span",
@@ -1948,7 +1964,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L83C9"
+                      "href": "docs/motor_controller___spec.html#L84C9"
                     }
                   ]
                 }
@@ -1967,7 +1983,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "SHUTDOWN_S",
-              "line": 84,
+              "line": 85,
               "column": 7,
               "description": [
                 {
@@ -1983,7 +1999,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "EMPTY_S",
-              "line": 84,
+              "line": 85,
               "column": 19,
               "description": [
                 {
@@ -1999,7 +2015,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "BLOCKED_S",
-              "line": 84,
+              "line": 85,
               "column": 28,
               "description": [
                 {
@@ -2008,6 +2024,22 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "text": "Front is blocked\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "NOT_FUNCTIONAL",
+              "line": 85,
+              "column": 39,
+              "description": [
+                {
+                  "kind": "paragraph",
+                  "children": [
+                    {
+                      "kind": "span",
+                      "text": "cab cannot execute jobs\n"
                     }
                   ]
                 }
@@ -2500,7 +2532,7 @@ GNATdoc.Documentation = {
         {
           "label": "Lean_State_T",
           "qualifier": "",
-          "line": 209,
+          "line": 211,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -2511,7 +2543,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 209,
+                  "number": 211,
                   "children": [
                     {
                       "kind": "span",
@@ -2532,7 +2564,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Lean_State_T",
-                      "href": "docs/motor_controller___spec.html#L209C9"
+                      "href": "docs/motor_controller___spec.html#L211C9"
                     },
                     {
                       "kind": "span",
@@ -2558,7 +2590,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "NEXT_LEFT",
-                      "href": "docs/motor_controller___spec.html#L209C26"
+                      "href": "docs/motor_controller___spec.html#L211C26"
                     },
                     {
                       "kind": "span",
@@ -2574,7 +2606,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "NEXT_RIGHT",
-                      "href": "docs/motor_controller___spec.html#L209C37"
+                      "href": "docs/motor_controller___spec.html#L211C37"
                     },
                     {
                       "kind": "span",
@@ -2590,7 +2622,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LEAN_FROM_LINE",
-                      "href": "docs/motor_controller___spec.html#L209C49"
+                      "href": "docs/motor_controller___spec.html#L211C49"
                     },
                     {
                       "kind": "span",
@@ -2601,7 +2633,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L209C9"
+                      "href": "docs/motor_controller___spec.html#L211C9"
                     }
                   ]
                 }
@@ -2620,7 +2652,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "NEXT_LEFT",
-              "line": 209,
+              "line": 211,
               "column": 26,
               "description": [
                 {
@@ -2636,7 +2668,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "NEXT_RIGHT",
-              "line": 209,
+              "line": 211,
               "column": 37,
               "description": [
                 {
@@ -2652,7 +2684,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "LEAN_FROM_LINE",
-              "line": 209,
+              "line": 211,
               "column": 49,
               "description": [
                 {
@@ -2671,7 +2703,7 @@ GNATdoc.Documentation = {
         {
           "label": "Module_Tasks",
           "qualifier": "",
-          "line": 171,
+          "line": 173,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -2682,7 +2714,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 171,
+                  "number": 173,
                   "children": [
                     {
                       "kind": "span",
@@ -2703,7 +2735,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Module_Tasks",
-                      "href": "docs/motor_controller___spec.html#L171C9"
+                      "href": "docs/motor_controller___spec.html#L173C9"
                     },
                     {
                       "kind": "span",
@@ -2729,7 +2761,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LANE_DETECTION",
-                      "href": "docs/motor_controller___spec.html#L171C26"
+                      "href": "docs/motor_controller___spec.html#L173C26"
                     },
                     {
                       "kind": "span",
@@ -2745,7 +2777,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "JOB_EXECUTER",
-                      "href": "docs/motor_controller___spec.html#L171C42"
+                      "href": "docs/motor_controller___spec.html#L173C42"
                     },
                     {
                       "kind": "span",
@@ -2761,7 +2793,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FRONT_DISTANCE",
-                      "href": "docs/motor_controller___spec.html#L171C56"
+                      "href": "docs/motor_controller___spec.html#L173C56"
                     },
                     {
                       "kind": "span",
@@ -2772,7 +2804,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L171C9"
+                      "href": "docs/motor_controller___spec.html#L173C9"
                     }
                   ]
                 }
@@ -2791,7 +2823,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "LANE_DETECTION",
-              "line": 171,
+              "line": 173,
               "column": 26,
               "description": [
                 {
@@ -2807,7 +2839,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "JOB_EXECUTER",
-              "line": 171,
+              "line": 173,
               "column": 42,
               "description": [
                 {
@@ -2823,7 +2855,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "FRONT_DISTANCE",
-              "line": 171,
+              "line": 173,
               "column": 56,
               "description": [
                 {
@@ -2842,7 +2874,7 @@ GNATdoc.Documentation = {
         {
           "label": "Motor_Controller_State_T",
           "qualifier": "",
-          "line": 180,
+          "line": 182,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -2853,7 +2885,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 180,
+                  "number": 182,
                   "children": [
                     {
                       "kind": "span",
@@ -2874,7 +2906,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Controller_State_T",
-                      "href": "docs/motor_controller___spec.html#L180C9"
+                      "href": "docs/motor_controller___spec.html#L182C9"
                     },
                     {
                       "kind": "span",
@@ -2900,7 +2932,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SYSTEM_ERROR",
-                      "href": "docs/motor_controller___spec.html#L180C38"
+                      "href": "docs/motor_controller___spec.html#L182C38"
                     },
                     {
                       "kind": "span",
@@ -2916,7 +2948,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "NO_SYSTEM_ERROR",
-                      "href": "docs/motor_controller___spec.html#L180C52"
+                      "href": "docs/motor_controller___spec.html#L182C52"
                     },
                     {
                       "kind": "span",
@@ -2932,7 +2964,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "SHUTDOWN",
-                      "href": "docs/motor_controller___spec.html#L180C69"
+                      "href": "docs/motor_controller___spec.html#L182C69"
                     },
                     {
                       "kind": "span",
@@ -2943,7 +2975,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L180C9"
+                      "href": "docs/motor_controller___spec.html#L182C9"
                     }
                   ]
                 }
@@ -2962,7 +2994,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "SYSTEM_ERROR",
-              "line": 180,
+              "line": 182,
               "column": 38,
               "description": [
                 {
@@ -2978,7 +3010,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "NO_SYSTEM_ERROR",
-              "line": 180,
+              "line": 182,
               "column": 52,
               "description": [
                 {
@@ -2994,7 +3026,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "SHUTDOWN",
-              "line": 180,
+              "line": 182,
               "column": 69,
               "description": [
                 {
@@ -3013,7 +3045,7 @@ GNATdoc.Documentation = {
         {
           "label": "Motor_Values_T",
           "qualifier": "",
-          "line": 165,
+          "line": 167,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -3024,7 +3056,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 165,
+                  "number": 167,
                   "children": [
                     {
                       "kind": "span",
@@ -3045,7 +3077,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     },
                     {
                       "kind": "span",
@@ -3138,7 +3170,7 @@ GNATdoc.Documentation = {
         {
           "label": "No_System_Error_State_T",
           "qualifier": "",
-          "line": 191,
+          "line": 193,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -3149,7 +3181,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 191,
+                  "number": 193,
                   "children": [
                     {
                       "kind": "span",
@@ -3170,7 +3202,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "No_System_Error_State_T",
-                      "href": "docs/motor_controller___spec.html#L191C9"
+                      "href": "docs/motor_controller___spec.html#L193C9"
                     },
                     {
                       "kind": "span",
@@ -3196,7 +3228,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FRONT_CLEAR",
-                      "href": "docs/motor_controller___spec.html#L191C37"
+                      "href": "docs/motor_controller___spec.html#L193C37"
                     },
                     {
                       "kind": "span",
@@ -3212,7 +3244,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FRONT_BLOCKED",
-                      "href": "docs/motor_controller___spec.html#L191C50"
+                      "href": "docs/motor_controller___spec.html#L193C50"
                     },
                     {
                       "kind": "span",
@@ -3223,7 +3255,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L191C9"
+                      "href": "docs/motor_controller___spec.html#L193C9"
                     }
                   ]
                 }
@@ -3242,7 +3274,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "FRONT_CLEAR",
-              "line": 191,
+              "line": 193,
               "column": 37,
               "description": [
                 {
@@ -3258,7 +3290,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "FRONT_BLOCKED",
-              "line": 191,
+              "line": 193,
               "column": 50,
               "description": [
                 {
@@ -3277,7 +3309,7 @@ GNATdoc.Documentation = {
         {
           "label": "System_Error_State_T",
           "qualifier": "",
-          "line": 185,
+          "line": 187,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -3288,7 +3320,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 185,
+                  "number": 187,
                   "children": [
                     {
                       "kind": "span",
@@ -3309,7 +3341,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "System_Error_State_T",
-                      "href": "docs/motor_controller___spec.html#L185C9"
+                      "href": "docs/motor_controller___spec.html#L187C9"
                     },
                     {
                       "kind": "span",
@@ -3325,7 +3357,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 186,
+                  "number": 188,
                   "children": [
                     {
                       "kind": "span",
@@ -3341,7 +3373,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FINAL_SAFE_STATE",
-                      "href": "docs/motor_controller___spec.html#L186C7"
+                      "href": "docs/motor_controller___spec.html#L188C7"
                     },
                     {
                       "kind": "span",
@@ -3357,7 +3389,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "STAND_ON_TRACK",
-                      "href": "docs/motor_controller___spec.html#L186C25"
+                      "href": "docs/motor_controller___spec.html#L188C25"
                     },
                     {
                       "kind": "span",
@@ -3368,7 +3400,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L185C9"
+                      "href": "docs/motor_controller___spec.html#L187C9"
                     }
                   ]
                 }
@@ -3387,7 +3419,7 @@ GNATdoc.Documentation = {
           "literals": [
             {
               "label": "FINAL_SAFE_STATE",
-              "line": 186,
+              "line": 188,
               "column": 7,
               "description": [
                 {
@@ -3403,7 +3435,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "STAND_ON_TRACK",
-              "line": 186,
+              "line": 188,
               "column": 25,
               "description": [
                 {
@@ -3612,7 +3644,7 @@ GNATdoc.Documentation = {
         {
           "label": "Motor_Controller_Task_Access_T",
           "qualifier": "",
-          "line": 153,
+          "line": 155,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -3623,7 +3655,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 153,
+                  "number": 155,
                   "children": [
                     {
                       "kind": "span",
@@ -3644,7 +3676,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Controller_Task_Access_T",
-                      "href": "docs/motor_controller___spec.html#L153C9"
+                      "href": "docs/motor_controller___spec.html#L155C9"
                     },
                     {
                       "kind": "span",
@@ -3675,7 +3707,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Controller_Task_T",
-                      "href": "docs/motor_controller___motor_controller_task_t___spec.html#L89C14"
+                      "href": "docs/motor_controller___motor_controller_task_t___spec.html#L90C14"
                     },
                     {
                       "kind": "span",
@@ -3897,7 +3929,7 @@ GNATdoc.Documentation = {
         {
           "label": "Cab_State_T",
           "qualifier": "",
-          "line": 230,
+          "line": 232,
           "column": 9,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -3908,7 +3940,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 230,
+                  "number": 232,
                   "children": [
                     {
                       "kind": "span",
@@ -3929,7 +3961,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -3955,7 +3987,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 231,
+                  "number": 233,
                   "children": [
                     {
                       "kind": "span",
@@ -3966,7 +3998,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Base",
-                      "href": "docs/motor_controller___spec.html#L231C7"
+                      "href": "docs/motor_controller___spec.html#L233C7"
                     },
                     {
                       "kind": "span",
@@ -3987,93 +4019,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Controller_State_T",
-                      "href": "docs/motor_controller___spec.html#L180C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 232,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "System_Error",
-                      "href": "docs/motor_controller___spec.html#L232C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "     "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "System_Error_State_T",
-                      "href": "docs/motor_controller___spec.html#L185C9"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ";"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 233,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "      "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Final_Safe_State",
-                      "href": "docs/motor_controller___spec.html#L233C7"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": ":"
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": " "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "identifier",
-                      "text": "Final_Safe_State_State_t",
-                      "href": "docs/motor_controller___spec.html#L217C9"
+                      "href": "docs/motor_controller___spec.html#L182C9"
                     },
                     {
                       "kind": "span",
@@ -4094,13 +4040,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "No_System_Error",
+                      "text": "System_Error",
                       "href": "docs/motor_controller___spec.html#L234C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "  "
+                      "text": "     "
                     },
                     {
                       "kind": "span",
@@ -4115,8 +4061,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "No_System_Error_State_T",
-                      "href": "docs/motor_controller___spec.html#L191C9"
+                      "text": "System_Error_State_T",
+                      "href": "docs/motor_controller___spec.html#L187C9"
                     },
                     {
                       "kind": "span",
@@ -4137,13 +4083,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Front_Is_Clear",
+                      "text": "Final_Safe_State",
                       "href": "docs/motor_controller___spec.html#L235C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": " "
                     },
                     {
                       "kind": "span",
@@ -4158,8 +4104,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Front_Clear_State_T",
-                      "href": "docs/motor_controller___spec.html#L196C9"
+                      "text": "Final_Safe_State_State_t",
+                      "href": "docs/motor_controller___spec.html#L219C9"
                     },
                     {
                       "kind": "span",
@@ -4180,13 +4126,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Driving",
+                      "text": "No_System_Error",
                       "href": "docs/motor_controller___spec.html#L236C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "          "
+                      "text": "  "
                     },
                     {
                       "kind": "span",
@@ -4201,8 +4147,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Drive_State_T",
-                      "href": "docs/motor_controller___spec.html#L203C9"
+                      "text": "No_System_Error_State_T",
+                      "href": "docs/motor_controller___spec.html#L193C9"
                     },
                     {
                       "kind": "span",
@@ -4223,13 +4169,13 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Leaning",
+                      "text": "Front_Is_Clear",
                       "href": "docs/motor_controller___spec.html#L237C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "          "
+                      "text": "   "
                     },
                     {
                       "kind": "span",
@@ -4244,8 +4190,8 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Lean_State_T",
-                      "href": "docs/motor_controller___spec.html#L209C9"
+                      "text": "Front_Clear_State_T",
+                      "href": "docs/motor_controller___spec.html#L198C9"
                     },
                     {
                       "kind": "span",
@@ -4266,8 +4212,94 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "identifier",
-                      "text": "Forcing_Left",
+                      "text": "Driving",
                       "href": "docs/motor_controller___spec.html#L238C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "          "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Drive_State_T",
+                      "href": "docs/motor_controller___spec.html#L205C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 239,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Leaning",
+                      "href": "docs/motor_controller___spec.html#L239C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "          "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Lean_State_T",
+                      "href": "docs/motor_controller___spec.html#L211C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 240,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Forcing_Left",
+                      "href": "docs/motor_controller___spec.html#L240C7"
                     },
                     {
                       "kind": "span",
@@ -4298,7 +4330,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 239,
+                  "number": 241,
                   "children": [
                     {
                       "kind": "span",
@@ -4309,7 +4341,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Counter",
-                      "href": "docs/motor_controller___spec.html#L239C7"
+                      "href": "docs/motor_controller___spec.html#L241C7"
                     },
                     {
                       "kind": "span",
@@ -4340,7 +4372,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 240,
+                  "number": 242,
                   "children": [
                     {
                       "kind": "span",
@@ -4366,7 +4398,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ";",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     }
                   ]
                 }
@@ -4385,11 +4417,11 @@ GNATdoc.Documentation = {
           "fields": [
             {
               "label": "Base",
-              "line": 231,
+              "line": 233,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Controller_State_T",
-                "docHref": "docs/motor_controller___spec.html#L180C9"
+                "docHref": "docs/motor_controller___spec.html#L182C9"
               },
               "description": [
                 {
@@ -4405,11 +4437,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "System_Error",
-              "line": 232,
+              "line": 234,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.System_Error_State_T",
-                "docHref": "docs/motor_controller___spec.html#L185C9"
+                "docHref": "docs/motor_controller___spec.html#L187C9"
               },
               "description": [
                 {
@@ -4425,11 +4457,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Final_Safe_State",
-              "line": 233,
+              "line": 235,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Final_Safe_State_State_t",
-                "docHref": "docs/motor_controller___spec.html#L217C9"
+                "docHref": "docs/motor_controller___spec.html#L219C9"
               },
               "description": [
                 {
@@ -4445,11 +4477,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "No_System_Error",
-              "line": 234,
+              "line": 236,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.No_System_Error_State_T",
-                "docHref": "docs/motor_controller___spec.html#L191C9"
+                "docHref": "docs/motor_controller___spec.html#L193C9"
               },
               "description": [
                 {
@@ -4465,11 +4497,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Front_Is_Clear",
-              "line": 235,
+              "line": 237,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Front_Clear_State_T",
-                "docHref": "docs/motor_controller___spec.html#L196C9"
+                "docHref": "docs/motor_controller___spec.html#L198C9"
               },
               "description": [
                 {
@@ -4485,11 +4517,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Driving",
-              "line": 236,
+              "line": 238,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Drive_State_T",
-                "docHref": "docs/motor_controller___spec.html#L203C9"
+                "docHref": "docs/motor_controller___spec.html#L205C9"
               },
               "description": [
                 {
@@ -4505,11 +4537,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Leaning",
-              "line": 237,
+              "line": 239,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Lean_State_T",
-                "docHref": "docs/motor_controller___spec.html#L209C9"
+                "docHref": "docs/motor_controller___spec.html#L211C9"
               },
               "description": [
                 {
@@ -4525,7 +4557,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Forcing_Left",
-              "line": 238,
+              "line": 240,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -4544,7 +4576,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "Counter",
-              "line": 239,
+              "line": 241,
               "column": 7,
               "type": {
                 "label": "Natural"
@@ -4571,12 +4603,12 @@ GNATdoc.Documentation = {
         {
           "label": "Motor_Controller_Task_T",
           "qualifier": "",
-          "line": 89,
+          "line": 90,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
           ],
-          "href": "../docs/motor_controller___motor_controller_task_t___spec.html#L89C14"
+          "href": "../docs/motor_controller___motor_controller_task_t___spec.html#L90C14"
         }
       ],
       "label": "Tasks and task types"
@@ -4586,7 +4618,7 @@ GNATdoc.Documentation = {
         {
           "label": "calculate_output",
           "qualifier": "",
-          "line": 249,
+          "line": 251,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -4597,7 +4629,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 249,
+                  "number": 251,
                   "children": [
                     {
                       "kind": "span",
@@ -4618,13 +4650,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "calculate_output",
-                      "href": "docs/motor_controller___spec.html#L249C14"
+                      "href": "docs/motor_controller___spec.html#L251C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 250,
+                  "number": 252,
                   "children": [
                     {
                       "kind": "span",
@@ -4640,7 +4672,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 251,
+                  "number": 253,
                   "children": [
                     {
                       "kind": "span",
@@ -4651,12 +4683,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L251C7"
+                      "href": "docs/motor_controller___spec.html#L253C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "          "
+                      "text": "                 "
                     },
                     {
                       "kind": "span",
@@ -4672,7 +4704,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -4683,7 +4715,49 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 252,
+                  "number": 254,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "      "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "curb_detection_active",
+                      "href": "docs/motor_controller___spec.html#L254C7"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                },
+                {
+                  "kind": "line",
+                  "number": 255,
                   "children": [
                     {
                       "kind": "span",
@@ -4694,12 +4768,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "motor_values",
-                      "href": "docs/motor_controller___spec.html#L252C7"
+                      "href": "docs/motor_controller___spec.html#L255C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": "   "
+                      "text": "          "
                     },
                     {
                       "kind": "span",
@@ -4725,7 +4799,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     },
                     {
                       "kind": "span",
@@ -4736,7 +4810,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 253,
+                  "number": 256,
                   "children": [
                     {
                       "kind": "span",
@@ -4747,12 +4821,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LD_Next_Signal",
-                      "href": "docs/motor_controller___spec.html#L253C7"
+                      "href": "docs/motor_controller___spec.html#L256C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "        "
                     },
                     {
                       "kind": "span",
@@ -4789,7 +4863,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 254,
+                  "number": 257,
                   "children": [
                     {
                       "kind": "span",
@@ -4800,12 +4874,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FD_Next_Signal",
-                      "href": "docs/motor_controller___spec.html#L254C7"
+                      "href": "docs/motor_controller___spec.html#L257C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "        "
                     },
                     {
                       "kind": "span",
@@ -4842,7 +4916,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 255,
+                  "number": 258,
                   "children": [
                     {
                       "kind": "span",
@@ -4853,12 +4927,12 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "JE_Next_Signal",
-                      "href": "docs/motor_controller___spec.html#L255C7"
+                      "href": "docs/motor_controller___spec.html#L258C7"
                     },
                     {
                       "kind": "span",
                       "cssClass": "text",
-                      "text": " "
+                      "text": "        "
                     },
                     {
                       "kind": "span",
@@ -4884,13 +4958,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Job_Executer_Next_t",
-                      "href": "docs/motor_controller___spec.html#L83C9"
+                      "href": "docs/motor_controller___spec.html#L84C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 256,
+                  "number": 259,
                   "children": [
                     {
                       "kind": "span",
@@ -4924,11 +4998,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 251,
+              "line": 253,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -4943,12 +5017,22 @@ GNATdoc.Documentation = {
               ]
             },
             {
+              "label": "curb_detection_active",
+              "line": 254,
+              "column": 7,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
+            },
+            {
               "label": "motor_values",
-              "line": 252,
+              "line": 255,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Values_T",
-                "docHref": "docs/motor_controller___spec.html#L165C9"
+                "docHref": "docs/motor_controller___spec.html#L167C9"
               },
               "description": [
                 {
@@ -4964,7 +5048,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "LD_Next_Signal",
-              "line": 253,
+              "line": 256,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Lane_Detection_Next_T",
@@ -4984,7 +5068,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "FD_Next_Signal",
-              "line": 254,
+              "line": 257,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Front_Distance_Next_t",
@@ -5004,11 +5088,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "JE_Next_Signal",
-              "line": 255,
+              "line": 258,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Job_Executer_Next_t",
-                "docHref": "docs/motor_controller___spec.html#L83C9"
+                "docHref": "docs/motor_controller___spec.html#L84C9"
               },
               "description": [
                 {
@@ -5027,7 +5111,7 @@ GNATdoc.Documentation = {
         {
           "label": "do_state_transition",
           "qualifier": "",
-          "line": 317,
+          "line": 320,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -5038,7 +5122,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 317,
+                  "number": 320,
                   "children": [
                     {
                       "kind": "span",
@@ -5059,13 +5143,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "do_state_transition",
-                      "href": "docs/motor_controller___spec.html#L317C14"
+                      "href": "docs/motor_controller___spec.html#L320C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 318,
+                  "number": 321,
                   "children": [
                     {
                       "kind": "span",
@@ -5081,7 +5165,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 319,
+                  "number": 322,
                   "children": [
                     {
                       "kind": "span",
@@ -5092,7 +5176,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L319C7"
+                      "href": "docs/motor_controller___spec.html#L322C7"
                     },
                     {
                       "kind": "span",
@@ -5133,7 +5217,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -5144,7 +5228,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 320,
+                  "number": 323,
                   "children": [
                     {
                       "kind": "span",
@@ -5155,7 +5239,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "JE_Signal",
-                      "href": "docs/motor_controller___spec.html#L320C7"
+                      "href": "docs/motor_controller___spec.html#L323C7"
                     },
                     {
                       "kind": "span",
@@ -5187,7 +5271,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 321,
+                  "number": 324,
                   "children": [
                     {
                       "kind": "span",
@@ -5198,7 +5282,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "FD_Signal",
-                      "href": "docs/motor_controller___spec.html#L321C7"
+                      "href": "docs/motor_controller___spec.html#L324C7"
                     },
                     {
                       "kind": "span",
@@ -5230,7 +5314,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 322,
+                  "number": 325,
                   "children": [
                     {
                       "kind": "span",
@@ -5241,7 +5325,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "LD_Signal",
-                      "href": "docs/motor_controller___spec.html#L322C7"
+                      "href": "docs/motor_controller___spec.html#L325C7"
                     },
                     {
                       "kind": "span",
@@ -5273,7 +5357,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 323,
+                  "number": 326,
                   "children": [
                     {
                       "kind": "span",
@@ -5284,7 +5368,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "RM_Force_Left",
-                      "href": "docs/motor_controller___spec.html#L323C7"
+                      "href": "docs/motor_controller___spec.html#L326C7"
                     },
                     {
                       "kind": "span",
@@ -5315,7 +5399,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 324,
+                  "number": 327,
                   "children": [
                     {
                       "kind": "span",
@@ -5326,7 +5410,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "is_shutdown",
-                      "href": "docs/motor_controller___spec.html#L324C7"
+                      "href": "docs/motor_controller___spec.html#L327C7"
                     },
                     {
                       "kind": "span",
@@ -5352,7 +5436,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 325,
+                  "number": 328,
                   "children": [
                     {
                       "kind": "span",
@@ -5386,11 +5470,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 319,
+              "line": 322,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -5406,7 +5490,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "JE_Signal",
-              "line": 320,
+              "line": 323,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Job_Executer_Done_T",
@@ -5426,7 +5510,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "FD_Signal",
-              "line": 321,
+              "line": 324,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Front_Distance_Done_t",
@@ -5446,7 +5530,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "LD_Signal",
-              "line": 322,
+              "line": 325,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Lane_Detection_Done_T",
@@ -5466,7 +5550,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "RM_Force_Left",
-              "line": 323,
+              "line": 326,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -5485,7 +5569,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "is_shutdown",
-              "line": 324,
+              "line": 327,
               "column": 7,
               "type": {
                 "label": "Boolean"
@@ -5507,7 +5591,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_driving",
           "qualifier": "",
-          "line": 304,
+          "line": 307,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -5518,7 +5602,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 304,
+                  "number": 307,
                   "children": [
                     {
                       "kind": "span",
@@ -5539,13 +5623,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_driving",
-                      "href": "docs/motor_controller___spec.html#L304C14"
+                      "href": "docs/motor_controller___spec.html#L307C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 305,
+                  "number": 308,
                   "children": [
                     {
                       "kind": "span",
@@ -5561,7 +5645,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 306,
+                  "number": 309,
                   "children": [
                     {
                       "kind": "span",
@@ -5572,7 +5656,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L306C7"
+                      "href": "docs/motor_controller___spec.html#L309C7"
                     },
                     {
                       "kind": "span",
@@ -5593,7 +5677,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -5604,7 +5688,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 307,
+                  "number": 310,
                   "children": [
                     {
                       "kind": "span",
@@ -5615,7 +5699,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "motor_values",
-                      "href": "docs/motor_controller___spec.html#L307C7"
+                      "href": "docs/motor_controller___spec.html#L310C7"
                     },
                     {
                       "kind": "span",
@@ -5646,13 +5730,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 308,
+                  "number": 311,
                   "children": [
                     {
                       "kind": "span",
@@ -5686,11 +5770,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 306,
+              "line": 309,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -5706,11 +5790,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "motor_values",
-              "line": 307,
+              "line": 310,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Values_T",
-                "docHref": "docs/motor_controller___spec.html#L165C9"
+                "docHref": "docs/motor_controller___spec.html#L167C9"
               },
               "description": [
                 {
@@ -5729,7 +5813,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_final_safe_state",
           "qualifier": "",
-          "line": 273,
+          "line": 276,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -5740,7 +5824,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 273,
+                  "number": 276,
                   "children": [
                     {
                       "kind": "span",
@@ -5761,13 +5845,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_final_safe_state",
-                      "href": "docs/motor_controller___spec.html#L273C14"
+                      "href": "docs/motor_controller___spec.html#L276C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 274,
+                  "number": 277,
                   "children": [
                     {
                       "kind": "span",
@@ -5783,7 +5867,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 275,
+                  "number": 278,
                   "children": [
                     {
                       "kind": "span",
@@ -5794,7 +5878,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L275C7"
+                      "href": "docs/motor_controller___spec.html#L278C7"
                     },
                     {
                       "kind": "span",
@@ -5815,7 +5899,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -5826,7 +5910,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 276,
+                  "number": 279,
                   "children": [
                     {
                       "kind": "span",
@@ -5837,7 +5921,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "motor_values",
-                      "href": "docs/motor_controller___spec.html#L276C7"
+                      "href": "docs/motor_controller___spec.html#L279C7"
                     },
                     {
                       "kind": "span",
@@ -5868,7 +5952,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     },
                     {
                       "kind": "span",
@@ -5879,7 +5963,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 277,
+                  "number": 280,
                   "children": [
                     {
                       "kind": "span",
@@ -5890,7 +5974,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "JE_Next_Signal",
-                      "href": "docs/motor_controller___spec.html#L277C7"
+                      "href": "docs/motor_controller___spec.html#L280C7"
                     },
                     {
                       "kind": "span",
@@ -5921,13 +6005,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Job_Executer_Next_t",
-                      "href": "docs/motor_controller___spec.html#L83C9"
+                      "href": "docs/motor_controller___spec.html#L84C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 278,
+                  "number": 281,
                   "children": [
                     {
                       "kind": "span",
@@ -5961,11 +6045,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 275,
+              "line": 278,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -5981,11 +6065,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "motor_values",
-              "line": 276,
+              "line": 279,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Values_T",
-                "docHref": "docs/motor_controller___spec.html#L165C9"
+                "docHref": "docs/motor_controller___spec.html#L167C9"
               },
               "description": [
                 {
@@ -6001,11 +6085,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "JE_Next_Signal",
-              "line": 277,
+              "line": 280,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Job_Executer_Next_t",
-                "docHref": "docs/motor_controller___spec.html#L83C9"
+                "docHref": "docs/motor_controller___spec.html#L84C9"
               },
               "description": [
                 {
@@ -6024,7 +6108,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_front_is_clear",
           "qualifier": "",
-          "line": 294,
+          "line": 297,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -6035,7 +6119,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 294,
+                  "number": 297,
                   "children": [
                     {
                       "kind": "span",
@@ -6056,13 +6140,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_front_is_clear",
-                      "href": "docs/motor_controller___spec.html#L294C14"
+                      "href": "docs/motor_controller___spec.html#L297C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 295,
+                  "number": 298,
                   "children": [
                     {
                       "kind": "span",
@@ -6078,7 +6162,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 296,
+                  "number": 299,
                   "children": [
                     {
                       "kind": "span",
@@ -6089,7 +6173,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L296C7"
+                      "href": "docs/motor_controller___spec.html#L299C7"
                     },
                     {
                       "kind": "span",
@@ -6110,7 +6194,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -6121,7 +6205,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 297,
+                  "number": 300,
                   "children": [
                     {
                       "kind": "span",
@@ -6132,7 +6216,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "motor_values",
-                      "href": "docs/motor_controller___spec.html#L297C7"
+                      "href": "docs/motor_controller___spec.html#L300C7"
                     },
                     {
                       "kind": "span",
@@ -6163,13 +6247,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 298,
+                  "number": 301,
                   "children": [
                     {
                       "kind": "span",
@@ -6203,11 +6287,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 296,
+              "line": 299,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -6223,11 +6307,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "motor_values",
-              "line": 297,
+              "line": 300,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Values_T",
-                "docHref": "docs/motor_controller___spec.html#L165C9"
+                "docHref": "docs/motor_controller___spec.html#L167C9"
               },
               "description": [
                 {
@@ -6246,7 +6330,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_no_system_error",
           "qualifier": "",
-          "line": 284,
+          "line": 287,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -6257,7 +6341,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 284,
+                  "number": 287,
                   "children": [
                     {
                       "kind": "span",
@@ -6278,13 +6362,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_no_system_error",
-                      "href": "docs/motor_controller___spec.html#L284C14"
+                      "href": "docs/motor_controller___spec.html#L287C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 285,
+                  "number": 288,
                   "children": [
                     {
                       "kind": "span",
@@ -6300,7 +6384,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 286,
+                  "number": 289,
                   "children": [
                     {
                       "kind": "span",
@@ -6311,7 +6395,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L286C7"
+                      "href": "docs/motor_controller___spec.html#L289C7"
                     },
                     {
                       "kind": "span",
@@ -6332,7 +6416,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -6343,7 +6427,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 287,
+                  "number": 290,
                   "children": [
                     {
                       "kind": "span",
@@ -6354,7 +6438,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "motor_values",
-                      "href": "docs/motor_controller___spec.html#L287C7"
+                      "href": "docs/motor_controller___spec.html#L290C7"
                     },
                     {
                       "kind": "span",
@@ -6385,7 +6469,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     },
                     {
                       "kind": "span",
@@ -6396,7 +6480,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 288,
+                  "number": 291,
                   "children": [
                     {
                       "kind": "span",
@@ -6407,7 +6491,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "JE_Next_Signal",
-                      "href": "docs/motor_controller___spec.html#L288C7"
+                      "href": "docs/motor_controller___spec.html#L291C7"
                     },
                     {
                       "kind": "span",
@@ -6438,13 +6522,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Job_Executer_Next_t",
-                      "href": "docs/motor_controller___spec.html#L83C9"
+                      "href": "docs/motor_controller___spec.html#L84C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 289,
+                  "number": 292,
                   "children": [
                     {
                       "kind": "span",
@@ -6478,11 +6562,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 286,
+              "line": 289,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -6498,11 +6582,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "motor_values",
-              "line": 287,
+              "line": 290,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Values_T",
-                "docHref": "docs/motor_controller___spec.html#L165C9"
+                "docHref": "docs/motor_controller___spec.html#L167C9"
               },
               "description": [
                 {
@@ -6518,11 +6602,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "JE_Next_Signal",
-              "line": 288,
+              "line": 291,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Job_Executer_Next_t",
-                "docHref": "docs/motor_controller___spec.html#L83C9"
+                "docHref": "docs/motor_controller___spec.html#L84C9"
               },
               "description": [
                 {
@@ -6541,7 +6625,7 @@ GNATdoc.Documentation = {
         {
           "label": "output_system_error",
           "qualifier": "",
-          "line": 262,
+          "line": 265,
           "column": 14,
           "src": "srcs/motor_controller.ads.html",
           "summary": [
@@ -6552,7 +6636,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 262,
+                  "number": 265,
                   "children": [
                     {
                       "kind": "span",
@@ -6573,13 +6657,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "output_system_error",
-                      "href": "docs/motor_controller___spec.html#L262C14"
+                      "href": "docs/motor_controller___spec.html#L265C14"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 263,
+                  "number": 266,
                   "children": [
                     {
                       "kind": "span",
@@ -6595,7 +6679,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 264,
+                  "number": 267,
                   "children": [
                     {
                       "kind": "span",
@@ -6606,7 +6690,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "state",
-                      "href": "docs/motor_controller___spec.html#L264C7"
+                      "href": "docs/motor_controller___spec.html#L267C7"
                     },
                     {
                       "kind": "span",
@@ -6627,7 +6711,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Cab_State_T",
-                      "href": "docs/motor_controller___spec.html#L230C9"
+                      "href": "docs/motor_controller___spec.html#L232C9"
                     },
                     {
                       "kind": "span",
@@ -6638,7 +6722,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 265,
+                  "number": 268,
                   "children": [
                     {
                       "kind": "span",
@@ -6649,7 +6733,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "motor_values",
-                      "href": "docs/motor_controller___spec.html#L265C7"
+                      "href": "docs/motor_controller___spec.html#L268C7"
                     },
                     {
                       "kind": "span",
@@ -6680,7 +6764,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Motor_Values_T",
-                      "href": "docs/motor_controller___spec.html#L165C9"
+                      "href": "docs/motor_controller___spec.html#L167C9"
                     },
                     {
                       "kind": "span",
@@ -6691,7 +6775,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 266,
+                  "number": 269,
                   "children": [
                     {
                       "kind": "span",
@@ -6702,7 +6786,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "JE_Next_Signal",
-                      "href": "docs/motor_controller___spec.html#L266C7"
+                      "href": "docs/motor_controller___spec.html#L269C7"
                     },
                     {
                       "kind": "span",
@@ -6733,13 +6817,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "Job_Executer_Next_t",
-                      "href": "docs/motor_controller___spec.html#L83C9"
+                      "href": "docs/motor_controller___spec.html#L84C9"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 267,
+                  "number": 270,
                   "children": [
                     {
                       "kind": "span",
@@ -6773,11 +6857,11 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "state",
-              "line": 264,
+              "line": 267,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Cab_State_T",
-                "docHref": "docs/motor_controller___spec.html#L230C9"
+                "docHref": "docs/motor_controller___spec.html#L232C9"
               },
               "description": [
                 {
@@ -6793,11 +6877,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "motor_values",
-              "line": 265,
+              "line": 268,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Motor_Values_T",
-                "docHref": "docs/motor_controller___spec.html#L165C9"
+                "docHref": "docs/motor_controller___spec.html#L167C9"
               },
               "description": [
                 {
@@ -6813,11 +6897,11 @@ GNATdoc.Documentation = {
             },
             {
               "label": "JE_Next_Signal",
-              "line": 266,
+              "line": 269,
               "column": 7,
               "type": {
                 "label": "Motor_Controller.Job_Executer_Next_t",
-                "docHref": "docs/motor_controller___spec.html#L83C9"
+                "docHref": "docs/motor_controller___spec.html#L84C9"
               },
               "description": [
                 {
