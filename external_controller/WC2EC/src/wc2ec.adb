@@ -71,7 +71,6 @@ package body WC2EC is
       Buffer : String (1 .. 256);
 
    begin
-      -- TODO maybe store the type too
          Interfaces.Unsigned_8'Read(Channel, num);
          Ada.Text_IO.Put_Line(Interfaces.Unsigned_8'Image(num));
          for I in 1 .. num loop
@@ -163,14 +162,12 @@ Task body wc2ec_thread_t is
          end Constructor;
       end select;
 
-   -- TODO check return value!
    Channel := get_Stream(To_String(ip), port);
 
    while running loop
       wc2ec_header_t'Read (Channel, hdr);
 
 
-       -- Todo replace with a switch
        if (hdr.command = CMD_REGISTER_SENSOR) then
             register_sensor(Channel, hdr);
        end if;

@@ -47,12 +47,6 @@ package body Job_Executer_Suite is
       ---------------------------
       -- Process valid section --
       ---------------------------
-      Ret.Add_Test
-        (Caller.Create("test_process_valid_section_update_section_success",
-         Job_Executer.Test.test_process_valid_section_update_section_success'Access));
-      Ret.Add_Test
-        (Caller.Create("test_process_valid_section_update_section_failure",
-         Job_Executer.Test.test_process_valid_section_update_section_failure'Access));
         Ret.Add_Test
         (Caller.Create("test_process_valid_section_reached_no_RM",
          Job_Executer.Test.test_process_valid_section_reached_no_RM'Access));
@@ -79,6 +73,12 @@ package body Job_Executer_Suite is
       -- Process section --
       ---------------------
       Ret.Add_Test
+        (Caller.Create("test_process_section_update_section_success",
+         Job_Executer.Test.test_process_section_update_section_success'Access));
+      Ret.Add_Test
+        (Caller.Create("test_process_section_update_section_failure",
+         Job_Executer.Test.test_process_section_update_section_failure'Access));
+      Ret.Add_Test
         (Caller.Create("test_process_section_reached_RM",
          Job_Executer.Test.test_process_section_reached_RM'Access));
       Ret.Add_Test
@@ -90,6 +90,99 @@ package body Job_Executer_Suite is
       Ret.Add_Test
         (Caller.Create("test_process_section_system_error",
          Job_Executer.Test.test_process_section_system_error'Access));
+
+      ------------------
+      -- Update Route --
+      ------------------
+      
+      Ret.Add_Test
+        (Caller.Create("test_update_route_success_not_in_section",
+         Job_Executer.Test.test_update_route_success_not_in_section'Access));
+      Ret.Add_Test
+        (Caller.Create("test_update_route_success_in_section",
+         Job_Executer.Test.test_update_route_success_in_section'Access));
+      Ret.Add_Test
+        (Caller.Create("test_update_route_failure",
+         Job_Executer.Test.test_update_route_failure'Access));
+       Ret.Add_Test
+        (Caller.Create("test_update_route_incomplete_JSON",
+         Job_Executer.Test.test_update_route_incomplete_JSON'Access));
+      Ret.Add_Test
+        (Caller.Create("test_update_route_wrong_JSON",
+         Job_Executer.Test.test_update_route_wrong_JSON'Access));
+      Ret.Add_Test
+        (Caller.Create("test_update_route_timeout",
+         Job_Executer.Test.test_update_route_timeout'Access));
+      Ret.Add_Test
+        (Caller.Create("test_update_route_same_version",
+         Job_Executer.Test.test_update_route_same_version'Access));
+      ---------------------------
+      -- Determine Done Signal --
+      ---------------------------
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_LEFT",
+         Job_Executer.Test.test_determine_done_signal_LEFT'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_RIGHT",
+         Job_Executer.Test.test_determine_done_signal_RIGHT'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_UNKNOWN",
+         Job_Executer.Test.test_determine_done_signal_UNKNOWN'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_WAIT",
+         Job_Executer.Test.test_determine_done_signal_WAIT'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_STOP",
+         Job_Executer.Test.test_determine_done_signal_STOP'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_instant_success",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_instant_success'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_double_PICKUP_instant_success",
+         Job_Executer.Test.test_determine_done_signal_double_PICKUP_instant_success'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_failure",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_failure'Access));
+            Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_incomplete_JSON",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_incomplete_JSON'Access));
+            Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_wrong_JSON",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_wrong_JSON'Access));
+            Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_timeout",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_timeout'Access));
+            Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_late_failure",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_late_failure'Access));
+            Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_PICKUP_not_completed",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_not_completed'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_instant_success",
+         Job_Executer.Test.test_determine_done_signal_DROPOFF_instant_success'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_double_DROPOFF_instant_success",
+         Job_Executer.Test.test_determine_done_signal_double_DROPOFF_instant_success'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_failure",
+         Job_Executer.Test.test_determine_done_signal_DROPOFF_failure'Access));
+       Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_incomplete_JSON",
+         Job_Executer.Test.test_determine_done_signal_DROPOFF_incomplete_JSON'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_wrong_JSON",
+         Job_Executer.Test.test_determine_done_signal_DROPOFF_wrong_JSON'Access));
+       Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_timeout",
+         Job_Executer.Test.test_determine_done_signal_DROPOFF_timeout'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_late_failure",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_late_failure'Access));
+      Ret.Add_Test
+        (Caller.Create("test_determine_done_signal_DROPOFF_not_completed",
+         Job_Executer.Test.test_determine_done_signal_PICKUP_not_completed'Access));
+
 
       return Ret;
    end Suite; 
