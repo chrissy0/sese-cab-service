@@ -41,4 +41,5 @@ package ec2b is
    function request_dropoff(cab_id : Integer; customer_id : Integer)  return Messages.Status_Code;
    function dropoff_complete(cab_id : Integer; dropoff_completed : out Boolean)  return Messages.Status_Code;
    function set_blocked_status(cab_id : Integer; blocked : in Boolean) return Messages.Status_Code;
+   function set_functional_status(cab_id : Integer; functional : in Boolean) return Messages.Status_Code;
 end ec2b;
