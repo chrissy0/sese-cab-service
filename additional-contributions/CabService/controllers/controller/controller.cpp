@@ -89,7 +89,7 @@ int main(int argc, char ** argv) {
 
   while (robot->step(TIME_STEP) != -1) {
      
-     Order(case_num);
+   //  Order(case_num);
       
     
     if (dist_c->getValue() < 700)  Obstacle_mode++;
