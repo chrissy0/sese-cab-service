@@ -66,4 +66,11 @@ public class CabBlockedService {
             throw new UnknownCabIdException("Cab ID \"" + cabId + "\" is unknown");
         }
     }
+
+    public List<Long> getBlockedCabIds() {
+        return stream(blockedRepo.findAll())
+                .map(CabBlockedEntity::getCabId)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
 }

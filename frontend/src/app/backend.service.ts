@@ -64,14 +64,24 @@ export class BackendService {
 
   saveSensorData(cabId: number, sensor: Sensor) {
     this.http.post('http://' + this.host + ':' + this.port + '/api/bookr/setSensorStatus' +
-        '?cabId=' + cabId + '&sensorName=' + sensor.name +
-        '&disabled=' + !sensor.active + '&noise=' + sensor.noise, {})
-        .toPromise();
+      '?cabId=' + cabId + '&sensorName=' + sensor.name +
+      '&disabled=' + !sensor.active + '&noise=' + sensor.noise, {})
+      .toPromise();
   }
 
   getSensorData(cabId: number) {
     return this.http.get('http://' + this.host + ':' + this.port + '/api/ec/sensorStatus?cabId=' + cabId, {})
-        .toPromise() as Promise<BackendCabSensorStatus>;
+      .toPromise() as Promise<BackendCabSensorStatus>;
+  }
+
+  getBlockedCabIds() {
+    return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/getBlocked', {})
+      .toPromise() as Promise<number[]>;
+  }
+
+  getDysfunctionalCabIds() {
+    return this.http.get('http://' + this.host + ':' + this.port + '/api/bookr/getDysfunctional', {})
+      .toPromise() as Promise<number[]>;
   }
 
   softResetBackend() {

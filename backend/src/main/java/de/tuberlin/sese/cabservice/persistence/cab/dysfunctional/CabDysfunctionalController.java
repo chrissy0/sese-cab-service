@@ -4,10 +4,9 @@ import de.tuberlin.sese.cabservice.util.exceptions.UnknownCabIdException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -33,5 +32,11 @@ public class CabDysfunctionalController {
         }
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/bookr/getDysfunctional")
+    public ResponseEntity<?> getDysfunctional() {
+        List<Long> dysfunctionalCabIds = service.getDysfunctionalCabIds();
+        return ResponseEntity.ok(dysfunctionalCabIds);
     }
 }
