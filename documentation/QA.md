@@ -43,10 +43,6 @@ Legende:
 
 Zusätzlich wird eine statische Code-Analyse für den externen Controller sowie das Backend + Frontend-Komponente in die Pipeline integriert.
 
-## Formal Verification, Analysis, Optimization
-
-:x: TODO :x:
-
 ## Git
 
 Es wird der Git Feature Branch Workflow umgesetzt.
