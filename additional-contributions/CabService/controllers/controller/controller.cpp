@@ -54,7 +54,7 @@ Motor *slider_curb_rb;
 Motor *slider_curb_rb2;
 DistanceSensor *dist_wall_l;
 DistanceSensor *dist_wall_r;
-//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
 void init(Robot *robot);
 void followLine(double speed);
@@ -74,11 +74,11 @@ void Order(int case_num);
 
 int Obstacle_mode=0;
 int MarkerId=0;
-int StationPath_mode=0;
+int StationPath_mode=1;
 int Depot_Mode=-1;
 int Out_cnt=0;
 
-int Station_cnt =0;
+int Station_cnt =1;
 int case_num =1;
 
 int main(int argc, char ** argv) {
@@ -101,8 +101,8 @@ int main(int argc, char ** argv) {
       
       ////after the changing the route, chang back to the route before
       if((MarkerId !=2) && (MarkerId !=4) && (MarkerId !=6) && (MarkerId !=8)  && (Obstacle_mode==-1)){
-        if(StationPath_mode ==0 ) StationPath_mode= 1;
-        else StationPath_mode= 0;  
+       // if(StationPath_mode ==0 ) StationPath_mode= 1;
+       // else StationPath_mode= 0;  
         
         Obstacle_mode++;    
       }
