@@ -159,7 +159,7 @@ private
    -- Wheel speed when driving forwards
    MOTOR_DRIVE_SPEED  : constant Long_Float := 3.0;
    -- Number of iterations to rotate 90 degrees
-   ITERAION_NUM_90_DEGREE : constant Natural := 90;
+   ITERAION_NUM_90_DEGREE : constant Natural := 70;
    -- Number of iterations to drive off track when rotated to left or right
    ITERAION_NUM_DRIVE_OFF : constant Natural := 70;
 
