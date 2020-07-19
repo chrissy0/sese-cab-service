@@ -468,6 +468,12 @@ POST /api/ec/functional?cabId=0&functional=false
 - `dist_r2`
 - `dist_l`
 - `dist_l2`
+- `dist_ir_l`
+- `dist_ir_c`
+- `dist_ir_r`
+- `dist_ir_l2`
+- `dist_ir_c2`
+- `dist_ir_r2`
 - `inf_left`
 - `inf_left2`
 - `wheel1`
