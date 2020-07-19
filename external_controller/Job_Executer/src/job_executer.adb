@@ -93,7 +93,7 @@ package body Job_Executer is
    begin
 
       if (Reached_expected_roadmarker(section, next_command)) then
-         Put_Line(section'Image & " = " & next_command.section'Image);
+         --Put_Line(section'Image & " = " & next_command.section'Image);
          current_command := next_command;
          if (current_command.action = PICK_UP_S) then
             -- Wont check the return code here, because if it failed it will
