@@ -118,8 +118,27 @@
 
 ## Maximilian Weissenseel
 
-**Rolle:** 
+**Rolle: Integration Manager** 
 
-**erledigte Aufgaben:** 
-
-- STICHPUNKTE
+**erledigte Aufgaben:**
+- WC2EC: Webots Controller to External Controller
+    - Festlegen der Schnittstelle Externen Controller <-> Webots (mit Julian)
+    - Entwurf des WC2EC Protokolls (`WC2EC.md`) (mit Julian)
+    - Implementierung von WC2EC im Webots Controllers
+    - Implementierung von WC2EC im Externen Controller
+    - Features: 
+        - Skalierbarkeit:
+            - beliebig viele Cabs möglich 
+            - beliebiges hinzufügen von bereits implementierten Sensortypen ohne anpassen des Codes
+        - Effizienz: 
+            - Wenig Overhead
+            - optimale Bandbreitennutzung
+        - Usability:
+            - Schnittstelle in Ada
+            - in Ada werden die selben Sensornamen wie auch in der Welt verwendet
+    
+- EC2B: External Controller to Backend
+    - Festlegen der Schnittstelle Externer Controller <-> Backend mit Christopher (`interface-definitions.md`)
+    - Implementierung der EC2B Schnittstelle im Externen Controller
+    - Implementierung des Job_Executers auf Basis der EC2B Schnittstelle
+    - Testen der EC2B Schnittstelle und des Job_Executers   
