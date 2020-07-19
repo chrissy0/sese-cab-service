@@ -106,15 +106,23 @@
 **Rolle:** Integrationsbeauftragter
 
 **erledigte Aufgaben:** 
-
-- Festlegen der Schnittstelle Externer Controller <-> Webots (mit Max)
-- Implementierung des Ringbuffers für die Kommunikation
-- Entwurf Struktur Externer Kontroller auf Grundlage des Statecharts
-- Definition der internen Schnittstellen des externen Controllers
-- Implementierung der Pakete Motor Controller, Externer Controller, Lane Detection, Roadmarker (mit Chanki) und Front Distance
-- Testen der oben genannten Pakete (mit Florentin und Chanki)
-- Skript zur Ausführung der ADA Unit Tests in CI
-- Skeleton zur Erstellung der Unittests in ADA
+- Externer Controller:
+  - Festlegen des Testingformats des ADA Codes
+  - Skeleton zur Erstellung der Unittests in ADA
+  - Implementierung des Ringbuffers für die Kommunikation
+  - Skript zur Ausführung der ADA Unit Tests in CI
+  - Definition der internen Schnittstellen des externen Controllers
+  - Implementierung der Pakete Motor Controller, Externer Controller, Lane Detection, Roadmarker (mit Chanki) und Front Distance
+  - mehrere Testprojekte zum Umsetzen der Nebenläufigkeit der Pakete (siehe Ordner DEPRECATED)
+- Statechart
+  - Auswertung des Statecharts (mit Florentin und Chanki)
+- Integration Management:
+  - Testen der Pakete Motor Controller, Externer Controller, Lane Detection, Roadmarker (mit Chanki) und Front Distance (teilweise mit Florentin und Chanki)
+  - Festlegen der Schnittstelle Externer Controller und Webots Controller (mit Max)
+  - Entwurf Struktur Externer Kontroller auf Grundlage des Statecharts
+    - Sehr hoher grad an Nebenläufigkeit
+    - Aufteilen der Arbeit in einzelne, leicht testbare Projekte
+    - Abstrakte Kommunikation zwischen den Paketen: Jedes Paket bietet ein Abstraktionslayer zwischen Sensordaten und high-level Commands an.
 
 ## Maximilian Weissenseel
 

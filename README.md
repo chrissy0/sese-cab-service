@@ -49,3 +49,34 @@ Press `Shift+F2` again
 - Press `Execute`
 - Simulation in Webots is running
 - Control jobs via Frontend
+
+# Project Structure
+```
+sese-cab-service
+├── Webots/CabService/
+│          ├── controllers/WC2EC_Controller/  # Internal Controller C Files
+│          └── worlds/cab.wbt                 # Webots world    
+├── additional-contributions/
+│   ├── statechart/                           # External Controller State chart model
+│   │                                         # (deprecated)
+│   └── webots/                               # First Webots prototypes (deprecated)
+├── backend/                                  # Backend sourcefiles
+├── documentation/
+│   ├── Coding_Standards/                     # Coding standard specifications
+│   ├── external_controller/                  # Documentation
+│   │   ├── Code Documentation                # Generated ADA code documentation
+│   │   └── Security Concept.md               # Security Concept Description 
+│   ├── interface-definitions.md              # External Controller to backend interface
+│   ├── QA.md                                 # Quality Assurance
+│   ├── run-backend-frontend-locally.md       # Guide to locally run the backend
+│   ├── sensors.md                            # Sensor description
+│   ├── setup-jenkins.md                      # Guide to locally run the CI
+│   ├── simulate-communication-failure.md
+│   ├── verification.md                       # Guide to run the verification
+│   ├── WC2EC.md                              # Webots controller to external controller
+│                                             # interface
+├── external_controller/                      # External controller ADA projects
+│   └── DEPRECATED/                           # Deprecated ADA projects
+└── frontend/
+└── responsinilities.md                       # Project responsibilities
+```

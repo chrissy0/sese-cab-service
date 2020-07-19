@@ -1,1 +1,0 @@
-Diagrams created with draw.io (online graphic creator). go to www.draw.io to edit the graphics or export them to different file formats.
