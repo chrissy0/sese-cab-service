@@ -363,25 +363,9 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
-          "cssClass": "comment",
-          "text": "-- Backend 1 connection : HTTP_Connection := Create(\"http://167.71.35.10:8081\", Timeouts =>  Timeouts(Each => 0.1 ));"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 12,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
           "cssClass": "identifier",
           "text": "connection",
-          "href": "docs/ec2b___spec.html#L12C4"
+          "href": "docs/ec2b___spec.html#L11C4"
         },
         {
           "kind": "span",
@@ -431,7 +415,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "string",
-          "text": "\"http://164.90.179.88:8081\""
+          "text": "\"http://167.71.35.10:8081\""
         },
         {
           "kind": "span",
@@ -522,6 +506,22 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
+      "number": 12,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "comment",
+          "text": "--connection : HTTP_Connection := Create(\"http://164.90.179.88:8081\", Timeouts =>  Timeouts(Each => 0.1 ));"
+        }
+      ]
+    },
+    {
+      "kind": "line",
       "number": 13,
       "children": [
         {
@@ -532,7 +532,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- Local Host connection : HTTP_Connection := Create(\"http://127.0.0.1:8081\", Timeouts =>  Timeouts(Each => 0.1 ));"
+          "text": "--connection : HTTP_Connection := Create(\"http://127.0.0.1:8081\", Timeouts =>  Timeouts(Each => 0.1 ));"
         }
       ]
     },
@@ -1467,7 +1467,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "function"
+          "text": "procedure"
         },
         {
           "kind": "span",
@@ -1477,8 +1477,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "update_sensor_manipulation",
-          "href": "docs/ec2b___spec.html#L34C13"
+          "text": "reset_command",
+          "href": "docs/ec2b___spec.html#L34C14"
         },
         {
           "kind": "span",
@@ -1488,8 +1488,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L34C40"
+          "text": "command",
+          "href": "docs/ec2b___spec.html#L34C28"
         },
         {
           "kind": "span",
@@ -1508,13 +1508,8 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
-          "cssClass": "identifier",
-          "text": "Integer"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
+          "cssClass": "keyword",
+          "text": "in"
         },
         {
           "kind": "span",
@@ -1524,7 +1519,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "keyword",
-          "text": "return"
+          "text": "out"
         },
         {
           "kind": "span",
@@ -1534,7 +1529,13 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "Messages.Status_Code"
+          "text": "Command_t",
+          "href": "docs/ec2b___spec.html#L21C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
         },
         {
           "kind": "span",
@@ -1565,7 +1566,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "request_route",
+          "text": "update_sensor_manipulation",
           "href": "docs/ec2b___spec.html#L35C13"
         },
         {
@@ -1576,60 +1577,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "cmd_queue",
-          "href": "docs/ec2b___spec.html#L35C27"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "out"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "cmd_queue_access_t",
-          "href": "docs/ec2b___spec.html#L32C9"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
           "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L35C65"
+          "href": "docs/ec2b___spec.html#L35C40"
         },
         {
           "kind": "span",
@@ -1640,62 +1589,6 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Integer"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "cab_version",
-          "href": "docs/ec2b___spec.html#L35C83"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "in"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "out"
         },
         {
           "kind": "span",
@@ -1761,7 +1654,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "register_cab",
+          "text": "request_route",
           "href": "docs/ec2b___spec.html#L36C13"
         },
         {
@@ -1772,8 +1665,204 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
+          "text": "cmd_queue",
+          "href": "docs/ec2b___spec.html#L36C27"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "cmd_queue_access_t",
+          "href": "docs/ec2b___spec.html#L32C9"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "cab_id",
+          "href": "docs/ec2b___spec.html#L36C65"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Integer"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "cab_version",
+          "href": "docs/ec2b___spec.html#L36C83"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Integer"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Messages.Status_Code"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 37,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "register_cab",
+          "href": "docs/ec2b___spec.html#L37C13"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
           "text": "cabname",
-          "href": "docs/ec2b___spec.html#L36C26"
+          "href": "docs/ec2b___spec.html#L37C26"
         },
         {
           "kind": "span",
@@ -1809,7 +1898,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "section",
-          "href": "docs/ec2b___spec.html#L36C44"
+          "href": "docs/ec2b___spec.html#L37C44"
         },
         {
           "kind": "span",
@@ -1846,7 +1935,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L36C74"
+          "href": "docs/ec2b___spec.html#L37C74"
         },
         {
           "kind": "span",
@@ -1857,6 +1946,16 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
         },
         {
           "kind": "span",
@@ -1912,7 +2011,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 37,
+      "number": 38,
       "children": [
         {
           "kind": "span",
@@ -1933,7 +2032,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "update_cabLocation",
-          "href": "docs/ec2b___spec.html#L37C13"
+          "href": "docs/ec2b___spec.html#L38C13"
         },
         {
           "kind": "span",
@@ -1944,7 +2043,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L37C32"
+          "href": "docs/ec2b___spec.html#L38C32"
         },
         {
           "kind": "span",
@@ -1980,7 +2079,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "cab_section",
-          "href": "docs/ec2b___spec.html#L37C50"
+          "href": "docs/ec2b___spec.html#L38C50"
         },
         {
           "kind": "span",
@@ -2002,130 +2101,6 @@ GNATdoc.SourceFile = {
           "cssClass": "identifier",
           "text": "Road_Marker_Done_T",
           "href": "docs/roadmarker___spec.html#L25C12"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ")"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "return"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Messages.Status_Code"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 38,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "keyword",
-          "text": "function"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "request_pickup",
-          "href": "docs/ec2b___spec.html#L38C13"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "("
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L38C28"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Integer"
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ";"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "customer_id",
-          "href": "docs/ec2b___spec.html#L38C46"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": ":"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
-          "cssClass": "identifier",
-          "text": "Integer"
         },
         {
           "kind": "span",
@@ -2181,7 +2156,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "pickup_complete",
+          "text": "request_pickup",
           "href": "docs/ec2b___spec.html#L39C13"
         },
         {
@@ -2193,7 +2168,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L39C29"
+          "href": "docs/ec2b___spec.html#L39C28"
         },
         {
           "kind": "span",
@@ -2228,8 +2203,8 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "pickup_completed",
-          "href": "docs/ec2b___spec.html#L39C47"
+          "text": "customer_id",
+          "href": "docs/ec2b___spec.html#L39C46"
         },
         {
           "kind": "span",
@@ -2248,18 +2223,8 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
-          "cssClass": "keyword",
-          "text": "out"
-        },
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": " "
-        },
-        {
-          "kind": "span",
           "cssClass": "identifier",
-          "text": "Boolean"
+          "text": "Integer"
         },
         {
           "kind": "span",
@@ -2269,7 +2234,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "text",
-          "text": "  "
+          "text": " "
         },
         {
           "kind": "span",
@@ -2315,7 +2280,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "request_dropoff",
+          "text": "pickup_complete",
           "href": "docs/ec2b___spec.html#L40C13"
         },
         {
@@ -2362,7 +2327,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "customer_id",
+          "text": "pickup_completed",
           "href": "docs/ec2b___spec.html#L40C47"
         },
         {
@@ -2382,8 +2347,18 @@ GNATdoc.SourceFile = {
         },
         {
           "kind": "span",
+          "cssClass": "keyword",
+          "text": "out"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
           "cssClass": "identifier",
-          "text": "Integer"
+          "text": "Boolean"
         },
         {
           "kind": "span",
@@ -2439,7 +2414,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "identifier",
-          "text": "dropoff_complete",
+          "text": "request_dropoff",
           "href": "docs/ec2b___spec.html#L41C13"
         },
         {
@@ -2451,7 +2426,131 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L41C30"
+          "href": "docs/ec2b___spec.html#L41C29"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Integer"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "customer_id",
+          "href": "docs/ec2b___spec.html#L41C47"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Integer"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "  "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Messages.Status_Code"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 42,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "dropoff_complete",
+          "href": "docs/ec2b___spec.html#L42C13"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "cab_id",
+          "href": "docs/ec2b___spec.html#L42C30"
         },
         {
           "kind": "span",
@@ -2487,7 +2586,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "dropoff_completed",
-          "href": "docs/ec2b___spec.html#L41C48"
+          "href": "docs/ec2b___spec.html#L42C48"
         },
         {
           "kind": "span",
@@ -2553,7 +2652,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 42,
+      "number": 43,
       "children": [
         {
           "kind": "span",
@@ -2574,7 +2673,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "set_blocked_status",
-          "href": "docs/ec2b___spec.html#L42C13"
+          "href": "docs/ec2b___spec.html#L43C13"
         },
         {
           "kind": "span",
@@ -2585,7 +2684,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "cab_id",
-          "href": "docs/ec2b___spec.html#L42C32"
+          "href": "docs/ec2b___spec.html#L43C32"
         },
         {
           "kind": "span",
@@ -2621,7 +2720,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "blocked",
-          "href": "docs/ec2b___spec.html#L42C50"
+          "href": "docs/ec2b___spec.html#L43C50"
         },
         {
           "kind": "span",
@@ -2687,7 +2786,141 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 43,
+      "number": 44,
+      "children": [
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": "   "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "function"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "set_functional_status",
+          "href": "docs/ec2b___spec.html#L44C13"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "("
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "cab_id",
+          "href": "docs/ec2b___spec.html#L44C35"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Integer"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "functional",
+          "href": "docs/ec2b___spec.html#L44C53"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ":"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "in"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Boolean"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ")"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "keyword",
+          "text": "return"
+        },
+        {
+          "kind": "span",
+          "cssClass": "text",
+          "text": " "
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": "Messages.Status_Code"
+        },
+        {
+          "kind": "span",
+          "cssClass": "identifier",
+          "text": ";"
+        }
+      ]
+    },
+    {
+      "kind": "line",
+      "number": 45,
       "children": [
         {
           "kind": "span",
