@@ -1,6 +1,6 @@
 # Sensors
 
-Each sensor is redundant. So, in case that the primary sensor fails, the backup sensor is used.
+Each sensor is backed up by at least one redundant sensor. So, in case that the primary sensor fails, the backup sensor is used, making the system fault tolerant.
 
 ## Front Distance
 Front distance sensors are used to detect obstacles in front of the cab. They trigger a function that stops the cab.
