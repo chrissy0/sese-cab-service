@@ -123,6 +123,10 @@
     - Sehr hoher grad an Nebenläufigkeit
     - Aufteilen der Arbeit in einzelne, leicht testbare Projekte
     - Abstrakte Kommunikation zwischen den Paketen: Jedes Paket bietet ein Abstraktionslayer zwischen Sensordaten und high-level Commands an.
+- Dokumentation:
+  - Generierung der Dokumentation zu den  Paketen Motor Controller, Externer Controller, Lane Detection, Roadmarker und Front Distance
+  - Hinzufügen der Projektstruktur zum README
+  - Erstellen der Fault-Tree-Diagramme zur einfachen Übersicht der Error-States des externen Controllers (siehe *Security Concept Description.md*)
 
 ## Maximilian Weissenseel
 
