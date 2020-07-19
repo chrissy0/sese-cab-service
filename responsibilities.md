@@ -6,18 +6,41 @@
 
 **erledigte Aufgaben:** 
 
-- Aufbau des Cabs inclusiv von Sensoren
-- Initialisierung der Sensoren von Cab
-- Implementierung der Algorithmen in Webots 
-  (Line Detection, To the Depot, Obstacle Avoidance)
-- Verfassung des Coding standards
-  ( C , Socket Programming , ADA , JAVA )
-- Umsetzung die Algorithmen von Webots ins Ada
-  ( Line Detection, Roadmarker )
-- Unit testing in External Controller
-  ( Line detection, Roadmarker, Motor Controller )
-- Verification durch SPARK
-  ( Roadmarker , Motor Controller , Front Distance )
+- Webots
+  - Aufbau des Cabs inclusiv von allen Sensoren ,Motoren
+  - Implementierung der Basisfunktionen vom Cab  (in the additional-contributions/Version1)
+     - Abstand sensor 
+     - Infrared sensor 
+     - Motoren
+     - Camera 
+  - Implementierung der Algorithmen in Webots (in the additional-contributions/Version2)
+     - Roadmarker 
+     - Line Detection 
+     - In to the Depot 
+     - Out to the Depot
+     - Obstacle Avoidance
+
+- External Controller
+  - Umsetzung die Algorithmen von Webots ins Ada
+    - Line Detection
+    - Roadmarker
+  - Auswertung des Statecharts mit Florentin und Julian
+
+- Quality Management
+  - Unit Testing in External Controller
+    - Line Detection (First Version)
+    - Roadmarker
+    - Motor Controller
+  - Verfassung des Coding standards
+    - C/C++
+    - Socket Programming 
+    - ADA 
+    - JAVA 
+  - Verification durch SPARK
+    - Roadmarker 
+    - Motor Controller 
+    - Front Distance 
+
 
 ## Christopher Woggon
 
