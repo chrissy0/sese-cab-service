@@ -1,6 +1,7 @@
-with "..\..\..\..\..\..\..\GNAT\2020\share\gpr\gnatcoll.gpr";
-with "..\Job_Executer\job_executer.gpr";
-with "..\..\..\..\..\..\..\GNAT\2020\share\gpr\aunit.gpr";
+with "gnatcoll.gpr";
+with "../Job_Executer/job_executer.gpr";
+with "aunit.gpr";
+
 with "aws";
 
 project Job_Executer_Testing is
