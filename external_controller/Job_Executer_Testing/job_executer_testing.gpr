@@ -1,8 +1,7 @@
 with "gnatcoll.gpr";
 with "../Job_Executer/job_executer.gpr";
 with "aunit.gpr";
-
-with "aws";
+with "aws.gpr";
 
 project Job_Executer_Testing is
 

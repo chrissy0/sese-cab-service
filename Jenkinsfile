@@ -18,6 +18,9 @@ pipeline {
         dir(path: 'external_controller') {
           sh './run_test.sh Ring_Buffer_Testing/test_ring_buffer'
         }
+        dir(path: 'external_controller') {
+          sh './run_test.sh Job_Executer_Testing/job_executer_testing'
+        }
       }
     }
     stage('Backend') {
