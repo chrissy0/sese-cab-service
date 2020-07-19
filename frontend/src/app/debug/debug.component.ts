@@ -105,11 +105,7 @@ export class DebugComponent implements OnInit {
             {name: 'dist_ir_c2', active: true, noise: 0},
             {name: 'dist_ir_r2', active: true, noise: 0},
             {name: 'inf_left', active: true, noise: 0},
-            {name: 'inf_left2', active: true, noise: 0},
-            {name: 'wheel1', active: true, noise: 0},
-            {name: 'wheel2', active: true, noise: 0},
-            {name: 'wheel3', active: true, noise: 0},
-            {name: 'wheel4', active: true, noise: 0}
+            {name: 'inf_left2', active: true, noise: 0}
           ]
         };
 

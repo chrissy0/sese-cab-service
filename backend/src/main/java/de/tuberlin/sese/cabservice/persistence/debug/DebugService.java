@@ -127,11 +127,7 @@ public class DebugService {
                 || sensorName.equals("dist_ir_c2")
                 || sensorName.equals("dist_ir_r2")
                 || sensorName.equals("inf_left")
-                || sensorName.equals("inf_left2")
-                || sensorName.equals("wheel1")
-                || sensorName.equals("wheel2")
-                || sensorName.equals("wheel3")
-                || sensorName.equals("wheel4")) {
+                || sensorName.equals("inf_left2")) {
             return;
         }
         throw new UnknownSensorNameException("Sensor " + sensorName + " does not exist.");

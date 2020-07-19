@@ -476,10 +476,6 @@ POST /api/ec/functional?cabId=0&functional=false
 - `dist_ir_r2`
 - `inf_left`
 - `inf_left2`
-- `wheel1`
-- `wheel2`
-- `wheel3`
-- `wheel4`
 
 ##### Request
 
