@@ -1,5 +1,4 @@
 # WC2EC - Webots Controller to external Controller 
-The information provided here are still subject to change.
 
 # Header
 
@@ -92,7 +91,9 @@ In the enum: <b>WbNodeType</b> (include/controller/c/webots/nodes.h)
 		<td><a href="https://cyberbotics.com/doc/reference/rotationalmotor">here</a></td>
 	</tr>
 	</table>
+
 ## Sensor ID
+
 Again we use what Webots already provides: ID assignment. 
 We use the Index Webots assigned to a tag as sensor id:
 
