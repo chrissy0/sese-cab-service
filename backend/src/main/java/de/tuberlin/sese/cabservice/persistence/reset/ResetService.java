@@ -1,6 +1,7 @@
 package de.tuberlin.sese.cabservice.persistence.reset;
 
 import de.tuberlin.sese.cabservice.persistence.cab.blocked.CabBlockedRepo;
+import de.tuberlin.sese.cabservice.persistence.cab.dysfunctional.CabDysfunctionalRepo;
 import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationRepo;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
 import de.tuberlin.sese.cabservice.persistence.customerinteraction.dropoff.DropoffRepo;
@@ -18,6 +19,7 @@ import static de.tuberlin.sese.cabservice.CabserviceApplication.restart;
 public class ResetService {
 
     private final CabBlockedRepo cabBlockedRepo;
+    private final CabDysfunctionalRepo cabDysfunctionalRepo;
     private final CabLocationRepo cabLocationRepo;
     private final CabRepo cabRepo;
     private final DropoffRepo dropoffRepo;
@@ -28,6 +30,7 @@ public class ResetService {
 
     public void resetAllRepos() {
         cabBlockedRepo.deleteAll();
+        cabDysfunctionalRepo.deleteAll();
         cabLocationRepo.deleteAll();
         cabRepo.deleteAll();
         dropoffRepo.deleteAll();

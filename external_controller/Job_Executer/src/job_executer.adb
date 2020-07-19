@@ -12,9 +12,7 @@ package body Job_Executer is
       Put_Line("[Job_Executer] " & Message);
    end Log_Line;
 
-   type Road_Marker_ID_T is new Integer range 0 .. 15;
-
-   function Reached_expected_roadmarker(section : Roadmarker.Road_Marker_Done_T;
+   function Reached_expected_roadmarker(section : Road_Marker_ID_T;
                                         next_command : Command_t) return Boolean is
    begin
       return Integer(section) = next_command.section;
@@ -28,7 +26,7 @@ package body Job_Executer is
                                retry_register : in out Boolean;
                                Job_Executer_Done_Signal : in out Job_Executer_Done_T)
    is
-   return_code : AWS.Messages.Status_Code;
+      return_code : AWS.Messages.Status_Code;
    begin
       if retry_register then
          return_code := register_cab(To_String(cab_name), start_section, cab_id);
@@ -68,41 +66,32 @@ package body Job_Executer is
                            current_command : in out Command_t;
                            next_command_old : in out Command_t;
                            next_command : in out Command_t) is
-      begin
-         if (current_command.action /= current_command_old.action) then
-            Put_Line("Current Action: " & current_command.action'Image);
-         end if;
-         current_command_old := current_command;
-         if (next_command.action /= next_command_old.action) then
-            Put_Line("Next Action: " & Next_command.action'Image);
-         end if;
-         Next_command_old := Next_command;
+   begin
+      if (current_command.action /= current_command_old.action) then
+         Put_Line("Current Action: " & current_command.action'Image);
+      end if;
+      current_command_old := current_command;
+      if (next_command.action /= next_command_old.action) then
+         Put_Line("Next Action: " & Next_command.action'Image);
+      end if;
+      Next_command_old := Next_command;
    end debug_actions;
 
-   procedure reset_command(command : in out Command_t) is
-      begin
-      command.action := NEXT_UNKOWN_S;
-      command.customer_ID := -1;
-      command.section := -1;
-   end reset_command;
 
 
 
-   procedure Process_valid_Section(section : in Roadmarker.Road_Marker_Done_T;
-                             current_command : in out Command_t;
-                             next_command : in out Command_t;
-                             cab_id : in Integer;
-                             cmd_queue : in out cmd_queue_access_t;
-                             error_counter : in out Integer;
-                             retry_location_update : in out Boolean
-                            ) is
-   return_code : AWS.Messages.Status_Code;
+
+   procedure Process_valid_Section(section : in  Road_Marker_ID_T;
+                                   current_command : in out Command_t;
+                                   next_command : in out Command_t;
+                                   cab_id : in Integer;
+                                   cmd_queue : in out cmd_queue_access_t;
+                                   error_counter : in out Integer;
+                                   retry_location_update : in out Boolean
+                                  ) is
+      return_code : AWS.Messages.Status_Code;
    begin
-      Put_Line("In section" & section'Image);
-      return_code := update_cabLocation(cab_id, section);
-      if (not EC2B.success(return_code, error_counter)) then
-         retry_location_update := True;
-      end if;
+
       if (Reached_expected_roadmarker(section, next_command)) then
          Put_Line(section'Image & " = " & next_command.section'Image);
          current_command := next_command;
@@ -110,13 +99,13 @@ package body Job_Executer is
             -- Wont check the return code here, because if it failed it will
             -- be retried in the next iteration anyway.
             if (error_counter < errors_till_backend_failed) then
-               return_code := request_pickup(cab_id, next_command.customer_ID);
+               return_code := request_pickup(cab_id, current_command.customer_ID);
             else
                Put_Line("Connection to backend failed, wont pickup");
             end if;
          elsif (current_command.action = DROP_OFF_S) then
             if (error_counter < errors_till_backend_failed) then
-               return_code := request_dropoff(cab_id, next_command.customer_ID);
+               return_code := request_dropoff(cab_id, current_command.customer_ID);
             else
                Put_Line("Connection to backend failed, wont Drop off");
             end if;
@@ -124,7 +113,9 @@ package body Job_Executer is
 
          if (current_command.action /= WAIT_S) then
             cmd_queue.Dequeue(next_command);
-            Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+            Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                       " Marker: " & next_command.section'Image & "Customer: "
+                     & next_command.customer_ID'Image);
          end if;
       end if;
 
@@ -132,28 +123,41 @@ package body Job_Executer is
    end Process_valid_Section;
    procedure Process_Section(section : in out Roadmarker.Road_Marker_Done_T;
                              section_signal : in Roadmarker.Road_Marker_Done_T;
-                                current_command : in out Command_t;
-                                next_command : in out Command_t;
-                                cab_id : in Integer;
-                                cmd_queue : in out cmd_queue_access_t;
-                                error_counter : in out Integer;
-                                retry_location_update : in out Boolean;
-                                Job_Executer_Done_Signal: in out Job_Executer_Done_T
-                               ) is
+                             current_command : in out Command_t;
+                             next_command : in out Command_t;
+                             cab_id : in Integer;
+                             cmd_queue : in out cmd_queue_access_t;
+                             error_counter : in out Integer;
+                             retry_location_update : in out Boolean;
+                             Job_Executer_Done_Signal: in out Job_Executer_Done_T
+                            ) is
+      return_code : AWS.Messages.Status_Code;
    begin
       if (section_signal in Road_Marker_valid_T) then
          section := section_signal;
-         Process_valid_Section(section, current_command, next_command, cab_id, cmd_queue, error_counter, retry_location_update);
-         elsif (section = RM_no_road_marker) then
-         null;
-      elsif (section = RM_system_error) then
-         Job_Executer_Done_Signal := SYSTEM_ERROR_S;
+         Put_Line("In section" & section'Image);
+         return_code := update_cabLocation(cab_id, section);
+         if (not EC2B.success(return_code, error_counter)) then
+            retry_location_update := True;
+         end if;
       end if;
+      if (section_signal = RM_system_error) then
+            Job_Executer_Done_Signal := SYSTEM_ERROR_S;
+      else
+         Process_valid_Section(section, current_command, next_command, cab_id, cmd_queue, error_counter, retry_location_update);
+      end if;
+   exception
+      when Constraint_Error =>
+         Put_Line("CONSTRAINT ERROR");
+      when Error : others =>
+         Put_Line("Unknown error");
+         Job_Executer_Done_Signal := SYSTEM_ERROR_S;
    end Process_Section;
+
    procedure retry_update_cab_location(cab_id : Integer;
                                        section : Road_Marker_Done_T;
                                        retry_update_cab_location : in out Boolean;
-                                      connection_errors : in out Integer) is
+                                       connection_errors : in out Integer) is
       return_code : AWS.Messages.Status_Code;
    begin
       if (retry_update_cab_location) then
@@ -175,16 +179,18 @@ package body Job_Executer is
                           cab_version : in out Integer) is
       return_code : AWS.Messages.Status_Code;
       cab_version_old : Integer := cab_version;
-      begin
+   begin
       return_code := request_route(cmd_queue, cab_id, cab_version);
       if (EC2B.success(return_code, error_counter)) then
          if (cab_version_old /= cab_version) then
             Put_Line("Received new Route\n");
             cmd_queue.Dequeue(next_command);
-            Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+            Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                       " Marker: " & next_command.section'Image & "Customer: "
+                     & next_command.customer_ID'Image);
             reset_command(current_command);
             Process_valid_Section(section, current_command, next_command, cab_id,
-                            cmd_queue, error_counter, retry_location_update);
+                                  cmd_queue, error_counter, retry_location_update);
 
          end if;
       end if;
@@ -199,7 +205,7 @@ package body Job_Executer is
                                    pickup_completed : in out Boolean;
                                    dropoff_completed : in out Boolean) is
       return_code : AWS.Messages.Status_Code;
-      begin
+   begin
       while (Job_Executer_Done_Signal = EMPTY_S) loop
          case (current_command.action) is
          when NEXT_LEFT_S => Job_Executer_Done_Signal := NEXT_LEFT_S ;
@@ -212,7 +218,9 @@ package body Job_Executer is
                Put_Line("Could not connect to the backend, stop pickups");
                current_command := next_command;
                cmd_queue.Dequeue(next_command);
-               Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+               Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                          " Marker: " & next_command.section'Image & "Customer: "
+                        & next_command.customer_ID'Image);
             else
 
                return_code := pickup_complete(cab_id, pickup_completed);
@@ -220,7 +228,9 @@ package body Job_Executer is
                   if (current_command.section = next_command.section) then
                      current_command := next_command;
                      cmd_queue.Dequeue(next_command);
-                     Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+                     Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                                " Marker: " & next_command.section'Image & "Customer: "
+                              & next_command.customer_ID'Image);
                   else
                      current_command.action := NEXT_UNKOWN_S;
                   end if;
@@ -228,7 +238,7 @@ package body Job_Executer is
                else
                   -- Not checking return_code here, if it failed it will be retried
                   -- in the next iteration
-                  return_code := request_pickup(cab_id, next_command.customer_ID);
+                  return_code := request_pickup(cab_id, current_command.customer_ID);
                   Job_Executer_Done_Signal := STOP_S;
                end if;
             end if;
@@ -237,21 +247,25 @@ package body Job_Executer is
                Put_Line("Could not connect to the backend, stop dropoff");
                current_command := next_command;
                cmd_queue.Dequeue(next_command);
-               Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+               Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                          " Marker: " & next_command.section'Image & "Customer: "
+                        & next_command.customer_ID'Image);
             else
                return_code := dropoff_complete(cab_id, dropoff_completed);
                if(EC2B.success(return_code, error_counter) and dropoff_completed) then
                   if (current_command.section = next_command.section) then
                      current_command := next_command;
                      cmd_queue.Dequeue(next_command);
-                     Put_Line("Dequeued: " & "Action :" & next_command.action'Image & " Marker: " & next_command.section'Image);
+                     Put_Line("Dequeued: " & "Action :" & next_command.action'Image &
+                                " Marker: " & next_command.section'Image & "Customer: "
+                              & next_command.customer_ID'Image);
                   else
                      current_command.action := NEXT_UNKOWN_S;
                   end if;
                else
                   -- Not checking return_code here, if it failed it will be retried
                   -- in the next iteration
-                  return_code := request_dropoff(cab_id, next_command.customer_ID);
+                  return_code := request_dropoff(cab_id, current_command.customer_ID);
                   Job_Executer_Done_Signal := STOP_S;
                end if;
             end if;
@@ -260,11 +274,12 @@ package body Job_Executer is
          end case;
       end loop;
    end determine_done_signal;
+
    procedure send_done_Signal(Motor_Controller_Task : Motor_Controller_Task_Access_T;
                               Job_Executer_Done_Signal : Job_Executer_Done_T;
                               timeout : Duration;
                               running : in out Boolean ) is
-      begin
+   begin
       select
          delay timeout;
          Log_Line("job_executer_done timed out, shutting down...");
@@ -399,7 +414,7 @@ package body Job_Executer is
 
          Process_Section(section, section_signal, current_command, next_command, cab_id,
                          cmd_queue, error_counter, retry_location_update,
-                           Job_Executer_Done_Signal);
+                         Job_Executer_Done_Signal);
 
          update_route(section, current_command, next_command, cab_id, cmd_queue,
                       error_counter, retry_location_update, Job_Executer_Done_Signal, cab_version);

@@ -3,6 +3,7 @@ package de.tuberlin.sese.cabservice.persistence.route;
 import de.tuberlin.sese.cabservice.logic.Option;
 import de.tuberlin.sese.cabservice.logic.PathFinder;
 import de.tuberlin.sese.cabservice.persistence.cab.blocked.CabBlockedService;
+import de.tuberlin.sese.cabservice.persistence.cab.dysfunctional.CabDysfunctionalService;
 import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationEntity;
 import de.tuberlin.sese.cabservice.persistence.cab.location.CabLocationService;
 import de.tuberlin.sese.cabservice.persistence.cab.registration.CabRepo;
@@ -36,6 +37,8 @@ public class RouteService {
     private final CabLocationService locationService;
 
     private final CabBlockedService blockedService;
+
+    private final CabDysfunctionalService dysfunctionalService;
 
     private final PathFinder pathFinder;
 
@@ -163,6 +166,10 @@ public class RouteService {
             return false;
         }
 
+        if (dysfunctionalService.isDysfunctional(cabId)) {
+            return false;
+        }
+
         Optional<CabLocationEntity> locationOptional = locationService.getCabLocation(cabId);
         if (locationOptional.isPresent() && locationOptional.get().getSection() != null) {
             int location = locationOptional.get().getSection();
@@ -197,6 +204,8 @@ public class RouteService {
             if (jobId.equals(route.getJobId())) {
                 route.setJobIds();
             }
+
+            route.setVersion(route.getVersion() + 1);
 
             routeRepo.save(route);
         }
