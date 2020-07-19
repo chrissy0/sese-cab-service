@@ -33,6 +33,7 @@
     - Motoren an Cab angebracht um Curb Detection Sensoren hoch- und runterzufahren (+ Konzept entwickelt)
     - Road Marker Konzept entwickelt, Auswertungsalgorithmus is C++ implementiert
 - Quality Management
+  
     - QA Konzept erstellt (`QA.md`)
 - Technical Management
     - Server
@@ -67,7 +68,7 @@
 - Frontend entwickelt
 - Anleitung für Installation/Ausführung von Backend/Frontend erstellt
 
-        
+  ​      
 
 ## Florentin Ehser
 
@@ -88,17 +89,17 @@
 - verbesserte Anordnung der Roadmarker entwickelt
 - Lanefollowing-Konzept überarbeitet
 - Anpassungen in der Webots-Simulation:
-- Konzept verschieden farbiger Mittellinien umgesetzt
-- Roadmarker angepasst
-- Designverbesserung Cab
-- zweites Cab
+  - Konzept verschieden farbiger Mittellinien umgesetzt
+  - Roadmarker angepasst
+  - Designverbesserung Cab
+  - zweites Cab
 - Unit-Tests für externen Controller kontrolliert und korrigiert
 - Backend pair-reviewed
 - System-Tests durchgeführt
 - System mit Anforderungen abgeglichen
 - Anleitung Simulation geschrieben
-
 - Dokumentation der Sensoren geschrieben
+- Repository aufgeräumt
 
 ## Julian Hartmer
 
