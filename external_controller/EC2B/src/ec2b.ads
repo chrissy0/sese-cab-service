@@ -8,9 +8,9 @@ with AWS.Messages; use AWS;
 
 package ec2b is
 
-   con : aliased HTTP_Connection := Create("http://167.71.35.10:8081", Timeouts =>  Timeouts(Each => 0.1 ));
-   --con : aliased HTTP_Connection := Create("http://164.90.179.88:8081", Timeouts =>  Timeouts(Each => 0.1 ));
-   -- con : aliased HTTP_Connection := Create("http://127.0.0.1:8081", Timeouts =>  Timeouts(Each => 0.1 ));
+   --con : aliased HTTP_Connection := Create("http://167.71.35.10:8081", Timeouts =>  Timeouts(Each => 0.1 ));
+   -- con : aliased HTTP_Connection := Create("http://164.90.179.88:8081", Timeouts =>  Timeouts(Each => 0.1 ));
+   con : aliased HTTP_Connection := Create("http://127.0.0.1:8081", Timeouts =>  Timeouts(Each => 0.1 ));
    connection : access HTTP_Connection := con'Access;
 
    function failed(status_code : Messages.Status_Code) return Boolean;
