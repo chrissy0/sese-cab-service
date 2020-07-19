@@ -81,9 +81,9 @@ begin
      (
       get_sensor_value_a      => WC2EC_Interface.get_front_distance_value'Access,
       us_thresh_front         => 450.0,
-      ir_thresh_front         => 450.0,
+      ir_thresh_front         => 750.0,
       us_thresh_side          => 350.0,
-      ir_thresh_side          => 350.0,
+      ir_thresh_side          => 500.0,
       Motor_Controller_Task_A => Motor_Controller_Task,
       timeout_v               => timeout
      );
