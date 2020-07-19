@@ -232,7 +232,6 @@ Main_Loop: while (running) loop
          -- Put_Line ("Reading Sensor data ...");
          retrieve_all_sensor_values(all_sensor_values, get_sensor_value);
 
-         -- TODO signal system error, when marker fail.
          is_on_RM := False;
 
          Output := calculate_output(all_sensor_values, history, was_on_hotfix_rm);
