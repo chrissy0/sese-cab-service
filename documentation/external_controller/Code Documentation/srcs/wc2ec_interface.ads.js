@@ -1424,7 +1424,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- @param pos sensor position"
+          "text": "-- @param orientation sensor orientaten"
         }
       ]
     },
@@ -1440,7 +1440,7 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- @param orientation sensor orientaten"
+          "text": "-- @param is_backup True: reference Backup sensor, False: Refernce default sensor"
         }
       ]
     },
@@ -1456,29 +1456,13 @@ GNATdoc.SourceFile = {
         {
           "kind": "span",
           "cssClass": "comment",
-          "text": "-- @param is_backup True: reference Backup sensor, False: Refernce default sensor"
-        }
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 68,
-      "children": [
-        {
-          "kind": "span",
-          "cssClass": "text",
-          "text": "   "
-        },
-        {
-          "kind": "span",
-          "cssClass": "comment",
           "text": "-- @return current sensor value"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 69,
+      "number": 68,
       "children": [
         {
           "kind": "span",
@@ -1499,13 +1483,13 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "get_curb_detection_sensor_value",
-          "href": "docs/wc2ec_interface___spec.html#L69C13"
+          "href": "docs/wc2ec_interface___spec.html#L68C13"
         }
       ]
     },
     {
       "kind": "line",
-      "number": 70,
+      "number": 69,
       "children": [
         {
           "kind": "span",
@@ -1521,7 +1505,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 71,
+      "number": 70,
       "children": [
         {
           "kind": "span",
@@ -1532,7 +1516,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "orientation",
-          "href": "docs/wc2ec_interface___spec.html#L71C7"
+          "href": "docs/wc2ec_interface___spec.html#L70C7"
         },
         {
           "kind": "span",
@@ -1574,7 +1558,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 72,
+      "number": 71,
       "children": [
         {
           "kind": "span",
@@ -1585,7 +1569,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "is_backup",
-          "href": "docs/wc2ec_interface___spec.html#L72C7"
+          "href": "docs/wc2ec_interface___spec.html#L71C7"
         },
         {
           "kind": "span",
@@ -1621,7 +1605,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 73,
+      "number": 72,
       "children": [
         {
           "kind": "span",
@@ -1662,6 +1646,12 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
+      "number": 73,
+      "children": [
+      ]
+    },
+    {
+      "kind": "line",
       "number": 74,
       "children": [
       ]
@@ -1669,12 +1659,6 @@ GNATdoc.SourceFile = {
     {
       "kind": "line",
       "number": 75,
-      "children": [
-      ]
-    },
-    {
-      "kind": "line",
-      "number": 76,
       "children": [
         {
           "kind": "span",
@@ -1690,7 +1674,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 77,
+      "number": 76,
       "children": [
         {
           "kind": "span",
@@ -1711,7 +1695,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "elevate_curb_sensor",
-          "href": "docs/wc2ec_interface___spec.html#L77C14"
+          "href": "docs/wc2ec_interface___spec.html#L76C14"
         },
         {
           "kind": "span",
@@ -1722,13 +1706,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 78,
+      "number": 77,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 79,
+      "number": 78,
       "children": [
         {
           "kind": "span",
@@ -1739,7 +1723,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 80,
+      "number": 79,
       "children": [
         {
           "kind": "span",
@@ -1755,7 +1739,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 81,
+      "number": 80,
       "children": [
         {
           "kind": "span",
@@ -1766,7 +1750,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "SENSOR_FAULT",
-          "href": "docs/wc2ec_interface___spec.html#L81C4"
+          "href": "docs/wc2ec_interface___spec.html#L80C4"
         },
         {
           "kind": "span",
@@ -1822,13 +1806,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 82,
+      "number": 81,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 83,
+      "number": 82,
       "children": [
         {
           "kind": "span",
@@ -1844,7 +1828,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 84,
+      "number": 83,
       "children": [
         {
           "kind": "span",
@@ -1855,7 +1839,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "SENSOR_MAX_VAL",
-          "href": "docs/wc2ec_interface___spec.html#L84C4"
+          "href": "docs/wc2ec_interface___spec.html#L83C4"
         },
         {
           "kind": "span",
@@ -1906,13 +1890,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 85,
+      "number": 84,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 86,
+      "number": 85,
       "children": [
         {
           "kind": "span",
@@ -1928,7 +1912,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 87,
+      "number": 86,
       "children": [
         {
           "kind": "span",
@@ -1939,7 +1923,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "SENSOR_MIN_VAL",
-          "href": "docs/wc2ec_interface___spec.html#L87C4"
+          "href": "docs/wc2ec_interface___spec.html#L86C4"
         },
         {
           "kind": "span",
@@ -1990,13 +1974,13 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 88,
+      "number": 87,
       "children": [
       ]
     },
     {
       "kind": "line",
-      "number": 89,
+      "number": 88,
       "children": [
         {
           "kind": "span",
@@ -2012,7 +1996,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 90,
+      "number": 89,
       "children": [
         {
           "kind": "span",
@@ -2028,7 +2012,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 91,
+      "number": 90,
       "children": [
         {
           "kind": "span",
@@ -2044,7 +2028,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 92,
+      "number": 91,
       "children": [
         {
           "kind": "span",
@@ -2065,7 +2049,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "detect_sensor_fault",
-          "href": "docs/wc2ec_interface___spec.html#L92C13"
+          "href": "docs/wc2ec_interface___spec.html#L91C13"
         },
         {
           "kind": "span",
@@ -2076,7 +2060,7 @@ GNATdoc.SourceFile = {
           "kind": "span",
           "cssClass": "identifier",
           "text": "value",
-          "href": "docs/wc2ec_interface___spec.html#L92C33"
+          "href": "docs/wc2ec_interface___spec.html#L91C33"
         },
         {
           "kind": "span",
@@ -2132,7 +2116,7 @@ GNATdoc.SourceFile = {
     },
     {
       "kind": "line",
-      "number": 93,
+      "number": 92,
       "children": [
         {
           "kind": "span",

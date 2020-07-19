@@ -10,10 +10,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "calculate_output",
-      "docHref": "docs/lane_detection___spec.html#L163C13",
+      "docHref": "docs/lane_detection___spec.html#L160C13",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L163"
+      "srcHref": "srcs/lane_detection.ads.html#L160"
     },
     {
       "label": "calculate_output",
@@ -45,17 +45,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "detect_lanes",
-      "docHref": "docs/lane_detection___spec.html#L177C14",
+      "docHref": "docs/lane_detection___spec.html#L174C14",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L177"
+      "srcHref": "srcs/lane_detection.ads.html#L174"
     },
     {
       "label": "detect_sensor_fault",
-      "docHref": "docs/wc2ec_interface___spec.html#L92C13",
+      "docHref": "docs/wc2ec_interface___spec.html#L91C13",
       "declared": "WC2EC_Interface",
       "declared_qualifier": "",
-      "srcHref": "srcs/wc2ec_interface.ads.html#L92"
+      "srcHref": "srcs/wc2ec_interface.ads.html#L91"
+    },
+    {
+      "label": "determine_done_signal",
+      "docHref": "docs/job_executer___spec.html#L69C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L69"
     },
     {
       "label": "do_state_transition",
@@ -66,17 +73,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "dropoff_complete",
-      "docHref": "docs/ec2b___spec.html#L41C13",
+      "docHref": "docs/ec2b___spec.html#L42C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L41"
+      "srcHref": "srcs/ec2b.ads.html#L42"
     },
     {
       "label": "elevate_curb_sensor",
-      "docHref": "docs/wc2ec_interface___spec.html#L77C14",
+      "docHref": "docs/wc2ec_interface___spec.html#L76C14",
       "declared": "WC2EC_Interface",
       "declared_qualifier": "",
-      "srcHref": "srcs/wc2ec_interface.ads.html#L77"
+      "srcHref": "srcs/wc2ec_interface.ads.html#L76"
     },
     {
       "label": "empty_history",
@@ -101,10 +108,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "get_curb_detection_sensor_value",
-      "docHref": "docs/wc2ec_interface___spec.html#L69C13",
+      "docHref": "docs/wc2ec_interface___spec.html#L68C13",
       "declared": "WC2EC_Interface",
       "declared_qualifier": "",
-      "srcHref": "srcs/wc2ec_interface.ads.html#L69"
+      "srcHref": "srcs/wc2ec_interface.ads.html#L68"
     },
     {
       "label": "get_distance_sensor_data",
@@ -143,10 +150,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "get_lean_from_line_color",
-      "docHref": "docs/lane_detection___spec.html#L219C13",
+      "docHref": "docs/lane_detection___spec.html#L216C13",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L219"
+      "srcHref": "srcs/lane_detection.ads.html#L216"
     },
     {
       "label": "get_line_detection_sensor_value",
@@ -227,17 +234,17 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "output_from_curb_detection",
-      "docHref": "docs/lane_detection___spec.html#L209C13",
+      "docHref": "docs/lane_detection___spec.html#L206C13",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L209"
+      "srcHref": "srcs/lane_detection.ads.html#L206"
     },
     {
       "label": "output_from_line_detection",
-      "docHref": "docs/lane_detection___spec.html#L199C13",
+      "docHref": "docs/lane_detection___spec.html#L196C13",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L199"
+      "srcHref": "srcs/lane_detection.ads.html#L196"
     },
     {
       "label": "output_front_is_clear",
@@ -269,10 +276,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "pickup_complete",
-      "docHref": "docs/ec2b___spec.html#L39C13",
+      "docHref": "docs/ec2b___spec.html#L40C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L39"
+      "srcHref": "srcs/ec2b.ads.html#L40"
     },
     {
       "label": "post_JSON",
@@ -303,6 +310,20 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/distance_sensor_p.ads.html#L5"
     },
     {
+      "label": "Process_Section",
+      "docHref": "docs/job_executer___spec.html#L42C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L42"
+    },
+    {
+      "label": "Process_valid_Section",
+      "docHref": "docs/job_executer___spec.html#L32C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L32"
+    },
+    {
       "label": "push",
       "docHref": "docs/ring_buffer___ringbuffer___spec.html#L30C17",
       "declared": "Ring_Buffer.RingBuffer",
@@ -310,11 +331,32 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/ring_buffer.ads.html#L30"
     },
     {
+      "label": "Reached_expected_roadmarker",
+      "docHref": "docs/job_executer___spec.html#L21C13",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L21"
+    },
+    {
+      "label": "receive_next_signal",
+      "docHref": "docs/job_executer___spec.html#L83C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L83"
+    },
+    {
       "label": "register_cab",
-      "docHref": "docs/ec2b___spec.html#L36C13",
+      "docHref": "docs/ec2b___spec.html#L37C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L36"
+      "srcHref": "srcs/ec2b.ads.html#L37"
+    },
+    {
+      "label": "register_new_cab",
+      "docHref": "docs/job_executer___spec.html#L24C15",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L24"
     },
     {
       "label": "removeLast",
@@ -325,24 +367,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "request_dropoff",
-      "docHref": "docs/ec2b___spec.html#L40C13",
+      "docHref": "docs/ec2b___spec.html#L41C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L40"
+      "srcHref": "srcs/ec2b.ads.html#L41"
     },
     {
       "label": "request_pickup",
-      "docHref": "docs/ec2b___spec.html#L38C13",
+      "docHref": "docs/ec2b___spec.html#L39C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L38"
+      "srcHref": "srcs/ec2b.ads.html#L39"
     },
     {
       "label": "request_route",
-      "docHref": "docs/ec2b___spec.html#L35C13",
+      "docHref": "docs/ec2b___spec.html#L36C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L35"
+      "srcHref": "srcs/ec2b.ads.html#L36"
     },
     {
       "label": "reset",
@@ -352,11 +394,25 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/ring_buffer.ads.html#L39"
     },
     {
+      "label": "reset_command",
+      "docHref": "docs/ec2b___spec.html#L34C14",
+      "declared": "ec2b",
+      "declared_qualifier": "",
+      "srcHref": "srcs/ec2b.ads.html#L34"
+    },
+    {
       "label": "retrieve_all_sensor_values",
-      "docHref": "docs/lane_detection___spec.html#L147C14",
+      "docHref": "docs/lane_detection___spec.html#L144C14",
       "declared": "Lane_Detection",
       "declared_qualifier": "",
-      "srcHref": "srcs/lane_detection.ads.html#L147"
+      "srcHref": "srcs/lane_detection.ads.html#L144"
+    },
+    {
+      "label": "retry_update_cab_location",
+      "docHref": "docs/job_executer___spec.html#L53C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L53"
     },
     {
       "label": "rm_First_Bit",
@@ -387,11 +443,32 @@ GNATdoc.EntitiesCategory = {
       "srcHref": "srcs/roadmarker_functions.ads.html#L21"
     },
     {
+      "label": "send_done_Signal",
+      "docHref": "docs/job_executer___spec.html#L78C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L78"
+    },
+    {
+      "label": "send_RM_next_signal",
+      "docHref": "docs/job_executer___spec.html#L91C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L91"
+    },
+    {
       "label": "set_blocked_status",
-      "docHref": "docs/ec2b___spec.html#L42C13",
+      "docHref": "docs/ec2b___spec.html#L43C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L42"
+      "srcHref": "srcs/ec2b.ads.html#L43"
+    },
+    {
+      "label": "set_functional_status",
+      "docHref": "docs/ec2b___spec.html#L44C13",
+      "declared": "ec2b",
+      "declared_qualifier": "",
+      "srcHref": "srcs/ec2b.ads.html#L44"
     },
     {
       "label": "set_motor_sensor_data",
@@ -416,17 +493,24 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "update_cabLocation",
-      "docHref": "docs/ec2b___spec.html#L37C13",
+      "docHref": "docs/ec2b___spec.html#L38C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L37"
+      "srcHref": "srcs/ec2b.ads.html#L38"
+    },
+    {
+      "label": "update_route",
+      "docHref": "docs/job_executer___spec.html#L59C14",
+      "declared": "Job_Executer",
+      "declared_qualifier": "",
+      "srcHref": "srcs/job_executer.ads.html#L59"
     },
     {
       "label": "update_sensor_manipulation",
-      "docHref": "docs/ec2b___spec.html#L34C13",
+      "docHref": "docs/ec2b___spec.html#L35C13",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L34"
+      "srcHref": "srcs/ec2b.ads.html#L35"
     },
     {
       "label": "update_sensor_manipulation_map",

@@ -67,7 +67,6 @@ package Lane_Detection is
       -- @param Motor_Task_A access to motor task
       -- @param get_line_sensor_value_a access to line sensor getter function
       -- @param get_curb_sensor_value_a access to curb sensor getter function
-      -- @param get_wall_sensor_value_a access to wall sensor getter function
       -- @param timeout_v Rendezvous synchronization timeout
       entry Construct
         (
@@ -140,10 +139,8 @@ private
    -- set all_sensor_values with new values from driver
    -- @param get_line_sensor_value access to line sensor getter function from driver interface
    -- @param get_curb_sensor_value access to curb sensor getter function from driver interface
-   -- @param get_wall_sensor_value access to wall sensor getter function from driver interface
    -- @param line_sensor_values array filled with new line sensor values
    -- @param curb_sensor_values array filled with new curb sensor values
-   -- @param wall_sensor_values array filled with new wall sensor values
    procedure retrieve_all_sensor_values
      (
       get_line_sensor_value : in get_line_sensor_value_access;
@@ -156,9 +153,9 @@ private
    -- when is_lean_from_line is true.
    -- @param line_sensor_values initialized line sensor values
    -- @param curb_sensor_values initialized curb sensor values
-   -- @param wall_sensor_values initialized wall sensor values
    -- @param is_lean_from_line True when leaning should be done from line
    -- @param Leaning_Left lean state. May change when is_lean_from_line true
+   -- @param is_curb_detection true when the function uses curb detection
    -- @return Signal sent to Motor Controller task
    function calculate_output
      (

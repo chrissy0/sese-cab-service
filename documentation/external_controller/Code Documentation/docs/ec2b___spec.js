@@ -633,7 +633,7 @@ GNATdoc.Documentation = {
         {
           "label": "connection",
           "qualifier": "",
-          "line": 12,
+          "line": 11,
           "column": 4,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -644,7 +644,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 12,
+                  "number": 11,
                   "children": [
                     {
                       "kind": "span",
@@ -675,29 +675,13 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
+                  "number": 12,
+                  "children": [
+                  ]
+                },
+                {
+                  "kind": "line",
                   "number": 13,
-                  "children": [
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 14,
-                  "children": [
-                    {
-                      "kind": "span",
-                      "cssClass": "text",
-                      "text": "   "
-                    },
-                    {
-                      "kind": "span",
-                      "cssClass": "comment",
-                      "text": "-- Backend 1 connection : HTTP_Connection := Create(\"http://167.71.35.10:8081\", Timeouts =>  Timeouts(Each => 0.1 ));"
-                    }
-                  ]
-                },
-                {
-                  "kind": "line",
-                  "number": 15,
                   "children": [
                     {
                       "kind": "span",
@@ -757,7 +741,7 @@ GNATdoc.Documentation = {
                     {
                       "kind": "span",
                       "cssClass": "string",
-                      "text": "\"http://164.90.179.88:8081\""
+                      "text": "\"http://167.71.35.10:8081\""
                     },
                     {
                       "kind": "span",
@@ -853,7 +837,11 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "span",
-                  "text": "Backend 1 connection : HTTP_Connection := Create(\"http://167.71.35.10:8081\", Timeouts =>  Timeouts(Each => 0.1 ));\n"
+                  "text": "connection : HTTP_Connection := Create(\"http://164.90.179.88:8081\", Timeouts =>  Timeouts(Each => 0.1 ));\n"
+                },
+                {
+                  "kind": "span",
+                  "text": "connection : HTTP_Connection := Create(\"http://127.0.0.1:8081\", Timeouts =>  Timeouts(Each => 0.1 ));\n"
                 }
               ]
             }
@@ -867,7 +855,7 @@ GNATdoc.Documentation = {
         {
           "label": "dropoff_complete",
           "qualifier": "",
-          "line": 41,
+          "line": 42,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -878,7 +866,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 41,
+                  "number": 42,
                   "children": [
                     {
                       "kind": "span",
@@ -899,7 +887,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "dropoff_complete",
-                      "href": "docs/ec2b___spec.html#L41C13"
+                      "href": "docs/ec2b___spec.html#L42C13"
                     },
                     {
                       "kind": "span",
@@ -910,7 +898,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L41C30"
+                      "href": "docs/ec2b___spec.html#L42C30"
                     },
                     {
                       "kind": "span",
@@ -946,7 +934,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "dropoff_completed",
-                      "href": "docs/ec2b___spec.html#L41C48"
+                      "href": "docs/ec2b___spec.html#L42C48"
                     },
                     {
                       "kind": "span",
@@ -1016,7 +1004,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 41,
+              "line": 42,
               "column": 30,
               "type": {
                 "label": "Integer"
@@ -1026,7 +1014,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "dropoff_completed",
-              "line": 41,
+              "line": 42,
               "column": 48,
               "type": {
                 "label": "Boolean"
@@ -1155,7 +1143,7 @@ GNATdoc.Documentation = {
         {
           "label": "pickup_complete",
           "qualifier": "",
-          "line": 39,
+          "line": 40,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -1166,7 +1154,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 39,
+                  "number": 40,
                   "children": [
                     {
                       "kind": "span",
@@ -1187,7 +1175,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "pickup_complete",
-                      "href": "docs/ec2b___spec.html#L39C13"
+                      "href": "docs/ec2b___spec.html#L40C13"
                     },
                     {
                       "kind": "span",
@@ -1198,7 +1186,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L39C29"
+                      "href": "docs/ec2b___spec.html#L40C29"
                     },
                     {
                       "kind": "span",
@@ -1234,7 +1222,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "pickup_completed",
-                      "href": "docs/ec2b___spec.html#L39C47"
+                      "href": "docs/ec2b___spec.html#L40C47"
                     },
                     {
                       "kind": "span",
@@ -1304,7 +1292,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 39,
+              "line": 40,
               "column": 29,
               "type": {
                 "label": "Integer"
@@ -1314,7 +1302,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "pickup_completed",
-              "line": 39,
+              "line": 40,
               "column": 47,
               "type": {
                 "label": "Boolean"
@@ -1327,7 +1315,7 @@ GNATdoc.Documentation = {
         {
           "label": "register_cab",
           "qualifier": "",
-          "line": 36,
+          "line": 37,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -1338,7 +1326,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 36,
+                  "number": 37,
                   "children": [
                     {
                       "kind": "span",
@@ -1359,7 +1347,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "register_cab",
-                      "href": "docs/ec2b___spec.html#L36C13"
+                      "href": "docs/ec2b___spec.html#L37C13"
                     },
                     {
                       "kind": "span",
@@ -1370,7 +1358,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cabname",
-                      "href": "docs/ec2b___spec.html#L36C26"
+                      "href": "docs/ec2b___spec.html#L37C26"
                     },
                     {
                       "kind": "span",
@@ -1406,7 +1394,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "section",
-                      "href": "docs/ec2b___spec.html#L36C44"
+                      "href": "docs/ec2b___spec.html#L37C44"
                     },
                     {
                       "kind": "span",
@@ -1443,7 +1431,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L36C74"
+                      "href": "docs/ec2b___spec.html#L37C74"
                     },
                     {
                       "kind": "span",
@@ -1454,6 +1442,16 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
                     },
                     {
                       "kind": "span",
@@ -1513,7 +1511,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cabname",
-              "line": 36,
+              "line": 37,
               "column": 26,
               "type": {
                 "label": "String"
@@ -1523,7 +1521,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "section",
-              "line": 36,
+              "line": 37,
               "column": 44,
               "type": {
                 "label": "Roadmarker.Road_Marker_Done_T",
@@ -1534,7 +1532,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "cab_id",
-              "line": 36,
+              "line": 37,
               "column": 74,
               "type": {
                 "label": "Integer"
@@ -1547,7 +1545,7 @@ GNATdoc.Documentation = {
         {
           "label": "request_dropoff",
           "qualifier": "",
-          "line": 40,
+          "line": 41,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -1558,7 +1556,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 40,
+                  "number": 41,
                   "children": [
                     {
                       "kind": "span",
@@ -1579,7 +1577,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "request_dropoff",
-                      "href": "docs/ec2b___spec.html#L40C13"
+                      "href": "docs/ec2b___spec.html#L41C13"
                     },
                     {
                       "kind": "span",
@@ -1590,7 +1588,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L40C29"
+                      "href": "docs/ec2b___spec.html#L41C29"
                     },
                     {
                       "kind": "span",
@@ -1626,7 +1624,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "customer_id",
-                      "href": "docs/ec2b___spec.html#L40C47"
+                      "href": "docs/ec2b___spec.html#L41C47"
                     },
                     {
                       "kind": "span",
@@ -1686,7 +1684,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 40,
+              "line": 41,
               "column": 29,
               "type": {
                 "label": "Integer"
@@ -1696,7 +1694,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "customer_id",
-              "line": 40,
+              "line": 41,
               "column": 47,
               "type": {
                 "label": "Integer"
@@ -1709,7 +1707,7 @@ GNATdoc.Documentation = {
         {
           "label": "request_pickup",
           "qualifier": "",
-          "line": 38,
+          "line": 39,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -1720,7 +1718,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 38,
+                  "number": 39,
                   "children": [
                     {
                       "kind": "span",
@@ -1741,7 +1739,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "request_pickup",
-                      "href": "docs/ec2b___spec.html#L38C13"
+                      "href": "docs/ec2b___spec.html#L39C13"
                     },
                     {
                       "kind": "span",
@@ -1752,7 +1750,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L38C28"
+                      "href": "docs/ec2b___spec.html#L39C28"
                     },
                     {
                       "kind": "span",
@@ -1788,7 +1786,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "customer_id",
-                      "href": "docs/ec2b___spec.html#L38C46"
+                      "href": "docs/ec2b___spec.html#L39C46"
                     },
                     {
                       "kind": "span",
@@ -1848,7 +1846,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 38,
+              "line": 39,
               "column": 28,
               "type": {
                 "label": "Integer"
@@ -1858,7 +1856,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "customer_id",
-              "line": 38,
+              "line": 39,
               "column": 46,
               "type": {
                 "label": "Integer"
@@ -1871,7 +1869,7 @@ GNATdoc.Documentation = {
         {
           "label": "request_route",
           "qualifier": "",
-          "line": 35,
+          "line": 36,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -1882,7 +1880,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 35,
+                  "number": 36,
                   "children": [
                     {
                       "kind": "span",
@@ -1903,7 +1901,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "request_route",
-                      "href": "docs/ec2b___spec.html#L35C13"
+                      "href": "docs/ec2b___spec.html#L36C13"
                     },
                     {
                       "kind": "span",
@@ -1914,7 +1912,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cmd_queue",
-                      "href": "docs/ec2b___spec.html#L35C27"
+                      "href": "docs/ec2b___spec.html#L36C27"
                     },
                     {
                       "kind": "span",
@@ -1966,7 +1964,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L35C65"
+                      "href": "docs/ec2b___spec.html#L36C65"
                     },
                     {
                       "kind": "span",
@@ -2002,7 +2000,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_version",
-                      "href": "docs/ec2b___spec.html#L35C83"
+                      "href": "docs/ec2b___spec.html#L36C83"
                     },
                     {
                       "kind": "span",
@@ -2082,7 +2080,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cmd_queue",
-              "line": 35,
+              "line": 36,
               "column": 27,
               "type": {
                 "label": "ec2b.cmd_queue_access_t",
@@ -2093,7 +2091,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "cab_id",
-              "line": 35,
+              "line": 36,
               "column": 65,
               "type": {
                 "label": "Integer"
@@ -2103,7 +2101,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "cab_version",
-              "line": 35,
+              "line": 36,
               "column": 83,
               "type": {
                 "label": "Integer"
@@ -2114,9 +2112,127 @@ GNATdoc.Documentation = {
           ]
         },
         {
+          "label": "reset_command",
+          "qualifier": "",
+          "line": 34,
+          "column": 14,
+          "src": "srcs/ec2b.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 34,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "procedure"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "reset_command",
+                      "href": "docs/ec2b___spec.html#L34C14"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "command",
+                      "href": "docs/ec2b___spec.html#L34C28"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "out"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Command_t",
+                      "href": "docs/ec2b___spec.html#L21C9"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "command",
+              "line": 34,
+              "column": 28,
+              "type": {
+                "label": "ec2b.Command_t",
+                "docHref": "docs/ec2b___spec.html#L21C9"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
           "label": "set_blocked_status",
           "qualifier": "",
-          "line": 42,
+          "line": 43,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -2127,7 +2243,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 42,
+                  "number": 43,
                   "children": [
                     {
                       "kind": "span",
@@ -2148,7 +2264,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "set_blocked_status",
-                      "href": "docs/ec2b___spec.html#L42C13"
+                      "href": "docs/ec2b___spec.html#L43C13"
                     },
                     {
                       "kind": "span",
@@ -2159,7 +2275,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L42C32"
+                      "href": "docs/ec2b___spec.html#L43C32"
                     },
                     {
                       "kind": "span",
@@ -2195,7 +2311,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "blocked",
-                      "href": "docs/ec2b___spec.html#L42C50"
+                      "href": "docs/ec2b___spec.html#L43C50"
                     },
                     {
                       "kind": "span",
@@ -2265,7 +2381,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 42,
+              "line": 43,
               "column": 32,
               "type": {
                 "label": "Integer"
@@ -2275,8 +2391,180 @@ GNATdoc.Documentation = {
             },
             {
               "label": "blocked",
-              "line": 42,
+              "line": 43,
               "column": 50,
+              "type": {
+                "label": "Boolean"
+              },
+              "description": [
+              ]
+            }
+          ]
+        },
+        {
+          "label": "set_functional_status",
+          "qualifier": "",
+          "line": 44,
+          "column": 13,
+          "src": "srcs/ec2b.ads.html",
+          "summary": [
+          ],
+          "description": [
+            {
+              "kind": "code",
+              "children": [
+                {
+                  "kind": "line",
+                  "number": 44,
+                  "children": [
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": "   "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "function"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "set_functional_status",
+                      "href": "docs/ec2b___spec.html#L44C13"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "("
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "cab_id",
+                      "href": "docs/ec2b___spec.html#L44C35"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Integer"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "functional",
+                      "href": "docs/ec2b___spec.html#L44C53"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ":"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "in"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Boolean"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ")"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "keyword",
+                      "text": "return"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "text",
+                      "text": " "
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": "Messages.Status_Code"
+                    },
+                    {
+                      "kind": "span",
+                      "cssClass": "identifier",
+                      "text": ";"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "label": "cab_id",
+              "line": 44,
+              "column": 35,
+              "type": {
+                "label": "Integer"
+              },
+              "description": [
+              ]
+            },
+            {
+              "label": "functional",
+              "line": 44,
+              "column": 53,
               "type": {
                 "label": "Boolean"
               },
@@ -2470,7 +2758,7 @@ GNATdoc.Documentation = {
         {
           "label": "update_cabLocation",
           "qualifier": "",
-          "line": 37,
+          "line": 38,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -2481,7 +2769,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 37,
+                  "number": 38,
                   "children": [
                     {
                       "kind": "span",
@@ -2502,7 +2790,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "update_cabLocation",
-                      "href": "docs/ec2b___spec.html#L37C13"
+                      "href": "docs/ec2b___spec.html#L38C13"
                     },
                     {
                       "kind": "span",
@@ -2513,7 +2801,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L37C32"
+                      "href": "docs/ec2b___spec.html#L38C32"
                     },
                     {
                       "kind": "span",
@@ -2549,7 +2837,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_section",
-                      "href": "docs/ec2b___spec.html#L37C50"
+                      "href": "docs/ec2b___spec.html#L38C50"
                     },
                     {
                       "kind": "span",
@@ -2610,7 +2898,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 37,
+              "line": 38,
               "column": 32,
               "type": {
                 "label": "Integer"
@@ -2620,7 +2908,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "cab_section",
-              "line": 37,
+              "line": 38,
               "column": 50,
               "type": {
                 "label": "Roadmarker.Road_Marker_Done_T",
@@ -2634,7 +2922,7 @@ GNATdoc.Documentation = {
         {
           "label": "update_sensor_manipulation",
           "qualifier": "",
-          "line": 34,
+          "line": 35,
           "column": 13,
           "src": "srcs/ec2b.ads.html",
           "summary": [
@@ -2645,7 +2933,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 34,
+                  "number": 35,
                   "children": [
                     {
                       "kind": "span",
@@ -2666,7 +2954,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "update_sensor_manipulation",
-                      "href": "docs/ec2b___spec.html#L34C13"
+                      "href": "docs/ec2b___spec.html#L35C13"
                     },
                     {
                       "kind": "span",
@@ -2677,7 +2965,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "cab_id",
-                      "href": "docs/ec2b___spec.html#L34C40"
+                      "href": "docs/ec2b___spec.html#L35C40"
                     },
                     {
                       "kind": "span",
@@ -2737,7 +3025,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "cab_id",
-              "line": 34,
+              "line": 35,
               "column": 40,
               "type": {
                 "label": "Integer"

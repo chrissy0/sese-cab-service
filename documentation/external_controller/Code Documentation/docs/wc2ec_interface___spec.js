@@ -11,7 +11,7 @@ GNATdoc.Documentation = {
         {
           "label": "SENSOR_FAULT",
           "qualifier": "",
-          "line": 81,
+          "line": 80,
           "column": 4,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
@@ -22,7 +22,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 81,
+                  "number": 80,
                   "children": [
                     {
                       "kind": "span",
@@ -97,7 +97,7 @@ GNATdoc.Documentation = {
         {
           "label": "SENSOR_MAX_VAL",
           "qualifier": "",
-          "line": 84,
+          "line": 83,
           "column": 4,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
@@ -108,7 +108,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 84,
+                  "number": 83,
                   "children": [
                     {
                       "kind": "span",
@@ -178,7 +178,7 @@ GNATdoc.Documentation = {
         {
           "label": "SENSOR_MIN_VAL",
           "qualifier": "",
-          "line": 87,
+          "line": 86,
           "column": 4,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
@@ -189,7 +189,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 87,
+                  "number": 86,
                   "children": [
                     {
                       "kind": "span",
@@ -264,7 +264,7 @@ GNATdoc.Documentation = {
         {
           "label": "detect_sensor_fault",
           "qualifier": "",
-          "line": 92,
+          "line": 91,
           "column": 13,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
@@ -275,7 +275,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 92,
+                  "number": 91,
                   "children": [
                     {
                       "kind": "span",
@@ -296,7 +296,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "detect_sensor_fault",
-                      "href": "docs/wc2ec_interface___spec.html#L92C13"
+                      "href": "docs/wc2ec_interface___spec.html#L91C13"
                     },
                     {
                       "kind": "span",
@@ -307,7 +307,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "value",
-                      "href": "docs/wc2ec_interface___spec.html#L92C33"
+                      "href": "docs/wc2ec_interface___spec.html#L91C33"
                     },
                     {
                       "kind": "span",
@@ -376,7 +376,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "value",
-              "line": 92,
+              "line": 91,
               "column": 33,
               "type": {
                 "label": "Long_Float"
@@ -411,7 +411,7 @@ GNATdoc.Documentation = {
         {
           "label": "elevate_curb_sensor",
           "qualifier": "",
-          "line": 77,
+          "line": 76,
           "column": 14,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
@@ -422,7 +422,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 77,
+                  "number": 76,
                   "children": [
                     {
                       "kind": "span",
@@ -443,7 +443,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "elevate_curb_sensor",
-                      "href": "docs/wc2ec_interface___spec.html#L77C14"
+                      "href": "docs/wc2ec_interface___spec.html#L76C14"
                     },
                     {
                       "kind": "span",
@@ -468,7 +468,7 @@ GNATdoc.Documentation = {
         {
           "label": "get_curb_detection_sensor_value",
           "qualifier": "",
-          "line": 69,
+          "line": 68,
           "column": 13,
           "src": "srcs/wc2ec_interface.ads.html",
           "summary": [
@@ -479,7 +479,7 @@ GNATdoc.Documentation = {
               "children": [
                 {
                   "kind": "line",
-                  "number": 69,
+                  "number": 68,
                   "children": [
                     {
                       "kind": "span",
@@ -500,13 +500,13 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "get_curb_detection_sensor_value",
-                      "href": "docs/wc2ec_interface___spec.html#L69C13"
+                      "href": "docs/wc2ec_interface___spec.html#L68C13"
                     }
                   ]
                 },
                 {
                   "kind": "line",
-                  "number": 70,
+                  "number": 69,
                   "children": [
                     {
                       "kind": "span",
@@ -522,7 +522,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 71,
+                  "number": 70,
                   "children": [
                     {
                       "kind": "span",
@@ -533,7 +533,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "orientation",
-                      "href": "docs/wc2ec_interface___spec.html#L71C7"
+                      "href": "docs/wc2ec_interface___spec.html#L70C7"
                     },
                     {
                       "kind": "span",
@@ -575,7 +575,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 72,
+                  "number": 71,
                   "children": [
                     {
                       "kind": "span",
@@ -586,7 +586,7 @@ GNATdoc.Documentation = {
                       "kind": "span",
                       "cssClass": "identifier",
                       "text": "is_backup",
-                      "href": "docs/wc2ec_interface___spec.html#L72C7"
+                      "href": "docs/wc2ec_interface___spec.html#L71C7"
                     },
                     {
                       "kind": "span",
@@ -622,7 +622,7 @@ GNATdoc.Documentation = {
                 },
                 {
                   "kind": "line",
-                  "number": 73,
+                  "number": 72,
                   "children": [
                     {
                       "kind": "span",
@@ -669,10 +669,6 @@ GNATdoc.Documentation = {
                 {
                   "kind": "span",
                   "text": "Getter for curb sensor values\n"
-                },
-                {
-                  "kind": "span",
-                  "text": "sensor position\n"
                 }
               ]
             }
@@ -680,7 +676,7 @@ GNATdoc.Documentation = {
           "parameters": [
             {
               "label": "orientation",
-              "line": 71,
+              "line": 70,
               "column": 7,
               "type": {
                 "label": "Lane_Detection.Sensor_Orientation_T",
@@ -700,7 +696,7 @@ GNATdoc.Documentation = {
             },
             {
               "label": "is_backup",
-              "line": 72,
+              "line": 71,
               "column": 7,
               "type": {
                 "label": "Boolean"

@@ -62,7 +62,6 @@ package WC2EC_Interface is
 
 
    -- Getter for curb sensor values
-   -- @param pos sensor position
    -- @param orientation sensor orientaten
    -- @param is_backup True: reference Backup sensor, False: Refernce default sensor
    -- @return current sensor value

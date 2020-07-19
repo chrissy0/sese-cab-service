@@ -17,10 +17,10 @@ GNATdoc.EntitiesCategory = {
     },
     {
       "label": "connection",
-      "docHref": "docs/ec2b___spec.html#L12C4",
+      "docHref": "docs/ec2b___spec.html#L11C4",
       "declared": "ec2b",
       "declared_qualifier": "",
-      "srcHref": "srcs/ec2b.ads.html#L12"
+      "srcHref": "srcs/ec2b.ads.html#L11"
     },
     {
       "label": "distance_sensor_t",
