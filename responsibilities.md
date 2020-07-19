@@ -1,5 +1,13 @@
 # Responsibilities
 
+## Member List
+
+- Chanki Hong
+- Christopher Woggon
+- Florentin Ehser
+- Julian Hartmer
+- Maximilian Weissenseel
+
 ## Chanki Hong
 
 **Rolle:** Quality Manager
