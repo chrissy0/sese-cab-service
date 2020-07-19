@@ -46,7 +46,7 @@ package body ec2b is
    begin
       parameters.Insert("cabId", cab_id_str);
       parameters.Insert("blocked", blocked'Image);
-      status_code := POST_JSON(connection, "/api/ec/blocked", parameters,response_data_JSON => response_json);
+      status_code := POST_JSON(connection.all, "/api/ec/blocked", parameters,response_data_JSON => response_json);
       return status_code;
    end set_blocked_status;
 
@@ -58,7 +58,7 @@ package body ec2b is
    begin
       parameters.Insert("cabId", cab_id_str);
       parameters.Insert("functional", functional'Image);
-      status_code := POST_JSON(connection, "/api/ec/functional", parameters,response_data_JSON => response_json);
+      status_code := POST_JSON(connection.all, "/api/ec/functional", parameters,response_data_JSON => response_json);
       return status_code;
    end set_functional_status;
 
@@ -76,7 +76,7 @@ package body ec2b is
       whoosh : Integer;
    begin
       parameters.Insert("cabId", cab_id_str);
-      status_code := get_JSON(connection, "/api/ec/sensorStatus", parameters, response_json);
+      status_code := get_JSON(connection.all, "/api/ec/sensorStatus", parameters, response_json);
       if (failed(status_code)) then
          return status_code;
       end if;
@@ -122,7 +122,7 @@ package body ec2b is
    begin
       parameters.Insert("id", cab_id_str);
       parameters.Insert("version", cab_version_str);
-      status_code := get_JSON(connection, "/api/ec/requestRoute", parameters, response_json);
+      status_code := get_JSON(connection.all, "/api/ec/requestRoute", parameters, response_json);
       if (failed(status_code)) then
          return status_code;
       end if;
@@ -185,7 +185,7 @@ end request_route;
    begin
       cab_JSON.Set_Field ("cabName", cabname);
       cab_JSON.Set_Field ("section", Create (Integer(section)));
-      status_code := post_JSON(connection, "/api/ec/registerCab", value => cab_JSON, response_data_JSON => response_data_JSON);
+      status_code := post_JSON(connection.all, "/api/ec/registerCab", value => cab_JSON, response_data_JSON => response_data_JSON);
       if (failed(status_code)) then
          return status_code;
       end if;
@@ -216,7 +216,7 @@ end request_route;
    begin
       section_JSON.Set_Field("section", Create(Integer(cab_section)));
       parameters.Insert("cabId", cab_id_str);
-      status_code := post_JSON(connection, "/api/ec/cabLocation", parameters, section_JSON, response_data_JSON);
+      status_code := post_JSON(connection.all, "/api/ec/cabLocation", parameters, section_JSON, response_data_JSON);
       return status_code;
    exception
       when Constraint_Error =>
@@ -242,7 +242,7 @@ end request_route;
       parameters.Insert("cabId", cab_id_str);
       parameters.Insert("customerId", customer_id_str);
 
-      status_code := post_JSON(connection, "/api/ec/requestPickup", parameters,response_data_JSON => response_data_JSON);
+      status_code := post_JSON(connection.all, "/api/ec/requestPickup", parameters,response_data_JSON => response_data_JSON);
       return status_code;
    end request_pickup;
    ------------------------
@@ -256,7 +256,7 @@ end request_route;
       parameters : param_map_p.Map;
    begin
       parameters.Insert("cabId", cab_id_str);
-      status_code := get_JSON(connection, "/api/ec/pickupsComplete", parameters, response_json);
+      status_code := get_JSON(connection.all, "/api/ec/pickupsComplete", parameters, response_json);
       if (failed(status_code)) then
          return status_code;
       end if;
@@ -285,7 +285,7 @@ end request_route;
    begin
       parameters.Insert("cabId", cab_id_str);
       parameters.Insert("customerId", customer_id_str);
-      status_code := post_JSON(connection, "/api/ec/requestDropoff", parameters,response_data_JSON => response_data_JSON);
+      status_code := post_JSON(connection.all, "/api/ec/requestDropoff", parameters,response_data_JSON => response_data_JSON);
       return status_code;
    end request_dropoff;
 
@@ -301,7 +301,7 @@ end request_route;
       version : Ada.Strings.Unbounded.Unbounded_String;
    begin
       parameters.Insert("cabId", cab_id_str);
-      status_code := get_JSON(connection, "/api/ec/dropoffsComplete", parameters, response_json);
+      status_code := get_JSON(connection.all, "/api/ec/dropoffsComplete", parameters, response_json);
       if (failed(status_code)) then
          return status_code;
       end if;
