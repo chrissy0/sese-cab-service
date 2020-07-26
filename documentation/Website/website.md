@@ -196,6 +196,8 @@ Since it is quite hard to just google problems in Ada, we had to understand and 
 
 In general we are satisfied with the choices we made and the way we managed our time. If we could start all over again with an additional team member we would include the camera, to add another backup layer to our system.
 
+If you have a great team, university projects can be fun!
+
 ### Future work
 As always, time is short and we have many ideas just waiting for implementation:
 
