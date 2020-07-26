@@ -152,7 +152,7 @@ In both cases the Backend wont assign jobs to these cabs.
 
 If a cab is Blocked the backend will consider this planning the route for the other cabs. 
 In this example is cab 3 blocking the depot.
-Consequently, cab 2 received a route in which it will wait at Road Marker twelve until the Depot is free again.
+Consequently, cab 2 received a route in which it will wait at Road Marker twelve until the Depot is no longer blocked.
 
 #### Safe State
 
@@ -170,9 +170,9 @@ We defined four different levels of errors.
 
 ###### Red: Critical Errors
 
-**Front Distance Error:** None of the front distance errors is functional; The cab will stop immediately.
+**Front Distance Error:** None of the front distance errors is functional; the cab will stop immediately.
 
-**Final Safe State:** Whether Lane detection nor Curb Detection is possible; The cab will leave the road network, since further navigation is not possible
+**Final Safe State:** Whether Lane detection nor Curb Detection is possible; the cab will leave the road network, since further navigation is not possible
 
 ###### Orange: Serious Errors
 
