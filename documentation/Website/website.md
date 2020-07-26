@@ -1,5 +1,5 @@
 # Cab Service No. 1
-![](./images/Annotation 2020-07-25 111152.png)
+![](./images/Title.png)
 
 **Group members**: 
 
@@ -62,7 +62,7 @@ List the **necessary** and **optional** requirements that were set for your proj
 
 ## System architecture
 ### Software design
-![diagram](./images/Overview3.png)
+![diagram](./images/overview3.png)
 
 #### Webots Controller
 
@@ -160,7 +160,13 @@ Based on the paper: ["Fault-Tolerance by Graceful Degradation for Car Platoons"]
 
 ![](./images/states.png)
 
+##### Sensor Errors
 
+We equipped our cab with a backup sensor for every functionality. For example in case the "Sensor Error (IR)" occurs **both** Infrared Front Distance Sensors have failed. We omitted this in this diagram to keep it as small as possible.
+
+##### States
+
+Green indicates 
 
 ## Summary
 
