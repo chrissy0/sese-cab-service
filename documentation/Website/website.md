@@ -158,7 +158,7 @@ Consequently, cab 2 received a route in which it will wait at Road Marker twelve
 
 Based on the paper: ["Fault-Tolerance by Graceful Degradation for Car Platoons"](https://www.researchgate.net/publication/332072423_Fault-Tolerance_by_Graceful_Degradation_for_Car_Platoons), we designed a degeneration controller for our cab.
 
-![](./images/states.png)
+![](./images/states3.png)
 
 ##### Sensor Errors
 
@@ -166,7 +166,25 @@ We equipped our cab with a backup sensor for every functionality. For example in
 
 ##### States
 
-Green indicates 
+We defined four different levels of errors.
+
+###### Red: Critical Errors
+
+**Front Distance Error:** None of the front distance errors is functional; The cab will stop immediately.
+
+**Final Safe State:** Whether Lane detection nor Curb Detection is possible; The cab will leave the road network, since further navigation is not possible
+
+###### Orange: Serious Errors
+
+The cab returns to the workshop for further investigation
+
+###### Yellow: Medium Errors
+
+The cab finishes its current route and then return to the depot to wait until the connection to the backend has been re-established
+
+###### Green: Minor Errors
+
+The malfunctioning feature can be replaced by a backup functionality.  
 
 ## Summary
 
